@@ -4,7 +4,9 @@ import com.kmu.anki.backend.domain.card.enums.CardCategory;
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity
 @Table(name = "cards")
 public class Card {

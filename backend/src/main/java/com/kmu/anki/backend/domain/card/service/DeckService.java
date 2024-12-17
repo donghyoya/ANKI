@@ -1,7 +1,10 @@
 package com.kmu.anki.backend.domain.card.service;
 
 import com.kmu.anki.backend.domain.card.controller.QueryType;
+import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.dto.DeckDto;
+import com.kmu.anki.backend.domain.card.enums.CardCategory;
+import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.repository.CardRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,4 +28,13 @@ public class DeckService {
             return cardRepository.findAllDeckByCategory(languageCode, pageable);
         }
     }
+
+    public Page<CardDto> findDeckCards(LanguageCode languageCode, CardDifficulty cardDifficulty){
+        return cardRepository.findDeckCard(languageCode, cardDifficulty, PageRequest.of(0,20)).map(CardDto::of);
+    }
+
+    public Page<CardDto> findDeckCards(LanguageCode languageCode, CardCategory category){
+        return cardRepository.findDeckCard(languageCode, category, PageRequest.of(0,20)).map(CardDto::of);
+    }
+
 }

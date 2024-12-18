@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.usercard.repository;
 
+import com.kmu.anki.backend.TestcontainersConfiguration;
 import com.kmu.anki.backend.domain.card.entity.Card;
 import com.kmu.anki.backend.domain.card.enums.CardCategory;
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
@@ -9,6 +10,7 @@ import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 
@@ -16,8 +18,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Import(TestcontainersConfiguration.class)
 @ActiveProfiles("test")
-//@Sql("/data.sql")
+@Sql("/data.sql")
 @SpringBootTest
 class UserDeckStudyRepositoryTest {
     @Autowired private UserDeckStudyRepository userDeckStudyRepository;

@@ -35,8 +35,8 @@ public class UserDeckStudyRepository {
     public Long studyDeck(Long userId, LanguageCode code, CardDifficulty difficulty){
         Map<String, Object> params = new HashMap<>();
         params.put("userId", userId);
-        params.put("languageCode", code);
-        params.put("difficulty", difficulty);
+        params.put("languageCode", code.toString());
+        params.put("difficulty", difficulty.toString());
         Long userDeckId = jdbcTemplate.queryForObject(INSERT_USER_DECK, params, Long.class);
         params.put("userDeckId", userDeckId);
         jdbcTemplate.update(INSERT_USER_CARDS, params);

@@ -11,10 +11,7 @@ import com.kmu.anki.backend.domain.card.service.DeckService;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/decks")
 @RequiredArgsConstructor
@@ -48,5 +45,4 @@ public class DeckController {
         }
         return BasePageResponse.of(cards);
     }
-
 }

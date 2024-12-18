@@ -16,11 +16,13 @@ public class UserDeck {
     @Column(name = "user_deck_id")
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     @Column
     private LanguageCode languageCode;
 
+    @Enumerated(EnumType.STRING)
     @Column
-    private CardDifficulty cardDifficulty;
+    private CardDifficulty difficulty;
 
     /* 관계 : User */
     @ManyToOne(fetch = FetchType.LAZY)

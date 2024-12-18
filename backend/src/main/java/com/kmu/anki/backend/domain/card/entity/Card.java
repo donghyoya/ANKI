@@ -11,6 +11,7 @@ import lombok.Getter;
 @Table(name = "cards")
 public class Card {
     @Id
+    @Column(name = "card_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -27,6 +28,7 @@ public class Card {
     @Column
     private CardCategory category;
 
+    @Enumerated(EnumType.STRING)
     @Column
     private LanguageCode languageCode;
 

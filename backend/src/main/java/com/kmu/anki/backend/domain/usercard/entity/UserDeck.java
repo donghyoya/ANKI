@@ -5,6 +5,9 @@ import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.User;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "user_decks")
 public class UserDeck {
@@ -30,5 +33,13 @@ public class UserDeck {
     public void mapUser(User user){
         this.user = user;
         user.addDeck(this);
+    }
+
+    /* 관계 : 유저 카드 */
+    @OneToMany(mappedBy = "deck")
+    private List<UserCard> cards = new ArrayList<>();
+
+    public void addCard(UserCard card){
+        cards.add(card);
     }
 }

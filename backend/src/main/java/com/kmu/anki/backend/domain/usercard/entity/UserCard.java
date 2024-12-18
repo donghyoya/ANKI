@@ -13,5 +13,13 @@ public class UserCard {
     @Column(name = "user_card_id")
     private Long id;
 
+    /* 관계 Deck */
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private UserDeck deck;
+
+    public void mapDeck(UserDeck deck){
+        this.deck = deck;
+        this.deck.addCard(this);
+    }
 }

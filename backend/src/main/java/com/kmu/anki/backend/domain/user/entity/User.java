@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.user.entity;
 
+import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import com.kmu.anki.backend.domain.usercard.entity.UserDeck;
 import jakarta.persistence.*;
 
@@ -21,5 +22,8 @@ public class User {
     public void addDeck(UserDeck deck){
         decks.add(deck);
     }
+
+
+
 
 }

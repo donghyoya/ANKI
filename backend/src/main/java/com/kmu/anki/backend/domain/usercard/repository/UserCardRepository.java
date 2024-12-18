@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface UserCardRepository extends JpaRepository<UserCard, Long> {
     List<UserCard> findByDeckId(Long deckId);
+
+    long countByDeckId(Long deckId);
 }

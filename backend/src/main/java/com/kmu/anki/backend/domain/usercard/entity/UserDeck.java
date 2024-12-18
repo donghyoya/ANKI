@@ -4,10 +4,12 @@ import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.User;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @Entity
 @Table(name = "user_decks")
 public class UserDeck {

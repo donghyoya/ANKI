@@ -15,6 +15,12 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
+    @Column
+    private Integer todayStudyWords;
+
+    @Column
+    private Integer todayReviewWords;
+
     /* 관계 : 유저덱 */
     @OneToMany(mappedBy = "user")
     private List<UserDeck> decks = new ArrayList<>();

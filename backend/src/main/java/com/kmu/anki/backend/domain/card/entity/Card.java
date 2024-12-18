@@ -25,6 +25,7 @@ public class Card {
     @Column
     private CardDifficulty difficulty;
 
+    @Enumerated(EnumType.STRING)
     @Column
     private CardCategory category;
 

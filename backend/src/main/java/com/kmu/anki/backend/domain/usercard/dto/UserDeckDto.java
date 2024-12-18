@@ -12,6 +12,13 @@ public class UserDeckDto {
     private CardDifficulty difficulty;
     private long counts;
 
+    public UserDeckDto(UserDeck deck, long counts){
+        this.id = deck.getId();
+        this.languageCode = deck.getLanguageCode();
+        this.difficulty = deck.getDifficulty();
+        this.counts = counts;
+    }
+
     UserDeckDto(Long id, LanguageCode languageCode, CardDifficulty difficulty, long counts) {
         this.id = id;
         this.languageCode = languageCode;

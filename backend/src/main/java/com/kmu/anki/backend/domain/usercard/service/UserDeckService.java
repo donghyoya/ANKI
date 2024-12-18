@@ -10,6 +10,7 @@ import com.kmu.anki.backend.domain.usercard.repository.UserDeckRepository;
 import com.kmu.anki.backend.domain.usercard.repository.UserDeckStudyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,11 +27,10 @@ public class UserDeckService {
     @Transactional
     public UserDeckDto study(LanguageCode languageCode, CardDifficulty difficulty, Long userId){
         Long id = deckStudyRepository.studyDeck(userId, languageCode, difficulty);
-        UserDeck userDeck = userDeckRepository.findById(id).orElseThrow();
-        long cardCounts = userCardRepository.countByDeckId(id);
-        return UserDeckDto.builder()
-                .userDeck(userDeck)
-                .counts(cardCounts)
-                .build();
+        return userDeckRepository.findUserDeckDtoById(id);
+    }
+
+    public Page<UserDeckDto> findUserDeckByUserId(Long userId){
+        return userDeckRepository.findUserDeckDtoByUserId(userId, PageRequest.of(0,20));
     }
 }

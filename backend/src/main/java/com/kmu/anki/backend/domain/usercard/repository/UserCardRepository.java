@@ -30,4 +30,17 @@ public interface UserCardRepository extends JpaRepository<UserCard, Long> {
     """)
     List<UserCardDto> findCard(@Param("deckId") Long deckId);
 
+    @Query("""
+        select new com.kmu.anki.backend.domain.usercard.dto.UserCardDto(uc, c)
+        from UserCard uc join fetch uc.card c
+        where uc.id = :userCardId
+    """)
+    UserCardDto findCardByUserCardId(@Param("userCardId") Long userCardId);
+
+    @Query("""
+        select uc
+        from UserCard uc join fetch uc.card c
+        where uc.id = :userCardId
+    """)
+    UserCard findUserCardById(@Param("userCardId") Long userCardId);
 }

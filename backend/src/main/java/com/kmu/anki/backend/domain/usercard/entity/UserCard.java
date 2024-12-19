@@ -45,4 +45,10 @@ public class UserCard {
 
     @Column(name = "card_id", insertable = false, updatable = false)
     private Long cardId;
+
+    /* 로직 */
+    public void update(Integer score, LocalDateTime nextStudyDate){
+        this.score = score;
+        this.nextStudyDate = nextStudyDate;
+    }
 }

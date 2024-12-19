@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RequestMapping("/decks/study")
+@RequestMapping("/user/decks")
 @RestController
 public class UserDeckController {
     private final UserDeckService userDeckService;

@@ -1,0 +1,69 @@
+openapi: 3.0.1
+info:
+  title: Anki
+  description: Anki 작업
+  version: 1.0.0
+servers:
+- url: http://localhost:8080/
+tags: []
+paths:
+  /decks:
+    get:
+      tags:
+      - articles
+      summary: Article을 모두 보기
+      description: Article을 모두 보기
+      operationId: deck-controller-test/get-decks
+      parameters:
+      - name: languageCode
+        in: query
+        description: 언어코드
+        required: true
+        schema:
+          type: string
+      - name: queryType
+        in: query
+        description: 의미에 따른 분류인가 / 난이도에 따른 분류인가
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/decks2056970011"
+              examples:
+                deck-controller-test/get-decks:
+                  value: "{\"page\":0,\"pageSize\":1,\"size\":1,\"content\":[{\"category\"\
+                    :\"Easy\",\"languageCode\":\"EN\",\"cardCounts\":20}]}"
+components:
+  schemas:
+    decks2056970011:
+      type: object
+      properties:
+        size:
+          type: number
+          description: content의 크기
+        pageSize:
+          type: number
+          description: 전체 페이지의 크기
+        page:
+          type: number
+          description: 현재 페이지의 번호
+        content:
+          type: array
+          description: 실제 데이터들
+          items:
+            type: object
+            properties:
+              cardCounts:
+                type: number
+                description: 덱에 포함된 카드 개수
+              languageCode:
+                type: string
+                description: 언어코드
+              category:
+                type: string
+                description: 카드 분류

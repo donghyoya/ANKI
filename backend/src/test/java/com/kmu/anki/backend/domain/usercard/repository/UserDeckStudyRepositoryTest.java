@@ -20,7 +20,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Import(TestcontainersConfiguration.class)
 @ActiveProfiles("test")
-@Sql("/data.sql")
+@Sql(scripts = "/data.sql", executionPhase= Sql.ExecutionPhase.BEFORE_TEST_CLASS)
+@Sql(scripts = "/drop.sql", executionPhase= Sql.ExecutionPhase.AFTER_TEST_CLASS)
 @SpringBootTest
 class UserDeckStudyRepositoryTest {
     @Autowired private UserDeckStudyRepository userDeckStudyRepository;

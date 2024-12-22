@@ -76,42 +76,41 @@ paths:
               examples:
                 deck-controller-test/get-decks-card:
                   value: "{\"page\":0,\"pageSize\":1,\"size\":20,\"content\":[{\"\
-                    cardId\":1,\"koreanWord\":\"媛�議�\",\"foreignWord\":\"Family\"\
-                    ,\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
-                    :2,\"koreanWord\":\"�븰援�\",\"foreignWord\":\"School\",\"difficulty\"\
+                    cardId\":1,\"koreanWord\":\"가족\",\"foreignWord\":\"Family\",\"\
+                    difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\":2,\"\
+                    koreanWord\":\"학교\",\"foreignWord\":\"School\",\"difficulty\"\
                     :\"easy\",\"languageCode\":\"en\"},{\"cardId\":3,\"koreanWord\"\
-                    :\"移쒓뎄\",\"foreignWord\":\"Friend\",\"difficulty\":\"easy\",\"\
-                    languageCode\":\"en\"},{\"cardId\":4,\"koreanWord\":\"�궗怨�\",\"\
+                    :\"친구\",\"foreignWord\":\"Friend\",\"difficulty\":\"easy\",\"\
+                    languageCode\":\"en\"},{\"cardId\":4,\"koreanWord\":\"사과\",\"\
                     foreignWord\":\"Apple\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\"},{\"cardId\":5,\"koreanWord\":\"�쓽�궗\",\"foreignWord\"\
-                    :\"Doctor\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"\
-                    cardId\":6,\"koreanWord\":\"�룄�꽌愿�\",\"foreignWord\":\"Library\"\
+                    :\"en\"},{\"cardId\":5,\"koreanWord\":\"의사\",\"foreignWord\":\"\
+                    Doctor\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"\
+                    cardId\":6,\"koreanWord\":\"도서관\",\"foreignWord\":\"Library\"\
                     ,\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
-                    :7,\"koreanWord\":\"而댄벂�꽣\",\"foreignWord\":\"Computer\",\"difficulty\"\
+                    :7,\"koreanWord\":\"컴퓨터\",\"foreignWord\":\"Computer\",\"difficulty\"\
                     :\"easy\",\"languageCode\":\"en\"},{\"cardId\":8,\"koreanWord\"\
-                    :\"�쟾�솕\",\"foreignWord\":\"Phone\",\"difficulty\":\"easy\",\"\
-                    languageCode\":\"en\"},{\"cardId\":9,\"koreanWord\":\"鍮꾪뻾湲�\"\
-                    ,\"foreignWord\":\"Airplane\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\"},{\"cardId\":10,\"koreanWord\":\"湲곗감\",\"foreignWord\"\
-                    :\"Train\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"\
-                    cardId\":11,\"koreanWord\":\"�옄�룞李�\",\"foreignWord\":\"Car\"\
+                    :\"전화\",\"foreignWord\":\"Phone\",\"difficulty\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":9,\"koreanWord\":\"비행기\",\"foreignWord\"\
+                    :\"Airplane\",\"difficulty\":\"easy\",\"languageCode\":\"en\"\
+                    },{\"cardId\":10,\"koreanWord\":\"기차\",\"foreignWord\":\"Train\"\
                     ,\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
-                    :12,\"koreanWord\":\"吏�\",\"foreignWord\":\"House\",\"difficulty\"\
-                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":13,\"koreanWord\"\
-                    :\"媛뺤븘吏�\",\"foreignWord\":\"Puppy\",\"difficulty\":\"easy\",\"\
-                    languageCode\":\"en\"},{\"cardId\":14,\"koreanWord\":\"怨좎뼇�씠\"\
-                    ,\"foreignWord\":\"Cat\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\"},{\"cardId\":15,\"koreanWord\":\"�쓬�븙\",\"foreignWord\"\
-                    :\"Music\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"\
-                    cardId\":16,\"koreanWord\":\"�쁺�솕\",\"foreignWord\":\"Movie\"\
-                    ,\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
-                    :17,\"koreanWord\":\"梨�\",\"foreignWord\":\"Book\",\"difficulty\"\
-                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":18,\"koreanWord\"\
-                    :\"怨듭썝\",\"foreignWord\":\"Park\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\"},{\"cardId\":19,\"koreanWord\":\"�빐蹂�\",\"foreignWord\"\
-                    :\"Beach\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"\
-                    cardId\":20,\"koreanWord\":\"媛�寃�\",\"foreignWord\":\"Store\"\
-                    ,\"difficulty\":\"easy\",\"languageCode\":\"en\"}]}"
+                    :11,\"koreanWord\":\"자동차\",\"foreignWord\":\"Car\",\"difficulty\"\
+                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":12,\"koreanWord\"\
+                    :\"집\",\"foreignWord\":\"House\",\"difficulty\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":13,\"koreanWord\":\"강아지\",\"foreignWord\"\
+                    :\"Puppy\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"\
+                    cardId\":14,\"koreanWord\":\"고양이\",\"foreignWord\":\"Cat\",\"\
+                    difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\":15,\"\
+                    koreanWord\":\"음악\",\"foreignWord\":\"Music\",\"difficulty\":\"\
+                    easy\",\"languageCode\":\"en\"},{\"cardId\":16,\"koreanWord\"\
+                    :\"영화\",\"foreignWord\":\"Movie\",\"difficulty\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":17,\"koreanWord\":\"책\",\"foreignWord\":\"\
+                    Book\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
+                    :18,\"koreanWord\":\"공원\",\"foreignWord\":\"Park\",\"difficulty\"\
+                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":19,\"koreanWord\"\
+                    :\"해변\",\"foreignWord\":\"Beach\",\"difficulty\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":20,\"koreanWord\":\"가게\",\"foreignWord\"\
+                    :\"Store\",\"difficulty\":\"easy\",\"languageCode\":\"en\"}]}"
 components:
   schemas:
     decks2056970011:

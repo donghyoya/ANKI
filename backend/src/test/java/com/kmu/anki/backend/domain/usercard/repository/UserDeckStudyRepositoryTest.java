@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
 
 import java.util.List;
 
@@ -18,8 +19,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Import(TestcontainersConfiguration.class)
 @ActiveProfiles("test")
-@Sql(scripts = "/data.sql", executionPhase= Sql.ExecutionPhase.BEFORE_TEST_CLASS)
-@Sql(scripts = "/drop.sql", executionPhase= Sql.ExecutionPhase.AFTER_TEST_CLASS)
+@Sql(scripts = "classpath:/data.sql", executionPhase= Sql.ExecutionPhase.BEFORE_TEST_CLASS, config = @SqlConfig(encoding = "UTF-8"))
+@Sql(scripts = "classpath:/drop.sql", executionPhase= Sql.ExecutionPhase.AFTER_TEST_CLASS,  config = @SqlConfig(encoding = "UTF-8"))
 @SpringBootTest
 class UserDeckStudyRepositoryTest {
     @Autowired private UserDeckStudyRepository userDeckStudyRepository;

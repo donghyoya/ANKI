@@ -111,6 +111,26 @@ paths:
                     :\"해변\",\"foreignWord\":\"Beach\",\"difficulty\":\"easy\",\"languageCode\"\
                     :\"en\"},{\"cardId\":20,\"koreanWord\":\"가게\",\"foreignWord\"\
                     :\"Store\",\"difficulty\":\"easy\",\"languageCode\":\"en\"}]}"
+  /user/decks:
+    get:
+      tags:
+      - userdecks
+      summary: 내가 현재 학습 중인 decks 보기
+      description: 내가 현재 학습 중인 decks 보기
+      operationId: user-deck-controller-test/get-my-deck
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/user-decks1915284204"
+              examples:
+                user-deck-controller-test/get-my-deck:
+                  value: "{\"page\":0,\"pageSize\":1,\"size\":2,\"content\":[{\"id\"\
+                    :1,\"languageCode\":\"en\",\"difficulty\":\"normal\",\"counts\"\
+                    :19},{\"id\":2,\"languageCode\":\"en\",\"difficulty\":\"hard\"\
+                    ,\"counts\":19}]}"
 components:
   schemas:
     decks2056970011:
@@ -140,6 +160,36 @@ components:
               category:
                 type: string
                 description: 카드 분류
+    user-decks1915284204:
+      type: object
+      properties:
+        size:
+          type: number
+          description: content의 크기
+        pageSize:
+          type: number
+          description: 전체 페이지의 크기
+        page:
+          type: number
+          description: 현재 페이지의 번호
+        content:
+          type: array
+          description: 실제 데이터들
+          items:
+            type: object
+            properties:
+              difficulty:
+                type: string
+                description: "언어의 난이도 (easy, normal, hard)"
+              counts:
+                type: number
+                description: 이 덱에 포함된 카드 숫자
+              id:
+                type: number
+                description: userDeck의 고유번호
+              languageCode:
+                type: string
+                description: 언어코드 (ISO 639-1)
     decks-cards752419103:
       type: object
       properties:

@@ -175,4 +175,27 @@ VALUES
     ('주관성', '主観性', 'ja', 'hard'),
     ('합리성', '合理性', 'ja', 'hard');
 ;
+
 insert into users(user_id) values (1);
+
+BEGIN;
+
+WITH inserted_deck AS (
+INSERT INTO user_decks(user_id, language_code, difficulty)
+VALUES (1, 'en', 'normal')
+    RETURNING user_deck_id)
+INSERT INTO user_cards(card_id, user_deck_id)
+SELECT cards.card_id, inserted_deck.user_deck_id
+FROM cards, inserted_deck
+WHERE cards.language_code = 'en' AND cards.difficulty = 'normal';
+
+WITH inserted_deck AS (
+INSERT INTO user_decks(user_id, language_code, difficulty)
+VALUES (1, 'en', 'hard')
+    RETURNING user_deck_id)
+INSERT INTO user_cards(card_id, user_deck_id)
+SELECT cards.card_id, inserted_deck.user_deck_id
+FROM cards, inserted_deck
+WHERE cards.language_code = 'en' AND cards.difficulty = 'hard';
+
+COMMIT;

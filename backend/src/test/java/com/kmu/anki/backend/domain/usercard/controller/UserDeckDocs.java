@@ -10,6 +10,15 @@ import java.util.List;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 
 public class UserDeckDocs {
+    private static FieldDescriptor[] _studyRequestForm = new FieldDescriptor[]{
+            fieldWithPath("difficulty").description("언어의 난이도 (easy, normal, hard)"),
+            fieldWithPath("languageCode").description("언어코드 (ISO 639-1)")
+    };
+
+    public static FieldDescriptor[] studyRequestForm(){
+        return _studyRequestForm;
+    }
+
     public static FieldDescriptor[] userDeckDto(String prefix){
         return new FieldDescriptor[]{
                 fieldWithPath(prefix+"id").description("userDeck의 고유번호"),

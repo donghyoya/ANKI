@@ -4,12 +4,17 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.card.controller.CardDocs;
+import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
+import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.BaseDocs;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -42,7 +47,32 @@ class UserDeckControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    void createStudyDeck() {
+    void createStudyDeck() throws Exception {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("difficulty", CardDifficulty.easy);
+        map.put("languageCode", LanguageCode.en);
+        mockMvc.perform(
+                post("/user/decks")
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(map))
+                ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("userdecks")
+                                                .summary("학습을 시작함")
+                                                .requestFields(
+                                                        UserDeckDocs.studyRequestForm()
+                                                )
+                                                .responseFields(
+                                                        UserDeckDocs.userDeckDto("")
+                                                )
+                                                .build()
+                                )
+                        )
+                );
     }
 
     @Test

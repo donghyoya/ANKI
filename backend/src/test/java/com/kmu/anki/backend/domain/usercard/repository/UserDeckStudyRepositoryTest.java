@@ -1,8 +1,6 @@
 package com.kmu.anki.backend.domain.usercard.repository;
 
 import com.kmu.anki.backend.TestcontainersConfiguration;
-import com.kmu.anki.backend.domain.card.entity.Card;
-import com.kmu.anki.backend.domain.card.enums.CardCategory;
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.repository.CardRepository;
@@ -31,8 +29,8 @@ class UserDeckStudyRepositoryTest {
 
     @Test
     void studyDeck() {
-        LanguageCode code = LanguageCode.EN;
-        CardDifficulty difficulty = CardDifficulty.Easy;
+        LanguageCode code = LanguageCode.en;
+        CardDifficulty difficulty = CardDifficulty.easy;
         Long userDeckId = userDeckStudyRepository.studyDeck(1L, code, difficulty);
         boolean isExists = userDeckRepository.existsById(userDeckId);
         assertEquals(true, isExists);

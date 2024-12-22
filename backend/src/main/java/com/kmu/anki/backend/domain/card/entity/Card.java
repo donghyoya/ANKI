@@ -1,6 +1,6 @@
 package com.kmu.anki.backend.domain.card.entity;
 
-import com.kmu.anki.backend.domain.card.enums.CardCategory;
+import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import jakarta.persistence.*;
@@ -27,7 +27,7 @@ public class Card {
 
     @Enumerated(EnumType.STRING)
     @Column
-    private CardCategory category;
+    private CardMeaningGroup meaningGroup;
 
     @Enumerated(EnumType.STRING)
     @Column

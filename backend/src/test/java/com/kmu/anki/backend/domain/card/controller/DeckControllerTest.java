@@ -20,8 +20,8 @@ class DeckControllerTest extends AbstractControllerTest {
     void getDecks() throws Exception {
         mockMvc.perform(
                 get("/decks")
-                        .param("languageCode", "EN")
-                        .param("queryType", "By_Difficulty")
+                        .param("languageCode", "en")
+                        .param("queryType", "difficulty")
         ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(

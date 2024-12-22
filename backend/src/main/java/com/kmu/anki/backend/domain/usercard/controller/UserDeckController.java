@@ -1,10 +1,5 @@
 package com.kmu.anki.backend.domain.usercard.controller;
 
-import com.kmu.anki.backend.domain.card.controller.QueryType;
-import com.kmu.anki.backend.domain.card.dto.DeckDto;
-import com.kmu.anki.backend.domain.card.enums.CardCategory;
-import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
-import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyRequestForm;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;

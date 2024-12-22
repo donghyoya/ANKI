@@ -47,7 +47,7 @@ public class UserDeckController {
             @RequestParam("studyType") StudyType type
     ){
         List<UserCardDto> cards;
-        if(type == StudyType.Study){
+        if(type == StudyType.study){
             cards = userDeckService.findTodayStudyCard(deckId);
         }else {
             cards = userDeckService.findTodayReviewCard(deckId);

@@ -28,7 +28,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("decks")
+                                                .tag("Decks")
                                                 .summary("검색어 조건에 맞는 Deck 보기")
                                                 .queryParameters(
                                                         parameterWithName("languageCode").description("언어코드"),
@@ -60,7 +60,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("cards")
+                                                .tag("Cards")
                                                 .summary("덱에 포함된 카드 모음")
                                                 .queryParameters(
                                                         parameterWithName("languageCode").description("언어코드"),

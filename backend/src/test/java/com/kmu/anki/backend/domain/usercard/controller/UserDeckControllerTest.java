@@ -32,7 +32,7 @@ class UserDeckControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("userdecks")
+                                                .tag("StudyDecks")
                                                 .summary("내가 현재 학습 중인 decks 보기")
                                                 .responseFields(
                                                         BaseDocs.combine(
@@ -61,7 +61,7 @@ class UserDeckControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("userdecks")
+                                                .tag("StudyDecks")
                                                 .summary("학습을 시작함")
                                                 .requestFields(
                                                         UserDeckDocs.studyRequestForm()
@@ -85,7 +85,7 @@ class UserDeckControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("userdecks")
+                                                .tag("StudyCards")
                                                 .summary("내가 현재 학습 중인 decks 보기")
                                                 .pathParameters(
                                                         parameterWithName("deckId").description("userDeck의 고유번호")
@@ -113,7 +113,7 @@ class UserDeckControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("userdecks")
+                                                .tag("StudyCards")
                                                 .summary("내가 현재 학습 중인 decks 보기")
                                                 .pathParameters(
                                                         parameterWithName("deckId").description("userDeck의 고유번호")

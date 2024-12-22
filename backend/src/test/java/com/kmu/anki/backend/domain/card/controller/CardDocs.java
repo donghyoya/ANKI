@@ -7,10 +7,11 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWit
 public class CardDocs {
     public static FieldDescriptor[] cardDto(String prefix){
         return new FieldDescriptor[]{
-                fieldWithPath(prefix+"size").description("content의 크기"),
-                fieldWithPath(prefix+"content").description("실제 데이터들"),
-                fieldWithPath(prefix+"page").description("현재 페이지의 번호"),
-                fieldWithPath(prefix+"pageSize").description("전체 페이지의 크기")
+                fieldWithPath(prefix+"cardId").description("단어카드의 고유번호"),
+                fieldWithPath(prefix+"koreanWord").description("한국어 단어"),
+                fieldWithPath(prefix+"foreignWord").description("외국어 단어"),
+                fieldWithPath(prefix+"difficulty").description("언어의 난이도 (easy, normal, hard)"),
+                fieldWithPath(prefix+"languageCode").description("언어코드 (ISO 639-1)")
         };
     }
 

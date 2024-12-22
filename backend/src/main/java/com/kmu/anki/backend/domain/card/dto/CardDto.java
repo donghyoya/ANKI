@@ -9,14 +9,14 @@ import lombok.Getter;
 public class CardDto {
     private Long cardId;
     private String koreanWord;
-    private String foerienWord;
+    private String foreignWord;
     private CardDifficulty difficulty;
     private LanguageCode languageCode;
 
-    public CardDto(Long cardId, String koreanWord, String foerienWord, CardDifficulty difficulty, LanguageCode languageCode) {
+    public CardDto(Long cardId, String koreanWord, String foreignWord, CardDifficulty difficulty, LanguageCode languageCode) {
         this.cardId = cardId;
         this.koreanWord = koreanWord;
-        this.foerienWord = foerienWord;
+        this.foreignWord = foreignWord;
         this.difficulty = difficulty;
         this.languageCode = languageCode;
     }

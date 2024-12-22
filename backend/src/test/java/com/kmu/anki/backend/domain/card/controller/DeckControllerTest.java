@@ -28,8 +28,8 @@ class DeckControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("articles")
-                                                .summary("Article을 모두 보기")
+                                                .tag("decks")
+                                                .summary("검색어 조건에 맞는 Deck 보기")
                                                 .queryParameters(
                                                         parameterWithName("languageCode").description("언어코드"),
                                                         parameterWithName("queryType").description("의미에 따른 분류인가 / 난이도에 따른 분류인가")
@@ -45,5 +45,37 @@ class DeckControllerTest extends AbstractControllerTest {
                                 )
                         )
         ;
+    }
+
+    @Test
+    void getDecksCard() throws Exception{
+        mockMvc.perform(
+                get("/decks/cards")
+                        .param("languageCode", "en")
+                        .param("queryType", "difficulty")
+                        .param("query","easy")
+        ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("cards")
+                                                .summary("덱에 포함된 카드 모음")
+                                                .queryParameters(
+                                                        parameterWithName("languageCode").description("언어코드"),
+                                                        parameterWithName("queryType").description("의미에 따른 분류인가 / 난이도에 따른 분류인가"),
+                                                        parameterWithName("query").description("검색어 (difficulty 또는 meaningGroup)")
+                                                )
+                                                .responseFields(
+                                                        BaseDocs.combine(
+                                                                BaseDocs.basePageResponse(),
+                                                                CardDocs.cardDto(BaseDocs.basePageResponsePrefix)
+                                                        )
+                                                )
+                                                .build()
+                                )
+                        )
+                );
     }
 }

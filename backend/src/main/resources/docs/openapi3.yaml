@@ -10,9 +10,9 @@ paths:
   /decks:
     get:
       tags:
-      - articles
-      summary: Article을 모두 보기
-      description: Article을 모두 보기
+      - decks
+      summary: 검색어 조건에 맞는 Deck 보기
+      description: 검색어 조건에 맞는 Deck 보기
       operationId: deck-controller-test/get-decks
       parameters:
       - name: languageCode
@@ -36,8 +36,82 @@ paths:
                 $ref: "#/components/schemas/decks2056970011"
               examples:
                 deck-controller-test/get-decks:
-                  value: "{\"page\":0,\"pageSize\":1,\"size\":1,\"content\":[{\"category\"\
-                    :\"Easy\",\"languageCode\":\"EN\",\"cardCounts\":20}]}"
+                  value: "{\"page\":0,\"pageSize\":1,\"size\":3,\"content\":[{\"category\"\
+                    :\"easy\",\"languageCode\":\"en\",\"cardCounts\":20},{\"category\"\
+                    :\"hard\",\"languageCode\":\"en\",\"cardCounts\":19},{\"category\"\
+                    :\"normal\",\"languageCode\":\"en\",\"cardCounts\":19}]}"
+  /decks/cards:
+    get:
+      tags:
+      - cards
+      summary: 덱에 포함된 카드 모음
+      description: 덱에 포함된 카드 모음
+      operationId: deck-controller-test/get-decks-card
+      parameters:
+      - name: languageCode
+        in: query
+        description: 언어코드
+        required: true
+        schema:
+          type: string
+      - name: queryType
+        in: query
+        description: 의미에 따른 분류인가 / 난이도에 따른 분류인가
+        required: true
+        schema:
+          type: string
+      - name: query
+        in: query
+        description: 검색어 (difficulty 또는 meaningGroup)
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/decks-cards752419103"
+              examples:
+                deck-controller-test/get-decks-card:
+                  value: "{\"page\":0,\"pageSize\":1,\"size\":20,\"content\":[{\"\
+                    cardId\":1,\"koreanWord\":\"媛�議�\",\"foreignWord\":\"Family\"\
+                    ,\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
+                    :2,\"koreanWord\":\"�븰援�\",\"foreignWord\":\"School\",\"difficulty\"\
+                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":3,\"koreanWord\"\
+                    :\"移쒓뎄\",\"foreignWord\":\"Friend\",\"difficulty\":\"easy\",\"\
+                    languageCode\":\"en\"},{\"cardId\":4,\"koreanWord\":\"�궗怨�\",\"\
+                    foreignWord\":\"Apple\",\"difficulty\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":5,\"koreanWord\":\"�쓽�궗\",\"foreignWord\"\
+                    :\"Doctor\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"\
+                    cardId\":6,\"koreanWord\":\"�룄�꽌愿�\",\"foreignWord\":\"Library\"\
+                    ,\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
+                    :7,\"koreanWord\":\"而댄벂�꽣\",\"foreignWord\":\"Computer\",\"difficulty\"\
+                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":8,\"koreanWord\"\
+                    :\"�쟾�솕\",\"foreignWord\":\"Phone\",\"difficulty\":\"easy\",\"\
+                    languageCode\":\"en\"},{\"cardId\":9,\"koreanWord\":\"鍮꾪뻾湲�\"\
+                    ,\"foreignWord\":\"Airplane\",\"difficulty\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":10,\"koreanWord\":\"湲곗감\",\"foreignWord\"\
+                    :\"Train\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"\
+                    cardId\":11,\"koreanWord\":\"�옄�룞李�\",\"foreignWord\":\"Car\"\
+                    ,\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
+                    :12,\"koreanWord\":\"吏�\",\"foreignWord\":\"House\",\"difficulty\"\
+                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":13,\"koreanWord\"\
+                    :\"媛뺤븘吏�\",\"foreignWord\":\"Puppy\",\"difficulty\":\"easy\",\"\
+                    languageCode\":\"en\"},{\"cardId\":14,\"koreanWord\":\"怨좎뼇�씠\"\
+                    ,\"foreignWord\":\"Cat\",\"difficulty\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":15,\"koreanWord\":\"�쓬�븙\",\"foreignWord\"\
+                    :\"Music\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"\
+                    cardId\":16,\"koreanWord\":\"�쁺�솕\",\"foreignWord\":\"Movie\"\
+                    ,\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
+                    :17,\"koreanWord\":\"梨�\",\"foreignWord\":\"Book\",\"difficulty\"\
+                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":18,\"koreanWord\"\
+                    :\"怨듭썝\",\"foreignWord\":\"Park\",\"difficulty\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":19,\"koreanWord\":\"�빐蹂�\",\"foreignWord\"\
+                    :\"Beach\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"\
+                    cardId\":20,\"koreanWord\":\"媛�寃�\",\"foreignWord\":\"Store\"\
+                    ,\"difficulty\":\"easy\",\"languageCode\":\"en\"}]}"
 components:
   schemas:
     decks2056970011:
@@ -67,3 +141,36 @@ components:
               category:
                 type: string
                 description: 카드 분류
+    decks-cards752419103:
+      type: object
+      properties:
+        size:
+          type: number
+          description: content의 크기
+        pageSize:
+          type: number
+          description: 전체 페이지의 크기
+        page:
+          type: number
+          description: 현재 페이지의 번호
+        content:
+          type: array
+          description: 실제 데이터들
+          items:
+            type: object
+            properties:
+              difficulty:
+                type: string
+                description: "언어의 난이도 (easy, normal, hard)"
+              cardId:
+                type: number
+                description: 단어카드의 고유번호
+              koreanWord:
+                type: string
+                description: 한국어 단어
+              languageCode:
+                type: string
+                description: 언어코드 (ISO 639-1)
+              foreignWord:
+                type: string
+                description: 외국어 단어

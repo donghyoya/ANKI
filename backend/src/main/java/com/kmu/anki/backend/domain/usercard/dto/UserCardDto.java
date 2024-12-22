@@ -14,7 +14,7 @@ public class UserCardDto {
     private Long cardId;
     private Long userCardId;
     private String koreanWord;
-    private String foerienWord;
+    private String foreignWord;
     private CardDifficulty difficulty;
     private LanguageCode languageCode;
     private Integer score;
@@ -24,18 +24,18 @@ public class UserCardDto {
         this.cardId = c.getId();
         this.userCardId = uc.getId();
         this.koreanWord = c.getKoreanWord();
-        this.foerienWord = c.getForeignWord();
+        this.foreignWord = c.getForeignWord();
         this.difficulty = c.getDifficulty();
         this.languageCode = c.getLanguageCode();
         this.score = uc.getScore();
         this.nextStudyDate = uc.getNextStudyDate();
     }
 
-    public UserCardDto(Long cardId, Long userCardId, String koreanWord, String foerienWord, CardDifficulty difficulty, LanguageCode languageCode, Integer score, LocalDateTime nextStudyDate) {
+    public UserCardDto(Long cardId, Long userCardId, String koreanWord, String foreignWord, CardDifficulty difficulty, LanguageCode languageCode, Integer score, LocalDateTime nextStudyDate) {
         this.cardId = cardId;
         this.userCardId = userCardId;
         this.koreanWord = koreanWord;
-        this.foerienWord = foerienWord;
+        this.foreignWord = foreignWord;
         this.difficulty = difficulty;
         this.languageCode = languageCode;
         this.score = score;

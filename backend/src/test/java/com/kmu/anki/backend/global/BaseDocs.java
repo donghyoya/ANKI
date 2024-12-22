@@ -20,6 +20,16 @@ public class BaseDocs {
     public static FieldDescriptor[] basePageResponse(){
         return _basePageResponse;
     }
+
+    private static FieldDescriptor[] _baseListResponse = new FieldDescriptor[]{
+            fieldWithPath("size").description("content의 크기"),
+            fieldWithPath("content").description("실제 데이터들"),
+    };
+
+    public static FieldDescriptor[] baseListResponse(){
+        return _baseListResponse;
+    }
+
     public static String basePageResponsePrefix = "content[].";
 
     public static FieldDescriptor[] combine(FieldDescriptor[] a, FieldDescriptor[] b){

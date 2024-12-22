@@ -131,6 +131,87 @@ paths:
                     :1,\"languageCode\":\"en\",\"difficulty\":\"normal\",\"counts\"\
                     :19},{\"id\":2,\"languageCode\":\"en\",\"difficulty\":\"hard\"\
                     ,\"counts\":19}]}"
+  /user/decks/{deckId}:
+    get:
+      tags:
+      - userdecks
+      summary: 내가 현재 학습 중인 decks 보기
+      description: 내가 현재 학습 중인 decks 보기
+      operationId: user-deck-controller-test/get-decks-card
+      parameters:
+      - name: deckId
+        in: path
+        description: userDeck의 고유번호
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/user-decks-deckId-635127103"
+              examples:
+                user-deck-controller-test/get-decks-card:
+                  value: "{\"size\":19,\"content\":[{\"cardId\":21,\"userCardId\"\
+                    :1,\"koreanWord\":\"별빛\",\"foreignWord\":\"Starlight\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":22,\"userCardId\"\
+                    :2,\"koreanWord\":\"희망\",\"foreignWord\":\"Hope\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":23,\"userCardId\"\
+                    :3,\"koreanWord\":\"자유\",\"foreignWord\":\"Freedom\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":24,\"userCardId\"\
+                    :4,\"koreanWord\":\"행운\",\"foreignWord\":\"Luck\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":25,\"userCardId\"\
+                    :5,\"koreanWord\":\"평화\",\"foreignWord\":\"Peace\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":26,\"userCardId\"\
+                    :6,\"koreanWord\":\"용기\",\"foreignWord\":\"Courage\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":27,\"userCardId\"\
+                    :7,\"koreanWord\":\"조화\",\"foreignWord\":\"Harmony\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":28,\"userCardId\"\
+                    :8,\"koreanWord\":\"열정\",\"foreignWord\":\"Passion\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":29,\"userCardId\"\
+                    :9,\"koreanWord\":\"우정\",\"foreignWord\":\"Friendship\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":30,\"userCardId\"\
+                    :10,\"koreanWord\":\"모험\",\"foreignWord\":\"Adventure\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":31,\"userCardId\"\
+                    :11,\"koreanWord\":\"지혜\",\"foreignWord\":\"Wisdom\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":32,\"userCardId\"\
+                    :12,\"koreanWord\":\"믿음\",\"foreignWord\":\"Faith\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":33,\"userCardId\"\
+                    :13,\"koreanWord\":\"사상\",\"foreignWord\":\"Ideology\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":34,\"userCardId\"\
+                    :14,\"koreanWord\":\"역사\",\"foreignWord\":\"History\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":35,\"userCardId\"\
+                    :15,\"koreanWord\":\"문화\",\"foreignWord\":\"Culture\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":36,\"userCardId\"\
+                    :16,\"koreanWord\":\"철학\",\"foreignWord\":\"Philosophy\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":37,\"userCardId\"\
+                    :17,\"koreanWord\":\"예술\",\"foreignWord\":\"Art\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":38,\"userCardId\"\
+                    :18,\"koreanWord\":\"공상\",\"foreignWord\":\"Imagination\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"},{\"cardId\":39,\"userCardId\"\
+                    :19,\"koreanWord\":\"기억\",\"foreignWord\":\"Memory\",\"difficulty\"\
+                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
+                    :\"2024-12-22T15:46:32.733541\"}]}"
 components:
   schemas:
     decks2056970011:
@@ -190,6 +271,39 @@ components:
               languageCode:
                 type: string
                 description: 언어코드 (ISO 639-1)
+    user-decks-deckId-635127103:
+      type: object
+      properties:
+        size:
+          type: number
+          description: content의 크기
+        content:
+          type: array
+          description: 실제 데이터들
+          items:
+            type: object
+            properties:
+              difficulty:
+                type: string
+                description: "언어의 난이도 (easy, normal, hard)"
+              cardId:
+                type: number
+                description: 단어카드의 고유번호
+              nextStudyDate:
+                type: string
+                description: 다음 학습할 날짜
+              koreanWord:
+                type: string
+                description: 한국어 단어
+              userCardId:
+                type: number
+                description: userCard의 고유번호
+              languageCode:
+                type: string
+                description: 언어코드 (ISO 639-1)
+              foreignWord:
+                type: string
+                description: 외국어 단어
     decks-cards752419103:
       type: object
       properties:

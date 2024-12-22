@@ -46,10 +46,33 @@ class UserDeckControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    void getDecksCard() {
+    void getDecksCard() throws Exception {
+        mockMvc.perform(
+                        get("/user/decks/{deckId}", 1)
+                ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("userdecks")
+                                                .summary("내가 현재 학습 중인 decks 보기")
+                                                .pathParameters(
+                                                        parameterWithName("deckId").description("userDeck의 고유번호")
+                                                )
+                                                .responseFields(
+                                                        BaseDocs.combine(
+                                                                BaseDocs.baseListResponse(),
+                                                                UserDeckDocs.userCardDto(BaseDocs.basePageResponsePrefix)
+                                                        )
+                                                )
+                                                .build()
+                                )
+                        )
+                );
     }
 
     @Test
-    void testGetDecksCard() {
+    void getDecksStudyCard() {
     }
 }

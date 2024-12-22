@@ -58,3 +58,16 @@ openapi3{
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks.register('docs', Copy) {
+	doFirst {
+		delete file('src/main/resources/docs/openapi3.yaml')
+	}
+	from file('build/api-spec/openapi3.yaml')
+	into file('src/main/resources/docs/.')
+	dependsOn tasks.named('openapi3')
+}
+
+tasks.named('build') {
+	dependsOn tasks.named('docs')
+}

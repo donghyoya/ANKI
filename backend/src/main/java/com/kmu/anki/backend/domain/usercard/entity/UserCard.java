@@ -2,13 +2,10 @@ package com.kmu.anki.backend.domain.usercard.entity;
 
 import com.kmu.anki.backend.domain.card.entity.Card;
 import com.kmu.anki.backend.domain.user.entity.CardState;
-import com.kmu.anki.backend.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 
-import javax.print.Doc;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Entity
@@ -67,8 +64,13 @@ public class UserCard {
     private Long cardId;
 
     /* 로직 */
-    public void update(Integer score, LocalDateTime nextStudyDate){
-        this.score = score;
+    public void update(LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
         this.nextStudyDate = nextStudyDate;
+        this.lapses = lapses;
+        this.lastReview = lastReview;
+        this.reps = reps;
+        this.scheduledDays = scheduledDays;
+        this.stability = stability;
+        this.state = state;
     }
 }

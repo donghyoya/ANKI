@@ -5,10 +5,12 @@ import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.BaseDocs;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,8 +49,14 @@ class UserCardControllerTest extends AbstractControllerTest {
     @Test
     void putUserCards() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("difficulty", CardDifficulty.easy);
-        map.put("languageCode", LanguageCode.en);
+        map.put("nextStudyDate", LocalDateTime.now());
+        map.put("lapses", 5);
+        map.put("lastReview", LocalDateTime.now());
+        map.put("reps", 72);
+        map.put("scheduledDays", 0.9);
+        map.put("stability", 1.3);
+        map.put("state", CardState.Review);
+
         mockMvc.perform(
                         post("/user/cards/{id}", 1)
                                 .contentType("application/json")
@@ -60,12 +68,12 @@ class UserCardControllerTest extends AbstractControllerTest {
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
                                                 .tag("StudyCards")
-                                                .summary("userCard 보기")
+                                                .summary("Card 학습결과를 갱신")
                                                 .pathParameters(
                                                         parameterWithName("id").description("userCard 고유번호")
                                                 )
                                                 .requestFields(
-                                                        UserDeckDocs.studyRequestForm()
+                                                        UserDeckDocs.studyCardForm()
                                                 )
                                                 .responseFields(
                                                         UserDeckDocs.userCardDto("")

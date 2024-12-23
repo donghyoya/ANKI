@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.usercard.service;
 
+import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import com.kmu.anki.backend.domain.usercard.repository.UserCardRepository;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -21,9 +21,17 @@ public class UserCardService {
     }
 
     @Transactional
-    public UserCardDto updateUserCard(Long userCardId, Integer score, LocalDateTime nextStudyDate){
+    public UserCardDto updateUserCard(Long userCardId, LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
         UserCard userCard = userCardRepository.findUserCardById(userCardId);
-        userCard.update(score, nextStudyDate);
+        userCard.update(
+                nextStudyDate,
+                lapses,
+                lastReview,
+                reps,
+                scheduledDays,
+                stability,
+                state
+        );
         return new UserCardDto(userCard, userCard.getCard());
     }
 }

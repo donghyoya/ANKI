@@ -19,6 +19,21 @@ public class UserDeckDocs {
         return _studyRequestForm;
     }
 
+    private static FieldDescriptor[] _studyCardForm = new FieldDescriptor[]{
+            fieldWithPath("nextStudyDate").description("다음 학습할 날짜"),
+            fieldWithPath("lapses").description("Again을 누른 횟수"),
+            fieldWithPath("lastReview").description("마지막으로 복습한 날짜"),
+            fieldWithPath("reps").description("총 복습횟수"),
+            fieldWithPath("scheduledDays").description("현재 복습 간격"),
+            fieldWithPath("stability").description("기억의 안정도"),
+            fieldWithPath("state").description("카드의 현재 상태")
+    };
+
+    public static FieldDescriptor[] studyCardForm(){
+        return _studyCardForm;
+    }
+
+
     public static FieldDescriptor[] userDeckDto(String prefix){
         return new FieldDescriptor[]{
                 fieldWithPath(prefix+"id").description("userDeck의 고유번호"),

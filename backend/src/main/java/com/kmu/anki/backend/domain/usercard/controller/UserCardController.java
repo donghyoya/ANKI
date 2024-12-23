@@ -24,6 +24,15 @@ public class UserCardController {
             @PathVariable("id") Long id,
             @RequestBody StudyCardForm form
     ){
-        return userCardService.updateUserCard(id, form.getScore(), form.getNextStudyDate());
+        return userCardService.updateUserCard(
+                id,
+                form.getNextStudyDate(),
+                form.getLapses(),
+                form.getLastReview(),
+                form.getReps(),
+                form.getScheduledDays(),
+                form.getStability(),
+                form.getState()
+        );
     }
 }

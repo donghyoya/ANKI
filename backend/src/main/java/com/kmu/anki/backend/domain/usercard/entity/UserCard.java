@@ -1,10 +1,12 @@
 package com.kmu.anki.backend.domain.usercard.entity;
 
 import com.kmu.anki.backend.domain.card.entity.Card;
+import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import javax.print.Doc;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,6 +25,23 @@ public class UserCard {
     @Column(columnDefinition = "TIMESTAMP DEFAULT now()")
     private LocalDateTime nextStudyDate;
 
+    @Column
+    private Integer lapses;
+
+    @Column
+    private LocalDateTime lastReview;
+
+    @Column
+    private Integer reps;
+
+    @Column
+    private Double scheduledDays;
+
+    @Column
+    private Double stability;
+
+    @Column
+    private CardState state;
 
     /* 관계 Deck */
 

@@ -25,8 +25,8 @@ public class UserDeckStudyRepository {
             """;
 
     private static String INSERT_USER_CARDS = """
-                INSERT INTO user_cards(card_id, user_deck_id)
-                SELECT cards.card_id, :userDeckId
+                INSERT INTO user_cards(card_id, user_deck_id, user_card_state)
+                SELECT cards.card_id, :userDeckId, 'New'
                 FROM cards
                 WHERE cards.language_code = :languageCode AND cards.difficulty = :difficulty;
             """;

@@ -40,7 +40,8 @@ public class UserCard {
     @Column
     private Double stability;
 
-    @Column
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_card_state")
     private CardState state;
 
     /* 관계 Deck */

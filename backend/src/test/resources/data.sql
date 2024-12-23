@@ -20,7 +20,7 @@ create table user_cards (
                             scheduled_days float(53),
                             score integer,
                             stability float(53),
-                            state smallint check (state between 0 and 3),
+                            user_card_state varchar(255) check (user_card_state in ('New','Learning','Review','Relearning')),
                             primary key (user_card_id)
 );
 create table user_decks (
@@ -190,8 +190,8 @@ WITH inserted_deck AS (
 INSERT INTO user_decks(user_id, language_code, difficulty)
 VALUES (1, 'en', 'normal')
     RETURNING user_deck_id)
-INSERT INTO user_cards(card_id, user_deck_id)
-SELECT cards.card_id, inserted_deck.user_deck_id
+INSERT INTO user_cards(card_id, user_deck_id, user_card_state)
+SELECT cards.card_id, inserted_deck.user_deck_id, 'New'
 FROM cards, inserted_deck
 WHERE cards.language_code = 'en' AND cards.difficulty = 'normal';
 
@@ -199,8 +199,8 @@ WITH inserted_deck AS (
 INSERT INTO user_decks(user_id, language_code, difficulty)
 VALUES (1, 'en', 'hard')
     RETURNING user_deck_id)
-INSERT INTO user_cards(card_id, user_deck_id)
-SELECT cards.card_id, inserted_deck.user_deck_id
+INSERT INTO user_cards(card_id, user_deck_id, user_card_state)
+SELECT cards.card_id, inserted_deck.user_deck_id, 'New'
 FROM cards, inserted_deck
 WHERE cards.language_code = 'en' AND cards.difficulty = 'hard';
 

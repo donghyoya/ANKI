@@ -13,14 +13,14 @@ public class UserCardController {
     private final UserCardService userCardService;
 
     @GetMapping("/{userCardId}")
-    public UserCardDto getUserCard(
+    public UserCardDto getUserCards(
             @PathVariable("userCardId") Long userCardId
     ){
         return userCardService.findByUserCardId(userCardId);
     }
 
     @PostMapping("/{userCardId}")
-    public UserCardDto postUserCard(
+    public UserCardDto putUserCards(
             @PathVariable("userCardId") Long userCardId,
             @RequestBody StudyCardForm form
     ){

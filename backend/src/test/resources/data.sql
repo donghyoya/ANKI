@@ -171,7 +171,7 @@ VALUES
     ('합리성', '合理性', 'ja', 'hard');
 ;
 
-insert into users(user_id) values (1);
+insert into users(user_id, today_study_words) values (1, 200);
 
 BEGIN;
 

@@ -3,8 +3,11 @@ package com.kmu.anki.backend.domain.usercard.controller;
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
+import com.kmu.anki.backend.domain.card.docs.CardDocs;
 import com.kmu.anki.backend.domain.user.entity.CardState;
+import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.global.AbstractControllerTest;
+import com.kmu.anki.backend.global.BaseDocs;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -79,6 +82,39 @@ class UserCardControllerTest extends AbstractControllerTest {
                                 )
                         )
                 );
-
     }
+
+    @Test
+    void getStudyCard() throws Exception{
+        mockMvc.perform(
+                        get("/cards/study")
+                                .param("studyType", StudyType.study.toString())
+                                .param("queryType", "difficulty")
+                                .param("query","easy")
+                ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Cards")
+                                                .summary("오늘 공부할 카드 모음 ")
+                                                .queryParameters(
+                                                        parameterWithName("studyType").description("study냐 review냐"),
+                                                        parameterWithName("queryType").description("의미에 따른 분류인가 / 난이도에 따른 분류인가"),
+                                                        parameterWithName("query").description("검색어 (difficulty 또는 meaningGroup)")
+                                                )
+                                                .responseFields(
+                                                        BaseDocs.combine(
+                                                                BaseDocs.basePageResponse(),
+                                                                UserDeckDocs.userCardDto(BaseDocs.basePageResponsePrefix)
+                                                        )
+                                                )
+                                                .responseSchema(CardDocs.cardsSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
 }

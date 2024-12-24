@@ -2,12 +2,17 @@ package com.kmu.anki.backend.domain.usercard.service;
 
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.CardState;
+import com.kmu.anki.backend.domain.user.entity.User;
+import com.kmu.anki.backend.domain.user.repository.UserRepository;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import com.kmu.anki.backend.domain.usercard.repository.UserCardRepository;
 import com.kmu.anki.backend.domain.usercard.repository.UserCardStudyRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +22,7 @@ import java.time.LocalDateTime;
 @Transactional(readOnly = true)
 @Service
 public class UserCardService {
+    private final UserRepository userRepository;
     private final UserCardRepository userCardRepository;
     private final UserCardStudyRepository userCardStudyRepository;
 
@@ -31,6 +37,21 @@ public class UserCardService {
     }
 
     /* READ */
+
+    public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, CardMeaningGroup cardMeaningGroup){
+        LocalDateTime now = LocalDateTime.now();
+        User user = userRepository.findById(userId).orElseThrow();
+        PageRequest pageRequest = PageRequest.of(0, user.getTodayStudyWords());
+        return userCardRepository.findStudyCard(userId, languageCode, cardMeaningGroup, now, pageRequest);
+    }
+
+    public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, CardDifficulty cardDifficulty){
+        LocalDateTime now = LocalDateTime.now();
+        User user = userRepository.findById(userId).orElseThrow();
+        PageRequest pageRequest = PageRequest.of(0, user.getTodayStudyWords());
+        return userCardRepository.findStudyCard(userId, languageCode, cardDifficulty, now, pageRequest);
+    }
+
 
     public UserCardDto findByUserCardId(Long userCardId){
         return userCardRepository.findCardByUserCardId(userCardId);

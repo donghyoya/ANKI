@@ -2,6 +2,7 @@ package com.kmu.anki.backend.domain.usercard.repository;
 
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,39 @@ public interface UserCardRepository extends JpaRepository<UserCard, Long> {
         where uc.id = :userCardId
     """)
     UserCardDto findCardByUserCardId(@Param("userCardId") Long userCardId);
+
+    @Query("""
+        select new com.kmu.anki.backend.domain.usercard.dto.UserCardDto(uc, c)
+        from UserCard uc join fetch uc.card c
+        where uc.userId = :userId 
+            and c.languageCode = :languageCode 
+            and c.difficulty = :cardDifficulty 
+            and uc.nextStudyDate <= :now
+       """)
+    Page<UserCardDto> findStudyCard(
+            @Param("userId") Long userId,
+            @Param("languageCode") LanguageCode languageCode,
+            @Param("cardDifficulty") CardDifficulty cardDifficulty,
+            @Param("now") LocalDateTime now,
+            Pageable pageable
+    );
+
+    @Query("""
+        select new com.kmu.anki.backend.domain.usercard.dto.UserCardDto(uc, c)
+        from UserCard uc join fetch uc.card c
+        where uc.userId = :userId 
+            and c.languageCode = :languageCode 
+            and c.meaningGroup = :meaningGroup 
+            and uc.nextStudyDate <= :now
+       """)
+    Page<UserCardDto> findStudyCard(
+            @Param("userId") Long userId,
+            @Param("languageCode") LanguageCode languageCode,
+            @Param("cardDifficulty") CardMeaningGroup meaningGroup,
+            @Param("now") LocalDateTime now,
+            Pageable pageable
+    );
+
 
     @Query("""
         select uc

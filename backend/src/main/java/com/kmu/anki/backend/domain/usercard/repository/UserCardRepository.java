@@ -12,24 +12,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface UserCardRepository extends JpaRepository<UserCard, Long> {
-    List<UserCard> findByDeckId(Long deckId);
-
-    long countByDeckId(Long deckId);
-
-    @Query("""
-        select new com.kmu.anki.backend.domain.usercard.dto.UserCardDto(uc, c)
-        from UserCard uc join fetch uc.card c
-        where uc.deckId = :deckId and uc.nextStudyDate < :now
-    """)
-    List<UserCardDto> findTodayStudyCard(@Param("deckId") Long deckId, @Param("now") LocalDateTime now);
-
-    @Query("""
-        select new com.kmu.anki.backend.domain.usercard.dto.UserCardDto(uc, c)
-        from UserCard uc join fetch uc.card c
-        where uc.deckId = :deckId
-    """)
-    List<UserCardDto> findCard(@Param("deckId") Long deckId);
-
     @Query("""
         select new com.kmu.anki.backend.domain.usercard.dto.UserCardDto(uc, c)
         from UserCard uc join fetch uc.card c

@@ -2,6 +2,7 @@ package com.kmu.anki.backend.domain.usercard.entity;
 
 import com.kmu.anki.backend.domain.card.entity.Card;
 import com.kmu.anki.backend.domain.user.entity.CardState;
+import com.kmu.anki.backend.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -41,18 +42,18 @@ public class UserCard {
     @Column(name = "user_card_state")
     private CardState state;
 
-    /* 관계 Deck */
+    /* 관계 User */
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_deck_id")
-    private UserDeck deck;
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column(name = "user_deck_id", insertable = false, updatable = false)
-    private Long deckId;
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Long userId;
 
-    public void mapDeck(UserDeck deck){
-        this.deck = deck;
-        this.deck.addCard(this);
+    public void mapUser(User user){
+        this.user = user;
+        this.user.addCard(this);
     }
 
     /* 관계 Card */

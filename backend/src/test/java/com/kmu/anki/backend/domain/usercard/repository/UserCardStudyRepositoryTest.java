@@ -22,8 +22,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @Sql(scripts = "classpath:/data.sql", executionPhase= Sql.ExecutionPhase.BEFORE_TEST_CLASS, config = @SqlConfig(encoding = "UTF-8"))
 @Sql(scripts = "classpath:/drop.sql", executionPhase= Sql.ExecutionPhase.AFTER_TEST_CLASS,  config = @SqlConfig(encoding = "UTF-8"))
 @SpringBootTest
-class UserDeckStudyRepositoryTest {
-    @Autowired private UserDeckStudyRepository userDeckStudyRepository;
+class UserCardStudyRepositoryTest {
+    @Autowired private UserCardStudyRepository userCardStudyRepository;
     @Autowired private UserDeckRepository userDeckRepository;
     @Autowired private UserCardRepository userCardRepository;
     @Autowired private CardRepository cardRepository;
@@ -32,7 +32,7 @@ class UserDeckStudyRepositoryTest {
     void studyDeck() {
         LanguageCode code = LanguageCode.en;
         CardDifficulty difficulty = CardDifficulty.easy;
-        Long userDeckId = userDeckStudyRepository.studyDeck(1L, code, difficulty);
+        Long userDeckId = userCardStudyRepository.studyDeck(1L, code, difficulty);
         boolean isExists = userDeckRepository.existsById(userDeckId);
         assertEquals(true, isExists);
         List<UserCard> userCards = userCardRepository.findByDeckId(userDeckId);

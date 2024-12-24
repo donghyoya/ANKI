@@ -3,19 +3,17 @@ package com.kmu.anki.backend.domain.usercard.repository;
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import lombok.RequiredArgsConstructor;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 @RequiredArgsConstructor
 @Transactional
 @Repository
-public class UserDeckStudyRepository {
+public class UserCardStudyRepository {
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
     private static String INSERT_USER_DECK = """

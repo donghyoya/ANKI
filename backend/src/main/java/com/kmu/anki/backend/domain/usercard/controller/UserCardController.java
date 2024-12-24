@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RequestMapping("/cards/study")
+@RequestMapping("/cards")
 @RestController
 public class UserCardController {
     private final UserCardService userCardService;

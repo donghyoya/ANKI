@@ -1,10 +1,16 @@
-package com.kmu.anki.backend.domain.card.controller;
+package com.kmu.anki.backend.domain.card.docs;
 
+import com.epages.restdocs.apispec.Schema;
 import org.springframework.restdocs.payload.FieldDescriptor;
 
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 
 public class CardDocs {
+    public static final Schema cardSchema = new Schema("card");
+    public static final Schema cardsSchema = new Schema("cards");
+    public static final Schema deckSceham = new Schema("deck");
+    public static final Schema decksSceham = new Schema("decks");
+
     public static FieldDescriptor[] cardDto(String prefix){
         return new FieldDescriptor[]{
                 fieldWithPath(prefix+"cardId").description("단어카드의 고유번호"),

@@ -22,7 +22,7 @@ class UserCardControllerTest extends AbstractControllerTest {
     @Test
     void getUserCards() throws Exception {
         mockMvc.perform(
-                        get("/cards/study/{id}", 1)
+                        get("/cards/{id}", 1)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -55,7 +55,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         map.put("state", CardState.Review);
 
         mockMvc.perform(
-                        post("/cards/study/{id}", 1)
+                        post("/cards/{id}", 1)
                                 .contentType("application/json")
                                 .content(objectMapper.writeValueAsString(map))
                 ).andExpect(status().isOk())

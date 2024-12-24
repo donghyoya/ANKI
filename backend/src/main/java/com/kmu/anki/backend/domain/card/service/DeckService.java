@@ -14,20 +14,23 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
 public class DeckService {
     private final CardRepository cardRepository;
 
-    public Page<DeckDto> findAll(LanguageCode languageCode, QueryType queryType){
-        Pageable pageable = PageRequest.of(0,20);
-        if(queryType == QueryType.difficulty){
-            return cardRepository.findAllDeckByDifficulty(languageCode, pageable);
-        }else {
-            return cardRepository.findAllDeckByCategory(languageCode, pageable);
-        }
+    public List<DeckDto> readDeckByDifficulty(){
+        return cardRepository.findAllDeckByDifficulty();
     }
+
+    public List<DeckDto> readDeckByMeaningGroup(){
+        return cardRepository.findAllDeckByMeaningGroup();
+    }
+
+
 
     public Page<CardDto> findDeckCards(LanguageCode languageCode, CardDifficulty cardDifficulty){
         return cardRepository.findDeckCard(languageCode, cardDifficulty, PageRequest.of(0,20)).map(CardDto::of);

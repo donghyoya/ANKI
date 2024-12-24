@@ -1,11 +1,8 @@
 package com.kmu.anki.backend.domain.usercard.controller;
 
-import com.kmu.anki.backend.domain.card.controller.CardDocs;
+import com.kmu.anki.backend.domain.card.docs.CardDocs;
 import com.kmu.anki.backend.global.BaseDocs;
 import org.springframework.restdocs.payload.FieldDescriptor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 

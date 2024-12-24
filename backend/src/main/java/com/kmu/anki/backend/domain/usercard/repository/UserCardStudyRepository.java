@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.domain.usercard.repository;
 
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
+import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -16,28 +17,45 @@ import java.util.Map;
 public class UserCardStudyRepository {
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
-    private static String INSERT_USER_DECK = """
-                INSERT INTO user_decks(user_id, language_code, difficulty)
-                values (:userId, :languageCode, :difficulty)
-                RETURNING user_deck_id;
+    private static String INSERT_USER_CARDS_BY_MEANING = """
+                INSERT INTO user_cards(card_id, user_deck_id, user_card_state)
+                SELECT cards.card_id, :userDeckId, 'New'
+                FROM cards
+                WHERE cards.meaningGroup = :meaningGroup;
             """;
 
+    private static String INSERT_USER_CARDS_BY_DIFFICULTY = """
+                INSERT INTO user_cards(card_id, user_deck_id, user_card_state)
+                SELECT cards.card_id, :userDeckId, 'New'
+                FROM cards
+                WHERE cards.difficulty = :difficulty;
+            """;
     private static String INSERT_USER_CARDS = """
                 INSERT INTO user_cards(card_id, user_deck_id, user_card_state)
                 SELECT cards.card_id, :userDeckId, 'New'
                 FROM cards
-                WHERE cards.language_code = :languageCode AND cards.difficulty = :difficulty;
+                WHERE cards.difficulty = :difficulty;
             """;
 
 
-    public Long studyDeck(Long userId, LanguageCode code, CardDifficulty difficulty){
+    public void studyDeck(Long userId, CardDifficulty difficulty){
         Map<String, Object> params = new HashMap<>();
         params.put("userId", userId);
-        params.put("languageCode", code.toString());
         params.put("difficulty", difficulty.toString());
-        Long userDeckId = jdbcTemplate.queryForObject(INSERT_USER_DECK, params, Long.class);
-        params.put("userDeckId", userDeckId);
-        jdbcTemplate.update(INSERT_USER_CARDS, params);
-        return userDeckId;
+        jdbcTemplate.update(INSERT_USER_CARDS_BY_DIFFICULTY, params);
     }
+
+    public void studyDeck(Long userId, CardMeaningGroup meaningGroup){
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        params.put("meaningGroup", meaningGroup.toString());
+        jdbcTemplate.update(INSERT_USER_CARDS_BY_MEANING, params);
+    }
+
+    public void studyDeck(Long userId){
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        jdbcTemplate.update(INSERT_USER_CARDS, params);
+    }
+
 }

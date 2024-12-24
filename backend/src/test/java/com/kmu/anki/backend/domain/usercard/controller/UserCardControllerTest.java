@@ -17,13 +17,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Disabled
 class UserCardControllerTest extends AbstractControllerTest {
 
     @Test
     void getUserCards() throws Exception {
         mockMvc.perform(
-                        get("/user/cards/{id}", 1)
+                        get("/cards/study/{id}", 1)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -56,7 +55,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         map.put("state", CardState.Review);
 
         mockMvc.perform(
-                        post("/user/cards/{id}", 1)
+                        post("/cards/study/{id}", 1)
                                 .contentType("application/json")
                                 .content(objectMapper.writeValueAsString(map))
                 ).andExpect(status().isOk())

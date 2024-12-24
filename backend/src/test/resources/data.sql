@@ -173,24 +173,10 @@ VALUES
 
 insert into users(user_id) values (1);
 
--- BEGIN;
---
--- WITH inserted_deck AS (
--- INSERT INTO user_decks(user_id, language_code, difficulty)
--- VALUES (1, 'en', 'normal')
---     RETURNING user_deck_id)
--- INSERT INTO user_cards(card_id, user_deck_id, user_card_state)
--- SELECT cards.card_id, inserted_deck.user_deck_id, 'New'
--- FROM cards, inserted_deck
--- WHERE cards.language_code = 'en' AND cards.difficulty = 'normal';
---
--- WITH inserted_deck AS (
--- INSERT INTO user_decks(user_id, language_code, difficulty)
--- VALUES (1, 'en', 'hard')
---     RETURNING user_deck_id)
--- INSERT INTO user_cards(card_id, user_deck_id, user_card_state)
--- SELECT cards.card_id, inserted_deck.user_deck_id, 'New'
--- FROM cards, inserted_deck
--- WHERE cards.language_code = 'en' AND cards.difficulty = 'hard';
---
--- COMMIT;
+BEGIN;
+
+INSERT INTO user_cards(card_id, user_id, user_card_state)
+SELECT cards.card_id, 1, 'New'
+FROM cards;
+
+COMMIT;

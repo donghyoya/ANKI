@@ -1,10 +1,13 @@
 package com.kmu.anki.backend.domain.user.controller;
 
+import com.epages.restdocs.apispec.Schema;
 import org.springframework.restdocs.payload.FieldDescriptor;
 
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 
 public class UserOptionDtoDocs {
+    public static final Schema userOptionSchema = new Schema("userOption");
+
     public static FieldDescriptor[] userOptionDto(String prefix){
         return new FieldDescriptor[]{
                 fieldWithPath(prefix+"id").description("user의 고유번호"),

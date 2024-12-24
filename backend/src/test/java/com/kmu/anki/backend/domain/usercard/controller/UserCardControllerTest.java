@@ -8,13 +8,11 @@ import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.BaseDocs;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -32,14 +30,15 @@ class UserCardControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("StudyCards")
+                                                .tag("Cards")
                                                 .summary("userCard 보기")
                                                 .pathParameters(
                                                         parameterWithName("id").description("userCard 고유번호")
                                                 )
                                                 .responseFields(
-                                                        UserDeckDocs.userCardDto("")
+                                                        UserCardDocs.userCardDto("")
                                                 )
+                                                .responseSchema(UserCardDocs.userCardSchema)
                                                 .build()
                                 )
                         )
@@ -67,17 +66,19 @@ class UserCardControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("StudyCards")
+                                                .tag("Cards")
                                                 .summary("Card 학습결과를 갱신")
                                                 .pathParameters(
                                                         parameterWithName("id").description("userCard 고유번호")
                                                 )
                                                 .requestFields(
-                                                        UserDeckDocs.studyCardForm()
+                                                        UserCardDocs.studyCardForm()
                                                 )
+                                                .requestSchema(UserCardDocs.studyCardFormSchema)
                                                 .responseFields(
-                                                        UserDeckDocs.userCardDto("")
+                                                        UserCardDocs.userCardDto("")
                                                 )
+                                                .responseSchema(UserCardDocs.userCardSchema)
                                                 .build()
                                 )
                         )
@@ -107,10 +108,10 @@ class UserCardControllerTest extends AbstractControllerTest {
                                                 .responseFields(
                                                         BaseDocs.combine(
                                                                 BaseDocs.basePageResponse(),
-                                                                UserDeckDocs.userCardDto(BaseDocs.basePageResponsePrefix)
+                                                                UserCardDocs.userCardDto(BaseDocs.basePageResponsePrefix)
                                                         )
                                                 )
-                                                .responseSchema(CardDocs.cardsSchema)
+                                                .responseSchema(UserCardDocs.userCardsSchema)
                                                 .build()
                                 )
                         )

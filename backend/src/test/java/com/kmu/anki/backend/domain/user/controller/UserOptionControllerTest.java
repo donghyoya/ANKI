@@ -29,12 +29,15 @@ class UserOptionControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("user")
+                                                .tag("Users")
                                                 .pathParameters(
                                                         parameterWithName("id").description("option을 보고자 하는 user의 id")
                                                 )
                                                 .responseFields(
                                                     UserOptionDtoDocs.userOptionDto("")
+                                                )
+                                                .responseSchema(
+                                                        UserOptionDtoDocs.userOptionSchema
                                                 )
                                                 .build()
                                 )
@@ -59,12 +62,15 @@ class UserOptionControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("user")
+                                                .tag("Users")
                                                 .requestFields(
                                                         UserOptionDtoDocs.userOptionDto("")
-                                                ).responseFields(
+                                                )
+                                                .requestSchema(UserOptionDtoDocs.userOptionSchema)
+                                                .responseFields(
                                                         UserOptionDtoDocs.userOptionDto("")
                                                 )
+                                                .responseSchema(UserOptionDtoDocs.userOptionSchema)
                                             .build()
                                 )
                         )

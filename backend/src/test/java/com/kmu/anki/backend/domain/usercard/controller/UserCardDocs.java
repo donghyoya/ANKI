@@ -1,12 +1,16 @@
 package com.kmu.anki.backend.domain.usercard.controller;
 
+import com.epages.restdocs.apispec.Schema;
 import com.kmu.anki.backend.domain.card.docs.CardDocs;
 import com.kmu.anki.backend.global.BaseDocs;
 import org.springframework.restdocs.payload.FieldDescriptor;
 
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 
-public class UserDeckDocs {
+public class UserCardDocs {
+    public static Schema studyCardFormSchema = new Schema("studyCardForm");
+    public static Schema userCardSchema = new Schema("userCard");
+    public static Schema userCardsSchema = new Schema("userCards");
     private static FieldDescriptor[] _studyRequestForm = new FieldDescriptor[]{
             fieldWithPath("difficulty").description("언어의 난이도 (easy, normal, hard)"),
             fieldWithPath("languageCode").description("언어코드 (ISO 639-1)")

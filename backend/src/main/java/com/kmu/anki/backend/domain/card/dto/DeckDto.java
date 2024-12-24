@@ -10,6 +10,8 @@ public class DeckDto {
     private String category;
     private LanguageCode languageCode;
     private Long cardCounts;
+    private Double overdueRate = 0.4;
+    private Double maturitiyRate = 0.65;
 
     public DeckDto(LanguageCode languageCode, CardDifficulty category, Long cardCounts) {
         this.category = category.toString();

@@ -27,6 +27,7 @@ public class User {
     @Column
     private Integer todayReviewWords;
 
+    @Enumerated(EnumType.STRING)
     @Column
     private LanguageCode languageCode;
 

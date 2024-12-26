@@ -4,14 +4,14 @@ on:
       - backend-main  # backend-main 브랜치에 푸시될 때 실행
 
 env:
-  DEPLOY_PATH: /home/ubuntu/recipeUniverse/backend  # 배포할 경로
+  DEPLOY_PATH: /home/ubuntu/ANKI/backend  # 배포할 경로
   JAVA_VERSION: 21
 
 jobs:
   deploy-backend:
-    runs-on:
-    - self-hosted
-    - Linux
+#    runs-on:
+#    - self-hosted
+#    - Linux
 
     steps:
     - name: Checkout code

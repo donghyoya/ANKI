@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.domain.usercard.entity;
 
 import com.kmu.anki.backend.domain.card.entity.Card;
+import com.kmu.anki.backend.domain.card.entity.KoreanCard;
 import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.user.entity.User;
 import jakarta.persistence.*;
@@ -63,6 +64,14 @@ public class UserCard {
 
     @Column(name = "card_id", insertable = false, updatable = false)
     private Long cardId;
+
+    /* 관계 - KoeranCard */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "korean_card_id")
+    private KoreanCard koreanCard;
+
+    @Column(name = "korean_card_id", insertable = false, updatable = false)
+    private Long koreanCardId;
 
     /* 로직 */
     public void update(LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){

@@ -403,6 +403,7 @@ VALUES
 
 
 insert into users(user_id, today_study_words) values (1, 200);
+insert into users(user_id, today_study_words) values (2, 200);
 
 BEGIN;
 

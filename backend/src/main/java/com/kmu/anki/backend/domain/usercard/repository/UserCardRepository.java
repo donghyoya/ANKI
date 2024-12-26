@@ -64,4 +64,6 @@ public interface UserCardRepository extends JpaRepository<UserCard, Long> {
     UserCard findUserCardById(@Param("userCardId") Long userCardId);
 
     boolean existsByUserId(@Param("userId") Long userId);
+
+    long countByUserId(@Param("userId") Long userId);
 }

@@ -18,23 +18,22 @@ public class UserCardStudyRepository {
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
     private static String INSERT_USER_CARDS_BY_MEANING = """
-                INSERT INTO user_cards(card_id, user_deck_id, user_card_state)
-                SELECT cards.card_id, :userDeckId, 'New'
-                FROM cards
-                WHERE cards.meaningGroup = :meaningGroup;
+                INSERT INTO user_cards(korean_card_id, user_id, user_card_state)
+                SELECT korean_cards.korean_card_id, :userId, 'New'
+                FROM korean_cards
+                WHERE korean_cards.meaningGroup = :meaningGroup;
             """;
 
     private static String INSERT_USER_CARDS_BY_DIFFICULTY = """
-                INSERT INTO user_cards(card_id, user_deck_id, user_card_state)
-                SELECT cards.card_id, :userDeckId, 'New'
-                FROM cards
-                WHERE cards.difficulty = :difficulty;
+                INSERT INTO user_cards(korean_card_id, user_id, user_card_state)
+                SELECT korean_cards.korean_card_id, :userId, 'New'
+                FROM korean_cards
+                WHERE korean_cards.difficulty = :difficulty;
             """;
     private static String INSERT_USER_CARDS = """
-                INSERT INTO user_cards(card_id, user_deck_id, user_card_state)
-                SELECT cards.card_id, :userDeckId, 'New'
-                FROM cards
-                WHERE cards.difficulty = :difficulty;
+                INSERT INTO user_cards(korean_card_id, user_id, user_card_state)
+                SELECT korean_cards.korean_card_id, :userId, 'New'
+                FROM korean_cards
             """;
 
 

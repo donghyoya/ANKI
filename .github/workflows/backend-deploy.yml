@@ -10,6 +10,8 @@ env:
 jobs:
   deploy-backend:
 
+    runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v3  # 현재 리포지토리의 코드를 체크아웃

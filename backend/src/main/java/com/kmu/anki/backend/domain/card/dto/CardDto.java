@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.domain.card.dto;
 
 import com.kmu.anki.backend.domain.card.entity.Card;
+import com.kmu.anki.backend.domain.card.entity.ForeignCard;
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import lombok.Getter;
@@ -28,6 +29,16 @@ public class CardDto {
                 card.getForeignWord(),
                 card.getDifficulty(),
                 card.getLanguageCode()
+        );
+    }
+
+    public static CardDto of(ForeignCard foreignCard){
+        return new CardDto(
+                foreignCard.getKoreanCard().getId(),
+                foreignCard.getKoreanCard().getKoreanWord(),
+                foreignCard.getForeignWord(),
+                foreignCard.getKoreanCard().getDifficulty(),
+                foreignCard.getLanguageCode()
         );
     }
 }

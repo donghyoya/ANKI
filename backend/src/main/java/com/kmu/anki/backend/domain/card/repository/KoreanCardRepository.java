@@ -20,7 +20,7 @@ public interface KoreanCardRepository extends JpaRepository<KoreanCard, Long> {
         from KoreanCard c 
         group by c.difficulty
     """)
-    public List<DeckDto> findAllByDifficulty();
+    public List<DeckDto> findAllDeckByDifficulty();
 
     @Query("""
         select new com.kmu.anki.backend.domain.card.dto.DeckDto(c.meaningGroup, count(c)) 

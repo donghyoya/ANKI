@@ -19,7 +19,7 @@ public interface ForeignCardRepository extends JpaRepository<ForeignCard, Long> 
             fc.languageCode = :languageCode
             and kc.difficulty = :difficulty
     """)
-    public Page<Card> findDeckCard(@Param("languageCode") LanguageCode languageCode, @Param("difficulty") CardDifficulty difficulty, Pageable pageable);
+    public Page<ForeignCard> findDeckCard(@Param("languageCode") LanguageCode languageCode, @Param("difficulty") CardDifficulty difficulty, Pageable pageable);
 
     @Query("""
         select fc
@@ -28,6 +28,6 @@ public interface ForeignCardRepository extends JpaRepository<ForeignCard, Long> 
             fc.languageCode = :languageCode
             and kc.meaningGroup = :meaning
     """)
-    public Page<Card> findDeckCard(@Param("languageCode") LanguageCode languageCode, @Param("meaning") CardMeaningGroup category, Pageable pageable);
+    public Page<ForeignCard> findDeckCard(@Param("languageCode") LanguageCode languageCode, @Param("meaning") CardMeaningGroup category, Pageable pageable);
 
 }

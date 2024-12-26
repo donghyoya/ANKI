@@ -2,7 +2,9 @@ package com.kmu.anki.backend.domain.card.entity;
 
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Table(name = "foreign_cards")
 @Entity
 public class ForeignCard {

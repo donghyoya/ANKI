@@ -27,21 +27,21 @@ public class DeckService {
     private final ForeignCardRepository foreignCardRepository;
 
     public List<DeckDto> readDeckByDifficulty(){
-        return cardRepository.findAllDeckByDifficulty();
+        return koreanCardRepository.findAllDeckByDifficulty();
     }
 
     public List<DeckDto> readDeckByMeaningGroup(){
-        return cardRepository.findAllDeckByMeaningGroup();
+        return koreanCardRepository.findAllDeckByMeaningGroup();
     }
 
 
 
     public Page<CardDto> findDeckCards(LanguageCode languageCode, CardDifficulty cardDifficulty){
-        return cardRepository.findDeckCard(languageCode, cardDifficulty, PageRequest.of(0,20)).map(CardDto::of);
+        return foreignCardRepository.findDeckCard(languageCode, cardDifficulty, PageRequest.of(0,20)).map(CardDto::of);
     }
 
     public Page<CardDto> findDeckCards(LanguageCode languageCode, CardMeaningGroup category){
-        return cardRepository.findDeckCard(languageCode, category, PageRequest.of(0,20)).map(CardDto::of);
+        return foreignCardRepository.findDeckCard(languageCode, category, PageRequest.of(0,20)).map(CardDto::of);
     }
 
 }

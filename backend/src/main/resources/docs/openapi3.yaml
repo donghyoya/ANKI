@@ -45,94 +45,94 @@ paths:
                   value: "{\"page\":0,\"pageSize\":1,\"size\":20,\"content\":[{\"\
                     cardId\":1,\"koreanWord\":\"가족\",\"foreignWord\":\"Family\",\"\
                     difficulty\":\"easy\",\"languageCode\":\"en\",\"userCardId\":1,\"\
-                    score\":null,\"nextStudyDate\":\"2024-12-24T15:47:19.704789\"\
+                    score\":null,\"nextStudyDate\":\"2024-12-26T15:17:24.296717\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":2,\"koreanWord\"\
                     :\"학교\",\"foreignWord\":\"School\",\"difficulty\":\"easy\",\"\
                     languageCode\":\"en\",\"userCardId\":2,\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-24T15:47:19.704789\",\"lapses\":null,\"lastReview\"\
+                    :\"2024-12-26T15:17:24.296717\",\"lapses\":null,\"lastReview\"\
                     :null,\"reps\":null,\"scheduledDays\":null,\"stability\":null,\"\
                     state\":\"New\"},{\"cardId\":3,\"koreanWord\":\"친구\",\"foreignWord\"\
                     :\"Friend\",\"difficulty\":\"easy\",\"languageCode\":\"en\",\"\
-                    userCardId\":3,\"score\":null,\"nextStudyDate\":\"2024-12-24T15:47:19.704789\"\
+                    userCardId\":3,\"score\":null,\"nextStudyDate\":\"2024-12-26T15:17:24.296717\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":4,\"koreanWord\"\
                     :\"사과\",\"foreignWord\":\"Apple\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":4,\"score\":null,\"nextStudyDate\":\"2024-12-24T15:47:19.704789\"\
+                    :\"en\",\"userCardId\":4,\"score\":null,\"nextStudyDate\":\"2024-12-26T15:17:24.296717\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":5,\"koreanWord\"\
                     :\"의사\",\"foreignWord\":\"Doctor\",\"difficulty\":\"easy\",\"\
                     languageCode\":\"en\",\"userCardId\":5,\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-24T15:47:19.704789\",\"lapses\":null,\"lastReview\"\
+                    :\"2024-12-26T15:17:24.296717\",\"lapses\":null,\"lastReview\"\
                     :null,\"reps\":null,\"scheduledDays\":null,\"stability\":null,\"\
                     state\":\"New\"},{\"cardId\":6,\"koreanWord\":\"도서관\",\"foreignWord\"\
                     :\"Library\",\"difficulty\":\"easy\",\"languageCode\":\"en\",\"\
-                    userCardId\":6,\"score\":null,\"nextStudyDate\":\"2024-12-24T15:47:19.704789\"\
+                    userCardId\":6,\"score\":null,\"nextStudyDate\":\"2024-12-26T15:17:24.296717\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":7,\"koreanWord\"\
                     :\"컴퓨터\",\"foreignWord\":\"Computer\",\"difficulty\":\"easy\"\
                     ,\"languageCode\":\"en\",\"userCardId\":7,\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-24T15:47:19.704789\",\"lapses\":null,\"lastReview\"\
+                    :\"2024-12-26T15:17:24.296717\",\"lapses\":null,\"lastReview\"\
                     :null,\"reps\":null,\"scheduledDays\":null,\"stability\":null,\"\
                     state\":\"New\"},{\"cardId\":8,\"koreanWord\":\"전화\",\"foreignWord\"\
                     :\"Phone\",\"difficulty\":\"easy\",\"languageCode\":\"en\",\"\
-                    userCardId\":8,\"score\":null,\"nextStudyDate\":\"2024-12-24T15:47:19.704789\"\
+                    userCardId\":8,\"score\":null,\"nextStudyDate\":\"2024-12-26T15:17:24.296717\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":9,\"koreanWord\"\
                     :\"비행기\",\"foreignWord\":\"Airplane\",\"difficulty\":\"easy\"\
                     ,\"languageCode\":\"en\",\"userCardId\":9,\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-24T15:47:19.704789\",\"lapses\":null,\"lastReview\"\
+                    :\"2024-12-26T15:17:24.296717\",\"lapses\":null,\"lastReview\"\
                     :null,\"reps\":null,\"scheduledDays\":null,\"stability\":null,\"\
                     state\":\"New\"},{\"cardId\":10,\"koreanWord\":\"기차\",\"foreignWord\"\
                     :\"Train\",\"difficulty\":\"easy\",\"languageCode\":\"en\",\"\
-                    userCardId\":10,\"score\":null,\"nextStudyDate\":\"2024-12-24T15:47:19.704789\"\
+                    userCardId\":10,\"score\":null,\"nextStudyDate\":\"2024-12-26T15:17:24.296717\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":11,\"\
                     koreanWord\":\"자동차\",\"foreignWord\":\"Car\",\"difficulty\":\"\
                     easy\",\"languageCode\":\"en\",\"userCardId\":11,\"score\":null,\"\
-                    nextStudyDate\":\"2024-12-24T15:47:19.704789\",\"lapses\":null,\"\
+                    nextStudyDate\":\"2024-12-26T15:17:24.296717\",\"lapses\":null,\"\
                     lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
                     :null,\"state\":\"New\"},{\"cardId\":12,\"koreanWord\":\"집\",\"\
                     foreignWord\":\"House\",\"difficulty\":\"easy\",\"languageCode\"\
                     :\"en\",\"userCardId\":12,\"score\":null,\"nextStudyDate\":\"\
-                    2024-12-24T15:47:19.704789\",\"lapses\":null,\"lastReview\":null,\"\
+                    2024-12-26T15:17:24.296717\",\"lapses\":null,\"lastReview\":null,\"\
                     reps\":null,\"scheduledDays\":null,\"stability\":null,\"state\"\
                     :\"New\"},{\"cardId\":13,\"koreanWord\":\"강아지\",\"foreignWord\"\
                     :\"Puppy\",\"difficulty\":\"easy\",\"languageCode\":\"en\",\"\
-                    userCardId\":13,\"score\":null,\"nextStudyDate\":\"2024-12-24T15:47:19.704789\"\
+                    userCardId\":13,\"score\":null,\"nextStudyDate\":\"2024-12-26T15:17:24.296717\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":14,\"\
                     koreanWord\":\"고양이\",\"foreignWord\":\"Cat\",\"difficulty\":\"\
                     easy\",\"languageCode\":\"en\",\"userCardId\":14,\"score\":null,\"\
-                    nextStudyDate\":\"2024-12-24T15:47:19.704789\",\"lapses\":null,\"\
+                    nextStudyDate\":\"2024-12-26T15:17:24.296717\",\"lapses\":null,\"\
                     lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
                     :null,\"state\":\"New\"},{\"cardId\":15,\"koreanWord\":\"음악\"\
                     ,\"foreignWord\":\"Music\",\"difficulty\":\"easy\",\"languageCode\"\
                     :\"en\",\"userCardId\":15,\"score\":null,\"nextStudyDate\":\"\
-                    2024-12-24T15:47:19.704789\",\"lapses\":null,\"lastReview\":null,\"\
+                    2024-12-26T15:17:24.296717\",\"lapses\":null,\"lastReview\":null,\"\
                     reps\":null,\"scheduledDays\":null,\"stability\":null,\"state\"\
                     :\"New\"},{\"cardId\":16,\"koreanWord\":\"영화\",\"foreignWord\"\
                     :\"Movie\",\"difficulty\":\"easy\",\"languageCode\":\"en\",\"\
-                    userCardId\":16,\"score\":null,\"nextStudyDate\":\"2024-12-24T15:47:19.704789\"\
+                    userCardId\":16,\"score\":null,\"nextStudyDate\":\"2024-12-26T15:17:24.296717\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":17,\"\
                     koreanWord\":\"책\",\"foreignWord\":\"Book\",\"difficulty\":\"\
                     easy\",\"languageCode\":\"en\",\"userCardId\":17,\"score\":null,\"\
-                    nextStudyDate\":\"2024-12-24T15:47:19.704789\",\"lapses\":null,\"\
+                    nextStudyDate\":\"2024-12-26T15:17:24.296717\",\"lapses\":null,\"\
                     lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
                     :null,\"state\":\"New\"},{\"cardId\":18,\"koreanWord\":\"공원\"\
                     ,\"foreignWord\":\"Park\",\"difficulty\":\"easy\",\"languageCode\"\
                     :\"en\",\"userCardId\":18,\"score\":null,\"nextStudyDate\":\"\
-                    2024-12-24T15:47:19.704789\",\"lapses\":null,\"lastReview\":null,\"\
+                    2024-12-26T15:17:24.296717\",\"lapses\":null,\"lastReview\":null,\"\
                     reps\":null,\"scheduledDays\":null,\"stability\":null,\"state\"\
                     :\"New\"},{\"cardId\":19,\"koreanWord\":\"해변\",\"foreignWord\"\
                     :\"Beach\",\"difficulty\":\"easy\",\"languageCode\":\"en\",\"\
-                    userCardId\":19,\"score\":null,\"nextStudyDate\":\"2024-12-24T15:47:19.704789\"\
+                    userCardId\":19,\"score\":null,\"nextStudyDate\":\"2024-12-26T15:17:24.296717\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":20,\"\
                     koreanWord\":\"가게\",\"foreignWord\":\"Store\",\"difficulty\":\"\
                     easy\",\"languageCode\":\"en\",\"userCardId\":20,\"score\":null,\"\
-                    nextStudyDate\":\"2024-12-24T15:47:19.704789\",\"lapses\":null,\"\
+                    nextStudyDate\":\"2024-12-26T15:17:24.296717\",\"lapses\":null,\"\
                     lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
                     :null,\"state\":\"New\"}]}"
   /cards/{id}:
@@ -160,8 +160,8 @@ paths:
                 user-card-controller-test/get-user-cards:
                   value: "{\"cardId\":1,\"koreanWord\":\"가족\",\"foreignWord\":\"Family\"\
                     ,\"difficulty\":\"easy\",\"languageCode\":\"en\",\"userCardId\"\
-                    :1,\"score\":null,\"nextStudyDate\":\"2024-12-24T15:47:19.787685\"\
-                    ,\"lapses\":5,\"lastReview\":\"2024-12-24T15:47:19.787685\",\"\
+                    :1,\"score\":null,\"nextStudyDate\":\"2024-12-26T15:17:24.377398\"\
+                    ,\"lapses\":5,\"lastReview\":\"2024-12-26T15:17:24.377398\",\"\
                     reps\":72,\"scheduledDays\":0.9,\"stability\":1.3,\"state\":\"\
                     Review\"}"
     post:
@@ -185,7 +185,7 @@ paths:
             examples:
               user-card-controller-test/put-user-cards:
                 value: "{\"lapses\":5,\"reps\":72,\"scheduledDays\":0.9,\"nextStudyDate\"\
-                  :\"2024-12-24T15:47:19.7876852\",\"lastReview\":\"2024-12-24T15:47:19.7876852\"\
+                  :\"2024-12-26T15:17:24.3773978\",\"lastReview\":\"2024-12-26T15:17:24.3773978\"\
                   ,\"state\":\"Review\",\"stability\":1.3}"
       responses:
         "200":
@@ -198,8 +198,8 @@ paths:
                 user-card-controller-test/put-user-cards:
                   value: "{\"cardId\":1,\"koreanWord\":\"가족\",\"foreignWord\":\"Family\"\
                     ,\"difficulty\":\"easy\",\"languageCode\":\"en\",\"userCardId\"\
-                    :1,\"score\":null,\"nextStudyDate\":\"2024-12-24T15:47:19.7876852\"\
-                    ,\"lapses\":5,\"lastReview\":\"2024-12-24T15:47:19.7876852\",\"\
+                    :1,\"score\":null,\"nextStudyDate\":\"2024-12-26T15:17:24.3773978\"\
+                    ,\"lapses\":5,\"lastReview\":\"2024-12-26T15:17:24.3773978\",\"\
                     reps\":72,\"scheduledDays\":0.9,\"stability\":1.3,\"state\":\"\
                     Review\"}"
   /decks:

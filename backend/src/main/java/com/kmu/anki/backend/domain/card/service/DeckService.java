@@ -7,6 +7,8 @@ import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.repository.CardRepository;
+import com.kmu.anki.backend.domain.card.repository.ForeignCardRepository;
+import com.kmu.anki.backend.domain.card.repository.KoreanCardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +23,8 @@ import java.util.List;
 @Service
 public class DeckService {
     private final CardRepository cardRepository;
+    private final KoreanCardRepository koreanCardRepository;
+    private final ForeignCardRepository foreignCardRepository;
 
     public List<DeckDto> readDeckByDifficulty(){
         return cardRepository.findAllDeckByDifficulty();

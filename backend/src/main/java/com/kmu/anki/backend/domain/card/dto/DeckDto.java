@@ -13,8 +13,8 @@ public class DeckDto {
     private Double overdueRate = 0.4;
     private Double maturitiyRate = 0.65;
 
-    public DeckDto(LanguageCode languageCode, CardDifficulty category, Long cardCounts) {
-        this.category = category.toString();
+    public DeckDto(LanguageCode languageCode, CardDifficulty difficulty, Long cardCounts) {
+        this.category = difficulty.toString();
         this.languageCode = languageCode;
         this.cardCounts = cardCounts;
     }
@@ -25,4 +25,13 @@ public class DeckDto {
         this.cardCounts = cardCounts;
     }
 
+    public DeckDto(CardDifficulty difficulty, Long cardCounts) {
+        this.category = difficulty.toString();
+        this.cardCounts = cardCounts;
+    }
+
+    public DeckDto(CardMeaningGroup meaning, Long cardCounts) {
+        this.category = meaning.toString();
+        this.cardCounts = cardCounts;
+    }
 }

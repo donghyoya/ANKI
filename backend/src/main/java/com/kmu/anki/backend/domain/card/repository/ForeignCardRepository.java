@@ -1,7 +1,33 @@
 package com.kmu.anki.backend.domain.card.repository;
 
+import com.kmu.anki.backend.domain.card.entity.Card;
 import com.kmu.anki.backend.domain.card.entity.ForeignCard;
+import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
+import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface ForeignCardRepository extends JpaRepository<ForeignCard, Long> {
+    @Query("""
+        select fc
+        from ForeignCard fc join fetch fc.koreanCard kc
+        where
+            fc.languageCode = :languageCode
+            and kc.difficulty = :difficulty
+    """)
+    public Page<Card> findDeckCard(@Param("languageCode") LanguageCode languageCode, @Param("difficulty") CardDifficulty difficulty, Pageable pageable);
+
+    @Query("""
+        select fc
+        from ForeignCard fc join fetch fc.koreanCard kc
+        where
+            fc.languageCode = :languageCode
+            and kc.meaningGroup = :meaning
+    """)
+    public Page<Card> findDeckCard(@Param("languageCode") LanguageCode languageCode, @Param("meaning") CardMeaningGroup category, Pageable pageable);
+
 }

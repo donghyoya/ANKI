@@ -1,7 +1,31 @@
 package com.kmu.anki.backend.domain.card.repository;
 
+import com.kmu.anki.backend.domain.card.dto.DeckDto;
+import com.kmu.anki.backend.domain.card.entity.Card;
 import com.kmu.anki.backend.domain.card.entity.KoreanCard;
+import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
+import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 public interface KoreanCardRepository extends JpaRepository<KoreanCard, Long> {
+    @Query("""
+        select new com.kmu.anki.backend.domain.card.dto.DeckDto(c.difficulty, count(c)) 
+        from KoreanCard c 
+        group by c.difficulty
+    """)
+    public List<DeckDto> findAllByDifficulty();
+
+    @Query("""
+        select new com.kmu.anki.backend.domain.card.dto.DeckDto(c.meaningGroup, count(c)) 
+        from KoreanCard c 
+        group by c.meaningGroup
+    """)
+    public List<DeckDto> findAllDeckByMeaningGroup();
 }

@@ -27,6 +27,37 @@ public class UserCardDto {
     private Double stability;
     private CardState state;
 
+    public UserCardDto(
+            Long cardId,
+            String koreanWord,
+            String foreignWord,
+            CardDifficulty difficulty,
+            LanguageCode languageCode,
+            Long userCardId,
+            Integer score,
+            LocalDateTime nextStudyDate,
+            Integer lapses,
+            LocalDateTime lastReview,
+            Integer reps,
+            Double scheduledDays,
+            Double stability,
+            CardState state
+    ) {
+        this.cardId = cardId;
+        this.koreanWord = koreanWord;
+        this.foreignWord = foreignWord;
+        this.difficulty = difficulty;
+        this.languageCode = languageCode;
+        this.userCardId = userCardId;
+        this.score = score;
+        this.nextStudyDate = nextStudyDate;
+        this.lapses = lapses;
+        this.lastReview = lastReview;
+        this.reps = reps;
+        this.scheduledDays = scheduledDays;
+        this.stability = stability;
+        this.state = state;
+    }
 
     public UserCardDto(UserCard uc, Card c){
         this.cardId = c.getId();

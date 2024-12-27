@@ -8,6 +8,7 @@ import com.kmu.anki.backend.domain.user.entity.User;
 import com.kmu.anki.backend.domain.user.repository.UserRepository;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
+import com.kmu.anki.backend.domain.usercard.repository.UserCardQueryRepository;
 import com.kmu.anki.backend.domain.usercard.repository.UserCardRepository;
 import com.kmu.anki.backend.domain.usercard.repository.UserCardStudyRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ public class UserCardService {
     private final UserRepository userRepository;
     private final UserCardRepository userCardRepository;
     private final UserCardStudyRepository userCardStudyRepository;
+    private final UserCardQueryRepository userCardQueryRepository;
 
     /* CREATE */
 
@@ -54,14 +56,14 @@ public class UserCardService {
 
 
     public UserCardDto findByUserCardId(Long userCardId){
-        return userCardRepository.findCardByUserCardId(userCardId);
+        return userCardQueryRepository.findCardByUserCardId(userCardId);
     }
 
     /* UPDATE */
 
     @Transactional
     public UserCardDto updateUserCard(Long userCardId, LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
-        UserCard userCard = userCardRepository.findUserCardById(userCardId);
+        UserCard userCard = userCardRepository.findById(userCardId).orElseThrow();
         userCard.update(
                 nextStudyDate,
                 lapses,

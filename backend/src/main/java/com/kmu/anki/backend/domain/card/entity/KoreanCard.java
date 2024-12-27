@@ -2,6 +2,7 @@ package com.kmu.anki.backend.domain.card.entity;
 
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -34,6 +35,15 @@ public class KoreanCard {
 
     public void addForeignCards(ForeignCard card){
         foreignCards.add(card);
+    }
+
+    /* 관계 - 외국어 카드 */
+
+    @OneToMany(mappedBy = "koreanCard")
+    List<UserCard> userCards;
+
+    public void addUserCards(UserCard card){
+        userCards.add(card);
     }
 
 }

@@ -1,6 +1,5 @@
 package com.kmu.anki.backend.domain.card.repository;
 
-import com.kmu.anki.backend.domain.card.entity.Card;
 import com.kmu.anki.backend.domain.card.entity.ForeignCard;
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;

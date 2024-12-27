@@ -4,7 +4,6 @@ import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.entity.KoreanCard;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.repository.CardQueryRepository;
-import com.kmu.anki.backend.domain.card.repository.CardRepository;
 import com.kmu.anki.backend.domain.card.repository.KoreanCardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -45,14 +45,14 @@ public class UserCardService {
         LocalDateTime now = LocalDateTime.now();
         User user = userRepository.findById(userId).orElseThrow();
         PageRequest pageRequest = PageRequest.of(0, user.getTodayStudyWords());
-        return userCardRepository.findStudyCard(userId, languageCode, cardMeaningGroup, now, pageRequest);
+        return userCardQueryRepository.findStudyCards(userId, languageCode, null, cardMeaningGroup, now, pageRequest);
     }
 
     public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, CardDifficulty cardDifficulty){
         LocalDateTime now = LocalDateTime.now();
         User user = userRepository.findById(userId).orElseThrow();
         PageRequest pageRequest = PageRequest.of(0, user.getTodayStudyWords());
-        return userCardRepository.findStudyCard(userId, languageCode, cardDifficulty, now, pageRequest);
+        return userCardQueryRepository.findStudyCards(userId, languageCode, cardDifficulty, null, now, pageRequest);
     }
 
 

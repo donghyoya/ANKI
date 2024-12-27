@@ -1,6 +1,5 @@
 package com.kmu.anki.backend.domain.usercard.entity;
 
-import com.kmu.anki.backend.domain.card.entity.Card;
 import com.kmu.anki.backend.domain.card.entity.KoreanCard;
 import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.user.entity.User;
@@ -56,14 +55,6 @@ public class UserCard {
         this.user = user;
         this.user.addCard(this);
     }
-
-    /* 관계 Card */
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "card_id")
-    private Card card;
-
-    @Column(name = "card_id", insertable = false, updatable = false)
-    private Long cardId;
 
     /* 관계 - KoeranCard */
     @ManyToOne(fetch = FetchType.LAZY)

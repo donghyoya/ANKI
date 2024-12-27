@@ -2,16 +2,28 @@ package com.kmu.anki.backend.domain.usercard.repository;
 
 import com.kmu.anki.backend.domain.card.entity.QForeignCard;
 import com.kmu.anki.backend.domain.card.entity.QKoreanCard;
+import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
+import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.QUserCard;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -23,10 +35,15 @@ public class UserCardQueryRepository {
     private final QKoreanCard koreanCard = QKoreanCard.koreanCard;
     private final QForeignCard foreignCard = QForeignCard.foreignCard;
 
-    public UserCardDto findCardByUserCardId(
-            Long userCardId
+    public Page<UserCardDto> findStudyCards(
+            Long userId,
+            LanguageCode code,
+            CardDifficulty difficulty,
+            CardMeaningGroup meaningGroup,
+            LocalDateTime now,
+            Pageable pageable
     ){
-        return queryFactory.select(
+        List<UserCardDto> contents = queryFactory.select(
                         Projections.constructor(
                                 UserCardDto.class,
                                 koreanCard.id,
@@ -53,12 +70,59 @@ public class UserCardQueryRepository {
                         koreanCard.foreignCards, foreignCard
                 )
                 .where(
-                        userCard.id.eq(userCardId)
-                                .and(
-                                        foreignCard.languageCode.eq(LanguageCode.en)
-                                )
+                        combineQuery(
+                                userId,
+                                code,
+                                difficulty,
+                                meaningGroup,
+                                now
+                        )
                 )
-                .fetchOne();
+                .fetch();
+        JPAQuery<UserCardDto> countQuery = queryFactory
+                .select(
+                        Projections.constructor(
+                                UserCardDto.class,
+                                koreanCard.id,
+                                koreanCard.koreanWord,
+                                foreignCard.foreignWord,
+                                koreanCard.difficulty,
+                                foreignCard.languageCode,
+                                userCard.id,
+                                userCard.score,
+                                userCard.nextStudyDate,
+                                userCard.lapses,
+                                userCard.lastReview,
+                                userCard.reps,
+                                userCard.scheduledDays,
+                                userCard.stability,
+                                userCard.state
+                        )
+                )
+                .from(
+                        koreanCard
+                ).join(
+                        koreanCard.userCards, userCard
+                ).join(
+                        koreanCard.foreignCards, foreignCard
+                )
+                .where(
+                        combineQuery(
+                                userId,
+                                code,
+                                difficulty,
+                                meaningGroup,
+                                now
+                        )
+                )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize());
+
+        return PageableExecutionUtils.getPage(
+                contents,
+                pageable,
+                ()->countQuery.fetch().size()
+        );
     }
 
     public CardStudyDto findCardStudyDto(
@@ -83,27 +147,52 @@ public class UserCardQueryRepository {
                         userCard.koreanCard, koreanCard
                 )
                 .where(
-                        koreanCard.id.eq(cardId)
+                        koreanCardIdEq(cardId)
                 )
                 .fetchOne();
     }
 
-    public UserCard findUserCard(
-            Long cardId
+    /* 조건식 */
+    private Predicate combineQuery(
+            Long userId,
+            LanguageCode code,
+            CardDifficulty difficulty,
+            CardMeaningGroup meaningGroup,
+            LocalDateTime now
     ){
-        return queryFactory.select(
-                    userCard
-                )
-                .from(
-                        userCard
-                ).join(
-                        userCard.koreanCard, koreanCard
-                ).fetchJoin()
-                .where(
-                        userCard.id.eq(cardId)
-                )
-                .fetchOne();
+        BooleanBuilder builder = new BooleanBuilder();
+        builder
+                .and(userIdEq(userId))
+                .and(languageCodeEq(code))
+                .and(difficultyEq(difficulty))
+                .and(meaningGroupEq(meaningGroup))
+                .and(nextStudyDateBefore(now))
+        ;
+        return builder;
     }
 
+    public BooleanExpression userIdEq(Long userId){
+        return userId == null ? null : userCard.userId.eq(userId);
+    }
+
+    public BooleanExpression koreanCardIdEq(Long cardId){
+        return cardId == null ? null : koreanCard.id.eq(cardId);
+    }
+
+    public BooleanExpression languageCodeEq(LanguageCode code){
+        return code == null ? null : foreignCard.languageCode.eq(code);
+    }
+
+    public BooleanExpression difficultyEq(CardDifficulty difficulty){
+        return difficulty == null ? null : koreanCard.difficulty.eq(difficulty);
+    }
+
+    public BooleanExpression meaningGroupEq(CardMeaningGroup meaningGroup){
+        return meaningGroup == null ? null : koreanCard.meaningGroup.eq(meaningGroup);
+    }
+
+    public BooleanExpression nextStudyDateBefore(LocalDateTime dateTime){
+        return dateTime == null ? null : userCard.nextStudyDate.before(dateTime);
+    }
 
 }

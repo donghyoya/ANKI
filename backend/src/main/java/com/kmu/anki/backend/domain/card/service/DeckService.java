@@ -6,7 +6,6 @@ import com.kmu.anki.backend.domain.card.dto.DeckDto;
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
-import com.kmu.anki.backend.domain.card.repository.CardRepository;
 import com.kmu.anki.backend.domain.card.repository.ForeignCardRepository;
 import com.kmu.anki.backend.domain.card.repository.KoreanCardRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +21,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class DeckService {
-    private final CardRepository cardRepository;
     private final KoreanCardRepository koreanCardRepository;
     private final ForeignCardRepository foreignCardRepository;
 

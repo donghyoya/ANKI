@@ -6,6 +6,7 @@ import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.user.entity.User;
 import com.kmu.anki.backend.domain.user.repository.UserRepository;
+import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import com.kmu.anki.backend.domain.usercard.repository.UserCardQueryRepository;
@@ -55,14 +56,14 @@ public class UserCardService {
     }
 
 
-    public UserCardDto findByUserCardId(Long userCardId){
-        return userCardQueryRepository.findCardByUserCardId(userCardId);
+    public CardStudyDto readCardStudyInfo(Long cardId){
+        return userCardQueryRepository.findCardStudyDto(cardId);
     }
 
     /* UPDATE */
 
     @Transactional
-    public UserCardDto updateUserCard(Long userCardId, LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
+    public CardStudyDto updateUserCard(Long userCardId, LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
         UserCard userCard = userCardRepository.findById(userCardId).orElseThrow();
         userCard.update(
                 nextStudyDate,
@@ -73,7 +74,7 @@ public class UserCardService {
                 stability,
                 state
         );
-        return new UserCardDto(userCard, userCard.getCard());
+        return CardStudyDto.of(userCard);
     }
 
     /* DELETE */

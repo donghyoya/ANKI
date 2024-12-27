@@ -7,6 +7,7 @@ import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyCardForm;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
+import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.schema.BaseListReponse;
@@ -21,20 +22,20 @@ import org.springframework.web.bind.annotation.*;
 public class UserCardController {
     private final UserCardService userCardService;
 
-    @GetMapping("/{userCardId}")
-    public UserCardDto getUserCards(
-            @PathVariable("userCardId") Long userCardId
+    @GetMapping("/{cardId}/study")
+    public CardStudyDto getCardsStudyInfo(
+            @PathVariable("cardId") Long cardId
     ){
-        return userCardService.findByUserCardId(userCardId);
+        return userCardService.readCardStudyInfo(cardId);
     }
 
-    @PostMapping("/{userCardId}")
-    public UserCardDto putUserCards(
-            @PathVariable("userCardId") Long userCardId,
+    @PostMapping("/{cardId}/study")
+    public CardStudyDto putUserCards(
+            @PathVariable("cardId") Long cardId,
             @RequestBody StudyCardForm form
     ){
         return userCardService.updateUserCard(
-                userCardId,
+                cardId,
                 form.getNextStudyDate(),
                 form.getLapses(),
                 form.getLastReview(),

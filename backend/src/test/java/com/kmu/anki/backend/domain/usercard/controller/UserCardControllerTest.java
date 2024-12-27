@@ -21,29 +21,30 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class UserCardControllerTest extends AbstractControllerTest {
 
     @Test
-    void getUserCards() throws Exception {
+    void getCardStudyInfo() throws Exception{
         mockMvc.perform(
-                        get("/cards/{id}", 1)
+                        get("/cards/{id}/study", 1)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("Cards")
-                                                .summary("userCard 보기")
+                                                .tag("StudyCards")
+                                                .summary("Card 학습 정보 보기")
                                                 .pathParameters(
-                                                        parameterWithName("id").description("userCard 고유번호")
+                                                        parameterWithName("id").description("카드의 고유번호")
                                                 )
                                                 .responseFields(
-                                                        UserCardDocs.userCardDto("")
+                                                        UserCardDocs.cardStudyDto("")
                                                 )
-                                                .responseSchema(UserCardDocs.userCardSchema)
+                                                .responseSchema(UserCardDocs.cardStudySchema)
                                                 .build()
                                 )
                         )
                 );
     }
+
 
     @Test
     void putUserCards() throws Exception {
@@ -57,7 +58,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         map.put("state", CardState.Review);
 
         mockMvc.perform(
-                        post("/cards/{id}", 1)
+                        post("/cards/{id}/study", 1)
                                 .contentType("application/json")
                                 .content(objectMapper.writeValueAsString(map))
                 ).andExpect(status().isOk())
@@ -66,19 +67,19 @@ class UserCardControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("Cards")
+                                                .tag("StudyCards")
                                                 .summary("Card 학습결과를 갱신")
                                                 .pathParameters(
-                                                        parameterWithName("id").description("userCard 고유번호")
+                                                        parameterWithName("id").description("card 고유번호")
                                                 )
                                                 .requestFields(
                                                         UserCardDocs.studyCardForm()
                                                 )
                                                 .requestSchema(UserCardDocs.studyCardFormSchema)
                                                 .responseFields(
-                                                        UserCardDocs.userCardDto("")
+                                                        UserCardDocs.cardStudyDto("")
                                                 )
-                                                .responseSchema(UserCardDocs.userCardSchema)
+                                                .responseSchema(UserCardDocs.cardStudySchema)
                                                 .build()
                                 )
                         )
@@ -98,7 +99,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("Cards")
+                                                .tag("StudyCards")
                                                 .summary("오늘 공부할 카드 모음 ")
                                                 .queryParameters(
                                                         parameterWithName("studyType").description("study냐 review냐"),

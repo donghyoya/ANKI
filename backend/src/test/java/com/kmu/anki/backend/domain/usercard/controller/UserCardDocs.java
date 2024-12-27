@@ -11,6 +11,8 @@ public class UserCardDocs {
     public static Schema studyCardFormSchema = new Schema("studyCardForm");
     public static Schema userCardSchema = new Schema("userCard");
     public static Schema userCardsSchema = new Schema("userCards");
+    public static Schema cardStudySchema = new Schema("cardStudyInfo");
+
     private static FieldDescriptor[] _studyRequestForm = new FieldDescriptor[]{
             fieldWithPath("difficulty").description("언어의 난이도 (easy, normal, hard)"),
             fieldWithPath("languageCode").description("언어코드 (ISO 639-1)")
@@ -57,6 +59,19 @@ public class UserCardDocs {
                 fieldWithPath(prefix+"state").description("카드의 현재 상태")
         };
         return BaseDocs.combine(CardDocs.cardDto(prefix), userCardDto);
+    }
+
+    public static FieldDescriptor[] cardStudyDto(String prefix){
+        return new FieldDescriptor[]{
+                fieldWithPath(prefix+"cardId").description("Card의 고유번호"),
+                fieldWithPath(prefix+"nextStudyDate").description("다음 학습할 날짜"),
+                fieldWithPath(prefix+"lapses").description("Again을 누른 횟수"),
+                fieldWithPath(prefix+"lastReview").description("마지막으로 복습한 날짜"),
+                fieldWithPath(prefix+"reps").description("총 복습횟수"),
+                fieldWithPath(prefix+"scheduledDays").description("현재 복습 간격"),
+                fieldWithPath(prefix+"stability").description("기억의 안정도"),
+                fieldWithPath(prefix+"state").description("카드의 현재 상태")
+        };
     }
 
 }

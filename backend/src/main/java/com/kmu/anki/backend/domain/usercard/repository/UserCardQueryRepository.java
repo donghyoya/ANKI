@@ -3,8 +3,10 @@ package com.kmu.anki.backend.domain.usercard.repository;
 import com.kmu.anki.backend.domain.card.entity.QForeignCard;
 import com.kmu.anki.backend.domain.card.entity.QKoreanCard;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.QUserCard;
+import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +26,7 @@ public class UserCardQueryRepository {
     public UserCardDto findCardByUserCardId(
             Long userCardId
     ){
-        UserCardDto userCardDto = queryFactory.select(
+        return queryFactory.select(
                         Projections.constructor(
                                 UserCardDto.class,
                                 koreanCard.id,
@@ -57,6 +59,51 @@ public class UserCardQueryRepository {
                                 )
                 )
                 .fetchOne();
-        return userCardDto;
     }
+
+    public CardStudyDto findCardStudyDto(
+            Long cardId
+    ){
+        return queryFactory.select(
+                        Projections.constructor(
+                                CardStudyDto.class,
+                                koreanCard.id,
+                                userCard.nextStudyDate,
+                                userCard.lapses,
+                                userCard.lastReview,
+                                userCard.reps,
+                                userCard.scheduledDays,
+                                userCard.stability,
+                                userCard.state
+                        )
+                )
+                .from(
+                        userCard
+                ).join(
+                        userCard.koreanCard, koreanCard
+                )
+                .where(
+                        koreanCard.id.eq(cardId)
+                )
+                .fetchOne();
+    }
+
+    public UserCard findUserCard(
+            Long cardId
+    ){
+        return queryFactory.select(
+                    userCard
+                )
+                .from(
+                        userCard
+                ).join(
+                        userCard.koreanCard, koreanCard
+                ).fetchJoin()
+                .where(
+                        userCard.id.eq(cardId)
+                )
+                .fetchOne();
+    }
+
+
 }

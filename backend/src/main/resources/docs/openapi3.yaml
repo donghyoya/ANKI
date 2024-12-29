@@ -45,93 +45,93 @@ paths:
                   value: "{\"page\":0,\"pageSize\":1,\"size\":20,\"content\":[{\"\
                     cardId\":1,\"koreanWord\":\"안녕\",\"foreignWord\":\"hello\",\"\
                     difficulty\":\"easy\",\"languageCode\":\"en\",\"userCardId\":1,\"\
-                    score\":null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\"\
+                    score\":null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":2,\"koreanWord\"\
                     :\"사과\",\"foreignWord\":\"apple\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":2,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\"\
+                    :\"en\",\"userCardId\":2,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":3,\"koreanWord\"\
                     :\"물\",\"foreignWord\":\"water\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":3,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\"\
+                    :\"en\",\"userCardId\":3,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":4,\"koreanWord\"\
                     :\"책\",\"foreignWord\":\"book\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":4,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\"\
+                    :\"en\",\"userCardId\":4,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":5,\"koreanWord\"\
                     :\"밥\",\"foreignWord\":\"rice\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":5,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\"\
+                    :\"en\",\"userCardId\":5,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":6,\"koreanWord\"\
                     :\"학교\",\"foreignWord\":\"school\",\"difficulty\":\"easy\",\"\
                     languageCode\":\"en\",\"userCardId\":6,\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-29T12:00:56.399853\",\"lapses\":null,\"lastReview\"\
+                    :\"2024-12-29T12:05:48.100698\",\"lapses\":null,\"lastReview\"\
                     :null,\"reps\":null,\"scheduledDays\":null,\"stability\":null,\"\
                     state\":\"New\"},{\"cardId\":7,\"koreanWord\":\"공\",\"foreignWord\"\
                     :\"ball\",\"difficulty\":\"easy\",\"languageCode\":\"en\",\"userCardId\"\
-                    :7,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\"\
+                    :7,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":8,\"koreanWord\"\
                     :\"연필\",\"foreignWord\":\"pencil\",\"difficulty\":\"easy\",\"\
                     languageCode\":\"en\",\"userCardId\":8,\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-29T12:00:56.399853\",\"lapses\":null,\"lastReview\"\
+                    :\"2024-12-29T12:05:48.100698\",\"lapses\":null,\"lastReview\"\
                     :null,\"reps\":null,\"scheduledDays\":null,\"stability\":null,\"\
                     state\":\"New\"},{\"cardId\":9,\"koreanWord\":\"의자\",\"foreignWord\"\
                     :\"chair\",\"difficulty\":\"easy\",\"languageCode\":\"en\",\"\
-                    userCardId\":9,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\"\
+                    userCardId\":9,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":10,\"\
                     koreanWord\":\"친구\",\"foreignWord\":\"friend\",\"difficulty\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":10,\"score\"\
-                    :null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\",\"lapses\"\
+                    :null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\",\"lapses\"\
                     :null,\"lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"\
                     stability\":null,\"state\":\"New\"},{\"cardId\":11,\"koreanWord\"\
                     :\"우유\",\"foreignWord\":\"milk\",\"difficulty\":\"easy\",\"languageCode\"\
                     :\"en\",\"userCardId\":11,\"score\":null,\"nextStudyDate\":\"\
-                    2024-12-29T12:00:56.399853\",\"lapses\":null,\"lastReview\":null,\"\
+                    2024-12-29T12:05:48.100698\",\"lapses\":null,\"lastReview\":null,\"\
                     reps\":null,\"scheduledDays\":null,\"stability\":null,\"state\"\
                     :\"New\"},{\"cardId\":12,\"koreanWord\":\"하늘\",\"foreignWord\"\
                     :\"sky\",\"difficulty\":\"easy\",\"languageCode\":\"en\",\"userCardId\"\
-                    :12,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\"\
+                    :12,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":13,\"\
                     koreanWord\":\"강아지\",\"foreignWord\":\"puppy\",\"difficulty\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":13,\"score\"\
-                    :null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\",\"lapses\"\
+                    :null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\",\"lapses\"\
                     :null,\"lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"\
                     stability\":null,\"state\":\"New\"},{\"cardId\":14,\"koreanWord\"\
                     :\"고양이\",\"foreignWord\":\"cat\",\"difficulty\":\"easy\",\"languageCode\"\
                     :\"en\",\"userCardId\":14,\"score\":null,\"nextStudyDate\":\"\
-                    2024-12-29T12:00:56.399853\",\"lapses\":null,\"lastReview\":null,\"\
+                    2024-12-29T12:05:48.100698\",\"lapses\":null,\"lastReview\":null,\"\
                     reps\":null,\"scheduledDays\":null,\"stability\":null,\"state\"\
                     :\"New\"},{\"cardId\":15,\"koreanWord\":\"집\",\"foreignWord\"\
                     :\"house\",\"difficulty\":\"easy\",\"languageCode\":\"en\",\"\
-                    userCardId\":15,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\"\
+                    userCardId\":15,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":16,\"\
                     koreanWord\":\"사람\",\"foreignWord\":\"person\",\"difficulty\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":16,\"score\"\
-                    :null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\",\"lapses\"\
+                    :null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\",\"lapses\"\
                     :null,\"lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"\
                     stability\":null,\"state\":\"New\"},{\"cardId\":17,\"koreanWord\"\
                     :\"나무\",\"foreignWord\":\"tree\",\"difficulty\":\"easy\",\"languageCode\"\
                     :\"en\",\"userCardId\":17,\"score\":null,\"nextStudyDate\":\"\
-                    2024-12-29T12:00:56.399853\",\"lapses\":null,\"lastReview\":null,\"\
+                    2024-12-29T12:05:48.100698\",\"lapses\":null,\"lastReview\":null,\"\
                     reps\":null,\"scheduledDays\":null,\"stability\":null,\"state\"\
                     :\"New\"},{\"cardId\":18,\"koreanWord\":\"바다\",\"foreignWord\"\
                     :\"sea\",\"difficulty\":\"easy\",\"languageCode\":\"en\",\"userCardId\"\
-                    :18,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\"\
+                    :18,\"score\":null,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"},{\"cardId\":19,\"\
                     koreanWord\":\"시간\",\"foreignWord\":\"time\",\"difficulty\":\"\
                     easy\",\"languageCode\":\"en\",\"userCardId\":19,\"score\":null,\"\
-                    nextStudyDate\":\"2024-12-29T12:00:56.399853\",\"lapses\":null,\"\
+                    nextStudyDate\":\"2024-12-29T12:05:48.100698\",\"lapses\":null,\"\
                     lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
                     :null,\"state\":\"New\"},{\"cardId\":20,\"koreanWord\":\"꽃\",\"\
                     foreignWord\":\"flower\",\"difficulty\":\"easy\",\"languageCode\"\
                     :\"en\",\"userCardId\":20,\"score\":null,\"nextStudyDate\":\"\
-                    2024-12-29T12:00:56.399853\",\"lapses\":null,\"lastReview\":null,\"\
+                    2024-12-29T12:05:48.100698\",\"lapses\":null,\"lastReview\":null,\"\
                     reps\":null,\"scheduledDays\":null,\"stability\":null,\"state\"\
                     :\"New\"}]}"
   /cards/{id}:
@@ -182,7 +182,7 @@ paths:
                 $ref: "#/components/schemas/cardStudyInfo"
               examples:
                 user-card-controller-test/get-card-study-info:
-                  value: "{\"cardId\":1,\"nextStudyDate\":\"2024-12-29T12:00:56.399853\"\
+                  value: "{\"cardId\":1,\"nextStudyDate\":\"2024-12-29T12:05:48.100698\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"}"
     post:
@@ -206,7 +206,7 @@ paths:
             examples:
               user-card-controller-test/put-user-cards:
                 value: "{\"lapses\":5,\"reps\":72,\"scheduledDays\":0.9,\"nextStudyDate\"\
-                  :\"2024-12-29T12:00:56.5395029\",\"lastReview\":\"2024-12-29T12:00:56.5395029\"\
+                  :\"2024-12-29T12:05:48.2130158\",\"lastReview\":\"2024-12-29T12:05:48.2130158\"\
                   ,\"state\":\"Review\",\"stability\":1.3}"
       responses:
         "200":
@@ -217,8 +217,8 @@ paths:
                 $ref: "#/components/schemas/cardStudyInfo"
               examples:
                 user-card-controller-test/put-user-cards:
-                  value: "{\"cardId\":1,\"nextStudyDate\":\"2024-12-29T12:00:56.5395029\"\
-                    ,\"lapses\":5,\"lastReview\":\"2024-12-29T12:00:56.5395029\",\"\
+                  value: "{\"cardId\":1,\"nextStudyDate\":\"2024-12-29T12:05:48.2130158\"\
+                    ,\"lapses\":5,\"lastReview\":\"2024-12-29T12:05:48.2130158\",\"\
                     reps\":72,\"scheduledDays\":0.9,\"stability\":1.3,\"state\":\"\
                     Review\"}"
   /decks:
@@ -231,7 +231,7 @@ paths:
       parameters:
       - name: queryType
         in: query
-        description: 의미에 따른 분류인가 / 난이도에 따른 분류인가
+        description: 의미에 따른 분류인가 (difficulty) / 난이도에 따른 분류인가 (meaning)
         required: true
         schema:
           type: string
@@ -244,21 +244,19 @@ paths:
                 $ref: "#/components/schemas/decks"
               examples:
                 deck-controller-test/get-decks-by-difficulty:
-                  value: "{\"size\":3,\"content\":[{\"category\":\"easy\",\"languageCode\"\
-                    :null,\"cardCounts\":20,\"overdueCounts\":20,\"maturitiyCounts\"\
-                    :0,\"overdueRate\":1.0,\"maturitiyRate\":0.0},{\"category\":\"\
-                    hard\",\"languageCode\":null,\"cardCounts\":20,\"overdueCounts\"\
-                    :20,\"maturitiyCounts\":0,\"overdueRate\":1.0,\"maturitiyRate\"\
-                    :0.0},{\"category\":\"normal\",\"languageCode\":null,\"cardCounts\"\
+                  value: "{\"size\":3,\"content\":[{\"category\":\"easy\",\"cardCounts\"\
+                    :20,\"overdueCounts\":20,\"maturitiyCounts\":0,\"overdueRate\"\
+                    :1.0,\"maturitiyRate\":0.0},{\"category\":\"hard\",\"cardCounts\"\
+                    :20,\"overdueCounts\":20,\"maturitiyCounts\":0,\"overdueRate\"\
+                    :1.0,\"maturitiyRate\":0.0},{\"category\":\"normal\",\"cardCounts\"\
                     :20,\"overdueCounts\":20,\"maturitiyCounts\":0,\"overdueRate\"\
                     :1.0,\"maturitiyRate\":0.0}]}"
                 deck-controller-test/get-decks-by-meaning:
-                  value: "{\"size\":2,\"content\":[{\"category\":\"Anything\",\"languageCode\"\
-                    :null,\"cardCounts\":20,\"overdueCounts\":20,\"maturitiyCounts\"\
-                    :0,\"overdueRate\":1.0,\"maturitiyRate\":0.0},{\"category\":\"\
-                    Something\",\"languageCode\":null,\"cardCounts\":40,\"overdueCounts\"\
-                    :40,\"maturitiyCounts\":0,\"overdueRate\":1.0,\"maturitiyRate\"\
-                    :0.0}]}"
+                  value: "{\"size\":2,\"content\":[{\"category\":\"Anything\",\"cardCounts\"\
+                    :20,\"overdueCounts\":20,\"maturitiyCounts\":0,\"overdueRate\"\
+                    :1.0,\"maturitiyRate\":0.0},{\"category\":\"Something\",\"cardCounts\"\
+                    :40,\"overdueCounts\":40,\"maturitiyCounts\":0,\"overdueRate\"\
+                    :1.0,\"maturitiyRate\":0.0}]}"
   /decks/cards:
     get:
       tags:
@@ -269,13 +267,13 @@ paths:
       parameters:
       - name: queryType
         in: query
-        description: 의미에 따른 분류인가 / 난이도에 따른 분류인가
+        description: 의미에 따른 분류인가 (difficulty) / 난이도에 따른 분류인가 (meaning)
         required: true
         schema:
           type: string
       - name: query
         in: query
-        description: 검색어 (difficulty 또는 meaningGroup)
+        description: 검색어 (easy-normal-hard 등)
         required: true
         schema:
           type: string

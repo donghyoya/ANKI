@@ -29,7 +29,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .tag("Decks")
                                                 .summary("검색어 조건에 맞는 Deck 보기")
                                                 .queryParameters(
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 / 난이도에 따른 분류인가")
+                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (difficulty) / 난이도에 따른 분류인가 (meaning)")
                                                 )
                                                 .responseFields(
                                                         BaseDocs.combine(
@@ -59,7 +59,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .tag("Decks")
                                                 .summary("검색어 조건에 맞는 Deck 보기")
                                                 .queryParameters(
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 / 난이도에 따른 분류인가")
+                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (difficulty) / 난이도에 따른 분류인가 (meaning)")
                                                 )
                                                 .responseFields(
                                                         BaseDocs.combine(
@@ -91,8 +91,8 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .tag("Decks")
                                                 .summary("덱에 포함된 카드 모음")
                                                 .queryParameters(
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 / 난이도에 따른 분류인가"),
-                                                        parameterWithName("query").description("검색어 (difficulty 또는 meaningGroup)")
+                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (difficulty) / 난이도에 따른 분류인가 (meaning)"),
+                                                        parameterWithName("query").description("검색어 (easy-normal-hard 등)")
                                                 )
                                                 .responseFields(
                                                         BaseDocs.combine(

@@ -1,0 +1,62 @@
+name: Frontend Deployment
+
+on:
+  push:
+    branches:
+      - frontend-main  # main 브랜치에 푸시될 때 실행
+
+jobs:
+  deploy-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: GitHub 저장소에서 코드 체크아웃
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Node.js 설정
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '19'  # 사용하고자 하는 Node.js 버전
+
+      # Step 3: 프로젝트 의존성 설치 및 빌드
+      - name: Install dependencies and build
+        run: |
+          cd frontend/recipe-universe-react-app
+          npm install
+          npm run build  # React 앱을 빌드 (build 폴더 생성)
+
+      # Step 4: 빌드된 폴더 압축
+      - name: Zip build folder
+        run: |
+          cd frontend/recipe-universe-react-app
+          zip -r build.zip build package.json package-lock.json
+
+      # Step 5: SSH 설정
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+
+      # Step 6: 빌드된 파일 서버로 전송
+      - name: Transfer files to server via SCP
+        run: |
+          cd frontend/recipe-universe-react-app
+          pwd
+          ls -al
+          scp -o StrictHostKeyChecking=no build.zip ${{ secrets.USER }}@${{ secrets.HOST }}:/home/ubuntu/recipeUniverse/frontend
+
+      # Step 7: 서버에서 Docker로 배포
+      - name: Deploy on Server
+        run: |
+          ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 ${{ secrets.USER }}@${{ secrets.HOST }} << 'EOF'
+            cd /home/ubuntu/recipeUniverse/frontend
+            unzip -o build.zip
+            cd scripts
+            ./stop.sh
+            ./start.sh
+          EOF
+

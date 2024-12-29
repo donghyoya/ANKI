@@ -28,11 +28,12 @@ public class DeckController {
             @RequestParam("queryType") QueryType queryType
     ){
         // TODO user-data 추출
+        Long userId = 1L;
         List<DeckDto> decks = new ArrayList<>();
         if(queryType == QueryType.difficulty){
-            decks = deckService.readDeckByDifficulty();
+            decks = deckService.readDeckByDifficulty(userId);
         }else if(queryType == QueryType.meaning){
-            decks = deckService.readDeckByMeaningGroup();
+            decks = deckService.readDeckByMeaningGroup(userId);
         }
         return BaseListReponse.of(decks);
     }

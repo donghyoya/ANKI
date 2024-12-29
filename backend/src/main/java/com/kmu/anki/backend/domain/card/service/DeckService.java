@@ -6,6 +6,8 @@ import com.kmu.anki.backend.domain.card.dto.DeckDto;
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
 import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.card.repository.CardQueryRepository;
+import com.kmu.anki.backend.domain.card.repository.DeckQueryRepository;
 import com.kmu.anki.backend.domain.card.repository.ForeignCardRepository;
 import com.kmu.anki.backend.domain.card.repository.KoreanCardRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,13 +25,15 @@ import java.util.List;
 public class DeckService {
     private final KoreanCardRepository koreanCardRepository;
     private final ForeignCardRepository foreignCardRepository;
+    private final DeckQueryRepository deckQueryRepository;
 
-    public List<DeckDto> readDeckByDifficulty(){
-        return koreanCardRepository.findAllDeckByDifficulty();
+    public List<DeckDto> readDeckByDifficulty(Long userId){
+        List<DeckDto> decks = deckQueryRepository.findDeckByDifficulty(userId);
+        return decks;
     }
 
-    public List<DeckDto> readDeckByMeaningGroup(){
-        return koreanCardRepository.findAllDeckByMeaningGroup();
+    public List<DeckDto> readDeckByMeaningGroup(Long userId){
+        return deckQueryRepository.findDeckByMeanging(userId);
     }
 
 

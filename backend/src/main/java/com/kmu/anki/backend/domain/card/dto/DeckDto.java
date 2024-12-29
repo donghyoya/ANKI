@@ -10,6 +10,8 @@ public class DeckDto {
     private String category;
     private LanguageCode languageCode;
     private Long cardCounts;
+    private Integer overdueCounts;
+    private Integer maturitiyCounts;
     private Double overdueRate = 0.4;
     private Double maturitiyRate = 0.65;
 
@@ -33,5 +35,14 @@ public class DeckDto {
     public DeckDto(CardMeaningGroup meaning, Long cardCounts) {
         this.category = meaning.toString();
         this.cardCounts = cardCounts;
+    }
+
+    public DeckDto(String category, Long cardCounts, Integer overdueCounts, Integer maturitiyCounts) {
+        this.category = category;
+        this.cardCounts = cardCounts;
+        this.overdueCounts = overdueCounts;
+        this.maturitiyCounts = maturitiyCounts;
+        this.overdueRate = (double) (overdueCounts / cardCounts);
+        this.maturitiyRate = (double) (maturitiyCounts / cardCounts);
     }
 }

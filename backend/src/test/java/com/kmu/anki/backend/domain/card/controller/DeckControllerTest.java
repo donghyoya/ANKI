@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class DeckControllerTest extends AbstractControllerTest {
 
     @Test
-    void getDecks() throws Exception {
+    void getDecksByDifficulty() throws Exception {
         mockMvc.perform(
                 get("/decks")
                         .param("queryType", "difficulty")
@@ -44,6 +44,37 @@ class DeckControllerTest extends AbstractControllerTest {
                         )
         ;
     }
+
+    @Test
+    void getDecksByMeaning() throws Exception {
+        mockMvc.perform(
+                        get("/decks")
+                                .param("queryType", "meaning")
+                ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Decks")
+                                                .summary("검색어 조건에 맞는 Deck 보기")
+                                                .queryParameters(
+                                                        parameterWithName("queryType").description("의미에 따른 분류인가 / 난이도에 따른 분류인가")
+                                                )
+                                                .responseFields(
+                                                        BaseDocs.combine(
+                                                                BaseDocs.baseListResponse(),
+                                                                CardDocs.deckDto(BaseDocs.basePageResponsePrefix)
+                                                        )
+                                                )
+                                                .responseSchema(CardDocs.decksSceham)
+                                                .build()
+                                )
+                        )
+                )
+        ;
+    }
+
 
     @Test
     void getDecksCard() throws Exception{

@@ -78,6 +78,7 @@ public class CardQueryRepository {
                                 foreignCard.foreignWord,
                                 koreanCard.difficulty,
                                 foreignCard.languageCode,
+
                                 koreanCard.headword,
                                 koreanCard.homographNumber,
                                 koreanCard.partsOfSpeech,

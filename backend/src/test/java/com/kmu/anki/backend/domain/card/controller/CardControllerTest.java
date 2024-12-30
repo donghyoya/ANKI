@@ -40,4 +40,29 @@ class CardControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @Test
+    void getCardDetails() throws Exception {
+        mockMvc.perform(
+                        get("/cards/{id}/details", 1)
+                ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Cards")
+                                                .summary("Card에 대한 디테일한 정보 보기")
+                                                .pathParameters(
+                                                        parameterWithName("id").description("카드의 고유번호")
+                                                )
+                                                .responseFields(
+                                                        CardDocs.cardDetailDto("")
+                                                )
+                                                .responseSchema(CardDocs.cardDetailSchema)
+                                                .build()
+                                )
+                        )
+                );
+
+    }
 }

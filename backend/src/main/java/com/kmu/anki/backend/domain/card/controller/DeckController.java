@@ -2,8 +2,8 @@ package com.kmu.anki.backend.domain.card.controller;
 
 import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.dto.DeckDto;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
-import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.service.CardService;
 import com.kmu.anki.backend.domain.card.service.DeckService;
@@ -30,7 +30,7 @@ public class DeckController {
         // TODO user-data 추출
         Long userId = 1L;
         List<DeckDto> decks = new ArrayList<>();
-        if(queryType == QueryType.difficulty){
+        if(queryType == QueryType.level){
             decks = deckService.readDeckByDifficulty(userId);
         }else if(queryType == QueryType.meaning){
             decks = deckService.readDeckByMeaningGroup(userId);
@@ -50,8 +50,8 @@ public class DeckController {
             CardMeaningGroup cardMeaningGroup = CardMeaningGroup.valueOf(query);
             cards = deckService.findDeckCards(languageCode, cardMeaningGroup);
         }else {
-            CardDifficulty cardDifficulty = CardDifficulty.valueOf(query);
-            cards = deckService.findDeckCards(languageCode, cardDifficulty);
+            CardLevel cardLevel = CardLevel.valueOf(query);
+            cards = deckService.findDeckCards(languageCode, cardLevel);
         }
         return BasePageResponse.of(cards);
     }

@@ -1,8 +1,7 @@
 package com.kmu.anki.backend.domain.card.dto;
 
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
-import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
-import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import lombok.Getter;
 
 @Getter
@@ -14,8 +13,8 @@ public class DeckDto {
     private Double overdueRate = 0.4;
     private Double maturitiyRate = 0.65;
 
-    public DeckDto(CardDifficulty difficulty, Long cardCounts) {
-        this.category = difficulty.toString();
+    public DeckDto(CardLevel level, Long cardCounts) {
+        this.category = level.toString();
         this.cardCounts = cardCounts;
     }
 

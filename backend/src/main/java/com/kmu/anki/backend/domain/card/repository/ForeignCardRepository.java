@@ -1,7 +1,7 @@
 package com.kmu.anki.backend.domain.card.repository;
 
 import com.kmu.anki.backend.domain.card.entity.ForeignCard;
-import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import org.springframework.data.domain.Page;
@@ -16,9 +16,9 @@ public interface ForeignCardRepository extends JpaRepository<ForeignCard, Long> 
         from ForeignCard fc join fetch fc.koreanCard kc
         where
             fc.languageCode = :languageCode
-            and kc.difficulty = :difficulty
+            and kc.level = :difficulty
     """)
-    public Page<ForeignCard> findDeckCard(@Param("languageCode") LanguageCode languageCode, @Param("difficulty") CardDifficulty difficulty, Pageable pageable);
+    public Page<ForeignCard> findDeckCard(@Param("languageCode") LanguageCode languageCode, @Param("difficulty") CardLevel difficulty, Pageable pageable);
 
     @Query("""
         select fc

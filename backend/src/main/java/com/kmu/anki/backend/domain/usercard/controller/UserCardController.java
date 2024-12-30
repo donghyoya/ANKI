@@ -1,8 +1,7 @@
 package com.kmu.anki.backend.domain.usercard.controller;
 
 import com.kmu.anki.backend.domain.card.controller.QueryType;
-import com.kmu.anki.backend.domain.card.dto.CardDto;
-import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyCardForm;
@@ -10,7 +9,6 @@ import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
-import com.kmu.anki.backend.global.schema.BaseListReponse;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -60,8 +58,8 @@ public class UserCardController {
             CardMeaningGroup cardMeaningGroup = CardMeaningGroup.valueOf(query);
             cards = userCardService.readStudyUserCard(userId, languageCode, cardMeaningGroup);
         }else {
-            CardDifficulty cardDifficulty = CardDifficulty.valueOf(query);
-            cards = userCardService.readStudyUserCard(userId, languageCode, cardDifficulty);
+            CardLevel cardLevel = CardLevel.valueOf(query);
+            cards = userCardService.readStudyUserCard(userId, languageCode, cardLevel);
         }
         return BasePageResponse.of(cards);
     }

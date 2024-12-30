@@ -1,6 +1,6 @@
 package com.kmu.anki.backend.domain.usercard.service;
 
-import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.CardState;
@@ -48,11 +48,11 @@ public class UserCardService {
         return userCardQueryRepository.findStudyCards(userId, languageCode, null, cardMeaningGroup, now, pageRequest);
     }
 
-    public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, CardDifficulty cardDifficulty){
+    public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, CardLevel cardLevel){
         LocalDateTime now = LocalDateTime.now();
         User user = userRepository.findById(userId).orElseThrow();
         PageRequest pageRequest = PageRequest.of(0, user.getTodayStudyWords());
-        return userCardQueryRepository.findStudyCards(userId, languageCode, cardDifficulty, null, now, pageRequest);
+        return userCardQueryRepository.findStudyCards(userId, languageCode, cardLevel, null, now, pageRequest);
     }
 
 

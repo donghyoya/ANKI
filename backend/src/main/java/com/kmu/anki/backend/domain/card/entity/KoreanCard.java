@@ -1,6 +1,6 @@
 package com.kmu.anki.backend.domain.card.entity;
 
-import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import jakarta.persistence.*;
@@ -22,7 +22,7 @@ public class KoreanCard {
 
     @Enumerated(EnumType.STRING)
     @Column
-    private CardDifficulty difficulty;
+    private CardLevel level;
 
     @Enumerated(EnumType.STRING)
     @Column

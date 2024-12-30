@@ -2,13 +2,12 @@ package com.kmu.anki.backend.domain.usercard.repository;
 
 import com.kmu.anki.backend.domain.card.entity.QForeignCard;
 import com.kmu.anki.backend.domain.card.entity.QKoreanCard;
-import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.QUserCard;
-import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.Projections;
@@ -38,7 +37,7 @@ public class UserCardQueryRepository {
     public Page<UserCardDto> findStudyCards(
             Long userId,
             LanguageCode code,
-            CardDifficulty difficulty,
+            CardLevel difficulty,
             CardMeaningGroup meaningGroup,
             LocalDateTime now,
             Pageable pageable
@@ -49,7 +48,7 @@ public class UserCardQueryRepository {
                                 koreanCard.id,
                                 koreanCard.koreanWord,
                                 foreignCard.foreignWord,
-                                koreanCard.difficulty,
+                                koreanCard.level,
                                 foreignCard.languageCode,
                                 userCard.id,
                                 userCard.score,
@@ -59,7 +58,8 @@ public class UserCardQueryRepository {
                                 userCard.reps,
                                 userCard.scheduledDays,
                                 userCard.stability,
-                                userCard.state
+                                userCard.state,
+                                userCard.difficulty
                         )
                 )
                 .from(
@@ -86,7 +86,7 @@ public class UserCardQueryRepository {
                                 koreanCard.id,
                                 koreanCard.koreanWord,
                                 foreignCard.foreignWord,
-                                koreanCard.difficulty,
+                                koreanCard.level,
                                 foreignCard.languageCode,
                                 userCard.id,
                                 userCard.score,
@@ -96,7 +96,8 @@ public class UserCardQueryRepository {
                                 userCard.reps,
                                 userCard.scheduledDays,
                                 userCard.stability,
-                                userCard.state
+                                userCard.state,
+                                userCard.difficulty
                         )
                 )
                 .from(
@@ -156,7 +157,7 @@ public class UserCardQueryRepository {
     private Predicate combineQuery(
             Long userId,
             LanguageCode code,
-            CardDifficulty difficulty,
+            CardLevel difficulty,
             CardMeaningGroup meaningGroup,
             LocalDateTime now
     ){
@@ -183,8 +184,8 @@ public class UserCardQueryRepository {
         return code == null ? null : foreignCard.languageCode.eq(code);
     }
 
-    public BooleanExpression difficultyEq(CardDifficulty difficulty){
-        return difficulty == null ? null : koreanCard.difficulty.eq(difficulty);
+    public BooleanExpression difficultyEq(CardLevel difficulty){
+        return difficulty == null ? null : koreanCard.level.eq(difficulty);
     }
 
     public BooleanExpression meaningGroupEq(CardMeaningGroup meaningGroup){

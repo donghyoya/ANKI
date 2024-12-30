@@ -53,7 +53,7 @@ public class CardQueryRepository {
                                 koreanCard.id,
                                 koreanCard.koreanWord,
                                 foreignCard.foreignWord,
-                                koreanCard.difficulty,
+                                koreanCard.level,
                                 foreignCard.languageCode
                         )
                 ).from(
@@ -76,7 +76,7 @@ public class CardQueryRepository {
                                 koreanCard.id,
                                 koreanCard.koreanWord,
                                 foreignCard.foreignWord,
-                                koreanCard.difficulty,
+                                koreanCard.level,
                                 foreignCard.languageCode,
 
                                 koreanCard.headword,

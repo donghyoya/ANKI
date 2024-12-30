@@ -1,6 +1,6 @@
 package com.kmu.anki.backend.domain.usercard.dto;
 
-import com.kmu.anki.backend.domain.card.enums.CardDifficulty;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.CardState;
 
@@ -13,7 +13,7 @@ public class UserCardDto {
     private Long cardId;
     private String koreanWord;
     private String foreignWord;
-    private CardDifficulty difficulty;
+    private CardLevel level;
     private LanguageCode languageCode;
     private Long userCardId;
     private Integer score;
@@ -24,12 +24,13 @@ public class UserCardDto {
     private Double scheduledDays;
     private Double stability;
     private CardState state;
+    private Double difficulty;
 
     public UserCardDto(
             Long cardId,
             String koreanWord,
             String foreignWord,
-            CardDifficulty difficulty,
+            CardLevel level,
             LanguageCode languageCode,
             Long userCardId,
             Integer score,
@@ -39,12 +40,13 @@ public class UserCardDto {
             Integer reps,
             Double scheduledDays,
             Double stability,
-            CardState state
+            CardState state,
+            Double difficulty
     ) {
         this.cardId = cardId;
         this.koreanWord = koreanWord;
         this.foreignWord = foreignWord;
-        this.difficulty = difficulty;
+        this.level = level;
         this.languageCode = languageCode;
         this.userCardId = userCardId;
         this.score = score;
@@ -55,6 +57,7 @@ public class UserCardDto {
         this.scheduledDays = scheduledDays;
         this.stability = stability;
         this.state = state;
+        this.difficulty = difficulty;
     }
 
 }

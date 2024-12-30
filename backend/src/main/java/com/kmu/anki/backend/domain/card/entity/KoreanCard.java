@@ -28,6 +28,29 @@ public class KoreanCard {
     @Column
     private CardMeaningGroup meaningGroup;
 
+    /* 한국어 의미 관련 */
+
+    @Column
+    private String headword; // 표제어
+
+    @Column
+    private String homographNumber; // 동형어 번호
+
+    @Column
+    private String partsOfSpeech; // 품사
+
+    @Column
+    private String pronunciation; // 발음
+
+    @Column
+    private String relatedWords; // 관련어
+
+    @Column
+    private String inflection; // 활용
+
+    @Column
+    private String exampleUsage; // 용례
+
     /* 관계 - 외국어 카드 */
 
     @OneToMany(mappedBy = "koreanCard")

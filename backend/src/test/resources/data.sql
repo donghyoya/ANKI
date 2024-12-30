@@ -10,6 +10,13 @@ create table korean_cards (
                               difficulty varchar(255) check (difficulty in ('easy','normal','hard')),
                               korean_word varchar(255),
                               meaning_group varchar(255) check (meaning_group in ('Something','Anything')),
+                              example_usage varchar(255),
+                              headword varchar(255),
+                              homograph_number varchar(255),
+                              inflection varchar(255),
+                              parts_of_speech varchar(255),
+                              pronunciation varchar(255),
+                              related_words varchar(255),
                               primary key (korean_card_id)
 );
 create table user_cards (

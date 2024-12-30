@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.card.controller;
 
+import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
 import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.service.CardService;
@@ -24,5 +25,15 @@ public class CardController {
         LanguageCode code = LanguageCode.en;
         return cardService.readCard(cardId, code);
     }
+
+    @GetMapping("/{cardId}/details")
+    public CardDetailDto getCardDetails(
+            @PathVariable("cardId") Long cardId
+    ){
+        // TODO lanagaugeCode 추출
+        LanguageCode code = LanguageCode.en;
+        return cardService.readCardDetail(cardId, code);
+    }
+
 
 }

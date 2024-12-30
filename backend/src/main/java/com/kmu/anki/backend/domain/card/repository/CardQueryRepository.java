@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.card.repository;
 
+import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
 import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.dto.DeckDto;
 import com.kmu.anki.backend.domain.card.entity.ForeignCard;
@@ -67,6 +68,35 @@ public class CardQueryRepository {
                 .fetchOne();
     }
 
+    public CardDetailDto findDetailById(Long cardId, LanguageCode code){
+        return queryFactory
+                .select(
+                        Projections.constructor(
+                                CardDetailDto.class,
+                                koreanCard.id,
+                                koreanCard.koreanWord,
+                                foreignCard.foreignWord,
+                                koreanCard.difficulty,
+                                foreignCard.languageCode,
+                                koreanCard.headword,
+                                koreanCard.homographNumber,
+                                koreanCard.partsOfSpeech,
+                                koreanCard.pronunciation,
+                                koreanCard.relatedWords,
+                                koreanCard.inflection,
+                                koreanCard.exampleUsage
+                        )
+                ).from(
+                        foreignCard
+                ).join(foreignCard.koreanCard, koreanCard)
+                .where(
+                        koreanCard.id.eq(cardId)
+                                .and(
+                                        foreignCard.languageCode.eq(code)
+                                )
+                )
+                .fetchOne();
+    }
 
 
 }

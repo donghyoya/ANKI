@@ -42,6 +42,7 @@ public class UserCard {
     @Column(name = "user_card_state")
     private CardState state;
 
+    @Column
     private Double difficulty;
 
     /* 관계 User */

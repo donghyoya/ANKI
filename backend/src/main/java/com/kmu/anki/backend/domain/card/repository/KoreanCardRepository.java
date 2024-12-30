@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface KoreanCardRepository extends JpaRepository<KoreanCard, Long> {
     @Query("""
-        select new com.kmu.anki.backend.domain.card.dto.DeckDto(c.difficulty, count(c)) 
+        select new com.kmu.anki.backend.domain.card.dto.DeckDto(c.level, count(c)) 
         from KoreanCard c 
-        group by c.difficulty
+        group by c.level
     """)
-    public List<DeckDto> findAllDeckByDifficulty();
+    public List<DeckDto> findAllDeckByLevel();
 
     @Query("""
         select new com.kmu.anki.backend.domain.card.dto.DeckDto(c.meaningGroup, count(c)) 

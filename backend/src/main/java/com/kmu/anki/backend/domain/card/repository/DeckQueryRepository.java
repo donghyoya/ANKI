@@ -18,7 +18,7 @@ public class DeckQueryRepository {
     private final JdbcTemplate jdbcTemplate;
     private final String deckRateByDifficulty = """
             select 
-                    korean_cards.difficulty as category,
+                    korean_cards.level as category,
                     count(korean_card_id) as cards_counts,
                     sum(
                         case when user_cards.next_study_date <= now() then 1 else 0 end
@@ -29,7 +29,7 @@ public class DeckQueryRepository {
             from korean_cards
             join user_cards using (korean_card_id)
             where user_cards.user_id = ?
-            group by korean_cards.difficulty;
+            group by korean_cards.level;
         """;
 
     private final String deckRateByMeaning = """

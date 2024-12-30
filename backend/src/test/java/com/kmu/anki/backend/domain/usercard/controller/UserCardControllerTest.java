@@ -91,7 +91,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         mockMvc.perform(
                         get("/cards/study")
                                 .param("studyType", StudyType.study.toString())
-                                .param("queryType", "difficulty")
+                                .param("queryType", "level")
                                 .param("query","easy")
                 ).andExpect(status().isOk())
                 .andDo(
@@ -104,7 +104,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                                                 .queryParameters(
                                                         parameterWithName("studyType").description("study냐 review냐"),
                                                         parameterWithName("queryType").description("의미에 따른 분류인가 / 난이도에 따른 분류인가"),
-                                                        parameterWithName("query").description("검색어 (difficulty 또는 meaningGroup)")
+                                                        parameterWithName("query").description("검색어 (level 또는 meaningGroup)")
                                                 )
                                                 .responseFields(
                                                         BaseDocs.combine(

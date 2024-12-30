@@ -19,7 +19,7 @@ class DeckControllerTest extends AbstractControllerTest {
     void getDecksByDifficulty() throws Exception {
         mockMvc.perform(
                 get("/decks")
-                        .param("queryType", "difficulty")
+                        .param("queryType", "level")
         ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -29,7 +29,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .tag("Decks")
                                                 .summary("검색어 조건에 맞는 Deck 보기")
                                                 .queryParameters(
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (difficulty) / 난이도에 따른 분류인가 (meaning)")
+                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (level) / 난이도에 따른 분류인가 (meaning)")
                                                 )
                                                 .responseFields(
                                                         BaseDocs.combine(
@@ -59,7 +59,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .tag("Decks")
                                                 .summary("검색어 조건에 맞는 Deck 보기")
                                                 .queryParameters(
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (difficulty) / 난이도에 따른 분류인가 (meaning)")
+                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (level) / 난이도에 따른 분류인가 (meaning)")
                                                 )
                                                 .responseFields(
                                                         BaseDocs.combine(
@@ -80,7 +80,7 @@ class DeckControllerTest extends AbstractControllerTest {
     void getDecksCard() throws Exception{
         mockMvc.perform(
                 get("/decks/cards")
-                        .param("queryType", "difficulty")
+                        .param("queryType", "level")
                         .param("query","easy")
         ).andExpect(status().isOk())
                 .andDo(
@@ -91,7 +91,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .tag("Decks")
                                                 .summary("덱에 포함된 카드 모음")
                                                 .queryParameters(
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (difficulty) / 난이도에 따른 분류인가 (meaning)"),
+                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (level) / 난이도에 따른 분류인가 (meaning)"),
                                                         parameterWithName("query").description("검색어 (easy-normal-hard 등)")
                                                 )
                                                 .responseFields(

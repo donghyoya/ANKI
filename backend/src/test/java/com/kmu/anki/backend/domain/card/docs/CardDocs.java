@@ -17,7 +17,7 @@ public class CardDocs {
                 fieldWithPath(prefix+"cardId").description("단어카드의 고유번호"),
                 fieldWithPath(prefix+"koreanWord").description("한국어 단어"),
                 fieldWithPath(prefix+"foreignWord").description("외국어 단어"),
-                fieldWithPath(prefix+"difficulty").description("언어의 난이도 (easy, normal, hard)"),
+                fieldWithPath(prefix+"level").description("단어의 수준 (easy, normal, hard)"),
                 fieldWithPath(prefix+"languageCode").description("언어코드 (ISO 639-1)")
         };
     }
@@ -27,7 +27,7 @@ public class CardDocs {
                 fieldWithPath(prefix+"cardId").description("단어카드의 고유번호"),
                 fieldWithPath(prefix+"koreanWord").description("한국어 단어"),
                 fieldWithPath(prefix+"foreignWord").description("외국어 단어"),
-                fieldWithPath(prefix+"difficulty").description("언어의 난이도 (easy, normal, hard)"),
+                fieldWithPath(prefix+"level").description("단어의 수준 (easy, normal, hard)"),
                 fieldWithPath(prefix+"languageCode").description("언어코드 (ISO 639-1)"),
 
                 fieldWithPath(prefix+"headword").description("표제어"),

@@ -56,7 +56,8 @@ public class UserCardDocs {
                 fieldWithPath(prefix+"reps").description("총 복습횟수"),
                 fieldWithPath(prefix+"scheduledDays").description("현재 복습 간격"),
                 fieldWithPath(prefix+"stability").description("기억의 안정도"),
-                fieldWithPath(prefix+"state").description("카드의 현재 상태")
+                fieldWithPath(prefix+"state").description("카드의 현재 상태"),
+                fieldWithPath(prefix+"difficulty").description("카드의 난이도 (학습)")
         };
         return BaseDocs.combine(CardDocs.cardDto(prefix), userCardDto);
     }

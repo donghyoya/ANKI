@@ -30,6 +30,7 @@ create table user_cards (
                             scheduled_days float(53),
                             score integer,
                             stability float(53),
+                            difficulty float(53),
                             user_card_state varchar(255) check (user_card_state in ('New','Learning','Review','Relearning')),
                             user_id bigint,
                             primary key (user_card_id)
@@ -56,7 +57,7 @@ alter table if exists user_cards
 
 -- 예제 데이터 입력
 -- Easy 난이도 Korean Cards
-INSERT INTO korean_cards (difficulty, korean_word, meaning_group)
+INSERT INTO korean_cards (level, korean_word, meaning_group)
 VALUES
     ('easy', '안녕', 'Something'),
     ('easy', '사과', 'Something'),
@@ -80,7 +81,7 @@ VALUES
     ('easy', '꽃', 'Something');
 
 -- Normal 난이도 Korean Cards
-INSERT INTO korean_cards (difficulty, korean_word, meaning_group)
+INSERT INTO korean_cards (level, korean_word, meaning_group)
 VALUES
     ('normal', '사랑', 'Something'),
     ('normal', '희망', 'Something'),
@@ -104,7 +105,7 @@ VALUES
     ('normal', '여름', 'Something');
 
 -- Hard 난이도 Korean Cards
-INSERT INTO korean_cards (difficulty, korean_word, meaning_group)
+INSERT INTO korean_cards (level, korean_word, meaning_group)
 VALUES
     ('hard', '불가사의', 'Anything'),
     ('hard', '천둥', 'Anything'),

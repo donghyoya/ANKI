@@ -35,5 +35,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Some sensitive information ###
 .env
 application-test.yml
+files/

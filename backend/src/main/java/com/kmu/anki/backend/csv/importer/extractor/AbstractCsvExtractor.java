@@ -11,27 +11,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 @RequiredArgsConstructor
-public abstract class AbstractCsvExtractor {
+public abstract class AbstractCsvExtractor implements CsvExtractor{
     /**
-     * CSV 데이터 TYPE을 이 추출기가 추출할 수 있는가?
-     * @param type CSV 데이터의 타입 (사전에 합의할 것. 소문자 우선)
+     * CSV 데이터를 검증 및 데이터 추출하여 반환한다
+     * @param resource
      * @return
      */
-    public abstract boolean isSupport(String type);
-
-    /**
-     * 추출기에 의해 정상 추출된 데이터에 대해서
-     * @param row 정상 추출된 CSV Row 데이터
-     * @return
-     */
-    public abstract boolean isValid(String[] row);
-
-    public CsvParser getCsvParser(){
-        CsvParserSettings settings = new CsvParserSettings();
-        settings.setHeaderExtractionEnabled(true);
-        return new CsvParser(settings);
-    }
-
+    @Override
     public CsvExtractResult extract(Resource resource){
         CsvParser parser = getCsvParser();
         CsvExtractResult ret = new CsvExtractResult();
@@ -47,6 +33,23 @@ public abstract class AbstractCsvExtractor {
             throw new RuntimeException(e);
         }
         return ret;
+    }
+
+    /**
+     * CSV의 특정 row가 정상적인 데이터인가?
+     * @param row 검증할 CSV Row 데이터
+     * @return CSV ROW 데이터의 검증 결과
+     */
+    protected abstract boolean isValid(String[] row);
+
+    /**
+     * 편의성 메서드. 자주 사용되는 csv parser를 반환한다
+     * @return Csv Parser 반환
+     */
+    protected CsvParser getCsvParser(){
+        CsvParserSettings settings = new CsvParserSettings();
+        settings.setHeaderExtractionEnabled(true);
+        return new CsvParser(settings);
     }
 
     protected boolean isBlank(String record){

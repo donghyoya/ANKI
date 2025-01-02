@@ -31,7 +31,7 @@ public class KoreanCard {
     /* 한국어 의미 관련 */
 
     @Column
-    private String headword; // 표제어
+    private String originalLanguage; // 원어
 
     @Column
     private String homographNumber; // 동형어 번호

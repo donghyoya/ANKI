@@ -78,8 +78,7 @@ public class CardQueryRepository {
                                 foreignCard.foreignWord,
                                 koreanCard.level,
                                 foreignCard.languageCode,
-
-                                koreanCard.headword,
+                                koreanCard.originalLanguage,
                                 koreanCard.homographNumber,
                                 koreanCard.partsOfSpeech,
                                 koreanCard.pronunciation,

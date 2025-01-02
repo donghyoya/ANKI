@@ -2,17 +2,20 @@ package com.kmu.anki.backend.csv.importer.repository.impl;
 
 import com.kmu.anki.backend.csv.importer.repository.CsvBatchInsertRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
 @RequiredArgsConstructor
 public class CardCsvBatchInsertRepository implements CsvBatchInsertRepository {
-    private final NamedParameterJdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     private static final String INSERT_KOREAN_CARD = """
         insert into korean_cards(
@@ -28,16 +31,16 @@ public class CardCsvBatchInsertRepository implements CsvBatchInsertRepository {
                                  example_usage
                                  )
         values (
-             :korean_card_id,
-             :korean_word,
-             :homograph_number,
-             :parts_of_speech,
-             :original_language,
-             :pronunciation,
-             :inflection,
-             :level,
-             :related_words,
-             :example_usage
+             ? --korean_card_id,
+             ? --korean_word,
+             ? --homograph_number,
+             ? --parts_of_speech,
+             ? --original_language,
+             ? --pronunciation,
+             ? --inflection,
+             ? --level,
+             ? --related_words,
+             ? -- example_usage
         );
     """;
 
@@ -56,6 +59,28 @@ public class CardCsvBatchInsertRepository implements CsvBatchInsertRepository {
          *  19 : 관련어 relatedWords
          *  24 : 용례 exampleUsage
          */
+        jdbcTemplate.batchUpdate(INSERT_KOREAN_CARD, new BatchPreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement ps, int i) throws SQLException {
+                String[] row = rows.get(i);
+                ps.setLong(1,Long.parseLong(row[0])+1);
+                ps.setString(2, row[1]);
+                ps.setString(3, row[2]);
+                ps.setString(4, row[4]);
+                ps.setString(5, row[6]);
+                ps.setString(6, row[7]);
+                ps.setString(7, row[8]);
+                ps.setString(8, row[11]);
+                ps.setString(9, row[19]);
+                ps.setString(9, row[24]);
+            }
+
+            @Override
+            public int getBatchSize() {
+                return rows.size();
+            }
+        });
+
     }
 
     @Override

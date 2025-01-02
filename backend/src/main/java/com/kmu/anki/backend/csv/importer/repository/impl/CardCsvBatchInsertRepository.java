@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.csv.importer.repository.impl;
 
 import com.kmu.anki.backend.csv.importer.repository.CsvBatchInsertRepository;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,13 +14,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+@Component
 @RequiredArgsConstructor
 public class CardCsvBatchInsertRepository implements CsvBatchInsertRepository {
     private final JdbcTemplate jdbcTemplate;
 
     private static final String INSERT_KOREAN_CARD = """
         insert into korean_cards(
-                                 korean_card_id,
+                                 -- korean_card_id,
                                  korean_word,
                                  homograph_number,
                                  parts_of_speech,
@@ -31,15 +33,15 @@ public class CardCsvBatchInsertRepository implements CsvBatchInsertRepository {
                                  example_usage
                                  )
         values (
-             ? --korean_card_id,
-             ? --korean_word,
-             ? --homograph_number,
-             ? --parts_of_speech,
-             ? --original_language,
-             ? --pronunciation,
-             ? --inflection,
-             ? --level,
-             ? --related_words,
+             -- ?, --korean_card_id,
+             ?, --korean_word,
+             ?, --homograph_number,
+             ?, --parts_of_speech,
+             ?, --original_language,
+             ?, --pronunciation,
+             ?, --inflection,
+             ?, --level,
+             ?, --related_words,
              ? -- example_usage
         );
     """;
@@ -63,15 +65,15 @@ public class CardCsvBatchInsertRepository implements CsvBatchInsertRepository {
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 String[] row = rows.get(i);
-                ps.setLong(1,Long.parseLong(row[0])+1);
-                ps.setString(2, row[1]);
-                ps.setString(3, row[2]);
-                ps.setString(4, row[4]);
-                ps.setString(5, row[6]);
-                ps.setString(6, row[7]);
-                ps.setString(7, row[8]);
-                ps.setString(8, row[11]);
-                ps.setString(9, row[19]);
+//                ps.setLong(1,Long.parseLong(row[0])+1);
+                ps.setString(1, row[1]);
+                ps.setString(2, row[2]);
+                ps.setString(3, row[4]);
+                ps.setString(4, row[6]);
+                ps.setString(5, row[7]);
+                ps.setString(6, row[8]);
+                ps.setString(7, CardLevel.fromCsv(row[11]));
+                ps.setString(8, row[19]);
                 ps.setString(9, row[24]);
             }
 

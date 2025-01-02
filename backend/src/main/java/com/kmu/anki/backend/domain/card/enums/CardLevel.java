@@ -6,5 +6,16 @@ package com.kmu.anki.backend.domain.card.enums;
 public enum CardLevel {
     easy,
     normal,
-    hard
+    hard;
+
+    public static String  fromCsv(String data){
+        if(data.equals("고급")){
+            return hard.toString();
+        }else if(data.equals("중급")){
+            return normal.toString();
+        }else if (data.equals("초급")){
+            return easy.toString();
+        }
+        return null;
+    }
 }

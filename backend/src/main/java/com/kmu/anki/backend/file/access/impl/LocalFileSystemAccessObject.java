@@ -2,8 +2,10 @@ package com.kmu.anki.backend.file.access.impl;
 
 
 import com.kmu.anki.backend.file.access.FileSystemAccessObject;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -16,6 +18,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.NoSuchElementException;
 
+@Profile({"insert"})
+@Component
 public class LocalFileSystemAccessObject implements FileSystemAccessObject {
     private static String ROOT = "files/";
 

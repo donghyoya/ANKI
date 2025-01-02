@@ -42,13 +42,13 @@ public class KoreanCard {
     @Column
     private String pronunciation; // 발음
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String relatedWords; // 관련어
 
     @Column
     private String inflection; // 활용
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String exampleUsage; // 용례
 
     /* 관계 - 외국어 카드 */

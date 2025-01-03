@@ -23,7 +23,6 @@ jobs:
       # Step 3: 프로젝트 의존성 설치 및 빌드
       - name: Install dependencies and build
         run: |
-          pwd
           ls -al
           cd frontend/
           npm install

@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '19'  # 사용하고자 하는 Node.js 버전
+          node-version: '22'  # 사용하고자 하는 Node.js 버전
 
       # Step 3: 프로젝트 의존성 설치 및 빌드
       - name: Install dependencies and build

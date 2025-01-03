@@ -17,7 +17,7 @@ public class ForeignCard {
     @Column
     private LanguageCode languageCode;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String foreignWord;
 
     @Column(columnDefinition = "TEXT")

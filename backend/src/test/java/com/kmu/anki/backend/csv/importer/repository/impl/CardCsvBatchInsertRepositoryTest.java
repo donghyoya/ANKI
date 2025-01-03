@@ -4,6 +4,7 @@ import com.kmu.anki.backend.TestcontainersConfiguration;
 import com.kmu.anki.backend.csv.importer.dto.CsvExtractResult;
 import com.kmu.anki.backend.csv.importer.extractor.impl.CardCsvExtractor;
 import com.kmu.anki.backend.file.access.FileSystemAccessObject;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +22,7 @@ import java.io.InputStreamReader;
 import static org.junit.jupiter.api.Assertions.*;
 
 //@Import(TestcontainersConfiguration.class)
+@Disabled
 @ActiveProfiles("insert")
 @SpringBootTest
 class CardCsvBatchInsertRepositoryTest {

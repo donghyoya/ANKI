@@ -49,11 +49,7 @@ jobs:
       # Step 6: 빌드된 파일 서버로 전송
       - name: Transfer files to server via SCP
         run: |
-          pwd
-          ls -al
           cd frontend/
-          pwd
-          ls -al
           scp -o StrictHostKeyChecking=no build.zip ${{ secrets.USER }}@${{ secrets.HOST }}:/home/ubuntu/ANKI/frontend
 
       # Step 7: 서버에서 Docker로 배포

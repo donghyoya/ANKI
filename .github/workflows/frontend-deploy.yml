@@ -55,7 +55,6 @@ jobs:
           ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 ${{ secrets.USER }}@${{ secrets.HOST }} << 'EOF'
             cd /home/ubuntu/ANKI/frontend
             unzip -o build.zip
-            cd scripts
             ./stop.sh
             ./start.sh
           EOF

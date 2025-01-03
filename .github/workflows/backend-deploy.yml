@@ -25,6 +25,7 @@ jobs:
     # Step 1: 소스 빌드하고 압축하기
     - name: Build and Zip Application
       run: |
+        ls -al
         cd backend/
         chmod +x gradlew
         # 빌드 (필요에 따라 gradle 또는 다른 빌드 명령어 사용)

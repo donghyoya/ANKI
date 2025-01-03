@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies and build
         run: |
           pwd
-          ll
+          ls -al
           cd frontend/recipe-universe-react-app
           npm install
           npm run build  # React 앱을 빌드 (build 폴더 생성)

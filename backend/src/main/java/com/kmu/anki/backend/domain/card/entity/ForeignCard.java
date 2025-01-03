@@ -20,6 +20,9 @@ public class ForeignCard {
     @Column
     private String foreignWord;
 
+    @Column(columnDefinition = "TEXT")
+    private String foreignMeaning;
+
     /* 관계 - 한국어 카드 */
     @ManyToOne
     @JoinColumn(name = "korean_card_id")

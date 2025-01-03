@@ -87,6 +87,6 @@ public class CardCsvBatchInsertRepository implements CsvBatchInsertRepository {
 
     @Override
     public boolean isSupport(String type) {
-        return false;
+        return "TYPE".equals(type);
     }
 }

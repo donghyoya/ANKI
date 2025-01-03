@@ -8,8 +8,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.InputStreamSource;
 import org.springframework.core.io.Resource;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,8 +27,9 @@ class CardCsvBatchInsertRepositoryTest {
     @Autowired private CardCsvBatchInsertRepository cardCsvBatchInsertRepository;
 
     @Test
-    void batchInsert() {
+    void batchInsert() throws IOException {
         Resource data = fileSAO.load("insert_data.csv");
+
         CsvExtractResult extract = cardCsvExtractor.extract(data);
         cardCsvBatchInsertRepository.batchInsert(extract.getValidRecords());
     }

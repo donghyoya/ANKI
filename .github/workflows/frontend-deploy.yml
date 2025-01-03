@@ -51,7 +51,7 @@ jobs:
         run: |
           pwd
           ls -al
-          cd frontend/ANKI
+          cd frontend/
           pwd
           ls -al
           scp -o StrictHostKeyChecking=no build.zip ${{ secrets.USER }}@${{ secrets.HOST }}:/home/ubuntu/ANKI/frontend

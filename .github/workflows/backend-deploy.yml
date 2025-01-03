@@ -37,14 +37,14 @@ jobs:
         mkdir -p ~/.ssh
         echo "${{ secrets.WAS_EC2_SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.WAS_HOST }} >> ~/.ssh/known_hosts
+        ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
     # Step 2: 서버로 파일 전송
     - name: Transfer files to server via SCP
       run: |
         cd backend
         # 서버로 파일 전송
-        scp -o StrictHostKeyChecking=no backend.zip ${{ secrets.WAS_USER }}@${{ secrets.WAS_HOST }}:/home/ubuntu/recipeUniverse/backend
+        scp -o StrictHostKeyChecking=no backend.zip ${{ secrets.WUSER }}@${{ secrets.HOST }}:/home/ubuntu/ANKI/backend
 
 
     # Step 3: 서버에서 압축 풀고 스크립트 실행
@@ -52,7 +52,7 @@ jobs:
       env:
         SSH_PRIVATE_KEY: ${{ secrets.WAS_EC2_SSH_KEY }}
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.WAS_USER }}@${{ secrets.WAS_HOST }} << 'EOF'
-          cd /home/ubuntu/recipeUniverse/backend
+        ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} << 'EOF'
+          cd /home/ubuntu/ANKI/backend
           unzip -o backend.zip
         EOF

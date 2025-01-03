@@ -33,7 +33,9 @@ jobs:
       # Step 4: 빌드된 폴더 압축
       - name: Zip build folder
         run: |
-          cd frontend/recipe-universe-react-app
+          cd frontend/
+          pwd
+          ls -al
           zip -r build.zip build package.json package-lock.json
 
       # Step 5: SSH 설정
@@ -47,16 +49,16 @@ jobs:
       # Step 6: 빌드된 파일 서버로 전송
       - name: Transfer files to server via SCP
         run: |
-          cd frontend/recipe-universe-react-app
+          cd frontend/ANKI
           pwd
           ls -al
-          scp -o StrictHostKeyChecking=no build.zip ${{ secrets.USER }}@${{ secrets.HOST }}:/home/ubuntu/recipeUniverse/frontend
+          scp -o StrictHostKeyChecking=no build.zip ${{ secrets.USER }}@${{ secrets.HOST }}:/home/ubuntu/ANKI/frontend
 
       # Step 7: 서버에서 Docker로 배포
       - name: Deploy on Server
         run: |
           ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 ${{ secrets.USER }}@${{ secrets.HOST }} << 'EOF'
-            cd /home/ubuntu/recipeUniverse/frontend
+            cd /home/ubuntu/ANKI/frontend
             unzip -o build.zip
             cd scripts
             ./stop.sh

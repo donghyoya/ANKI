@@ -1,29 +1,82 @@
 package com.kmu.anki.backend.domain.usercard.service;
 
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
+import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.user.entity.CardState;
+import com.kmu.anki.backend.domain.user.entity.User;
+import com.kmu.anki.backend.domain.user.repository.UserRepository;
+import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
+import com.kmu.anki.backend.domain.usercard.repository.UserCardQueryRepository;
 import com.kmu.anki.backend.domain.usercard.repository.UserCardRepository;
+import com.kmu.anki.backend.domain.usercard.repository.UserCardStudyRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
 public class UserCardService {
+    private final UserRepository userRepository;
     private final UserCardRepository userCardRepository;
+    private final UserCardStudyRepository userCardStudyRepository;
+    private final UserCardQueryRepository userCardQueryRepository;
 
-    public UserCardDto findByUserCardId(Long userCardId){
-        return userCardRepository.findCardByUserCardId(userCardId);
-    }
+    /* CREATE */
 
     @Transactional
-    public UserCardDto updateUserCard(Long userCardId, Integer score, LocalDateTime nextStudyDate){
-        UserCard userCard = userCardRepository.findUserCardById(userCardId);
-        userCard.update(score, nextStudyDate);
-        return new UserCardDto(userCard, userCard.getCard());
+    public void createUserCards(Long userId){
+        if(!userCardRepository.existsByUserId(userId)){
+            /* UserId를 여러개 만들게 하지 않기 위함 */
+            userCardStudyRepository.studyDeck(userId);
+        }
     }
+
+    /* READ */
+
+    public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, CardMeaningGroup cardMeaningGroup){
+        LocalDateTime now = LocalDateTime.now();
+        User user = userRepository.findById(userId).orElseThrow();
+        PageRequest pageRequest = PageRequest.of(0, user.getTodayStudyWords());
+        return userCardQueryRepository.findStudyCards(userId, languageCode, null, cardMeaningGroup, now, pageRequest);
+    }
+
+    public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, CardLevel cardLevel){
+        LocalDateTime now = LocalDateTime.now();
+        User user = userRepository.findById(userId).orElseThrow();
+        PageRequest pageRequest = PageRequest.of(0, user.getTodayStudyWords());
+        return userCardQueryRepository.findStudyCards(userId, languageCode, cardLevel, null, now, pageRequest);
+    }
+
+
+    public CardStudyDto readCardStudyInfo(Long cardId){
+        return userCardQueryRepository.findCardStudyDto(cardId);
+    }
+
+    /* UPDATE */
+
+    @Transactional
+    public CardStudyDto updateUserCard(Long userCardId, LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
+        UserCard userCard = userCardRepository.findById(userCardId).orElseThrow();
+        userCard.update(
+                nextStudyDate,
+                lapses,
+                lastReview,
+                reps,
+                scheduledDays,
+                stability,
+                state
+        );
+        return CardStudyDto.of(userCard);
+    }
+
+    /* DELETE */
+
 }

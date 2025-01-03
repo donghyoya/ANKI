@@ -1,0 +1,32 @@
+package com.kmu.anki.backend.domain.user.controller;
+
+import com.kmu.anki.backend.domain.user.dto.UserOptionDto;
+import com.kmu.anki.backend.domain.user.service.UserOptionService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+@RequiredArgsConstructor
+@RequestMapping("/user/option")
+@RestController
+public class UserOptionController {
+    private final UserOptionService userOptionService;
+
+    @GetMapping("/{id}")
+    public UserOptionDto getUserOption(
+            @PathVariable("id") long id
+    ){
+        return userOptionService.readOption(id);
+    }
+
+    @PostMapping
+    public UserOptionDto putUserOption(
+            @RequestBody UserOptionDto form
+    ){
+        return userOptionService.updateOption(
+                form.getId(),
+                form.getTodayStudyWords(),
+                form.getTodayReviewWords(),
+                form.getLanguageCode()
+        );
+    }
+}

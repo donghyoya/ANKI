@@ -21,13 +21,8 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 
-@Import(TestcontainersConfiguration.class)
 @ExtendWith(RestDocumentationExtension.class)
-@ActiveProfiles("test")
-@Sql(scripts = "classpath:/data.sql", executionPhase= Sql.ExecutionPhase.BEFORE_TEST_CLASS, config = @SqlConfig(encoding = "UTF-8"))
-@Sql(scripts = "classpath:/drop.sql", executionPhase= Sql.ExecutionPhase.AFTER_TEST_CLASS,  config = @SqlConfig(encoding = "UTF-8"))
-@SpringBootTest
-public abstract class AbstractControllerTest {
+public abstract class AbstractControllerTest extends AbstractIntegrationTest{
     @Autowired
     protected ObjectMapper objectMapper;
 

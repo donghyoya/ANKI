@@ -7,50 +7,17 @@ servers:
 - url: http://localhost:8080/
 tags: []
 paths:
-  /decks:
+  /cards/study:
     get:
       tags:
-      - Decks
-      summary: 검색어 조건에 맞는 Deck 보기
-      description: 검색어 조건에 맞는 Deck 보기
-      operationId: deck-controller-test/get-decks
+      - StudyCards
+      summary: '오늘 공부할 카드 모음 '
+      description: '오늘 공부할 카드 모음 '
+      operationId: user-card-controller-test/get-study-card
       parameters:
-      - name: languageCode
+      - name: studyType
         in: query
-        description: 언어코드
-        required: true
-        schema:
-          type: string
-      - name: queryType
-        in: query
-        description: 의미에 따른 분류인가 / 난이도에 따른 분류인가
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: "200"
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/decks2056970011"
-              examples:
-                deck-controller-test/get-decks:
-                  value: "{\"page\":0,\"pageSize\":1,\"size\":3,\"content\":[{\"category\"\
-                    :\"easy\",\"languageCode\":\"en\",\"cardCounts\":20},{\"category\"\
-                    :\"hard\",\"languageCode\":\"en\",\"cardCounts\":19},{\"category\"\
-                    :\"normal\",\"languageCode\":\"en\",\"cardCounts\":19}]}"
-  /decks/cards:
-    get:
-      tags:
-      - Cards
-      summary: 덱에 포함된 카드 모음
-      description: 덱에 포함된 카드 모음
-      operationId: deck-controller-test/get-decks-card
-      parameters:
-      - name: languageCode
-        in: query
-        description: 언어코드
+        description: study냐 review냐
         required: true
         schema:
           type: string
@@ -62,7 +29,7 @@ paths:
           type: string
       - name: query
         in: query
-        description: 검색어 (difficulty 또는 meaningGroup)
+        description: 검색어 (level 또는 meaningGroup)
         required: true
         schema:
           type: string
@@ -72,101 +39,121 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: "#/components/schemas/decks-cards752419103"
+                $ref: "#/components/schemas/userCards"
               examples:
-                deck-controller-test/get-decks-card:
+                user-card-controller-test/get-study-card:
                   value: "{\"page\":0,\"pageSize\":1,\"size\":20,\"content\":[{\"\
-                    cardId\":1,\"koreanWord\":\"가족\",\"foreignWord\":\"Family\",\"\
-                    difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\":2,\"\
-                    koreanWord\":\"학교\",\"foreignWord\":\"School\",\"difficulty\"\
-                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":3,\"koreanWord\"\
-                    :\"친구\",\"foreignWord\":\"Friend\",\"difficulty\":\"easy\",\"\
-                    languageCode\":\"en\"},{\"cardId\":4,\"koreanWord\":\"사과\",\"\
-                    foreignWord\":\"Apple\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\"},{\"cardId\":5,\"koreanWord\":\"의사\",\"foreignWord\":\"\
-                    Doctor\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"\
-                    cardId\":6,\"koreanWord\":\"도서관\",\"foreignWord\":\"Library\"\
-                    ,\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
-                    :7,\"koreanWord\":\"컴퓨터\",\"foreignWord\":\"Computer\",\"difficulty\"\
-                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":8,\"koreanWord\"\
-                    :\"전화\",\"foreignWord\":\"Phone\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\"},{\"cardId\":9,\"koreanWord\":\"비행기\",\"foreignWord\"\
-                    :\"Airplane\",\"difficulty\":\"easy\",\"languageCode\":\"en\"\
-                    },{\"cardId\":10,\"koreanWord\":\"기차\",\"foreignWord\":\"Train\"\
-                    ,\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
-                    :11,\"koreanWord\":\"자동차\",\"foreignWord\":\"Car\",\"difficulty\"\
-                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":12,\"koreanWord\"\
-                    :\"집\",\"foreignWord\":\"House\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\"},{\"cardId\":13,\"koreanWord\":\"강아지\",\"foreignWord\"\
-                    :\"Puppy\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"\
-                    cardId\":14,\"koreanWord\":\"고양이\",\"foreignWord\":\"Cat\",\"\
-                    difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\":15,\"\
-                    koreanWord\":\"음악\",\"foreignWord\":\"Music\",\"difficulty\":\"\
-                    easy\",\"languageCode\":\"en\"},{\"cardId\":16,\"koreanWord\"\
-                    :\"영화\",\"foreignWord\":\"Movie\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\"},{\"cardId\":17,\"koreanWord\":\"책\",\"foreignWord\":\"\
-                    Book\",\"difficulty\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
-                    :18,\"koreanWord\":\"공원\",\"foreignWord\":\"Park\",\"difficulty\"\
-                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":19,\"koreanWord\"\
-                    :\"해변\",\"foreignWord\":\"Beach\",\"difficulty\":\"easy\",\"languageCode\"\
-                    :\"en\"},{\"cardId\":20,\"koreanWord\":\"가게\",\"foreignWord\"\
-                    :\"Store\",\"difficulty\":\"easy\",\"languageCode\":\"en\"}]}"
-  /user/decks:
+                    cardId\":1,\"koreanWord\":\"안녕\",\"foreignWord\":\"hello\",\"\
+                    level\":\"easy\",\"languageCode\":\"en\",\"userCardId\":241,\"\
+                    score\":null,\"nextStudyDate\":\"2025-01-03T16:39:58.433391\"\
+                    ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
+                    :null,\"stability\":null,\"state\":\"New\",\"difficulty\":null},{\"\
+                    cardId\":2,\"koreanWord\":\"사과\",\"foreignWord\":\"apple\",\"\
+                    level\":\"easy\",\"languageCode\":\"en\",\"userCardId\":242,\"\
+                    score\":null,\"nextStudyDate\":\"2025-01-03T16:39:58.433391\"\
+                    ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
+                    :null,\"stability\":null,\"state\":\"New\",\"difficulty\":null},{\"\
+                    cardId\":3,\"koreanWord\":\"물\",\"foreignWord\":\"water\",\"level\"\
+                    :\"easy\",\"languageCode\":\"en\",\"userCardId\":243,\"score\"\
+                    :null,\"nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\"\
+                    :null,\"lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"\
+                    stability\":null,\"state\":\"New\",\"difficulty\":null},{\"cardId\"\
+                    :4,\"koreanWord\":\"책\",\"foreignWord\":\"book\",\"level\":\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":244,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":5,\"\
+                    koreanWord\":\"밥\",\"foreignWord\":\"rice\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":245,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":6,\"\
+                    koreanWord\":\"학교\",\"foreignWord\":\"school\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":246,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":7,\"\
+                    koreanWord\":\"공\",\"foreignWord\":\"ball\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":247,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":8,\"\
+                    koreanWord\":\"연필\",\"foreignWord\":\"pencil\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":248,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":9,\"\
+                    koreanWord\":\"의자\",\"foreignWord\":\"chair\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":249,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":10,\"\
+                    koreanWord\":\"친구\",\"foreignWord\":\"friend\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":250,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":11,\"\
+                    koreanWord\":\"우유\",\"foreignWord\":\"milk\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":251,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":12,\"\
+                    koreanWord\":\"하늘\",\"foreignWord\":\"sky\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":252,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":13,\"\
+                    koreanWord\":\"강아지\",\"foreignWord\":\"puppy\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":253,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":14,\"\
+                    koreanWord\":\"고양이\",\"foreignWord\":\"cat\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":254,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":15,\"\
+                    koreanWord\":\"집\",\"foreignWord\":\"house\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":255,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":16,\"\
+                    koreanWord\":\"사람\",\"foreignWord\":\"person\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":256,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":17,\"\
+                    koreanWord\":\"나무\",\"foreignWord\":\"tree\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":257,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":18,\"\
+                    koreanWord\":\"바다\",\"foreignWord\":\"sea\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":258,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":19,\"\
+                    koreanWord\":\"시간\",\"foreignWord\":\"time\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":259,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null},{\"cardId\":20,\"\
+                    koreanWord\":\"꽃\",\"foreignWord\":\"flower\",\"level\":\"easy\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":260,\"score\":null,\"\
+                    nextStudyDate\":\"2025-01-03T16:39:58.433391\",\"lapses\":null,\"\
+                    lastReview\":null,\"reps\":null,\"scheduledDays\":null,\"stability\"\
+                    :null,\"state\":\"New\",\"difficulty\":null}]}"
+  /cards/{id}:
     get:
       tags:
-      - StudyDecks
-      summary: 내가 현재 학습 중인 decks 보기
-      description: 내가 현재 학습 중인 decks 보기
-      operationId: user-deck-controller-test/get-my-deck
-      responses:
-        "200":
-          description: "200"
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/user-decks1915284204"
-              examples:
-                user-deck-controller-test/get-my-deck:
-                  value: "{\"page\":0,\"pageSize\":1,\"size\":2,\"content\":[{\"id\"\
-                    :1,\"languageCode\":\"en\",\"difficulty\":\"normal\",\"counts\"\
-                    :19},{\"id\":2,\"languageCode\":\"en\",\"difficulty\":\"hard\"\
-                    ,\"counts\":19}]}"
-    post:
-      tags:
-      - StudyDecks
-      summary: 학습을 시작함
-      description: 학습을 시작함
-      operationId: user-deck-controller-test/create-study-deck
-      requestBody:
-        content:
-          application/json;charset=UTF-8:
-            schema:
-              $ref: "#/components/schemas/user-cards-id-1511672484"
-            examples:
-              user-deck-controller-test/create-study-deck:
-                value: "{\"difficulty\":\"easy\",\"languageCode\":\"en\"}"
-      responses:
-        "200":
-          description: "200"
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/user-decks2028487329"
-              examples:
-                user-deck-controller-test/create-study-deck:
-                  value: "{\"id\":3,\"languageCode\":\"en\",\"difficulty\":\"easy\"\
-                    ,\"counts\":20}"
-  /user/cards/{id}:
-    get:
-      tags:
-      - StudyCards
-      summary: userCard 보기
-      description: userCard 보기
-      operationId: user-card-controller-test/get-user-cards
+      - Cards
+      summary: Card 보기
+      description: Card 보기
+      operationId: card-controller-test/get-card
       parameters:
       - name: id
         in: path
-        description: userCard 고유번호
+        description: 카드의 고유번호
         required: true
         schema:
           type: string
@@ -176,22 +163,75 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: "#/components/schemas/user-cards-id210174920"
+                $ref: "#/components/schemas/card"
               examples:
-                user-card-controller-test/get-user-cards:
-                  value: "{\"cardId\":21,\"userCardId\":1,\"koreanWord\":\"별빛\",\"\
-                    foreignWord\":\"Starlight\",\"difficulty\":\"normal\",\"languageCode\"\
-                    :\"en\",\"score\":null,\"nextStudyDate\":null}"
+                card-controller-test/get-card:
+                  value: "{\"cardId\":1,\"koreanWord\":\"안녕\",\"foreignWord\":\"hello\"\
+                    ,\"level\":\"easy\",\"languageCode\":\"en\"}"
+  /cards/{id}/details:
+    get:
+      tags:
+      - Cards
+      summary: Card에 대한 디테일한 정보 보기
+      description: Card에 대한 디테일한 정보 보기
+      operationId: card-controller-test/get-card-details
+      parameters:
+      - name: id
+        in: path
+        description: 카드의 고유번호
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/cardDetail"
+              examples:
+                card-controller-test/get-card-details:
+                  value: "{\"cardId\":1,\"koreanWord\":\"안녕\",\"foreignWord\":\"hello\"\
+                    ,\"level\":\"easy\",\"languageCode\":\"en\",\"headword\":null,\"\
+                    homographNumber\":null,\"partsOfSpeech\":null,\"pronunciation\"\
+                    :null,\"relatedWords\":null,\"inflection\":null,\"exampleUsage\"\
+                    :null}"
+  /cards/{id}/study:
+    get:
+      tags:
+      - StudyCards
+      summary: Card 학습 정보 보기
+      description: Card 학습 정보 보기
+      operationId: user-card-controller-test/get-card-study-info
+      parameters:
+      - name: id
+        in: path
+        description: 카드의 고유번호
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/cardStudyInfo"
+              examples:
+                user-card-controller-test/get-card-study-info:
+                  value: "{\"cardId\":1,\"nextStudyDate\":\"2025-01-03T16:39:58.433391\"\
+                    ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
+                    :null,\"stability\":null,\"state\":\"New\"}"
     post:
       tags:
       - StudyCards
-      summary: userCard 보기
-      description: userCard 보기
+      summary: Card 학습결과를 갱신
+      description: Card 학습결과를 갱신
       operationId: user-card-controller-test/put-user-cards
       parameters:
       - name: id
         in: path
-        description: userCard 고유번호
+        description: card 고유번호
         required: true
         schema:
           type: string
@@ -199,120 +239,36 @@ paths:
         content:
           application/json;charset=UTF-8:
             schema:
-              $ref: "#/components/schemas/user-cards-id-1511672484"
+              $ref: "#/components/schemas/studyCardForm"
             examples:
               user-card-controller-test/put-user-cards:
-                value: "{\"difficulty\":\"easy\",\"languageCode\":\"en\"}"
+                value: "{\"lapses\":5,\"reps\":72,\"scheduledDays\":0.9,\"nextStudyDate\"\
+                  :\"2025-01-03T16:39:58.5513746\",\"lastReview\":\"2025-01-03T16:39:58.5513746\"\
+                  ,\"state\":\"Review\",\"stability\":1.3}"
       responses:
         "200":
           description: "200"
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: "#/components/schemas/user-cards-id210174920"
+                $ref: "#/components/schemas/cardStudyInfo"
               examples:
                 user-card-controller-test/put-user-cards:
-                  value: "{\"cardId\":21,\"userCardId\":1,\"koreanWord\":\"별빛\",\"\
-                    foreignWord\":\"Starlight\",\"difficulty\":\"normal\",\"languageCode\"\
-                    :\"en\",\"score\":null,\"nextStudyDate\":null}"
-  /user/decks/{deckId}:
+                  value: "{\"cardId\":1,\"nextStudyDate\":\"2025-01-03T16:39:58.5513746\"\
+                    ,\"lapses\":5,\"lastReview\":\"2025-01-03T16:39:58.5513746\",\"\
+                    reps\":72,\"scheduledDays\":0.9,\"stability\":1.3,\"state\":\"\
+                    Review\"}"
+  /decks:
     get:
       tags:
-      - StudyCards
-      summary: 내가 현재 학습 중인 decks 보기
-      description: 내가 현재 학습 중인 decks 보기
-      operationId: user-deck-controller-test/get-decks-card
+      - Decks
+      summary: 검색어 조건에 맞는 Deck 보기
+      description: 검색어 조건에 맞는 Deck 보기
+      operationId: deck-controller-test/get-decks-by-
       parameters:
-      - name: deckId
-        in: path
-        description: userDeck의 고유번호
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: "200"
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/user-decks-deckId-635127103"
-              examples:
-                user-deck-controller-test/get-decks-card:
-                  value: "{\"size\":19,\"content\":[{\"cardId\":21,\"userCardId\"\
-                    :1,\"koreanWord\":\"별빛\",\"foreignWord\":\"Starlight\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":22,\"userCardId\"\
-                    :2,\"koreanWord\":\"희망\",\"foreignWord\":\"Hope\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":23,\"userCardId\"\
-                    :3,\"koreanWord\":\"자유\",\"foreignWord\":\"Freedom\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":24,\"userCardId\"\
-                    :4,\"koreanWord\":\"행운\",\"foreignWord\":\"Luck\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":25,\"userCardId\"\
-                    :5,\"koreanWord\":\"평화\",\"foreignWord\":\"Peace\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":26,\"userCardId\"\
-                    :6,\"koreanWord\":\"용기\",\"foreignWord\":\"Courage\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":27,\"userCardId\"\
-                    :7,\"koreanWord\":\"조화\",\"foreignWord\":\"Harmony\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":28,\"userCardId\"\
-                    :8,\"koreanWord\":\"열정\",\"foreignWord\":\"Passion\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":29,\"userCardId\"\
-                    :9,\"koreanWord\":\"우정\",\"foreignWord\":\"Friendship\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":30,\"userCardId\"\
-                    :10,\"koreanWord\":\"모험\",\"foreignWord\":\"Adventure\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":31,\"userCardId\"\
-                    :11,\"koreanWord\":\"지혜\",\"foreignWord\":\"Wisdom\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":32,\"userCardId\"\
-                    :12,\"koreanWord\":\"믿음\",\"foreignWord\":\"Faith\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":33,\"userCardId\"\
-                    :13,\"koreanWord\":\"사상\",\"foreignWord\":\"Ideology\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":34,\"userCardId\"\
-                    :14,\"koreanWord\":\"역사\",\"foreignWord\":\"History\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":35,\"userCardId\"\
-                    :15,\"koreanWord\":\"문화\",\"foreignWord\":\"Culture\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":36,\"userCardId\"\
-                    :16,\"koreanWord\":\"철학\",\"foreignWord\":\"Philosophy\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":37,\"userCardId\"\
-                    :17,\"koreanWord\":\"예술\",\"foreignWord\":\"Art\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":38,\"userCardId\"\
-                    :18,\"koreanWord\":\"공상\",\"foreignWord\":\"Imagination\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":39,\"userCardId\"\
-                    :19,\"koreanWord\":\"기억\",\"foreignWord\":\"Memory\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"}]}"
-  /user/decks/{deckId}/study:
-    get:
-      tags:
-      - StudyCards
-      summary: 내가 현재 학습 중인 decks 보기
-      description: 내가 현재 학습 중인 decks 보기
-      operationId: user-deck-controller-test/get-decks-study-card
-      parameters:
-      - name: deckId
-        in: path
-        description: userDeck의 고유번호
-        required: true
-        schema:
-          type: string
-      - name: studyType
+      - name: queryType
         in: query
-        description: study or review
+        description: 의미에 따른 분류인가 (level) / 난이도에 따른 분류인가 (meaning)
         required: true
         schema:
           type: string
@@ -322,70 +278,163 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: "#/components/schemas/user-decks-deckId-635127103"
+                $ref: "#/components/schemas/decks"
               examples:
-                user-deck-controller-test/get-decks-study-card:
-                  value: "{\"size\":19,\"content\":[{\"cardId\":21,\"userCardId\"\
-                    :1,\"koreanWord\":\"별빛\",\"foreignWord\":\"Starlight\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":22,\"userCardId\"\
-                    :2,\"koreanWord\":\"희망\",\"foreignWord\":\"Hope\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":23,\"userCardId\"\
-                    :3,\"koreanWord\":\"자유\",\"foreignWord\":\"Freedom\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":24,\"userCardId\"\
-                    :4,\"koreanWord\":\"행운\",\"foreignWord\":\"Luck\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":25,\"userCardId\"\
-                    :5,\"koreanWord\":\"평화\",\"foreignWord\":\"Peace\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":26,\"userCardId\"\
-                    :6,\"koreanWord\":\"용기\",\"foreignWord\":\"Courage\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":27,\"userCardId\"\
-                    :7,\"koreanWord\":\"조화\",\"foreignWord\":\"Harmony\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":28,\"userCardId\"\
-                    :8,\"koreanWord\":\"열정\",\"foreignWord\":\"Passion\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":29,\"userCardId\"\
-                    :9,\"koreanWord\":\"우정\",\"foreignWord\":\"Friendship\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":30,\"userCardId\"\
-                    :10,\"koreanWord\":\"모험\",\"foreignWord\":\"Adventure\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":31,\"userCardId\"\
-                    :11,\"koreanWord\":\"지혜\",\"foreignWord\":\"Wisdom\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":32,\"userCardId\"\
-                    :12,\"koreanWord\":\"믿음\",\"foreignWord\":\"Faith\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":33,\"userCardId\"\
-                    :13,\"koreanWord\":\"사상\",\"foreignWord\":\"Ideology\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":34,\"userCardId\"\
-                    :14,\"koreanWord\":\"역사\",\"foreignWord\":\"History\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":35,\"userCardId\"\
-                    :15,\"koreanWord\":\"문화\",\"foreignWord\":\"Culture\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":36,\"userCardId\"\
-                    :16,\"koreanWord\":\"철학\",\"foreignWord\":\"Philosophy\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":37,\"userCardId\"\
-                    :17,\"koreanWord\":\"예술\",\"foreignWord\":\"Art\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":38,\"userCardId\"\
-                    :18,\"koreanWord\":\"공상\",\"foreignWord\":\"Imagination\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"},{\"cardId\":39,\"userCardId\"\
-                    :19,\"koreanWord\":\"기억\",\"foreignWord\":\"Memory\",\"difficulty\"\
-                    :\"normal\",\"languageCode\":\"en\",\"score\":null,\"nextStudyDate\"\
-                    :\"2024-12-22T16:10:31.079625\"}]}"
+                deck-controller-test/get-decks-by-difficulty:
+                  value: "{\"size\":3,\"content\":[{\"category\":\"easy\",\"cardCounts\"\
+                    :20,\"overdueCounts\":20,\"maturitiyCounts\":0,\"overdueRate\"\
+                    :1.0,\"maturitiyRate\":0.0},{\"category\":\"hard\",\"cardCounts\"\
+                    :20,\"overdueCounts\":20,\"maturitiyCounts\":0,\"overdueRate\"\
+                    :1.0,\"maturitiyRate\":0.0},{\"category\":\"normal\",\"cardCounts\"\
+                    :20,\"overdueCounts\":20,\"maturitiyCounts\":0,\"overdueRate\"\
+                    :1.0,\"maturitiyRate\":0.0}]}"
+                deck-controller-test/get-decks-by-meaning:
+                  value: "{\"size\":2,\"content\":[{\"category\":\"Anything\",\"cardCounts\"\
+                    :20,\"overdueCounts\":20,\"maturitiyCounts\":0,\"overdueRate\"\
+                    :1.0,\"maturitiyRate\":0.0},{\"category\":\"Something\",\"cardCounts\"\
+                    :40,\"overdueCounts\":40,\"maturitiyCounts\":0,\"overdueRate\"\
+                    :1.0,\"maturitiyRate\":0.0}]}"
+  /decks/cards:
+    get:
+      tags:
+      - Decks
+      summary: 덱에 포함된 카드 모음
+      description: 덱에 포함된 카드 모음
+      operationId: deck-controller-test/get-decks-card
+      parameters:
+      - name: queryType
+        in: query
+        description: 의미에 따른 분류인가 (level) / 난이도에 따른 분류인가 (meaning)
+        required: true
+        schema:
+          type: string
+      - name: query
+        in: query
+        description: 검색어 (easy-normal-hard 등)
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/cards"
+              examples:
+                deck-controller-test/get-decks-card:
+                  value: "{\"page\":0,\"pageSize\":1,\"size\":20,\"content\":[{\"\
+                    cardId\":1,\"koreanWord\":\"안녕\",\"foreignWord\":\"hello\",\"\
+                    level\":\"easy\",\"languageCode\":\"en\"},{\"cardId\":2,\"koreanWord\"\
+                    :\"사과\",\"foreignWord\":\"apple\",\"level\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":3,\"koreanWord\":\"물\",\"foreignWord\":\"\
+                    water\",\"level\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
+                    :4,\"koreanWord\":\"책\",\"foreignWord\":\"book\",\"level\":\"\
+                    easy\",\"languageCode\":\"en\"},{\"cardId\":5,\"koreanWord\":\"\
+                    밥\",\"foreignWord\":\"rice\",\"level\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":6,\"koreanWord\":\"학교\",\"foreignWord\":\"\
+                    school\",\"level\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
+                    :7,\"koreanWord\":\"공\",\"foreignWord\":\"ball\",\"level\":\"\
+                    easy\",\"languageCode\":\"en\"},{\"cardId\":8,\"koreanWord\":\"\
+                    연필\",\"foreignWord\":\"pencil\",\"level\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":9,\"koreanWord\":\"의자\",\"foreignWord\":\"\
+                    chair\",\"level\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
+                    :10,\"koreanWord\":\"친구\",\"foreignWord\":\"friend\",\"level\"\
+                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":11,\"koreanWord\"\
+                    :\"우유\",\"foreignWord\":\"milk\",\"level\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":12,\"koreanWord\":\"하늘\",\"foreignWord\"\
+                    :\"sky\",\"level\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
+                    :13,\"koreanWord\":\"강아지\",\"foreignWord\":\"puppy\",\"level\"\
+                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":14,\"koreanWord\"\
+                    :\"고양이\",\"foreignWord\":\"cat\",\"level\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":15,\"koreanWord\":\"집\",\"foreignWord\":\"\
+                    house\",\"level\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
+                    :16,\"koreanWord\":\"사람\",\"foreignWord\":\"person\",\"level\"\
+                    :\"easy\",\"languageCode\":\"en\"},{\"cardId\":17,\"koreanWord\"\
+                    :\"나무\",\"foreignWord\":\"tree\",\"level\":\"easy\",\"languageCode\"\
+                    :\"en\"},{\"cardId\":18,\"koreanWord\":\"바다\",\"foreignWord\"\
+                    :\"sea\",\"level\":\"easy\",\"languageCode\":\"en\"},{\"cardId\"\
+                    :19,\"koreanWord\":\"시간\",\"foreignWord\":\"time\",\"level\":\"\
+                    easy\",\"languageCode\":\"en\"},{\"cardId\":20,\"koreanWord\"\
+                    :\"꽃\",\"foreignWord\":\"flower\",\"level\":\"easy\",\"languageCode\"\
+                    :\"en\"}]}"
+  /user/option:
+    post:
+      tags:
+      - Users
+      operationId: user-option-controller-test/put-user-option
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            schema:
+              $ref: "#/components/schemas/userOption"
+            examples:
+              user-option-controller-test/put-user-option:
+                value: "{\"todayReviewWords\":200,\"todayStudyWords\":200,\"id\":1,\"\
+                  languageCode\":\"en\"}"
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/userOption"
+              examples:
+                user-option-controller-test/put-user-option:
+                  value: "{\"id\":1,\"todayStudyWords\":200,\"todayReviewWords\":200,\"\
+                    languageCode\":\"en\"}"
+  /user/option/{id}:
+    get:
+      tags:
+      - Users
+      operationId: user-option-controller-test/get-user-option
+      parameters:
+      - name: id
+        in: path
+        description: option을 보고자 하는 user의 id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/userOption"
+              examples:
+                user-option-controller-test/get-user-option:
+                  value: "{\"id\":1,\"todayStudyWords\":200,\"todayReviewWords\":200,\"\
+                    languageCode\":\"en\"}"
 components:
   schemas:
-    decks2056970011:
+    studyCardForm:
+      title: studyCardForm
+      type: object
+      properties:
+        lapses:
+          type: number
+          description: Again을 누른 횟수
+        reps:
+          type: number
+          description: 총 복습횟수
+        scheduledDays:
+          type: number
+          description: 현재 복습 간격
+        lastReview:
+          type: string
+          description: 마지막으로 복습한 날짜
+        nextStudyDate:
+          type: string
+          description: 다음 학습할 날짜
+        state:
+          type: string
+          description: 카드의 현재 상태
+        stability:
+          type: number
+          description: 기억의 안정도
+    userCards:
+      title: userCards
       type: object
       properties:
         size:
@@ -403,60 +452,15 @@ components:
           items:
             type: object
             properties:
-              cardCounts:
-                type: number
-                description: 덱에 포함된 카드 개수
-              languageCode:
+              level:
                 type: string
-                description: 언어코드
-              category:
-                type: string
-                description: 카드 분류
-    user-decks1915284204:
-      type: object
-      properties:
-        size:
-          type: number
-          description: content의 크기
-        pageSize:
-          type: number
-          description: 전체 페이지의 크기
-        page:
-          type: number
-          description: 현재 페이지의 번호
-        content:
-          type: array
-          description: 실제 데이터들
-          items:
-            type: object
-            properties:
-              difficulty:
-                type: string
-                description: "언어의 난이도 (easy, normal, hard)"
-              counts:
-                type: number
-                description: 이 덱에 포함된 카드 숫자
-              id:
-                type: number
-                description: userDeck의 고유번호
+                description: "단어의 수준 (easy, normal, hard)"
               languageCode:
                 type: string
                 description: 언어코드 (ISO 639-1)
-    user-decks-deckId-635127103:
-      type: object
-      properties:
-        size:
-          type: number
-          description: content의 크기
-        content:
-          type: array
-          description: 실제 데이터들
-          items:
-            type: object
-            properties:
-              difficulty:
+              foreignWord:
                 type: string
-                description: "언어의 난이도 (easy, normal, hard)"
+                description: 외국어 단어
               cardId:
                 type: number
                 description: 단어카드의 고유번호
@@ -469,13 +473,40 @@ components:
               userCardId:
                 type: number
                 description: userCard의 고유번호
-              languageCode:
+              state:
                 type: string
-                description: 언어코드 (ISO 639-1)
-              foreignWord:
-                type: string
-                description: 외국어 단어
-    decks-cards752419103:
+                description: 카드의 현재 상태
+    userOption:
+      title: userOption
+      type: object
+      properties:
+        todayReviewWords:
+          type: number
+          description: 오늘 복습할 단어 수
+        todayStudyWords:
+          type: number
+          description: 오늘 공부할 단어 수
+        id:
+          type: number
+          description: user의 고유번호
+        languageCode:
+          type: string
+          description: 어떤 언어로 학습할지 그 언어코드
+    cardStudyInfo:
+      title: cardStudyInfo
+      type: object
+      properties:
+        cardId:
+          type: number
+          description: Card의 고유번호
+        nextStudyDate:
+          type: string
+          description: 다음 학습할 날짜
+        state:
+          type: string
+          description: 카드의 현재 상태
+    cards:
+      title: cards
       type: object
       properties:
         size:
@@ -493,9 +524,9 @@ components:
           items:
             type: object
             properties:
-              difficulty:
+              level:
                 type: string
-                description: "언어의 난이도 (easy, normal, hard)"
+                description: "단어의 수준 (easy, normal, hard)"
               cardId:
                 type: number
                 description: 단어카드의 고유번호
@@ -508,45 +539,69 @@ components:
               foreignWord:
                 type: string
                 description: 외국어 단어
-    user-cards-id-1511672484:
+    decks:
+      title: decks
       type: object
       properties:
-        difficulty:
-          type: string
-          description: "언어의 난이도 (easy, normal, hard)"
-        languageCode:
-          type: string
-          description: 언어코드 (ISO 639-1)
-    user-decks2028487329:
-      type: object
-      properties:
-        difficulty:
-          type: string
-          description: "언어의 난이도 (easy, normal, hard)"
-        counts:
+        size:
           type: number
-          description: 이 덱에 포함된 카드 숫자
-        id:
-          type: number
-          description: userDeck의 고유번호
-        languageCode:
-          type: string
-          description: 언어코드 (ISO 639-1)
-    user-cards-id210174920:
+          description: content의 크기
+        content:
+          type: array
+          description: 실제 데이터들
+          items:
+            type: object
+            properties:
+              overdueRate:
+                type: number
+                description: due가 지난 상태인 카드 비율
+              cardCounts:
+                type: number
+                description: 덱에 포함된 카드 개수
+              overdueCounts:
+                type: number
+                description: due가 지난 상태인 카드 개수
+              maturitiyRate:
+                type: number
+                description: "state가 review인 카드 비율:"
+              category:
+                type: string
+                description: 카드 분류
+              maturitiyCounts:
+                type: number
+                description: state가 review인 카드 개수
+    card:
+      title: card
       type: object
       properties:
-        difficulty:
+        level:
           type: string
-          description: "언어의 난이도 (easy, normal, hard)"
+          description: "단어의 수준 (easy, normal, hard)"
         cardId:
           type: number
           description: 단어카드의 고유번호
         koreanWord:
           type: string
           description: 한국어 단어
-        userCardId:
+        languageCode:
+          type: string
+          description: 언어코드 (ISO 639-1)
+        foreignWord:
+          type: string
+          description: 외국어 단어
+    cardDetail:
+      title: cardDetail
+      type: object
+      properties:
+        level:
+          type: string
+          description: "단어의 수준 (easy, normal, hard)"
+        cardId:
           type: number
-          description: userCard의 고유번호
+          description: 단어카드의 고유번호
+        koreanWord:
+          type: string
+          description: 한국어 단어
         languageCode:
           type: string
           description: 언어코드 (ISO 639-1)

@@ -1,12 +1,12 @@
 package com.kmu.anki.backend.domain.usercard.entity;
 
-import com.kmu.anki.backend.domain.card.entity.Card;
+import com.kmu.anki.backend.domain.card.entity.KoreanCard;
+import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Entity
@@ -23,32 +23,58 @@ public class UserCard {
     @Column(columnDefinition = "TIMESTAMP DEFAULT now()")
     private LocalDateTime nextStudyDate;
 
+    @Column
+    private Integer lapses;
 
-    /* 관계 Deck */
+    @Column
+    private LocalDateTime lastReview;
+
+    @Column
+    private Integer reps;
+
+    @Column
+    private Double scheduledDays;
+
+    @Column
+    private Double stability;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_card_state")
+    private CardState state;
+
+    @Column
+    private Double difficulty;
+
+    /* 관계 User */
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_deck_id")
-    private UserDeck deck;
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column(name = "user_deck_id", insertable = false, updatable = false)
-    private Long deckId;
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Long userId;
 
-    public void mapDeck(UserDeck deck){
-        this.deck = deck;
-        this.deck.addCard(this);
+    public void mapUser(User user){
+        this.user = user;
+        this.user.addCard(this);
     }
 
-    /* 관계 Card */
+    /* 관계 - KoeranCard */
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "card_id")
-    private Card card;
+    @JoinColumn(name = "korean_card_id")
+    private KoreanCard koreanCard;
 
-    @Column(name = "card_id", insertable = false, updatable = false)
-    private Long cardId;
+    @Column(name = "korean_card_id", insertable = false, updatable = false)
+    private Long koreanCardId;
 
     /* 로직 */
-    public void update(Integer score, LocalDateTime nextStudyDate){
-        this.score = score;
+    public void update(LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
         this.nextStudyDate = nextStudyDate;
+        this.lapses = lapses;
+        this.lastReview = lastReview;
+        this.reps = reps;
+        this.scheduledDays = scheduledDays;
+        this.stability = stability;
+        this.state = state;
     }
 }

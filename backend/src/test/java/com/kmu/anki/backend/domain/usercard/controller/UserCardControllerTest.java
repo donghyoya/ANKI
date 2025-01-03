@@ -4,11 +4,18 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.card.docs.CardDocs;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
+import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
+import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
+import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.BaseDocs;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -19,6 +26,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class UserCardControllerTest extends AbstractControllerTest {
+    @Autowired
+    private UserCardService userCardService;
 
     @Test
     void getCardStudyInfo() throws Exception{
@@ -48,6 +57,9 @@ class UserCardControllerTest extends AbstractControllerTest {
 
     @Test
     void putUserCards() throws Exception {
+        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
+        Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
+
         HashMap<String, Object> map = new HashMap<>();
         map.put("nextStudyDate", LocalDateTime.now());
         map.put("lapses", 5);
@@ -58,7 +70,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         map.put("state", CardState.Review);
 
         mockMvc.perform(
-                        post("/cards/{id}/study", 1)
+                        post("/cards/{id}/study", userCardId)
                                 .contentType("application/json")
                                 .content(objectMapper.writeValueAsString(map))
                 ).andExpect(status().isOk())

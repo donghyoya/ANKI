@@ -1,4 +1,4 @@
-drop table user_cards;
-drop table users;
-drop table foreign_cards;
-drop table korean_cards;
+truncate user_cards cascade;
+truncate users cascade;
+truncate foreign_cards cascade;
+truncate korean_cards cascade;

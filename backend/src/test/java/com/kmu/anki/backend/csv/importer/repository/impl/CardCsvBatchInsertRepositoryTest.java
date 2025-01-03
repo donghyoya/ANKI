@@ -21,6 +21,10 @@ import java.io.InputStreamReader;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * 원래는 controller로 구성하는게 옳지만 편의상 테스트 class로 처리함
+ * 단 Disabled를 설정하여 test에는 문제가 없도록 조치하였음
+ */
 //@Import(TestcontainersConfiguration.class)
 @Disabled
 @ActiveProfiles("insert")

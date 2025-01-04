@@ -1,4 +1,4 @@
-package com.kmu.anki.backend.domain.user.controller;
+package com.kmu.anki.backend.domain.user.docs;
 
 import com.epages.restdocs.apispec.Schema;
 import org.springframework.restdocs.payload.FieldDescriptor;
@@ -7,6 +7,8 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWit
 
 public class UserOptionDtoDocs {
     public static final Schema userOptionSchema = new Schema("userOption");
+
+    public static FieldDescriptor[] userOptionDto = userOptionDto("");
 
     public static FieldDescriptor[] userOptionDto(String prefix){
         return new FieldDescriptor[]{

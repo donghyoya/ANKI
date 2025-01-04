@@ -6,12 +6,15 @@ import org.springframework.restdocs.payload.FieldDescriptor;
 
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 
-public class CardDtoSchema {
+public class CardDtoDocs {
     public static final Schema cardSchema = new Schema("card");
     public static final Schema cardsSchema = new Schema("cards");
 
     public static FieldDescriptor[] card = cardFields("");
-    public static FieldDescriptor[] cards = cardFields(BaseDocs.basePageResponsePrefix);
+    public static FieldDescriptor[] cards = BaseDocs.combine(
+            BaseDocs.basePageResponse(),
+            CardDtoDocs.cardFields(BaseDocs.basePageResponsePrefix)
+    );
 
     public static FieldDescriptor[] cardFields(String prefix){
         return new FieldDescriptor[]{

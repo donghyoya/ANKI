@@ -13,8 +13,6 @@ public class CardDocs {
     /* Schema */
 
     public static final Schema cardDetailSchema = new Schema("cardDetail");
-    public static final Schema deckSceham = new Schema("deck");
-    public static final Schema decksSceham = new Schema("decks");
 
     /* Fields */
 

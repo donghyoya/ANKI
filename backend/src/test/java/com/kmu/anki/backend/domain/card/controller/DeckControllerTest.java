@@ -4,7 +4,9 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.card.docs.CardDocs;
-import com.kmu.anki.backend.domain.card.docs.CardDtoSchema;
+import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
+import com.kmu.anki.backend.domain.card.docs.DeckDtoDocs;
+import com.kmu.anki.backend.domain.card.docs.DeckParameters;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.BaseDocs;
 import org.junit.jupiter.api.Test;
@@ -30,15 +32,12 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .tag("Decks")
                                                 .summary("검색어 조건에 맞는 Deck 보기")
                                                 .queryParameters(
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (level) / 난이도에 따른 분류인가 (meaning)")
+                                                        DeckParameters.queryType
                                                 )
                                                 .responseFields(
-                                                        BaseDocs.combine(
-                                                                BaseDocs.baseListResponse(),
-                                                                CardDocs.deckDto(BaseDocs.basePageResponsePrefix)
-                                                        )
+                                                        DeckDtoDocs.decks
                                                 )
-                                                .responseSchema(CardDocs.decksSceham)
+                                                .responseSchema(DeckDtoDocs.decksSceham)
                                                 .build()
                                 )
                                 )
@@ -60,15 +59,12 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .tag("Decks")
                                                 .summary("검색어 조건에 맞는 Deck 보기")
                                                 .queryParameters(
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (level) / 난이도에 따른 분류인가 (meaning)")
+                                                        DeckParameters.queryType
                                                 )
                                                 .responseFields(
-                                                        BaseDocs.combine(
-                                                                BaseDocs.baseListResponse(),
-                                                                CardDocs.deckDto(BaseDocs.basePageResponsePrefix)
-                                                        )
+                                                        DeckDtoDocs.decks
                                                 )
-                                                .responseSchema(CardDocs.decksSceham)
+                                                .responseSchema(DeckDtoDocs.decksSceham)
                                                 .build()
                                 )
                         )
@@ -92,16 +88,13 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .tag("Decks")
                                                 .summary("덱에 포함된 카드 모음")
                                                 .queryParameters(
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (level) / 난이도에 따른 분류인가 (meaning)"),
-                                                        parameterWithName("query").description("검색어 (easy-normal-hard 등)")
+                                                        DeckParameters.queryType,
+                                                        DeckParameters.query
                                                 )
                                                 .responseFields(
-                                                        BaseDocs.combine(
-                                                                BaseDocs.basePageResponse(),
-                                                                CardDtoSchema.cards
-                                                        )
+                                                        CardDtoDocs.cards
                                                 )
-                                                .responseSchema(CardDtoSchema.cardsSchema)
+                                                .responseSchema(CardDtoDocs.cardsSchema)
                                                 .build()
                                 )
                         )

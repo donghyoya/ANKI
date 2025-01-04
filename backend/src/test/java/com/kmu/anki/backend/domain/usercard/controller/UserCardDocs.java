@@ -1,8 +1,7 @@
 package com.kmu.anki.backend.domain.usercard.controller;
 
 import com.epages.restdocs.apispec.Schema;
-import com.kmu.anki.backend.domain.card.docs.CardDocs;
-import com.kmu.anki.backend.domain.card.docs.CardDtoSchema;
+import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
 import com.kmu.anki.backend.global.BaseDocs;
 import org.springframework.restdocs.payload.FieldDescriptor;
 
@@ -60,7 +59,7 @@ public class UserCardDocs {
                 fieldWithPath(prefix+"state").description("카드의 현재 상태"),
                 fieldWithPath(prefix+"difficulty").description("카드의 난이도 (학습)")
         };
-        return BaseDocs.combine(CardDtoSchema.cardFields(prefix), userCardDto);
+        return BaseDocs.combine(CardDtoDocs.cardFields(prefix), userCardDto);
     }
 
     public static FieldDescriptor[] cardStudyDto(String prefix){

@@ -4,14 +4,11 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.card.docs.CardDocs;
-import com.kmu.anki.backend.domain.card.docs.CardDtoSchema;
+import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.CardParameters;
-import com.kmu.anki.backend.domain.usercard.controller.UserCardDocs;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -33,9 +30,9 @@ class CardControllerTest extends AbstractControllerTest {
                                                         CardParameters.cardId
                                                 )
                                                 .responseFields(
-                                                        CardDtoSchema.card
+                                                        CardDtoDocs.card
                                                 )
-                                                .responseSchema(CardDtoSchema.cardSchema)
+                                                .responseSchema(CardDtoDocs.cardSchema)
                                                 .build()
                                 )
                         )

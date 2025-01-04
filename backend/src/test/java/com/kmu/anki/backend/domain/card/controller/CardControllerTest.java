@@ -3,9 +3,9 @@ package com.kmu.anki.backend.domain.card.controller;
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
-import com.kmu.anki.backend.domain.card.docs.CardDocs;
+import com.kmu.anki.backend.domain.card.docs.CardDetailDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
-import com.kmu.anki.backend.domain.card.docs.CardParameters;
+import com.kmu.anki.backend.domain.card.docs.parameters.CardParameters;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import org.junit.jupiter.api.Test;
 
@@ -55,9 +55,9 @@ class CardControllerTest extends AbstractControllerTest {
                                                         CardParameters.cardId
                                                 )
                                                 .responseFields(
-                                                        CardDocs.cardDetailDto("")
+                                                        CardDetailDtoDocs.cardDetialDto
                                                 )
-                                                .responseSchema(CardDocs.cardDetailSchema)
+                                                .responseSchema(CardDetailDtoDocs.cardDetailSchema)
                                                 .build()
                                 )
                         )

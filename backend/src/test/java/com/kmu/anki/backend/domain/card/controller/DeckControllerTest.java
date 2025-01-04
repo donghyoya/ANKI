@@ -3,15 +3,12 @@ package com.kmu.anki.backend.domain.card.controller;
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
-import com.kmu.anki.backend.domain.card.docs.CardDocs;
 import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.DeckDtoDocs;
-import com.kmu.anki.backend.domain.card.docs.DeckParameters;
+import com.kmu.anki.backend.domain.card.docs.parameters.DeckParameters;
 import com.kmu.anki.backend.global.AbstractControllerTest;
-import com.kmu.anki.backend.global.BaseDocs;
 import org.junit.jupiter.api.Test;
 
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

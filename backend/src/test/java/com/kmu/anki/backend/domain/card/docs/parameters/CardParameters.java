@@ -1,4 +1,4 @@
-package com.kmu.anki.backend.domain.card.docs;
+package com.kmu.anki.backend.domain.card.docs.parameters;
 
 import org.springframework.restdocs.request.ParameterDescriptor;
 

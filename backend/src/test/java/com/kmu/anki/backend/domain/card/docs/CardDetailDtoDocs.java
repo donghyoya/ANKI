@@ -2,19 +2,15 @@ package com.kmu.anki.backend.domain.card.docs;
 
 import com.epages.restdocs.apispec.Schema;
 import org.springframework.restdocs.payload.FieldDescriptor;
-import org.springframework.restdocs.request.ParameterDescriptor;
 
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 
-public class CardDocs {
-
-
+public class CardDetailDtoDocs {
     /* Schema */
 
     public static final Schema cardDetailSchema = new Schema("cardDetail");
 
-    /* Fields */
+    public static FieldDescriptor[] cardDetialDto = cardDetailDto("");
 
 
     public static FieldDescriptor[] cardDetailDto(String prefix){
@@ -32,18 +28,6 @@ public class CardDocs {
                 fieldWithPath(prefix+"relatedWords").description("관련어"),
                 fieldWithPath(prefix+"inflection").description("활용"),
                 fieldWithPath(prefix+"exampleUsage").description("용례"),
-        };
-    }
-
-
-    public static FieldDescriptor[] deckDto(String prefix){
-        return new FieldDescriptor[]{
-                fieldWithPath(prefix+"category").description("카드 분류"),
-                fieldWithPath(prefix+"cardCounts").description("덱에 포함된 카드 개수"),
-                fieldWithPath(prefix+"overdueRate").description("due가 지난 상태인 카드 비율"),
-                fieldWithPath(prefix+"maturitiyRate").description("state가 review인 카드 비율:"),
-                fieldWithPath(prefix+"overdueCounts").description("due가 지난 상태인 카드 개수"),
-                fieldWithPath(prefix+"maturitiyCounts").description("state가 review인 카드 개수")
         };
     }
 }

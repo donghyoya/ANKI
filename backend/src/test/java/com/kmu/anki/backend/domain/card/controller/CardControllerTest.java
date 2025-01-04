@@ -4,6 +4,8 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.card.docs.CardDocs;
+import com.kmu.anki.backend.domain.card.docs.CardDtoSchema;
+import com.kmu.anki.backend.domain.card.docs.CardParameters;
 import com.kmu.anki.backend.domain.usercard.controller.UserCardDocs;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import org.junit.jupiter.api.Test;
@@ -28,12 +30,12 @@ class CardControllerTest extends AbstractControllerTest {
                                                 .tag("Cards")
                                                 .summary("Card 보기")
                                                 .pathParameters(
-                                                        parameterWithName("id").description("카드의 고유번호")
+                                                        CardParameters.cardId
                                                 )
                                                 .responseFields(
-                                                        CardDocs.cardDto("")
+                                                        CardDtoSchema.card
                                                 )
-                                                .responseSchema(CardDocs.cardSchema)
+                                                .responseSchema(CardDtoSchema.cardSchema)
                                                 .build()
                                 )
                         )
@@ -53,7 +55,7 @@ class CardControllerTest extends AbstractControllerTest {
                                                 .tag("Cards")
                                                 .summary("Card에 대한 디테일한 정보 보기")
                                                 .pathParameters(
-                                                        parameterWithName("id").description("카드의 고유번호")
+                                                        CardParameters.cardId
                                                 )
                                                 .responseFields(
                                                         CardDocs.cardDetailDto("")

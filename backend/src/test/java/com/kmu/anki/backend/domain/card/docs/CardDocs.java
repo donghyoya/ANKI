@@ -2,25 +2,22 @@ package com.kmu.anki.backend.domain.card.docs;
 
 import com.epages.restdocs.apispec.Schema;
 import org.springframework.restdocs.payload.FieldDescriptor;
+import org.springframework.restdocs.request.ParameterDescriptor;
 
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 
 public class CardDocs {
-    public static final Schema cardSchema = new Schema("card");
-    public static final Schema cardsSchema = new Schema("cards");
+
+
+    /* Schema */
+
     public static final Schema cardDetailSchema = new Schema("cardDetail");
     public static final Schema deckSceham = new Schema("deck");
     public static final Schema decksSceham = new Schema("decks");
 
-    public static FieldDescriptor[] cardDto(String prefix){
-        return new FieldDescriptor[]{
-                fieldWithPath(prefix+"cardId").description("단어카드의 고유번호"),
-                fieldWithPath(prefix+"koreanWord").description("한국어 단어"),
-                fieldWithPath(prefix+"foreignWord").description("외국어 단어"),
-                fieldWithPath(prefix+"level").description("단어의 수준 (easy, normal, hard)"),
-                fieldWithPath(prefix+"languageCode").description("언어코드 (ISO 639-1)")
-        };
-    }
+    /* Fields */
+
 
     public static FieldDescriptor[] cardDetailDto(String prefix){
         return new FieldDescriptor[]{

@@ -4,6 +4,7 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.card.docs.CardDocs;
+import com.kmu.anki.backend.domain.card.docs.CardDtoSchema;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.BaseDocs;
 import org.junit.jupiter.api.Test;
@@ -97,10 +98,10 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .responseFields(
                                                         BaseDocs.combine(
                                                                 BaseDocs.basePageResponse(),
-                                                                CardDocs.cardDto(BaseDocs.basePageResponsePrefix)
+                                                                CardDtoSchema.cards
                                                         )
                                                 )
-                                                .responseSchema(CardDocs.cardsSchema)
+                                                .responseSchema(CardDtoSchema.cardsSchema)
                                                 .build()
                                 )
                         )

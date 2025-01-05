@@ -26,7 +26,7 @@ public class CardTopicBatchInsertRepository implements CsvBatchInsertRepository 
             """;
 
     private String INSERT_CARD_TOPICS = """
-                INSERT INTO card_topics (card_id, topic_id)
+                INSERT INTO card_topics (korean_card_id, topic_id)
                 VALUES (?, ?);
             """;
 
@@ -62,22 +62,22 @@ public class CardTopicBatchInsertRepository implements CsvBatchInsertRepository 
     }
 
     private void convert(int i, String[] row, List<CardTopicRow> topicRows){
-        String topics = row[16];
+        String topics = row[15];
         if (topics == null){
             return;
         }
         StringTokenizer st = new StringTokenizer(topics, ",");
-        while (!st.hasMoreTokens()){
+        while (st.hasMoreTokens()){
             String topic = st.nextToken();
             Long topicId = CardTopicEnums.findTopicId(topic);
             if(topicId != -1){
-                topicRows.add(new CardTopicRow((long) (i+1), topicId));
+                topicRows.add(new CardTopicRow((long) (i+1), topicId+1));
             }
         }
     }
 
     private void batchInsertCardTopic(List<CardTopicRow> rows){
-        jdbcTemplate.batchUpdate(INSERT_TOPICS, new BatchPreparedStatementSetter() {
+        jdbcTemplate.batchUpdate(INSERT_CARD_TOPICS, new BatchPreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 ps.setLong(1, rows.get(i).getCardId());

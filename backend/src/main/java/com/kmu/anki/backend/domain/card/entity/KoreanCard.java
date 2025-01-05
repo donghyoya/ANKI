@@ -24,13 +24,7 @@ public class KoreanCard {
     @Column
     private CardLevel level;
 
-    /* TODO 제거할 것 */
-    @Enumerated(EnumType.STRING)
-    @Column
-    private CardTopicEnums meaningGroup;
-
     /* 한국어 의미 관련 */
-
     @Column
     private String originalLanguage; // 원어
 

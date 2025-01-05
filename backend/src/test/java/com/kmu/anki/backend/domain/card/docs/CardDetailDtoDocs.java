@@ -21,7 +21,7 @@ public class CardDetailDtoDocs {
                 fieldWithPath(prefix+"level").description("단어의 수준 (easy, normal, hard)"),
                 fieldWithPath(prefix+"languageCode").description("언어코드 (ISO 639-1)"),
 
-                fieldWithPath(prefix+"headword").description("표제어"),
+                fieldWithPath(prefix+"originalLanguage").description("단어의 원어"),
                 fieldWithPath(prefix+"homographNumber").description("동형어 번호"),
                 fieldWithPath(prefix+"partsOfSpeech").description("품사"),
                 fieldWithPath(prefix+"pronunciation").description("발음"),

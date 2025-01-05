@@ -20,13 +20,4 @@ public interface ForeignCardRepository extends JpaRepository<ForeignCard, Long> 
     """)
     public Page<ForeignCard> findDeckCard(@Param("languageCode") LanguageCode languageCode, @Param("difficulty") CardLevel difficulty, Pageable pageable);
 
-    @Query("""
-        select fc
-        from ForeignCard fc join fetch fc.koreanCard kc
-        where
-            fc.languageCode = :languageCode
-            and kc.meaningGroup = :meaning
-    """)
-    public Page<ForeignCard> findDeckCard(@Param("languageCode") LanguageCode languageCode, @Param("meaning") CardTopicEnums category, Pageable pageable);
-
 }

@@ -38,7 +38,7 @@ public class UserCardQueryRepository {
             Long userId,
             LanguageCode code,
             CardLevel difficulty,
-            CardTopicEnums meaningGroup,
+            CardTopicEnums meaningGroup, // TODO
             LocalDateTime now,
             Pageable pageable
     ){
@@ -74,7 +74,6 @@ public class UserCardQueryRepository {
                                 userId,
                                 code,
                                 difficulty,
-                                meaningGroup,
                                 now
                         )
                 )
@@ -112,7 +111,6 @@ public class UserCardQueryRepository {
                                 userId,
                                 code,
                                 difficulty,
-                                meaningGroup,
                                 now
                         )
                 )
@@ -158,7 +156,6 @@ public class UserCardQueryRepository {
             Long userId,
             LanguageCode code,
             CardLevel difficulty,
-            CardTopicEnums meaningGroup,
             LocalDateTime now
     ){
         BooleanBuilder builder = new BooleanBuilder();
@@ -166,7 +163,6 @@ public class UserCardQueryRepository {
                 .and(userIdEq(userId))
                 .and(languageCodeEq(code))
                 .and(difficultyEq(difficulty))
-                .and(meaningGroupEq(meaningGroup))
                 .and(nextStudyDateBefore(now))
         ;
         return builder;
@@ -188,9 +184,6 @@ public class UserCardQueryRepository {
         return difficulty == null ? null : koreanCard.level.eq(difficulty);
     }
 
-    public BooleanExpression meaningGroupEq(CardTopicEnums meaningGroup){
-        return meaningGroup == null ? null : koreanCard.meaningGroup.eq(meaningGroup);
-    }
 
     public BooleanExpression nextStudyDateBefore(LocalDateTime dateTime){
         return dateTime == null ? null : userCard.nextStudyDate.before(dateTime);

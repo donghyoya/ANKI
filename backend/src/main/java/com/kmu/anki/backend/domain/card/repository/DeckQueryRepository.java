@@ -65,7 +65,8 @@ public class DeckQueryRepository {
     }
 
     public List<DeckDto> findDeckByMeanging(Long userId){
-        return jdbcTemplate.query(deckRateByMeaning, deckDtoRowMapper, userId);
+        // TODO
+        return jdbcTemplate.query(deckRateByDifficulty, deckDtoRowMapper, userId);
     }
 
 }

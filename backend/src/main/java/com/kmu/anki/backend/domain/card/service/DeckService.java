@@ -40,7 +40,7 @@ public class DeckService {
     }
 
     public Page<CardDto> findDeckCards(LanguageCode languageCode, CardTopicEnums category){
-        return foreignCardRepository.findDeckCard(languageCode, category, PageRequest.of(0,20)).map(CardDto::of);
+        return foreignCardRepository.findDeckCard(languageCode, CardLevel.easy, PageRequest.of(0,20)).map(CardDto::of);
     }
 
 }

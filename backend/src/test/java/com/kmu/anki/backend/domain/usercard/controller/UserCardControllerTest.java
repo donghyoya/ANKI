@@ -60,8 +60,6 @@ class UserCardControllerTest extends AbstractControllerTest {
     }
 
 
-    // TODO fix it
-    @Disabled
     @Test
     void putUserCards() throws Exception {
         Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);

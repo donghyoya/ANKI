@@ -7,6 +7,7 @@ import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.DeckDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.parameters.DeckParameters;
 import com.kmu.anki.backend.global.AbstractControllerTest;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -42,6 +43,7 @@ class DeckControllerTest extends AbstractControllerTest {
         ;
     }
 
+    /* TODO */
     @Test
     void getDecksByMeaning() throws Exception {
         mockMvc.perform(

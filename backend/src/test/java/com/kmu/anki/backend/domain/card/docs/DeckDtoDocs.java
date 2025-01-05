@@ -3,6 +3,7 @@ package com.kmu.anki.backend.domain.card.docs;
 import com.epages.restdocs.apispec.Schema;
 import com.kmu.anki.backend.global.BaseDocs;
 import org.springframework.restdocs.payload.FieldDescriptor;
+import org.springframework.restdocs.payload.JsonFieldType;
 
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 
@@ -19,7 +20,7 @@ public class DeckDtoDocs {
 
     public static FieldDescriptor[] deckDto(String prefix){
         return new FieldDescriptor[]{
-                fieldWithPath(prefix+"category").description("카드 분류"),
+                fieldWithPath(prefix+"category").type(JsonFieldType.STRING).optional().description("카드 분류"),
                 fieldWithPath(prefix+"cardCounts").description("덱에 포함된 카드 개수"),
                 fieldWithPath(prefix+"overdueRate").description("due가 지난 상태인 카드 비율"),
                 fieldWithPath(prefix+"maturitiyRate").description("state가 review인 카드 비율:"),

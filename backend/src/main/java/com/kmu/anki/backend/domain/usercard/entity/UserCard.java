@@ -17,32 +17,38 @@ public class UserCard {
     @Column(name = "user_card_id")
     private Long id;
 
+    /**
+     * 제거예정
+     */
     @Column
     private Integer score;
 
+    /**
+     * due임
+     */
     @Column(columnDefinition = "TIMESTAMP DEFAULT now()")
     private LocalDateTime nextStudyDate;
 
-    @Column
+    @Column(columnDefinition = "INT DEFAULT 0")
     private Integer lapses;
 
     @Column
     private LocalDateTime lastReview;
 
-    @Column
+    @Column(columnDefinition = "INT DEFAULT 0")
     private Integer reps;
 
-    @Column
+    @Column(columnDefinition = "FLOAT DEFAULT 0")
     private Double scheduledDays;
 
-    @Column
+    @Column(columnDefinition = "FLOAT DEFAULT 0")
     private Double stability;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_card_state")
     private CardState state;
 
-    @Column
+    @Column(columnDefinition = "FLOAT DEFAULT 0")
     private Double difficulty;
 
     /* 관계 User */

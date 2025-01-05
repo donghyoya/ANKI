@@ -3,6 +3,7 @@ package com.kmu.anki.backend.domain.card.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "card_topics")
 public class CardTopic {
     @Id
     @Column(name = "card_topic_id")

@@ -25,8 +25,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * 원래는 controller로 구성하는게 옳지만 편의상 테스트 class로 처리함
  * 단 Disabled를 설정하여 test에는 문제가 없도록 조치하였음
  */
-//@Import(TestcontainersConfiguration.class)
-@Disabled
+@Import(TestcontainersConfiguration.class)
+//@Disabled
 @ActiveProfiles("insert")
 @SpringBootTest
 class CardCsvBatchInsertRepositoryTest {
@@ -34,6 +34,7 @@ class CardCsvBatchInsertRepositoryTest {
     @Autowired private FileSystemAccessObject fileSAO;
     @Autowired private CardCsvBatchInsertRepository cardCsvBatchInsertRepository;
     @Autowired private ForeignCardCsvBatchInsertRepository foreignCardCsvBatchInsertRepository;
+    @Autowired private CardTopicBatchInsertRepository cardTopicBatchInsertRepository;
     @Autowired private JdbcTemplate jdbcTemplate;
 
     @Test
@@ -44,5 +45,6 @@ class CardCsvBatchInsertRepositoryTest {
         CsvExtractResult extract = cardCsvExtractor.extract(data);
         cardCsvBatchInsertRepository.batchInsert(extract.getValidRecords());
         foreignCardCsvBatchInsertRepository.batchInsert(extract.getValidRecords());
+        cardTopicBatchInsertRepository.batchInsert(extract.getValidRecords());
     }
 }

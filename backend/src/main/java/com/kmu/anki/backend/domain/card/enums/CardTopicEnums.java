@@ -51,4 +51,15 @@ public enum CardTopicEnums {
         }
         throw new IllegalArgumentException("No enum constant for value: " + text);
     }
+
+    public static Long findTopicId(String topic) {
+        CardTopicEnums[] topics = CardTopicEnums.values();
+        for(int i=0;i<topics.length;i++){
+            if (topics[i].value.equals(topic)){
+                return (long) i;
+            }
+        }
+        return -1L;
+    }
+
 }

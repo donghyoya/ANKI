@@ -2,6 +2,7 @@ package com.kmu.anki.backend.csv.importer.repository.impl;
 
 import com.kmu.anki.backend.csv.importer.repository.CsvBatchInsertRepository;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 @Component
 @RequiredArgsConstructor
@@ -31,6 +34,15 @@ public class CardTopicBatchInsertRepository implements CsvBatchInsertRepository 
     @Override
     public void batchInsert(List<String[]> rows) {
         batchInsertTopic();
+        int batchSize = 256;
+        for(int i=0; i< rows.size();i+=batchSize){
+            int end = Math.min(i+batchSize, rows.size());
+            List<CardTopicRow> cardTopicRows = new ArrayList<>();
+            for(int j=i;j<end;j++){
+                convert(j, rows.get(j), cardTopicRows);
+            }
+            batchInsertCardTopic(cardTopicRows);
+        }
     }
 
     private void batchInsertTopic(){
@@ -47,15 +59,52 @@ public class CardTopicBatchInsertRepository implements CsvBatchInsertRepository 
                 return topics.length;
             }
         });
+    }
 
-        for(int i=0;i<topics.length;i++){
-
+    private void convert(int i, String[] row, List<CardTopicRow> topicRows){
+        String topics = row[16];
+        if (topics == null){
+            return;
         }
+        StringTokenizer st = new StringTokenizer(topics, ",");
+        while (!st.hasMoreTokens()){
+            String topic = st.nextToken();
+            Long topicId = CardTopicEnums.findTopicId(topic);
+            if(topicId != -1){
+                topicRows.add(new CardTopicRow((long) (i+1), topicId));
+            }
+        }
+    }
+
+    private void batchInsertCardTopic(List<CardTopicRow> rows){
+        jdbcTemplate.batchUpdate(INSERT_TOPICS, new BatchPreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement ps, int i) throws SQLException {
+                ps.setLong(1, rows.get(i).getCardId());
+                ps.setLong(2, rows.get(i).getTopicId());
+            }
+
+            @Override
+            public int getBatchSize() {
+                return rows.size();
+            }
+        });
     }
 
     @Override
     public boolean isSupport(String type) {
         return true;
+    }
+
+    @Getter
+    private static class CardTopicRow{
+        private Long cardId;
+        private Long topicId;
+
+        public CardTopicRow(Long cardId, Long topicId) {
+            this.cardId = cardId;
+            this.topicId = topicId;
+        }
     }
 
 }

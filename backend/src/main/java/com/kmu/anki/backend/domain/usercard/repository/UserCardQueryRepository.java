@@ -51,8 +51,7 @@ public class UserCardQueryRepository {
                                 koreanCard.level,
                                 foreignCard.languageCode,
                                 userCard.id,
-                                userCard.score,
-                                userCard.nextStudyDate,
+                                userCard.due,
                                 userCard.lapses,
                                 userCard.lastReview,
                                 userCard.reps,
@@ -88,8 +87,7 @@ public class UserCardQueryRepository {
                                 koreanCard.level,
                                 foreignCard.languageCode,
                                 userCard.id,
-                                userCard.score,
-                                userCard.nextStudyDate,
+                                userCard.due,
                                 userCard.lapses,
                                 userCard.lastReview,
                                 userCard.reps,
@@ -131,7 +129,7 @@ public class UserCardQueryRepository {
                         Projections.constructor(
                                 CardStudyDto.class,
                                 koreanCard.id,
-                                userCard.nextStudyDate,
+                                userCard.due,
                                 userCard.lapses,
                                 userCard.lastReview,
                                 userCard.reps,
@@ -163,7 +161,7 @@ public class UserCardQueryRepository {
                 .and(userIdEq(userId))
                 .and(languageCodeEq(code))
                 .and(difficultyEq(difficulty))
-                .and(nextStudyDateBefore(now))
+                .and(dueBefore(now))
         ;
         return builder;
     }
@@ -185,8 +183,8 @@ public class UserCardQueryRepository {
     }
 
 
-    public BooleanExpression nextStudyDateBefore(LocalDateTime dateTime){
-        return dateTime == null ? null : userCard.nextStudyDate.before(dateTime);
+    public BooleanExpression dueBefore(LocalDateTime dateTime){
+        return dateTime == null ? null : userCard.due.before(dateTime);
     }
 
 }

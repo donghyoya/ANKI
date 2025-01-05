@@ -16,8 +16,7 @@ public class UserCardDto {
     private CardLevel level;
     private LanguageCode languageCode;
     private Long userCardId;
-    private Integer score;
-    private LocalDateTime nextStudyDate;
+    private LocalDateTime due;
     private Integer lapses;
     private LocalDateTime lastReview;
     private Integer reps;
@@ -33,8 +32,7 @@ public class UserCardDto {
             CardLevel level,
             LanguageCode languageCode,
             Long userCardId,
-            Integer score,
-            LocalDateTime nextStudyDate,
+            LocalDateTime due,
             Integer lapses,
             LocalDateTime lastReview,
             Integer reps,
@@ -49,8 +47,7 @@ public class UserCardDto {
         this.level = level;
         this.languageCode = languageCode;
         this.userCardId = userCardId;
-        this.score = score;
-        this.nextStudyDate = nextStudyDate;
+        this.due = due;
         this.lapses = lapses;
         this.lastReview = lastReview;
         this.reps = reps;

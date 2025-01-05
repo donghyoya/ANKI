@@ -34,7 +34,7 @@ public class UserCardController {
     ){
         return userCardService.updateUserCard(
                 cardId,
-                form.getNextStudyDate(),
+                form.getDue(),
                 form.getLapses(),
                 form.getLastReview(),
                 form.getReps(),

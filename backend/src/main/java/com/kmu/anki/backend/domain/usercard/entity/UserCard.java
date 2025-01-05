@@ -17,17 +17,8 @@ public class UserCard {
     @Column(name = "user_card_id")
     private Long id;
 
-    /**
-     * 제거예정
-     */
-    @Column
-    private Integer score;
-
-    /**
-     * due임
-     */
     @Column(columnDefinition = "TIMESTAMP DEFAULT now()")
-    private LocalDateTime nextStudyDate;
+    private LocalDateTime due;
 
     @Column(columnDefinition = "INT DEFAULT 0")
     private Integer lapses;
@@ -74,8 +65,8 @@ public class UserCard {
     private Long koreanCardId;
 
     /* 로직 */
-    public void update(LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
-        this.nextStudyDate = nextStudyDate;
+    public void update(LocalDateTime due, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
+        this.due = due;
         this.lapses = lapses;
         this.lastReview = lastReview;
         this.reps = reps;

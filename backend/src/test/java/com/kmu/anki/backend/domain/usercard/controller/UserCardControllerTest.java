@@ -66,7 +66,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
 
         HashMap<String, Object> map = new HashMap<>();
-        map.put("nextStudyDate", LocalDateTime.now());
+        map.put("due", LocalDateTime.now());
         map.put("lapses", 5);
         map.put("lastReview", LocalDateTime.now());
         map.put("reps", 72);

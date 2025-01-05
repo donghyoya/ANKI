@@ -10,7 +10,7 @@ public class StudyCardFormDocs {
     public static Schema studyCardFormSchema = new Schema("studyCardForm");
 
     public static FieldDescriptor[] studyCardForm = new FieldDescriptor[]{
-            fieldWithPath("nextStudyDate").description("다음 학습할 날짜"),
+            fieldWithPath("due").description("다음 학습할 날짜"),
             fieldWithPath("lapses").description("Again을 누른 횟수"),
             fieldWithPath("lastReview").description("마지막으로 복습한 날짜"),
             fieldWithPath("reps").description("총 복습횟수"),

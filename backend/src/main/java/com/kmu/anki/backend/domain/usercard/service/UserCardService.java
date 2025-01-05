@@ -63,10 +63,10 @@ public class UserCardService {
     /* UPDATE */
 
     @Transactional
-    public CardStudyDto updateUserCard(Long userCardId, LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
+    public CardStudyDto updateUserCard(Long userCardId, LocalDateTime due, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
         UserCard userCard = userCardRepository.findById(userCardId).orElseThrow();
         userCard.update(
-                nextStudyDate,
+                due,
                 lapses,
                 lastReview,
                 reps,

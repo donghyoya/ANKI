@@ -20,8 +20,7 @@ public class UserCardDtoDocs {
     public static FieldDescriptor[] userCardDto(String prefix){
         FieldDescriptor[] userCardDto =  new FieldDescriptor[]{
                 fieldWithPath(prefix+"userCardId").description("userCard의 고유번호"),
-                fieldWithPath(prefix+"score").description("해당 카드의 점수"),
-                fieldWithPath(prefix+"nextStudyDate").description("다음 학습할 날짜"),
+                fieldWithPath(prefix+"due").description("다음 학습할 날짜"),
                 fieldWithPath(prefix+"lapses").description("Again을 누른 횟수"),
                 fieldWithPath(prefix+"lastReview").description("마지막으로 복습한 날짜"),
                 fieldWithPath(prefix+"reps").description("총 복습횟수"),

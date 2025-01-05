@@ -31,7 +31,7 @@ public class CardStudyDto {
     public static CardStudyDto of(UserCard userCard){
         return new CardStudyDto(
                 userCard.getKoreanCardId(),
-                userCard.getNextStudyDate(),
+                userCard.getDue(),
                 userCard.getLapses(),
                 userCard.getLastReview(),
                 userCard.getReps(),

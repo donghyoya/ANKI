@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Getter
 public class StudyCardForm {
-    private LocalDateTime nextStudyDate;
+    private LocalDateTime due;
     private Integer lapses;
     private LocalDateTime lastReview;
     private Integer reps;

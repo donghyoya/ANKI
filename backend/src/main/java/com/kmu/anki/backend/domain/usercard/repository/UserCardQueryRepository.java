@@ -3,7 +3,7 @@ package com.kmu.anki.backend.domain.usercard.repository;
 import com.kmu.anki.backend.domain.card.entity.QForeignCard;
 import com.kmu.anki.backend.domain.card.entity.QKoreanCard;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
-import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
@@ -38,7 +38,7 @@ public class UserCardQueryRepository {
             Long userId,
             LanguageCode code,
             CardLevel difficulty,
-            CardMeaningGroup meaningGroup,
+            CardTopicEnums meaningGroup,
             LocalDateTime now,
             Pageable pageable
     ){
@@ -158,7 +158,7 @@ public class UserCardQueryRepository {
             Long userId,
             LanguageCode code,
             CardLevel difficulty,
-            CardMeaningGroup meaningGroup,
+            CardTopicEnums meaningGroup,
             LocalDateTime now
     ){
         BooleanBuilder builder = new BooleanBuilder();
@@ -188,7 +188,7 @@ public class UserCardQueryRepository {
         return difficulty == null ? null : koreanCard.level.eq(difficulty);
     }
 
-    public BooleanExpression meaningGroupEq(CardMeaningGroup meaningGroup){
+    public BooleanExpression meaningGroupEq(CardTopicEnums meaningGroup){
         return meaningGroup == null ? null : koreanCard.meaningGroup.eq(meaningGroup);
     }
 

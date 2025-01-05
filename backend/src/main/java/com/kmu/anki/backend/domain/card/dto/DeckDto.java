@@ -1,6 +1,6 @@
 package com.kmu.anki.backend.domain.card.dto;
 
-import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import lombok.Getter;
 
@@ -18,7 +18,7 @@ public class DeckDto {
         this.cardCounts = cardCounts;
     }
 
-    public DeckDto(CardMeaningGroup meaning, Long cardCounts) {
+    public DeckDto(CardTopicEnums meaning, Long cardCounts) {
         this.category = meaning.toString();
         this.cardCounts = cardCounts;
     }

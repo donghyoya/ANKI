@@ -9,11 +9,7 @@ import java.util.List;
 @Table(name = "topics")
 public class Topic {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "topic_id")
-    private Long id;
-
-    @Column
     @Enumerated(EnumType.STRING)
     private CardTopicEnums topic;
 

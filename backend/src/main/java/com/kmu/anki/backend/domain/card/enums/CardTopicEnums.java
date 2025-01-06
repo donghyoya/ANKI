@@ -49,7 +49,7 @@ public enum CardTopicEnums {
                 return topic;
             }
         }
-        throw new IllegalArgumentException("No enum constant for value: " + text);
+        return null;
     }
 
     public static Long findTopicId(String topic) {

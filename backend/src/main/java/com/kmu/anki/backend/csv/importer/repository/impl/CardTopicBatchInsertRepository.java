@@ -21,8 +21,8 @@ public class CardTopicBatchInsertRepository implements CsvBatchInsertRepository 
     private final JdbcTemplate jdbcTemplate;
 
     private String INSERT_TOPICS = """
-                INSERT INTO topics (topic_id, topic)
-                VALUES (?, ?);
+                INSERT INTO topics (topic_id)
+                VALUES (?);
             """;
 
     private String INSERT_CARD_TOPICS = """
@@ -50,8 +50,7 @@ public class CardTopicBatchInsertRepository implements CsvBatchInsertRepository 
         jdbcTemplate.batchUpdate(INSERT_TOPICS, new BatchPreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
-                ps.setLong(1, i+1);
-                ps.setString(2, topics[i].toString());
+                ps.setString(1, topics[i].toString());
             }
 
             @Override
@@ -69,9 +68,9 @@ public class CardTopicBatchInsertRepository implements CsvBatchInsertRepository 
         StringTokenizer st = new StringTokenizer(topics, ",");
         while (st.hasMoreTokens()){
             String topic = st.nextToken();
-            Long topicId = CardTopicEnums.findTopicId(topic);
-            if(topicId != -1){
-                topicRows.add(new CardTopicRow((long) (i+1), topicId+1));
+            CardTopicEnums topicId = CardTopicEnums.fromString(topic);
+            if(topicId != null){
+                topicRows.add(new CardTopicRow((long) (i+1), topicId.toString()));
             }
         }
     }
@@ -81,7 +80,7 @@ public class CardTopicBatchInsertRepository implements CsvBatchInsertRepository 
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 ps.setLong(1, rows.get(i).getCardId());
-                ps.setLong(2, rows.get(i).getTopicId());
+                ps.setString(2, rows.get(i).getTopicId());
             }
 
             @Override
@@ -99,9 +98,9 @@ public class CardTopicBatchInsertRepository implements CsvBatchInsertRepository 
     @Getter
     private static class CardTopicRow{
         private Long cardId;
-        private Long topicId;
+        private String topicId;
 
-        public CardTopicRow(Long cardId, Long topicId) {
+        public CardTopicRow(Long cardId, String topicId) {
             this.cardId = cardId;
             this.topicId = topicId;
         }

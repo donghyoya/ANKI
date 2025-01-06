@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * 단 Disabled를 설정하여 test에는 문제가 없도록 조치하였음
  */
 //@Import(TestcontainersConfiguration.class)
-@Disabled
+//@Disabled
 @ActiveProfiles("insert")
 @SpringBootTest
 class CardCsvBatchInsertRepositoryTest {

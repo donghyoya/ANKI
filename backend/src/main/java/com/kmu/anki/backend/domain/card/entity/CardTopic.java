@@ -26,6 +26,6 @@ public class CardTopic {
     private Topic topic;
 
     @Column(name = "topic_id", insertable = false, updatable = false)
-    private Long topicId;
+    private String topicId;
 
 }

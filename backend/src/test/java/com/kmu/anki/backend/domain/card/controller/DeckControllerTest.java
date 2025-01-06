@@ -6,6 +6,7 @@ import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.DeckDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.parameters.DeckParameters;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -99,4 +100,33 @@ class DeckControllerTest extends AbstractControllerTest {
                         )
                 );
     }
+
+    @Test
+    void getDecksCardByMeaning() throws Exception{
+        mockMvc.perform(
+                        get("/decks/cards")
+                                .param("queryType", "meaning")
+                                .param("query", CardTopicEnums.ACTION.toString())
+                ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Decks")
+                                                .summary("덱에 포함된 카드 모음")
+                                                .queryParameters(
+                                                        DeckParameters.queryType,
+                                                        DeckParameters.query
+                                                )
+                                                .responseFields(
+                                                        CardDtoDocs.cards
+                                                )
+                                                .responseSchema(CardDtoDocs.cardsSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
 }

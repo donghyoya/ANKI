@@ -48,7 +48,6 @@ public class DeckController {
         Page<CardDto> cards;
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
-            // TODO
             cards = deckService.findDeckCards(languageCode, cardTopicEnums);
         }else {
             CardLevel cardLevel = CardLevel.valueOf(query);

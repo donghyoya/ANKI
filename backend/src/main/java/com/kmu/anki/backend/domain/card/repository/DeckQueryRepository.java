@@ -34,7 +34,7 @@ public class DeckQueryRepository {
 
     private final String deckRateByMeaning = """
             select 
-                    korean_cards.meaning_group as category,
+                    card_topics.topic_id as category,
                     count(korean_card_id) as cards_counts,
                     sum(
                         case when user_cards.due <= now() then 1 else 0 end
@@ -44,8 +44,9 @@ public class DeckQueryRepository {
                     ) as maturity_counts
             from korean_cards
             join user_cards using (korean_card_id)
+            join card_topics using (korean_card_id)
             where user_cards.user_id = ?
-            group by korean_cards.meaning_group;
+            group by card_topics.topic_id;
         """;
 
 
@@ -65,8 +66,7 @@ public class DeckQueryRepository {
     }
 
     public List<DeckDto> findDeckByMeanging(Long userId){
-        // TODO
-        return jdbcTemplate.query(deckRateByDifficulty, deckDtoRowMapper, userId);
+        return jdbcTemplate.query(deckRateByMeaning, deckDtoRowMapper, userId);
     }
 
 }

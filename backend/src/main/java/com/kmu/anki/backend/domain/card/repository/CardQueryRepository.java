@@ -26,20 +26,6 @@ public class CardQueryRepository {
     private final QKoreanCard koreanCard = QKoreanCard.koreanCard;
     private final QUserCard userCard = QUserCard.userCard;
 
-    private final String deckRateByMeaning = """
-            select count(korean_card_id) as cards_counts,
-                   sum(
-                        case when user_cards.next_study_date <= now() then 1 else 0 end
-                   ) as overdue_counts,
-                    sum(
-                        case when user_cards.user_card_state = 'review' then 1 else 0 end
-                    ) as maturity_counts
-            from korean_cards
-            join user_cards using (korean_card_id)
-            where user_cards.user_id = ?
-            group by korean_cards.difficulty;
-        """;
-
     /**
      * koreanCard-ForeignCard를 합쳐서 가져오기
      * @param cardId

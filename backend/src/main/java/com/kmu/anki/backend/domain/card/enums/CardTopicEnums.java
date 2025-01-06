@@ -62,4 +62,23 @@ public enum CardTopicEnums {
         return -1L;
     }
 
+//      data.sql 얻을려고 만든거니 주석해제하지 마시오
+//    public static void main(String[] args){
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("INSERT INTO topics(topic_id) VALUES");
+//        CardTopicEnums[] values = CardTopicEnums.values();
+//        for (CardTopicEnums value : values){
+//            sb.append(String.format("('%s'),",value));
+//        }
+//        sb.append(";\n");
+//        sb.append("INSERT INTO card_topics(korean_card_id, topic_id) VALUES");
+//        for(int i=1;i<=60;i++){
+//            sb.append(
+//                    String.format("('%s', '%s'),", i, values[(i % values.length)])
+//            );
+//        }
+//        sb.append(";\n");
+//        System.out.print(sb.toString());
+//    }
+
 }

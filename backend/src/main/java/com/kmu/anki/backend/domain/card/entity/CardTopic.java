@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.card.entity;
 
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import jakarta.persistence.*;
 
 @Entity
@@ -26,6 +27,7 @@ public class CardTopic {
     private Topic topic;
 
     @Column(name = "topic_id", insertable = false, updatable = false)
-    private String topicId;
+    @Enumerated(EnumType.STRING)
+    private CardTopicEnums topicId;
 
 }

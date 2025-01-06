@@ -5,6 +5,7 @@ import com.kmu.anki.backend.domain.card.dto.DeckDto;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.card.repository.CardQueryRepository;
 import com.kmu.anki.backend.domain.card.repository.DeckQueryRepository;
 import com.kmu.anki.backend.domain.card.repository.ForeignCardRepository;
 import com.kmu.anki.backend.domain.card.repository.KoreanCardRepository;
@@ -23,6 +24,7 @@ public class DeckService {
     private final KoreanCardRepository koreanCardRepository;
     private final ForeignCardRepository foreignCardRepository;
     private final DeckQueryRepository deckQueryRepository;
+    private final CardQueryRepository cardQueryRepository;
 
     public List<DeckDto> readDeckByDifficulty(Long userId){
         List<DeckDto> decks = deckQueryRepository.findDeckByDifficulty(userId);
@@ -40,7 +42,7 @@ public class DeckService {
     }
 
     public Page<CardDto> findDeckCards(LanguageCode languageCode, CardTopicEnums category){
-        return foreignCardRepository.findDeckCard(languageCode, CardLevel.easy, PageRequest.of(0,20)).map(CardDto::of);
+        return cardQueryRepository.findDecksCardByTopic(languageCode, category, PageRequest.of(0,20));
     }
 
 }

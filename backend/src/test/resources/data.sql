@@ -203,7 +203,8 @@ VALUES
     ('てつがくしゃ', 59, 'ja'), -- 철학자
     ('うちゅうせん', 60, 'ja');  -- 우주선
 
-
+INSERT INTO topics(topic_id) VALUES('CONCEPT'),('ECONOMY'),('SCIENCE'),('TRANSPORT'),('WEATHER'),('NEWS'),('FEELING'),('GRAMMAR_AND_LANGUAGE'),('CULTURE'),('HOSPITAL'),('LIFE'),('LIVING'),('PERSONALITY'),('NUMBER'),('COMMUNICATION'),('TIME'),('FOOD'),('RELATIONSHIPS'),('NATURE'),('POLITICS'),('RELIGION'),('WORK'),('HOME'),('FASHION_AND_APPEARANCE'),('SCHOOL'),('ACTION'),('ADMINISTRATION');
+INSERT INTO card_topics(korean_card_id, topic_id) VALUES('1', 'ECONOMY'),('2', 'SCIENCE'),('3', 'TRANSPORT'),('4', 'WEATHER'),('5', 'NEWS'),('6', 'FEELING'),('7', 'GRAMMAR_AND_LANGUAGE'),('8', 'CULTURE'),('9', 'HOSPITAL'),('10', 'LIFE'),('11', 'LIVING'),('12', 'PERSONALITY'),('13', 'NUMBER'),('14', 'COMMUNICATION'),('15', 'TIME'),('16', 'FOOD'),('17', 'RELATIONSHIPS'),('18', 'NATURE'),('19', 'POLITICS'),('20', 'RELIGION'),('21', 'WORK'),('22', 'HOME'),('23', 'FASHION_AND_APPEARANCE'),('24', 'SCHOOL'),('25', 'ACTION'),('26', 'ADMINISTRATION'),('27', 'CONCEPT'),('28', 'ECONOMY'),('29', 'SCIENCE'),('30', 'TRANSPORT'),('31', 'WEATHER'),('32', 'NEWS'),('33', 'FEELING'),('34', 'GRAMMAR_AND_LANGUAGE'),('35', 'CULTURE'),('36', 'HOSPITAL'),('37', 'LIFE'),('38', 'LIVING'),('39', 'PERSONALITY'),('40', 'NUMBER'),('41', 'COMMUNICATION'),('42', 'TIME'),('43', 'FOOD'),('44', 'RELATIONSHIPS'),('45', 'NATURE'),('46', 'POLITICS'),('47', 'RELIGION'),('48', 'WORK'),('49', 'HOME'),('50', 'FASHION_AND_APPEARANCE'),('51', 'SCHOOL'),('52', 'ACTION'),('53', 'ADMINISTRATION'),('54', 'CONCEPT'),('55', 'ECONOMY'),('56', 'SCIENCE'),('57', 'TRANSPORT'),('58', 'WEATHER'),('59', 'NEWS'),('60', 'FEELING');
 
 insert into users(user_id, today_study_words) values (1, 200);
 insert into users(user_id, today_study_words) values (2, 200);

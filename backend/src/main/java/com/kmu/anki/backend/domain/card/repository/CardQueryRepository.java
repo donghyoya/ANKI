@@ -120,9 +120,7 @@ public class CardQueryRepository {
                 .from(koreanCard)
                 .join(koreanCard.cardTopics, cardTopic)
                 .where(
-                        cardTopic.topicId.eq(category).and(
-                                foreignCard.languageCode.eq(languageCode)
-                        )
+                        cardTopic.topicId.eq(category)
                 )
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize());

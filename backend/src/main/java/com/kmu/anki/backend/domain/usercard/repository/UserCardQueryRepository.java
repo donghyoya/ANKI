@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.usercard.repository;
 
+import com.kmu.anki.backend.domain.card.entity.QCardTopic;
 import com.kmu.anki.backend.domain.card.entity.QForeignCard;
 import com.kmu.anki.backend.domain.card.entity.QKoreanCard;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.support.PageableExecutionUtils;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +35,7 @@ public class UserCardQueryRepository {
     private final QUserCard userCard = QUserCard.userCard;
     private final QKoreanCard koreanCard = QKoreanCard.koreanCard;
     private final QForeignCard foreignCard = QForeignCard.foreignCard;
+    private final QCardTopic cardTopic = QCardTopic.cardTopic;
 
     public Page<UserCardDto> findStudyCards(
             Long userId,
@@ -67,12 +70,15 @@ public class UserCardQueryRepository {
                         koreanCard.userCards, userCard
                 ).join(
                         koreanCard.foreignCards, foreignCard
+                ).join(
+                        koreanCard.cardTopics, cardTopic
                 )
                 .where(
                         combineQuery(
                                 userId,
                                 code,
                                 difficulty,
+                                meaningGroup,
                                 now
                         )
                 )
@@ -109,6 +115,7 @@ public class UserCardQueryRepository {
                                 userId,
                                 code,
                                 difficulty,
+                                meaningGroup,
                                 now
                         )
                 )
@@ -154,6 +161,7 @@ public class UserCardQueryRepository {
             Long userId,
             LanguageCode code,
             CardLevel difficulty,
+            CardTopicEnums topic,
             LocalDateTime now
     ){
         BooleanBuilder builder = new BooleanBuilder();
@@ -161,6 +169,7 @@ public class UserCardQueryRepository {
                 .and(userIdEq(userId))
                 .and(languageCodeEq(code))
                 .and(difficultyEq(difficulty))
+                .and(topicEq(topic))
                 .and(dueBefore(now))
         ;
         return builder;
@@ -182,6 +191,9 @@ public class UserCardQueryRepository {
         return difficulty == null ? null : koreanCard.level.eq(difficulty);
     }
 
+    public BooleanExpression topicEq(CardTopicEnums topic){
+        return topic == null ? null : cardTopic.topicId.eq(topic);
+    }
 
     public BooleanExpression dueBefore(LocalDateTime dateTime){
         return dateTime == null ? null : userCard.due.before(dateTime);

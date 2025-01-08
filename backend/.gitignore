@@ -38,7 +38,6 @@ out/
 
 ### Some sensitive information ###
 .env
-application-test.yml
 application-insert.yml
 application-local.yml
 files/

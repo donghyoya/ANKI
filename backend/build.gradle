@@ -76,11 +76,9 @@ tasks.register('docs', Copy) {
 	from file('build/api-spec/openapi3.yaml')
 	into file('src/main/resources/docs/.')
 	dependsOn tasks.named('openapi3')
+	dependsOn tasks.named('processResources')
 }
 
 tasks.named('build') {
-	dependsOn tasks.named('docs')
-}
-tasks.named('processResources') {
 	dependsOn tasks.named('docs')
 }

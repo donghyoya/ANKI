@@ -1,0 +1,16 @@
+spring:
+  config:
+    import:
+      - classpath:/yaml/application-prod.yml
+      - classpath:/yaml/application-local.yml
+      - classpath:/yaml/application-test.yml
+
+  profiles:
+    active: prod # 기본적으로 prod 환경을 활성화. 필요에 따라 변경 가능
+
+server:
+  port: 8080 # 공통 포트 설정
+
+logging:
+  level:
+    root: INFO # 공통 로그 레벨 설정

@@ -28,7 +28,7 @@ jobs:
         cd backend/
         ls -al
         chmod +x gradlew
-        ./gradlew clean build -D"spring.profiles.active=prod" --stacktrace --info 
+        ./gradlew clean build -D"spring.profiles.active=prod" 
         cd build/libs
         zip -r ../../backend.zip *.jar
 
@@ -44,7 +44,7 @@ jobs:
       run: |
         cd backend
         # 서버로 파일 전송
-        scp -o StrictHostKeyChecking=no backend.zip ${{ secrets.WAS_USER }}@${{ secrets.HOST }}:/home/ubuntu/ANKI/backend
+        scp -o StrictHostKeyChecking=no backend.zip ${{ secrets.USER }}@${{ secrets.HOST }}:/home/ubuntu/ANKI/backend
 
 
     # Step 3: 서버에서 압축 풀고 스크립트 실행

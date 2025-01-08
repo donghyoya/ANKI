@@ -28,7 +28,7 @@ jobs:
         cd backend/
         ls -al
         chmod +x gradlew
-        ./gradlew clean build -D"spring.profiles.active=prod" --stacktrace --info
+        ./gradlew clean build -D"spring.profiles.active=prod" --stacktrace --info 
         cd build/libs
         zip -r ../../backend.zip *.jar
 

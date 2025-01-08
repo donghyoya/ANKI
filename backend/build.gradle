@@ -81,3 +81,6 @@ tasks.register('docs', Copy) {
 tasks.named('build') {
 	dependsOn tasks.named('docs')
 }
+tasks.named('processResources') {
+	dependsOn tasks.named('docs')
+}

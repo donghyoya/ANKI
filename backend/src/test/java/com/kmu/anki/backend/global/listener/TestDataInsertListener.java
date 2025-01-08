@@ -1,4 +1,4 @@
-package com.kmu.anki.backend.listener;
+package com.kmu.anki.backend.global.listener;
 
 import com.kmu.anki.backend.csv.importer.dto.CsvExtractResult;
 import com.kmu.anki.backend.csv.importer.extractor.impl.CardCsvExtractor;
@@ -46,8 +46,8 @@ public class TestDataInsertListener extends AbstractTestExecutionListener {
         foreignCardCsvBatchInsertRepository.batchInsert(extract.getValidRecords());
         cardTopicBatchInsertRepository.batchInsert(extract.getValidRecords());
         jdbcTemplate.update("""
-            insert into users(user_id, today_study_words) values (1, 200);
-            insert into users(user_id, today_study_words) values (2, 200);
+            insert into users(user_id, today_study_words) values (1, 30);
+            insert into users(user_id, today_study_words) values (2, 30);
             
             INSERT INTO user_cards(korean_card_id, user_id, user_card_state)
             SELECT korean_cards.korean_card_id, 1, 'New'

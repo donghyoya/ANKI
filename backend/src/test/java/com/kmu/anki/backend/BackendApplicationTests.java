@@ -1,10 +1,9 @@
 package com.kmu.anki.backend;
 
-import com.kmu.anki.backend.listener.TestDataInsertListener;
+import com.kmu.anki.backend.global.listener.TestDataInsertListener;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.jdbc.Sql;

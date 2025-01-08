@@ -82,6 +82,8 @@ public class UserCardQueryRepository {
                                 now
                         )
                 )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
                 .fetch();
         JPAQuery<UserCardDto> countQuery = queryFactory
                 .select(

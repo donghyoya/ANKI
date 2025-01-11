@@ -79,11 +79,6 @@ tasks.register('docs', Copy) {
 	dependsOn tasks.named('processResources')
 }
 
-tasks.named('build') {
-	dependsOn tasks.named('docs')
-}
-
-tasks.named('jar') {
-	archiveBaseName.set('backend')
-	archiveVersion.set('')
+bootJar{
+	archiveFileName = "backend.jar"
 }

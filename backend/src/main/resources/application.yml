@@ -6,7 +6,7 @@ spring:
       - optional:classpath:/yaml/application-test.yml
 
   profiles:
-    active: local
+    active: prod
 
 server:
   port: 7070

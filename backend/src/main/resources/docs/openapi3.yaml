@@ -83,7 +83,7 @@ paths:
                 $ref: "#/components/schemas/cardStudyInfo"
               examples:
                 user-card-controller-test/get-card-study-info:
-                  value: "{\"cardId\":1,\"nextStudyDate\":\"2025-01-11T15:13:09.832045\"\
+                  value: "{\"cardId\":1,\"nextStudyDate\":\"2025-01-11T15:54:54.265656\"\
                     ,\"lapses\":null,\"lastReview\":null,\"reps\":null,\"scheduledDays\"\
                     :null,\"stability\":null,\"state\":\"New\"}"
   /decks:

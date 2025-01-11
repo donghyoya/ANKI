@@ -7,8 +7,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-@Component
-public class DatasourceConfigLogger implements ApplicationListener<ApplicationPreparedEvent> {
+@Configuration
+public class DataSourceConfig {
 
     @Value("${spring.datasource.url:NOT SET}")
     private String datasourceUrl;
@@ -22,10 +22,10 @@ public class DatasourceConfigLogger implements ApplicationListener<ApplicationPr
     @Value("${spring.datasource.driver-class-name:NOT SET}")
     private String driverClassName;
 
-    @Override
-    public void onApplicationEvent(ApplicationPreparedEvent event) {
+    @PostConstruct
+    public void logDataSourceProperties() {
         System.out.println("=======================================");
-        System.out.println("Spring Datasource Configuration (Early):");
+        System.out.println("Spring Datasource Configuration:");
         System.out.println("URL: " + datasourceUrl);
         System.out.println("Username: " + datasourceUsername);
         System.out.println("Password: " + datasourcePassword);

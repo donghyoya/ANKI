@@ -19,3 +19,6 @@ springdoc:
     enabled: false
   swagger-ui:
     url: /docs/openapi3.yaml
+
+server:
+  port: 7070

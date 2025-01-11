@@ -2,7 +2,7 @@ spring:
   config:
     import:
       - classpath:/yaml/application-prod.yml
-#      - optional:classpath:/yaml/application-local.yml
+      - optional:classpath:/yaml/application-local.yml
       - classpath:/yaml/application-test.yml
 
   profiles:

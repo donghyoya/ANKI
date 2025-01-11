@@ -2,10 +2,13 @@ package com.kmu.anki.backend.global.config;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.event.ApplicationPreparedEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
-@Configuration
-public class DataSourceConfig {
+@Component
+public class DatasourceConfigLogger implements ApplicationListener<ApplicationPreparedEvent> {
 
     @Value("${spring.datasource.url:NOT SET}")
     private String datasourceUrl;
@@ -19,10 +22,10 @@ public class DataSourceConfig {
     @Value("${spring.datasource.driver-class-name:NOT SET}")
     private String driverClassName;
 
-    @PostConstruct
-    public void logDataSourceProperties() {
+    @Override
+    public void onApplicationEvent(ApplicationPreparedEvent event) {
         System.out.println("=======================================");
-        System.out.println("Spring Datasource Configuration:");
+        System.out.println("Spring Datasource Configuration (Early):");
         System.out.println("URL: " + datasourceUrl);
         System.out.println("Username: " + datasourceUsername);
         System.out.println("Password: " + datasourcePassword);

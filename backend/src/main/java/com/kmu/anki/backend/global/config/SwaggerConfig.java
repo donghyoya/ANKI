@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Optional;
 
-@Profile({"dev", "local"})
+@Profile({"dev", "local", "prod"})
 @Configuration
 public class SwaggerConfig implements WebMvcConfigurer {
     @Bean

@@ -10,7 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
     @Bean
-    @Profile({"dev", "test", "local"}) // dev, test 프로파일에서만 적용
+    @Profile({"dev", "test", "local", "prod"}) // dev, test 프로파일에서만 적용
     public SecurityFilterChain devSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth

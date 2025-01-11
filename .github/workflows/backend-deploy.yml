@@ -30,7 +30,7 @@ jobs:
         ./gradlew clean build -D"spring.profiles.active=prod" 
         cd build/libs/
         ls -al
-        zip -r ../../backend.zip.jar
+        zip -r ../../backend.zip. backend.jar
 
     - name: Set up SSH
       run: |

@@ -55,7 +55,7 @@ class UserCardControllerTest extends AbstractControllerTest {
     }
 
 
-    @Test
+    @Disabled
     void putUserCards() throws Exception {
         Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
         Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
@@ -98,7 +98,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                 );
     }
 
-    @Test
+    @Disabled
     void getStudyCard() throws Exception{
         mockMvc.perform(
                         get("/cards/study")

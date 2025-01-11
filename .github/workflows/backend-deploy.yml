@@ -26,10 +26,10 @@ jobs:
     - name: Build and Zip Application
       run: |
         cd backend/
-        ls -al
         chmod +x gradlew
         ./gradlew clean build -D"spring.profiles.active=prod" 
-        cd build/libs
+        cd build/libs/
+        ls -al
         zip -r ../../backend.zip.jar
 
     - name: Set up SSH

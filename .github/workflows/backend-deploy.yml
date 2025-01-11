@@ -53,6 +53,7 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.WAS_EC2_SSH_KEY }}
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} << 'EOF'
-          cd /home/ubuntu/ANKI/backend
-          unzip -o backend.zip
+        cd /home/ubuntu/ANKI/backend
+        unzip -o backend.zip
+        rm backend.zip
         EOF

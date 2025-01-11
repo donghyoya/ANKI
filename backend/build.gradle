@@ -82,3 +82,8 @@ tasks.register('docs', Copy) {
 tasks.named('build') {
 	dependsOn tasks.named('docs')
 }
+
+tasks.named('jar') {
+	archiveBaseName.set('backend')
+	archiveVersion.set('')
+}

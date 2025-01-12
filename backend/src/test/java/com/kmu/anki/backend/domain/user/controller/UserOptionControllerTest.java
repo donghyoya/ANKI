@@ -7,6 +7,8 @@ import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.docs.UserOptionDtoDocs;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.springframework.http.MediaType;
 
 import java.util.HashMap;
@@ -41,13 +43,14 @@ class UserOptionControllerTest extends AbstractControllerTest {
                 );
     }
 
-    @Test
-    void putUserOption() throws Exception {
+    @ParameterizedTest
+    @EnumSource(LanguageCode.class)
+    void putUserOption(LanguageCode code) throws Exception {
         HashMap<String, Object> map = new HashMap<>();
         map.put("id", 1L);
-        map.put("todayStudyWords", 200);
-        map.put("todayReviewWords", 200);
-        map.put("languageCode", LanguageCode.en);
+        map.put("todayStudyWords", 30);
+        map.put("todayReviewWords", 30);
+        map.put("languageCode", code);
         mockMvc.perform(
                 post("/user/option")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -55,7 +58,7 @@ class UserOptionControllerTest extends AbstractControllerTest {
         ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
-                                "{class-name}/{method-name}",
+                                "{class-name}/{method-name}/"+code.name(),
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
                                                 .tag("Users")

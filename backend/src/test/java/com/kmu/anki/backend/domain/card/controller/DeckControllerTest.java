@@ -29,7 +29,7 @@ class DeckControllerTest extends AbstractControllerTest {
     @ParameterizedTest
     @EnumSource(QueryType.class)
     void getDecks(QueryType type) throws Exception {
-        String identifier = String.format("{class-name}/{method-name}-%s", type.name());
+        String identifier = String.format("{class-name}/{method-name}/%s", type.name());
 
         mockMvc.perform(
                 get("/decks")
@@ -59,7 +59,7 @@ class DeckControllerTest extends AbstractControllerTest {
     @ParameterizedTest
     @MethodSource("getDecksCardParams")
     void getDecksCard(String queryType, String query) throws Exception{
-        String identifier = String.format("{class-name}/{method-name}-%s-%s", queryType, query);
+        String identifier = String.format("{class-name}/{method-name}/%s-%s", queryType, query);
 
         mockMvc.perform(
                 get("/decks/cards")

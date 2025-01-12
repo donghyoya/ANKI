@@ -115,7 +115,7 @@ class UserCardControllerTest extends AbstractControllerTest {
     @ParameterizedTest
     @MethodSource("getStudyCardParams")
     void getStudyCard(String studyType, String queryType, String query) throws Exception{
-        String identifier = String.format("{class-name}/{method-name}/%s/%s/%s", studyType, queryType, query);
+        String identifier = String.format("{class-name}/{method-name}-%s-%s-%s", studyType, queryType, query);
 
         mockMvc.perform(
                         get("/cards/study")

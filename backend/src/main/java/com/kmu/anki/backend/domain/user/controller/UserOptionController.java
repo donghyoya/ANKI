@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 public class UserOptionController {
     private final UserOptionService userOptionService;
 
-    @GetMapping("/{id}")
-    public UserOptionDto getUserOption(
-            @PathVariable("id") long id
-    ){
+    @GetMapping()
+    public UserOptionDto getUserOption(){
+        // TODO 세션에서 user정보 가져오기
+        Long id = 1L;
         return userOptionService.readOption(id);
     }
 

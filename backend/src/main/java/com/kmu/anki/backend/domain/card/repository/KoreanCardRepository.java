@@ -14,11 +14,4 @@ public interface KoreanCardRepository extends JpaRepository<KoreanCard, Long> {
         group by c.level
     """)
     public List<DeckDto> findAllDeckByLevel();
-
-    @Query("""
-        select new com.kmu.anki.backend.domain.card.dto.DeckDto(c.meaningGroup, count(c)) 
-        from KoreanCard c 
-        group by c.meaningGroup
-    """)
-    public List<DeckDto> findAllDeckByMeaningGroup();
 }

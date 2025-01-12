@@ -34,6 +34,7 @@ class CardCsvBatchInsertRepositoryTest {
     @Autowired private FileSystemAccessObject fileSAO;
     @Autowired private CardCsvBatchInsertRepository cardCsvBatchInsertRepository;
     @Autowired private ForeignCardCsvBatchInsertRepository foreignCardCsvBatchInsertRepository;
+    @Autowired private CardTopicBatchInsertRepository cardTopicBatchInsertRepository;
     @Autowired private JdbcTemplate jdbcTemplate;
 
     @Test
@@ -44,5 +45,6 @@ class CardCsvBatchInsertRepositoryTest {
         CsvExtractResult extract = cardCsvExtractor.extract(data);
         cardCsvBatchInsertRepository.batchInsert(extract.getValidRecords());
         foreignCardCsvBatchInsertRepository.batchInsert(extract.getValidRecords());
+        cardTopicBatchInsertRepository.batchInsert(extract.getValidRecords());
     }
 }

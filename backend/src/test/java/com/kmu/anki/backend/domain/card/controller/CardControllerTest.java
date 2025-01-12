@@ -3,13 +3,12 @@ package com.kmu.anki.backend.domain.card.controller;
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
-import com.kmu.anki.backend.domain.card.docs.CardDocs;
-import com.kmu.anki.backend.domain.usercard.controller.UserCardDocs;
+import com.kmu.anki.backend.domain.card.docs.CardDetailDtoDocs;
+import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
+import com.kmu.anki.backend.domain.card.docs.parameters.CardParameters;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -28,12 +27,12 @@ class CardControllerTest extends AbstractControllerTest {
                                                 .tag("Cards")
                                                 .summary("Card 보기")
                                                 .pathParameters(
-                                                        parameterWithName("id").description("카드의 고유번호")
+                                                        CardParameters.cardId
                                                 )
                                                 .responseFields(
-                                                        CardDocs.cardDto("")
+                                                        CardDtoDocs.card
                                                 )
-                                                .responseSchema(CardDocs.cardSchema)
+                                                .responseSchema(CardDtoDocs.cardSchema)
                                                 .build()
                                 )
                         )
@@ -53,12 +52,12 @@ class CardControllerTest extends AbstractControllerTest {
                                                 .tag("Cards")
                                                 .summary("Card에 대한 디테일한 정보 보기")
                                                 .pathParameters(
-                                                        parameterWithName("id").description("카드의 고유번호")
+                                                        CardParameters.cardId
                                                 )
                                                 .responseFields(
-                                                        CardDocs.cardDetailDto("")
+                                                        CardDetailDtoDocs.cardDetialDto
                                                 )
-                                                .responseSchema(CardDocs.cardDetailSchema)
+                                                .responseSchema(CardDetailDtoDocs.cardDetailSchema)
                                                 .build()
                                 )
                         )

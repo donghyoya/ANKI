@@ -1,7 +1,7 @@
 package com.kmu.anki.backend.domain.usercard.service;
 
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
-import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.user.entity.User;
@@ -41,11 +41,11 @@ public class UserCardService {
 
     /* READ */
 
-    public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, CardMeaningGroup cardMeaningGroup){
+    public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, CardTopicEnums cardTopicEnums){
         LocalDateTime now = LocalDateTime.now();
         User user = userRepository.findById(userId).orElseThrow();
         PageRequest pageRequest = PageRequest.of(0, user.getTodayStudyWords());
-        return userCardQueryRepository.findStudyCards(userId, languageCode, null, cardMeaningGroup, now, pageRequest);
+        return userCardQueryRepository.findStudyCards(userId, languageCode, null, cardTopicEnums, now, pageRequest);
     }
 
     public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, CardLevel cardLevel){
@@ -63,10 +63,10 @@ public class UserCardService {
     /* UPDATE */
 
     @Transactional
-    public CardStudyDto updateUserCard(Long userCardId, LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
+    public CardStudyDto updateUserCard(Long userCardId, LocalDateTime due, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
         UserCard userCard = userCardRepository.findById(userCardId).orElseThrow();
         userCard.update(
-                nextStudyDate,
+                due,
                 lapses,
                 lastReview,
                 reps,

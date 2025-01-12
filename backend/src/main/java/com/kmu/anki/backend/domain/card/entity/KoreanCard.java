@@ -1,7 +1,7 @@
 package com.kmu.anki.backend.domain.card.entity;
 
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
-import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,12 +24,7 @@ public class KoreanCard {
     @Column
     private CardLevel level;
 
-    @Enumerated(EnumType.STRING)
-    @Column
-    private CardMeaningGroup meaningGroup;
-
     /* 한국어 의미 관련 */
-
     @Column
     private String originalLanguage; // 원어
 
@@ -51,19 +46,23 @@ public class KoreanCard {
     @Column(columnDefinition = "TEXT")
     private String exampleUsage; // 용례
 
+    /* 관계 - 카드 토픽 */
+    @OneToMany(mappedBy = "koreanCard")
+    private List<CardTopic> cardTopics;
+
     /* 관계 - 외국어 카드 */
 
     @OneToMany(mappedBy = "koreanCard")
-    List<ForeignCard> foreignCards;
+    private List<ForeignCard> foreignCards;
 
     public void addForeignCards(ForeignCard card){
         foreignCards.add(card);
     }
 
-    /* 관계 - 외국어 카드 */
+    /* 관계 - 유저 카드 */
 
     @OneToMany(mappedBy = "koreanCard")
-    List<UserCard> userCards;
+    private List<UserCard> userCards;
 
     public void addUserCards(UserCard card){
         userCards.add(card);

@@ -1,7 +1,7 @@
 package com.kmu.anki.backend.domain.usercard.repository;
 
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
-import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -43,7 +43,7 @@ public class UserCardStudyRepository {
         jdbcTemplate.update(INSERT_USER_CARDS_BY_DIFFICULTY, params);
     }
 
-    public void studyDeck(Long userId, CardMeaningGroup meaningGroup){
+    public void studyDeck(Long userId, CardTopicEnums meaningGroup){
         Map<String, Object> params = new HashMap<>();
         params.put("userId", userId);
         params.put("meaningGroup", meaningGroup.toString());

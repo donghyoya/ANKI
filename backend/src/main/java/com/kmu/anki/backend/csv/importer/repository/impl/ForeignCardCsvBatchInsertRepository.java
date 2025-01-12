@@ -90,7 +90,7 @@ public class ForeignCardCsvBatchInsertRepository implements CsvBatchInsertReposi
     }
 
     @Getter
-    static class ForeignCardRow{
+    private static class ForeignCardRow{
         private Long koreanId;
         private String code;
         private String foreignWord;

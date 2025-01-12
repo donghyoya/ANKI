@@ -76,7 +76,11 @@ tasks.register('docs', Copy) {
 	from file('build/api-spec/openapi3.yaml')
 	into file('src/main/resources/docs/.')
 	dependsOn tasks.named('openapi3')
+
 	dependsOn tasks.named('processResources')
+	doLast{
+		delete file('build/generated-snippets')
+	}
 }
 
 bootJar{

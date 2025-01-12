@@ -20,7 +20,7 @@ public class CardStudyDto {
     public CardStudyDto(Long cardId, LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state) {
         this.cardId = cardId;
         this.nextStudyDate = nextStudyDate;
-        this.lapses = lapses;
+        this.lapses = lapses == null ? 0 : lapses;
         this.lastReview = lastReview;
         this.reps = reps;
         this.scheduledDays = scheduledDays;
@@ -31,7 +31,7 @@ public class CardStudyDto {
     public static CardStudyDto of(UserCard userCard){
         return new CardStudyDto(
                 userCard.getKoreanCardId(),
-                userCard.getNextStudyDate(),
+                userCard.getDue(),
                 userCard.getLapses(),
                 userCard.getLastReview(),
                 userCard.getReps(),

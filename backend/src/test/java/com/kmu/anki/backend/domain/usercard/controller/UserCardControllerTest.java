@@ -3,22 +3,36 @@ package com.kmu.anki.backend.domain.usercard.controller;
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
-import com.kmu.anki.backend.domain.card.docs.CardDocs;
+import com.kmu.anki.backend.domain.card.controller.QueryType;
+import com.kmu.anki.backend.domain.card.docs.parameters.CardParameters;
+import com.kmu.anki.backend.domain.card.docs.parameters.DeckParameters;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
+import com.kmu.anki.backend.domain.usercard.docs.CardStudyDtoDocs;
+import com.kmu.anki.backend.domain.usercard.docs.StudyCardFormDocs;
+import com.kmu.anki.backend.domain.usercard.docs.UserCardDtoDocs;
+import com.kmu.anki.backend.domain.usercard.docs.parameters.UserCardParameters;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.BaseDocs;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.testcontainers.shaded.org.checkerframework.checker.units.qual.A;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.stream.Stream;
 
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -42,26 +56,24 @@ class UserCardControllerTest extends AbstractControllerTest {
                                                 .tag("StudyCards")
                                                 .summary("Card 학습 정보 보기")
                                                 .pathParameters(
-                                                        parameterWithName("id").description("카드의 고유번호")
+                                                        CardParameters.cardId
                                                 )
                                                 .responseFields(
-                                                        UserCardDocs.cardStudyDto("")
+                                                        CardStudyDtoDocs.cardStudyInfo
                                                 )
-                                                .responseSchema(UserCardDocs.cardStudySchema)
+                                                .responseSchema(CardStudyDtoDocs.cardStudySchema)
                                                 .build()
                                 )
                         )
                 );
     }
 
-
-    @Disabled
     void putUserCards() throws Exception {
         Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
         Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
 
         HashMap<String, Object> map = new HashMap<>();
-        map.put("nextStudyDate", LocalDateTime.now());
+        map.put("due", LocalDateTime.now());
         map.put("lapses", 5);
         map.put("lastReview", LocalDateTime.now());
         map.put("reps", 72);
@@ -82,53 +94,65 @@ class UserCardControllerTest extends AbstractControllerTest {
                                                 .tag("StudyCards")
                                                 .summary("Card 학습결과를 갱신")
                                                 .pathParameters(
-                                                        parameterWithName("id").description("card 고유번호")
+                                                        CardParameters.cardId
                                                 )
                                                 .requestFields(
-                                                        UserCardDocs.studyCardForm()
+                                                        StudyCardFormDocs.studyCardForm
                                                 )
-                                                .requestSchema(UserCardDocs.studyCardFormSchema)
+                                                .requestSchema(StudyCardFormDocs.studyCardFormSchema)
                                                 .responseFields(
-                                                        UserCardDocs.cardStudyDto("")
+                                                        CardStudyDtoDocs.cardStudyInfo
                                                 )
-                                                .responseSchema(UserCardDocs.cardStudySchema)
+                                                .responseSchema(CardStudyDtoDocs.cardStudySchema)
                                                 .build()
                                 )
                         )
                 );
     }
 
-    @Disabled
-    void getStudyCard() throws Exception{
+    @ParameterizedTest
+    @MethodSource("getStudyCardParams")
+    void getStudyCard(String studyType, String queryType, String query) throws Exception{
+        String identifier = String.format("{class-name}/{method-name}/%s-%s-%s", studyType, queryType, query);
         mockMvc.perform(
                         get("/cards/study")
-                                .param("studyType", StudyType.study.toString())
-                                .param("queryType", "level")
-                                .param("query","easy")
+                                .param("studyType", studyType)
+                                .param("queryType", queryType)
+                                .param("query",query)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
-                                "{class-name}/{method-name}",
+                                identifier, //"{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
                                                 .tag("StudyCards")
                                                 .summary("오늘 공부할 카드 모음 ")
                                                 .queryParameters(
-                                                        parameterWithName("studyType").description("study냐 review냐"),
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 / 난이도에 따른 분류인가"),
-                                                        parameterWithName("query").description("검색어 (level 또는 meaningGroup)")
+                                                        UserCardParameters.studyType,
+                                                        DeckParameters.queryType,
+                                                        DeckParameters.query
                                                 )
                                                 .responseFields(
-                                                        BaseDocs.combine(
-                                                                BaseDocs.basePageResponse(),
-                                                                UserCardDocs.userCardDto(BaseDocs.basePageResponsePrefix)
-                                                        )
+                                                        UserCardDtoDocs.userCards
                                                 )
-                                                .responseSchema(UserCardDocs.userCardsSchema)
+                                                .responseSchema(UserCardDtoDocs.userCardsSchema)
                                                 .build()
                                 )
                         )
                 );
+    }
+
+    private static Stream<Arguments> getStudyCardParams(){
+        return Arrays.stream(StudyType.values())
+                .flatMap(studyType -> Arrays.stream(QueryType.values()).flatMap(
+                        queryType -> {
+                            if(queryType == QueryType.level){
+                                return Arrays.stream(CardLevel.values()).map(query->Arguments.of(studyType.toString(), queryType.toString(), query.toString()));
+                            }else {
+                                return Arrays.stream(CardTopicEnums.values()).map(query->Arguments.of(studyType.toString(), queryType.toString(), query.toString()));
+                            }
+                        }
+                ));
     }
 
 }

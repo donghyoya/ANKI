@@ -1,9 +1,10 @@
 package com.kmu.anki.backend.domain.usercard.repository;
 
+import com.kmu.anki.backend.domain.card.entity.QCardTopic;
 import com.kmu.anki.backend.domain.card.entity.QForeignCard;
 import com.kmu.anki.backend.domain.card.entity.QKoreanCard;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
-import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.support.PageableExecutionUtils;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,12 +35,13 @@ public class UserCardQueryRepository {
     private final QUserCard userCard = QUserCard.userCard;
     private final QKoreanCard koreanCard = QKoreanCard.koreanCard;
     private final QForeignCard foreignCard = QForeignCard.foreignCard;
+    private final QCardTopic cardTopic = QCardTopic.cardTopic;
 
     public Page<UserCardDto> findStudyCards(
             Long userId,
             LanguageCode code,
             CardLevel difficulty,
-            CardMeaningGroup meaningGroup,
+            CardTopicEnums meaningGroup, // TODO
             LocalDateTime now,
             Pageable pageable
     ){
@@ -51,8 +54,7 @@ public class UserCardQueryRepository {
                                 koreanCard.level,
                                 foreignCard.languageCode,
                                 userCard.id,
-                                userCard.score,
-                                userCard.nextStudyDate,
+                                userCard.due,
                                 userCard.lapses,
                                 userCard.lastReview,
                                 userCard.reps,
@@ -68,6 +70,8 @@ public class UserCardQueryRepository {
                         koreanCard.userCards, userCard
                 ).join(
                         koreanCard.foreignCards, foreignCard
+                ).join(
+                        koreanCard.cardTopics, cardTopic
                 )
                 .where(
                         combineQuery(
@@ -78,6 +82,8 @@ public class UserCardQueryRepository {
                                 now
                         )
                 )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
                 .fetch();
         JPAQuery<UserCardDto> countQuery = queryFactory
                 .select(
@@ -89,8 +95,7 @@ public class UserCardQueryRepository {
                                 koreanCard.level,
                                 foreignCard.languageCode,
                                 userCard.id,
-                                userCard.score,
-                                userCard.nextStudyDate,
+                                userCard.due,
                                 userCard.lapses,
                                 userCard.lastReview,
                                 userCard.reps,
@@ -106,6 +111,8 @@ public class UserCardQueryRepository {
                         koreanCard.userCards, userCard
                 ).join(
                         koreanCard.foreignCards, foreignCard
+                ).join(
+                        koreanCard.cardTopics, cardTopic
                 )
                 .where(
                         combineQuery(
@@ -133,7 +140,7 @@ public class UserCardQueryRepository {
                         Projections.constructor(
                                 CardStudyDto.class,
                                 koreanCard.id,
-                                userCard.nextStudyDate,
+                                userCard.due,
                                 userCard.lapses,
                                 userCard.lastReview,
                                 userCard.reps,
@@ -158,7 +165,7 @@ public class UserCardQueryRepository {
             Long userId,
             LanguageCode code,
             CardLevel difficulty,
-            CardMeaningGroup meaningGroup,
+            CardTopicEnums topic,
             LocalDateTime now
     ){
         BooleanBuilder builder = new BooleanBuilder();
@@ -166,8 +173,8 @@ public class UserCardQueryRepository {
                 .and(userIdEq(userId))
                 .and(languageCodeEq(code))
                 .and(difficultyEq(difficulty))
-                .and(meaningGroupEq(meaningGroup))
-                .and(nextStudyDateBefore(now))
+                .and(topicEq(topic))
+                .and(dueBefore(now))
         ;
         return builder;
     }
@@ -188,12 +195,12 @@ public class UserCardQueryRepository {
         return difficulty == null ? null : koreanCard.level.eq(difficulty);
     }
 
-    public BooleanExpression meaningGroupEq(CardMeaningGroup meaningGroup){
-        return meaningGroup == null ? null : koreanCard.meaningGroup.eq(meaningGroup);
+    public BooleanExpression topicEq(CardTopicEnums topic){
+        return topic == null ? null : cardTopic.topicId.eq(topic);
     }
 
-    public BooleanExpression nextStudyDateBefore(LocalDateTime dateTime){
-        return dateTime == null ? null : userCard.nextStudyDate.before(dateTime);
+    public BooleanExpression dueBefore(LocalDateTime dateTime){
+        return dateTime == null ? null : userCard.due.before(dateTime);
     }
 
 }

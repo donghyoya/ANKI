@@ -3,7 +3,7 @@ package com.kmu.anki.backend.domain.card.controller;
 import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.dto.DeckDto;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
-import com.kmu.anki.backend.domain.card.enums.CardMeaningGroup;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.service.CardService;
 import com.kmu.anki.backend.domain.card.service.DeckService;
@@ -47,8 +47,8 @@ public class DeckController {
         LanguageCode languageCode = LanguageCode.en;
         Page<CardDto> cards;
         if(queryType == QueryType.meaning){
-            CardMeaningGroup cardMeaningGroup = CardMeaningGroup.valueOf(query);
-            cards = deckService.findDeckCards(languageCode, cardMeaningGroup);
+            CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
+            cards = deckService.findDeckCards(languageCode, cardTopicEnums);
         }else {
             CardLevel cardLevel = CardLevel.valueOf(query);
             cards = deckService.findDeckCards(languageCode, cardLevel);

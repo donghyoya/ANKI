@@ -3,41 +3,52 @@ package com.kmu.anki.backend.domain.card.controller;
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
-import com.kmu.anki.backend.domain.card.docs.CardDocs;
+import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
+import com.kmu.anki.backend.domain.card.docs.DeckDtoDocs;
+import com.kmu.anki.backend.domain.card.docs.parameters.DeckParameters;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
+import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.global.AbstractControllerTest;
-import com.kmu.anki.backend.global.BaseDocs;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class DeckControllerTest extends AbstractControllerTest {
 
-    @Test
-    void getDecksByDifficulty() throws Exception {
+    @ParameterizedTest
+    @EnumSource(QueryType.class)
+    void getDecks(QueryType type) throws Exception {
+        String identifier = String.format("{class-name}/{method-name}/%s", type.name());
+
         mockMvc.perform(
                 get("/decks")
-                        .param("queryType", "level")
+                        .param("queryType", type.name())
         ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
-                                "{class-name}/{method-name}",
+                                identifier,
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
                                                 .tag("Decks")
                                                 .summary("검색어 조건에 맞는 Deck 보기")
                                                 .queryParameters(
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (level) / 난이도에 따른 분류인가 (meaning)")
+                                                        DeckParameters.queryType
                                                 )
                                                 .responseFields(
-                                                        BaseDocs.combine(
-                                                                BaseDocs.baseListResponse(),
-                                                                CardDocs.deckDto(BaseDocs.basePageResponsePrefix)
-                                                        )
+                                                        DeckDtoDocs.decks
                                                 )
-                                                .responseSchema(CardDocs.decksSceham)
+                                                .responseSchema(DeckDtoDocs.decksSceham)
                                                 .build()
                                 )
                                 )
@@ -45,65 +56,48 @@ class DeckControllerTest extends AbstractControllerTest {
         ;
     }
 
-    @Test
-    void getDecksByMeaning() throws Exception {
-        mockMvc.perform(
-                        get("/decks")
-                                .param("queryType", "meaning")
-                ).andExpect(status().isOk())
-                .andDo(
-                        MockMvcRestDocumentationWrapper.document(
-                                "{class-name}/{method-name}",
-                                ResourceDocumentation.resource(
-                                        ResourceSnippetParameters.builder()
-                                                .tag("Decks")
-                                                .summary("검색어 조건에 맞는 Deck 보기")
-                                                .queryParameters(
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (level) / 난이도에 따른 분류인가 (meaning)")
-                                                )
-                                                .responseFields(
-                                                        BaseDocs.combine(
-                                                                BaseDocs.baseListResponse(),
-                                                                CardDocs.deckDto(BaseDocs.basePageResponsePrefix)
-                                                        )
-                                                )
-                                                .responseSchema(CardDocs.decksSceham)
-                                                .build()
-                                )
-                        )
-                )
-        ;
-    }
+    @ParameterizedTest
+    @MethodSource("getDecksCardParams")
+    void getDecksCard(String queryType, String query) throws Exception{
+        String identifier = String.format("{class-name}/{method-name}/%s-%s", queryType, query);
 
-
-    @Test
-    void getDecksCard() throws Exception{
         mockMvc.perform(
                 get("/decks/cards")
-                        .param("queryType", "level")
-                        .param("query","easy")
+                        .param("queryType", queryType)
+                        .param("query",query)
         ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
-                                "{class-name}/{method-name}",
+                                identifier,
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
                                                 .tag("Decks")
                                                 .summary("덱에 포함된 카드 모음")
                                                 .queryParameters(
-                                                        parameterWithName("queryType").description("의미에 따른 분류인가 (level) / 난이도에 따른 분류인가 (meaning)"),
-                                                        parameterWithName("query").description("검색어 (easy-normal-hard 등)")
+                                                        DeckParameters.queryType,
+                                                        DeckParameters.query
                                                 )
                                                 .responseFields(
-                                                        BaseDocs.combine(
-                                                                BaseDocs.basePageResponse(),
-                                                                CardDocs.cardDto(BaseDocs.basePageResponsePrefix)
-                                                        )
+                                                        CardDtoDocs.cards
                                                 )
-                                                .responseSchema(CardDocs.cardsSchema)
+                                                .responseSchema(CardDtoDocs.cardsSchema)
                                                 .build()
                                 )
                         )
                 );
     }
+
+    private static Stream<Arguments> getDecksCardParams(){
+        return Arrays.stream(QueryType.values())
+                .flatMap(queryType -> {
+                            if(queryType == QueryType.level){
+                                return Arrays.stream(CardLevel.values()).map(query->Arguments.of(queryType.toString(), query.toString()));
+                            }else {
+                                return Arrays.stream(CardTopicEnums.values()).map(query->Arguments.of(queryType.toString(), query.toString()));
+                            }
+                        }
+                );
+    }
+
+
 }

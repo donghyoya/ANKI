@@ -11,12 +11,12 @@ import org.springframework.test.context.jdbc.SqlConfig;
 
 @Import(TestcontainersConfiguration.class)
 @ActiveProfiles("test")
-//@Sql(scripts = "classpath:/data.sql", executionPhase= Sql.ExecutionPhase.BEFORE_TEST_CLASS, config = @SqlConfig(encoding = "UTF-8"))
+@Sql(scripts = "classpath:/data.sql", executionPhase= Sql.ExecutionPhase.BEFORE_TEST_CLASS, config = @SqlConfig(encoding = "UTF-8"))
 @Sql(scripts = "classpath:/drop.sql", executionPhase= Sql.ExecutionPhase.AFTER_TEST_CLASS,  config = @SqlConfig(encoding = "UTF-8"))
-@TestExecutionListeners(
-		value = { TestDataInsertListener.class },
-		mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS
-)
+//@TestExecutionListeners(
+//		value = { TestDataInsertListener.class },
+//		mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS
+//)
 @SpringBootTest
 class BackendApplicationTests {
 

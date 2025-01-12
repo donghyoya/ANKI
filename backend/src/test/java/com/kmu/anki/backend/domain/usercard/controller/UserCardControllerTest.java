@@ -34,6 +34,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Fail.fail;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;

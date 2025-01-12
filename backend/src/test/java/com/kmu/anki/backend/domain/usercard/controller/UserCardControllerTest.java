@@ -3,9 +3,11 @@ package com.kmu.anki.backend.domain.usercard.controller;
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
+import com.kmu.anki.backend.domain.card.controller.QueryType;
 import com.kmu.anki.backend.domain.card.docs.parameters.CardParameters;
 import com.kmu.anki.backend.domain.card.docs.parameters.DeckParameters;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
@@ -19,11 +21,18 @@ import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.BaseDocs;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.testcontainers.shaded.org.checkerframework.checker.units.qual.A;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.stream.Stream;
 
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -103,17 +112,20 @@ class UserCardControllerTest extends AbstractControllerTest {
                 );
     }
 
-    @Test
-    void getStudyCard() throws Exception{
+    @ParameterizedTest
+    @MethodSource("getStudyCardParams")
+    void getStudyCard(String studyType, String queryType, String query) throws Exception{
+        String identifier = String.format("{class-name}/{method-name}/%s/%s/%s", studyType, queryType, query);
+
         mockMvc.perform(
                         get("/cards/study")
-                                .param("studyType", StudyType.study.toString())
-                                .param("queryType", "level")
-                                .param("query","easy")
+                                .param("studyType", studyType)
+                                .param("queryType", queryType)
+                                .param("query",query)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
-                                "{class-name}/{method-name}",
+                                identifier, //"{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
                                                 .tag("StudyCards")
@@ -131,6 +143,19 @@ class UserCardControllerTest extends AbstractControllerTest {
                                 )
                         )
                 );
+    }
+
+    private static Stream<Arguments> getStudyCardParams(){
+        return Arrays.stream(StudyType.values())
+                .flatMap(studyType -> Arrays.stream(QueryType.values()).flatMap(
+                        queryType -> {
+                            if(queryType == QueryType.level){
+                                return Arrays.stream(CardLevel.values()).map(query->Arguments.of(studyType.toString(), queryType.toString(), query.toString()));
+                            }else {
+                                return Arrays.stream(CardTopicEnums.values()).map(query->Arguments.of(studyType.toString(), queryType.toString(), query.toString()));
+                            }
+                        }
+                ));
     }
 
 }

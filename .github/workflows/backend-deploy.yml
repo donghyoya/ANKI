@@ -1,59 +1,57 @@
 on:
   push:
     branches:
-      - backend-main  # backend-main 브랜치에 푸시될 때 실행
+      - backend-main # backend-main 브랜치에 푸시될 때 실행
 
 env:
-  DEPLOY_PATH: /home/ubuntu/ANKI/backend  # 배포할 경로
+  DEPLOY_PATH: /home/ubuntu/ANKI/backend # 배포할 경로
   JAVA_VERSION: 21
 
 jobs:
   deploy-backend:
     runs-on: ubuntu-latest
 
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3  # 현재 리포지토리의 코드를 체크아웃
-    
-    - name: Set up JDK 21
-      uses: actions/setup-java@v3
-      with:
-        java-version: ${{ env.JAVA_VERSION }}
-        distribution: 'adopt'  # 사용할 JDK 배포판
+      - name: Checkout code
+        uses: actions/checkout@v3 # 현재 리포지토리의 코드를 체크아웃
 
-    # Step 1: 소스 빌드하고 압축하기
-    - name: Build and Zip Application
-      run: |
-        cd backend/
-        chmod +x gradlew
-        ./gradlew clean build -D"spring.profiles.active=prod" 
-        cd build/libs/
-        ls -al
-        zip -r ../../backend.zip backend.jar
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: "adopt" # 사용할 JDK 배포판
 
-    - name: Set up SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.WAS_EC2_SSH_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+      # Step 1: 소스 빌드하고 압축하기
+      - name: Build and Zip Application
+        run: |
+          cd backend/
+          chmod +x gradlew
+          ./gradlew clean build -D"spring.profiles.active=prod" --info
+          cd build/libs/
+          ls -al
+          zip -r ../../backend.zip backend.jar
 
-    # Step 2: 서버로 파일 전송
-    - name: Transfer files to server via SCP
-      run: |
-        cd backend
-        # 서버로 파일 전송
-        scp -o StrictHostKeyChecking=no backend.zip ${{ secrets.USER }}@${{ secrets.HOST }}:/home/ubuntu/ANKI/backend
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.WAS_EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
+      # Step 2: 서버로 파일 전송
+      - name: Transfer files to server via SCP
+        run: |
+          cd backend
+          # 서버로 파일 전송
+          scp -o StrictHostKeyChecking=no backend.zip ${{ secrets.USER }}@${{ secrets.HOST }}:/home/ubuntu/ANKI/backend
 
-    # Step 3: 서버에서 압축 풀고 스크립트 실행
-    - name: Deploy on Server
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.WAS_EC2_SSH_KEY }}
-      run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} << 'EOF'
-        cd /home/ubuntu/ANKI/backend
-        unzip -o backend.zip
-        rm backend.zip
-        EOF
+      # Step 3: 서버에서 압축 풀고 스크립트 실행
+      - name: Deploy on Server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.WAS_EC2_SSH_KEY }}
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} << 'EOF'
+          cd /home/ubuntu/ANKI/backend
+          unzip -o backend.zip
+          rm backend.zip
+          EOF

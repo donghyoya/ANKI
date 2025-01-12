@@ -111,6 +111,8 @@ public class UserCardQueryRepository {
                         koreanCard.userCards, userCard
                 ).join(
                         koreanCard.foreignCards, foreignCard
+                ).join(
+                        koreanCard.cardTopics, cardTopic
                 )
                 .where(
                         combineQuery(

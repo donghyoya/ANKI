@@ -3,6 +3,7 @@ package com.kmu.anki.backend.domain.card.docs;
 import com.epages.restdocs.apispec.Schema;
 import com.kmu.anki.backend.global.BaseDocs;
 import org.springframework.restdocs.payload.FieldDescriptor;
+import org.springframework.restdocs.payload.JsonFieldType;
 
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 
@@ -20,7 +21,7 @@ public class CardDtoDocs {
         return new FieldDescriptor[]{
                 fieldWithPath(prefix+"cardId").description("단어카드의 고유번호"),
                 fieldWithPath(prefix+"koreanWord").description("한국어 단어"),
-                fieldWithPath(prefix+"foreignWord").description("외국어 단어"),
+                fieldWithPath(prefix+"foreignWord").type(JsonFieldType.STRING).optional().description("외국어 단어"),
                 fieldWithPath(prefix+"level").description("단어의 수준 (easy, normal, hard)"),
                 fieldWithPath(prefix+"languageCode").description("언어코드 (ISO 639-1)")
         };

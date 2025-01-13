@@ -32,6 +32,8 @@ jobs:
       # Step 1-2: 소스 빌드하고 압축하기
       - name: Build and Zip Application
         run: |
+          cd backend/
+          chmod +x gradlew
           ./gradlew clean build -D"spring.profiles.active=prod" 
           cd build/libs/
           ls -al

@@ -55,6 +55,8 @@ dependencies {
 	// csv parser
 	implementation 'com.univocity:univocity-parsers:2.9.1'
 
+	// for logback
+	implementation 'net.logstash.logback:logstash-logback-encoder:7.4'
 }
 
 openapi3{

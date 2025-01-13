@@ -21,13 +21,18 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: "adopt" # 사용할 JDK 배포판
 
-      # Step 1: 소스 빌드하고 압축하기
-      - name: Build and Zip Application
+      # Step 1-1 : test하기
+      - name: test application
         run: |
           cd backend/
           chmod +x gradlew
-          ./gradlew test --fail-fast 
-          ./gradlew clean build -D"spring.profiles.active=prod" -x test
+          ./gradlew docs
+        continue-on-error: true
+
+      # Step 1-2: 소스 빌드하고 압축하기
+      - name: Build and Zip Application
+        run: |
+          ./gradlew clean build -D"spring.profiles.active=prod" 
           cd build/libs/
           ls -al
           zip -r ../../backend.zip backend.jar

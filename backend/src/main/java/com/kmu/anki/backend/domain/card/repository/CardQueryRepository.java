@@ -27,6 +27,7 @@ import java.util.List;
 public class CardQueryRepository {
     private final JPAQueryFactory queryFactory;
     private final JdbcTemplate jdbcTemplate;
+    private final ForeignCardTextSearchMapper foreignCardTextSearchMapper;
     private final QForeignCard foreignCard = QForeignCard.foreignCard;
     private final QKoreanCard koreanCard = QKoreanCard.koreanCard;
     private final QUserCard userCard = QUserCard.userCard;
@@ -61,6 +62,12 @@ public class CardQueryRepository {
                 .fetchOne();
     }
 
+    /**
+     * 카드의 세부 정보 반환 반환
+     * @param cardId koreanCard ID
+     * @param code 언어코드
+     * @return 카드 세부정보 DTO
+     */
     public CardDetailDto findDetailById(Long cardId, LanguageCode code){
         return queryFactory
                 .select(
@@ -91,6 +98,13 @@ public class CardQueryRepository {
                 .fetchOne();
     }
 
+    /**
+     * 의미코드에 맞는 Card들 검색
+     * @param languageCode
+     * @param category
+     * @param pageable
+     * @return
+     */
     public Page<CardDto> findDecksCardByTopic(
             LanguageCode languageCode,
             CardTopicEnums category,
@@ -129,5 +143,19 @@ public class CardQueryRepository {
         );
     }
 
+    /**
+     * 외국어 문자 검색
+     * @param languageCode
+     * @param queryText 검색어
+     * @return
+     */
+    public Page<CardDetailDto> searchForeignWord(LanguageCode languageCode, String queryText, Pageable pageable){
+        List<CardDetailDto> cardDetailDtos = foreignCardTextSearchMapper.searchForeignWord(languageCode.toString(), queryText, pageable.getOffset(), pageable.getPageSize());
+        foreignCardTextSearchMapper.searchForeignWordCount(languageCode.toString(), queryText);
+
+        return PageableExecutionUtils.getPage(
+                cardDetailDtos, pageable, () -> foreignCardTextSearchMapper.searchForeignWordCount(languageCode.toString(), queryText)
+        );
+    }
 
 }

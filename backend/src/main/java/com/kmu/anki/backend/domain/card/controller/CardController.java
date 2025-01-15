@@ -5,11 +5,9 @@ import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.service.CardService;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
+import com.kmu.anki.backend.global.schema.BasePageResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/cards")
 @RequiredArgsConstructor
@@ -35,5 +33,14 @@ public class CardController {
         return cardService.readCardDetail(cardId, code);
     }
 
+    @GetMapping("/foreign-search")
+    public BasePageResponse<CardDetailDto> getForeignSearch(
+            @RequestParam("code") LanguageCode code,
+            @RequestParam("query") String query,
+            @RequestParam("page") Integer page,
+            @RequestParam("pageSize") Integer pageSize
+    ){
+        return BasePageResponse.of(cardService.searchForeignCards(code, query, page-1, pageSize));
+    }
 
 }

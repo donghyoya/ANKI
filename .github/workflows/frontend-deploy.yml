@@ -24,14 +24,14 @@ jobs:
       - name: Install dependencies and build
         run: |
           cd frontend/
-          npm install
+          npm ci
           npm run build  # React 앱을 빌드 (build 폴더 생성)
 
       # Step 4: 빌드된 폴더 압축
       - name: Zip build folder
         run: |
           cd frontend/
-          zip -r build.zip build package.json package-lock.json
+          zip -r build.zip .next package.json package-lock.json next.config.js public
 
       # Step 5: SSH 설정
       - name: Set up SSH
@@ -53,7 +53,5 @@ jobs:
           ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 ${{ secrets.USER }}@${{ secrets.HOST }} << 'EOF'
             cd /home/ubuntu/ANKI/frontend
             unzip -o build.zip
-            ./stop.sh
-            ./start.sh
           EOF
 

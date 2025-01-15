@@ -81,4 +81,43 @@ alter table if exists user_cards
     ON DELETE CASCADE
     ON UPDATE CASCADE;
 
-INSERT INTO topics(topic_id) VALUES('CONCEPT'),('ECONOMY'),('SCIENCE'),('TRANSPORT'),('WEATHER'),('NEWS'),('FEELING'),('GRAMMAR_AND_LANGUAGE'),('CULTURE'),('HOSPITAL'),('LIFE'),('LIVING'),('PERSONALITY'),('NUMBER'),('COMMUNICATION'),('TIME'),('FOOD'),('RELATIONSHIPS'),('NATURE'),('POLITICS'),('RELIGION'),('WORK'),('HOME'),('FASHION_AND_APPEARANCE'),('SCHOOL'),('ACTION'),('ADMINISTRATION');
+INSERT INTO topics(topic_id) VALUES('CONCEPT'),('ECONOMY'),('SCIENCE'),('TRANSPORT'),('WEATHER'),('NEWS'),('FEELING'),('GRAMMAR_AND_LANGUAGE'),('CULTURE'),('HOSPITAL'),('LIFE'),('LIVING'),('PERSONALITY'),('NUMBER'),('COMMUNICATION'),('TIME'),('FOOD'),('RELATIONSHIPS'),('NATURE'),('POLITICS'),('RELIGION'),('WORK'),('HOME'),('FASHION_AND_APPEARANCE'),('SCHOOL'),('ACTION'),('ADMINISTRATION');;
+
+-- full text search
+ALTER TABLE foreign_cards
+    ADD COLUMN foreign_word_vector TSVECTOR;
+
+CREATE INDEX idx_foreign_word_vector ON foreign_cards USING GIN(foreign_word_vector);
+
+CREATE EXTENSION IF NOT EXISTS plpgsql;
+CREATE EXTENSION pg_trgm;
+
+CREATE OR REPLACE FUNCTION update_foreign_word_vector()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.language_code = 'en' THEN
+          NEW.foreign_word_vector := to_tsvector('english', NEW.foreign_word);
+    ELSIF NEW.language_code = 'ar' THEN
+          NEW.foreign_word_vector := to_tsvector('arabic', NEW.foreign_word);
+    ELSIF NEW.language_code = 'vi' THEN
+          NEW.foreign_word_vector := to_tsvector('vietnamese', NEW.foreign_word);
+    ELSIF NEW.language_code = 'ms' THEN
+          NEW.foreign_word_vector := to_tsvector('indonesian', NEW.foreign_word);
+    ELSIF NEW.language_code = 'ru' THEN
+          NEW.foreign_word_vector := to_tsvector('russian', NEW.foreign_word);
+    ELSIF NEW.language_code = 'fr' THEN
+          NEW.foreign_word_vector := to_tsvector('french', NEW.foreign_word);
+    ELSIF NEW.language_code = 'es' THEN
+          NEW.foreign_word_vector := to_tsvector('spanish', NEW.foreign_word);
+    ELSE
+       NEW.foreign_word_vector := to_tsvector('simple', NEW.foreign_word);
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;;
+
+CREATE TRIGGER trg_update_foreign_word_vector
+BEFORE INSERT OR UPDATE
+ON foreign_cards
+FOR EACH ROW
+EXECUTE FUNCTION update_foreign_word_vector();

@@ -62,7 +62,7 @@ public enum CardTopicEnums {
         return -1L;
     }
 
-//      data.sql 얻을려고 만든거니 주석해제하지 마시오
+//      test-data-insert.sql 얻을려고 만든거니 주석해제하지 마시오
 //    public static void main(String[] args){
 //        StringBuilder sb = new StringBuilder();
 //        sb.append("INSERT INTO topics(topic_id) VALUES");

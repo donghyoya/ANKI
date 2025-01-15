@@ -1,9 +1,11 @@
 package com.kmu.anki.backend.global;
 
 import com.kmu.anki.backend.TestcontainersConfiguration;
+import com.kmu.anki.backend.global.listener.TestDataInsertListener;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 

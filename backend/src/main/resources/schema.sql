@@ -99,8 +99,6 @@ BEGIN
           NEW.foreign_word_vector := to_tsvector('english', NEW.foreign_word);
     ELSIF NEW.language_code = 'ar' THEN
           NEW.foreign_word_vector := to_tsvector('arabic', NEW.foreign_word);
-    ELSIF NEW.language_code = 'vi' THEN
-          NEW.foreign_word_vector := to_tsvector('vietnamese', NEW.foreign_word);
     ELSIF NEW.language_code = 'ms' THEN
           NEW.foreign_word_vector := to_tsvector('indonesian', NEW.foreign_word);
     ELSIF NEW.language_code = 'ru' THEN

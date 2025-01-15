@@ -20,28 +20,25 @@
         where
             <choose>
                 <when test="languageCode = 'en'">
-                    fc.foreign_word_vector @@ to_tsquery('english', #{queryText})
+                    fc.foreign_word_vector @@ plainto_tsquery('english', #{queryText})
                 </when>
                 <when test="languageCode = 'ar'">
-                    fc.foreign_word_vector @@ to_tsquery('arabic', #{queryText})
-                </when>
-                <when test="languageCode = 'vi'">
-                    fc.foreign_word_vector @@ to_tsquery('vietnamese', #{queryText})
+                    fc.foreign_word_vector @@ plainto_tsquery('arabic', #{queryText})
                 </when>
                 <when test="languageCode = 'ms'">
-                    fc.foreign_word_vector @@ to_tsquery('indonesian', #{queryText})
+                    fc.foreign_word_vector @@ plainto_tsquery('indonesian', #{queryText})
                 </when>
                 <when test="languageCode = 'ru'">
-                    fc.foreign_word_vector @@ to_tsquery('russian', #{queryText})
+                    fc.foreign_word_vector @@ plainto_tsquery('russian', #{queryText})
                 </when>
                 <when test="languageCode = 'fr'">
-                    fc.foreign_word_vector @@ to_tsquery('french', #{queryText})
+                    fc.foreign_word_vector @@ plainto_tsquery('french', #{queryText})
                 </when>
                 <when test="languageCode = 'es'">
-                    fc.foreign_word_vector @@ to_tsquery('spanish', #{queryText})
+                    fc.foreign_word_vector @@ plainto_tsquery('spanish', #{queryText})
                 </when>
                 <otherwise>
-                    fc.foreign_word_vector @@ to_tsquery('simple', #{queryText})
+                    fc.foreign_word_vector @@ plainto_tsquery('simple', #{queryText})
                 </otherwise>
             </choose>
         ;
@@ -53,28 +50,25 @@
         where
         <choose>
             <when test="languageCode = 'en'">
-                fc.foreign_word_vector @@ to_tsquery('english', #{queryText})
+                fc.foreign_word_vector @@ plainto_tsquery('english', #{queryText})
             </when>
             <when test="languageCode = 'ar'">
-                fc.foreign_word_vector @@ to_tsquery('arabic', #{queryText})
-            </when>
-            <when test="languageCode = 'vi'">
-                fc.foreign_word_vector @@ to_tsquery('vietnamese', #{queryText})
+                fc.foreign_word_vector @@ plainto_tsquery('arabic', #{queryText})
             </when>
             <when test="languageCode = 'ms'">
-                fc.foreign_word_vector @@ to_tsquery('indonesian', #{queryText})
+                fc.foreign_word_vector @@ plainto_tsquery('indonesian', #{queryText})
             </when>
             <when test="languageCode = 'ru'">
-                fc.foreign_word_vector @@ to_tsquery('russian', #{queryText})
+                fc.foreign_word_vector @@ plainto_tsquery('russian', #{queryText})
             </when>
             <when test="languageCode = 'fr'">
-                fc.foreign_word_vector @@ to_tsquery('french', #{queryText})
+                fc.foreign_word_vector @@ plainto_tsquery('french', #{queryText})
             </when>
             <when test="languageCode = 'es'">
-                fc.foreign_word_vector @@ to_tsquery('spanish', #{queryText})
+                fc.foreign_word_vector @@ plainto_tsquery('spanish', #{queryText})
             </when>
             <otherwise>
-                fc.foreign_word_vector @@ to_tsquery('simple', #{queryText})
+                fc.foreign_word_vector @@ plainto_tsquery('simple', #{queryText})
             </otherwise>
         </choose>
         ;

@@ -44,6 +44,7 @@ public class TestDataInsertListener extends AbstractTestExecutionListener {
         CsvExtractResult extract = cardCsvExtractor.extract(data);
         cardCsvBatchInsertRepository.batchInsert(extract.getValidRecords());
         foreignCardCsvBatchInsertRepository.batchInsert(extract.getValidRecords());
+        jdbcTemplate.update("truncate topics cascade;");
         cardTopicBatchInsertRepository.batchInsert(extract.getValidRecords());
         jdbcTemplate.update("""
             insert into users(user_id, today_study_words) values (1, 30);

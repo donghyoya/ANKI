@@ -18,6 +18,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -85,8 +87,8 @@ class CardControllerTest extends AbstractControllerTest {
 
     @ParameterizedTest
     @MethodSource("getForeignSearch")
-    void getForeignSearch(LanguageCode code, String query) throws Exception{
-        String identifier = String.format("{class-name}/{method-name}/%s", query);
+    void getForeignSearch(Long id, LanguageCode code, String query) throws Exception{
+        String identifier = String.format("{class-name}/{method-name}/%d-%s", id, code.name());
 
         mockMvc.perform(
                         get("/cards/foreign-search")
@@ -120,10 +122,10 @@ class CardControllerTest extends AbstractControllerTest {
     }
 
     private static Stream<Arguments> getForeignSearch(){
-        List<ForeignCard> all = foreignCardRepository.findAll();
+        Page<ForeignCard> all = foreignCardRepository.findAll(PageRequest.of(0,20));
 
-        return all.stream().limit(20)
-                .map(fc -> Arguments.of(fc.getLanguageCode(), fc.getForeignWord()));
+        return all.stream()
+                .map(fc -> Arguments.of(fc.getId(), fc.getLanguageCode(), fc.getForeignWord()));
     }
 
 }

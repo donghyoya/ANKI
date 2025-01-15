@@ -20,4 +20,6 @@ public interface ForeignCardRepository extends JpaRepository<ForeignCard, Long> 
     """)
     public Page<ForeignCard> findDeckCard(@Param("languageCode") LanguageCode languageCode, @Param("difficulty") CardLevel difficulty, Pageable pageable);
 
+    Page<ForeignCard> findAll(Pageable pageable);
+
 }

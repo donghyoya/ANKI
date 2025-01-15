@@ -32,7 +32,7 @@ public class DeckService {
     }
 
     public List<DeckDto> readDeckByMeaningGroup(Long userId){
-        return deckQueryRepository.findDeckByMeanging(userId);
+        return deckQueryRepository.findDeckByMeaning(userId);
     }
 
 

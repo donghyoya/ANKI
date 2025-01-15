@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kmu.anki.backend.domain.card.repository.ForeignCardTextSearchMapper">
+    <select id="searchForeignWord" parameterType="map" resultType="com.kmu.anki.backend.domain.card.dto.CardDetailDto">
+        select
+            kc.korean_card_id as cardId,
+            kc.korean_word as koreanWord,
+            fc.foreign_word as foreign_word,
+            kc.level as level,
+            fc.language_code as language_code,
+            kc.original_language as original_language,
+            kc.homograph_number as homograph_number,
+            kc.parts_of_speech as parts_of_speech,
+            kc.pronunciation as pronunciation,
+            kc.related_words as related_words,
+            kc.inflection as inflection,
+            kc.example_usage as example_usage
+        from foreign_cards fc join korean_cards kc on fc.korean_card_id = kc.korean_card_id
+        where
+            <choose>
+                <when test="languageCode = 'en'">
+                    fc.foreign_word_vector @@ to_tsquery('english', #{queryText})
+                </when>
+                <when test="languageCode = 'ar'">
+                    fc.foreign_word_vector @@ to_tsquery('arabic', #{queryText})
+                </when>
+                <when test="languageCode = 'vi'">
+                    fc.foreign_word_vector @@ to_tsquery('vietnamese', #{queryText})
+                </when>
+                <when test="languageCode = 'ms'">
+                    fc.foreign_word_vector @@ to_tsquery('indonesian', #{queryText})
+                </when>
+                <when test="languageCode = 'ru'">
+                    fc.foreign_word_vector @@ to_tsquery('russian', #{queryText})
+                </when>
+                <when test="languageCode = 'fr'">
+                    fc.foreign_word_vector @@ to_tsquery('french', #{queryText})
+                </when>
+                <when test="languageCode = 'es'">
+                    fc.foreign_word_vector @@ to_tsquery('spanish', #{queryText})
+                </when>
+                <otherwise>
+                    fc.foreign_word_vector @@ to_tsquery('simple', #{queryText})
+                </otherwise>
+            </choose>
+        ;
+    </select>
+</mapper>

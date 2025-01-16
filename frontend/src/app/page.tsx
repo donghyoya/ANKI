@@ -1,25 +1,18 @@
-/** @format */
-
 'use client';
 
-import React from 'react';
-import { createComponent } from '@lit/react';
-import { MdFilledButton } from '@material/web/button/filled-button.js';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 
-// button example
-const FilledButton = createComponent({
-  tagName: 'md-filled-button',
-  elementClass: MdFilledButton,
-  react: React,
-  events: {
-    onClick: 'click'
-  }
+const FilledButton = dynamic(() => import('@/components/FilledButton'), {
+  ssr: false
 });
 
 export default function Home() {
   return (
     <div>
-      <FilledButton>Hello</FilledButton>
+      <Suspense fallback={<div>Loading...</div>}>
+        <FilledButton>Hello</FilledButton>
+      </Suspense>
     </div>
   );
 }

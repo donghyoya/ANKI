@@ -20,6 +20,8 @@ public class QKoreanCard extends EntityPathBase<KoreanCard> {
 
     public static final QKoreanCard koreanCard = new QKoreanCard("koreanCard");
 
+    public final ListPath<CardTopic, QCardTopic> cardTopics = this.<CardTopic, QCardTopic>createList("cardTopics", CardTopic.class, QCardTopic.class, PathInits.DIRECT2);
+
     public final StringPath exampleUsage = createString("exampleUsage");
 
     public final ListPath<ForeignCard, QForeignCard> foreignCards = this.<ForeignCard, QForeignCard>createList("foreignCards", ForeignCard.class, QForeignCard.class, PathInits.DIRECT2);
@@ -33,8 +35,6 @@ public class QKoreanCard extends EntityPathBase<KoreanCard> {
     public final StringPath koreanWord = createString("koreanWord");
 
     public final EnumPath<com.kmu.anki.backend.domain.card.enums.CardLevel> level = createEnum("level", com.kmu.anki.backend.domain.card.enums.CardLevel.class);
-
-    public final EnumPath<com.kmu.anki.backend.domain.card.enums.CardMeaningGroup> meaningGroup = createEnum("meaningGroup", com.kmu.anki.backend.domain.card.enums.CardMeaningGroup.class);
 
     public final StringPath originalLanguage = createString("originalLanguage");
 

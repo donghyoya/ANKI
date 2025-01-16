@@ -41,6 +41,15 @@ public class UserStudyHistoryService {
 
     public Page<UserStudyHistoryDto> readUserHistory(Long userId, Integer page, Integer pageSize) {
         PageRequest pageRequest = PageRequest.of(page, pageSize);
-        return userStudyHistoryRepository.findByUserIdOrderByStudyDate(userId, pageRequest).map(UserStudyHistoryDto::of);
+        return userStudyHistoryRepository.findByUserIdOrderByStudyDateDesc(userId, pageRequest).map(UserStudyHistoryDto::of);
+    }
+
+    public UserStudyHistoryDto readLatestDecks(Long userId){
+        Page<UserStudyHistoryDto> userStudyHistoryDto = userStudyHistoryRepository.findByUserIdOrderByStudyDateDesc(userId, PageRequest.of(0, 1)).map(UserStudyHistoryDto::of);
+        if (userStudyHistoryDto.getContent().size() == 0){
+            return UserStudyHistoryDto.builder().build();
+        }else {
+            return userStudyHistoryDto.getContent().get(0);
+        }
     }
 }

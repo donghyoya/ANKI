@@ -27,4 +27,11 @@ public class UserStudyHistoryController {
         Page<UserStudyHistoryDto> userStudyHistoryDtos = userStudyHistoryService.readUserHistory(userId, page-1, pageSize);
         return BasePageResponse.of(userStudyHistoryDtos);
     }
+
+    @GetMapping("/decks/latest")
+    public UserStudyHistoryDto getLatestStudy(){
+        // TODO USER정보 가져오기
+        Long userId = 1L;
+        return userStudyHistoryService.readLatestDecks(userId);
+    }
 }

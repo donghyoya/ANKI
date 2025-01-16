@@ -1,5 +1,8 @@
 package com.kmu.anki.backend.domain.study.history.entity;
 
+import com.kmu.anki.backend.domain.card.controller.QueryType;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.user.entity.User;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import jakarta.persistence.*;
@@ -26,7 +29,16 @@ public class UserStudyHistory {
      */
 
     @Column
-    private String deckType;
+    @Enumerated(EnumType.STRING)
+    private QueryType deckType;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private CardLevel cardLevel;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private CardTopicEnums cardTopic;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -44,10 +56,12 @@ public class UserStudyHistory {
     @Column(name = "user_id", insertable = false, updatable = false)
     private Long userId;
 
-    public static UserStudyHistory from(StudyType studyType, String deckType ,User user){
+    public static UserStudyHistory from(StudyType studyType, QueryType deckType, CardLevel cardLevel, CardTopicEnums cardTopic,User user){
         return new UserStudyHistoryBuilder()
                 .studyType(studyType)
                 .deckType(deckType)
+                .cardLevel(cardLevel)
+                .cardTopic(cardTopic)
                 .studyDate(LocalDateTime.now())
                 .user(user)
                 .build();

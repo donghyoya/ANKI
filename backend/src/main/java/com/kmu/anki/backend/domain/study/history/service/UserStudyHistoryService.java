@@ -1,5 +1,8 @@
 package com.kmu.anki.backend.domain.study.history.service;
 
+import com.kmu.anki.backend.domain.card.controller.QueryType;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
+import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.study.history.dto.UserStudyHistoryDto;
 import com.kmu.anki.backend.domain.study.history.entity.UserStudyHistory;
 import com.kmu.anki.backend.domain.study.history.repository.UserStudyHistoryRepository;
@@ -22,11 +25,19 @@ public class UserStudyHistoryService {
     /* create */
 
     @Transactional
-    public void createHistory(StudyType studyType, String deckType , Long userId){
+    public void createHistory(StudyType studyType, QueryType deckType, CardLevel cardLevel, Long userId){
         User user = userRepository.findById(userId).orElseThrow();
-        UserStudyHistory studyHistory = UserStudyHistory.from(studyType, deckType.toString(), user);
+        UserStudyHistory studyHistory = UserStudyHistory.from(studyType, deckType, cardLevel, null, user);
         user.addStudyHistory(studyHistory);
     }
+
+    @Transactional
+    public void createHistory(StudyType studyType, QueryType deckType, CardTopicEnums cardTopic, Long userId){
+        User user = userRepository.findById(userId).orElseThrow();
+        UserStudyHistory studyHistory = UserStudyHistory.from(studyType, deckType, null, cardTopic, user);
+        user.addStudyHistory(studyHistory);
+    }
+
 
     public Page<UserStudyHistoryDto> readUserHistory(Long userId, Integer page, Integer pageSize) {
         PageRequest pageRequest = PageRequest.of(page, pageSize);

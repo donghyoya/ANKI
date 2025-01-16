@@ -4,6 +4,7 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.PageParameters;
+import com.kmu.anki.backend.domain.card.controller.QueryType;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.study.history.dto.UserStudyHistoryDto;
@@ -35,17 +36,20 @@ class UserStudyHistoryControllerTest extends AbstractControllerTest {
         List<UserStudyHistoryDto> historyDtos = Arrays.asList(
                 UserStudyHistoryDto.builder()
                         .studyType(StudyType.study)
-                        .deckType(CardLevel.easy.toString())
+                        .deckType(QueryType.level)
+                        .deckName(CardLevel.easy.toString())
                         .studyDate(LocalDateTime.now())
                         .build(),
                 UserStudyHistoryDto.builder()
                         .studyType(StudyType.review)
-                        .deckType(CardLevel.easy.toString())
+                        .deckType(QueryType.level)
+                        .deckName(CardLevel.easy.toString())
                         .studyDate(LocalDateTime.now())
                         .build(),
                 UserStudyHistoryDto.builder()
                         .studyType(StudyType.study)
-                        .deckType(CardTopicEnums.FASHION_AND_APPEARANCE.name())
+                        .deckType(QueryType.meaning)
+                        .deckName(CardTopicEnums.FASHION_AND_APPEARANCE.name())
                         .studyDate(LocalDateTime.now())
                         .build()
         );

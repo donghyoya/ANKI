@@ -59,13 +59,15 @@ public class UserCardController {
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
             cards = userCardService.readStudyUserCard(userId, languageCode, cardTopicEnums);
+            // 최근 학습 덱을 보여주기 위해서
+            userStudyHistoryService.createHistory(studyType, queryType, cardTopicEnums, userId);
         }else {
             CardLevel cardLevel = CardLevel.valueOf(query);
             cards = userCardService.readStudyUserCard(userId, languageCode, cardLevel);
+            // 최근 학습 덱을 보여주기 위해서
+            userStudyHistoryService.createHistory(studyType, queryType, cardLevel, userId);
         }
 
-        // 최근 학습 덱을 보여주기 위해서
-        userStudyHistoryService.createHistory(studyType, query, userId);
         return BasePageResponse.of(cards);
     }
 }

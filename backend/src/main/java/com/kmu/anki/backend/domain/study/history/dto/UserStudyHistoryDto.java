@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.study.history.dto;
 
+import com.kmu.anki.backend.domain.card.controller.QueryType;
 import com.kmu.anki.backend.domain.study.history.entity.UserStudyHistory;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import jakarta.persistence.Column;
@@ -17,13 +18,22 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 public class UserStudyHistoryDto {
-    private String deckType;
+    private QueryType deckType;
+    private String deckName;
     private StudyType studyType;
     private LocalDateTime studyDate;
 
     public static UserStudyHistoryDto of(UserStudyHistory userStudyHistory){
+        QueryType queryType = userStudyHistory.getDeckType();
+        String deckname = null;
+        if(queryType.equals(QueryType.level)){
+            deckname = userStudyHistory.getCardLevel().name();
+        }else {
+            deckname = userStudyHistory.getCardTopic().name();
+        }
         return new UserStudyHistoryDtoBuilder()
-                .deckType(userStudyHistory.getDeckType())
+                .deckType(queryType)
+                .deckName(deckname)
                 .studyType(userStudyHistory.getStudyType())
                 .studyDate(userStudyHistory.getStudyDate())
                 .build();

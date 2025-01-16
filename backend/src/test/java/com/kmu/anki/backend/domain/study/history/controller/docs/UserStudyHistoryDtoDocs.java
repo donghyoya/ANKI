@@ -18,7 +18,8 @@ public class UserStudyHistoryDtoDocs {
 
     public static FieldDescriptor[] userStudyHistory(String prefix){
         FieldDescriptor[] userStudyHistory =  new FieldDescriptor[]{
-                fieldWithPath(prefix+"deckType").description("Deck에 대한 설명(난이도 또는 주제)"),
+                fieldWithPath(prefix+"deckType").description(""),
+                fieldWithPath(prefix+"deckName").description(""),
                 fieldWithPath(prefix+"studyType").description("study를 했는지 review를 했는지"),
                 fieldWithPath(prefix+"studyDate").description("최근 학습일자"),
         };

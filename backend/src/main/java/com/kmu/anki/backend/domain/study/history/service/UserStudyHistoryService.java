@@ -1,11 +1,14 @@
 package com.kmu.anki.backend.domain.study.history.service;
 
+import com.kmu.anki.backend.domain.study.history.dto.UserStudyHistoryDto;
 import com.kmu.anki.backend.domain.study.history.entity.UserStudyHistory;
 import com.kmu.anki.backend.domain.study.history.repository.UserStudyHistoryRepository;
 import com.kmu.anki.backend.domain.user.entity.User;
 import com.kmu.anki.backend.domain.user.repository.UserRepository;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,5 +26,10 @@ public class UserStudyHistoryService {
         User user = userRepository.findById(userId).orElseThrow();
         UserStudyHistory studyHistory = UserStudyHistory.from(studyType, deckType.toString(), user);
         user.addStudyHistory(studyHistory);
+    }
+
+    public Page<UserStudyHistoryDto> readUserHistory(Long userId, Integer page, Integer pageSize) {
+        PageRequest pageRequest = PageRequest.of(page, pageSize);
+        return userStudyHistoryRepository.findByUserIdOrderByStudyDate(userId, pageRequest).map(UserStudyHistoryDto::of);
     }
 }

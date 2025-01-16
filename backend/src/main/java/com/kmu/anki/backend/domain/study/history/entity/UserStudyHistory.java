@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -30,6 +32,9 @@ public class UserStudyHistory {
     @Enumerated(EnumType.STRING)
     private StudyType studyType;
 
+    @Column
+    private LocalDateTime studyDate;
+
     /* 관계 - User */
 
     @ManyToOne
@@ -43,6 +48,7 @@ public class UserStudyHistory {
         return new UserStudyHistoryBuilder()
                 .studyType(studyType)
                 .deckType(deckType)
+                .studyDate(LocalDateTime.now())
                 .user(user)
                 .build();
     }

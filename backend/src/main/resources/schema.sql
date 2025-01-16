@@ -105,7 +105,7 @@ ALTER TABLE foreign_cards
 CREATE INDEX idx_foreign_word_vector ON foreign_cards USING GIN(foreign_word_vector);
 
 CREATE EXTENSION IF NOT EXISTS plpgsql;
-CREATE EXTENSION pg_trgm;
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 CREATE OR REPLACE FUNCTION update_foreign_word_vector()
 RETURNS TRIGGER AS $$

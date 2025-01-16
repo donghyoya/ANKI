@@ -41,6 +41,7 @@
                     fc.foreign_word_vector @@ plainto_tsquery('simple', #{queryText})
                 </otherwise>
             </choose>
+        LIMIT #{limit} OFFSET #{offset}
         ;
     </select>
 

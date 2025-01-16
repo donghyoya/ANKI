@@ -45,6 +45,7 @@ class CardCsvBatchInsertRepositoryTest {
         CsvExtractResult extract = cardCsvExtractor.extract(data);
         cardCsvBatchInsertRepository.batchInsert(extract.getValidRecords());
         foreignCardCsvBatchInsertRepository.batchInsert(extract.getValidRecords());
+        jdbcTemplate.update("truncate topics cascade");
         cardTopicBatchInsertRepository.batchInsert(extract.getValidRecords());
     }
 }

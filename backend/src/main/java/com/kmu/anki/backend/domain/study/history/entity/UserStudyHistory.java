@@ -39,7 +39,7 @@ public class UserStudyHistory {
     @Column(name = "user_id", insertable = false, updatable = false)
     private Long userId;
 
-    private static UserStudyHistory from(StudyType studyType, String deckType ,User user){
+    public static UserStudyHistory from(StudyType studyType, String deckType ,User user){
         return new UserStudyHistoryBuilder()
                 .studyType(studyType)
                 .deckType(deckType)

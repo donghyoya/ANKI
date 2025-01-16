@@ -4,6 +4,7 @@ import com.kmu.anki.backend.domain.card.controller.QueryType;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.study.history.service.UserStudyHistoryService;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyCardForm;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserCardController {
     private final UserCardService userCardService;
+    private final UserStudyHistoryService userStudyHistoryService;
 
     @GetMapping("/{cardId}/study")
     public CardStudyDto getCardsStudyInfo(
@@ -61,6 +63,9 @@ public class UserCardController {
             CardLevel cardLevel = CardLevel.valueOf(query);
             cards = userCardService.readStudyUserCard(userId, languageCode, cardLevel);
         }
+
+        // 최근 학습 덱을 보여주기 위해서
+        userStudyHistoryService.createHistory(studyType, query, userId);
         return BasePageResponse.of(cards);
     }
 }

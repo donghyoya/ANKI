@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.domain.user.entity;
 
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.study.history.entity.UserStudyHistory;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -46,6 +47,14 @@ public class User {
 
     public void addCard(UserCard card){
         cards.add(card);
+    }
+
+    /* 관계 UserStudyHistory */
+    @OneToMany(mappedBy = "user")
+    private List<UserStudyHistory> studyHistories = new ArrayList<>();
+
+    public void addStudyHistory(UserStudyHistory studyHistory){
+        studyHistories.add(studyHistory);
     }
 
     /* 생성 */

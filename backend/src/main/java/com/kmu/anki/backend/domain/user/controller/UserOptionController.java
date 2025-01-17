@@ -2,6 +2,7 @@ package com.kmu.anki.backend.domain.user.controller;
 
 import com.kmu.anki.backend.domain.user.dto.UserOptionDto;
 import com.kmu.anki.backend.domain.user.service.UserOptionService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +13,8 @@ public class UserOptionController {
     private final UserOptionService userOptionService;
 
     @GetMapping()
-    public UserOptionDto getUserOption(){
-        // TODO 세션에서 user정보 가져오기
-        Long id = 1L;
+    public UserOptionDto getUserOption(HttpSession session){
+        Long id = (Long) session.getAttribute("userId");
         return userOptionService.readOption(id);
     }
 

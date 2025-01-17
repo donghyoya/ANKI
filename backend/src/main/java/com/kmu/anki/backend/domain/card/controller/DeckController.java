@@ -9,6 +9,7 @@ import com.kmu.anki.backend.domain.card.service.CardService;
 import com.kmu.anki.backend.domain.card.service.DeckService;
 import com.kmu.anki.backend.global.schema.BaseListReponse;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -25,10 +26,10 @@ public class DeckController {
 
     @GetMapping
     public BaseListReponse<DeckDto> getDecks(
-            @RequestParam("queryType") QueryType queryType
+            @RequestParam("queryType") QueryType queryType,
+            HttpSession session
     ){
-        // TODO user-data 추출
-        Long userId = 1L;
+        Long userId = (Long) session.getAttribute("userId");
         List<DeckDto> decks = new ArrayList<>();
         if(queryType == QueryType.level){
             decks = deckService.readDeckByDifficulty(userId);

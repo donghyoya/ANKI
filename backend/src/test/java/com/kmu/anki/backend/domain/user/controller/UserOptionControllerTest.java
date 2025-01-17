@@ -24,6 +24,7 @@ class UserOptionControllerTest extends AbstractControllerTest {
     void getUserOption() throws Exception {
         mockMvc.perform(
                 get("/user/option")
+                        .session(session)
         ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(

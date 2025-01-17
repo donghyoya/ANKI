@@ -34,6 +34,7 @@ class DeckControllerTest extends AbstractControllerTest {
         mockMvc.perform(
                 get("/decks")
                         .param("queryType", type.name())
+                        .session(session)
         ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -65,6 +66,7 @@ class DeckControllerTest extends AbstractControllerTest {
                 get("/decks/cards")
                         .param("queryType", queryType)
                         .param("query",query)
+                        .session(session)
         ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(

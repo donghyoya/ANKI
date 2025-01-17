@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler;
@@ -31,8 +32,11 @@ public abstract class AbstractControllerTest extends AbstractIntegrationTest{
 
     protected MockMvc mockMvc;
 
+    protected MockHttpSession session = new MockHttpSession();
+
     @BeforeEach
     void setUp(final WebApplicationContext context, final RestDocumentationContextProvider restDocumentation){
+        session.setAttribute("userId", 1L);
         this.mockMvc = MockMvcBuilders.webAppContextSetup(context)
                 .apply(documentationConfiguration(restDocumentation))
                 .alwaysDo(MockMvcResultHandlers.print())

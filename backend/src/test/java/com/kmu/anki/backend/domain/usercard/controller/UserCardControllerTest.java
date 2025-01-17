@@ -28,7 +28,6 @@ import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.mock.web.MockHttpSession;
 import org.springframework.restdocs.headers.HeaderDescriptor;
 import org.testcontainers.shaded.org.checkerframework.checker.units.qual.A;
 
@@ -74,8 +73,6 @@ class UserCardControllerTest extends AbstractControllerTest {
     }
 
     void putUserCards() throws Exception {
-        MockHttpSession session = new MockHttpSession();
-        session.setAttribute("userId", 1L);
         Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
         Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
 
@@ -127,6 +124,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                                 .param("studyType", studyType)
                                 .param("queryType", queryType)
                                 .param("query",query)
+                                .session(session)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(

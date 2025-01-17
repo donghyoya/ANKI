@@ -4,6 +4,7 @@ import com.kmu.anki.backend.domain.study.history.dto.UserStudyHistoryDto;
 import com.kmu.anki.backend.domain.study.history.service.UserStudyHistoryService;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,18 +21,17 @@ public class UserStudyHistoryController {
     @GetMapping("/decks/history")
     public BasePageResponse<UserStudyHistoryDto> getUserHistory(
             @RequestParam("page") Integer page,
-            @RequestParam("pageSize") Integer pageSize
+            @RequestParam("pageSize") Integer pageSize,
+            HttpSession session
     ){
-        // TODO USER정보 가져오기
-        Long userId = 1L;
+        Long userId = (Long) session.getAttribute("userId");
         Page<UserStudyHistoryDto> userStudyHistoryDtos = userStudyHistoryService.readUserHistory(userId, page-1, pageSize);
         return BasePageResponse.of(userStudyHistoryDtos);
     }
 
     @GetMapping("/decks/latest")
-    public UserStudyHistoryDto getLatestStudy(){
-        // TODO USER정보 가져오기
-        Long userId = 1L;
+    public UserStudyHistoryDto getLatestStudy(HttpSession session){
+        Long userId = (Long) session.getAttribute("userId");
         return userStudyHistoryService.readLatestDecks(userId);
     }
 }

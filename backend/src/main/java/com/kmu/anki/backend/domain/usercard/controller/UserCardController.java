@@ -11,6 +11,7 @@ import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -50,11 +51,11 @@ public class UserCardController {
     public BasePageResponse<UserCardDto> getStudyCards(
             @RequestParam("studyType") StudyType studyType,
             @RequestParam("queryType") QueryType queryType,
-            @RequestParam("query") String query
+            @RequestParam("query") String query,
+            HttpSession session
     ){
-        // TODO user-data 추출
         LanguageCode languageCode = LanguageCode.en;
-        Long userId = 1L;
+        Long userId = (Long) session.getAttribute("userId");
         Page<UserCardDto> cards;
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);

@@ -61,6 +61,7 @@ class UserStudyHistoryControllerTest extends AbstractControllerTest {
                         get("/decks/history")
                                 .param("page", "1")
                                 .param("pageSize", "20")
+                                .session(session)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -112,6 +113,7 @@ class UserStudyHistoryControllerTest extends AbstractControllerTest {
 
         mockMvc.perform(
                         get("/decks/latest")
+                                .session(session)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(

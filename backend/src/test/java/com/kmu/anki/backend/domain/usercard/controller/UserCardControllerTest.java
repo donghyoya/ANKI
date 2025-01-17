@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.usercard.controller;
 
+import com.epages.restdocs.apispec.HeaderDescriptorWithType;
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
@@ -27,6 +28,8 @@ import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.mock.web.MockHttpSession;
+import org.springframework.restdocs.headers.HeaderDescriptor;
 import org.testcontainers.shaded.org.checkerframework.checker.units.qual.A;
 
 import java.time.LocalDateTime;
@@ -34,6 +37,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.stream.Stream;
 
+import static com.epages.restdocs.apispec.ResourceDocumentation.headerWithName;
 import static org.assertj.core.api.Fail.fail;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -70,6 +74,8 @@ class UserCardControllerTest extends AbstractControllerTest {
     }
 
     void putUserCards() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        session.setAttribute("userId", 1L);
         Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
         Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
 
@@ -85,6 +91,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         mockMvc.perform(
                         post("/cards/{id}/study", userCardId)
                                 .contentType("application/json")
+                                .session(session)
                                 .content(objectMapper.writeValueAsString(map))
                 ).andExpect(status().isOk())
                 .andDo(

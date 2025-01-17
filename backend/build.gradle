@@ -100,6 +100,19 @@ tasks.register('docs', Copy) {
 	dependsOn tasks.named('processResources')
 	doLast{
 		delete file('build/generated-snippets')
+		def openApiFile = file("src/main/resources/docs/openapi3.yaml")
+		def securityScheme = """
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: JSESSIONID
+
+security:
+  - cookieAuth: []
+            """
+		def content = openApiFile.getText('UTF-8')
+		openApiFile.write(content + securityScheme, 'UTF-8')
 	}
 }
 

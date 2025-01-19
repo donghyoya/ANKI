@@ -1,7 +1,15 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  postcss: {
+    plugins: {
+      'postcss-pxtorem': {
+        rootValue: 16,
+        propList: ['*']
+      },
+      autoprefixer: {}
+    }
+  }
 };
 
 export default nextConfig;

@@ -1,0 +1,14 @@
+{
+  "beginner": "Beginner",
+  "intermediate": "Intermediate",
+  "advanced": "Advanced",
+  "learn": "Learn",
+  "view words": "View words",
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
+  },
+  "NotFoundPage": {
+    "title": "Page not found"
+  }
+}

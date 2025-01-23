@@ -40,26 +40,24 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 // 1. 인증/인가 설정
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.GET,"/swagger-ui/**","/api/auth/login.do","/api/auth/**", "/css/**", "/js/**").permitAll() // 누구나 접근 가능
+                        .requestMatchers("/api/auth/login.do").permitAll() // 누구나 접근 가능
                         .anyRequest().authenticated()                                   // 나머지는 인증 필요
                 )
 
                 // 2. Form 기반 로그인 설정
                 .formLogin(form -> form
-                        .disable()
+                        .loginPage("/api/auth/login.do") // 커스텀 로그인 페이지
+                        .permitAll()
                 )
+
                 // 3. OAuth2 로그인 설정
                 .oauth2Login(oauth2 -> oauth2
-                        .loginProcessingUrl("/api/auth/loginProcess.do")
-                        .defaultSuccessUrl("/", true) // OAuth2 로그인 성공 시 리디렉션 경로
+                        .loginPage("/api/auth/login.do") // 로그인 페이지를 커스텀 경로로 설정
+                        .defaultSuccessUrl("/swagger-ui/index.html", true) // OAuth2 인증 성공 후 이동 경로
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(customOAuth2UserService) // Custom OAuth2 User Service 등록
                         )
                 )
-                .headers(headers -> headers
-                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
-                )
-
                 // 4. 로그아웃 설정
                 .logout(logout -> logout
                         .logoutUrl("/logout")                     // 로그아웃 처리 URL

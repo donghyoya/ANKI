@@ -27,6 +27,18 @@ public class User {
     @Column
     private Integer todayReviewWords;
 
+    @Column
+    private String email;
+
+    @Column
+    private String name;
+
+    @Column(unique = true, name = "login_id")
+    private String loginId;
+
+    @Column(name = "login_pwd")
+    private String loginPwd;
+
     @Enumerated(EnumType.STRING)
     @Column
     private LanguageCode languageCode;
@@ -67,6 +79,11 @@ public class User {
         this.todayStudyWords = todayStudyWords;
         this.todayReviewWords = todayReviewWords;
         this.languageCode = languageCode;
+    }
+
+    public User(String loginId, String loginPwd){
+        this.loginId = loginId;
+        this.loginPwd = loginPwd;
     }
 
 }

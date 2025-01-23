@@ -1,15 +1,26 @@
-package com.kmu.anki.backend.domain.auth;
+package com.kmu.anki.backend.domain.auth.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RequestMapping("/api/auth")
 public class authController {
 
+    @GetMapping({"","/", "/login.do"})
+    public String loginPage() {
+        return "login"; // login.html 반환
+    }
 
-    @PostMapping("/google-login")
-    public ResponseEntity<String> googleLoginApi(@RequestBody @Valid Social)
+    @GetMapping("/oauth2/success")
+    public String handleOAuth2Success(@AuthenticationPrincipal OAuth2User oAuth2User,
+                                      @RequestParam Map<String, Object> params){
+        System.out.println("oAuth2User = " + oAuth2User.toString());
+        System.out.println("params = " + params.toString());
+        return "swagger-ui/index.html";
+    }
 }

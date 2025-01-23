@@ -1,5 +1,7 @@
 #application-prod.yml
 spring:
+  profiles:
+    active: dev
   datasource:
     url: ${DB_URL}
     username: ${DB_USERNAME}

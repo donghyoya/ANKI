@@ -5,13 +5,13 @@ import com.kmu.anki.backend.domain.user.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class InitUser {
+public class InitUserController {
 
     @Value("${spring.jpa.hibernate.ddl-auto}")
     private String ddlMode;
@@ -33,8 +33,7 @@ public class InitUser {
         @Transactional
         public void init(){
 
-            User user = new User();
-            user.
+            User user = new User("test", "1234");
 
             userRepository.save(user);
         }

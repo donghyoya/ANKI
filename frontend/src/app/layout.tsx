@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.scss';
 
+import Navigation from '@/components/Navigation/Navigation';
+
 export const metadata: Metadata = {
   title: 'HADA',
   description: 'HADA'
@@ -22,6 +24,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`antialiased ${theme}`}>
+        <Navigation />
         <main className="layout-container-main">{children}</main>
       </body>
     </html>

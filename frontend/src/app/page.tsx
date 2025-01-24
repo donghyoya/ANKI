@@ -1,18 +1,17 @@
 'use client';
 
-import dynamic from 'next/dynamic';
+import MenuExample from '@/components/Menu';
 import { Suspense } from 'react';
 
-const FilledButton = dynamic(() => import('@/components/FilledButton'), {
-  ssr: false
-});
+import { IconButtonExample } from '@/components/IconButton/IconButtonExample';
 
 export default function Home() {
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
-        <FilledButton>Hello</FilledButton>
         {/* examples */}
+        {/* <IconButtonExample /> */}
+        {/* <MenuExample /> */}
         <p className="md-typescale-display-large">Display Large</p>
         <p className="md-typescale-display-medium">Display Medium</p>
         <p className="md-typescale-display-small">Display Small</p>
@@ -28,6 +27,7 @@ export default function Home() {
         <p className="md-typescale-label-large">Label Large</p>
         <p className="md-typescale-label-medium">Label Medium</p>
         <p className="md-typescale-label-small">Label Small</p>
+        <MenuExample />
       </Suspense>
     </div>
   );

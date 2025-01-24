@@ -57,13 +57,14 @@ class DeckControllerTest extends AbstractControllerTest {
         ;
     }
 
+    @Test
     void getDecks400() throws Exception {
         String identifier = String.format("{class-name}/{method-name}");
 
         mockMvc.perform(
                         get("/decks")
                                 .param("queryType", "fail")
-                ).andExpect(status().isOk())
+                ).andExpect(status().isBadRequest())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
                                 identifier,
@@ -117,14 +118,15 @@ class DeckControllerTest extends AbstractControllerTest {
                 );
     }
 
-    void getDecksCard400(String queryType, String query) throws Exception{
+    @Test
+    void getDecksCard400() throws Exception{
         String identifier = String.format("{class-name}/{method-name}");
 
         mockMvc.perform(
                         get("/decks/cards")
-                                .param("queryType", queryType)
+                                .param("queryType", "queryType")
                                 .param("query","fail")
-                ).andExpect(status().isOk())
+                ).andExpect(status().isBadRequest())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
                                 identifier,

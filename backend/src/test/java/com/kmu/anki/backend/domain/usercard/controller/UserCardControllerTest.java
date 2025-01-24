@@ -19,6 +19,7 @@ import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.BaseDocs;
+import com.kmu.anki.backend.global.ExceptionResponseDocs;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -69,6 +70,33 @@ class UserCardControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @Test
+    void getCardStudyInfo404() throws Exception{
+        mockMvc.perform(
+                        get("/cards/{id}/study", -1)
+                ).andExpect(status().isNotFound())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("StudyCards")
+                                                .summary("Card 학습 정보 보기")
+                                                .pathParameters(
+                                                        CardParameters.cardId
+                                                )
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
+
+    @Test
     void putUserCards() throws Exception {
         Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
         Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
@@ -111,6 +139,50 @@ class UserCardControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @Test
+    void putUserCards404() throws Exception {
+        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
+        Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("due", LocalDateTime.now());
+        map.put("lapses", 5);
+        map.put("lastReview", LocalDateTime.now());
+        map.put("reps", 72);
+        map.put("scheduledDays", 0.9);
+        map.put("stability", 1.3);
+        map.put("state", CardState.Review);
+
+        mockMvc.perform(
+                        post("/cards/{id}/study", -1)
+                                .contentType("application/json")
+                                .content(objectMapper.writeValueAsString(map))
+                ).andExpect(status().isNotFound())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("StudyCards")
+                                                .summary("Card 학습결과를 갱신")
+                                                .pathParameters(
+                                                        CardParameters.cardId
+                                                )
+                                                .requestFields(
+                                                        StudyCardFormDocs.studyCardForm
+                                                )
+                                                .requestSchema(StudyCardFormDocs.studyCardFormSchema)
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
+
     @ParameterizedTest
     @MethodSource("getStudyCardParams")
     void getStudyCard(String studyType, String queryType, String query) throws Exception{
@@ -142,6 +214,38 @@ class UserCardControllerTest extends AbstractControllerTest {
                         )
                 );
     }
+
+    @Test
+    void getStudyCard400() throws Exception{
+        String identifier = String.format("{class-name}/{method-name}");
+        mockMvc.perform(
+                        get("/cards/study")
+                                .param("studyType", "studyType")
+                                .param("queryType", "queryType")
+                                .param("query","query")
+                ).andExpect(status().isBadRequest())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                identifier, //"{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("StudyCards")
+                                                .summary("오늘 공부할 카드 모음 ")
+                                                .queryParameters(
+                                                        UserCardParameters.studyType,
+                                                        DeckParameters.queryType,
+                                                        DeckParameters.query
+                                                )
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
 
     private static Stream<Arguments> getStudyCardParams(){
         return Arrays.stream(StudyType.values())

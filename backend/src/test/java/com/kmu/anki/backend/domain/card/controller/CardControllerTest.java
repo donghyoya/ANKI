@@ -11,6 +11,7 @@ import com.kmu.anki.backend.domain.card.entity.ForeignCard;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.repository.ForeignCardRepository;
 import com.kmu.anki.backend.global.AbstractControllerTest;
+import com.kmu.anki.backend.global.ExceptionResponseDocs;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -61,6 +62,32 @@ class CardControllerTest extends AbstractControllerTest {
     }
 
     @Test
+    void getCard404() throws Exception {
+        mockMvc.perform(
+                        get("/cards/{id}", -1)
+                ).andExpect(status().isNotFound())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Cards")
+                                                .summary("Card에 대한 디테일한 정보 보기")
+                                                .pathParameters(
+                                                        CardParameters.cardId
+                                                )
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
+
+    @Test
     void getCardDetails() throws Exception {
         mockMvc.perform(
                         get("/cards/{id}/details", 1)
@@ -84,6 +111,32 @@ class CardControllerTest extends AbstractControllerTest {
                         )
                 );
     }
+
+    @Test
+    void getCardDetails404() throws Exception {
+        mockMvc.perform(
+                        get("/cards/{id}/details", -1)
+                ).andExpect(status().isNotFound())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Cards")
+                                                .summary("Card에 대한 디테일한 정보 보기")
+                                                .pathParameters(
+                                                        CardParameters.cardId
+                                                )
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
 
     @ParameterizedTest
     @MethodSource("getForeignSearch")

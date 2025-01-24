@@ -28,7 +28,7 @@ public class CardService {
      * @return
      */
     public CardDto readCard(Long cardId, LanguageCode code){
-        return cardQueryRepository.findById(cardId, code);
+        return cardQueryRepository.findById(cardId, code).orElseThrow();
     }
 
     /**
@@ -38,7 +38,7 @@ public class CardService {
      * @return
      */
     public CardDetailDto readCardDetail(Long cardId, LanguageCode code){
-        return cardQueryRepository.findDetailById(cardId, code);
+        return cardQueryRepository.findDetailById(cardId, code).orElseThrow();
     }
 
     public Page<CardDetailDto> searchForeignCards(LanguageCode code, String queryText, int page, int pageSize){

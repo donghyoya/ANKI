@@ -9,6 +9,8 @@ import com.kmu.anki.backend.global.schema.BasePageResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.NoSuchElementException;
+
 @RequestMapping("/cards")
 @RequiredArgsConstructor
 @RestController

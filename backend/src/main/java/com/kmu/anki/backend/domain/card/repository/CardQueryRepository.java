@@ -20,6 +20,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -39,8 +40,8 @@ public class CardQueryRepository {
      * @param cardId
      * @return
      */
-    public CardDto findById(Long cardId, LanguageCode code){
-        return queryFactory
+    public Optional<CardDto> findById(Long cardId, LanguageCode code){
+        CardDto cardDto = queryFactory
                 .select(
                         Projections.constructor(
                                 CardDto.class,
@@ -60,6 +61,7 @@ public class CardQueryRepository {
                                 )
                 )
                 .fetchOne();
+        return Optional.ofNullable(cardDto);
     }
 
     /**
@@ -68,8 +70,8 @@ public class CardQueryRepository {
      * @param code 언어코드
      * @return 카드 세부정보 DTO
      */
-    public CardDetailDto findDetailById(Long cardId, LanguageCode code){
-        return queryFactory
+    public Optional<CardDetailDto> findDetailById(Long cardId, LanguageCode code){
+        CardDetailDto cardDetailDto = queryFactory
                 .select(
                         Projections.constructor(
                                 CardDetailDto.class,
@@ -96,6 +98,7 @@ public class CardQueryRepository {
                                 )
                 )
                 .fetchOne();
+        return Optional.ofNullable(cardDetailDto);
     }
 
     /**

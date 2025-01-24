@@ -1,0 +1,37 @@
+.icon {
+  width: 48px;
+  height: 48px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 48px;
+}
+
+.icon-button {
+  --md-icon-button-icon-color: var(--md-sys-color-on-surface-variant);
+  --md-icon-button-state-layer-shape: var(--md-sys-shape-corner-full);
+  --md-icon-button-icon-size: 24px;
+}
+
+.filled-icon-button {
+  --md-filled-icon-button-container-color: var(--md-sys-color-primary);
+  --md-filled-icon-button-container-shape: var(--md-sys-shape-corner-full);
+  --md-filled-icon-button-container-width: 40px;
+  --md-filled-icon-button-container-height: 40px;
+  --md-filled-icon-button-icon-size: 24px;
+}
+
+.filled-tonal-icon-button {
+  --md-filled-tonal-icon-button-container-color: var(--md-sys-color-secondary-container);
+  --md-filled-tonal-icon-button-container-shape: var(--md-sys-shape-corner-full);
+  --md-filled-tonal-icon-button-container-width: 40px;
+  --md-filled-tonal-icon-button-container-height: 40px;
+  --md-filled-tonal-icon-button-icon-size: 24px;
+}
+
+.outlined-icon-button {
+  --md-sys-color-outline: var(--md-sys-color-outline);
+  --md-outlined-icon-button-outline-width: 1px;
+  --md-outlined-icon-button-container-shape: var(--md-sys-shape-corner-full);
+  --md-outlined-icon-button-container-width: 40px;
+  --md-outlined-icon-button-container-height: 40px;
+  --md-outlined-icon-button-icon-size: 24px;
+}

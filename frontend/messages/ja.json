@@ -1,0 +1,12 @@
+{
+    "beginner": "初心者",
+    "intermediate": "中級",
+    "advanced": "上級",
+    "HomePage": {
+        "title": "こんにちは、世界！",
+        "about": "アバウトページへ行く"
+    },
+    "NotFoundPage": {
+        "title": "ページが見つかりません。"
+    }
+}

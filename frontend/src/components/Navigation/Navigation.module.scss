@@ -24,4 +24,8 @@
   height: 100%;
   background-color: var(--md-sys-color-scrim);
   opacity: 0.16;
+
+  @media (min-width: 1600px) {
+    display: none;
+  }
 }

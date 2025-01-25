@@ -1,9 +1,9 @@
 'use client';
 
+import MenuExample from '@/components/Menu';
 import { Suspense } from 'react';
 
 import { IconButtonExample } from '@/components/IconButton/IconButtonExample';
-import MenuExample from '@/components/Menu';
 
 export default function Home() {
   return (
@@ -27,6 +27,7 @@ export default function Home() {
         <p className="md-typescale-label-large">Label Large</p>
         <p className="md-typescale-label-medium">Label Medium</p>
         <p className="md-typescale-label-small">Label Small</p>
+        <MenuExample />
       </Suspense>
     </div>
   );

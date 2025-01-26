@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kmu.anki.backend.domain.card.repository.ForeignCardTextSearchMapper">
+    <select id="searchKoreanWord" parameterType="map" resultType="com.kmu.anki.backend.domain.card.dto.CardDetailDto">
+        select
+            kc.korean_card_id as cardId,
+            kc.korean_word as koreanWord,
+            fc.foreign_word as foreign_word,
+            kc.level as level,
+            fc.language_code as language_code,
+            kc.original_language as original_language,
+            kc.homograph_number as homograph_number,
+            kc.parts_of_speech as parts_of_speech,
+            kc.pronunciation as pronunciation,
+            kc.related_words as related_words,
+            kc.inflection as inflection,
+            kc.example_usage as example_usage
+        from foreign_cards fc join korean_cards kc on fc.korean_card_id = kc.korean_card_id
+        where kc.korean_word like '%${queryText}%'
+            LIMIT #{limit} OFFSET #{offset}
+        ;
+    </select>
+
+    <select id="searchKoreanWordCount" parameterType="map" resultType="int">
+        select count(*)
+        from korean_cards kc
+        where kc.korean_word like '%${queryText}%';
+    </select>
+</mapper>

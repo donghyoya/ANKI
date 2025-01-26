@@ -43,4 +43,16 @@ public class CardController {
         return BasePageResponse.of(cardService.searchForeignCards(code, query, page-1, pageSize));
     }
 
+    @GetMapping("/korean-search")
+    public BasePageResponse<CardDetailDto> getForeignSearch(
+            @RequestParam("query") String query,
+            @RequestParam("page") Integer page,
+            @RequestParam("pageSize") Integer pageSize
+    ){
+        // TODO 유저 정보
+        LanguageCode code = LanguageCode.en;
+        return BasePageResponse.of(cardService.searchKoreanCards(code, query, page-1, pageSize));
+    }
+
+
 }

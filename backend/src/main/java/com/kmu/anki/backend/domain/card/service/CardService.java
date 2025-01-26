@@ -45,4 +45,9 @@ public class CardService {
         return cardQueryRepository.searchForeignWord(code, queryText, PageRequest.of(page, pageSize));
     }
 
+    public Page<CardDetailDto> searchKoreanCards(LanguageCode code, String queryText, int page, int pageSize){
+        return cardQueryRepository.searchKoreanWord(code, queryText, PageRequest.of(page, pageSize));
+    }
+
+
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kmu.anki.backend.domain.card.repository.ForeignCardTextSearchMapper">
+<mapper namespace="com.kmu.anki.backend.domain.card.repository.KoreanCardTextSearchMapper">
     <select id="searchKoreanWord" parameterType="map" resultType="com.kmu.anki.backend.domain.card.dto.CardDetailDto">
         select
             kc.korean_card_id as cardId,
@@ -17,7 +17,7 @@
             kc.inflection as inflection,
             kc.example_usage as example_usage
         from foreign_cards fc join korean_cards kc on fc.korean_card_id = kc.korean_card_id
-        where kc.korean_word like '%${queryText}%'
+        where kc.korean_word like '%${queryText}%' and fc.language_code = #{languageCode}
             LIMIT #{limit} OFFSET #{offset}
         ;
     </select>

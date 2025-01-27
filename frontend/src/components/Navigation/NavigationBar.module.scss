@@ -1,0 +1,60 @@
+.container {
+  box-sizing: border-box;
+  display: flex;
+
+  z-index: 1000;
+
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 80px;
+  padding: 0 8px;
+  gap: 8px;
+  background-color: var(--md-sys-color-surface-container);
+}
+
+.destination {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  width: 97px;
+  height: 100%;
+  padding-top: 12px;
+  gap: 4px;
+  border: none;
+  background-color: transparent;
+}
+
+.icon-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 32px;
+  border-radius: 16px;
+  color: var(--md-sys-color-on-surface-variant);
+
+  &.selected {
+    background-color: var(--md-sys-color-secondary-container);
+    font-variation-settings: 'FILL' 1;
+  }
+}
+
+.label {
+  height: 16px;
+  color: var(--md-sys-color-on-surface-variant);
+
+  &.selected {
+    color: var(--md-sys-color-on-surface);
+  }
+}

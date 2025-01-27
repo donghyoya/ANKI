@@ -50,7 +50,7 @@ const Navigation = () => {
           headline="HADA"
           leftIcon="arrow_back"
           rightIcon={<MenuButton />}
-          onClickLeftIcon={toggleDrawer}
+          onClickLeftIcon={() => {}}
         />
         <NavigationBar destinations={destinations} initialDestination="Difficulty" />
       </div>

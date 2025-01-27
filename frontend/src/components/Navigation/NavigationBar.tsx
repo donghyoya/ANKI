@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import styles from './NavigationBar.module.scss';
 
+import { Ripple } from '@/components/Ripple';
 import { Icon } from '@/components/IconButton/IconButton';
+
+import styles from './NavigationBar.module.scss';
 
 const NavigationBar = ({
   destinations,
@@ -26,7 +28,7 @@ const NavigationBar = ({
             onClick={() => handleDestinationClick(destination.label)}
           >
             <div className={`${styles['icon-container']} ${isSelected ? styles.selected : ''}`}>
-              <div className={styles['state-layer']} />
+              <Ripple />
               <Icon>{destination.icon}</Icon>
             </div>
             <span

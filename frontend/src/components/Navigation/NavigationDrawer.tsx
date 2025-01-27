@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import { Ripple } from '@/components/Ripple';
 import { Icon, IconButton } from '@/components/IconButton/IconButton';
 import styles from './NavigationDrawer.module.scss';
 
@@ -39,7 +40,7 @@ const NavigationDrawer = ({
               className={`${styles['item']} ${isSelected ? styles.selected : ''}`}
               onClick={() => handleNavItemClick(destination.label)}
             >
-              <div className={styles['state-layer']} />
+              <Ripple />
               <Icon>{destination.icon}</Icon>
               <span
                 className={`${styles['item-label']} md-typescale-label-large${isSelected ? '-prominent' : ''}`}

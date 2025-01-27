@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import styles from './NavigationRail.module.scss';
 import { Icon, IconButton } from '@/components/IconButton/IconButton';
+import { Ripple } from '@/components/Ripple';
 
 const NavigationRail = ({
   destinations,
@@ -40,7 +41,7 @@ const NavigationRail = ({
             <button
               className={`${styles['navigation-item-button']} ${selectedDestination === destination.label ? styles['selected'] : ''}`}
             >
-              <div className={styles['state-layer']} />
+              <Ripple />
               <div className={styles['navigation-item-icon']}>
                 <Icon>{destination.icon}</Icon>
               </div>

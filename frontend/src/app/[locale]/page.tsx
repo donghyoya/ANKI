@@ -5,7 +5,7 @@ import { Link } from '@/i18n/routing';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
-const FilledButton = dynamic(() => import('@/components/FilledButton'), {
+const FilledButton = dynamic(() => import('@/components/material-components/FilledButton'), {
   ssr: false
 });
 

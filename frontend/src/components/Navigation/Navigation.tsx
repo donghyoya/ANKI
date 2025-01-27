@@ -6,8 +6,8 @@ import NavigationRail from './NavigationRail';
 import NavigationDrawer from './NavigationDrawer';
 import TopAppBar from '@/components/Navigation/TopAppBar';
 import NavigationBar from './NavigationBar';
-import { Menu, MenuItem } from '@/components/Menu';
-import { IconButton, Icon } from '@/components/IconButton/IconButton';
+import { Menu, MenuItem } from '@/components/material-components/Menu';
+import { IconButton, Icon } from '@/components/material-components/IconButton/IconButton';
 import styles from './Navigation.module.scss';
 
 const Navigation = () => {

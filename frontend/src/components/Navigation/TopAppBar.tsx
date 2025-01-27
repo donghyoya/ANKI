@@ -1,4 +1,4 @@
-import { IconButton, Icon } from '@/components/IconButton/IconButton';
+import { IconButton, Icon } from '@/components/material-components/IconButton/IconButton';
 
 import styles from './TopAppBar.module.scss';
 

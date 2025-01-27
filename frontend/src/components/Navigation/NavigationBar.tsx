@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Ripple } from '@/components/Ripple';
-import { Icon } from '@/components/IconButton/IconButton';
+import { Ripple } from '@/components/material-components/Ripple';
+import { Icon } from '@/components/material-components/IconButton/IconButton';
 
 import styles from './NavigationBar.module.scss';
 

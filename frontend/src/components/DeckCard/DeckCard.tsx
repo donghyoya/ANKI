@@ -9,6 +9,7 @@ import TextButton from "../material-components/TextButton";
 interface DeckCardProps {
   title: string;
   wordCount: number;
+  locale: string;
   buttonLabels: {
     viewWords: string;
     learn: string;
@@ -18,13 +19,12 @@ interface DeckCardProps {
 }
 
 // DeckCard 컴포넌트
-const DeckCard = ({ title, wordCount, buttonLabels, onViewWords, onLearn }: DeckCardProps) => {
+const DeckCard = ({ title, wordCount, locale, buttonLabels, onViewWords, onLearn }: DeckCardProps) => {
   return (
-
     <div className={styles.card}>
       <div className={styles.info}>
-        <p className={`${styles.title} md-typescale-title-large`}>{title}</p>
-        <p className={`${styles['word-count']} md-typescale-label-large`}>{wordCount} words</p>
+        <h2 className={`${styles.title} md-typescale-title-large`}>{title}</h2>
+        <p className={`${styles['word-count']} md-typescale-label-large`}>{wordCount.toLocaleString(locale)} words</p>
       </div>
       <div className={styles['bottom-contents']}>
         <div className={styles['button-container']}>
@@ -35,7 +35,6 @@ const DeckCard = ({ title, wordCount, buttonLabels, onViewWords, onLearn }: Deck
         </div>
       </div>
     </div>
-
   );
 };
 

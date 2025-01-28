@@ -3,10 +3,18 @@
 import React from 'react';
 import DeckCard from '@/components/DeckCard/DeckCard';
 import { useTranslations } from 'next-intl';
-import styles from './Difficulty.module.scss'
+import { useLocale } from 'next-intl';
+import styles from './Difficulty.module.scss';
 
 export default function DifficultyPage() {
   const t = useTranslations();
+
+  const locale = useLocale(); // 현재 로케일 가져오기
+
+  const buttonLabels = {
+    viewWords: t('viewWords'),
+    learn: t('learn'),
+  }
 
   const handleViewWords = () => {
     alert('Viewing words!');
@@ -16,21 +24,17 @@ export default function DifficultyPage() {
     alert('Starting learning!');
   };
 
-  const buttonLabels = {
-    viewWords: t('viewWords'),
-    learn: t('learn'),
-  }
-
   return (
     <div className={styles.page}>
       <div className={styles.content}>
-        <div className={`${styles.title} md-typescale-headline-large`}>
+        <h1 className={`${styles.title} md-typescale-headline-large`}>
           Words List
-        </div>
+        </h1>
         <div className={styles.cards}>
           <DeckCard
             title={t('beginner')}
             wordCount={1234}
+            locale={locale}
             buttonLabels={buttonLabels}
             onViewWords={handleViewWords}
             onLearn={handleLearn}
@@ -38,6 +42,7 @@ export default function DifficultyPage() {
           <DeckCard
             title={t('intermediate')}
             wordCount={1234}
+            locale={locale}
             buttonLabels={buttonLabels}
             onViewWords={handleViewWords}
             onLearn={handleLearn}
@@ -45,6 +50,7 @@ export default function DifficultyPage() {
           <DeckCard
             title={t('advanced')}
             wordCount={1234}
+            locale={locale}
             buttonLabels={buttonLabels}
             onViewWords={handleViewWords}
             onLearn={handleLearn}

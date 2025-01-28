@@ -2,6 +2,8 @@
     "beginner": "初心者",
     "intermediate": "中級",
     "advanced": "上級",
+    "learn": "学習",
+    "viewWords": "単語を見る",
     "HomePage": {
         "title": "こんにちは、世界！",
         "about": "アバウトページへ行く"

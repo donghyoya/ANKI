@@ -1,0 +1,67 @@
+@use '@material/web/elevation/elevation';
+
+.elevated-card,
+.filled-card,
+.outlined-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.elevated-card {
+  background-color: var(--md-sys-color-surface-container-low);
+
+  &:hover {
+    --md-elevation-level: 2;
+  }
+
+  &,
+  &:active {
+    --md-elevation-level: 1;
+  }
+}
+
+.filled-card {
+  background-color: var(--md-sys-color-surface-container-highest);
+
+  &:hover {
+    --md-elevation-level: 1;
+  }
+
+  &,
+  &:active {
+    --md-elevation-level: 0;
+  }
+}
+
+.outlined-card {
+  background-color: var(--md-sys-color-surface);
+  box-shadow: inset 0 0 0 1px var(--md-sys-color-outline-variant);
+
+  &:hover {
+    --md-elevation-level: 1;
+  }
+
+  &,
+  &:active {
+    --md-elevation-level: 0;
+  }
+}
+
+.inner-container {
+  width: min-content;
+  height: min-content;
+  padding: 16px;
+}
+
+.card-example {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: min-content;
+  height: min-content;
+  margin: 16px;
+  gap: 16px;
+}

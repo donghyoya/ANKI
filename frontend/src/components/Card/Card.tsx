@@ -5,9 +5,19 @@ import { Ripple } from '@/components/material-components/Ripple';
 
 import styles from './Card.module.scss';
 
-export const ElevatedCard = ({ children }: { children: React.ReactNode }) => {
+interface CardProps {
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+export const ElevatedCard = ({
+  children,
+  style: propsStyle,
+  className: propsClassName
+}: CardProps) => {
   return (
-    <div className={styles['elevated-card']}>
+    <div className={`${styles['elevated-card']} ${propsClassName || ''}`} style={propsStyle}>
       <Elevation />
       <Ripple />
       {children}
@@ -15,9 +25,13 @@ export const ElevatedCard = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const FilledCard = ({ children }: { children: React.ReactNode }) => {
+export const FilledCard = ({
+  children,
+  style: propsStyle,
+  className: propsClassName
+}: CardProps) => {
   return (
-    <div className={styles['filled-card']}>
+    <div className={`${styles['filled-card']} ${propsClassName || ''}`} style={propsStyle}>
       <Elevation />
       <Ripple />
       {children}
@@ -25,9 +39,13 @@ export const FilledCard = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const OutlinedCard = ({ children }: { children: React.ReactNode }) => {
+export const OutlinedCard = ({
+  children,
+  style: propsStyle,
+  className: propsClassName
+}: CardProps) => {
   return (
-    <div className={styles['outlined-card']}>
+    <div className={`${styles['outlined-card']} ${propsClassName || ''}`} style={propsStyle}>
       <Elevation />
       <Ripple />
       {children}
@@ -37,14 +55,14 @@ export const OutlinedCard = ({ children }: { children: React.ReactNode }) => {
 
 export const CardExample = () => {
   return (
-    <div className={styles['card-example']}>
-      <ElevatedCard>
+    <div className={styles['card-example-container']}>
+      <ElevatedCard className={styles['card-example']}>
         <div className={styles['inner-container']}>Elevated Card</div>
       </ElevatedCard>
-      <FilledCard>
+      <FilledCard className={styles['card-example']}>
         <div className={styles['inner-container']}>Filled Card</div>
       </FilledCard>
-      <OutlinedCard>
+      <OutlinedCard className={styles['card-example']}>
         <div className={styles['inner-container']}>Outlined Card</div>
       </OutlinedCard>
     </div>

@@ -13,7 +13,7 @@ const LearningProgressBar = () => {
 
   return (
     <div className={styles['container']}>
-      <ProgressBar bars={bars} />
+      <ProgressBar bars={bars} height={15} />
     </div>
   );
 };

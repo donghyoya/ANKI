@@ -6,9 +6,12 @@ import styles from './ProgressBar.module.scss';
 
 interface ProgressBarProps {
   bars: { value: number; label: string; tooltip?: string; color: string }[];
+  styles?: React.CSSProperties;
+  className?: string;
+  height: number;
 }
 
-const ProgressBar = ({ bars }: ProgressBarProps) => {
+const ProgressBar = ({ bars, styles: stylesProp, className, height }: ProgressBarProps) => {
   const values = bars.map((bar) => bar.value);
   const sum = values.reduce((acc, num) => acc + num, 0);
   const percentages = values
@@ -19,7 +22,7 @@ const ProgressBar = ({ bars }: ProgressBarProps) => {
     .reverse();
 
   return (
-    <div className={styles['container']}>
+    <div className={`${styles['container']} ${className}`} style={{ ...stylesProp, height }}>
       {[...bars].reverse().map((bar, index) => {
         console.log(percentages[index]);
         return (
@@ -28,19 +31,20 @@ const ProgressBar = ({ bars }: ProgressBarProps) => {
             style={{
               backgroundColor: bar.color,
               width: percentages[index] + '%',
-              paddingLeft: `${percentages[index + 1] ?? 0}%`
+              paddingLeft: `${percentages[index + 1] ?? 0}%`,
+              borderRadius: index === 0 ? '0' : `0 ${height / 32}rem ${height / 32}rem 0`
             }}
           >
             <div className={styles['label-container']}>
               {bar.tooltip && (
                 <TooltipProvider text={bar.tooltip}>
                   <span className={`md-typescale-label-medium ${styles['label']}`}>
-                    {bar.value}
+                    {bar.label}
                   </span>
                 </TooltipProvider>
               )}
               {!bar.tooltip && (
-                <span className={`md-typescale-label-medium ${styles['label']}`}>{bar.value}</span>
+                <span className={`md-typescale-label-medium ${styles['label']}`}>{bar.label}</span>
               )}
             </div>
           </div>

@@ -1,7 +1,7 @@
 .container {
   position: relative;
   width: 100%;
-  height: 15px;
+  height: 100%;
 }
 
 .bar {
@@ -16,7 +16,6 @@
   justify-content: center;
   height: 100%;
 
-  border-radius: 7.5px;
   box-shadow: 0 0 0 1px var(--md-sys-color-surface-container-low);
   text-align: center;
 }

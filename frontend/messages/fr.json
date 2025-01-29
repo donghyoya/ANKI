@@ -1,0 +1,15 @@
+{
+    "beginner": "Débutant",
+    "intermediate": "Intermédiaire",
+    "advanced": "Avancé",
+    "learn": "Apprendre",
+    "viewWords": "Voir les mots",
+    "HomePage": {
+      "title": "Bonjour le monde !",
+      "about": "Aller à la page À propos"
+    },
+    "NotFoundPage": {
+      "title": "Page introuvable"
+    }
+  }
+  

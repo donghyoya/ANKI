@@ -1,0 +1,8 @@
+.container {
+  position: relative; // 필수
+  width: min-content;
+  height: min-content;
+  margin: 10px;
+  padding: 10px;
+  --md-elevation-level: 1; // 1 ~ 5
+}

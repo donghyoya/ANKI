@@ -24,7 +24,7 @@ const DeckCard = ({ title, wordCount, locale, buttonLabels, onViewWords, onLearn
     <div className={styles.card}>
       <div className={styles.info}>
         <h2 className={`${styles.title} md-typescale-title-large`}>{title}</h2>
-        <p className={`${styles['word-count']} md-typescale-label-large`}>{wordCount.toLocaleString(locale)} words</p>
+        <span className={`${styles['word-count']} md-typescale-label-large`}>{wordCount.toLocaleString(locale)} words</span>
       </div>
       <div className={styles['bottom-contents']}>
         <div className={styles['button-container']}>

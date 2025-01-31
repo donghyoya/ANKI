@@ -1,3 +1,16 @@
+@use '@/styles/_typography' as typography;
+
+$breakpoints: (
+    "large": 1200px,
+    "extra-large": 1600px
+);
+
+@mixin respond-to($breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+        @content;
+    }
+}
+
 .page {
     display: flex;
     flex-direction: column;
@@ -8,6 +21,14 @@
 
         .title {
             margin-bottom: 32px;
+
+            @include respond-to("large") {
+                @include typography.headline-medium;
+            }
+
+            @include respond-to("extra-large") {
+                @include typography.headline-large;
+            }
         }
 
         .cards {

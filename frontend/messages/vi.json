@@ -1,0 +1,14 @@
+{
+    "beginner": "Người mới bắt đầu",
+    "intermediate": "Trung cấp",
+    "advanced": "Nâng cao",
+    "learn": "Học",
+    "viewWords": "Xem từ",
+    "HomePage": {
+      "title": "Xin chào thế giới!",
+      "about": "Đi đến trang giới thiệu"
+    },
+    "NotFoundPage": {
+      "title": "Không tìm thấy trang"
+    }
+  }

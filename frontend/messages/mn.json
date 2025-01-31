@@ -1,0 +1,14 @@
+{
+    "beginner": "Анхан шат",
+    "intermediate": "Дунд шат",
+    "advanced": "Ахисан шат",
+    "learn": "Сурах",
+    "viewWords": "Үгсийг харах",
+    "HomePage": {
+      "title": "Сайн уу, дэлхий!",
+      "about": "Танилцуулга хуудсанд очих"
+    },
+    "NotFoundPage": {
+      "title": "Хуудас олдсонгүй"
+    }
+  }

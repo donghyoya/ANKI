@@ -1,0 +1,14 @@
+{
+    "beginner": "Pemula",
+    "intermediate": "Pertengahan",
+    "advanced": "Lanjutan",
+    "learn": "Belajar",
+    "viewWords": "Lihat perkataan",
+    "HomePage": {
+      "title": "Halo dunia!",
+      "about": "Pergi ke halaman tentang"
+    },
+    "NotFoundPage": {
+      "title": "Halaman tidak dijumpai"
+    }
+  }

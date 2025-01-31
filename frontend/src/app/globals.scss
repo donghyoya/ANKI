@@ -1,24 +1,12 @@
-@use '@material/web/typography/typescale';
-@use '@material/web/typography/typeface';
-@use '@material/web/tokens';
+@use '@/styles/_typography' as typography;
 @use '@/styles/theme';
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 
-  @include typescale.styles(tokens.md-sys-typescale-values());
-  @include typeface.theme(
-    (
-      'brand': Roboto,
-      'plain': 'Roboto, sans-serif',
-      'weight-regular': 400,
-      'weight-medium': 500,
-      'weight-bold': 700
-    )
-  );
+  @include typography.typescale;
+  @include typography.typeface;
 }
 
 @media (prefers-color-scheme: dark) {

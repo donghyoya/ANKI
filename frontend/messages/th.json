@@ -1,0 +1,14 @@
+{
+    "beginner": "ระดับเริ่มต้น",
+    "intermediate": "ระดับกลาง",
+    "advanced": "ระดับสูง",
+    "learn": "เรียนรู้",
+    "viewWords": "ดูคำศัพท์",
+    "HomePage": {
+      "title": "สวัสดีโลก!",
+      "about": "ไปที่หน้าข้อมูล"
+    },
+    "NotFoundPage": {
+      "title": "ไม่พบหน้า"
+    }
+  }

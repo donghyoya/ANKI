@@ -27,12 +27,13 @@ export default function DifficultyPage() {
   return (
     <div className={styles.page}>
       <div className={styles.content}>
-        <h1 className={`${styles.title} md-typescale-headline-large`}>
+        <h1 className={styles.title}>
           Words List
         </h1>
         <div className={styles.cards}>
           <DeckCard
             title={t('beginner')}
+            isCompleted={true}
             wordCount={1234}
             locale={locale}
             buttonLabels={buttonLabels}
@@ -41,6 +42,7 @@ export default function DifficultyPage() {
           />
           <DeckCard
             title={t('intermediate')}
+            isCompleted={false}
             wordCount={1234}
             locale={locale}
             buttonLabels={buttonLabels}
@@ -49,6 +51,7 @@ export default function DifficultyPage() {
           />
           <DeckCard
             title={t('advanced')}
+            isCompleted={false}
             wordCount={1234}
             locale={locale}
             buttonLabels={buttonLabels}

@@ -42,7 +42,7 @@ const TooltipProvider = ({
   return (
     <div className={styles['tooltip-wrap']} ref={wrapperRef}>
       {children}
-      {rect && createPortal(<Tooltip text={text} rect={rect} />, document.body)}
+      {rect && createPortal(<Tooltip text={text} rect={rect} extraGap={extraGap} />, document.body)}
     </div>
   );
 };

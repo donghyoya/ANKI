@@ -30,6 +30,8 @@
       white-space: pre-line;
 
       opacity: 0;
+
+      pointer-events: none;
       transition: all 0.2s ease;
     }
 
@@ -41,7 +43,7 @@
     }
   }
 
-  &.extra-gap {
+  &[data-extra-gap] {
     &:before {
       transform: translateX(-50%) translateY(-8px);
     }

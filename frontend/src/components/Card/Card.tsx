@@ -9,17 +9,19 @@ interface CardProps {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  ripple?: boolean;
 }
 
 export const ElevatedCard = ({
   children,
   style: propsStyle,
-  className: propsClassName
+  className: propsClassName,
+  ripple: propsRipple = true
 }: CardProps) => {
   return (
     <div className={`${styles['elevated-card']} ${propsClassName || ''}`} style={propsStyle}>
       <Elevation />
-      <Ripple />
+      {propsRipple && <Ripple />}
       {children}
     </div>
   );
@@ -28,12 +30,13 @@ export const ElevatedCard = ({
 export const FilledCard = ({
   children,
   style: propsStyle,
-  className: propsClassName
+  className: propsClassName,
+  ripple: propsRipple = true
 }: CardProps) => {
   return (
     <div className={`${styles['filled-card']} ${propsClassName || ''}`} style={propsStyle}>
       <Elevation />
-      <Ripple />
+      {propsRipple && <Ripple />}
       {children}
     </div>
   );
@@ -42,12 +45,13 @@ export const FilledCard = ({
 export const OutlinedCard = ({
   children,
   style: propsStyle,
-  className: propsClassName
+  className: propsClassName,
+  ripple: propsRipple = true
 }: CardProps) => {
   return (
     <div className={`${styles['outlined-card']} ${propsClassName || ''}`} style={propsStyle}>
       <Elevation />
-      <Ripple />
+      {propsRipple && <Ripple />}
       {children}
     </div>
   );
@@ -56,7 +60,7 @@ export const OutlinedCard = ({
 export const CardExample = () => {
   return (
     <div className={styles['card-example-container']}>
-      <ElevatedCard className={styles['card-example']}>
+      <ElevatedCard className={styles['card-example']} ripple={false}>
         <div className={styles['inner-container']}>Elevated Card</div>
       </ElevatedCard>
       <FilledCard className={styles['card-example']}>

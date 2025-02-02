@@ -27,6 +27,7 @@ const ProgressBar = ({ bars, styles: stylesProp, className, height }: ProgressBa
         console.log(percentages[index]);
         return (
           <div
+            key={index}
             className={styles['bar']}
             style={{
               backgroundColor: bar.color,
@@ -39,12 +40,14 @@ const ProgressBar = ({ bars, styles: stylesProp, className, height }: ProgressBa
               {bar.tooltip && (
                 <TooltipProvider text={bar.tooltip}>
                   <span className={`md-typescale-label-medium ${styles['label']}`}>
-                    {bar.label}
+                    {+percentages[index] > 10 ? bar.label : ''}
                   </span>
                 </TooltipProvider>
               )}
               {!bar.tooltip && (
-                <span className={`md-typescale-label-medium ${styles['label']}`}>{bar.label}</span>
+                <span className={`md-typescale-label-medium ${styles['label']}`}>
+                  {+percentages[index] > 10 ? bar.label : ''}
+                </span>
               )}
             </div>
           </div>

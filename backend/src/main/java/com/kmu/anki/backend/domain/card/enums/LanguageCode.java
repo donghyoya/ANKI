@@ -9,7 +9,7 @@ public enum LanguageCode {
     zh, // 중국어
     vi, // 베트남어
     th, // 태국어
-    ms, // 인도네시아어
+    id, // 인도네시아어
     ru, // 러시아어
     en, // 영어
     ja, // 일본어

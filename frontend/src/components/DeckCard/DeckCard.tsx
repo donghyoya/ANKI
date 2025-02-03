@@ -26,10 +26,10 @@ const DeckCard = ({ title, isCompleted, wordCount, locale, buttonLabels, onViewW
     <div className={styles.card}>
       <div className={styles.info}>
         <div className={styles['title-container']}>
-          <h2 className={`${styles.title} md-typescale-title-large`}>{title}</h2>
+          <h2 className={styles.title}>{title}</h2>
           {isCompleted && <Icon className={styles['check-icon']}>check_circle</Icon>}
         </div>
-        <span className={`${styles['word-count']} md-typescale-label-large`}>{wordCount.toLocaleString(locale)} words</span>
+        <span className={styles['word-count']}>{wordCount.toLocaleString(locale)} words</span>
       </div>
       <div className={styles['bottom-contents']}>
         <div className={styles['button-container']}>

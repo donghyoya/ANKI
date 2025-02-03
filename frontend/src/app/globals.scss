@@ -9,6 +9,31 @@
   @include typography.typeface;
 }
 
+:root {
+  --font: "Roboto";
+  --font-ar: "Noto Sans Arabic";
+  --font-jp: "Noto Sans JP";
+  --font-th: "Noto Sans Thai";
+  --font-zh: "Noto Sans SC";
+}
+
+html[lang="ar"] {
+  --font: var(--font-ar);
+}
+
+html[lang="ja"] {
+  --font: var(--font-jp);
+}
+
+html[lang="th"] {
+  --font: var(--font-th);
+}
+
+html[lang="zh"] {
+  --font: var(--font-zh);
+}
+
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

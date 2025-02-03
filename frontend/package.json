@@ -13,6 +13,7 @@
     "@material/web": "^2.2.0",
     "@reduxjs/toolkit": "^2.5.0",
     "frontend": "file:",
+    "lodash": "^4.17.21",
     "next": "15.1.4",
     "next-intl": "^3.26.3",
     "react": "^19.0.0",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/lodash": "^4.17.15",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

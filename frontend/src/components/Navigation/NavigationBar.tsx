@@ -24,6 +24,7 @@ const NavigationBar = ({
         const isSelected = selectedDestination === destination.label;
         return (
           <button
+            key={destination.label}
             className={`${styles.destination} ${isSelected ? styles.selected : ''}`}
             onClick={() => handleDestinationClick(destination.label)}
           >

@@ -10,16 +10,22 @@ interface CardProps {
   className?: string;
   style?: React.CSSProperties;
   ripple?: boolean;
+  onClick?: () => void;
 }
 
 export const ElevatedCard = ({
   children,
   style: propsStyle,
   className: propsClassName,
-  ripple: propsRipple = true
+  ripple: propsRipple = true,
+  onClick
 }: CardProps) => {
   return (
-    <div className={`${styles['elevated-card']} ${propsClassName || ''}`} style={propsStyle}>
+    <div
+      className={`${styles['elevated-card']} ${propsClassName || ''}`}
+      style={propsStyle}
+      onClick={onClick}
+    >
       <Elevation />
       {propsRipple && <Ripple />}
       {children}
@@ -31,10 +37,15 @@ export const FilledCard = ({
   children,
   style: propsStyle,
   className: propsClassName,
-  ripple: propsRipple = true
+  ripple: propsRipple = true,
+  onClick
 }: CardProps) => {
   return (
-    <div className={`${styles['filled-card']} ${propsClassName || ''}`} style={propsStyle}>
+    <div
+      className={`${styles['filled-card']} ${propsClassName || ''}`}
+      style={propsStyle}
+      onClick={onClick}
+    >
       <Elevation />
       {propsRipple && <Ripple />}
       {children}
@@ -46,10 +57,15 @@ export const OutlinedCard = ({
   children,
   style: propsStyle,
   className: propsClassName,
-  ripple: propsRipple = true
+  ripple: propsRipple = true,
+  onClick
 }: CardProps) => {
   return (
-    <div className={`${styles['outlined-card']} ${propsClassName || ''}`} style={propsStyle}>
+    <div
+      className={`${styles['outlined-card']} ${propsClassName || ''}`}
+      style={propsStyle}
+      onClick={onClick}
+    >
       <Elevation />
       {propsRipple && <Ripple />}
       {children}

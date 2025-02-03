@@ -1,0 +1,35 @@
+.korean-container {
+  display: flex;
+  flex-direction: row;
+  padding: 0 10px;
+}
+
+.korean-info-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 6px;
+  color: #fa6e6e;
+}
+
+.korean-info-sub-container {
+  display: flex;
+  gap: 4px;
+
+  .pronunciation {
+    color: var(--md-sys-color-secondary);
+  }
+  .origin {
+    color: var(--md-sys-color-tertiary);
+  }
+}
+
+.foreign-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  gap: 10px;
+}
+
+.foreign-word-sub {
+  padding-left: 26px;
+}

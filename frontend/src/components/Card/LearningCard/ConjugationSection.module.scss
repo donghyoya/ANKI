@@ -1,0 +1,34 @@
+.conjugations-container {
+  display: flex;
+  flex-direction: column;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.conjugations-container-icon {
+  color: var(--md-sys-color-on-surface);
+}
+
+.conjugations-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 48px;
+  gap: 8px;
+}
+
+.conjugations-list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
+.conjugation-item {
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+  gap: 8px;
+}
+
+.conjugation-item-label {
+  color: var(--md-sys-color-secondary);
+}

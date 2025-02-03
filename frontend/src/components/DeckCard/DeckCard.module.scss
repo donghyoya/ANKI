@@ -1,3 +1,5 @@
+@use '@/styles/_typography' as typography;
+
 .card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -17,6 +19,7 @@
       margin: 0 0 24px 0;
 
       .title {
+        @include typography.title-large;
         margin: 0 6px 0 0;
       }
 
@@ -27,6 +30,7 @@
     }
 
     .word-count {
+      @include typography.label-large;
       margin: 0;
       color: #555;
     }

@@ -1,136 +1,97 @@
+@use 'sass:map';
 @use '@material/web/typography/typescale';
 @use '@material/web/typography/typeface';
 @use '@material/web/tokens';
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 @mixin typescale {
     @include typescale.styles(tokens.md-sys-typescale-values());
 }
 
 @mixin typeface {
-    @include typeface.theme(('brand': Roboto,
-            'plain': 'Roboto, sans-serif',
-            'weight-regular': 400,
-            'weight-medium': 500,
-            'weight-bold': 700));
+    @include typeface.theme(("brand": "Roboto, var(--font), 'Noto Sans KR', sans-serif",
+            "plain": "Roboto, var(--font), 'Noto Sans KR', sans-serif",
+            "weight-regular": 400,
+            "weight-medium": 500,
+            "weight-bold": 700));
 }
 
+@mixin apply-typescale($typescale, $prominent: false) {
+    $values: tokens.md-sys-typescale-values();
+
+    font-size: map.get($values, "#{$typescale}-size");
+    line-height: map.get($values, "#{$typescale}-line-height");
+    font-weight: if($prominent,
+        map.get($values, "#{$typescale}-weight-prominent"),
+        map.get($values, "#{$typescale}-weight"));
+    font-family: map.get($values, "#{$typescale}-font");
+}
+
+
 @mixin display-small {
-    font-size: var(--md-sys-typescale-display-small-size, 2.25rem);
-    line-height: var(--md-sys-typescale-display-small-line-height, 2.75rem);
-    font-weight: var(--md-sys-typescale-display-small-weight, var(--md-ref-typeface-weight-regular, 400));
-    font-family: var(--md-sys-typescale-display-small-font, var(--md-ref-typeface-brand, Roboto), sans-serif);
+    @include apply-typescale("display-small");
 }
 
 @mixin display-medium {
-    font-size: var(--md-sys-typescale-display-medium-size, 2.8125rem);
-    line-height: var(--md-sys-typescale-display-medium-line-height, 3.25rem);
-    font-weight: var(--md-sys-typescale-display-medium-weight, var(--md-ref-typeface-weight-regular, 400));
-    font-family: var(--md-sys-typescale-display-medium-font, var(--md-ref-typeface-brand, Roboto), sans-serif);
+    @include apply-typescale("display-medium");
 }
 
 @mixin display-large {
-    font-size: var(--md-sys-typescale-display-large-size, 3.5625rem);
-    line-height: var(--md-sys-typescale-display-large-line-height, 4rem);
-    font-weight: var(--md-sys-typescale-display-large-weight, var(--md-ref-typeface-weight-regular, 400));
-    font-family: var(--md-sys-typescale-display-large-font, var(--md-ref-typeface-brand, Roboto), sans-serif);
+    @include apply-typescale("display-large");
 }
 
 @mixin headline-small {
-    font-size: var(--md-sys-typescale-headline-small-size, 1.5rem);
-    line-height: var(--md-sys-typescale-headline-small-line-height, 2rem);
-    font-weight: var(--md-sys-typescale-headline-small-weight, var(--md-ref-typeface-weight-regular, 400));
-    font-family: var(--md-sys-typescale-headline-small-font, var(--md-ref-typeface-brand, Roboto), sans-serif);
+    @include apply-typescale("headline-small");
 }
 
 @mixin headline-medium {
-    font-size: var(--md-sys-typescale-headline-medium-size, 1.75rem);
-    line-height: var(--md-sys-typescale-headline-medium-line-height, 2.25rem);
-    font-weight: var(--md-sys-typescale-headline-medium-weight, var(--md-ref-typeface-weight-regular, 400));
-    font-family: var(--md-sys-typescale-headline-medium-font, var(--md-ref-typeface-brand, Roboto), sans-serif);
+    @include apply-typescale("headline-medium");
 }
 
 @mixin headline-large {
-    font-size: var(--md-sys-typescale-headline-large-size, 2rem);
-    line-height: var(--md-sys-typescale-headline-large-line-height, 2.5rem);
-    font-weight: var(--md-sys-typescale-headline-large-weight, var(--md-ref-typeface-weight-regular, 400));
-    font-family: var(--md-sys-typescale-headline-large-font, var(--md-ref-typeface-brand, Roboto), sans-serif);
+    @include apply-typescale("headline-large");
 }
 
 @mixin title-small {
-    font-size: var(--md-sys-typescale-title-small-size, .875rem);
-    line-height: var(--md-sys-typescale-title-small-line-height, 1.25rem);
-    font-weight: var(--md-sys-typescale-title-small-weight, var(--md-ref-typeface-weight-medium, 500));
-    font-family: var(--md-sys-typescale-title-small-font, var(--md-ref-typeface-plain, Roboto), sans-serif);
+    @include apply-typescale("title-small");
 }
 
 @mixin title-medium {
-    font-size: var(--md-sys-typescale-title-medium-size, 1rem);
-    line-height: var(--md-sys-typescale-title-medium-line-height, 1.5rem);
-    font-weight: var(--md-sys-typescale-title-medium-weight, var(--md-ref-typeface-weight-medium, 500));
-    font-family: var(--md-sys-typescale-title-medium-font, var(--md-ref-typeface-plain, Roboto), sans-serif);
+    @include apply-typescale("title-medium");
 }
 
 @mixin title-large {
-    font-size: var(--md-sys-typescale-title-large-size, 1.375rem);
-    line-height: var(--md-sys-typescale-title-large-line-height, 1.75rem);
-    font-weight: var(--md-sys-typescale-title-large-weight, var(--md-ref-typeface-weight-regular, 400));
-    font-family: var(--md-sys-typescale-title-large-font, var(--md-ref-typeface-brand, Roboto), sans-serif);
+    @include apply-typescale("title-large");
 }
 
 @mixin body-small {
-    font-size: var(--md-sys-typescale-body-small-size, .75rem);
-    line-height: var(--md-sys-typescale-body-small-line-height, 1rem);
-    font-weight: var(--md-sys-typescale-body-small-weight, var(--md-ref-typeface-weight-regular, 400));
-    font-family: var(--md-sys-typescale-body-small-font, var(--md-ref-typeface-plain, Roboto), sans-serif);
+    @include apply-typescale("body-small");
 }
 
 @mixin body-medium {
-    font-size: var(--md-sys-typescale-body-medium-size, .875rem);
-    line-height: var(--md-sys-typescale-body-medium-line-height, 1.25rem);
-    font-weight: var(--md-sys-typescale-body-medium-weight, var(--md-ref-typeface-weight-regular, 400));
-    font-family: var(--md-sys-typescale-body-medium-font, var(--md-ref-typeface-plain, Roboto), sans-serif);
+    @include apply-typescale("body-medium");
 }
 
 @mixin body-large {
-    font-size: var(--md-sys-typescale-body-large-size, 1rem);
-    line-height: var(--md-sys-typescale-body-large-line-height, 1.5rem);
-    font-weight: var(--md-sys-typescale-body-large-weight, var(--md-ref-typeface-weight-regular, 400));
-    font-family: var(--md-sys-typescale-body-large-font, var(--md-ref-typeface-plain, Roboto), sans-serif);
+    @include apply-typescale("body-large");
 }
 
 @mixin label-small {
-    font-size: var(--md-sys-typescale-label-small-size, .6875rem);
-    line-height: var(--md-sys-typescale-label-small-line-height, 1rem);
-    font-weight: var(--md-sys-typescale-label-small-weight, var(--md-ref-typeface-weight-medium, 500));
-    font-family: var(--md-sys-typescale-label-small-font, var(--md-ref-typeface-plain, Roboto), sans-serif);
+    @include apply-typescale("label-small");
 }
 
 @mixin label-medium {
-    font-size: var(--md-sys-typescale-label-medium-size, .75rem);
-    line-height: var(--md-sys-typescale-label-medium-line-height, 1rem);
-    font-weight: var(--md-sys-typescale-label-medium-weight, var(--md-ref-typeface-weight-medium, 500));
-    font-family: var(--md-sys-typescale-label-medium-font, var(--md-ref-typeface-plain, Roboto), sans-serif);
+    @include apply-typescale("label-medium");
 }
 
 @mixin label-medium-prominent {
-    font-size: var(--md-sys-typescale-label-medium-size, .75rem);
-    line-height: var(--md-sys-typescale-label-medium-line-height, 1rem);
-    font-weight: var(--md-sys-typescale-label-medium-weight-prominent, var(--md-ref-typeface-weight-bold, 700));
-    font-family: var(--md-sys-typescale-label-medium-font, var(--md-ref-typeface-plain, Roboto), sans-serif);
+    @include apply-typescale("label-medium", true);
 }
 
 @mixin label-large {
-    font-size: var(--md-sys-typescale-label-large-size, .875rem);
-    line-height: var(--md-sys-typescale-label-large-line-height, 1.25rem);
-    font-weight: var(--md-sys-typescale-label-large-weight, var(--md-ref-typeface-weight-medium, 500));
-    font-family: var(--md-sys-typescale-label-large-font, var(--md-ref-typeface-plain, Roboto), sans-serif);
+    @include apply-typescale("label-large");
 }
 
 @mixin label-large-prominent {
-    font-size: var(--md-sys-typescale-label-large-size, .875rem);
-    line-height: var(--md-sys-typescale-label-large-line-height, 1.25rem);
-    font-weight: var(--md-sys-typescale-label-large-weight-prominent, var(--md-ref-typeface-weight-bold, 700));
-    font-family: var(--md-sys-typescale-label-large-font, var(--md-ref-typeface-plain, Roboto), sans-serif);
+    @include apply-typescale("label-large", true);
 }

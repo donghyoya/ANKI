@@ -50,7 +50,7 @@ const NavigationRail = ({
               className={`${styles['navigation-item-label']} ${selectedDestination === destination.label ? styles['selected'] : ''}`}
             >
               <span
-                className={`md-typescale-label-medium${selectedDestination === destination.label ? styles['-prominent'] : ''}`}
+                className={`md-typescale-label-medium${selectedDestination === destination.label ? '-prominent' : ''}`}
               >
                 {destination.label}
               </span>

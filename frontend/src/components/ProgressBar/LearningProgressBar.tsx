@@ -2,18 +2,12 @@ import ProgressBar from './ProgressBar';
 
 import styles from './LearningProgressBar.module.scss';
 
-import { LEARNING_PROGRESS_BAR_COLORS } from '@/utils/constants';
+import { Progress } from '@/types/Progress';
 
-const LearningProgressBar = () => {
-  const bars = [
-    { value: 10, label: '10', tooltip: 'Learning', color: LEARNING_PROGRESS_BAR_COLORS.learning },
-    { value: 20, label: '20', tooltip: 'Reviewing', color: LEARNING_PROGRESS_BAR_COLORS.reviewing },
-    { value: 30, label: '30', tooltip: 'Completed', color: LEARNING_PROGRESS_BAR_COLORS.completed }
-  ];
-
+const LearningProgressBar = ({ progress }: { progress: Progress[] }) => {
   return (
     <div className={styles['container']}>
-      <ProgressBar bars={bars} height={15} />
+      <ProgressBar progress={progress} height={15} />
     </div>
   );
 };

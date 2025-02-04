@@ -1,33 +1,26 @@
+import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
 import LearningCard from '@/components/Card/LearningCard/LearningCard';
-import { Card } from '@/types/Card';
+import RatingButton from '@/components/Card/LearningCard/RatingButton';
 
 import styles from './layout.module.scss';
 
-const DUMMY_CARD: Card = {
-  cardId: 1,
-  wordInfo: {
-    koreanWord: '가깝다',
-    foreignWord: 'near; close; adjacent',
-    level: 'Beginner',
-    languageCode: 'ko',
-    originalLanguage: '家具',
-    homographNumber: 1,
-    partsOfSpeech: '(adj.)',
-    pronunciation: '가깝따',
-    relatedWords: '반댓말 멀다2 반댓말 멀다2, 멀다2',
-    inflection: ['가까운', '가꾸어(가꿔)', '가까우니', '가깝습니다']
-  },
-  example: {
-    phrase: ['안녕하세요', '안녕하세요', '안녕하세요'],
-    sentence: ['안녕하세요', '안녕하세요', '안녕하세요'],
-    conversation: ['안녕하세요', '안녕하세요', '안녕하세요']
-  }
-};
+import { DUMMY_CARD, DUMMY_PROGRESS, DUMMY_RATING_PREVIEW } from '@/utils/dummyData';
 
 export default function LearningPage() {
   return (
     <div className={styles['learning-page']}>
+      <div className={styles['progress-container']}>
+        <div className={styles['progress-title-container']}>
+          <span className={styles['progress-title']}>Reviews</span>
+        </div>
+        <LearningProgressBar progress={DUMMY_PROGRESS} />
+      </div>
       <LearningCard card={DUMMY_CARD} />
+      <div className={styles['rating-container']}>
+        {Object.entries(DUMMY_RATING_PREVIEW).map(([label, dueDate]) => (
+          <RatingButton key={label} label={label} interval={dueDate - Date.now()} />
+        ))}
+      </div>
     </div>
   );
 }

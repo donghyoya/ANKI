@@ -3,8 +3,8 @@
 .card {
   border: 1px solid #ddd;
   border-radius: 8px;
-  width: 232px;
-  height: 232px;
+  width: 274px;
+  height: 208px;
   background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
     .title-container {
       display: flex;
       align-items: center;
-      margin: 0 0 24px 0;
+      margin: 0 0 16px 0;
 
       .title {
         @include typography.title-large;
@@ -41,7 +41,7 @@
     .button-container {
       display: flex;
       padding-left: 12px;
-      padding-right: 24px;
+      padding-right: 20px;
       justify-content: space-between;
       margin-bottom: 20px;
     }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FilledCard } from '../Card';
+import { FilledCard } from '../Card/Card';
 
 import { Card } from '@/types/Card';
 

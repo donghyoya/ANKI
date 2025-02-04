@@ -1,6 +1,6 @@
 import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
-import LearningCard from '@/components/Card/LearningCard/LearningCard';
-import RatingButton from '@/components/Card/LearningCard/RatingButton';
+import LearningCard from '@/components/LearningCard/LearningCard';
+import RatingButton from '@/components/LearningCard/RatingButton';
 
 import styles from './layout.module.scss';
 

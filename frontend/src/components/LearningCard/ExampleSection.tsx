@@ -5,6 +5,8 @@ import { IconButton, Icon } from '@/components/material-components/IconButton/Ic
 
 import styles from './ExampleSection.module.scss';
 
+import { capitalize } from '@/utils/capitalize';
+
 const ExampleSection = ({ examples }: { examples: WordExample }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -26,7 +28,7 @@ const ExampleSection = ({ examples }: { examples: WordExample }) => {
             <div className={styles['example-item-container']} key={index}>
               <div className={styles['example-item']} key={index}>
                 <span className={`${styles['example-item-label']} md-typescale-label-medium`}>
-                  {key}
+                  {capitalize(key)}
                 </span>
               </div>
               <span className={`md-typescale-body-small`}>

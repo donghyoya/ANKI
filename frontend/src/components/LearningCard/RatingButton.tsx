@@ -1,3 +1,4 @@
+import { capitalize } from '@/utils/capitalize';
 import { formatDuration } from '@/utils/formatDuration';
 
 import styles from './RatingButton.module.scss';
@@ -10,7 +11,7 @@ interface RatingButtonProps {
 const RatingButton = ({ label, interval }: RatingButtonProps) => {
   return (
     <button className={styles['rating-button']}>
-      <span className={styles['rating-button-text']}>{label}</span>
+      <span className={styles['rating-button-text']}>{capitalize(label)}</span>
       <span className={styles['rating-button-text']}>{formatDuration(interval)}</span>
     </button>
   );

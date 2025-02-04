@@ -1,14 +1,15 @@
 {
-    "beginner": "مبتدئ",
-    "intermediate": "متوسط",
-    "advanced": "متقدم",
-    "learn": "تعلم",
-    "viewWords": "عرض الكلمات",
-    "HomePage": {
-      "title": "مرحبا بالعالم!",
-      "about": "انتقل إلى صفحة حول"
-    },
-    "NotFoundPage": {
-      "title": "الصفحة غير موجودة"
-    }
+  "wordsByDifficulty": "الكلمات حسب الصعوبة",
+  "beginner": "مبتدئ",
+  "intermediate": "متوسط",
+  "advanced": "متقدم",
+  "learn": "تعلم",
+  "viewWords": "عرض الكلمات",
+  "HomePage": {
+    "title": "مرحبا بالعالم!",
+    "about": "انتقل إلى صفحة حول"
+  },
+  "NotFoundPage": {
+    "title": "الصفحة غير موجودة"
   }
+}

@@ -1,10 +1,36 @@
+@use '@/styles/_typography' as typography;
+@use '@/styles/mixins' as *;
+
 .rating-button {
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2px;
   border: 0;
   border-radius: 20px;
   background-color: var(--md-sys-color-primary-container);
+
+  .rating-button-label {
+    @include typography.label-medium;
+    color: var(--md-sys-color-on-primary-container);
+  }
+
+  .rating-button-interval {
+    @include typography.label-small;
+    color: var(--md-sys-color-on-surface-variant);
+  }
+
+  &.error {
+    background-color: var(--md-sys-color-error-container);
+
+    .rating-button-label {
+      color: var(--md-sys-color-error);
+    }
+
+    .rating-button-interval {
+      color: var(--md-sys-color-on-error-container);
+    }
+  }
 }

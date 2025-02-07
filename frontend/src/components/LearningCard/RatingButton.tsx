@@ -6,13 +6,14 @@ import styles from './RatingButton.module.scss';
 interface RatingButtonProps {
   label: string;
   interval: number;
+  isError?: boolean;
 }
 
-const RatingButton = ({ label, interval }: RatingButtonProps) => {
+const RatingButton = ({ label, interval, isError = false }: RatingButtonProps) => {
   return (
-    <button className={styles['rating-button']}>
-      <span className={styles['rating-button-text']}>{capitalize(label)}</span>
-      <span className={styles['rating-button-text']}>{formatDuration(interval)}</span>
+    <button className={styles['rating-button'] + (isError ? ' ' + styles['error'] : '')}>
+      <span className={styles['rating-button-label']}>{capitalize(label)}</span>
+      <span className={styles['rating-button-interval']}>{formatDuration(interval)}</span>
     </button>
   );
 };

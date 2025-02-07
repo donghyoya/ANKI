@@ -9,17 +9,24 @@ import { DUMMY_CARD, DUMMY_PROGRESS, DUMMY_RATING_PREVIEW } from '@/utils/dummyD
 export default function LearningPage() {
   return (
     <div className={styles['learning-page']}>
-      <div className={styles['progress-container']}>
-        <div className={styles['progress-title-container']}>
-          <span className={styles['progress-title']}>Reviews</span>
+      <div className={styles['learning-content']}>
+        <div className={styles['progress-container']}>
+          <div className={styles['progress-title-container']}>
+            <span className={styles['progress-title']}>Reviews</span>
+          </div>
+          <LearningProgressBar progress={DUMMY_PROGRESS} />
         </div>
-        <LearningProgressBar progress={DUMMY_PROGRESS} />
-      </div>
-      <LearningCard card={DUMMY_CARD} />
-      <div className={styles['rating-container']}>
-        {Object.entries(DUMMY_RATING_PREVIEW).map(([label, dueDate]) => (
-          <RatingButton key={label} label={label} interval={dueDate - Date.now()} />
-        ))}
+        <LearningCard card={DUMMY_CARD} />
+        <div className={styles['rating-container']}>
+          {Object.entries(DUMMY_RATING_PREVIEW).map(([label, dueDate]) => (
+            <RatingButton
+              key={label}
+              label={label}
+              interval={dueDate - Date.now()}
+              isError={label === 'again'}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

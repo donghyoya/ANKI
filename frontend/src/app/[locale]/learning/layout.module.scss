@@ -1,4 +1,16 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/_typography' as typography;
+
 .learning-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.learning-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,6 +33,10 @@
   justify-content: flex-start;
   width: 100%;
   height: 20px;
+}
+
+.progress-title {
+  @include typography.label-large;
 }
 
 .rating-container {

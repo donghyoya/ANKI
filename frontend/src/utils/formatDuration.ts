@@ -10,7 +10,7 @@ export function formatDuration(ms: number): string {
   const value = (duration: number) => Number(duration.toFixed(1));
 
   if (abs < MS_PER_MINUTE) {
-    return '1m';
+    return '1 min';
   }
   if (abs < MS_PER_HOUR) {
     const mins = value(abs / MS_PER_MINUTE);

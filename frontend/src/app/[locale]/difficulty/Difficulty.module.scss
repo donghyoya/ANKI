@@ -18,6 +18,10 @@ $breakpoints: (
 .page {
     padding: 16px;
 
+    @include respond-to("medium") {
+        padding: 64px 200px 0 200px;
+    }
+
     @include respond-to("large") {
         display: flex;
         flex-direction: column;
@@ -46,6 +50,7 @@ $breakpoints: (
             gap: 12px;
 
             @include respond-to("large") {
+                display: flex;
                 flex-direction: row;
                 gap: 24px;
             }

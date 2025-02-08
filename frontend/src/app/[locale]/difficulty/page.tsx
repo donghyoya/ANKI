@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useLayoutEffect, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import DeckCard from '@/components/DeckCard/DeckCard';
 import DeckCardCompact from '@/components/DeckCard/DeckCardCompact';
 import { useTranslations } from 'next-intl';
@@ -9,25 +9,17 @@ import styles from './Difficulty.module.scss';
 import Dialog from '@/components/material-components/Dialog';
 import TextButton from '@/components/material-components/TextButton';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
+import { useWindowSize } from '@/hooks/useWindowSize';
 
 export default function DifficultyPage() {
   const t = useTranslations();
   const locale = useLocale(); // 현재 로케일 가져오기
 
-  const [isCompact, setIsCompact] = useState(false);
+  const width = useWindowSize();
+  const isCompact = width < 1200;
+
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const dialogRef = useRef<typeof Dialog.prototype | null>(null);
-
-  // 화면 크기 감지해서 'isCompact' 설정
-  useLayoutEffect(() => {
-    const handleResize = () => {
-      setIsCompact(window.innerWidth < 1200);
-    };
-
-    handleResize(); // 초기 실행
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   // 'Dialog' 닫기 이벤트 감지해서 'isDialogOpen' 업데이트
   useEffect(() => {
@@ -63,9 +55,7 @@ export default function DifficultyPage() {
   return (
     <div className={styles.page}>
       <div className={styles.content}>
-        {!isCompact && <h1 className={styles.title}>
-          {t('wordsByDifficulty')}
-        </h1>}
+        {!isCompact && <h1 className={styles.title}> {t('wordsByDifficulty')} </h1>}
         <div className={styles.cards}>
           <CardComponent
             title={t('beginner')}

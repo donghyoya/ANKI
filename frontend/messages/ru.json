@@ -1,14 +1,15 @@
 {
-    "beginner": "Новичок",
-    "intermediate": "Средний",
-    "advanced": "Продвинутый",
-    "learn": "Учить",
-    "viewWords": "Просмотр слов",
-    "HomePage": {
-      "title": "Привет, мир!",
-      "about": "Перейти на страницу о нас"
-    },
-    "NotFoundPage": {
-      "title": "Страница не найдена"
-    }
+  "wordsByDifficulty": "Слова по уровню сложности",
+  "beginner": "Новичок",
+  "intermediate": "Средний",
+  "advanced": "Продвинутый",
+  "learn": "Учить",
+  "viewWords": "Просмотр слов",
+  "HomePage": {
+    "title": "Привет, мир!",
+    "about": "Перейти на страницу о нас"
+  },
+  "NotFoundPage": {
+    "title": "Страница не найдена"
   }
+}

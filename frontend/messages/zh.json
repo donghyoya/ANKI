@@ -1,14 +1,15 @@
 {
-    "beginner": "初级",
-    "intermediate": "中级",
-    "advanced": "高级",
-    "learn": "学习",
-    "viewWords": "查看单词",
-    "HomePage": {
-      "title": "你好，世界！",
-      "about": "前往介绍页面"
-    },
-    "NotFoundPage": {
-      "title": "找不到页面。"
-    }
+  "wordsByDifficulty": "按难度分类的单词",
+  "beginner": "初级",
+  "intermediate": "中级",
+  "advanced": "高级",
+  "learn": "学习",
+  "viewWords": "查看单词",
+  "HomePage": {
+    "title": "你好，世界！",
+    "about": "前往介绍页面"
+  },
+  "NotFoundPage": {
+    "title": "找不到页面。"
   }
+}

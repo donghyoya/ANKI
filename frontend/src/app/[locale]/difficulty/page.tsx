@@ -28,7 +28,7 @@ export default function DifficultyPage() {
     <div className={styles.page}>
       <div className={styles.content}>
         <h1 className={styles.title}>
-          Words List
+          {t('wordsByDifficulty')}
         </h1>
         <div className={styles.cards}>
           <DeckCard

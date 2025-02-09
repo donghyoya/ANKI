@@ -1,19 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useWindowSize } from '@/hooks/useWindowSize';
 
 export default function HomePage() {
-  const [width, setWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    function handleResize() {
-      setWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const width = useWindowSize();
 
   const GridItem = ({ color }: { color: string }) => (
     <div

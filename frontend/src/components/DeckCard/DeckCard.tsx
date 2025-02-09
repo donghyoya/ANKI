@@ -2,31 +2,13 @@
 
 import React from "react";
 import styles from "./DeckCard.module.scss"
+import { DeckCardProps } from "@/components/DeckCard/types";
 import FilledButton from "@/components/material-components/FilledButton";
 import TextButton from "@/components/material-components/TextButton";
 import { Icon } from "@/components/material-components/IconButton/IconButton";
 import { OutlinedCard } from "@/components/Card/Card";
 import ProgressBar from "@/components/ProgressBar/ProgressBar";
-
-// Props 타입 정의
-interface DeckCardProps {
-  title: string;
-  isCompleted: boolean;
-  wordCount: number;
-  locale: string;
-  buttonLabels: {
-    viewWords: string;
-    learn: string;
-  };
-  onViewWords: () => void;
-  onLearn: () => void;
-}
-
-const bars = [
-  { value: 5, label: "5", color: "#B2DA93" },
-  { value: 5, label: "5", color: "#F3C2B8" },
-  { value: 10, label: "10", color: "#D7D9D4" },
-];
+import {bars} from "./bars";
 
 // DeckCard 컴포넌트
 const DeckCard = ({ title, isCompleted, wordCount, locale, buttonLabels, onViewWords, onLearn }: DeckCardProps) => {

@@ -1,0 +1,27 @@
+@use '@/styles/mixins' as *;
+
+.rating-button-container {
+  @include grid-system;
+  grid-template-columns: repeat(4, 1fr);
+  height: 60px;
+
+  @include respond-to('medium') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include respond-to('expanded') {
+    height: 80px;
+  }
+
+  @include respond-to('large') {
+    height: 100px;
+  }
+
+  @include respond-to('large') {
+    height: 100px;
+  }
+
+  @include respond-to('extra-large') {
+    height: 100px;
+  }
+}

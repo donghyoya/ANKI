@@ -33,12 +33,10 @@ export default function LearningPage() {
   };
 
   const toggleConjugation = () => {
-    console.log('toggleShowConjugation:', cardState.showConjugation);
     setCardState((prev) => ({ ...prev, showConjugation: !prev.showConjugation }));
   };
 
   const toggleExample = () => {
-    console.log('toggleShowExample:', cardState.showExample);
     setCardState((prev) => ({ ...prev, showExample: !prev.showExample }));
   };
 

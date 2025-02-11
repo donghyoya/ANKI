@@ -38,7 +38,6 @@ const TooltipProvider = ({
   useEffect(() => {
     if (!wrapperRef.current) return;
     setRect(wrapperRef.current.getBoundingClientRect());
-    console.log(rect);
   }, [text]);
 
   return (

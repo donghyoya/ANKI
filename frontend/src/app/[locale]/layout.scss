@@ -1,14 +1,33 @@
+@use '@/styles/mixins' as *;
+
 .layout-container-main {
   box-sizing: border-box;
   width: 100%;
-  min-height: 100vh;
-  overflow-y: auto;
+  height: 100%;
 
-  @media (min-width: 601px) {
-    // padding: 0 0 0 80px;
+  padding: 64px 16px 80px;
+  overflow-y: auto;
+  background-color: var(--md-sys-color-background);
+
+  // medium
+  @include respond-to('medium') {
+    padding: 0 32px;
+    background-color: var(--md-sys-color-background);
   }
 
-  @media (max-width: 600px) {
-    padding: 64px 0 80px;
+  // expanded
+  @include respond-to('expanded') {
+    padding: 0 24px;
+    background-color: var(--md-sys-color-background);
+  }
+
+  // large
+  @include respond-to('large') {
+    padding: 0 200px;
+  }
+
+  // extra large
+  @include respond-to('extra-large') {
+    padding: 0 236px;
   }
 }

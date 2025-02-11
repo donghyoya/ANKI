@@ -1,30 +1,44 @@
 @use '@/styles/mixins' as *;
 @use '@/styles/_typography' as typography;
 
-.learning-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.grid-container {
+  @include grid-system;
   width: 100%;
   height: 100%;
 }
 
-.learning-content {
+.learning-container {
+  box-sizing: border-box;
   display: flex;
+
+  grid-column: span 4;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  min-height: 100%;
-  padding: 16px;
+  height: 100%;
+  padding: 16px 0;
   gap: 16px;
+
+  @include respond-to('medium') {
+    grid-column: 2 / span 6;
+  }
+
+  @include respond-to('expanded') {
+    grid-column: 3 / span 8;
+  }
+
+  @include respond-to('large') {
+    grid-column: 3 / span 8;
+    gap: 24px;
+  }
+
+  @include respond-to('extra-large') {
+    grid-column: 3 / span 8;
+    gap: 24px;
+  }
 }
 
 .progress-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 5px;
+  grid-column: span 4;
 }
 
 .progress-title-container {
@@ -37,12 +51,4 @@
 
 .progress-title {
   @include typography.label-large;
-}
-
-.rating-container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 60px;
-  gap: 16px;
 }

@@ -7,13 +7,13 @@ import styles from './ExampleSection.module.scss';
 
 import { capitalize } from '@/utils/capitalize';
 
-const ExampleSection = ({ examples }: { examples: WordExample }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+interface ExampleSectionProps {
+  examples: WordExample;
+  isExpanded: boolean;
+  toggleExpanded: () => void;
+}
 
-  const toggleExpanded = () => {
-    setIsExpanded(!isExpanded);
-  };
-
+const ExampleSection = ({ examples, isExpanded, toggleExpanded }: ExampleSectionProps) => {
   return (
     <div className={styles['example-container']}>
       <div className={styles['example-header']}>

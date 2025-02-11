@@ -1,8 +1,4 @@
-'use client';
-
-import { useState } from 'react';
 import { FilledCard } from '../Card/Card';
-
 import { Card } from '@/types/Card';
 
 import styles from './LearningCard.module.scss';
@@ -10,55 +6,68 @@ import ConjugationSection from './ConjugationSection';
 import ExampleSection from './ExampleSection';
 import WordSection from './WordSection';
 
-interface LearningCardProps {
-  card: Card;
+export interface LearningCardState {
+  isRevealed: boolean;
+  showDetail: boolean;
+  showConjugation: boolean;
+  showExample: boolean;
 }
 
-const LearningCard = ({ card }: LearningCardProps) => {
-  const [isRevealed, setIsRevealed] = useState(false);
-  const [showDetail, setShowDetail] = useState(true);
+interface LearningCardProps {
+  card: Card;
+  className?: string;
+  style?: React.CSSProperties;
+  cardState: LearningCardState;
+  handleReveal: () => void;
+  handleShowDetail: () => void;
+  toggleConjugation: () => void;
+  toggleExample: () => void;
+}
 
-  const handleReveal = () => {
-    setIsRevealed(true);
-  };
-
+const LearningCard = ({
+  card,
+  className,
+  style,
+  cardState,
+  handleReveal,
+  handleShowDetail,
+  toggleConjugation,
+  toggleExample
+}: LearningCardProps) => {
   return (
-    <FilledCard className={styles['card']} ripple={false} onClick={handleReveal}>
-      {!isRevealed && (
-        <div className={styles['simple-content-container']}>
-          <span
-            className={`${styles['simple-content-container-header-korean']} md-typescale-headline-large`}
-          >
-            {card.wordInfo.koreanWord}
-          </span>
-          <span
-            className={`${styles['simple-content-container-header-foreign']} md-typescale-headline-small ${styles['revealed']}`}
-          >
-            Check Answer
-          </span>
+    <FilledCard
+      className={`${styles['learning-card']} ${className}`}
+      ripple={false}
+      onClick={handleReveal}
+      style={style}
+    >
+      {!cardState.isRevealed && (
+        <div className={styles['content-container']}>
+          <span className="md-typescale-headline-large">{card.wordInfo.koreanWord}</span>
+          <span className={`md-typescale-headline-small ${styles['revealed']}`}>Check Answer</span>
         </div>
       )}
 
-      {isRevealed && !showDetail && (
-        <div className={styles['simple-content-container']}>
-          <span
-            className={`${styles['simple-content-container-header-korean']} md-typescale-headline-large`}
-          >
-            {card.wordInfo.koreanWord}
-          </span>
-          <span
-            className={`${styles['simple-content-container-header-foreign']} md-typescale-headline-small`}
-          >
-            {card.wordInfo.foreignWord}
-          </span>
+      {cardState.isRevealed && !cardState.showDetail && (
+        <div className={styles['content-container']}>
+          <span className="md-typescale-headline-large">{card.wordInfo.koreanWord}</span>
+          <span className="md-typescale-headline-small">{card.wordInfo.foreignWord}</span>
         </div>
       )}
 
-      {isRevealed && showDetail && (
-        <div className={styles['detail-content-container']}>
+      {cardState.isRevealed && cardState.showDetail && (
+        <div className={`${styles['content-container']} ${styles['detailed']}`}>
           <WordSection wordInfo={card.wordInfo} />
-          <ConjugationSection conjugations={card.wordInfo.inflection} />
-          <ExampleSection examples={card.example} />
+          <ConjugationSection
+            conjugations={card.wordInfo.inflection}
+            toggleExpanded={toggleConjugation}
+            isExpanded={cardState.showConjugation}
+          />
+          <ExampleSection
+            examples={card.example}
+            toggleExpanded={toggleExample}
+            isExpanded={cardState.showExample}
+          />
         </div>
       )}
     </FilledCard>

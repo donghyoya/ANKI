@@ -10,13 +10,17 @@ const conjugations = [
   'Formal polite present'
 ];
 
-const ConjugationSection = ({ conjugations }: { conjugations: string[] }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+interface ConjugationSectionProps {
+  conjugations: string[];
+  toggleExpanded: () => void;
+  isExpanded: boolean;
+}
 
-  const toggleExpanded = () => {
-    setIsExpanded(!isExpanded);
-  };
-
+const ConjugationSection = ({
+  conjugations,
+  toggleExpanded,
+  isExpanded
+}: ConjugationSectionProps) => {
   return (
     <div className={styles['conjugations-container']}>
       <div className={styles['conjugations-header']}>

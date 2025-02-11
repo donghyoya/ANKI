@@ -1,3 +1,6 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/_typography' as typography;
+
 .learning-card {
   box-sizing: border-box;
   display: flex;
@@ -16,13 +19,66 @@
   justify-content: center;
   height: min-content;
 
-  gap: 20px;
+  gap: 24px;
   color: var(--md-sys-color-on-surface);
+
   &.detailed {
     align-items: flex-start;
   }
 
   .revealed {
     color: var(--md-sys-color-on-surface-variant);
+  }
+
+  .korean-word {
+    @include typography.headline-large;
+  }
+
+  .foreign-word {
+    @include typography.headline-small;
+
+    &.revealed {
+      color: var(--md-sys-color-on-surface-variant);
+    }
+  }
+
+  @include respond-to('medium') {
+    gap: 32px;
+    .korean-word {
+      @include typography.display-medium;
+    }
+    .foreign-word {
+      @include typography.headline-large;
+    }
+  }
+
+  @include respond-to('expanded') {
+    gap: 32px;
+    .korean-word {
+      @include typography.display-medium;
+    }
+    .foreign-word {
+      @include typography.headline-large;
+    }
+  }
+
+  @include respond-to('large') {
+    gap: 24px;
+    .korean-word {
+      @include typography.display-small;
+    }
+    .foreign-word {
+      @include typography.headline-large;
+    }
+  }
+
+  @include respond-to('extra-large') {
+    gap: 32px;
+    .korean-word {
+      @include typography.display-medium;
+    }
+    .foreign-word {
+      @include typography.display-small;
+    }
   }
 }

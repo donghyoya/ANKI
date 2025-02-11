@@ -58,6 +58,16 @@
 
   @include respond-to('large') {
     .rating-button-label {
+      @include typography.headline-small;
+    }
+
+    .rating-button-interval {
+      @include typography.title-small;
+    }
+  }
+
+  @include respond-to('extra-large') {
+    .rating-button-label {
       @include typography.headline-medium;
     }
 

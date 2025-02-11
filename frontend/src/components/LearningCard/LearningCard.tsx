@@ -43,15 +43,15 @@ const LearningCard = ({
     >
       {!cardState.isRevealed && (
         <div className={styles['content-container']}>
-          <span className="md-typescale-headline-large">{card.wordInfo.koreanWord}</span>
-          <span className={`md-typescale-headline-small ${styles['revealed']}`}>Check Answer</span>
+          <span className={styles['korean-word']}>{card.wordInfo.koreanWord}</span>
+          <span className={`${styles['foreign-word']} ${styles['revealed']}`}>Check Answer</span>
         </div>
       )}
 
       {cardState.isRevealed && !cardState.showDetail && (
         <div className={styles['content-container']}>
-          <span className="md-typescale-headline-large">{card.wordInfo.koreanWord}</span>
-          <span className="md-typescale-headline-small">{card.wordInfo.foreignWord}</span>
+          <span className={styles['korean-word']}>{card.wordInfo.koreanWord}</span>
+          <span className={styles['foreign-word']}>{card.wordInfo.foreignWord}</span>
         </div>
       )}
 

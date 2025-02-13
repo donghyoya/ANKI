@@ -10,8 +10,9 @@ import { OutlinedCard } from "@/components/Card/Card";
 import ProgressBar from "@/components/ProgressBar/ProgressBar";
 import classnames from "classnames";
 import { bars } from "./bars";
+import Link from "next/link";
 
-const DeckCardCompact = ({ title, isCompleted, wordCount, locale, buttonLabels, onViewWords, onLearn }: DeckCardProps) => {
+const DeckCardCompact = ({ title, isCompleted, wordCount, locale, buttonLabels, level, onLearn }: DeckCardProps) => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     const handleClick = () => {
@@ -33,10 +34,9 @@ const DeckCardCompact = ({ title, isCompleted, wordCount, locale, buttonLabels, 
                 </div>
                 {isExpanded &&
                     <div className={styles['extra-contents']}>
-                        <TextButton onClick={(e) => {
-                            e.stopPropagation();
-                            onViewWords();
-                        }}>{buttonLabels.viewWords}</TextButton>
+                        <Link href={`/difficulty/${level}`}>
+                            <TextButton onClick={(e) => { e.stopPropagation(); }}>{buttonLabels.viewWords}</TextButton>
+                        </Link>
                         <span className={styles['word-count']}>{wordCount.toLocaleString(locale)} words</span>
                     </div>
                 }

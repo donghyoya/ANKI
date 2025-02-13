@@ -7,6 +7,6 @@ export interface DeckCardProps {
         viewWords: string;
         learn: string;
     };
-    onViewWords: () => void;
+    level: string;
     onLearn: () => void;
 }

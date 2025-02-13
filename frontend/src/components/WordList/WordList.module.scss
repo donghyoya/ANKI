@@ -39,7 +39,14 @@
 
             .line {
                 border-left: 1px solid gray;
-                height: 40px;
+
+                @include bp.respond-to("large") {
+                    height: 30px;
+                }
+
+                @include bp.respond-to("extra-large") {
+                    height: 40px;
+                }
             }
 
             .foreign-word {

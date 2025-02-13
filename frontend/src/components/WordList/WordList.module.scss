@@ -1,0 +1,58 @@
+@use '@/styles/_typography' as typography;
+@use '@/styles/breakpoints' as bp;
+
+.card {
+    @include bp.respond-to("large") {
+        height: 60px;
+    }
+
+    @include bp.respond-to("extra-large") {
+        height: 80px;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+        padding: 20px 24px;
+        position: relative;
+        box-sizing: border-box;
+
+        .korean-word {
+            margin: 0;
+
+            @include bp.respond-to("large") {
+                @include typography.title-medium;
+            }
+
+            @include bp.respond-to("extra-large") {
+                @include typography.title-large;
+            }
+        }
+
+        .right-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 165px;
+
+            .line {
+                border-left: 1px solid gray;
+                height: 40px;
+            }
+
+            .foreign-word {
+                @include bp.respond-to("large") {
+                    margin: 0 0 0 16px;
+                    @include typography.title-medium;
+                }
+
+                @include bp.respond-to("extra-large") {
+                    margin: 0 0 0 24px;
+                    @include typography.title-large;
+                }
+            }
+        }
+    }
+}

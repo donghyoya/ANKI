@@ -5,6 +5,7 @@ import useLearningCardLayout from '@/hooks/useLearningCardLayout';
 
 import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
 import LearningCard, { LearningCardState } from '@/components/LearningCard/LearningCard';
+import RatingButtonContainer from '@/components/RatingButton/RatingButtonContainer';
 
 import styles from './layout.module.scss';
 
@@ -14,7 +15,6 @@ import {
   DUMMY_RATING_PREVIEW,
   DUMMY_MENU_ITEMS
 } from '@/utils/dummyData';
-import RatingButtonContainer from '@/components/RatingButton/RatingButtonContainer';
 
 export default function LearningPage() {
   const [cardState, setCardState] = useState<LearningCardState>({
@@ -63,7 +63,11 @@ export default function LearningPage() {
           </div>
           <div className={styles['progress-container']}>
             <div className={styles['progress-label-container']}>
-              <span className={styles['progress-label']}>News</span>
+              <span
+                className={`${styles['progress-label']} ${learningType === 'news' ? styles['active'] : ''}`}
+              >
+                News
+              </span>
             </div>
             <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} />
           </div>

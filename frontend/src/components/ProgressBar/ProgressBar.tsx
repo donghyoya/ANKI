@@ -53,7 +53,6 @@ const ProgressBar = ({ bars, styles: stylesProp, className, height }: ProgressBa
   return (
     <div className={`${styles['container']} ${className}`} style={{ ...stylesProp, height }}>
       {[...bars].reverse().map((bar, index) => {
-        console.log(percentages[index]);
         return (
           <div
             key={index}

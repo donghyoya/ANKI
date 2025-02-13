@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useMemo, useLayoutEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useWindowSize } from '@/hooks/useWindowSize';
 
@@ -22,7 +22,7 @@ export default function DifficultyPage() {
   const t = useTranslations();
   const locale = useLocale(); // 현재 로케일 가져오기
   const width = useWindowSize();
-  const isCompact = width !== null && width < 1200;
+  const isCompact = width < 1200;
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const dialogRef = useRef<typeof Dialog.prototype | null>(null);

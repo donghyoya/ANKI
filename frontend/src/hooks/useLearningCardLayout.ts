@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-const COMPACT_UI_HEIGHT = 296 + 7;
-const MEDIUM_UI_HEIGHT = 152 + 7;
-const EXPANDED_UI_HEIGHT = 152 + 20 + 7;
+const COMPACT_UI_HEIGHT = 174 + 144;
+const MEDIUM_UI_HEIGHT = 174;
+const EXPANDED_UI_HEIGHT = 210;
 
 interface LearningCardLayoutProps {
   contentHeight: number;

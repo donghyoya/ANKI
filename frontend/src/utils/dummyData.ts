@@ -1,7 +1,7 @@
 import { Card } from '@/types/Card';
 import { LEARNING_PROGRESS_BAR_COLORS } from '@/utils/constants';
 import { IntervalPreview } from '@/types/IntervalPreview';
-
+import { MenuItem } from '@/types/Menu';
 export const DUMMY_CARD: Card = {
   cardId: 1,
   wordInfo: {
@@ -35,3 +35,9 @@ export const DUMMY_RATING_PREVIEW: IntervalPreview = {
   good: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
   easy: new Date(Date.now() + 1 * 30 * 24 * 60 * 60 * 1000)
 };
+
+export const DUMMY_MENU_ITEMS: MenuItem[] = [
+  { label: '사과', onClick: () => {} },
+  { label: '바나나', onClick: () => {} },
+  { label: '오렌지', onClick: () => {} }
+];

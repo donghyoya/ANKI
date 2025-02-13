@@ -5,6 +5,11 @@ import styles from './LearningCard.module.scss';
 import ConjugationSection from './ConjugationSection';
 import ExampleSection from './ExampleSection';
 import WordSection from './WordSection';
+import { useWindowSize } from '@/hooks/useWindowSize';
+import { IconButton, Icon } from '@/components/material-components/IconButton/IconButton';
+import { Menu, MenuItem } from '@/components/material-components/Menu';
+
+import { MenuItem as MenuItemType } from '@/types/Menu';
 
 export interface LearningCardState {
   isRevealed: boolean;
@@ -22,6 +27,7 @@ interface LearningCardProps {
   handleShowDetail: () => void;
   toggleConjugation: () => void;
   toggleExample: () => void;
+  menuItems: MenuItemType[];
 }
 
 const LearningCard = ({
@@ -32,8 +38,17 @@ const LearningCard = ({
   handleReveal,
   handleShowDetail,
   toggleConjugation,
-  toggleExample
+  toggleExample,
+  menuItems
 }: LearningCardProps) => {
+  const handleMenuClick = (e: any) => {
+    e.stopPropagation();
+    const menu = document.getElementById('learning-card-menu') as any;
+    menu.open = !menu.open;
+  };
+
+  const { width } = useWindowSize();
+
   return (
     <FilledCard
       className={`${styles['learning-card']} ${className}`}
@@ -68,6 +83,28 @@ const LearningCard = ({
             toggleExpanded={toggleExample}
             isExpanded={cardState.showExample}
           />
+        </div>
+      )}
+      {width > 600 && (
+        <div style={{ position: 'absolute', top: 16, right: 16, zIndex: 1000 }}>
+          <div style={{ position: 'relative', zIndex: 1000 }}>
+            <IconButton id="learning-card-menu-button" onClick={handleMenuClick}>
+              <Icon>more_vert</Icon>
+            </IconButton>
+            <Menu
+              id="learning-card-menu"
+              anchor="learning-card-menu-button"
+              anchorCorner="end-start"
+              xOffset={-60}
+              yOffset={4}
+            >
+              {menuItems.map((item) => (
+                <MenuItem key={item.label} onClick={item.onClick}>
+                  {item.label}
+                </MenuItem>
+              ))}
+            </Menu>
+          </div>
         </div>
       )}
     </FilledCard>

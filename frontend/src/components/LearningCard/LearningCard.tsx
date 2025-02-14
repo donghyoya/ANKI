@@ -56,7 +56,6 @@ const LearningCard = ({
     const contentElement = document.querySelector(`.${styles['content-container']}`);
     const height = contentElement?.scrollHeight ?? 0;
     setContentHeight(height);
-    console.log('contentHeight:', height);
   }, [cardState]);
 
   return (
@@ -83,16 +82,18 @@ const LearningCard = ({
       {cardState.isRevealed && cardState.showDetail && (
         <div className={`${styles['content-container']} ${styles['detailed']}`}>
           <WordSection wordInfo={card.wordInfo} />
-          <ConjugationSection
-            conjugations={card.wordInfo.inflection}
-            toggleExpanded={toggleConjugation}
-            isExpanded={cardState.showConjugation}
-          />
-          <ExampleSection
-            examples={card.example}
-            toggleExpanded={toggleExample}
-            isExpanded={cardState.showExample}
-          />
+          <div>
+            <ConjugationSection
+              conjugations={card.wordInfo.inflection}
+              toggleExpanded={toggleConjugation}
+              isExpanded={cardState.showConjugation}
+            />
+            <ExampleSection
+              examples={card.example}
+              toggleExpanded={toggleExample}
+              isExpanded={cardState.showExample}
+            />
+          </div>
         </div>
       )}
       {width > 600 && (

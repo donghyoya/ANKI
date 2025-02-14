@@ -31,14 +31,14 @@ const ConjugationSection = ({
         <div className={styles['conjugations-list']}>
           <div className={styles['conjugation-item-container']}>
             {CONJUGATION_LABELS.map((label) => (
-              <div className={styles['conjugation-item']}>
+              <div className={styles['conjugation-item']} key={label}>
                 <span className={styles['conjugation-item-label']}>{label}</span>
               </div>
             ))}
           </div>
           <div className={styles['conjugation-item-container']}>
             {conjugations.map((conjugation) => (
-              <div className={styles['conjugation-item']}>
+              <div className={styles['conjugation-item']} key={conjugation}>
                 <span className={styles['conjugation-item-word']}>{conjugation}</span>
               </div>
             ))}

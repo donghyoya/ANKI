@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
 const COMPACT_UI_HEIGHT = 174 + 144;
-const MEDIUM_UI_HEIGHT = 174;
-const EXPANDED_UI_HEIGHT = 210;
+const MEDIUM_UI_HEIGHT = 174 + 48;
+const EXPANDED_UI_HEIGHT = 210 + 72;
 
 interface LearningCardLayoutProps {
   contentHeight: number;
@@ -13,7 +13,6 @@ const useLearningCardLayout = ({ contentHeight, cardWidth }: LearningCardLayoutP
   const [cardStyle, setCardStyle] = useState({});
 
   useEffect(() => {
-    console.log('contentHeight:', contentHeight);
     const handleResize = () => {
       let uiHeight = 0;
       if (window.innerWidth < 600) {
@@ -27,9 +26,11 @@ const useLearningCardLayout = ({ contentHeight, cardWidth }: LearningCardLayoutP
       if (window.innerWidth > 1200) {
         setCardStyle({ aspectRatio: 16 / 9, height: 'auto' });
       } else if (contentHeight + 100 > window.innerHeight - uiHeight) {
-        setCardStyle({ height: contentHeight + 100 });
+        setCardStyle({ height: 'auto' });
       } else if (cardWidth + uiHeight > window.innerHeight) {
         setCardStyle({ height: window.innerHeight - uiHeight });
+      } else if (contentHeight + 100 > cardWidth) {
+        setCardStyle({ height: 'auto' });
       } else {
         setCardStyle({ height: cardWidth });
       }

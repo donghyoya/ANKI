@@ -11,13 +11,13 @@
 
   // medium
   @include respond-to('medium') {
-    padding: 0 32px;
+    padding: 24px 32px;
     background-color: var(--md-sys-color-background);
   }
 
   // expanded
   @include respond-to('expanded') {
-    padding: 0 24px;
+    padding: 36px 24px;
     background-color: var(--md-sys-color-background);
   }
 

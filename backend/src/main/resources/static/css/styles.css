@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.btn:hover {
+    background-color: #0056b3;
+}
+
+.oauth-container {
+    margin-top: 20px;
+}
+
+a.google-btn {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    background-color: #DB4437;
+    color: #ffffff;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+a.google-btn:hover {
+    background-color: #b33629;
+}

@@ -62,4 +62,6 @@ jobs:
           cd /home/ubuntu/ANKI/backend
           unzip -o backend.zip
           rm backend.zip
+          ./stop.sh
+          ./start.sh
           EOF

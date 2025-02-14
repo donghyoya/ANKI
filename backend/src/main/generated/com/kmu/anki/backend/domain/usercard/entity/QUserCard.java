@@ -24,6 +24,8 @@ public class QUserCard extends EntityPathBase<UserCard> {
 
     public final NumberPath<Double> difficulty = createNumber("difficulty", Double.class);
 
+    public final DateTimePath<java.time.LocalDateTime> due = createDateTime("due", java.time.LocalDateTime.class);
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final com.kmu.anki.backend.domain.card.entity.QKoreanCard koreanCard;
@@ -34,13 +36,9 @@ public class QUserCard extends EntityPathBase<UserCard> {
 
     public final DateTimePath<java.time.LocalDateTime> lastReview = createDateTime("lastReview", java.time.LocalDateTime.class);
 
-    public final DateTimePath<java.time.LocalDateTime> nextStudyDate = createDateTime("nextStudyDate", java.time.LocalDateTime.class);
-
     public final NumberPath<Integer> reps = createNumber("reps", Integer.class);
 
     public final NumberPath<Double> scheduledDays = createNumber("scheduledDays", Double.class);
-
-    public final NumberPath<Integer> score = createNumber("score", Integer.class);
 
     public final NumberPath<Double> stability = createNumber("stability", Double.class);
 

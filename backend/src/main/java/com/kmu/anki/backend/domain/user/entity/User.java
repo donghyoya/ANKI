@@ -1,7 +1,9 @@
 package com.kmu.anki.backend.domain.user.entity;
 
+import com.kmu.anki.backend.domain.auth.vo.Role;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.study.history.entity.UserStudyHistory;
+import com.kmu.anki.backend.domain.user.dto.CreateUserDto;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -26,6 +28,21 @@ public class User {
 
     @Column
     private Integer todayReviewWords;
+
+    @Column
+    private String email;
+
+    @Column
+    private String name;
+
+    @Column(unique = true, name = "login_id")
+    private String loginId;
+
+    @Column(name = "login_pwd")
+    private String loginPwd;
+
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.USER;
 
     @Enumerated(EnumType.STRING)
     @Column
@@ -67,6 +84,19 @@ public class User {
         this.todayStudyWords = todayStudyWords;
         this.todayReviewWords = todayReviewWords;
         this.languageCode = languageCode;
+    }
+
+    public User(String loginId, String loginPwd){
+        this.loginId = loginId;
+        this.loginPwd = loginPwd;
+    }
+
+    public void insertUser(CreateUserDto dto){
+        this.name = dto.getName();
+        this.email = dto.getEmail();
+        this.loginId = dto.getLoginId();
+        this.loginPwd = dto.getLoginPwd();
+        this.role = dto.getRole();
     }
 
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- 스타일 정의 -->
+</head>
+<body>
+<div class="login-container">
+    <h1>Login</h1>
+
+    <!-- 일반 로그인 폼 -->
+    <form method="post" action="/api/auth/login">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn">Login</button>
+    </form>
+
+    <!-- Google OAuth2 로그인 버튼 -->
+    <div class="oauth-container">
+        <p>Or login with:</p>
+        <a href="/oauth2/authorization/google" class="btn google-btn">Login with Google</a>
+    </div>
+</div>
+</body>
+</html>

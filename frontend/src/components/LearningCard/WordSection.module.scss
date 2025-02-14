@@ -1,7 +1,46 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/_typography' as typography;
+
 .korean-container {
   display: flex;
   flex-direction: row;
-  padding: 0 10px;
+  padding: 0 12px;
+
+  .korean-word {
+    @include typography.headline-large;
+  }
+
+  .korean-homograph-number {
+    @include typography.headline-small;
+  }
+
+  .korean-info-container {
+    @include typography.label-large;
+  }
+
+  @include respond-to('large') {
+    .korean-word {
+      @include typography.display-small;
+    }
+    .korean-homograph-number {
+      @include typography.headline-medium;
+    }
+    .korean-info-container {
+      @include typography.title-medium;
+    }
+  }
+
+  @include respond-to('extra-large') {
+    .korean-word {
+      @include typography.display-medium;
+    }
+    .korean-homograph-number {
+      @include typography.display-small;
+    }
+    .korean-info-container {
+      @include typography.title-large;
+    }
+  }
 }
 
 .korean-info-container {
@@ -28,6 +67,15 @@
   flex-direction: column;
   padding: 0 10px;
   gap: 10px;
+
+  @include respond-to('large') {
+    .foreign-word {
+      @include typography.title-large;
+    }
+    .foreign-word-sub {
+      @include typography.title-medium;
+    }
+  }
 }
 
 .foreign-word-sub {

@@ -96,7 +96,7 @@ const LearningCard = ({
         </div>
       )}
       {width > 600 && (
-        <div style={{ position: 'absolute', top: 16, right: 16, zIndex: 1000 }}>
+        <div style={{ position: 'absolute', top: 24, right: 24, zIndex: 1000 }}>
           <div style={{ position: 'relative', zIndex: 1000 }}>
             <IconButton id="learning-card-menu-button" onClick={handleMenuClick}>
               <Icon>more_vert</Icon>

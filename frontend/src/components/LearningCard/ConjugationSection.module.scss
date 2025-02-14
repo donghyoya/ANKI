@@ -16,6 +16,8 @@
   flex-direction: row;
   align-items: center;
   height: 48px;
+  margin-bottom: 12px;
+  padding: 0 8px;
   gap: 8px;
 
   @include typography.title-small;
@@ -31,13 +33,14 @@
 
 .conjugations-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding-left: 20px;
+  gap: 24px;
 }
 
 .conjugation-item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 20px;
   gap: 8px;
 }

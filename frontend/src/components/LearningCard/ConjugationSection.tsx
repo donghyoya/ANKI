@@ -29,12 +29,20 @@ const ConjugationSection = ({
       </div>
       {isExpanded && (
         <div className={styles['conjugations-list']}>
-          {conjugations.map((conjugation, index) => (
-            <div className={styles['conjugation-item']} key={index}>
-              <span className={styles['conjugation-item-label']}>{CONJUGATION_LABELS[index]}</span>
-              <span className={styles['conjugation-item-word']}>{conjugation}</span>
-            </div>
-          ))}
+          <div className={styles['conjugation-item-container']}>
+            {CONJUGATION_LABELS.map((label) => (
+              <div className={styles['conjugation-item']}>
+                <span className={styles['conjugation-item-label']}>{label}</span>
+              </div>
+            ))}
+          </div>
+          <div className={styles['conjugation-item-container']}>
+            {conjugations.map((conjugation) => (
+              <div className={styles['conjugation-item']}>
+                <span className={styles['conjugation-item-word']}>{conjugation}</span>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

@@ -58,7 +58,9 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService{
                     return userRepository.save(insertUser);
                 });
 
-        httpSession.setAttribute("user", user);
+        // dto도 아니고 왜 Entity를 여기에 넣는지?
+//        httpSession.setAttribute("user", user);
+        httpSession.setAttribute("userId", user.getId());
 
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority(Role.USER.getKey())),

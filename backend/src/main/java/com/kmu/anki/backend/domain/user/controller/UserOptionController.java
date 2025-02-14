@@ -20,10 +20,11 @@ public class UserOptionController {
 
     @PostMapping
     public UserOptionDto putUserOption(
-            @RequestBody UserOptionDto form
+            @RequestBody UserOptionDto form, HttpSession session
     ){
+        Long id = (Long) session.getAttribute("userId");
         return userOptionService.updateOption(
-                form.getId(),
+                id,
                 form.getTodayStudyWords(),
                 form.getTodayReviewWords(),
                 form.getLanguageCode()

@@ -2,6 +2,7 @@ package com.kmu.anki.backend.domain.user.dto;
 
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.User;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
 import lombok.Getter;
 

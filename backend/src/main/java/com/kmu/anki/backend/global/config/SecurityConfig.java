@@ -27,7 +27,7 @@ public class SecurityConfig {
     private CustomUserService customUserService;
 
     @Bean
-    @Profile({"test", "prod"}) // dev, test 프로파일에서만 적용
+    @Profile({"prod"}) // dev, test 프로파일에서만 적용
     public SecurityFilterChain prodSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
@@ -38,12 +38,12 @@ public class SecurityConfig {
     }
 
     @Bean
-    @Profile("dev") // dev, test 프로파일에서만 적용
+    @Profile({"dev", "test"}) // dev, test 프로파일에서만 적용
     public SecurityFilterChain devSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 // 0. CSRF 비활성화 (필요 시)
                 .csrf(csrf -> csrf.disable())
-
+                .cors(cors->cors.disable())
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 )

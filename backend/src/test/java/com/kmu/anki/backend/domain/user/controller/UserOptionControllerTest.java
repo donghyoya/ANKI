@@ -48,12 +48,12 @@ class UserOptionControllerTest extends AbstractControllerTest {
     @EnumSource(LanguageCode.class)
     void putUserOption(LanguageCode code) throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("id", 1L);
         map.put("todayStudyWords", 30);
         map.put("todayReviewWords", 30);
         map.put("languageCode", code);
         mockMvc.perform(
                 post("/user/option")
+                        .session(session)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(map))
         ).andExpect(status().isOk())

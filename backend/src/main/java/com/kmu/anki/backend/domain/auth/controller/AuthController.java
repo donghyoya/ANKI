@@ -80,7 +80,6 @@ public class AuthController {
 
         Map<String, Object> attributes = oAuth2User.getAttributes();
 
-
         log.debug("attributes.toString() = " + attributes.toString());
 //        System.out.println("attributes.toString() = " + attributes.toString());
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useLearningCardLayout from '@/hooks/useLearningCardLayout';
 
 import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
@@ -17,9 +17,11 @@ import {
 } from '@/utils/dummyData';
 
 export default function LearningPage() {
+  const [contentHeight, setContentHeight] = useState(0);
+
   const [cardState, setCardState] = useState<LearningCardState>({
     isRevealed: false,
-    showDetail: false,
+    showDetail: true,
     showConjugation: false,
     showExample: false
   });
@@ -27,9 +29,13 @@ export default function LearningPage() {
   const [learningType, setLearningType] = useState<'reviews' | 'news'>('reviews');
 
   const cardStyle = useLearningCardLayout({
-    contentHeight: document.querySelector(`.${styles['content-container']}`)?.scrollHeight ?? 0,
+    contentHeight,
     cardWidth: document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0
   });
+
+  useEffect(() => {
+    console.log('cardStyle:', cardStyle);
+  }, [cardStyle]);
 
   const handleReveal = () => {
     setCardState((prev) => ({ ...prev, isRevealed: true }));
@@ -82,6 +88,7 @@ export default function LearningPage() {
           toggleExample={toggleExample}
           style={cardStyle}
           menuItems={DUMMY_MENU_ITEMS}
+          setContentHeight={setContentHeight}
         />
         <RatingButtonContainer
           intervalPreview={DUMMY_RATING_PREVIEW}

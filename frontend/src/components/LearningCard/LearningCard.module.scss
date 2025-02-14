@@ -9,6 +9,14 @@
   width: 100%;
   padding: 50px 16px;
   border-radius: 50px;
+
+  @include respond-to('large') {
+    padding: 68px;
+  }
+
+  @include respond-to('extra-large') {
+    padding: 68px;
+  }
 }
 
 .content-container {

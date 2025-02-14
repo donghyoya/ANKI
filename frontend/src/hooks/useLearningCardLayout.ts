@@ -13,6 +13,7 @@ const useLearningCardLayout = ({ contentHeight, cardWidth }: LearningCardLayoutP
   const [cardStyle, setCardStyle] = useState({});
 
   useEffect(() => {
+    console.log('contentHeight:', contentHeight);
     const handleResize = () => {
       let uiHeight = 0;
       if (window.innerWidth < 600) {
@@ -25,7 +26,7 @@ const useLearningCardLayout = ({ contentHeight, cardWidth }: LearningCardLayoutP
 
       if (window.innerWidth > 1200) {
         setCardStyle({ aspectRatio: 16 / 9, height: 'auto' });
-      } else if (contentHeight > window.innerHeight - uiHeight) {
+      } else if (contentHeight + 100 > window.innerHeight - uiHeight) {
         setCardStyle({ height: contentHeight + 100 });
       } else if (cardWidth + uiHeight > window.innerHeight) {
         setCardStyle({ height: window.innerHeight - uiHeight });

@@ -10,6 +10,7 @@ import { IconButton, Icon } from '@/components/material-components/IconButton/Ic
 import { Menu, MenuItem } from '@/components/material-components/Menu';
 
 import { MenuItem as MenuItemType } from '@/types/Menu';
+import { useEffect } from 'react';
 
 export interface LearningCardState {
   isRevealed: boolean;
@@ -28,6 +29,7 @@ interface LearningCardProps {
   toggleConjugation: () => void;
   toggleExample: () => void;
   menuItems: MenuItemType[];
+  setContentHeight: (height: number) => void;
 }
 
 const LearningCard = ({
@@ -39,7 +41,8 @@ const LearningCard = ({
   handleShowDetail,
   toggleConjugation,
   toggleExample,
-  menuItems
+  menuItems,
+  setContentHeight
 }: LearningCardProps) => {
   const handleMenuClick = (e: any) => {
     e.stopPropagation();
@@ -48,6 +51,13 @@ const LearningCard = ({
   };
 
   const { width } = useWindowSize();
+
+  useEffect(() => {
+    const contentElement = document.querySelector(`.${styles['content-container']}`);
+    const height = contentElement?.scrollHeight ?? 0;
+    setContentHeight(height);
+    console.log('contentHeight:', height);
+  }, [cardState]);
 
   return (
     <FilledCard

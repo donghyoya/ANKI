@@ -14,7 +14,7 @@ spring:
     init:
       mode: always
       encoding: UTF-8
-      separator: ;;
+#      separator: ;;
 server:
   servlet:
     encoding:

@@ -6,6 +6,7 @@ import com.kmu.anki.backend.domain.user.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -31,6 +32,7 @@ import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 @RequestMapping("/api/auth")
 @Controller
 public class AuthController {
@@ -78,7 +80,9 @@ public class AuthController {
 
         Map<String, Object> attributes = oAuth2User.getAttributes();
 
-        System.out.println("attributes.toString() = " + attributes.toString());
+
+        log.debug("attributes.toString() = " + attributes.toString());
+//        System.out.println("attributes.toString() = " + attributes.toString());
 
         if(oAuth2User != null){
             rep.sendRedirect("/swagger-ui/index.html");

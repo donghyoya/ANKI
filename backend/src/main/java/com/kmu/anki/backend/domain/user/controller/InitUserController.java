@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * 개발 및 테스트용 임시 유저를 생성하는 Controller
+ */
 @Component
 @RequiredArgsConstructor
 public class InitUserController {

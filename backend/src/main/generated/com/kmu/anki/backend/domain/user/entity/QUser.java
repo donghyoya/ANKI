@@ -34,6 +34,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath name = createString("name");
 
+    public final EnumPath<com.kmu.anki.backend.domain.auth.vo.Role> role = createEnum("role", com.kmu.anki.backend.domain.auth.vo.Role.class);
+
     public final ListPath<com.kmu.anki.backend.domain.study.history.entity.UserStudyHistory, com.kmu.anki.backend.domain.study.history.entity.QUserStudyHistory> studyHistories = this.<com.kmu.anki.backend.domain.study.history.entity.UserStudyHistory, com.kmu.anki.backend.domain.study.history.entity.QUserStudyHistory>createList("studyHistories", com.kmu.anki.backend.domain.study.history.entity.UserStudyHistory.class, com.kmu.anki.backend.domain.study.history.entity.QUserStudyHistory.class, PathInits.DIRECT2);
 
     public final NumberPath<Integer> todayReviewWords = createNumber("todayReviewWords", Integer.class);

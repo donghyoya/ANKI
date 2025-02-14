@@ -17,9 +17,9 @@ spring:
       client:
         registration:
           google:
-            client-id: ${GOOGLE_CL_ID}
-            client-secret: ${GOOGLE_CL_SECRET}
-            redirect-uri: http://localhost:7070/api/auth/oauth2/success/google
+            client-id: ${GOOGLE_CL_ID_DEV}
+            client-secret: ${GOOGLE_CL_SECRET_DEV}
+            redirect-uri: http://localhost:7070/api/auth/oauth2/google
             scope:
               - email
               - profile

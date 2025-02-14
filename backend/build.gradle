@@ -88,7 +88,25 @@ openapi3{
 	format = "yaml"
 }
 
+def loadEnv() {
+	def envFile = file('.env')
+	if (envFile.exists()) {
+		def properties = new Properties()
+		envFile.withReader('UTF-8') { reader ->
+			properties.load(reader)
+		}
+		return properties
+	} else {
+		logger.warn(".env file not found.")
+		return null
+	}
+}
+
 tasks.named('test') {
+	def envProperties = loadEnv()
+	if (envProperties) {
+		environment envProperties
+	}
 	useJUnitPlatform()
 }
 

@@ -1,0 +1,15 @@
+package com.kmu.anki.backend.domain.auth.vo;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor // private 필드로 생성자 구성
+public enum Role {
+    GUEST("ROLE_GUEST", "외부자"),
+    USER("ROLE_USER", "사용자"),
+    ADMIN("ROLE_ADMIN", "관리자");
+
+    private final String key;
+    private final String title;
+}

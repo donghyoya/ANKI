@@ -28,6 +28,7 @@ public class CardQueryRepository {
     private final JPAQueryFactory queryFactory;
     private final JdbcTemplate jdbcTemplate;
     private final ForeignCardTextSearchMapper foreignCardTextSearchMapper;
+    private final KoreanCardTextSearchMapper koreanCardTextSearchMapper;
     private final QForeignCard foreignCard = QForeignCard.foreignCard;
     private final QKoreanCard koreanCard = QKoreanCard.koreanCard;
     private final QUserCard userCard = QUserCard.userCard;
@@ -151,11 +152,17 @@ public class CardQueryRepository {
      */
     public Page<CardDetailDto> searchForeignWord(LanguageCode languageCode, String queryText, Pageable pageable){
         List<CardDetailDto> cardDetailDtos = foreignCardTextSearchMapper.searchForeignWord(languageCode.toString(), queryText, pageable.getOffset(), pageable.getPageSize());
-        foreignCardTextSearchMapper.searchForeignWordCount(languageCode.toString(), queryText);
-
         return PageableExecutionUtils.getPage(
                 cardDetailDtos, pageable, () -> foreignCardTextSearchMapper.searchForeignWordCount(languageCode.toString(), queryText)
         );
+    }
+
+    public Page<CardDetailDto> searchKoreanWord(LanguageCode languageCode, String queryText, Pageable pageable){
+        List<CardDetailDto> cardDetailDtos = koreanCardTextSearchMapper.searchKoreanWord(languageCode.toString(), queryText, pageable.getOffset(), pageable.getPageSize());
+        return PageableExecutionUtils.getPage(
+                cardDetailDtos, pageable, () -> koreanCardTextSearchMapper.searchKoreanWordCount(languageCode.toString(), queryText)
+        );
+
     }
 
 }

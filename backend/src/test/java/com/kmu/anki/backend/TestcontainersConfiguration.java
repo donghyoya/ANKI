@@ -11,7 +11,7 @@ public class TestcontainersConfiguration {
     @Bean
     @ServiceConnection
     PostgreSQLContainer<?> postgresContainer() {
-        return new PostgreSQLContainer<>(DockerImageName.parse("postgres:17.2"));
+        return new PostgreSQLContainer<>(DockerImageName.parse("rejs/pg_bigm:17").asCompatibleSubstituteFor("postgres"));
     }
 
 }

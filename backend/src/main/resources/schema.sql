@@ -98,5 +98,6 @@ alter table if exists user_study_history
 
 INSERT INTO topics(topic_id) VALUES('CONCEPT'),('ECONOMY'),('SCIENCE'),('TRANSPORT'),('WEATHER'),('NEWS'),('FEELING'),('GRAMMAR_AND_LANGUAGE'),('CULTURE'),('HOSPITAL'),('LIFE'),('LIVING'),('PERSONALITY'),('NUMBER'),('COMMUNICATION'),('TIME'),('FOOD'),('RELATIONSHIPS'),('NATURE'),('POLITICS'),('RELIGION'),('WORK'),('HOME'),('FASHION_AND_APPEARANCE'),('SCHOOL'),('ACTION'),('ADMINISTRATION');;
 
-CREATE EXTENSION IF NOT EXISTS pg_trgm;
-CREATE INDEX idx_foreign_word_trgm ON foreign_cards USING gin(foreign_word gin_trgm_ops);
+CREATE EXTENSION IF NOT EXISTS pg_bigm;
+CREATE INDEX idx_foreign_word_bigm ON foreign_cards USING gin(foreign_word gin_bigm_ops);
+CREATE INDEX idx_korean_word_bigm ON korean_cards USING gin(korean_word gin_bigm_ops);

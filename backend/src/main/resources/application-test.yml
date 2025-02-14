@@ -23,8 +23,8 @@ server:
       force: true
   port: 7070
 
-logging:
-  config: classpath:logback/logback-test.xml
+#logging:
+#  config: classpath:logback/logback-test.xml
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

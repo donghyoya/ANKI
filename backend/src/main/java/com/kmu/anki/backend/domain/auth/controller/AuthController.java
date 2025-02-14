@@ -1,0 +1,104 @@
+package com.kmu.anki.backend.domain.auth.controller;
+
+import com.kmu.anki.backend.domain.auth.service.CustomOAuth2UserService;
+import com.kmu.anki.backend.domain.auth.service.OAuth2AccessTokenService;
+import com.kmu.anki.backend.domain.user.entity.User;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.core.OAuth2AccessToken;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
+import java.io.IOException;
+import java.net.http.HttpResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+@RequestMapping("/api/auth")
+@Controller
+public class AuthController {
+
+    @Autowired
+    private OAuth2AccessTokenService oAuth2AccessTokenService;
+
+    @Autowired
+    private CustomOAuth2UserService oAuth2UserService;
+
+
+    @GetMapping({"", "/", "/login.do"})
+    public String loginPage() {
+        System.out.println("running login page =======" );
+        return "login"; // login.html 반환
+    }
+    @PostMapping("/login.do")
+    public ResponseEntity<Map<String, Object>> loginProc(){
+        Map<String, Object> rtMap = new HashMap<>();
+        System.out.println("running login process  " );
+
+        return new ResponseEntity<>(rtMap, HttpStatus.OK);
+    }
+
+    @GetMapping("/oauth2/google")
+    public ResponseEntity<Map<String, Object>> handleOAuth2(
+            HttpServletRequest req, HttpServletResponse rep,
+            @RequestParam(value = "code", required = false) String code,
+            @RequestParam(value = "state", required = false) String state,
+            @RequestParam(value = "scope" ,required = false) String scope,
+            @RequestParam(value = "authuser", required = false) String authUser,
+            @RequestParam(value = "prompt", required = false) String prompt) throws IOException {
+
+        OAuth2AccessToken accessToken = oAuth2AccessTokenService.getAccessToken(code);
+
+        // 2. OAuth2UserRequest 객체 생성
+        ClientRegistration clientRegistration = oAuth2AccessTokenService.getGoogleClientRegistration();
+
+        OAuth2UserRequest userRequest = new OAuth2UserRequest(clientRegistration, accessToken);
+
+        OAuth2User oAuth2User = oAuth2UserService.loadUser(userRequest);
+
+        //세션 추가
+        securitySession(req, rep, oAuth2User);
+
+        Map<String, Object> attributes = oAuth2User.getAttributes();
+
+        System.out.println("attributes.toString() = " + attributes.toString());
+
+        if(oAuth2User != null){
+            rep.sendRedirect("/swagger-ui/index.html");
+        }
+
+        return ResponseEntity.ok(attributes);
+    }
+
+    private static void securitySession(HttpServletRequest req, HttpServletResponse rep, OAuth2User oAuth2User) {
+        Authentication authentication = new UsernamePasswordAuthenticationToken(
+                oAuth2User,
+                null,
+                oAuth2User.getAuthorities()
+        );
+
+        SecurityContext context = SecurityContextHolder.createEmptyContext();
+        context.setAuthentication(authentication);
+        SecurityContextHolder.setContext(context);
+        HttpSessionSecurityContextRepository repo = new HttpSessionSecurityContextRepository();
+        repo.saveContext(context, req, rep);
+    }
+
+}

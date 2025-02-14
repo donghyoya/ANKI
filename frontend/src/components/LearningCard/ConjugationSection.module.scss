@@ -1,3 +1,6 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/_typography' as typography;
+
 .conjugations-container {
   display: flex;
   flex-direction: column;
@@ -14,6 +17,16 @@
   align-items: center;
   height: 48px;
   gap: 8px;
+
+  @include typography.title-small;
+
+  @include respond-to('large') {
+    @include typography.title-medium;
+  }
+
+  @include respond-to('extra-large') {
+    @include typography.title-large;
+  }
 }
 
 .conjugations-list {
@@ -30,5 +43,25 @@
 }
 
 .conjugation-item-label {
+  @include typography.label-medium;
   color: var(--md-sys-color-secondary);
+
+  @include respond-to('large') {
+    @include typography.title-small;
+  }
+
+  @include respond-to('extra-large') {
+    @include typography.title-medium;
+  }
+}
+
+.conjugation-item-word {
+  @include typography.label-medium;
+
+  @include respond-to('large') {
+    @include typography.body-medium;
+  }
+  @include respond-to('extra-large') {
+    @include typography.body-large;
+  }
 }

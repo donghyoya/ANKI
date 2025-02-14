@@ -1,3 +1,6 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/_typography' as typography;
+
 .example-container {
   display: flex;
   flex-direction: column;
@@ -14,6 +17,16 @@
   align-items: center;
   height: 48px;
   gap: 8px;
+
+  @include typography.title-small;
+
+  @include respond-to('large') {
+    @include typography.title-medium;
+  }
+
+  @include respond-to('extra-large') {
+    @include typography.title-large;
+  }
 }
 
 .example-list {
@@ -35,4 +48,25 @@
 
 .example-item-label {
   color: var(--md-sys-color-secondary);
+  @include typography.label-medium;
+
+  @include respond-to('large') {
+    @include typography.title-small;
+  }
+
+  @include respond-to('extra-large') {
+    @include typography.title-medium;
+  }
+}
+
+.example-item-list-text {
+  color: var(--md-sys-color-on-surface);
+  @include typography.label-medium;
+
+  @include respond-to('large') {
+    @include typography.body-medium;
+  }
+  @include respond-to('extra-large') {
+    @include typography.body-large;
+  }
 }

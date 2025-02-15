@@ -29,7 +29,6 @@ import java.util.Map;
 public class CustomOAuth2UserService extends DefaultOAuth2UserService{
 
     private final UserRepository userRepository;
-    private final HttpSession httpSession;
     private final RestTemplate restTemplate;
     private final UserService userService;
 

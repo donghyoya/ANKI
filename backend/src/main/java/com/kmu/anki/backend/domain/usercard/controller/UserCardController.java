@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.usercard.controller;
 
+import com.kmu.anki.backend.domain.auth.utils.PrincipalUtils;
 import com.kmu.anki.backend.domain.card.controller.QueryType;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
@@ -11,9 +12,9 @@ import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -52,10 +53,10 @@ public class UserCardController {
             @RequestParam("studyType") StudyType studyType,
             @RequestParam("queryType") QueryType queryType,
             @RequestParam("query") String query,
-            HttpSession session
+            Authentication authentication
     ){
         LanguageCode languageCode = LanguageCode.en;
-        Long userId = (Long) session.getAttribute("userId");
+        Long userId = PrincipalUtils.extractUserId(authentication);
         Page<UserCardDto> cards;
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);

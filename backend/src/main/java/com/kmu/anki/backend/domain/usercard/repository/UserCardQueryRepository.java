@@ -19,7 +19,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.support.PageableExecutionUtils;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,7 +40,7 @@ public class UserCardQueryRepository {
             Long userId,
             LanguageCode code,
             CardLevel difficulty,
-            CardTopicEnums meaningGroup, // TODO
+            CardTopicEnums topic, // TODO
             LocalDateTime now,
             Pageable pageable
     ){
@@ -78,7 +77,7 @@ public class UserCardQueryRepository {
                                 userId,
                                 code,
                                 difficulty,
-                                meaningGroup,
+                                topic,
                                 now
                         )
                 )
@@ -119,7 +118,7 @@ public class UserCardQueryRepository {
                                 userId,
                                 code,
                                 difficulty,
-                                meaningGroup,
+                                topic,
                                 now
                         )
                 )

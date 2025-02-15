@@ -6,6 +6,7 @@ import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.docs.UserOptionDtoDocs;
 import com.kmu.anki.backend.global.AbstractControllerTest;
+import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -20,6 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class UserOptionControllerTest extends AbstractControllerTest {
 
+    @WithMockCustomOAuth2
     @Test
     void getUserOption() throws Exception {
         mockMvc.perform(
@@ -44,6 +46,7 @@ class UserOptionControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @WithMockCustomOAuth2
     @ParameterizedTest
     @EnumSource(LanguageCode.class)
     void putUserOption(LanguageCode code) throws Exception {

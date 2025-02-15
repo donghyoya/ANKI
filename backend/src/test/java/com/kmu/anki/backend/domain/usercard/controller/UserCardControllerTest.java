@@ -20,6 +20,7 @@ import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.BaseDocs;
+import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -47,6 +48,7 @@ class UserCardControllerTest extends AbstractControllerTest {
     @Autowired
     private UserCardService userCardService;
 
+    @WithMockCustomOAuth2
     @Test
     void getCardStudyInfo() throws Exception{
         mockMvc.perform(
@@ -72,6 +74,8 @@ class UserCardControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @WithMockCustomOAuth2
+    @Test
     void putUserCards() throws Exception {
         Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
         Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
@@ -115,6 +119,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @WithMockCustomOAuth2
     @ParameterizedTest
     @MethodSource("getStudyCardParams")
     void getStudyCard(String studyType, String queryType, String query) throws Exception{

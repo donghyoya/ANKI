@@ -10,6 +10,7 @@ import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.global.AbstractControllerTest;
+import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,6 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class DeckControllerTest extends AbstractControllerTest {
 
+    @WithMockCustomOAuth2
     @ParameterizedTest
     @EnumSource(QueryType.class)
     void getDecks(QueryType type) throws Exception {
@@ -57,6 +59,7 @@ class DeckControllerTest extends AbstractControllerTest {
         ;
     }
 
+    @WithMockCustomOAuth2
     @ParameterizedTest
     @MethodSource("getDecksCardParams")
     void getDecksCard(String queryType, String query) throws Exception{

@@ -12,6 +12,7 @@ import com.kmu.anki.backend.domain.study.history.service.UserStudyHistoryService
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.study.history.controller.docs.UserStudyHistoryDtoDocs;
 import com.kmu.anki.backend.global.AbstractControllerTest;
+import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -31,6 +32,7 @@ class UserStudyHistoryControllerTest extends AbstractControllerTest {
     @MockitoBean
     private UserStudyHistoryService userStudyHistoryService; // MockBean으로 등록
 
+    @WithMockCustomOAuth2
     @Test
     void getUserHistory() throws Exception {
         List<UserStudyHistoryDto> historyDtos = Arrays.asList(
@@ -85,6 +87,7 @@ class UserStudyHistoryControllerTest extends AbstractControllerTest {
         ;
     }
 
+    @WithMockCustomOAuth2
     @Test
     void getLatestStudy() throws Exception {
         List<UserStudyHistoryDto> historyDtos = Arrays.asList(

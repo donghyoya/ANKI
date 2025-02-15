@@ -15,8 +15,8 @@ public class UserOptionController {
     private final UserOptionService userOptionService;
 
     @GetMapping()
-    public UserOptionDto getUserOption(HttpSession session){
-        Long id = (Long) session.getAttribute("userId");
+    public UserOptionDto getUserOption(Authentication authentication){
+        Long id = PrincipalUtils.extractUserId(authentication);
         return userOptionService.readOption(id);
     }
 

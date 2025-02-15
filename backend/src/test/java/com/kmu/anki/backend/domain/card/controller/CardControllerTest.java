@@ -13,6 +13,7 @@ import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.repository.ForeignCardRepository;
 import com.kmu.anki.backend.domain.card.repository.KoreanCardRepository;
 import com.kmu.anki.backend.global.AbstractControllerTest;
+import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -39,6 +40,7 @@ class CardControllerTest extends AbstractControllerTest {
         koreanCardRepository = context.getBean(KoreanCardRepository.class);
     }
 
+    @WithMockCustomOAuth2
     @Test
     void getCard() throws Exception{
         mockMvc.perform(
@@ -64,6 +66,7 @@ class CardControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @WithMockCustomOAuth2
     @Test
     void getCardDetails() throws Exception {
         mockMvc.perform(
@@ -89,6 +92,7 @@ class CardControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @WithMockCustomOAuth2
     @ParameterizedTest
     @MethodSource("getForeignSearch")
     void getForeignSearch(Long id, LanguageCode code, String query) throws Exception{
@@ -132,6 +136,7 @@ class CardControllerTest extends AbstractControllerTest {
                 .map(fc -> Arguments.of(fc.getId(), fc.getLanguageCode(), fc.getForeignWord()));
     }
 
+    @WithMockCustomOAuth2
     @ParameterizedTest
     @MethodSource("getKoreanSearch")
     void getKoreanSearch(Long id, String query) throws Exception{

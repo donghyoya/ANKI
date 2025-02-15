@@ -8,10 +8,9 @@ import com.kmu.anki.backend.domain.card.docs.DeckDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.parameters.DeckParameters;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
-import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
-import org.junit.jupiter.api.Disabled;
+import com.kmu.anki.backend.global.ExceptionResponseDocs;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -60,6 +59,37 @@ class DeckControllerTest extends AbstractControllerTest {
     }
 
     @WithMockCustomOAuth2
+    @Test
+    void getDecks400() throws Exception {
+        String identifier = String.format("{class-name}/{method-name}");
+
+        mockMvc.perform(
+                        get("/decks")
+                                .param("queryType", "fail")
+                ).andExpect(status().isBadRequest())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                identifier,
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Decks")
+                                                .summary("검색어 조건에 맞는 Deck 보기")
+                                                .queryParameters(
+                                                        DeckParameters.queryType
+                                                )
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                )
+        ;
+    }
+
+
+    @WithMockCustomOAuth2
     @ParameterizedTest
     @MethodSource("getDecksCardParams")
     void getDecksCard(String queryType, String query) throws Exception{
@@ -91,6 +121,38 @@ class DeckControllerTest extends AbstractControllerTest {
                         )
                 );
     }
+
+    @WithMockCustomOAuth2
+    @Test
+    void getDecksCard400() throws Exception{
+        String identifier = String.format("{class-name}/{method-name}");
+
+        mockMvc.perform(
+                        get("/decks/cards")
+                                .param("queryType", "queryType")
+                                .param("query","fail")
+                ).andExpect(status().isBadRequest())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                identifier,
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Decks")
+                                                .summary("덱에 포함된 카드 모음")
+                                                .queryParameters(
+                                                        DeckParameters.queryType,
+                                                        DeckParameters.query
+                                                )
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
 
     private static Stream<Arguments> getDecksCardParams(){
         return Arrays.stream(QueryType.values())

@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -132,10 +133,10 @@ public class UserCardQueryRepository {
         );
     }
 
-    public CardStudyDto findCardStudyDto(
+    public Optional<CardStudyDto> findCardStudyDto(
             Long cardId
     ){
-        return queryFactory.select(
+        CardStudyDto cardStudyDto = queryFactory.select(
                         Projections.constructor(
                                 CardStudyDto.class,
                                 koreanCard.id,
@@ -157,6 +158,7 @@ public class UserCardQueryRepository {
                         koreanCardIdEq(cardId)
                 )
                 .fetchOne();
+        return Optional.ofNullable(cardStudyDto);
     }
 
     /* 조건식 */

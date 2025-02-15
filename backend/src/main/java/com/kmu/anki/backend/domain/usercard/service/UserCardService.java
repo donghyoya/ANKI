@@ -57,7 +57,7 @@ public class UserCardService {
 
 
     public CardStudyDto readCardStudyInfo(Long cardId){
-        return userCardQueryRepository.findCardStudyDto(cardId);
+        return userCardQueryRepository.findCardStudyDto(cardId).orElseThrow();
     }
 
     /* UPDATE */

@@ -19,27 +19,20 @@ import com.kmu.anki.backend.domain.usercard.docs.parameters.UserCardParameters;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.AbstractControllerTest;
-import com.kmu.anki.backend.global.BaseDocs;
 import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
-import org.junit.jupiter.api.Disabled;
+import com.kmu.anki.backend.global.ExceptionResponseDocs;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.restdocs.headers.HeaderDescriptor;
-import org.testcontainers.shaded.org.checkerframework.checker.units.qual.A;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.stream.Stream;
 
-import static com.epages.restdocs.apispec.ResourceDocumentation.headerWithName;
-import static org.assertj.core.api.Fail.fail;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -73,6 +66,33 @@ class UserCardControllerTest extends AbstractControllerTest {
                         )
                 );
     }
+
+    @WithMockCustomOAuth2
+    @Test
+    void getCardStudyInfo404() throws Exception{
+        mockMvc.perform(
+                        get("/cards/{id}/study", -1)
+                ).andExpect(status().isNotFound())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("StudyCards")
+                                                .summary("Card 학습 정보 보기")
+                                                .pathParameters(
+                                                        CardParameters.cardId
+                                                )
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
 
     @WithMockCustomOAuth2
     @Test
@@ -120,6 +140,51 @@ class UserCardControllerTest extends AbstractControllerTest {
     }
 
     @WithMockCustomOAuth2
+    @Test
+    void putUserCards404() throws Exception {
+        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
+        Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("due", LocalDateTime.now());
+        map.put("lapses", 5);
+        map.put("lastReview", LocalDateTime.now());
+        map.put("reps", 72);
+        map.put("scheduledDays", 0.9);
+        map.put("stability", 1.3);
+        map.put("state", CardState.Review);
+
+        mockMvc.perform(
+                        post("/cards/{id}/study", -1)
+                                .contentType("application/json")
+                                .content(objectMapper.writeValueAsString(map))
+                ).andExpect(status().isNotFound())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("StudyCards")
+                                                .summary("Card 학습결과를 갱신")
+                                                .pathParameters(
+                                                        CardParameters.cardId
+                                                )
+                                                .requestFields(
+                                                        StudyCardFormDocs.studyCardForm
+                                                )
+                                                .requestSchema(StudyCardFormDocs.studyCardFormSchema)
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
+
+    @WithMockCustomOAuth2
     @ParameterizedTest
     @MethodSource("getStudyCardParams")
     void getStudyCard(String studyType, String queryType, String query) throws Exception{
@@ -152,6 +217,39 @@ class UserCardControllerTest extends AbstractControllerTest {
                         )
                 );
     }
+
+    @WithMockCustomOAuth2
+    @Test
+    void getStudyCard400() throws Exception{
+        String identifier = String.format("{class-name}/{method-name}");
+        mockMvc.perform(
+                        get("/cards/study")
+                                .param("studyType", "studyType")
+                                .param("queryType", "queryType")
+                                .param("query","query")
+                ).andExpect(status().isBadRequest())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                identifier, //"{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("StudyCards")
+                                                .summary("오늘 공부할 카드 모음 ")
+                                                .queryParameters(
+                                                        UserCardParameters.studyType,
+                                                        DeckParameters.queryType,
+                                                        DeckParameters.query
+                                                )
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
 
     private static Stream<Arguments> getStudyCardParams(){
         return Arrays.stream(StudyType.values())

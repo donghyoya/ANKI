@@ -14,17 +14,16 @@ import com.kmu.anki.backend.domain.card.repository.ForeignCardRepository;
 import com.kmu.anki.backend.domain.card.repository.KoreanCardRepository;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
+import com.kmu.anki.backend.global.ExceptionResponseDocs;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import java.util.List;
 import java.util.stream.Stream;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -68,6 +67,33 @@ class CardControllerTest extends AbstractControllerTest {
 
     @WithMockCustomOAuth2
     @Test
+    void getCard404() throws Exception {
+        mockMvc.perform(
+                        get("/cards/{id}", -1)
+                ).andExpect(status().isNotFound())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Cards")
+                                                .summary("Card에 대한 디테일한 정보 보기")
+                                                .pathParameters(
+                                                        CardParameters.cardId
+                                                )
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
+
+    @WithMockCustomOAuth2
+    @Test
     void getCardDetails() throws Exception {
         mockMvc.perform(
                         get("/cards/{id}/details", 1)
@@ -91,6 +117,33 @@ class CardControllerTest extends AbstractControllerTest {
                         )
                 );
     }
+
+    @WithMockCustomOAuth2
+    @Test
+    void getCardDetails404() throws Exception {
+        mockMvc.perform(
+                        get("/cards/{id}/details", -1)
+                ).andExpect(status().isNotFound())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Cards")
+                                                .summary("Card에 대한 디테일한 정보 보기")
+                                                .pathParameters(
+                                                        CardParameters.cardId
+                                                )
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
 
     @WithMockCustomOAuth2
     @ParameterizedTest

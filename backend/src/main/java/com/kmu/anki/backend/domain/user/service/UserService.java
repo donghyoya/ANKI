@@ -3,17 +3,23 @@ package com.kmu.anki.backend.domain.user.service;
 import com.kmu.anki.backend.domain.user.dto.CreateUserDto;
 import com.kmu.anki.backend.domain.user.entity.User;
 import com.kmu.anki.backend.domain.user.repository.UserRepository;
+import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+    private final UserCardService userCardService;
 
+    @Transactional
     public User saveUser(CreateUserDto dto){
-        User user = new User(dto.getLoginId(), dto.getLoginPwd());
-        return userRepository.save(user);
+        User user = new User(dto);
+        user = userRepository.save(user);
+        userCardService.createUserCards(user.getId());
+        return user;
     }
 }

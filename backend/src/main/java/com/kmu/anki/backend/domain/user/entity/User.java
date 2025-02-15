@@ -92,10 +92,14 @@ public class User {
     }
 
     public User(CreateUserDto dto){
+        this();
         this.name = dto.getName();
         this.email = dto.getEmail();
         this.loginId = dto.getLoginId();
         this.loginPwd = dto.getLoginPwd();
         this.role = dto.getRole();
+        this.todayStudyWords = 30;
+        this.todayReviewWords = 10;
+        this.languageCode = LanguageCode.en;
     }
 }

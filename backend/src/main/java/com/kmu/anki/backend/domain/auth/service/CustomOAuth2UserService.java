@@ -4,6 +4,7 @@ import com.kmu.anki.backend.domain.auth.vo.Role;
 import com.kmu.anki.backend.domain.user.dto.CreateUserDto;
 import com.kmu.anki.backend.domain.user.entity.User;
 import com.kmu.anki.backend.domain.user.repository.UserRepository;
+import com.kmu.anki.backend.domain.user.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,6 +31,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService{
     private final UserRepository userRepository;
     private final HttpSession httpSession;
     private final RestTemplate restTemplate;
+    private final UserService userService;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -54,13 +56,12 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService{
                             .name(name)
                             .role(Role.USER)
                             .build();
-                    User insertUser = new User(newUser);
-                    return userRepository.save(insertUser);
+                    return userService.saveUser(newUser);
                 });
 
         // dto도 아니고 왜 Entity를 여기에 넣는지?
 //        httpSession.setAttribute("user", user);
-        httpSession.setAttribute("userId", user.getId());
+        userAttributes.put("userId", user.getId());
 
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority(Role.USER.getKey())),

@@ -91,12 +91,11 @@ public class User {
         this.loginPwd = loginPwd;
     }
 
-    public void insertUser(CreateUserDto dto){
+    public User(CreateUserDto dto){
         this.name = dto.getName();
         this.email = dto.getEmail();
         this.loginId = dto.getLoginId();
         this.loginPwd = dto.getLoginPwd();
         this.role = dto.getRole();
     }
-
 }

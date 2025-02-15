@@ -49,12 +49,12 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService{
 
         User user = userRepository.findByEmail(email)
                 .orElseGet(() -> {
-                    CreateUserDto newUser = new CreateUserDto();
-                    newUser.setEmail(email);
-                    newUser.setName(name);
-                    newUser.setRole(Role.USER); // 기본 권한 설정
-                    User insertUser = new User();
-                    insertUser.insertUser(newUser);
+                    CreateUserDto newUser = CreateUserDto.builder()
+                            .email(email)
+                            .name(name)
+                            .role(Role.USER)
+                            .build();
+                    User insertUser = new User(newUser);
                     return userRepository.save(insertUser);
                 });
 

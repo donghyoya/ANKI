@@ -1,9 +1,12 @@
 package com.kmu.anki.backend;
 
+import com.kmu.anki.backend.domain.auth.service.OAuth2AccessTokenService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
@@ -17,6 +20,12 @@ import org.springframework.test.context.jdbc.SqlConfig;
 //)
 @SpringBootTest
 class BackendApplicationTests {
+
+	@MockitoBean
+	private OAuth2AccessTokenService oAuth2AccessTokenService;
+
+	@MockitoBean
+	private ClientRegistrationRepository clientRegistrationRepository;
 
 	@Test
 	void contextLoads() {

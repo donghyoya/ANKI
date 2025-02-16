@@ -26,19 +26,19 @@ public class SecurityConfig {
     @Autowired
     private CustomUserService customUserService;
 
-    @Bean
-    @Profile({"prod"}) // dev, test 프로파일에서만 적용
-    public SecurityFilterChain prodSecurityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()
-                )
-                .csrf(AbstractHttpConfigurer::disable);
-        return http.build();
-    }
+//    @Bean
+//    @Profile({"test"}) // dev, test 프로파일에서만 적용
+//    public SecurityFilterChain prodSecurityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeHttpRequests(auth -> auth
+//                        .anyRequest().permitAll()
+//                )
+//                .csrf(AbstractHttpConfigurer::disable);
+//        return http.build();
+//    }
 
     @Bean
-    @Profile({"dev", "test"}) // dev, test 프로파일에서만 적용
+    @Profile({"dev", "prod", "test"}) // dev, test 프로파일에서만 적용
     public SecurityFilterChain devSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 // 0. CSRF 비활성화 (필요 시)

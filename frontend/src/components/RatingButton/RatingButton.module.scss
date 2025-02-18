@@ -1,0 +1,78 @@
+@use '@/styles/_typography' as typography;
+@use '@/styles/mixins' as *;
+
+.rating-button {
+  display: flex;
+  grid-column: span 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  gap: 2px;
+  border: 0;
+  border-radius: 20px;
+  background-color: var(--md-sys-color-primary-container);
+
+  .rating-button-label {
+    @include typography.label-medium;
+    color: var(--md-sys-color-on-primary-container);
+  }
+
+  .rating-button-interval {
+    @include typography.label-small;
+    color: var(--md-sys-color-on-surface-variant);
+  }
+
+  &.error {
+    background-color: var(--md-sys-color-error-container);
+
+    .rating-button-label {
+      color: var(--md-sys-color-error);
+    }
+
+    .rating-button-interval {
+      color: var(--md-sys-color-on-error-container);
+    }
+  }
+
+  @include respond-to('medium') {
+    .rating-button-label {
+      @include typography.title-medium;
+    }
+
+    .rating-button-interval {
+      @include typography.title-small;
+    }
+  }
+
+  @include respond-to('expanded') {
+    .rating-button-label {
+      @include typography.title-large;
+    }
+
+    .rating-button-interval {
+      @include typography.title-medium;
+    }
+  }
+
+  @include respond-to('large') {
+    .rating-button-label {
+      @include typography.headline-small;
+    }
+
+    .rating-button-interval {
+      @include typography.title-small;
+    }
+  }
+
+  @include respond-to('extra-large') {
+    .rating-button-label {
+      @include typography.headline-medium;
+    }
+
+    .rating-button-interval {
+      @include typography.title-medium;
+    }
+  }
+}

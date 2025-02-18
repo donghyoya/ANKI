@@ -4,15 +4,10 @@ import TooltipProvider from '@/components/Tooltips/TooltipProvider';
 
 import styles from './ProgressBar.module.scss';
 
-interface Bar {
-  value: number;
-  label: string;
-  tooltip?: string;
-  color: string;
-}
+import { Progress } from '@/types/Progress';
 
 interface ProgressBarProps {
-  bars: Bar[];
+  progress: Progress[];
   styles?: React.CSSProperties;
   className?: string;
   height: number;
@@ -20,10 +15,10 @@ interface ProgressBarProps {
 
 const pxToRem = (px: number) => `${px / 16}rem`;
 
-const ProgressBar = ({ bars, styles: stylesProp, className, height }: ProgressBarProps) => {
+const ProgressBar = ({ progress, styles: stylesProp, className, height }: ProgressBarProps) => {
   // values의 누적합의 비중을 계산하여 백분율로 변환
   // 오른쪽 끝 bar는 100%이고 오른쪽부터 왼쪽으로 겹쳐가면서 렌더링하기 위해 reverse
-  const values = bars.map((bar) => bar.value);
+  const values = progress.map((bar) => bar.value);
   const sum = values.reduce((acc, num) => acc + num, 0);
   const percentages = values
     .map((_, index) => {
@@ -52,7 +47,7 @@ const ProgressBar = ({ bars, styles: stylesProp, className, height }: ProgressBa
 
   return (
     <div className={`${styles['container']} ${className}`} style={{ ...stylesProp, height }}>
-      {[...bars].reverse().map((bar, index) => {
+      {[...progress].reverse().map((bar, index) => {
         return (
           <div
             key={index}

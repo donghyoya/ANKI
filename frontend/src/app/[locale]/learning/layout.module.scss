@@ -1,0 +1,82 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/_typography' as typography;
+
+.grid-container {
+  @include grid-system;
+  width: 100%;
+  height: min-content;
+  min-height: 100%;
+}
+
+.learning-container {
+  box-sizing: border-box;
+  display: flex;
+
+  grid-column: span 4;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 16px 0;
+  gap: 16px;
+
+  @include respond-to('medium') {
+    grid-column: 2 / span 6;
+  }
+
+  @include respond-to('expanded') {
+    grid-column: 3 / span 8;
+    gap: 24px;
+  }
+
+  @include respond-to('large') {
+    grid-column: 3 / span 8;
+    gap: 24px;
+  }
+
+  @include respond-to('extra-large') {
+    grid-column: 3 / span 8;
+    gap: 24px;
+  }
+}
+
+.progress-container-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.progress-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.progress-label-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.progress-label {
+  width: 60px;
+  @include typography.label-large;
+  color: var(--md-sys-color-on-surface-variant);
+
+  @include respond-to('large') {
+    @include typography.body-medium;
+  }
+
+  @include respond-to('extra-large') {
+    @include typography.body-large;
+  }
+
+  &.active {
+    color: var(--md-sys-color-on-surface);
+    font-weight: 700;
+  }
+}

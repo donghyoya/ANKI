@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { debounce } from 'lodash';
@@ -36,7 +38,6 @@ const TooltipProvider = ({
   useEffect(() => {
     if (!wrapperRef.current) return;
     setRect(wrapperRef.current.getBoundingClientRect());
-    console.log(rect);
   }, [text]);
 
   return (

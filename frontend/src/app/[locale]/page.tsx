@@ -3,7 +3,7 @@
 import { useWindowSize } from '@/hooks/useWindowSize';
 
 export default function HomePage() {
-  const width = useWindowSize();
+  const { width } = useWindowSize();
 
   const GridItem = ({ color }: { color: string }) => (
     <div

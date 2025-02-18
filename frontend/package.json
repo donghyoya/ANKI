@@ -12,6 +12,7 @@
     "@lit/react": "^1.0.7",
     "@material/web": "^2.2.0",
     "@reduxjs/toolkit": "^2.5.0",
+    "classnames": "^2.5.1",
     "frontend": "file:",
     "lodash": "^4.17.21",
     "next": "15.1.4",

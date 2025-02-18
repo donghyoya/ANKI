@@ -1,15 +1,25 @@
 @use '@/styles/_typography' as typography;
 @use '@/styles/mixins' as *;
+@use 'sass:map';
 
 .page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 96px;
+  padding: 16px;
+
+  @include respond-to('medium') {
+    padding: 64px 200px 0 200px;
+  }
+
+  @include respond-to('large') {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 96px;
+    padding: 0;
+  }
 
   .content {
     .title {
-      margin-bottom: 32px;
+      margin: 0 0 32px 0;
 
       @include respond-to('large') {
         @include typography.headline-medium;
@@ -22,7 +32,14 @@
 
     .cards {
       display: flex;
-      gap: 24px;
+      flex-direction: column;
+      gap: 12px;
+
+      @include respond-to('large') {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+      }
     }
   }
 }

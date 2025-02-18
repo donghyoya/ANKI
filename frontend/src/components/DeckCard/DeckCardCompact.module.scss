@@ -1,0 +1,47 @@
+@use '@/styles/_typography' as typography;
+
+.card {
+    height: 62px;
+
+    .main-contents {
+        padding: 8px 16px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .title-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .title {
+                @include typography.body-large;
+                margin: 0 6px 0 0;
+            }
+
+            .check-icon {
+                font-variation-settings: 'FILL' 1;
+                color: green;
+            }
+        }
+    }
+}
+
+.card-expanded {
+    height: 108px;
+
+    .extra-contents {
+        padding: 0 16px 0 4;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .word-count {
+            @include typography.label-small;
+            margin: 0;
+            color: #555;
+        }
+    }
+}

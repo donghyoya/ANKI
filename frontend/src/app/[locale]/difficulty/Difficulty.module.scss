@@ -1,59 +1,45 @@
-@use "sass:map";
 @use '@/styles/_typography' as typography;
-
-$breakpoints: (
-    'compact': 0,
-    'medium': 600px,
-    'expanded': 840px,
-    "large": 1200px,
-    "extra-large": 1600px
-);
-
-@mixin respond-to($breakpoint) {
-    @media (min-width: map.get($breakpoints, $breakpoint)) {
-        @content;
-    }
-}
+@use '@/styles/mixins' as *;
+@use 'sass:map';
 
 .page {
-    padding: 16px;
+  padding: 16px;
 
-    @include respond-to("medium") {
-        padding: 64px 200px 0 200px;
+  @include respond-to('medium') {
+    padding: 64px 200px 0 200px;
+  }
+
+  @include respond-to('large') {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 96px;
+    padding: 0;
+  }
+
+  .content {
+    .title {
+      margin: 0 0 32px 0;
+
+      @include respond-to('large') {
+        @include typography.headline-medium;
+      }
+
+      @include respond-to('extra-large') {
+        @include typography.headline-large;
+      }
     }
 
-    @include respond-to("large") {
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      @include respond-to('large') {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 96px;
-        padding: 0;
+        flex-direction: row;
+        gap: 24px;
+      }
     }
-
-    .content {
-
-        .title {
-            margin: 0 0 32px 0;
-
-            @include respond-to("large") {
-                @include typography.headline-medium;
-            }
-
-            @include respond-to("extra-large") {
-                @include typography.headline-large;
-            }
-        }
-
-        .cards {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-
-            @include respond-to("large") {
-                display: flex;
-                flex-direction: row;
-                gap: 24px;
-            }
-        }
-    }
+  }
 }

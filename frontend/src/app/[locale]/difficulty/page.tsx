@@ -15,7 +15,7 @@ export default function DifficultyPage() {
   const t = useTranslations();
   const locale = useLocale(); // 현재 로케일 가져오기
 
-  const width = useWindowSize();
+  const { width } = useWindowSize();
   const isCompact = width < 1200;
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -36,8 +36,8 @@ export default function DifficultyPage() {
 
   const buttonLabels = {
     viewWords: t('viewWords'),
-    learn: t('learn'),
-  }
+    learn: t('learn')
+  };
 
   const handleViewWords = () => {
     alert('Viewing words!');
@@ -50,7 +50,6 @@ export default function DifficultyPage() {
   };
 
   const CardComponent = isCompact ? DeckCardCompact : DeckCard;
-
 
   return (
     <div className={styles.page}>
@@ -87,12 +86,8 @@ export default function DifficultyPage() {
         </div>
       </div>
 
-      <Dialog
-        ref={dialogRef}
-        open={isDialogOpen}
-        noFocusTrap
-      >
-        <span slot="headline" >
+      <Dialog ref={dialogRef} open={isDialogOpen} noFocusTrap>
+        <span slot="headline">
           <span>Daily goal completed!</span>
           <IconButton
             value="close"
@@ -106,7 +101,8 @@ export default function DifficultyPage() {
           </IconButton>
         </span>
         <form id="form" slot="content" method="dialog">
-          Want to keep going?<br />
+          Want to keep going?
+          <br />
           Choose an option below:
         </form>
         <div slot="actions">

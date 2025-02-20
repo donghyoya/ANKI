@@ -11,5 +11,17 @@
   },
   "NotFoundPage": {
     "title": "Хуудас олдсонгүй"
+  },
+  "SettingsPage": {
+    "settings": "Тохиргоо",
+    "system": "Систем",
+    "language": "Хэл",
+    "theme": "Сэдэв",
+    "learning": "Суралцах",
+    "reviewCount": "Өдөр бүр давтах үгийн тоо",
+    "newCount": "Өдөр бүр шинэ үгийн тоо",
+    "account": "Бүртгэл",
+    "signOut": "Гарах",
+    "deleteAccount": "Бүртгэл устгах"
   }
 }

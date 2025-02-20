@@ -11,5 +11,17 @@
   },
   "NotFoundPage": {
     "title": "الصفحة غير موجودة"
+  },
+  "SettingsPage": {
+    "settings": "الإعدادات",
+    "system": "النظام",
+    "language": "اللغة",
+    "theme": "السمة",
+    "learning": "التعلم",
+    "reviewCount": "عدد الكلمات اليومية للمراجعة",
+    "newCount": "عدد الكلمات الجديدة يومياً",
+    "account": "الحساب",
+    "signOut": "تسجيل الخروج",
+    "deleteAccount": "حذف الحساب"
   }
 }

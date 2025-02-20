@@ -11,5 +11,17 @@
   },
   "NotFoundPage": {
     "title": "ไม่พบหน้า"
+  },
+  "SettingsPage": {
+    "settings": "การตั้งค่า",
+    "system": "ระบบ",
+    "language": "ภาษา",
+    "theme": "ธีม",
+    "learning": "การเรียนรู้",
+    "reviewCount": "จำนวนคำที่ทบทวนต่อวัน",
+    "newCount": "จำนวนคำใหม่ต่อวัน",
+    "account": "บัญชี",
+    "signOut": "ออกจากระบบ",
+    "deleteAccount": "ลบบัญชี"
   }
 }

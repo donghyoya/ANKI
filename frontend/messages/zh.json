@@ -11,5 +11,17 @@
   },
   "NotFoundPage": {
     "title": "找不到页面。"
+  },
+  "SettingsPage": {
+    "settings": "设置",
+    "system": "系统",
+    "language": "语言",
+    "theme": "主题",
+    "learning": "学习",
+    "reviewCount": "每日复习单词数",
+    "newCount": "每日新增单词数",
+    "account": "账户",
+    "signOut": "退出登录",
+    "deleteAccount": "删除账户"
   }
 }

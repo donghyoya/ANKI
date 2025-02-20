@@ -58,22 +58,25 @@ export default function DifficultyPage() {
   const CardComponent = isCompact ? DeckCardCompact : DeckCard;
 
   return (
-    <div className={styles.page}>
-      <div className={styles.content}>
-        {!isCompact && <h1 className={styles.title}> {t('wordsByDifficulty')} </h1>}
-        <div className={styles.cards}>
-          {difficultyLevels.map((difficulty) => (
-            <CardComponent
-              key={difficulty.level}
-              title={t(difficulty.level)}
-              isCompleted={difficulty.isCompleted}
-              wordCount={difficulty.wordCount}
-              locale={locale}
-              buttonLabels={buttonLabels}
-              level={difficulty.level}
-              onLearn={() => handleLearn(difficulty.isCompleted)}
-            />
-          ))}
+    <>
+      <div className={styles['page']}>
+        <div className={styles['content']}>
+          {!isCompact && <h1 className={styles.title}> {t('wordsByDifficulty')} </h1>}
+          <div className={styles.cards}>
+            {difficultyLevels.map((difficulty) => (
+              <CardComponent
+                key={difficulty.level}
+                title={t(difficulty.level)}
+                isCompleted={difficulty.isCompleted}
+                wordCount={difficulty.wordCount}
+                locale={locale}
+                buttonLabels={buttonLabels}
+                level={difficulty.level}
+                onLearn={() => handleLearn(difficulty.isCompleted)}
+                onViewWords={() => {}}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -101,6 +104,6 @@ export default function DifficultyPage() {
           <TextButton>Review more</TextButton>
         </div>
       </Dialog>
-    </div>
+    </>
   );
 }

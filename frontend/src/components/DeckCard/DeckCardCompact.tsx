@@ -11,6 +11,7 @@ import ProgressBar from '@/components/ProgressBar/ProgressBar';
 import classnames from 'classnames';
 import { DUMMY_PROGRESS } from '@/utils/dummyData';
 import Link from 'next/link';
+import { Progress } from '@/types/Progress';
 
 const DeckCardCompact = ({
   title,
@@ -27,6 +28,13 @@ const DeckCardCompact = ({
   const handleClick = () => {
     setIsExpanded((prev) => !prev);
   };
+
+  console.log('isExpanded', isExpanded);
+
+  const progress = DUMMY_PROGRESS.reduce((acc, curr) => {
+    acc.push({ ...curr, label: isExpanded ? curr.label : '' });
+    return acc;
+  }, [] as Progress[]);
 
   return (
     <OutlinedCard ripple={false}>
@@ -61,7 +69,7 @@ const DeckCardCompact = ({
             <span className={styles['word-count']}>{wordCount.toLocaleString(locale)} words</span>
           </div>
         )}
-        <ProgressBar progress={DUMMY_PROGRESS} height={isExpanded ? 12 : 6}></ProgressBar>
+        <ProgressBar progress={progress} height={isExpanded ? 12 : 6}></ProgressBar>
       </div>
     </OutlinedCard>
   );

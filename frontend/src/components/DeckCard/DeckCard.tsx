@@ -21,25 +21,25 @@ const DeckCard = ({
   level,
   onLearn
 }: DeckCardProps) => {
+  console.log(level);
+
   return (
-    <OutlinedCard ripple={false}>
-      <div className={styles.card}>
-        <div className={styles.info}>
-          <div className={styles['title-container']}>
-            <h2 className={styles.title}>{title}</h2>
-            {isCompleted && <Icon className={styles['check-icon']}>check_circle</Icon>}
-          </div>
-          <span className={styles['word-count']}>{wordCount.toLocaleString(locale)} words</span>
+    <OutlinedCard className={styles.card} ripple={false}>
+      <div className={styles.info}>
+        <div className={styles['title-container']}>
+          <h2 className={styles.title}>{title}</h2>
+          {isCompleted && <Icon className={styles['check-icon']}>check_circle</Icon>}
         </div>
-        <div className={styles['bottom-contents']}>
-          <div className={styles['button-container']}>
-            <Link href={`/difficulty/${level}`}>
-              <TextButton>{buttonLabels.viewWords}</TextButton>
-            </Link>
-            <FilledButton onClick={onLearn}>{buttonLabels.learn}</FilledButton>
-          </div>
-          <ProgressBar progress={DUMMY_PROGRESS} height={12}></ProgressBar>
+        <span className={styles['word-count']}>{wordCount.toLocaleString(locale)} words</span>
+      </div>
+      <div className={styles['bottom-contents']}>
+        <div className={styles['button-container']}>
+          <Link href={`/difficulty/${level}`}>
+            <TextButton>{buttonLabels.viewWords}</TextButton>
+          </Link>
+          <FilledButton onClick={onLearn}>{buttonLabels.learn}</FilledButton>
         </div>
+        <ProgressBar progress={DUMMY_PROGRESS} height={12}></ProgressBar>
       </div>
     </OutlinedCard>
   );

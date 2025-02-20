@@ -2,6 +2,8 @@ import { Card } from '@/types/Card';
 import { LEARNING_PROGRESS_BAR_COLORS } from '@/utils/constants';
 import { IntervalPreview } from '@/types/IntervalPreview';
 import { MenuItem } from '@/types/Menu';
+import { Progress } from '@/types/Progress';
+
 export const DUMMY_CARD: Card = {
   cardId: 1,
   wordInfo: {
@@ -23,7 +25,7 @@ export const DUMMY_CARD: Card = {
   }
 };
 
-export const DUMMY_PROGRESS = [
+export const DUMMY_PROGRESS: Progress[] = [
   { value: 10, label: '10', tooltip: 'Completed', color: LEARNING_PROGRESS_BAR_COLORS.completed },
   { value: 20, label: '20', tooltip: 'Learning', color: LEARNING_PROGRESS_BAR_COLORS.learning },
   { value: 30, label: '30', tooltip: 'Reviewing', color: LEARNING_PROGRESS_BAR_COLORS.reviewing }

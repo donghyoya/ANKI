@@ -2,43 +2,103 @@
 @use '@/styles/mixins' as *;
 
 .page {
-  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  padding: 16px 0;
+  gap: 16px;
+
+  @include grid-system;
+
+  @include respond-to('compact') {
+    padding: 16px 0;
+  }
 
   @include respond-to('medium') {
-    padding: 64px 200px 0 200px;
+    padding: 64px 0;
+  }
+
+  @include respond-to('expanded') {
+    padding: 64px 0;
   }
 
   @include respond-to('large') {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 96px;
-    padding: 0;
+    padding: 96px 0;
   }
 
-  .content {
-    .title {
-      margin: 0 0 32px 0;
+  @include respond-to('extra-large') {
+    padding: 96px 0;
+  }
+}
 
-      @include respond-to('large') {
-        @include typography.headline-medium;
-      }
+.content {
+  box-sizing: border-box;
+  display: flex;
 
-      @include respond-to('extra-large') {
-        @include typography.headline-large;
-      }
+  grid-column: span 4;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  height: 100%;
+  gap: 16px;
+
+  @include respond-to('medium') {
+    grid-column: 2 / span 6;
+  }
+
+  @include respond-to('expanded') {
+    grid-column: 3 / span 8;
+    gap: 24px;
+  }
+
+  @include respond-to('large') {
+    grid-column: span 12;
+  }
+
+  @include respond-to('extra-large') {
+    gap: 24px;
+  }
+
+  margin: 0 0 32px 0;
+
+  @include respond-to('large') {
+    @include typography.headline-medium;
+  }
+
+  @include respond-to('extra-large') {
+    @include typography.headline-large;
+  }
+
+  .title {
+    @include respond-to('large') {
+      @include typography.headline-medium;
     }
 
-    .cards {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    @include respond-to('extra-large') {
+      @include typography.title-large;
+    }
+  }
 
-      @include respond-to('large') {
-        display: flex;
-        flex-direction: row;
-        gap: 24px;
-      }
+  .cards {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 12px;
+
+    @include respond-to('large') {
+      @include grid-system;
+      gap: 24px;
+    }
+
+    @include respond-to('extra-large') {
+      @include grid-system;
+      gap: 24px;
     }
   }
 }

@@ -31,9 +31,13 @@ export default function DifficultyWordsPage() {
         <IconButton onClick={handleMenuClick}>
           <Icon>more_vert</Icon>
         </IconButton>
-        <Menu id="word-list-more" anchor="menu-button" 
-        xOffset={-160} yOffset={47}
-        style={{minWidth: '200px'}}>
+        <Menu
+          id="word-list-more"
+          anchor="menu-button"
+          xOffset={-160}
+          yOffset={47}
+          style={{ minWidth: '200px' }}
+        >
           <MenuItem>Sort by xxx</MenuItem>
           <MenuItem>Sort by xxx</MenuItem>
           <MenuItem>Hide Korean</MenuItem>
@@ -44,18 +48,20 @@ export default function DifficultyWordsPage() {
   };
 
   return (
-    <div className={styles.page}>
-      <div className={styles.content}>
-        <div className={styles['header-container']}>
-          <h1 className={styles.title}>{t(level)}</h1>
-          <div className={styles['button-container']}>
-            <FilledButton className={styles['learn-button']}>Learn</FilledButton>
-            <MenuButton />
+    <div className={styles['grid-container']}>
+      <div className={styles['page']}>
+        <div className={styles['content']}>
+          <div className={styles['header-container']}>
+            <h1 className={styles.title}>{t(level)}</h1>
+            <div className={styles['button-container']}>
+              <FilledButton className={styles['learn-button']}>Learn</FilledButton>
+              <MenuButton />
+            </div>
           </div>
-        </div>
-        <div className={styles['list-container']}>
-          <WordList KoreanWord="안녕" ForeignWord="hi" />
-          <WordList KoreanWord="안녕" ForeignWord="hi" />
+          <div className={styles['list-container']}>
+            <WordList KoreanWord="안녕" ForeignWord="hi" />
+            <WordList KoreanWord="안녕" ForeignWord="hi" />
+          </div>
         </div>
       </div>
     </div>

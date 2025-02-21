@@ -1,18 +1,18 @@
 {
-  "wordsByDifficulty": "Үгийн түвшинээр",
-  "beginner": "Анхан шат",
-  "intermediate": "Дунд шат",
-  "advanced": "Ахисан шат",
+  "level": {
+    "wordsByDifficulty": "Үгийн түвшинээр",
+    "beginner": "Анхан шат",
+    "intermediate": "Дунд шат",
+    "advanced": "Ахисан шат"
+  },
+
   "learn": "Сурах",
   "viewWords": "Үгсийг харах",
-  "HomePage": {
-    "title": "Сайн уу, дэлхий!",
-    "about": "Танилцуулга хуудсанд очих"
-  },
-  "NotFoundPage": {
-    "title": "Хуудас олдсонгүй"
-  },
-  "SettingsPage": {
+
+  "hideKorean": "Солонгос хэл нуух",
+  "hideForeign": "Гадаад хэл нуух",
+
+  "settingsPage": {
     "settings": "Тохиргоо",
     "system": "Систем",
     "language": "Хэл",
@@ -23,5 +23,42 @@
     "account": "Бүртгэл",
     "signOut": "Гарах",
     "deleteAccount": "Бүртгэл устгах"
+  },
+  "goalComplete": "Өдрийн зорилго биелсэн!",
+  "continuePrompt": "Үргэлжлүүлэх үү?",
+  "chooseOption": "Доорх сонголтыг хийнэ үү:",
+  "learnMore": "Дэлгэрэнгүй сурах",
+  "reviewMore": "Дахин шалгах",
+
+  "difficulty": "Хүндийн зэрэг",
+  "meanings": "Утга",
+  "settings": "Тохиргоо",
+
+  "learning": {
+    "reviews": "Хяналт",
+    "news": "Шинэ",
+    "checkAnswer": "Хариуг шалгах",
+    "again": "Дахин",
+    "hard": "Хүнд",
+    "good": "Сайн",
+    "easy": "Хялбар",
+    "min": "мин",
+    "mins": "минут",
+    "hours": "цаг",
+    "weeks": "долоо хоног",
+    "showDetails": "Дэлгэрэнгүй харах",
+    "hideDetails": "Дэлгэрэнгүй хаах",
+    "foreignToKorean": "Монгол → Солонгос",
+    "koreanToForeign": "Солонгос → Монгол",
+    "undoCheckAnswer": "Шалгалтыг буцаах",
+    "conjugations": "Үйл үгийн хувирал",
+    "examples": "Жишээ",
+    "pastParticiple": "Өнгөрсөн цагийн үйл үг",
+    "connective": "Холбох үг",
+    "seqConnect": "Дараалсан холбогч",
+    "formalPresent": "Албан ёсны одоо цаг",
+    "phrase": "Хэлц үг",
+    "sentence": "Өгүүлбэр",
+    "conversation": "Яриа"
   }
 }

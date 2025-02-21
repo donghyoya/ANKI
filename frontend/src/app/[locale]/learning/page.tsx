@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import useLearningCardLayout from '@/hooks/useLearningCardLayout';
+import { useTranslations } from 'next-intl';
 
 import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
 import LearningCard, { LearningCardState } from '@/components/LearningCard/LearningCard';
@@ -17,6 +18,8 @@ import {
 } from '@/utils/dummyData';
 
 export default function LearningPage() {
+  const t = useTranslations();
+
   const [contentHeight, setContentHeight] = useState(0);
 
   const [cardState, setCardState] = useState<LearningCardState>({
@@ -61,7 +64,7 @@ export default function LearningPage() {
             <span
               className={`${styles['progress-label']} ${learningType === 'reviews' ? styles['active'] : ''}`}
             >
-              Reviews
+              {t('learning.reviews')}
             </span>
           </div>
           <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} />
@@ -71,7 +74,7 @@ export default function LearningPage() {
             <span
               className={`${styles['progress-label']} ${learningType === 'news' ? styles['active'] : ''}`}
             >
-              News
+              {t('learning.news')}
             </span>
           </div>
           <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} />

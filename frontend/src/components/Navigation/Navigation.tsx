@@ -12,9 +12,9 @@ import styles from './Navigation.module.scss';
 
 const Navigation = () => {
   const destinations = [
-    { icon: 'folder', label: 'Difficulty' },
-    { icon: 'folder', label: 'Meanings' },
-    { icon: 'settings', label: 'Settings' }
+    { icon: 'folder', label: 'difficulty' },
+    { icon: 'folder', label: 'meanings' },
+    { icon: 'settings', label: 'settings' }
   ];
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);

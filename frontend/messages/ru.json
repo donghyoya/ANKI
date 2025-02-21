@@ -1,18 +1,18 @@
 {
-  "wordsByDifficulty": "Слова по уровню сложности",
-  "beginner": "Новичок",
-  "intermediate": "Средний",
-  "advanced": "Продвинутый",
+  "level": {
+    "wordsByDifficulty": "Слова по уровню сложности",
+    "beginner": "Новичок",
+    "intermediate": "Средний",
+    "advanced": "Продвинутый"
+  },
+
   "learn": "Учить",
   "viewWords": "Просмотр слов",
-  "HomePage": {
-    "title": "Привет, мир!",
-    "about": "Перейти на страницу о нас"
-  },
-  "NotFoundPage": {
-    "title": "Страница не найдена"
-  },
-  "SettingsPage": {
+
+  "hideKorean": "Скрыть корейский",
+  "hideForeign": "Скрыть русский",
+
+  "settingsPage": {
     "settings": "Настройки",
     "system": "Система",
     "language": "Язык",
@@ -23,5 +23,42 @@
     "account": "Аккаунт",
     "signOut": "Выйти",
     "deleteAccount": "Удалить аккаунт"
+  },
+  "goalComplete": "Ежедневная цель выполнена!",
+  "continuePrompt": "Хотите продолжить?",
+  "chooseOption": "Выберите вариант ниже:",
+  "learnMore": "Узнать больше",
+  "reviewMore": "Повторить больше",
+
+  "difficulty": "Сложность",
+  "meanings": "Значение",
+  "settings": "Настройки",
+
+  "learning": {
+    "reviews": "Отзывы",
+    "news": "Новый",
+    "checkAnswer": "Проверить ответ",
+    "again": "Еще раз",
+    "hard": "Сложно",
+    "good": "Хорошо",
+    "easy": "Легко",
+    "min": "мин",
+    "mins": "минут",
+    "hours": "часы",
+    "weeks": "недели",
+    "showDetails": "Включить подробный просмотр",
+    "hideDetails": "Отключить подробный просмотр",
+    "foreignToKorean": "Русский → Корейский",
+    "koreanToForeign": "Корейский → Русский",
+    "undoCheckAnswer": "Отменить проверку ответа",
+    "conjugations": "Спряжения",
+    "examples": "Примеры",
+    "pastParticiple": "Причастие прошедшего времени",
+    "connective": "Связка",
+    "seqConnect": "Последовательная связка",
+    "formalPresent": "Формальный вежливый настоящее время",
+    "phrase": "Фраза",
+    "sentence": "Предложение",
+    "conversation": "Разговор"
   }
 }

@@ -1,18 +1,18 @@
 {
-  "wordsByDifficulty": "Words by difficulty",
-  "beginner": "Beginner",
-  "intermediate": "Intermediate",
-  "advanced": "Advanced",
+  "level": {
+    "wordsByDifficulty": "Words by difficulty",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+
   "learn": "Learn",
   "viewWords": "View words",
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
-  },
-  "NotFoundPage": {
-    "title": "Page not found"
-  },
-  "SettingsPage": {
+
+  "hideKorean": "Hide Korean",
+  "hideForeign": "Hide English",
+
+  "settingsPage": {
     "settings": "Settings",
     "system": "System",
     "language": "Language",
@@ -23,5 +23,42 @@
     "account": "Account",
     "signOut": "Sign out",
     "deleteAccount": "Delete account"
+  },
+  "goalComplete": "Daily goal completed!",
+  "continuePrompt": "Want to Keep going?",
+  "chooseOption": "Choose an option below:",
+  "learnMore": "Learn more",
+  "reviewMore": "Review more",
+
+  "difficulty": "Difficulty",
+  "meanings": "Meanings",
+  "settings": "Settings",
+
+  "learning": {
+    "reviews": "Reviews",
+    "news": "New",
+    "checkAnswer": "Check answer",
+    "again": "Again",
+    "hard": "Hard",
+    "good": "Good",
+    "easy": "Easy",
+    "min": "min",
+    "mins": "mins",
+    "hours": "hours",
+    "weeks": "weeks",
+    "showDetails": "Enable detailed view",
+    "hideDetails": "Disable detailed view",
+    "foreignToKorean": "English → Korean",
+    "koreanToForeign": "Korean → English",
+    "undoCheckAnswer": "Undo check answer",
+    "conjugations": "Conjugations",
+    "examples": "Examples",
+    "pastParticiple": "Past participle",
+    "connective": "Connective",
+    "seqConnect": "Sequential connective",
+    "formalPresent": "Formal polite present",
+    "phrase": "Phrase",
+    "sentence": "Sentence",
+    "conversation": "Conversation"
   }
 }

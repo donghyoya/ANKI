@@ -1,18 +1,18 @@
 {
-  "wordsByDifficulty": "Từ vựng theo mức độ khó",
-  "beginner": "Người mới bắt đầu",
-  "intermediate": "Trung cấp",
-  "advanced": "Nâng cao",
+  "level": {
+    "wordsByDifficulty": "Từ vựng theo mức độ khó",
+    "beginner": "Người mới bắt đầu",
+    "intermediate": "Trung cấp",
+    "advanced": "Nâng cao"
+  },
+
   "learn": "Học",
   "viewWords": "Xem từ",
-  "HomePage": {
-    "title": "Xin chào thế giới!",
-    "about": "Đi đến trang giới thiệu"
-  },
-  "NotFoundPage": {
-    "title": "Không tìm thấy trang"
-  },
-  "SettingsPage": {
+
+  "hideKorean": "Ẩn tiếng Hàn",
+  "hideForeign": "Ẩn tiếng Việt",
+
+  "settingsPage": {
     "settings": "Cài đặt",
     "system": "Hệ thống",
     "language": "Ngôn ngữ",
@@ -23,5 +23,42 @@
     "account": "Tài khoản",
     "signOut": "Đăng xuất",
     "deleteAccount": "Xóa tài khoản"
+  },
+  "goalComplete": "Mục tiêu hàng ngày đã hoàn thành!",
+  "continuePrompt": "Bạn muốn tiếp tục không?",
+  "chooseOption": "Chọn một tùy chọn bên dưới:",
+  "learnMore": "Tìm hiểu thêm",
+  "reviewMore": "Ôn tập thêm",
+
+  "difficulty": "Độ khó",
+  "meanings": "Ý nghĩa",
+  "settings": "Cài đặt",
+
+  "learning": {
+    "reviews": "Đánh giá",
+    "news": "Mới",
+    "checkAnswer": "Kiểm tra câu trả lời",
+    "again": "Lại",
+    "hard": "Khó",
+    "good": "Tốt",
+    "easy": "Dễ",
+    "min": "phút",
+    "mins": "phút",
+    "hours": "giờ",
+    "weeks": "tuần",
+    "showDetails": "Bật chế độ xem chi tiết",
+    "hideDetails": "Tắt chế độ xem chi tiết",
+    "foreignToKorean": "Tiếng Việt → Tiếng Hàn",
+    "koreanToForeign": "Tiếng Hàn → Tiếng Việt",
+    "undoCheckAnswer": "Hoàn tác kiểm tra câu trả lời",
+    "conjugations": "Chia động từ",
+    "examples": "Ví dụ",
+    "pastParticiple": "Quá khứ phân từ",
+    "connective": "Từ nối",
+    "seqConnect": "Từ nối theo trình tự",
+    "formalPresent": "Thì hiện tại lịch sự",
+    "phrase": "Cụm từ",
+    "sentence": "Câu",
+    "conversation": "Hội thoại"
   }
 }

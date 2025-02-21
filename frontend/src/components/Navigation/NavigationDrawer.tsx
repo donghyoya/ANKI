@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { Ripple } from '@/components/material-components/Ripple';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
@@ -15,6 +16,8 @@ const NavigationDrawer = ({
   initialDestination: string;
   toggleDrawer: () => void;
 }) => {
+  const t = useTranslations();
+
   const [selectedDestination, setSelectedDestination] = useState<string>(initialDestination);
 
   const handleNavItemClick = (navItem: string) => {
@@ -43,7 +46,7 @@ const NavigationDrawer = ({
               <Ripple />
               <Icon>{destination.icon}</Icon>
               <span className={`${styles['item-label']} ${isSelected ? styles.selected : ''}`}>
-                {destination.label}
+                {t(destination.label)}
               </span>
             </button>
           );

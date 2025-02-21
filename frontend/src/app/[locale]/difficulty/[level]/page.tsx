@@ -20,7 +20,6 @@ export default function DifficultyWordsPage() {
   }
 
   const handleMenuClick = (e: any) => {
-    console.log(e);
     const menu = document.getElementById('word-list-more') as any;
     menu.open = !menu.open;
   };
@@ -40,8 +39,8 @@ export default function DifficultyWordsPage() {
         >
           <MenuItem>Sort by xxx</MenuItem>
           <MenuItem>Sort by xxx</MenuItem>
-          <MenuItem>Hide Korean</MenuItem>
-          <MenuItem>Hide English</MenuItem>
+          <MenuItem>{t('hideKorean')}</MenuItem>
+          <MenuItem>{t('hideForeign')}</MenuItem>
         </Menu>
       </div>
     );
@@ -51,9 +50,9 @@ export default function DifficultyWordsPage() {
     <div className={styles['page']}>
       <div className={styles['content']}>
         <div className={styles['header-container']}>
-          <h1 className={styles.title}>{t(level)}</h1>
+          <h1 className={styles.title}>{t(`level.${level}`)}</h1>
           <div className={styles['button-container']}>
-            <FilledButton className={styles['learn-button']}>Learn</FilledButton>
+            <FilledButton className={styles['learn-button']}>{t('learn')}</FilledButton>
             <MenuButton />
           </div>
         </div>

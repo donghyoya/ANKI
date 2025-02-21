@@ -1,18 +1,18 @@
 {
-  "wordsByDifficulty": "คำตามระดับความยาก",
-  "beginner": "ระดับเริ่มต้น",
-  "intermediate": "ระดับกลาง",
-  "advanced": "ระดับสูง",
+  "level": {
+    "wordsByDifficulty": "คำตามระดับความยาก",
+    "beginner": "ระดับเริ่มต้น",
+    "intermediate": "ระดับกลาง",
+    "advanced": "ระดับสูง"
+  },
+
   "learn": "เรียนรู้",
   "viewWords": "ดูคำศัพท์",
-  "HomePage": {
-    "title": "สวัสดีโลก!",
-    "about": "ไปที่หน้าข้อมูล"
-  },
-  "NotFoundPage": {
-    "title": "ไม่พบหน้า"
-  },
-  "SettingsPage": {
+
+  "hideKorean": "ซ่อนภาษาเกาหลี",
+  "hideForeign": "ซ่อนภาษาไทย",
+
+  "settingsPage": {
     "settings": "การตั้งค่า",
     "system": "ระบบ",
     "language": "ภาษา",
@@ -23,5 +23,42 @@
     "account": "บัญชี",
     "signOut": "ออกจากระบบ",
     "deleteAccount": "ลบบัญชี"
+  },
+  "goalComplete": "เป้าหมายรายวันสำเร็จแล้ว!",
+  "continuePrompt": "ต้องการดำเนินการต่อหรือไม่?",
+  "chooseOption": "เลือกตัวเลือกด้านล่าง:",
+  "learnMore": "เรียนรู้เพิ่มเติม",
+  "reviewMore": "ทบทวนเพิ่มเติม",
+
+  "difficulty": "ความยาก",
+  "meanings": "ความหมาย",
+  "settings": "การตั้งค่า",
+
+  "learning": {
+    "reviews": "รีวิว",
+    "news": "ใหม่",
+    "checkAnswer": "ตรวจคำตอบ",
+    "again": "อีกครั้ง",
+    "hard": "ยาก",
+    "good": "ดี",
+    "easy": "ง่าย",
+    "min": "นาที",
+    "mins": "นาที",
+    "hours": "ชั่วโมง",
+    "weeks": "สัปดาห์",
+    "showDetails": "เปิดใช้งานมุมมองรายละเอียด",
+    "hideDetails": "ปิดใช้งานมุมมองรายละเอียด",
+    "foreignToKorean": "ไทย → เกาหลี",
+    "koreanToForeign": "เกาหลี → ไทย",
+    "undoCheckAnswer": "เลิกทำการตรวจคำตอบ",
+    "conjugations": "การผันคำกริยา",
+    "examples": "ตัวอย่าง",
+    "pastParticiple": "กริยาช่องที่สาม",
+    "connective": "คำเชื่อม",
+    "seqConnect": "คำเชื่อมลำดับ",
+    "formalPresent": "ทางการสุภาพปัจจุบัน",
+    "phrase": "วลี",
+    "sentence": "ประโยค",
+    "conversation": "การสนทนา"
   }
 }

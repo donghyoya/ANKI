@@ -1,18 +1,18 @@
 {
-  "wordsByDifficulty": "الكلمات حسب الصعوبة",
-  "beginner": "مبتدئ",
-  "intermediate": "متوسط",
-  "advanced": "متقدم",
+  "level": {
+    "wordsByDifficulty": "الكلمات حسب الصعوبة",
+    "beginner": "مبتدئ",
+    "intermediate": "متوسط",
+    "advanced": "متقدم"
+  },
+
   "learn": "تعلم",
   "viewWords": "عرض الكلمات",
-  "HomePage": {
-    "title": "مرحبا بالعالم!",
-    "about": "انتقل إلى صفحة حول"
-  },
-  "NotFoundPage": {
-    "title": "الصفحة غير موجودة"
-  },
-  "SettingsPage": {
+
+  "hideKorean": "إخفاء الكورية",
+  "hideForeign": "إخفاء الأجنبية",
+
+  "settingsPage": {
     "settings": "الإعدادات",
     "system": "النظام",
     "language": "اللغة",
@@ -23,5 +23,42 @@
     "account": "الحساب",
     "signOut": "تسجيل الخروج",
     "deleteAccount": "حذف الحساب"
+  },
+  "goalComplete": "تم تحقيق الهدف اليومي!",
+  "continuePrompt": "هل تريد الاستمرار؟",
+  "chooseOption": "اختر خيارًا أدناه:",
+  "learnMore": "تعلم المزيد",
+  "reviewMore": "مراجعة المزيد",
+
+  "difficulty": "الصعوبة",
+  "meanings": "المعنى",
+  "settings": "الإعدادات",
+
+  "learning": {
+    "reviews": "المراجعات",
+    "news": "جديد",
+    "checkAnswer": "تحقق من الإجابة",
+    "again": "مرة أخرى",
+    "hard": "صعب",
+    "good": "جيد",
+    "easy": "سهل",
+    "min": "دقيقة",
+    "mins": "دقائق",
+    "hours": "ساعات",
+    "weeks": "أسابيع",
+    "showDetails": "تمكين العرض التفصيلي",
+    "hideDetails": "تعطيل العرض التفصيلي",
+    "foreignToKorean": "الكورية ← العربية",
+    "koreanToForeign": "العربية ← الكورية",
+    "undoCheckAnswer": "إلغاء التحقق من الإجابة",
+    "conjugations": "التصريفات",
+    "examples": "أمثلة",
+    "pastParticiple": "التصريف الثالث",
+    "connective": "أداة ربط",
+    "seqConnect": "أداة ربط تسلسلية",
+    "formalPresent": "زمن الحاضر الرسمي المهذب",
+    "phrase": "عبارة",
+    "sentence": "جملة",
+    "conversation": "محادثة"
   }
 }

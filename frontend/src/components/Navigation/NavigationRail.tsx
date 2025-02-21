@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
+
 import styles from './NavigationRail.module.scss';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
 import { Ripple } from '@/components/material-components/Ripple';
@@ -16,6 +18,8 @@ const NavigationRail = ({
   initialDestination: string;
   toggleDrawer: () => void;
 }) => {
+  const t = useTranslations();
+
   const [selectedDestination, setSelectedDestination] = useState<string | null>(initialDestination);
 
   const handleDestinationClick = (destination: string) => {
@@ -49,7 +53,7 @@ const NavigationRail = ({
             <div
               className={`${styles['navigation-item-label']} ${selectedDestination === destination.label ? styles['selected'] : ''}`}
             >
-              <span>{destination.label}</span>
+              <span>{t(destination.label)}</span>
             </div>
           </div>
         ))}

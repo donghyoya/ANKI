@@ -61,12 +61,12 @@ export default function DifficultyPage() {
     <>
       <div className={styles['page']}>
         <div className={styles['content']}>
-          {!isCompact && <h1 className={styles.title}> {t('wordsByDifficulty')} </h1>}
+          {!isCompact && <h1 className={styles.title}> {t('level.wordsByDifficulty')} </h1>}
           <div className={styles.cards}>
             {difficultyLevels.map((difficulty) => (
               <CardComponent
                 key={difficulty.level}
-                title={t(difficulty.level)}
+                title={t(`level.${difficulty.level}`)}
                 isCompleted={difficulty.isCompleted}
                 wordCount={difficulty.wordCount}
                 locale={locale}
@@ -82,7 +82,7 @@ export default function DifficultyPage() {
 
       <Dialog ref={dialogRef} open={isDialogOpen} noFocusTrap>
         <span slot="headline">
-          <span>Daily goal completed!</span>
+          <span>{t('goalComplete')}</span>
           <IconButton
             value="close"
             aria-label="Close dialog"
@@ -95,13 +95,13 @@ export default function DifficultyPage() {
           </IconButton>
         </span>
         <form id="form" slot="content" method="dialog">
-          Want to keep going?
+          {t('continuePrompt')}
           <br />
-          Choose an option below:
+          {t('chooseOption')}
         </form>
         <div slot="actions">
-          <TextButton>Learn more</TextButton>
-          <TextButton>Review more</TextButton>
+          <TextButton>{t('learnMore')}</TextButton>
+          <TextButton>{t('reviewMore')}</TextButton>
         </div>
       </Dialog>
     </>

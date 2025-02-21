@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { Ripple } from '@/components/material-components/Ripple';
 import { Icon } from '@/components/material-components/IconButton/IconButton';
@@ -12,6 +13,8 @@ const NavigationBar = ({
   destinations: { icon: string; label: string }[];
   initialDestination: string;
 }) => {
+  const t = useTranslations();
+
   const [selectedDestination, setSelectedDestination] = useState<string>(initialDestination);
 
   const handleDestinationClick = (destination: string) => {
@@ -33,7 +36,7 @@ const NavigationBar = ({
               <Icon>{destination.icon}</Icon>
             </div>
             <span className={`${styles['label']} ${isSelected ? styles.selected : ''}`}>
-              {destination.label}
+              {t(destination.label)}
             </span>
           </button>
         );

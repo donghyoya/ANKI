@@ -11,6 +11,7 @@ import { Menu, MenuItem } from '@/components/material-components/Menu';
 
 import { MenuItem as MenuItemType } from '@/types/Menu';
 import { useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 export interface LearningCardState {
   isRevealed: boolean;
@@ -44,13 +45,14 @@ const LearningCard = ({
   menuItems,
   setContentHeight
 }: LearningCardProps) => {
+  const t = useTranslations();
+  const { width } = useWindowSize();
+
   const handleMenuClick = (e: any) => {
     e.stopPropagation();
     const menu = document.getElementById('learning-card-menu') as any;
     menu.open = !menu.open;
   };
-
-  const { width } = useWindowSize();
 
   useEffect(() => {
     const contentElement = document.querySelector(`.${styles['content-container']}`);
@@ -68,7 +70,7 @@ const LearningCard = ({
       {!cardState.isRevealed && (
         <div className={styles['content-container']}>
           <span className={styles['korean-word']}>{card.wordInfo.koreanWord}</span>
-          <span className={`${styles['foreign-word']} ${styles['revealed']}`}>Check Answer</span>
+          <span className={`${styles['foreign-word']} ${styles['revealed']}`}>{t('learning.checkAnswer')}</span>
         </div>
       )}
 

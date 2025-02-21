@@ -1,6 +1,5 @@
-import { capitalize } from '@/utils/capitalize';
+import { useTranslations } from 'next-intl';
 import { formatDuration } from '@/utils/formatDuration';
-
 import styles from './RatingButton.module.scss';
 
 interface RatingButtonProps {
@@ -10,9 +9,11 @@ interface RatingButtonProps {
 }
 
 const RatingButton = ({ label, interval, isError = false }: RatingButtonProps) => {
+  const t = useTranslations();
+
   return (
     <button className={styles['rating-button'] + (isError ? ' ' + styles['error'] : '')}>
-      <span className={styles['rating-button-label']}>{capitalize(label)}</span>
+      <span className={styles['rating-button-label']}>{t(`learning.${label}`)}</span>
       <span className={styles['rating-button-interval']}>{formatDuration(interval)}</span>
     </button>
   );

@@ -1,0 +1,122 @@
+@use '@/styles/typography' as typography;
+@use '@/styles/breakpoints' as bp;
+@use '@/styles/mixins' as *;
+
+.grid-container {
+  @include grid-system;
+  width: 100%;
+  height: min-content;
+  min-height: 100%;
+}
+
+.page {
+  box-sizing: border-box;
+  display: flex;
+
+  grid-column: span 4;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 16px 0;
+  gap: 16px;
+
+  @include respond-to('medium') {
+    grid-column: 2 / span 6;
+    padding: 64px 0;
+  }
+
+  @include respond-to('expanded') {
+    grid-column: 3 / span 8;
+    padding: 64px 0;
+    gap: 24px;
+  }
+
+  @include respond-to('large') {
+    grid-column: 3 / span 8;
+    padding: 96px 0;
+    gap: 24px;
+  }
+
+  @include respond-to('extra-large') {
+    grid-column: 3 / span 8;
+    padding: 96px 0;
+    gap: 24px;
+  }
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+
+  .header-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px;
+
+    @include bp.respond-to('compact') {
+      display: none;
+    }
+
+    @include bp.respond-to('medium') {
+      display: flex;
+    }
+
+    @include bp.respond-to('expanded') {
+      display: flex;
+    }
+
+    @include bp.respond-to('large') {
+      margin-bottom: 32px;
+    }
+
+    @include bp.respond-to('extra-large') {
+      margin-bottom: 48px;
+    }
+
+    .title {
+      margin: 0;
+
+      @include respond-to('medium') {
+        @include typography.title-large;
+      }
+
+      @include respond-to('expanded') {
+        @include typography.headline-small;
+      }
+
+      @include respond-to('large') {
+        @include typography.headline-medium;
+      }
+
+      @include bp.respond-to('extra-large') {
+        @include typography.headline-large;
+      }
+    }
+
+    .button-container {
+      display: flex;
+
+      .learn-button {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include bp.respond-to('compact') {
+      gap: 12px;
+    }
+
+    @include bp.respond-to('medium') {
+      gap: 12px;
+    }
+  }
+}

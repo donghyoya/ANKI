@@ -1,0 +1,79 @@
+@use '@/styles/typography' as typo;
+@use '@/styles/mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .contents {
+    width: 100%;
+    max-width: 744px;
+    margin: 96px 0 0 0;
+
+    .title {
+      @include respond-to('large') {
+        @include typo.headline-medium;
+        margin: 0 0 64px 0;
+      }
+
+      @include respond-to('extra-large') {
+        @include typo.headline-large;
+        margin: 0 0 72px 0;
+      }
+    }
+
+    .group {
+      margin-bottom: 64px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .group-title {
+        @include respond-to('large') {
+          @include typo.title-medium;
+          margin: 0 0 24px 0;
+        }
+
+        @include respond-to('extra-large') {
+          @include typo.title-large;
+          margin: 0 0 36px 0;
+        }
+      }
+
+      .field-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 12px 0 12px;
+
+        .label {
+          margin: 0;
+
+          @include respond-to('large') {
+            @include typo.body-medium;
+          }
+
+          @include respond-to('extra-large') {
+            @include typo.body-large;
+          }
+        }
+      }
+
+      .first-field-section {
+        @include respond-to('large') {
+          margin-bottom: 16px;
+        }
+
+        @include respond-to('extra-large') {
+          margin-bottom: 20px;
+        }
+      }
+
+      .sign-out-button {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

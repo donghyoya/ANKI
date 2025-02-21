@@ -11,5 +11,17 @@
   },
   "NotFoundPage": {
     "title": "Page not found"
+  },
+  "SettingsPage": {
+    "settings": "Settings",
+    "system": "System",
+    "language": "Language",
+    "theme": "Theme",
+    "learning": "Learning",
+    "reviewCount": "Daily review word count",
+    "newCount": "Daily new word count",
+    "account": "Account",
+    "signOut": "Sign out",
+    "deleteAccount": "Delete account"
   }
 }

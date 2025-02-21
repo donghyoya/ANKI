@@ -1,15 +1,27 @@
 {
-    "wordsByDifficulty": "難易度別の単語",
-    "beginner": "初心者",
-    "intermediate": "中級",
-    "advanced": "上級",
-    "learn": "学習",
-    "viewWords": "単語を見る",
-    "HomePage": {
-        "title": "こんにちは、世界！",
-        "about": "アバウトページへ行く"
-    },
-    "NotFoundPage": {
-        "title": "ページが見つかりません。"
-    }
+  "wordsByDifficulty": "難易度別の単語",
+  "beginner": "初心者",
+  "intermediate": "中級",
+  "advanced": "上級",
+  "learn": "学習",
+  "viewWords": "単語を見る",
+  "HomePage": {
+    "title": "こんにちは、世界！",
+    "about": "アバウトページへ行く"
+  },
+  "NotFoundPage": {
+    "title": "ページが見つかりません。"
+  },
+  "SettingsPage": {
+    "settings": "設定",
+    "system": "システム",
+    "language": "言語",
+    "theme": "テーマ",
+    "learning": "学習",
+    "reviewCount": "毎日の復習単語数",
+    "newCount": "毎日の新しい単語数",
+    "account": "アカウント",
+    "signOut": "サインアウト",
+    "deleteAccount": "アカウントを削除"
+  }
 }

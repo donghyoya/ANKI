@@ -11,5 +11,17 @@
   },
   "NotFoundPage": {
     "title": "Không tìm thấy trang"
+  },
+  "SettingsPage": {
+    "settings": "Cài đặt",
+    "system": "Hệ thống",
+    "language": "Ngôn ngữ",
+    "theme": "Chủ đề",
+    "learning": "Học tập",
+    "reviewCount": "Số từ ôn tập hàng ngày",
+    "newCount": "Số từ mới hàng ngày",
+    "account": "Tài khoản",
+    "signOut": "Đăng xuất",
+    "deleteAccount": "Xóa tài khoản"
   }
 }

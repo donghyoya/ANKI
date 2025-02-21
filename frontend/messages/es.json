@@ -11,5 +11,17 @@
   },
   "NotFoundPage": {
     "title": "Página no encontrada"
+  },
+  "SettingsPage": {
+    "settings": "Configuración",
+    "system": "Sistema",
+    "language": "Idioma",
+    "theme": "Tema",
+    "learning": "Aprendizaje",
+    "reviewCount": "Cantidad diaria de palabras revisadas",
+    "newCount": "Cantidad diaria de palabras nuevas",
+    "account": "Cuenta",
+    "signOut": "Cerrar sesión",
+    "deleteAccount": "Eliminar cuenta"
   }
 }

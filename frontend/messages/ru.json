@@ -11,5 +11,17 @@
   },
   "NotFoundPage": {
     "title": "Страница не найдена"
+  },
+  "SettingsPage": {
+    "settings": "Настройки",
+    "system": "Система",
+    "language": "Язык",
+    "theme": "Тема",
+    "learning": "Обучение",
+    "reviewCount": "Количество слов для повторения в день",
+    "newCount": "Количество новых слов в день",
+    "account": "Аккаунт",
+    "signOut": "Выйти",
+    "deleteAccount": "Удалить аккаунт"
   }
 }

@@ -1,18 +1,18 @@
 {
-  "wordsByDifficulty": "Palabras por dificultad",
-  "beginner": "Principiante",
-  "intermediate": "Intermedio",
-  "advanced": "Avanzado",
+  "level": {
+    "wordsByDifficulty": "Palabras por dificultad",
+    "beginner": "Principiante",
+    "intermediate": "Intermedio",
+    "advanced": "Avanzado"
+  },
+
   "learn": "Aprender",
   "viewWords": "Ver palabras",
-  "HomePage": {
-    "title": "¡Hola mundo!",
-    "about": "Ir a la página Acerca de"
-  },
-  "NotFoundPage": {
-    "title": "Página no encontrada"
-  },
-  "SettingsPage": {
+
+  "hideKorean": "Ocultar coreano",
+  "hideForeign": "Ocultar español",
+
+  "settingsPage": {
     "settings": "Configuración",
     "system": "Sistema",
     "language": "Idioma",
@@ -23,5 +23,42 @@
     "account": "Cuenta",
     "signOut": "Cerrar sesión",
     "deleteAccount": "Eliminar cuenta"
+  },
+  "goalComplete": "¡Meta diaria completada!",
+  "continuePrompt": "¿Quieres seguir adelante?",
+  "chooseOption": "Elige una opción abajo:",
+  "learnMore": "Aprender más",
+  "reviewMore": "Revisar más",
+
+  "difficulty": "Dificultad",
+  "meanings": "Significado",
+  "settings": "Configuración",
+
+  "learning": {
+    "reviews": "Reseñas",
+    "news": "Nuevo",
+    "checkAnswer": "Verificar respuesta",
+    "again": "Otra vez",
+    "hard": "Difícil",
+    "good": "Bueno",
+    "easy": "Fácil",
+    "min": "min",
+    "mins": "minutos",
+    "hours": "horas",
+    "weeks": "semanas",
+    "showDetails": "Habilitar vista detallada",
+    "hideDetails": "Deshabilitar vista detallada",
+    "foreignToKorean": "Español → Coreano",
+    "koreanToForeign": "Coreano → Español",
+    "undoCheckAnswer": "Deshacer verificación de respuesta",
+    "conjugations": "Conjugaciones",
+    "examples": "Ejemplos",
+    "pastParticiple": "Participio pasado",
+    "connective": "Conectivo",
+    "seqConnect": "Conectivo secuencial",
+    "formalPresent": "Presente formal",
+    "phrase": "Frase",
+    "sentence": "Oración",
+    "conversation": "Conversación"
   }
 }

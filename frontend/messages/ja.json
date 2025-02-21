@@ -1,18 +1,18 @@
 {
-  "wordsByDifficulty": "難易度別の単語",
-  "beginner": "初心者",
-  "intermediate": "中級",
-  "advanced": "上級",
+  "level": {
+    "wordsByDifficulty": "難易度別の単語",
+    "beginner": "初心者",
+    "intermediate": "中級",
+    "advanced": "上級"
+  },
+
   "learn": "学習",
   "viewWords": "単語を見る",
-  "HomePage": {
-    "title": "こんにちは、世界！",
-    "about": "アバウトページへ行く"
-  },
-  "NotFoundPage": {
-    "title": "ページが見つかりません。"
-  },
-  "SettingsPage": {
+
+  "hideKorean": "韓国語を隠す",
+  "hideForeign": "日本語を隠す",
+
+  "settingsPage": {
     "settings": "設定",
     "system": "システム",
     "language": "言語",
@@ -23,5 +23,42 @@
     "account": "アカウント",
     "signOut": "サインアウト",
     "deleteAccount": "アカウントを削除"
+  },
+  "goalComplete": "デイリー目標を達成しました！",
+  "continuePrompt": "続けますか？",
+  "chooseOption": "以下のオプションを選択してください:",
+  "learnMore": "詳しく学ぶ",
+  "reviewMore": "もっと復習する",
+
+  "difficulty": "難易度",
+  "meanings": "意味",
+  "settings": "設定",
+
+  "learning": {
+    "reviews": "レビュー",
+    "news": "新しい",
+    "checkAnswer": "答えを確認",
+    "again": "もう一度",
+    "hard": "難しい",
+    "good": "良い",
+    "easy": "簡単",
+    "min": "分",
+    "mins": "分",
+    "hours": "時間",
+    "weeks": "週間",
+    "showDetails": "詳細表示を有効にする",
+    "hideDetails": "詳細表示を無効にする",
+    "foreignToKorean": "日本語 → 韓国語",
+    "koreanToForeign": "韓国語 → 日本語",
+    "undoCheckAnswer": "確認を元に戻す",
+    "conjugations": "活用",
+    "examples": "例文",
+    "pastParticiple": "過去分詞",
+    "connective": "接続詞",
+    "seqConnect": "連続接続詞",
+    "formalPresent": "敬体現在形",
+    "phrase": "フレーズ",
+    "sentence": "文",
+    "conversation": "会話"
   }
 }

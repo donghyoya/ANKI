@@ -1,18 +1,18 @@
 {
-  "wordsByDifficulty": "按难度分类的单词",
-  "beginner": "初级",
-  "intermediate": "中级",
-  "advanced": "高级",
+  "level": {
+    "wordsByDifficulty": "按难度分类的单词",
+    "beginner": "初级",
+    "intermediate": "中级",
+    "advanced": "高级"
+  },
+
   "learn": "学习",
   "viewWords": "查看单词",
-  "HomePage": {
-    "title": "你好，世界！",
-    "about": "前往介绍页面"
-  },
-  "NotFoundPage": {
-    "title": "找不到页面。"
-  },
-  "SettingsPage": {
+
+  "hideKorean": "隐藏韩语",
+  "hideForeign": "隐藏中文",
+
+  "settingsPage": {
     "settings": "设置",
     "system": "系统",
     "language": "语言",
@@ -23,5 +23,42 @@
     "account": "账户",
     "signOut": "退出登录",
     "deleteAccount": "删除账户"
+  },
+  "goalComplete": "每日目标已完成！",
+  "continuePrompt": "想继续吗？",
+  "chooseOption": "请选择一个选项：",
+  "learnMore": "了解更多",
+  "reviewMore": "复习更多",
+
+  "difficulty": "难度",
+  "meanings": "含义",
+  "settings": "设置",
+
+  "learning": {
+    "reviews": "评论",
+    "news": "新",
+    "checkAnswer": "检查答案",
+    "again": "再来一次",
+    "hard": "困难",
+    "good": "好",
+    "easy": "容易",
+    "min": "分钟",
+    "mins": "分钟",
+    "hours": "小时",
+    "weeks": "周",
+    "showDetails": "启用详细视图",
+    "hideDetails": "禁用详细视图",
+    "foreignToKorean": "中文 → 韩语",
+    "koreanToForeign": "韩语 → 中文",
+    "undoCheckAnswer": "撤销检查答案",
+    "conjugations": "动词变位",
+    "examples": "例子",
+    "pastParticiple": "过去分词",
+    "connective": "连接词",
+    "seqConnect": "顺序连接词",
+    "formalPresent": "正式礼貌现在时",
+    "phrase": "短语",
+    "sentence": "句子",
+    "conversation": "对话"
   }
 }

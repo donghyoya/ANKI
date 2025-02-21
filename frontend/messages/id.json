@@ -1,18 +1,18 @@
 {
-  "wordsByDifficulty": "Kata berdasarkan tingkat kesulitan",
-  "beginner": "Pemula",
-  "intermediate": "Menengah",
-  "advanced": "Lanjutan",
+  "level": {
+    "wordsByDifficulty": "Kata berdasarkan tingkat kesulitan",
+    "beginner": "Pemula",
+    "intermediate": "Menengah",
+    "advanced": "Lanjutan"
+  },
+
   "learn": "Belajar",
   "viewWords": "Lihat kata",
-  "HomePage": {
-    "title": "Halo dunia!",
-    "about": "Pergi ke halaman tentang"
-  },
-  "NotFoundPage": {
-    "title": "Halaman tidak ditemukan."
-  },
-  "SettingsPage": {
+
+  "hideKorean": "Sembunyikan Korea",
+  "hideForeign": "Sembunyikan Indonesia",
+
+  "settingsPage": {
     "settings": "Pengaturan",
     "system": "Sistem",
     "language": "Bahasa",
@@ -23,5 +23,42 @@
     "account": "Akun",
     "signOut": "Keluar",
     "deleteAccount": "Hapus akun"
+  },
+  "goalComplete": "Tujuan harian tercapai!",
+  "continuePrompt": "Ingin melanjutkan?",
+  "chooseOption": "Pilih opsi di bawah ini:",
+  "learnMore": "Pelajari lebih lanjut",
+  "reviewMore": "Tinjau lebih banyak",
+
+  "difficulty": "Kesulitan",
+  "meanings": "Arti",
+  "settings": "Pengaturan",
+
+  "learning": {
+    "reviews": "Ulasan",
+    "news": "Baru",
+    "checkAnswer": "Periksa jawaban",
+    "again": "Lagi",
+    "hard": "Sulit",
+    "good": "Baik",
+    "easy": "Mudah",
+    "min": "mnt",
+    "mins": "mnt",
+    "hours": "jam",
+    "weeks": "minggu",
+    "showDetails": "Aktifkan tampilan detail",
+    "hideDetails": "Nonaktifkan tampilan detail",
+    "foreignToKorean": "Bahasa Indonesia → Korea",
+    "koreanToForeign": "Korea → Bahasa Indonesia",
+    "undoCheckAnswer": "Batalkan periksa jawaban",
+    "conjugations": "Konjugasi",
+    "examples": "Contoh",
+    "pastParticiple": "Past participle",
+    "connective": "Konektor",
+    "seqConnect": "Konektor sekuensial",
+    "formalPresent": "Presentasi formal",
+    "phrase": "Frasa",
+    "sentence": "Kalimat",
+    "conversation": "Percakapan"
   }
 }

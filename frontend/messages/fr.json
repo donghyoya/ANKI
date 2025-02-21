@@ -1,18 +1,18 @@
 {
-  "wordsByDifficulty": "Mots par difficulté",
-  "beginner": "Débutant",
-  "intermediate": "Intermédiaire",
-  "advanced": "Avancé",
+  "level": {
+    "wordsByDifficulty": "Mots par difficulté",
+    "beginner": "Débutant",
+    "intermediate": "Intermédiaire",
+    "advanced": "Avancé"
+  },
+
   "learn": "Apprendre",
   "viewWords": "Voir les mots",
-  "HomePage": {
-    "title": "Bonjour le monde !",
-    "about": "Aller à la page À propos"
-  },
-  "NotFoundPage": {
-    "title": "Page introuvable"
-  },
-  "SettingsPage": {
+
+  "hideKorean": "Masquer le coréen",
+  "hideForeign": "Masquer le français",
+
+  "settingsPage": {
     "settings": "Paramètres",
     "system": "Système",
     "language": "Langue",
@@ -23,5 +23,42 @@
     "account": "Compte",
     "signOut": "Se déconnecter",
     "deleteAccount": "Supprimer le compte"
+  },
+  "goalComplete": "Objectif quotidien atteint !",
+  "continuePrompt": "Voulez-vous continuer ?",
+  "chooseOption": "Choisissez une option ci-dessous :",
+  "learnMore": "En savoir plus",
+  "reviewMore": "Réviser plus",
+
+  "difficulty": "Difficulté",
+  "meanings": "Signification",
+  "settings": "Paramètres",
+
+  "learning": {
+    "reviews": "Avis",
+    "news": "Nouveau",
+    "checkAnswer": "Vérifier la réponse",
+    "again": "Encore",
+    "hard": "Difficile",
+    "good": "Bon",
+    "easy": "Facile",
+    "min": "min",
+    "mins": "mins",
+    "hours": "heures",
+    "weeks": "semaines",
+    "showDetails": "Activer l'affichage détaillé",
+    "hideDetails": "Désactiver l'affichage détaillé",
+    "foreignToKorean": "Français → Coréen",
+    "koreanToForeign": "Coréen → Français",
+    "undoCheckAnswer": "Annuler la vérification de la réponse",
+    "conjugations": "Conjugaisons",
+    "examples": "Exemples",
+    "pastParticiple": "Participe passé",
+    "connective": "Connecteur",
+    "seqConnect": "Connecteur séquentiel",
+    "formalPresent": "Présent formel",
+    "phrase": "Phrase",
+    "sentence": "Phrase complète",
+    "conversation": "Conversation"
   }
 }

@@ -32,9 +32,7 @@ const NavigationBar = ({
               <Ripple />
               <Icon>{destination.icon}</Icon>
             </div>
-            <span
-              className={`${styles['label']} ${isSelected ? styles.selected : ''} md-typescale-label-medium${isSelected ? '-prominent' : ''}`}
-            >
+            <span className={`${styles['label']} ${isSelected ? styles.selected : ''}`}>
               {destination.label}
             </span>
           </button>

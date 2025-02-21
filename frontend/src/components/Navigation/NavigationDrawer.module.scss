@@ -1,3 +1,5 @@
+@use '@/styles/typography' as tp;
+
 .container {
   box-sizing: border-box;
   display: flex;
@@ -61,6 +63,12 @@
       height: 20px;
       color: var(--md-sys-color-on-secondary-container);
       text-align: left;
+
+      @include tp.label-large;
+
+      &.selected {
+        @include tp.label-large-prominent;
+      }
     }
   }
 }

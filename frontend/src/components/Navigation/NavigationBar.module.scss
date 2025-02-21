@@ -1,3 +1,5 @@
+@use '@/styles/typography' as tp;
+
 .container {
   box-sizing: border-box;
   display: flex;
@@ -53,8 +55,10 @@
 .label {
   height: 16px;
   color: var(--md-sys-color-on-surface-variant);
+  @include tp.label-medium;
 
   &.selected {
     color: var(--md-sys-color-on-surface);
+    @include tp.label-medium-prominent;
   }
 }

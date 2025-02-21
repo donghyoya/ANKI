@@ -1,6 +1,7 @@
+@use '@/styles/typography' as tp;
+
 .container {
   display: flex;
-
   z-index: 1000;
 
   position: fixed;
@@ -74,9 +75,11 @@
       color: var(--md-sys-color-on-surface-variant);
       font-weight: 600;
       font-size: 12px;
+      @include tp.label-medium;
 
       &.selected {
         color: var(--md-sys-color-on-surface);
+        @include tp.label-medium-prominent;
       }
     }
   }

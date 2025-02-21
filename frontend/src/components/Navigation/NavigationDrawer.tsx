@@ -42,9 +42,7 @@ const NavigationDrawer = ({
             >
               <Ripple />
               <Icon>{destination.icon}</Icon>
-              <span
-                className={`${styles['item-label']} md-typescale-label-large${isSelected ? '-prominent' : ''}`}
-              >
+              <span className={`${styles['item-label']} ${isSelected ? styles.selected : ''}`}>
                 {destination.label}
               </span>
             </button>

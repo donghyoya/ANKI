@@ -31,9 +31,7 @@ const ProgressBar = ({ progress, styles: stylesProp, className, height }: Progre
     // 값의 비중이 10% 이하일 때 라벨 표시 안 함
     if (percentage <= 10) return null;
 
-    const LabelContent = () => (
-      <span className={`md-typescale-label-medium ${styles['label']}`}>{label}</span>
-    );
+    const LabelContent = () => <span className={styles['label']}>{label}</span>;
 
     // 툴팁이 있을 때 툴팁 표시
     return tooltip ? (

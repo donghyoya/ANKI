@@ -27,7 +27,7 @@ const TopAppBar = ({
             leftIcon
           ))}
       </div>
-      <h1 className={`${styles['headline']} md-typescale-title-large`}>{headline}</h1>
+      <h1 className={styles['headline']}>{headline}</h1>
       <div className={styles['icon-container']}>
         {rightIcon &&
           (typeof rightIcon === 'string' ? (

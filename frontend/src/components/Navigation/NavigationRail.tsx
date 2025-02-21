@@ -49,11 +49,7 @@ const NavigationRail = ({
             <div
               className={`${styles['navigation-item-label']} ${selectedDestination === destination.label ? styles['selected'] : ''}`}
             >
-              <span
-                className={`md-typescale-label-medium${selectedDestination === destination.label ? '-prominent' : ''}`}
-              >
-                {destination.label}
-              </span>
+              <span>{destination.label}</span>
             </div>
           </div>
         ))}

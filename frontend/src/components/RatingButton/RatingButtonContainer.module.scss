@@ -1,28 +1,28 @@
-@use '@/styles/_typography' as typography;
-@use '@/styles/mixins' as *;
+@use '@/styles/breakpoints' as bp;
+@use '@/styles/grid-system' as gs;
 
 .rating-button-container {
-  @include grid-system;
+  @include gs.grid-system;
   grid-template-columns: repeat(4, 1fr);
   height: 60px;
 
-  @include respond-to('medium') {
+  @include bp.respond-to('medium') {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  @include respond-to('expanded') {
+  @include bp.respond-to('expanded') {
     height: 80px;
   }
 
-  @include respond-to('large') {
+  @include bp.respond-to('large') {
     height: 100px;
   }
 
-  @include respond-to('large') {
+  @include bp.respond-to('large') {
     height: 100px;
   }
 
-  @include respond-to('extra-large') {
+  @include bp.respond-to('extra-large') {
     height: 100px;
   }
 }

@@ -1,5 +1,5 @@
-@use '@/styles/mixins' as *;
-@use '@/styles/_typography' as typography;
+@use '@/styles/breakpoints' as bp;
+@use '@/styles/typography' as tp;
 
 .learning-card {
   box-sizing: border-box;
@@ -10,11 +10,11 @@
   padding: 50px 16px;
   border-radius: 50px;
 
-  @include respond-to('large') {
+  @include bp.respond-to('large') {
     padding: 68px;
   }
 
-  @include respond-to('extra-large') {
+  @include bp.respond-to('extra-large') {
     padding: 68px;
   }
 }
@@ -40,54 +40,54 @@
   }
 
   .korean-word {
-    @include typography.headline-large;
+    @include tp.headline-large;
   }
 
   .foreign-word {
-    @include typography.headline-small;
+    @include tp.headline-small;
 
     &.revealed {
       color: var(--md-sys-color-on-surface-variant);
     }
   }
 
-  @include respond-to('medium') {
+  @include bp.respond-to('medium') {
     gap: 32px;
     .korean-word {
-      @include typography.display-medium;
+      @include tp.display-medium;
     }
     .foreign-word {
-      @include typography.headline-large;
+      @include tp.headline-large;
     }
   }
 
-  @include respond-to('expanded') {
+  @include bp.respond-to('expanded') {
     gap: 32px;
     .korean-word {
-      @include typography.display-medium;
+      @include tp.display-medium;
     }
     .foreign-word {
-      @include typography.headline-large;
+      @include tp.headline-large;
     }
   }
 
-  @include respond-to('large') {
+  @include bp.respond-to('large') {
     gap: 24px;
     .korean-word {
-      @include typography.display-small;
+      @include tp.display-small;
     }
     .foreign-word {
-      @include typography.headline-large;
+      @include tp.headline-large;
     }
   }
 
-  @include respond-to('extra-large') {
+  @include bp.respond-to('extra-large') {
     gap: 32px;
     .korean-word {
-      @include typography.display-medium;
+      @include tp.display-medium;
     }
     .foreign-word {
-      @include typography.display-small;
+      @include tp.display-small;
     }
   }
 }

@@ -1,33 +1,34 @@
-@use '@/styles/mixins' as *;
+@use '@/styles/grid-system' as gs;
+@use '@/styles/breakpoints' as bp;
 
 .layout-container-main {
+  @include gs.grid-system;
+
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-
-  padding: 64px 16px 80px;
   overflow-y: auto;
-  background-color: var(--md-sys-color-background);
 
-  // medium
-  @include respond-to('medium') {
+  @include bp.respond-to('compact') {
+    padding: 80px 16px 96px;
+    background-color: var(--md-sys-color-background);
+  }
+
+  @include bp.respond-to('medium') {
     padding: 24px 32px;
     background-color: var(--md-sys-color-background);
   }
 
-  // expanded
-  @include respond-to('expanded') {
+  @include bp.respond-to('expanded') {
     padding: 36px 24px;
     background-color: var(--md-sys-color-background);
   }
 
-  // large
-  @include respond-to('large') {
-    padding: 0 200px;
+  @include bp.respond-to('large') {
+    padding: 64px 200px;
   }
 
-  // extra large
-  @include respond-to('extra-large') {
-    padding: 0 236px;
+  @include bp.respond-to('extra-large') {
+    padding: 96px 236px;
   }
 }

@@ -1,4 +1,4 @@
-@use '@/styles/_typography' as typography;
+@use '@/styles/typography' as tp;
 
 .card.card {
   display: flex;
@@ -17,7 +17,7 @@
       margin: 0 0 16px 0;
 
       .title {
-        @include typography.title-large;
+        @include tp.title-large;
         margin: 0 6px 0 0;
       }
 
@@ -28,7 +28,7 @@
     }
 
     .word-count {
-      @include typography.label-large;
+      @include tp.label-large;
       margin: 0;
       color: #555;
     }

@@ -1,4 +1,4 @@
-@use '@/styles/_typography' as typography;
+@use '@/styles/typography' as tp;
 @use '@/styles/breakpoints' as bp;
 
 .card {
@@ -23,23 +23,23 @@
       margin: 0;
 
       @include bp.respond-to('compact') {
-        @include typography.body-large;
+        @include tp.body-large;
       }
 
       @include bp.respond-to('medium') {
-        @include typography.body-large;
+        @include tp.body-large;
       }
 
       @include bp.respond-to('expanded') {
-        @include typography.body-large;
+        @include tp.body-large;
       }
 
       @include bp.respond-to('large') {
-        @include typography.title-medium;
+        @include tp.title-medium;
       }
 
       @include bp.respond-to('extra-large') {
-        @include typography.title-large;
+        @include tp.title-large;
       }
     }
 
@@ -63,25 +63,25 @@
 
       .foreign-word {
         @include bp.respond-to('compact') {
-          @include typography.body-large;
+          @include tp.body-large;
         }
 
         @include bp.respond-to('medium') {
-          @include typography.body-large;
+          @include tp.body-large;
         }
 
         @include bp.respond-to('expanded') {
-          @include typography.body-large;
+          @include tp.body-large;
         }
 
         @include bp.respond-to('large') {
           margin: 0 0 0 16px;
-          @include typography.title-medium;
+          @include tp.title-medium;
         }
 
         @include bp.respond-to('extra-large') {
           margin: 0 0 0 24px;
-          @include typography.title-large;
+          @include tp.title-large;
         }
       }
     }

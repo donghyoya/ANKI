@@ -3,95 +3,99 @@
 @use '@material/web/typography/typeface';
 @use '@material/web/tokens';
 
-
 @mixin typescale {
-    @include typescale.styles(tokens.md-sys-typescale-values());
+  @include typescale.styles(tokens.md-sys-typescale-values());
 }
 
 @mixin typeface {
-    @include typeface.theme(("brand": "Roboto, var(--font), 'Noto Sans KR', sans-serif",
-            "plain": "Roboto, var(--font), 'Noto Sans KR', sans-serif",
-            "weight-regular": 400,
-            "weight-medium": 500,
-            "weight-bold": 700));
+  @include typeface.theme(
+    (
+      'brand': "Roboto, var(--font), 'Noto Sans KR', sans-serif",
+      'plain': "Roboto, var(--font), 'Noto Sans KR', sans-serif",
+      'weight-regular': 400,
+      'weight-medium': 500,
+      'weight-bold': 700
+    )
+  );
 }
 
 @mixin apply-typescale($typescale, $prominent: false) {
-    $values: tokens.md-sys-typescale-values();
+  $values: tokens.md-sys-typescale-values();
+  font-weight: if(
+    $prominent,
+    map.get($values, '#{$typescale}-weight-prominent'),
+    map.get($values, '#{$typescale}-weight')
+  );
 
-    font-size: map.get($values, "#{$typescale}-size");
-    line-height: map.get($values, "#{$typescale}-line-height");
-    font-weight: if($prominent,
-        map.get($values, "#{$typescale}-weight-prominent"),
-        map.get($values, "#{$typescale}-weight"));
-    font-family: map.get($values, "#{$typescale}-font");
+  font-size: map.get($values, '#{$typescale}-size');
+  line-height: map.get($values, '#{$typescale}-line-height');
+  font-family: map.get($values, '#{$typescale}-font');
 }
 
-
 @mixin display-small {
-    @include apply-typescale("display-small");
+  @include apply-typescale('display-small');
 }
 
 @mixin display-medium {
-    @include apply-typescale("display-medium");
+  @include apply-typescale('display-medium');
 }
 
 @mixin display-large {
-    @include apply-typescale("display-large");
+  @include apply-typescale('display-large');
 }
 
 @mixin headline-small {
-    @include apply-typescale("headline-small");
+  @include apply-typescale('headline-small');
 }
 
 @mixin headline-medium {
-    @include apply-typescale("headline-medium");
+  @include apply-typescale('headline-medium');
 }
 
 @mixin headline-large {
-    @include apply-typescale("headline-large");
+  @include apply-typescale('headline-large');
 }
 
 @mixin title-small {
-    @include apply-typescale("title-small");
+  @include apply-typescale('title-small');
 }
 
 @mixin title-medium {
-    @include apply-typescale("title-medium");
+  @include apply-typescale('title-medium');
 }
 
 @mixin title-large {
-    @include apply-typescale("title-large");
+  @include apply-typescale('title-large');
 }
 
 @mixin body-small {
-    @include apply-typescale("body-small");
+  @include apply-typescale('body-small');
 }
 
 @mixin body-medium {
-    @include apply-typescale("body-medium");
+  @include apply-typescale('body-medium');
 }
 
 @mixin body-large {
-    @include apply-typescale("body-large");
+  @include apply-typescale('body-large');
 }
 
 @mixin label-small {
-    @include apply-typescale("label-small");
+  @include apply-typescale('label-small');
 }
 
 @mixin label-medium {
-    @include apply-typescale("label-medium");
+  @include apply-typescale('label-medium');
 }
 
 @mixin label-medium-prominent {
-    @include apply-typescale("label-medium", true);
+  @include apply-typescale('label-medium', true);
 }
 
 @mixin label-large {
-    @include apply-typescale("label-large");
+  @include apply-typescale('label-large');
 }
 
 @mixin label-large-prominent {
-    @include apply-typescale("label-large", true);
+  @include apply-typescale('label-large', true);
 }

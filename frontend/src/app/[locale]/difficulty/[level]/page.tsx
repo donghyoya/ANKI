@@ -48,20 +48,18 @@ export default function DifficultyWordsPage() {
   };
 
   return (
-    <div className={styles['grid-container']}>
-      <div className={styles['page']}>
-        <div className={styles['content']}>
-          <div className={styles['header-container']}>
-            <h1 className={styles.title}>{t(level)}</h1>
-            <div className={styles['button-container']}>
-              <FilledButton className={styles['learn-button']}>Learn</FilledButton>
-              <MenuButton />
-            </div>
+    <div className={styles['page']}>
+      <div className={styles['content']}>
+        <div className={styles['header-container']}>
+          <h1 className={styles.title}>{t(level)}</h1>
+          <div className={styles['button-container']}>
+            <FilledButton className={styles['learn-button']}>Learn</FilledButton>
+            <MenuButton />
           </div>
-          <div className={styles['list-container']}>
-            <WordList KoreanWord="안녕" ForeignWord="hi" />
-            <WordList KoreanWord="안녕" ForeignWord="hi" />
-          </div>
+        </div>
+        <div className={styles['list-container']}>
+          <WordList KoreanWord="안녕" ForeignWord="hi" />
+          <WordList KoreanWord="안녕" ForeignWord="hi" />
         </div>
       </div>
     </div>

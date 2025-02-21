@@ -54,47 +54,45 @@ export default function LearningPage() {
   };
 
   return (
-    <div className={styles['grid-container']}>
-      <div className={styles['learning-container']}>
-        <div className={styles['progress-container-wrapper']}>
-          <div className={styles['progress-container']}>
-            <div className={styles['progress-label-container']}>
-              <span
-                className={`${styles['progress-label']} ${learningType === 'reviews' ? styles['active'] : ''}`}
-              >
-                Reviews
-              </span>
-            </div>
-            <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} />
+    <div className={styles['learning-container']}>
+      <div className={styles['progress-container-wrapper']}>
+        <div className={styles['progress-container']}>
+          <div className={styles['progress-label-container']}>
+            <span
+              className={`${styles['progress-label']} ${learningType === 'reviews' ? styles['active'] : ''}`}
+            >
+              Reviews
+            </span>
           </div>
-          <div className={styles['progress-container']}>
-            <div className={styles['progress-label-container']}>
-              <span
-                className={`${styles['progress-label']} ${learningType === 'news' ? styles['active'] : ''}`}
-              >
-                News
-              </span>
-            </div>
-            <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} />
-          </div>
+          <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} />
         </div>
-        <LearningCard
-          card={DUMMY_CARD}
-          className={styles['learning-card']}
-          cardState={cardState}
-          handleReveal={handleReveal}
-          handleShowDetail={handleShowDetail}
-          toggleConjugation={toggleConjugation}
-          toggleExample={toggleExample}
-          style={cardStyle}
-          menuItems={DUMMY_MENU_ITEMS}
-          setContentHeight={setContentHeight}
-        />
-        <RatingButtonContainer
-          intervalPreview={DUMMY_RATING_PREVIEW}
-          isRevealed={cardState.isRevealed}
-        />
+        <div className={styles['progress-container']}>
+          <div className={styles['progress-label-container']}>
+            <span
+              className={`${styles['progress-label']} ${learningType === 'news' ? styles['active'] : ''}`}
+            >
+              News
+            </span>
+          </div>
+          <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} />
+        </div>
       </div>
+      <LearningCard
+        card={DUMMY_CARD}
+        className={styles['learning-card']}
+        cardState={cardState}
+        handleReveal={handleReveal}
+        handleShowDetail={handleShowDetail}
+        toggleConjugation={toggleConjugation}
+        toggleExample={toggleExample}
+        style={cardStyle}
+        menuItems={DUMMY_MENU_ITEMS}
+        setContentHeight={setContentHeight}
+      />
+      <RatingButtonContainer
+        intervalPreview={DUMMY_RATING_PREVIEW}
+        isRevealed={cardState.isRevealed}
+      />
     </div>
   );
 }

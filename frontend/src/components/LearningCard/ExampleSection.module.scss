@@ -1,5 +1,5 @@
-@use '@/styles/mixins' as *;
-@use '@/styles/_typography' as typography;
+@use '@/styles/typography' as tp;
+@use '@/styles/breakpoints' as bp;
 
 .example-container {
   display: flex;
@@ -20,14 +20,14 @@
   padding: 0 8px;
   gap: 8px;
 
-  @include typography.title-small;
+  @include tp.title-small;
 
-  @include respond-to('large') {
-    @include typography.title-medium;
+  @include bp.respond-to('large') {
+    @include tp.title-medium;
   }
 
-  @include respond-to('extra-large') {
-    @include typography.title-large;
+  @include bp.respond-to('extra-large') {
+    @include tp.title-large;
   }
 }
 
@@ -54,25 +54,25 @@
 
 .example-item-label {
   color: var(--md-sys-color-secondary);
-  @include typography.label-medium;
+  @include tp.label-medium;
 
-  @include respond-to('large') {
-    @include typography.title-small;
+  @include bp.respond-to('large') {
+    @include tp.title-small;
   }
 
-  @include respond-to('extra-large') {
-    @include typography.title-medium;
+  @include bp.respond-to('extra-large') {
+    @include tp.title-medium;
   }
 }
 
 .example-item-list-text {
   color: var(--md-sys-color-on-surface);
-  @include typography.label-medium;
+  @include tp.label-medium;
 
-  @include respond-to('large') {
-    @include typography.body-medium;
+  @include bp.respond-to('large') {
+    @include tp.body-medium;
   }
-  @include respond-to('extra-large') {
-    @include typography.body-large;
+  @include bp.respond-to('extra-large') {
+    @include tp.body-large;
   }
 }

@@ -1,5 +1,5 @@
-@use '@/styles/typography' as typo;
-@use '@/styles/mixins' as *;
+@use '@/styles/typography' as tp;
+@use '@/styles/breakpoints' as bp;
 
 .page {
   display: flex;
@@ -12,13 +12,13 @@
     margin: 96px 0 0 0;
 
     .title {
-      @include respond-to('large') {
-        @include typo.headline-medium;
+      @include bp.respond-to('large') {
+        @include tp.headline-medium;
         margin: 0 0 64px 0;
       }
 
-      @include respond-to('extra-large') {
-        @include typo.headline-large;
+      @include bp.respond-to('extra-large') {
+        @include tp.headline-large;
         margin: 0 0 72px 0;
       }
     }
@@ -31,13 +31,13 @@
       }
 
       .group-title {
-        @include respond-to('large') {
-          @include typo.title-medium;
+        @include bp.respond-to('large') {
+          @include tp.title-medium;
           margin: 0 0 24px 0;
         }
 
-        @include respond-to('extra-large') {
-          @include typo.title-large;
+        @include bp.respond-to('extra-large') {
+          @include tp.title-large;
           margin: 0 0 36px 0;
         }
       }
@@ -51,22 +51,22 @@
         .label {
           margin: 0;
 
-          @include respond-to('large') {
-            @include typo.body-medium;
+          @include bp.respond-to('large') {
+            @include tp.body-medium;
           }
 
-          @include respond-to('extra-large') {
-            @include typo.body-large;
+          @include bp.respond-to('extra-large') {
+            @include tp.body-large;
           }
         }
       }
 
       .first-field-section {
-        @include respond-to('large') {
+        @include bp.respond-to('large') {
           margin-bottom: 16px;
         }
 
-        @include respond-to('extra-large') {
+        @include bp.respond-to('extra-large') {
           margin-bottom: 20px;
         }
       }

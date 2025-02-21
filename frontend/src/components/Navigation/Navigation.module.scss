@@ -1,3 +1,5 @@
+@use '@/styles/breakpoints' as bp;
+
 @media (max-width: 600px) {
   .mobile-view {
     display: block;
@@ -26,7 +28,7 @@
   background-color: var(--md-sys-color-scrim);
   opacity: 0.16;
 
-  @media (min-width: 1600px) {
+  @include bp.respond-to('extra-large') {
     display: none;
   }
 }

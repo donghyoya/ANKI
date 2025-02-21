@@ -1,5 +1,5 @@
-@use '@/styles/mixins' as *;
-@use '@/styles/_typography' as typography;
+@use '@/styles/breakpoints' as bp;
+@use '@/styles/typography' as tp;
 
 .korean-container {
   display: flex;
@@ -7,38 +7,38 @@
   padding: 0 12px;
 
   .korean-word {
-    @include typography.headline-large;
+    @include tp.headline-large;
   }
 
   .korean-homograph-number {
-    @include typography.headline-small;
+    @include tp.headline-small;
   }
 
   .korean-info-container {
-    @include typography.label-large;
+    @include tp.label-large;
   }
 
-  @include respond-to('large') {
+  @include bp.respond-to('large') {
     .korean-word {
-      @include typography.display-small;
+      @include tp.display-small;
     }
     .korean-homograph-number {
-      @include typography.headline-medium;
+      @include tp.headline-medium;
     }
     .korean-info-container {
-      @include typography.title-medium;
+      @include tp.title-medium;
     }
   }
 
-  @include respond-to('extra-large') {
+  @include bp.respond-to('extra-large') {
     .korean-word {
-      @include typography.display-medium;
+      @include tp.display-medium;
     }
     .korean-homograph-number {
-      @include typography.display-small;
+      @include tp.display-small;
     }
     .korean-info-container {
-      @include typography.title-large;
+      @include tp.title-large;
     }
   }
 }
@@ -68,12 +68,12 @@
   padding: 0 10px;
   gap: 10px;
 
-  @include respond-to('large') {
+  @include bp.respond-to('large') {
     .foreign-word {
-      @include typography.title-large;
+      @include tp.title-large;
     }
     .foreign-word-sub {
-      @include typography.title-medium;
+      @include tp.title-medium;
     }
   }
 }

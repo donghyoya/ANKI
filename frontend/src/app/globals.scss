@@ -1,12 +1,12 @@
-@use '@/styles/_typography' as typography;
+@use '@/styles/typography' as tp;
 @use '@/styles/theme';
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 
-  @include typography.typescale;
-  @include typography.typeface;
+  @include tp.typescale;
+  @include tp.typeface;
 }
 
 :root {

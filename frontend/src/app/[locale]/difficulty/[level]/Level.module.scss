@@ -1,45 +1,35 @@
-@use '@/styles/typography' as typography;
+@use '@/styles/typography' as tp;
 @use '@/styles/breakpoints' as bp;
-@use '@/styles/mixins' as *;
-
-.grid-container {
-  @include grid-system;
-  width: 100%;
-  height: min-content;
-  min-height: 100%;
-}
 
 .page {
   box-sizing: border-box;
   display: flex;
-
-  grid-column: span 4;
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  padding: 16px 0;
-  gap: 16px;
 
-  @include respond-to('medium') {
+  @include bp.respond-to('compact') {
+    grid-column: span 4;
+    gap: 16px;
+  }
+
+  @include bp.respond-to('medium') {
     grid-column: 2 / span 6;
-    padding: 64px 0;
+    gap: 16px;
   }
 
-  @include respond-to('expanded') {
+  @include bp.respond-to('expanded') {
     grid-column: 3 / span 8;
-    padding: 64px 0;
     gap: 24px;
   }
 
-  @include respond-to('large') {
+  @include bp.respond-to('large') {
     grid-column: 3 / span 8;
-    padding: 96px 0;
     gap: 24px;
   }
 
-  @include respond-to('extra-large') {
+  @include bp.respond-to('extra-large') {
     grid-column: 3 / span 8;
-    padding: 96px 0;
     gap: 24px;
   }
 }
@@ -80,20 +70,20 @@
     .title {
       margin: 0;
 
-      @include respond-to('medium') {
-        @include typography.title-large;
+      @include bp.respond-to('medium') {
+        @include tp.title-large;
       }
 
-      @include respond-to('expanded') {
-        @include typography.headline-small;
+      @include bp.respond-to('expanded') {
+        @include tp.headline-small;
       }
 
-      @include respond-to('large') {
-        @include typography.headline-medium;
+      @include bp.respond-to('large') {
+        @include tp.headline-medium;
       }
 
       @include bp.respond-to('extra-large') {
-        @include typography.headline-large;
+        @include tp.headline-large;
       }
     }
 

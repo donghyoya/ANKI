@@ -1,5 +1,5 @@
-@use '@/styles/_typography' as typography;
-@use '@/styles/mixins' as *;
+@use '@/styles/typography' as tp;
+@use '@/styles/breakpoints' as bp;
 
 .rating-button {
   display: flex;
@@ -14,16 +14,6 @@
   border-radius: 20px;
   background-color: var(--md-sys-color-primary-container);
 
-  .rating-button-label {
-    @include typography.label-medium;
-    color: var(--md-sys-color-on-primary-container);
-  }
-
-  .rating-button-interval {
-    @include typography.label-small;
-    color: var(--md-sys-color-on-surface-variant);
-  }
-
   &.error {
     background-color: var(--md-sys-color-error-container);
 
@@ -36,43 +26,55 @@
     }
   }
 
-  @include respond-to('medium') {
+  @include bp.respond-to('compact') {
     .rating-button-label {
-      @include typography.title-medium;
+      @include tp.label-medium;
+      color: var(--md-sys-color-on-primary-container);
     }
 
     .rating-button-interval {
-      @include typography.title-small;
+      @include tp.label-small;
+      color: var(--md-sys-color-on-surface-variant);
     }
   }
 
-  @include respond-to('expanded') {
+  @include bp.respond-to('medium') {
     .rating-button-label {
-      @include typography.title-large;
+      @include tp.title-medium;
     }
 
     .rating-button-interval {
-      @include typography.title-medium;
+      @include tp.title-small;
     }
   }
 
-  @include respond-to('large') {
+  @include bp.respond-to('expanded') {
     .rating-button-label {
-      @include typography.headline-small;
+      @include tp.title-large;
     }
 
     .rating-button-interval {
-      @include typography.title-small;
+      @include tp.title-medium;
     }
   }
 
-  @include respond-to('extra-large') {
+  @include bp.respond-to('large') {
     .rating-button-label {
-      @include typography.headline-medium;
+      @include tp.headline-small;
     }
 
     .rating-button-interval {
-      @include typography.title-medium;
+      @include tp.title-small;
+    }
+  }
+
+  @include bp.respond-to('extra-large') {
+    .rating-button-label {
+      @include tp.headline-medium;
+    }
+
+    .rating-button-interval {
+      @include tp.title-medium;
     }
   }
 }

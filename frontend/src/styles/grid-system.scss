@@ -1,0 +1,31 @@
+@use './breakpoints' as bp;
+
+@mixin grid-system {
+  box-sizing: border-box;
+  display: grid;
+
+  @include bp.respond-to('compact') {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  @include bp.respond-to('medium') {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 16px;
+  }
+
+  @include bp.respond-to('expanded') {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  @include bp.respond-to('large') {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  @include bp.respond-to('extra-large') {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+}

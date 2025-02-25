@@ -1,17 +1,21 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from './DeckCardCompact.module.scss';
-import { DeckCardProps } from '@/components/DeckCard/types';
+import Link from 'next/link';
+import classnames from 'classnames';
+
 import FilledButton from '@/components/material-components/FilledButton';
 import TextButton from '@/components/material-components/TextButton';
 import { Icon } from '@/components/material-components/IconButton/IconButton';
-import { OutlinedCard } from '@/components/Card/Card';
+
+import { DeckCardProps } from '@/components/DeckCard/types';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
-import classnames from 'classnames';
-import { DUMMY_PROGRESS } from '@/utils/dummyData';
-import Link from 'next/link';
+import { OutlinedCard } from '@/components/Card/Card';
+
+import { getWordCount } from './wordCount';
 import { Progress } from '@/types/Progress';
+import { DUMMY_PROGRESS } from '@/utils/dummyData';
+import styles from './DeckCardCompact.module.scss';
 
 const DeckCardCompact = ({
   title,
@@ -20,7 +24,6 @@ const DeckCardCompact = ({
   locale,
   buttonLabels,
   level,
-  onViewWords,
   onLearn
 }: DeckCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -58,15 +61,10 @@ const DeckCardCompact = ({
         </div>
         {isExpanded && (
           <div className={styles['extra-contents']}>
-            <TextButton
-              onClick={(e) => {
-                e.stopPropagation();
-                onViewWords();
-              }}
-            >
-              {buttonLabels.viewWords}
-            </TextButton>
-            <span className={styles['word-count']}>{wordCount.toLocaleString(locale)} words</span>
+            <Link href={`/difficulty/${level}`}>
+              <TextButton onClick={(e) => e.stopPropagation()}>{buttonLabels.viewWords}</TextButton>
+            </Link>
+            <span className={styles['word-count']}>{getWordCount(wordCount, locale)} words</span>
           </div>
         )}
         <ProgressBar progress={progress} height={isExpanded ? 12 : 6}></ProgressBar>

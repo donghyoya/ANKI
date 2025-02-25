@@ -33,7 +33,7 @@ export default function DifficultyPage() {
       viewWords: t('viewWords'),
       learn: t('learn')
     }),
-    [locale]
+    [t]
   );
 
   // 'Dialog' 닫기 이벤트 감지해서 'isDialogOpen' 업데이트

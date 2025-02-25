@@ -8,6 +8,7 @@ import WordSection from './WordSection';
 import { useWindowSize } from '@/hooks/useWindowSize';
 import { IconButton, Icon } from '@/components/material-components/IconButton/IconButton';
 import { Menu, MenuItem } from '@/components/material-components/Menu';
+import { MdIconButton } from '@material/web/iconbutton/icon-button.js';
 
 import { MenuItem as MenuItemType } from '@/types/Menu';
 import { useEffect } from 'react';
@@ -39,7 +40,7 @@ const LearningCard = ({
   style,
   cardState,
   handleReveal,
-  handleShowDetail,
+  // handleShowDetail,
   toggleConjugation,
   toggleExample,
   menuItems,
@@ -48,9 +49,9 @@ const LearningCard = ({
   const t = useTranslations();
   const { width } = useWindowSize();
 
-  const handleMenuClick = (e: any) => {
+  const handleMenuClick = (e: React.MouseEvent<MdIconButton>) => {
     e.stopPropagation();
-    const menu = document.getElementById('learning-card-menu') as any;
+    const menu = document.getElementById('learning-card-menu') as HTMLDialogElement;
     menu.open = !menu.open;
   };
 
@@ -58,7 +59,7 @@ const LearningCard = ({
     const contentElement = document.querySelector(`.${styles['content-container']}`);
     const height = contentElement?.scrollHeight ?? 0;
     setContentHeight(height);
-  }, [cardState]);
+  }, [cardState, setContentHeight]);
 
   return (
     <FilledCard
@@ -70,7 +71,9 @@ const LearningCard = ({
       {!cardState.isRevealed && (
         <div className={styles['content-container']}>
           <span className={styles['korean-word']}>{card.wordInfo.koreanWord}</span>
-          <span className={`${styles['foreign-word']} ${styles['revealed']}`}>{t('learning.checkAnswer')}</span>
+          <span className={`${styles['foreign-word']} ${styles['revealed']}`}>
+            {t('learning.checkAnswer')}
+          </span>
         </div>
       )}
 

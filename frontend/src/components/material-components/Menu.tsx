@@ -20,8 +20,8 @@ export const MenuItem = createComponent({
 });
 
 export default function MenuExample() {
-  const handleClick = (e: any) => {
-    const menu = document.getElementById('menu') as any;
+  const handleClick = () => {
+    const menu = document.getElementById('menu') as HTMLDialogElement;
     menu.open = !menu.open;
   };
 

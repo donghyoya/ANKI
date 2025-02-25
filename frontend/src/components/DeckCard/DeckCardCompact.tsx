@@ -58,14 +58,16 @@ const DeckCardCompact = ({
         </div>
         {isExpanded && (
           <div className={styles['extra-contents']}>
-            <TextButton
-              onClick={(e) => {
-                e.stopPropagation();
-                onViewWords();
-              }}
-            >
-              {buttonLabels.viewWords}
-            </TextButton>
+            <Link href={`/difficulty/${level}`}>
+              <TextButton
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onViewWords();
+                }}
+              >
+                {buttonLabels.viewWords}
+              </TextButton>
+            </Link>
             <span className={styles['word-count']}>{wordCount.toLocaleString(locale)} words</span>
           </div>
         )}

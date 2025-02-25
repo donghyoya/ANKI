@@ -64,7 +64,7 @@ const DeckCardCompact = ({
             <Link href={`/difficulty/${level}`}>
               <TextButton onClick={(e) => e.stopPropagation()}>{buttonLabels.viewWords}</TextButton>
             </Link>
-            <span className={styles['word-count']}>{getWordCount(wordCount, locale)} words</span>
+            <span className={styles['word-count']}>{getWordCount(wordCount, locale)}</span>
           </div>
         )}
         <ProgressBar progress={progress} height={isExpanded ? 12 : 6}></ProgressBar>

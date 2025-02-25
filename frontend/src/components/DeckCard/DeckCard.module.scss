@@ -17,8 +17,8 @@
       margin: 0 0 16px 0;
 
       .title {
-        @include tp.title-large;
         margin: 0 6px 0 0;
+        @include tp.title-large;
       }
 
       .check-icon {
@@ -28,9 +28,9 @@
     }
 
     .word-count {
-      @include tp.label-large;
       margin: 0;
       color: #555;
+      @include tp.label-large;
     }
   }
 

@@ -2,9 +2,9 @@
 @use '@/styles/grid-system' as gs;
 
 .rating-button-container {
-  @include gs.grid-system;
   grid-template-columns: repeat(4, 1fr);
   height: 60px;
+  @include gs.grid-system;
 
   @include bp.respond-to('medium') {
     grid-template-columns: repeat(4, 1fr);

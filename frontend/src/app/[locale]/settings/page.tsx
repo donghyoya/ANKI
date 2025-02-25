@@ -47,13 +47,13 @@ export default function SettingsPage() {
     router.refresh();
   };
 
-  const handleLanguageMenuClick = (e: any) => {
-    const menu = document.getElementById('language-menu') as any;
+  const handleLanguageMenuClick = () => {
+    const menu = document.getElementById('language-menu') as HTMLDialogElement;
     menu.open = !menu.open;
   };
 
-  const handleThemeMenuClick = (e: any) => {
-    const menu = document.getElementById('theme-menu') as any;
+  const handleThemeMenuClick = () => {
+    const menu = document.getElementById('theme-menu') as HTMLDialogElement;
     menu.open = !menu.open;
   };
 

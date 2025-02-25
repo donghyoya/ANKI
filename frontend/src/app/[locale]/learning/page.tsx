@@ -29,6 +29,7 @@ export default function LearningPage() {
     showExample: false
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [learningType, setLearningType] = useState<'reviews' | 'news'>('reviews');
 
   const cardStyle = useLearningCardLayout({

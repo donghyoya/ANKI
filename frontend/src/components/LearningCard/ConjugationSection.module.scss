@@ -46,8 +46,8 @@
 }
 
 .conjugation-item-label {
-  @include tp.label-medium;
   color: var(--md-sys-color-secondary);
+  @include tp.label-medium;
 
   @include bp.respond-to('large') {
     @include tp.title-small;

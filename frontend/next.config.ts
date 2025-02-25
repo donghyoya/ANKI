@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
         propList: ['*']
       },
       autoprefixer: {}
+    },
+    sassOptions: {
+      quietDeps: true
     }
   }
 };

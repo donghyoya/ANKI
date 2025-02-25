@@ -18,8 +18,8 @@
       align-items: center;
 
       .title {
-        @include tp.body-large;
         margin: 0 6px 0 0;
+        @include tp.body-large;
       }
 
       .check-icon {
@@ -41,9 +41,9 @@
     padding: 0 16px 0 4;
 
     .word-count {
-      @include tp.label-small;
       margin: 0;
       color: #555;
+      @include tp.label-small;
     }
   }
 }

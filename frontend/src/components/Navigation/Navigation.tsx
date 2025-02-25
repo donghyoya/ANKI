@@ -23,8 +23,8 @@ const Navigation = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  const handleMenuClick = (e: any) => {
-    const menu = document.getElementById('menu') as any;
+  const handleMenuClick = () => {
+    const menu = document.getElementById('menu') as HTMLDialogElement;
     menu.open = !menu.open;
   };
 

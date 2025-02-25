@@ -6,9 +6,14 @@ interface WordSectionProps {
   wordInfo: WordInfo;
 }
 
+const levelStars = {
+  beginner: '★★★',
+  intermediate: '★★',
+  advanced: '★'
+};
+
 const WordSection = ({ wordInfo }: WordSectionProps) => {
-  const levelLabel =
-    wordInfo.level === 'beginner' ? '★★★' : 'intermediate' ? '★★' : 'advanced' ? '★' : '';
+  const levelLabel = levelStars[wordInfo.level as keyof typeof levelStars] || '';
 
   return (
     <>

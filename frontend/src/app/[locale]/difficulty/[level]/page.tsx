@@ -19,8 +19,8 @@ export default function DifficultyWordsPage() {
     notFound();
   }
 
-  const handleMenuClick = (e: any) => {
-    const menu = document.getElementById('word-list-more') as any;
+  const handleMenuClick = () => {
+    const menu = document.getElementById('word-list-more') as HTMLDialogElement;
     menu.open = !menu.open;
   };
 

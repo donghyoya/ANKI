@@ -3,6 +3,14 @@ import { getLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import type { Metadata } from 'next';
+import {
+  Noto_Sans_KR,
+  Roboto,
+  Noto_Sans_Arabic,
+  Noto_Sans_JP,
+  Noto_Sans_Thai,
+  Noto_Sans_SC
+} from 'next/font/google';
 
 import './globals.scss';
 
@@ -17,20 +25,50 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const fontLinks: Record<string, string> = {
-  ar: 'https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap',
-  ja: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap',
-  th: 'https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap',
-  zh: 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap',
+const notoSansKr = Noto_Sans_KR({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '500', '700', '900']
+});
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '500', '700', '900'],
+  style: ['normal', 'italic']
+});
+
+const notoSansAr = Noto_Sans_Arabic({
+  subsets: ['arabic'],
+  weight: ['100', '300', '400', '500', '700', '900']
+});
+
+const notoSansJp = Noto_Sans_JP({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '500', '700', '900']
+});
+
+const notoSansTh = Noto_Sans_Thai({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '500', '700', '900']
+});
+
+const notoSansSc = Noto_Sans_SC({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '500', '700', '900']
+});
+
+const fonts = {
+  ar: notoSansAr,
+  ja: notoSansJp,
+  th: notoSansTh,
+  zh: notoSansSc
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   // 현재 locale 가져오기
   const locale = await getLocale();
-  const extraFont = fontLinks[locale] || "";
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
   }
 
@@ -39,18 +77,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang={locale}>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
-          rel="stylesheet"
-        />
-        {extraFont && <link href={extraFont} rel="stylesheet" />}
-      </head>
-      <body className={`antialiased ${theme}`}>{children}</body>
+      <body
+        className={`antialiased ${theme} ${notoSansKr.className} ${roboto.className} ${fonts[locale as keyof typeof fonts]?.className || ''}`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,24 +1,14 @@
 package com.kmu.anki.backend.global;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kmu.anki.backend.TestcontainersConfiguration;
-import com.kmu.anki.backend.domain.auth.service.OAuth2AccessTokenService;
+import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.webservices.server.AutoConfigureMockWebServiceClient;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
-import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler;
-import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -44,7 +34,9 @@ public abstract class AbstractControllerTest extends AbstractIntegrationTest{
 
     @BeforeEach
     void setUp(final WebApplicationContext context, final RestDocumentationContextProvider restDocumentation){
-        session.setAttribute("userId", 1L);
+        session.setAttribute("todayStudyWords", 20);
+        session.setAttribute("todayReviewWords", 20);
+        session.setAttribute("languageCode", LanguageCode.en);
         this.mockMvc = MockMvcBuilders.webAppContextSetup(context)
                 .apply(documentationConfiguration(restDocumentation))
                 .apply(springSecurity())

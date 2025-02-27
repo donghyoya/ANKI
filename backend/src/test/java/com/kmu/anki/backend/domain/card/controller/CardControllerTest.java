@@ -23,6 +23,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.test.context.support.WithAnonymousUser;
 
 import java.util.stream.Stream;
 
@@ -44,6 +45,7 @@ class CardControllerTest extends AbstractControllerTest {
     void getCard() throws Exception{
         mockMvc.perform(
                         get("/cards/{id}", 1)
+                        .session(session)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -70,6 +72,8 @@ class CardControllerTest extends AbstractControllerTest {
     void getCard404() throws Exception {
         mockMvc.perform(
                         get("/cards/{id}", -1)
+                                .session(session)
+
                 ).andExpect(status().isNotFound())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -97,6 +101,8 @@ class CardControllerTest extends AbstractControllerTest {
     void getCardDetails() throws Exception {
         mockMvc.perform(
                         get("/cards/{id}/details", 1)
+                                .session(session)
+
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -123,6 +129,7 @@ class CardControllerTest extends AbstractControllerTest {
     void getCardDetails404() throws Exception {
         mockMvc.perform(
                         get("/cards/{id}/details", -1)
+                                .session(session)
                 ).andExpect(status().isNotFound())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -200,6 +207,7 @@ class CardControllerTest extends AbstractControllerTest {
                                 .param("query", query)
                                 .param("page", "1")
                                 .param("pageSize", "20")
+                                .session(session)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -223,6 +231,43 @@ class CardControllerTest extends AbstractControllerTest {
                 );
 
     }
+
+    @WithAnonymousUser
+    @Test
+    void getKoreanSearchWithNoAuth() throws Exception{
+        String identifier = String.format("{class-name}/{method-name}/un-auth");
+
+        mockMvc.perform(
+                        get("/cards/korean-search")
+                                .param("query", "인생")
+                                .param("page", "1")
+                                .param("pageSize", "20")
+                                .param("code", LanguageCode.en.name())
+                ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                identifier,
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Cards")
+                                                .summary("한글로 카드 검색")
+                                                .queryParameters(
+                                                        CardParameters.unAuthlanguageCode,
+                                                        CardParameters.query,
+                                                        PageParameters.page,
+                                                        PageParameters.pageSize
+                                                )
+                                                .responseFields(
+                                                        CardDetailDtoDocs.cardDetailDtos
+                                                )
+                                                .responseSchema(CardDetailDtoDocs.cardDetailsSchema)
+                                                .build()
+                                )
+                        )
+                );
+
+    }
+
 
     private static Stream<Arguments> getKoreanSearch(){
         Page<KoreanCard> all = koreanCardRepository.findAll(PageRequest.of(0,20));

@@ -19,4 +19,9 @@ public class CardParameters {
             .description("검색하고자 하는 언어 코드")
             .attributes(Attributes.key("enumValues").value(Arrays.asList(LanguageCode.values())));
 
+    public static ParameterDescriptor unAuthlanguageCode = parameterWithName("code")
+            .description("검색하고자 하는 언어 코드 / 로그인하지 않았을 경우에만 작동함")
+            .optional()
+            .attributes(Attributes.key("enumValues").value(Arrays.asList(LanguageCode.values())));
+
 }

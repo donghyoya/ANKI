@@ -4,29 +4,41 @@ import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
+import java.util.Optional;
+
 public class SessionUtils {
 
-    public static LanguageCode getLanaguageCode(HttpServletRequest request){
+    public static Optional<LanguageCode> getLanaguageCode(HttpServletRequest request){
         HttpSession session = request.getSession(false);
-        return (LanguageCode) session.getAttribute("languageCode");
+        if(session == null){
+            return Optional.empty();
+        }
+        return Optional.of((LanguageCode) session.getAttribute("languageCode"));
     }
 
-    public static Integer getTodayStudyWords(HttpServletRequest request){
+    public static Optional<Integer> getTodayStudyWords(HttpServletRequest request){
         HttpSession session = request.getSession(false);
-        return (Integer) session.getAttribute("todayStudyWords");
+        if(session == null){
+            return Optional.empty();
+        }
+        return Optional.of((Integer) session.getAttribute("todayStudyWords"));
     }
 
-    public static Integer getTodayReviewWords(HttpServletRequest request){
+    public static Optional<Integer> getTodayReviewWords(HttpServletRequest request){
         HttpSession session = request.getSession(false);
-        return (Integer) session.getAttribute("todayReviewWords");
+        if(session == null){
+            return Optional.empty();
+        }
+        return Optional.of((Integer) session.getAttribute("todayReviewWords"));
     }
 
     public static void setUserOptions(HttpServletRequest request, Integer todayStudyWords, Integer todayReviewWords, LanguageCode languageCode){
         HttpSession session = request.getSession(false);
-        session.setAttribute("todayStudyWords", todayStudyWords);
-        session.setAttribute("todayReviewWords", todayReviewWords);
-        session.setAttribute("languageCode", languageCode);
-
+        if(session != null){
+            session.setAttribute("todayStudyWords", todayStudyWords);
+            session.setAttribute("todayReviewWords", todayReviewWords);
+            session.setAttribute("languageCode", languageCode);
+        }
     }
 
 }

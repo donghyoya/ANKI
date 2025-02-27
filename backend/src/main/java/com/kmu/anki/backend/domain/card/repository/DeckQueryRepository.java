@@ -16,13 +16,22 @@ import java.util.List;
 @Repository
 public class DeckQueryRepository {
     private final DeckMapper deckMapper;
+    private final KoreanCardRepository koreanCardRepository;
 
     public List<DeckDto> findDeckByDifficulty(Long userId){
-        return deckMapper.findDeckByDifficulty(userId);
+        if(userId == null){
+            return koreanCardRepository.findAllDeckByLevel();
+        }else {
+            return deckMapper.findDeckByDifficulty(userId);
+        }
     }
 
     public List<DeckDto> findDeckByMeaning(Long userId){
-        return deckMapper.findDeckByMeaning(userId);
+        if(userId == null){
+            return deckMapper.findDeckByMeaningWithoutUser();
+        }else {
+            return deckMapper.findDeckByMeaning(userId);
+        }
     }
 
 }

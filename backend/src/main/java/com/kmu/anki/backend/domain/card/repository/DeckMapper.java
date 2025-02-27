@@ -10,4 +10,6 @@ import java.util.List;
 public interface DeckMapper {
     public List<DeckDto> findDeckByDifficulty(@Param("userId") Long userId);
     public List<DeckDto> findDeckByMeaning(@Param("userId") Long userId);
+    public List<DeckDto> findDeckByMeaningWithoutUser();
+
 }

@@ -30,4 +30,14 @@
         GROUP BY card_topics.topic_id
     </select>
 
+    <!-- 쿼리: 주제별 카드 통계 조회 -->
+    <select id="findDeckByMeaningWithoutUser" resultType="com.kmu.anki.backend.domain.card.dto.DeckDto">
+        SELECT
+            card_topics.topic_id AS category,
+            COUNT(korean_card_id) AS cardsCounts,
+        FROM korean_cards
+                 JOIN card_topics USING (korean_card_id)
+        GROUP BY card_topics.topic_id
+    </select>
+
 </mapper>

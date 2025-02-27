@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.card.controller;
 
+import com.kmu.anki.backend.domain.auth.utils.PrincipalUtils;
 import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.dto.DeckDto;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
@@ -12,6 +13,7 @@ import com.kmu.anki.backend.global.schema.BasePageResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -27,9 +29,12 @@ public class DeckController {
     @GetMapping
     public BaseListReponse<DeckDto> getDecks(
             @RequestParam("queryType") QueryType queryType,
-            HttpSession session
+            Authentication authentication
     ){
-        Long userId = (Long) session.getAttribute("userId");
+        Long userId = null;
+        if(authentication != null && authentication.isAuthenticated()){
+            userId = PrincipalUtils.extractUserId(authentication);
+        }
         List<DeckDto> decks = new ArrayList<>();
         if(queryType == QueryType.level){
             decks = deckService.readDeckByDifficulty(userId);

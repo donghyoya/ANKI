@@ -20,12 +20,20 @@ public class DeckDtoDocs {
 
     public static FieldDescriptor[] deckDto(String prefix){
         return new FieldDescriptor[]{
-                fieldWithPath(prefix+"category").type(JsonFieldType.STRING).optional().description("카드 분류"),
-                fieldWithPath(prefix+"cardCounts").description("덱에 포함된 카드 개수"),
-                fieldWithPath(prefix+"overdueRate").description("due가 지난 상태인 카드 비율"),
-                fieldWithPath(prefix+"maturitiyRate").description("state가 review인 카드 비율:"),
-                fieldWithPath(prefix+"overdueCounts").description("due가 지난 상태인 카드 개수"),
-                fieldWithPath(prefix+"maturitiyCounts").description("state가 review인 카드 개수")
+                fieldWithPath(prefix+"category").type(JsonFieldType.STRING).description("카드 분류"),
+                fieldWithPath(prefix+"cardCounts").type(JsonFieldType.NUMBER).description("덱에 포함된 카드 개수"),
+                fieldWithPath(prefix+"overdueRate")
+                        .type(JsonFieldType.NUMBER).optional()
+                        .description("due가 지난 상태인 카드 비율"),
+                fieldWithPath(prefix+"maturitiyRate")
+                        .type(JsonFieldType.NUMBER).optional()
+                        .description("state가 review인 카드 비율:"),
+                fieldWithPath(prefix+"overdueCounts")
+                        .type(JsonFieldType.NUMBER).optional()
+                        .description("due가 지난 상태인 카드 개수"),
+                fieldWithPath(prefix+"maturitiyCounts")
+                        .type(JsonFieldType.NUMBER).optional()
+                        .description("state가 review인 카드 개수")
         };
     }
 

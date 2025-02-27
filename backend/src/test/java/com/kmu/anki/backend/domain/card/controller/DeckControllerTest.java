@@ -16,6 +16,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.springframework.security.test.context.support.WithAnonymousUser;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
@@ -57,6 +58,37 @@ class DeckControllerTest extends AbstractControllerTest {
                         )
         ;
     }
+
+    @WithAnonymousUser
+    @Test
+    void getDecksWithUnAuth() throws Exception {
+        String identifier = String.format("{class-name}/{method-name}/un-auth");
+
+        mockMvc.perform(
+                        get("/decks")
+                                .param("queryType", QueryType.level.name())
+                ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                identifier,
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Decks")
+                                                .summary("검색어 조건에 맞는 Deck 보기")
+                                                .queryParameters(
+                                                        DeckParameters.queryType
+                                                )
+                                                .responseFields(
+                                                        DeckDtoDocs.decks
+                                                )
+                                                .responseSchema(DeckDtoDocs.decksSceham)
+                                                .build()
+                                )
+                        )
+                )
+        ;
+    }
+
 
     @WithMockCustomOAuth2
     @Test

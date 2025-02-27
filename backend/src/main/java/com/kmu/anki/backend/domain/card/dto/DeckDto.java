@@ -10,8 +10,8 @@ public class DeckDto {
     private Long cardCounts;
     private Integer overdueCounts;
     private Integer maturitiyCounts;
-    private Double overdueRate = 0.4;
-    private Double maturitiyRate = 0.65;
+    private Double overdueRate;
+    private Double maturitiyRate;
 
     public DeckDto(CardLevel level, Long cardCounts) {
         this.category = level.toString();

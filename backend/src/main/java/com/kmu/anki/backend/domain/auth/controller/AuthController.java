@@ -3,6 +3,7 @@ package com.kmu.anki.backend.domain.auth.controller;
 import com.kmu.anki.backend.domain.auth.service.CustomOAuth2UserService;
 import com.kmu.anki.backend.domain.auth.service.OAuth2AccessTokenService;
 import com.kmu.anki.backend.domain.user.entity.User;
+import com.kmu.anki.backend.domain.user.utils.SessionUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -75,10 +76,19 @@ public class AuthController {
 
         OAuth2User oAuth2User = oAuth2UserService.loadUser(userRequest);
 
+
         //세션 추가
         securitySession(req, rep, oAuth2User);
 
         Map<String, Object> attributes = oAuth2User.getAttributes();
+
+        // 세션에 필요 정보 추가
+        SessionUtils.setUserOptions(
+                req,
+                oAuth2User.getAttribute("todayStudyWords"),
+                oAuth2User.getAttribute("todayReviewWords"),
+                oAuth2User.getAttribute("languageCode")
+        );
 
         log.debug("attributes.toString() = " + attributes.toString());
 //        System.out.println("attributes.toString() = " + attributes.toString());

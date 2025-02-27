@@ -3,6 +3,8 @@ package com.kmu.anki.backend.domain.user.controller;
 import com.kmu.anki.backend.domain.auth.utils.PrincipalUtils;
 import com.kmu.anki.backend.domain.user.dto.UserOptionDto;
 import com.kmu.anki.backend.domain.user.service.UserOptionService;
+import com.kmu.anki.backend.domain.user.utils.SessionUtils;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -15,21 +17,39 @@ public class UserOptionController {
     private final UserOptionService userOptionService;
 
     @GetMapping()
-    public UserOptionDto getUserOption(Authentication authentication){
+    public UserOptionDto getUserOption(Authentication authentication, HttpServletRequest request){
         Long id = PrincipalUtils.extractUserId(authentication);
-        return userOptionService.readOption(id);
+
+        UserOptionDto userOptionDto = userOptionService.readOption(id);
+        SessionUtils.setUserOptions(
+                request,
+                userOptionDto.getTodayStudyWords(),
+                userOptionDto.getTodayReviewWords(),
+                userOptionDto.getLanguageCode()
+        );
+        return userOptionDto;
     }
 
     @PostMapping
     public UserOptionDto putUserOption(
-            @RequestBody UserOptionDto form, Authentication authentication
+            @RequestBody UserOptionDto form, Authentication authentication, HttpServletRequest request
     ){
         Long id = PrincipalUtils.extractUserId(authentication);
-        return userOptionService.updateOption(
+
+        UserOptionDto userOptionDto = userOptionService.updateOption(
                 id,
                 form.getTodayStudyWords(),
                 form.getTodayReviewWords(),
                 form.getLanguageCode()
         );
+
+        SessionUtils.setUserOptions(
+                request,
+                userOptionDto.getTodayStudyWords(),
+                userOptionDto.getTodayReviewWords(),
+                userOptionDto.getLanguageCode()
+        );
+
+        return userOptionDto;
     }
 }

@@ -2,6 +2,7 @@ package com.kmu.anki.backend.domain.auth.service;
 
 import com.kmu.anki.backend.domain.auth.vo.Role;
 import com.kmu.anki.backend.domain.user.dto.CreateUserDto;
+import com.kmu.anki.backend.domain.user.dto.UserOptionDto;
 import com.kmu.anki.backend.domain.user.entity.User;
 import com.kmu.anki.backend.domain.user.repository.UserRepository;
 import com.kmu.anki.backend.domain.user.service.UserService;
@@ -61,6 +62,9 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService{
         // dto도 아니고 왜 Entity를 여기에 넣는지?
 //        httpSession.setAttribute("user", user);
         userAttributes.put("userId", user.getId());
+        userAttributes.put("todayStudyWords", user.getTodayStudyWords());
+        userAttributes.put("todayReviewWords", user.getTodayReviewWords());
+        userAttributes.put("languageCode", user.getLanguageCode());
 
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority(Role.USER.getKey())),

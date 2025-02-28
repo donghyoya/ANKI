@@ -5,9 +5,11 @@ import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.DeckDtoDocs;
+import com.kmu.anki.backend.domain.card.docs.parameters.CardParameters;
 import com.kmu.anki.backend.domain.card.docs.parameters.DeckParameters;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
+import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
 import com.kmu.anki.backend.global.ExceptionResponseDocs;
@@ -61,8 +63,8 @@ class DeckControllerTest extends AbstractControllerTest {
 
     @WithAnonymousUser
     @Test
-    void getDecksWithUnAuth() throws Exception {
-        String identifier = String.format("{class-name}/{method-name}/un-auth");
+    void getDecksWithoutAuth() throws Exception {
+        String identifier = String.format("{class-name}/{method-name}/without-auth");
 
         mockMvc.perform(
                         get("/decks")
@@ -184,6 +186,40 @@ class DeckControllerTest extends AbstractControllerTest {
                         )
                 );
     }
+
+    @WithAnonymousUser
+    @Test
+    void getDecksCardWithoutAuth() throws Exception{
+        String identifier = String.format("{class-name}/{method-name}/without-auth");
+
+        mockMvc.perform(
+                        get("/decks/cards")
+                                .param("queryType", QueryType.level.name())
+                                .param("query","easy")
+                                .param("code", LanguageCode.en.name())
+                ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                identifier,
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Decks")
+                                                .summary("덱에 포함된 카드 모음")
+                                                .queryParameters(
+                                                        CardParameters.unAuthlanguageCode,
+                                                        DeckParameters.queryType,
+                                                        DeckParameters.query
+                                                )
+                                                .responseFields(
+                                                        CardDtoDocs.cards
+                                                )
+                                                .responseSchema(CardDtoDocs.cardsSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
 
 
     private static Stream<Arguments> getDecksCardParams(){

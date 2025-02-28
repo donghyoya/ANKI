@@ -8,8 +8,10 @@ import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.service.CardService;
 import com.kmu.anki.backend.domain.card.service.DeckService;
+import com.kmu.anki.backend.domain.user.utils.SessionUtils;
 import com.kmu.anki.backend.global.schema.BaseListReponse;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -47,17 +49,18 @@ public class DeckController {
     @GetMapping("/cards")
     public BasePageResponse<CardDto> getDeckCards(
             @RequestParam("queryType") QueryType queryType,
-            @RequestParam("query") String query
+            @RequestParam("query") String query,
+            @RequestParam(value = "code", required = false) LanguageCode code,
+            HttpServletRequest request
     ){
-        // TODO user-data 추출
-        LanguageCode languageCode = LanguageCode.en;
+        code = SessionUtils.getLanaguageCode(request).orElse(code);
         Page<CardDto> cards;
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
-            cards = deckService.findDeckCards(languageCode, cardTopicEnums);
+            cards = deckService.findDeckCards(code, cardTopicEnums);
         }else {
             CardLevel cardLevel = CardLevel.valueOf(query);
-            cards = deckService.findDeckCards(languageCode, cardLevel);
+            cards = deckService.findDeckCards(code, cardLevel);
         }
         return BasePageResponse.of(cards);
     }

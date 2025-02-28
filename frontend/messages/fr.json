@@ -11,6 +11,8 @@
 
   "hideKorean": "Masquer le coréen",
   "hideForeign": "Masquer le français",
+  "showKorean": "Afficher le coréen",
+  "showForeign": "Afficher le français",
 
   "settingsPage": {
     "settings": "Paramètres",

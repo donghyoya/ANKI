@@ -11,6 +11,8 @@
 
   "hideKorean": "Ẩn tiếng Hàn",
   "hideForeign": "Ẩn tiếng Việt",
+  "showKorean": "Hiển thị tiếng Hàn",
+  "showForeign": "Hiển thị tiếng Việt",
 
   "settingsPage": {
     "settings": "Cài đặt",

@@ -95,6 +95,35 @@ class CardControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @WithAnonymousUser
+    @Test
+    void getCardWithoutAuth() throws Exception{
+        mockMvc.perform(
+                        get("/cards/{id}", 1)
+                                .param("code", LanguageCode.en.name())
+                ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Cards")
+                                                .summary("Card 보기")
+                                                .pathParameters(
+                                                        CardParameters.cardId
+                                                )
+                                                .queryParameters(
+                                                        CardParameters.unAuthlanguageCode
+                                                )
+                                                .responseFields(
+                                                        CardDtoDocs.card
+                                                )
+                                                .responseSchema(CardDtoDocs.cardSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
 
     @WithMockCustomOAuth2
     @Test
@@ -145,6 +174,36 @@ class CardControllerTest extends AbstractControllerTest {
                                                         ExceptionResponseDocs.exceptionResponse
                                                 )
                                                 .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
+    @WithAnonymousUser
+    @Test
+    void getCardDetailsWithoutAuth() throws Exception {
+        mockMvc.perform(
+                        get("/cards/{id}/details", 1)
+                                .param("code", LanguageCode.en.name())
+                ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("Cards")
+                                                .summary("Card에 대한 디테일한 정보 보기")
+                                                .pathParameters(
+                                                        CardParameters.cardId
+                                                )
+                                                .queryParameters(
+                                                        CardParameters.unAuthlanguageCode
+                                                )
+                                                .responseFields(
+                                                        CardDetailDtoDocs.cardDetailDto
+                                                )
+                                                .responseSchema(CardDetailDtoDocs.cardDetailSchema)
                                                 .build()
                                 )
                         )
@@ -234,8 +293,8 @@ class CardControllerTest extends AbstractControllerTest {
 
     @WithAnonymousUser
     @Test
-    void getKoreanSearchWithNoAuth() throws Exception{
-        String identifier = String.format("{class-name}/{method-name}/un-auth");
+    void getKoreanSearchWithoutAuth() throws Exception{
+        String identifier = String.format("{class-name}/{method-name}/without-auth");
 
         mockMvc.perform(
                         get("/cards/korean-search")

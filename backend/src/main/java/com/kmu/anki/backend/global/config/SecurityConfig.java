@@ -58,6 +58,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.GET, "/decks").permitAll()
                         .requestMatchers(HttpMethod.GET, "/decks/cards").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/cards/{id}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/cards/{id}/details").permitAll()
                         .requestMatchers(
                                 "/cards/foreign-search",
                                 "/cards/korean-search"

@@ -1,5 +1,5 @@
 import { FilledCard } from '../Card/Card';
-import { Card } from '@/types/Card';
+import { CardDetail } from '@/types/schemes';
 
 import styles from './LearningCard.module.scss';
 import ConjugationSection from './ConjugationSection';
@@ -22,7 +22,7 @@ export interface LearningCardState {
 }
 
 interface LearningCardProps {
-  card: Card;
+  card: CardDetail;
   className?: string;
   style?: React.CSSProperties;
   cardState: LearningCardState;
@@ -70,7 +70,7 @@ const LearningCard = ({
     >
       {!cardState.isRevealed && (
         <div className={styles['content-container']}>
-          <span className={styles['korean-word']}>{card.wordInfo.koreanWord}</span>
+          <span className={styles['korean-word']}>{card.koreanWord}</span>
           <span className={`${styles['foreign-word']} ${styles['revealed']}`}>
             {t('learning.checkAnswer')}
           </span>
@@ -79,22 +79,22 @@ const LearningCard = ({
 
       {cardState.isRevealed && !cardState.showDetail && (
         <div className={styles['content-container']}>
-          <span className={styles['korean-word']}>{card.wordInfo.koreanWord}</span>
-          <span className={styles['foreign-word']}>{card.wordInfo.foreignWord}</span>
+          <span className={styles['korean-word']}>{card.koreanWord}</span>
+          <span className={styles['foreign-word']}>{card.foreignWord}</span>
         </div>
       )}
 
       {cardState.isRevealed && cardState.showDetail && (
         <div className={`${styles['content-container']} ${styles['detailed']}`}>
-          <WordSection wordInfo={card.wordInfo} />
+          <WordSection card={card} />
           <div>
             <ConjugationSection
-              conjugations={card.wordInfo.inflection}
+              conjugations={card.inflection.split(', ')}
               toggleExpanded={toggleConjugation}
               isExpanded={cardState.showConjugation}
             />
             <ExampleSection
-              examples={card.example}
+              examples={card.exampleUsage}
               toggleExpanded={toggleExample}
               isExpanded={cardState.showExample}
             />

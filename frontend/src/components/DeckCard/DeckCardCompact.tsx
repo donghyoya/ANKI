@@ -9,17 +9,13 @@ import { Icon } from '@/components/material-components/IconButton/IconButton';
 import { OutlinedCard } from '@/components/Card/Card';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
 import classnames from 'classnames';
-import { DUMMY_PROGRESS } from '@/utils/dummyData';
 import Link from 'next/link';
-import { Progress } from '@/types/Progress';
 
 const DeckCardCompact = ({
-  title,
+  deck,
   isCompleted,
-  wordCount,
   locale,
   buttonLabels,
-  level,
   onViewWords,
   onLearn
 }: DeckCardProps) => {
@@ -29,13 +25,6 @@ const DeckCardCompact = ({
     setIsExpanded((prev) => !prev);
   };
 
-  console.log('isExpanded', isExpanded);
-
-  const progress = DUMMY_PROGRESS.reduce((acc, curr) => {
-    acc.push({ ...curr, label: isExpanded ? curr.label : '' });
-    return acc;
-  }, [] as Progress[]);
-
   return (
     <OutlinedCard ripple={false}>
       <div
@@ -44,7 +33,7 @@ const DeckCardCompact = ({
       >
         <div className={styles['main-contents']}>
           <div className={styles['title-container']}>
-            <h2 className={styles.title}>{title}</h2>
+            <h2 className={styles.title}>{deck.category}</h2>
             {isCompleted && <Icon className={styles['check-icon']}>check_circle</Icon>}
           </div>
           <FilledButton
@@ -58,7 +47,7 @@ const DeckCardCompact = ({
         </div>
         {isExpanded && (
           <div className={styles['extra-contents']}>
-            <Link href={`/difficulty/${level}`}>
+            <Link href={`/difficulty/${deck.category}`}>
               <TextButton
                 onClick={(e) => {
                   e.stopPropagation();
@@ -68,10 +57,12 @@ const DeckCardCompact = ({
                 {buttonLabels.viewWords}
               </TextButton>
             </Link>
-            <span className={styles['word-count']}>{wordCount.toLocaleString(locale)} words</span>
+            <span className={styles['word-count']}>
+              {deck.cardCounts.toLocaleString(locale)} words
+            </span>
           </div>
         )}
-        <ProgressBar progress={progress} height={isExpanded ? 12 : 6}></ProgressBar>
+        <ProgressBar deck={deck} height={isExpanded ? 12 : 6}></ProgressBar>
       </div>
     </OutlinedCard>
   );

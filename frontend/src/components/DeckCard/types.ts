@@ -1,13 +1,13 @@
+import { Deck } from '@/types/schemes';
+
 export interface DeckCardProps {
-  title: string;
+  deck: Deck;
   isCompleted: boolean;
-  wordCount: number;
   locale: string;
   buttonLabels: {
     viewWords: string;
     learn: string;
   };
-  level: string;
   onLearn: () => void;
   onViewWords: () => void;
 }

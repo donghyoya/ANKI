@@ -17,6 +17,8 @@ import {
   DUMMY_MENU_ITEMS
 } from '@/utils/dummyData';
 
+import { MenuItem } from '@/types/Menu';
+
 export default function LearningPage() {
   const t = useTranslations();
 
@@ -26,7 +28,8 @@ export default function LearningPage() {
     isRevealed: false,
     showDetail: true,
     showConjugation: false,
-    showExample: false
+    showExample: false,
+    isKoreanToForeign: true
   });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -56,6 +59,39 @@ export default function LearningPage() {
   const toggleExample = () => {
     setCardState((prev) => ({ ...prev, showExample: !prev.showExample }));
   };
+
+  const toggleDetailedView = () => {
+    setCardState((prev) => ({ ...prev, showDetail: !prev.showDetail }));
+  };
+
+  const toggleLangDirection = () => {
+    setCardState((prev) => ({ ...prev, isKoreanToForeign: !prev.isKoreanToForeign }));
+  };
+
+  const handleRevertReveal = () => {
+    setCardState((prev) => ({ ...prev, isRevealed: false }));
+  };
+
+  const menuItems: MenuItem[] = [
+    {
+      label: cardState.showDetail ? t('learning.hideDetails') : t('learning.showDetails'),
+      onClick: toggleDetailedView
+    },
+    {
+      label: cardState.isKoreanToForeign
+        ? t('learning.foreignToKorean')
+        : t('learning.koreanToForeign'),
+      onClick: toggleLangDirection
+    },
+    ...(cardState.isRevealed
+      ? [
+          {
+            label: t('learning.undoCheckAnswer'),
+            onClick: handleRevertReveal
+          }
+        ]
+      : [])
+  ];
 
   return (
     <div className={styles['learning-container']}>
@@ -90,7 +126,7 @@ export default function LearningPage() {
         toggleConjugation={toggleConjugation}
         toggleExample={toggleExample}
         style={cardStyle}
-        menuItems={DUMMY_MENU_ITEMS}
+        menuItems={menuItems}
         setContentHeight={setContentHeight}
       />
       <RatingButtonContainer

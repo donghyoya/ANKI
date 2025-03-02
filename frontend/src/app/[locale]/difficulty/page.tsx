@@ -11,16 +11,32 @@ import TextButton from '@/components/material-components/TextButton';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
 
 import styles from './Difficulty.module.scss';
+import { mockGetDecks } from '@/api/mock';
+import { Paginated, Deck } from '@/types/schemes';
 
-const difficultyLevels = [
-  { name: 'Beginner', level: 'beginner', isCompleted: true, wordCount: 1234 },
-  { name: 'Intermediate', level: 'intermediate', isCompleted: false, wordCount: 2345 },
-  { name: 'Advanced', level: 'advanced', isCompleted: false, wordCount: 983 }
-];
+// const difficultyLevels = [
+//   { name: 'Beginner', level: 'beginner', isCompleted: true, wordCount: 1234 },
+//   { name: 'Intermediate', level: 'intermediate', isCompleted: false, wordCount: 2345 },
+//   { name: 'Advanced', level: 'advanced', isCompleted: false, wordCount: 983 }
+// ];
 
 export default function DifficultyPage() {
   const t = useTranslations();
   const locale = useLocale(); // 현재 로케일 가져오기
+  const [decks, setDecks] = useState<Paginated<Deck> | null>(null);
+
+  useEffect(() => {
+    const fetchDecks = async () => {
+      try {
+        const response = await mockGetDecks('level');
+        console.log('mockGetDecks response:', response);
+        setDecks(response as Paginated<Deck>);
+      } catch (error) {
+        console.error('Failed to fetch decks:', error);
+      }
+    };
+    fetchDecks();
+  }, []);
 
   const { width } = useWindowSize();
   const isCompact = width < 1200;
@@ -63,16 +79,15 @@ export default function DifficultyPage() {
         <div className={styles['content']}>
           {!isCompact && <h1 className={styles.title}> {t('level.wordsByDifficulty')} </h1>}
           <div className={styles.cards}>
-            {difficultyLevels.map((difficulty) => (
+            {decks?.content.map((deck, index) => (
               <CardComponent
-                key={difficulty.level}
-                title={t(`level.${difficulty.level}`)}
-                isCompleted={difficulty.isCompleted}
-                wordCount={difficulty.wordCount}
+                key={index}
                 locale={locale}
                 buttonLabels={buttonLabels}
-                level={difficulty.level}
-                onLearn={() => handleLearn(difficulty.isCompleted)}
+                deck={deck}
+                // TODO
+                isCompleted={false}
+                onLearn={() => handleLearn(false)}
                 onViewWords={() => {}}
               />
             ))}

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, notFound } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import FilledButton from '@/components/material-components/FilledButton';
@@ -8,6 +8,8 @@ import { Icon, IconButton } from '@/components/material-components/IconButton/Ic
 import WordList from '@/components/WordList/WordList';
 import styles from './Level.module.scss';
 import { Menu, MenuItem } from '@/components/material-components/Menu';
+import { Card } from '@/types/schemes';
+import { mockGetCardsFromDeck } from '@/api/mock';
 
 const difficulty = ['beginner', 'intermediate', 'advanced'];
 
@@ -46,6 +48,23 @@ export default function DifficultyWordsPage() {
     );
   };
 
+  const [cards, setCards] = useState<Card[]>([]);
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const response = await mockGetCardsFromDeck();
+        console.log('mockGetCardsFromDeck response:', response);
+        if (response && 'content' in response) {
+          setCards(response.content as Card[]);
+        }
+      } catch (error) {
+        console.error('Failed to fetch cards:', error);
+      }
+    };
+    fetchCards();
+  }, []);
+
   return (
     <div className={styles['page']}>
       <div className={styles['content']}>
@@ -57,8 +76,13 @@ export default function DifficultyWordsPage() {
           </div>
         </div>
         <div className={styles['list-container']}>
-          <WordList KoreanWord="안녕" ForeignWord="hi" />
-          <WordList KoreanWord="안녕" ForeignWord="hi" />
+          {cards.map((card) => (
+            <WordList
+              KoreanWord={card.koreanWord}
+              ForeignWord={card.foreignWord}
+              key={card.cardId}
+            />
+          ))}
         </div>
       </div>
     </div>

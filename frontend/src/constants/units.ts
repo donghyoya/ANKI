@@ -87,7 +87,7 @@ export const units: Record<
     year: { unit: 'жил' }
   },
   ru: {
-    word: { singular: 'слово', plural: 'слов' },
+    word: { singular: 'слово', plural1: 'слова', plural2: 'слов' },
     min: { singular: 'минута', plural1: 'минуты', plural2: 'минут' },
     hour: { singular: 'час', plural1: 'часа', plural2: 'часов' },
     day: { singular: 'день', plural1: 'дня', plural2: 'дней' },

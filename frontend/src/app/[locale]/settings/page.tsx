@@ -110,53 +110,55 @@ export default function SettingsPage() {
   );
 
   const mobileView = (
-    <List>
-      <div style={{ position: 'relative' }}>
-        <ListItem type="button" id="language-anchor" onClick={handleLanguageMenuClick}>
-          <div slot="headline">{t('settingsPage.language')}</div>
-          <div slot="supporting-text">
-            {languageOptions.find((lang) => lang.code === locale)?.label || 'English'}
-          </div>
-          <Icon slot="end">arrow_drop_down</Icon>
+    <div className={styles.page}>
+      <List className={styles.list}>
+        <div style={{ position: 'relative' }}>
+          <ListItem type="button" id="language-anchor" onClick={handleLanguageMenuClick}>
+            <div slot="headline">{t('settingsPage.language')}</div>
+            <div slot="supporting-text">
+              {languageOptions.find((lang) => lang.code === locale)?.label || 'English'}
+            </div>
+            <Icon slot="end">arrow_drop_down</Icon>
+          </ListItem>
+          <Menu id="language-menu" anchor="language-anchor" anchorCorner="end-end" xOffset={-160}>
+            {languageOptions.map((lang) => (
+              <MenuItem
+                key={lang.code}
+                selected={lang.code === selectedLocale}
+                onClick={() => {
+                  handleChangeLanguage(lang.code);
+                }}
+              >
+                {lang.label}
+              </MenuItem>
+            ))}
+          </Menu>
+        </div>
+        <div style={{ position: 'relative' }}>
+          <ListItem type="button" id="theme-anchor" onClick={handleThemeMenuClick}>
+            <div slot="headline">{t('settingsPage.theme')}</div>
+            <div slot="supporting-text">classic</div>
+            <Icon slot="end">arrow_drop_down</Icon>
+          </ListItem>
+          <Menu id="theme-menu" anchor="theme-anchor" anchorCorner="end-end" xOffset={-112}>
+            <MenuItem>classic</MenuItem>
+          </Menu>
+        </div>
+        <ListItem type="button">
+          <div slot="headline">{t('settingsPage.reviewCount')}</div>
+          <div slot="trailing-supporting-text">20</div>
         </ListItem>
-        <Menu id="language-menu" anchor="language-anchor" anchorCorner="end-end" xOffset={-160}>
-          {languageOptions.map((lang) => (
-            <MenuItem
-              key={lang.code}
-              selected={lang.code === selectedLocale}
-              onClick={() => {
-                handleChangeLanguage(lang.code);
-              }}
-            >
-              {lang.label}
-            </MenuItem>
-          ))}
-        </Menu>
-      </div>
-      <div style={{ position: 'relative' }}>
-        <ListItem type="button" id="theme-anchor" onClick={handleThemeMenuClick}>
-          <div slot="headline">{t('settingsPage.theme')}</div>
-          <div slot="supporting-text">classic</div>
-          <Icon slot="end">arrow_drop_down</Icon>
+        <ListItem type="button">
+          <div slot="headline">{t('settingsPage.newCount')}</div>
+          <div slot="trailing-supporting-text">20</div>
         </ListItem>
-        <Menu id="theme-menu" anchor="theme-anchor" anchorCorner="end-end" xOffset={-112}>
-          <MenuItem>classic</MenuItem>
-        </Menu>
-      </div>
-      <ListItem type="button">
-        <div slot="headline">{t('settingsPage.reviewCount')}</div>
-        <div slot="trailing-supporting-text">20</div>
-      </ListItem>
-      <ListItem type="button">
-        <div slot="headline">{t('settingsPage.newCount')}</div>
-        <div slot="trailing-supporting-text">20</div>
-      </ListItem>
-      <ListItem type="button">{t('settingsPage.signOut')}</ListItem>
-      <ListItem type="button">{t('settingsPage.deleteAccount')}</ListItem>
-    </List>
+        <ListItem type="button">{t('settingsPage.signOut')}</ListItem>
+        <ListItem type="button">{t('settingsPage.deleteAccount')}</ListItem>
+      </List>
+    </div>
   );
 
   const pageView = isCompact ? mobileView : webView;
 
-  return <div>{pageView}</div>;
+  return pageView;
 }

@@ -33,3 +33,7 @@ springdoc:
 
 server:
   port: 7070
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.kmu.anki.backend.domain

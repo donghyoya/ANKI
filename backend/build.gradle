@@ -73,12 +73,8 @@ dependencies {
 openapi3{
 	servers  = [
 			{
-				url = 'http://localhost:8080/'
-				description("8080 포트에서 사용")
-			},
-			{
-				url = 'http://localhost:7070/'
-				description("7070 포트에서 사용")
+				url = '/'
+				description("현재 호스트에서 사용")
 			},
 			{
 				url = 'https://virtserver.swaggerhub.com/js990311/Anki/1.0.0'

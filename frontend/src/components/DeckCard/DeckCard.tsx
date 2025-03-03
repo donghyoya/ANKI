@@ -11,8 +11,8 @@ import { DeckCardProps } from '@/components/DeckCard/types';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
 import { OutlinedCard } from '@/components/Card/Card';
 
+import { getFormatUnit } from '@/utils/unitFormatter';
 import { DUMMY_PROGRESS } from '@/utils/dummyData';
-import { getWordCount } from './wordCount';
 import styles from './DeckCard.module.scss';
 
 // DeckCard 컴포넌트
@@ -32,7 +32,7 @@ const DeckCard = ({
           <h2 className={styles.title}>{title}</h2>
           {isCompleted && <Icon className={styles['check-icon']}>check_circle</Icon>}
         </div>
-        <span className={styles['word-count']}>{getWordCount(wordCount, locale)}</span>
+        <span className={styles['word-count']}>{getFormatUnit(locale, 'word', wordCount, true)}</span>
       </div>
       <div className={styles['bottom-contents']}>
         <div className={styles['button-container']}>

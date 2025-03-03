@@ -19,7 +19,7 @@ export interface LearningCardState {
   showDetail: boolean;
   showConjugation: boolean;
   showExample: boolean;
-  isKoreanToForeign: boolean;
+  isKoreanToForeign?: boolean;
 }
 
 interface LearningCardProps {

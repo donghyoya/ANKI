@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="/css/styles.css"> <!-- 스타일 정의 -->
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <div class="login-container">
     <h1>Login</h1>
 
     <!-- 일반 로그인 폼 -->
-    <form method="post" action="/api/auth/login">
+    <form method="post" action="/api/auth/page/loginProc.do">
         <div class="form-group">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -27,6 +27,9 @@
         <p>Or login with:</p>
         <a href="/oauth2/authorization/google" class="btn google-btn">Login with Google</a>
     </div>
+
+    <!-- 에러 메시지 출력 -->
+    <p th:if="${error}" th:text="${error}" class="error-message"></p>
 </div>
 </body>
 </html>

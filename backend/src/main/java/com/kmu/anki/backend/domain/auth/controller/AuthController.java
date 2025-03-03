@@ -34,7 +34,7 @@ import java.util.Map;
 
 @Slf4j
 @RequestMapping("/api/auth")
-@Controller
+@RestController
 public class AuthController {
 
     @Autowired
@@ -81,13 +81,77 @@ public class AuthController {
         Map<String, Object> attributes = oAuth2User.getAttributes();
 
         log.debug("attributes.toString() = " + attributes.toString());
+        System.out.println("attributes.toString() = " + attributes.toString());
+
+        String referer = req.getHeader("Referer");
+
+
+        return ResponseEntity.ok(attributes);
+    }
+
+    @GetMapping("/page/oauth2/google")
+    public ResponseEntity<Map<String, Object>> handleOAuth2Page(
+            HttpServletRequest req, HttpServletResponse rep,
+            @RequestParam(value = "code", required = false) String code,
+            @RequestParam(value = "state", required = false) String state,
+            @RequestParam(value = "scope" ,required = false) String scope,
+            @RequestParam(value = "authuser", required = false) String authUser,
+            @RequestParam(value = "prompt", required = false) String prompt) throws IOException {
+
+        OAuth2AccessToken accessToken = oAuth2AccessTokenService.getAccessToken(code);
+
+        // 2. OAuth2UserRequest 객체 생성
+        ClientRegistration clientRegistration = oAuth2AccessTokenService.getGoogleClientRegistration();
+
+        OAuth2UserRequest userRequest = new OAuth2UserRequest(clientRegistration, accessToken);
+
+        OAuth2User oAuth2User = oAuth2UserService.loadUser(userRequest);
+
+        //세션 추가
+        securitySession(req, rep, oAuth2User);
+
+        Map<String, Object> attributes = oAuth2User.getAttributes();
+
+        log.debug("attributes.toString() = " + attributes.toString());
 //        System.out.println("attributes.toString() = " + attributes.toString());
+
+        String referer = req.getHeader("Referer");
 
         if(oAuth2User != null){
             rep.sendRedirect("/swagger-ui/index.html");
         }
 
         return ResponseEntity.ok(attributes);
+    }
+
+    @GetMapping("/checkLogin.do")
+    public ResponseEntity<Map<String, Object>> checkLoginStatus(Authentication authentication) {
+        Map<String, Object> response = new HashMap<>();
+
+        if (authentication == null || !authentication.isAuthenticated()) {
+            response.put("isAuthenticated", false);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+        }
+
+        response.put("isAuthenticated", true);
+        response.put("user", authentication.getPrincipal());
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/logout.do")
+    public ResponseEntity<Map<String, Object>> logout(HttpServletRequest req, HttpServletResponse rep){
+
+        SecurityContextHolder.clearContext();
+
+        HttpSession session = req.getSession(false);
+        if(session != null){
+            session.invalidate();
+        }
+
+        Map<String, Object> responseBody = new HashMap<>();
+        responseBody.put("message", "로그아웃 성공");
+
+        return ResponseEntity.ok(responseBody);
     }
 
     private static void securitySession(HttpServletRequest req, HttpServletResponse rep, OAuth2User oAuth2User) {

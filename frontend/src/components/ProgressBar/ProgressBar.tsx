@@ -1,12 +1,11 @@
 import React from 'react';
 
 import TooltipProvider from '@/components/Tooltips/TooltipProvider';
-import { Deck } from '@/types/schemes';
-import { LEARNING_PROGRESS_BAR_COLORS } from '@/utils/constants';
 import styles from './ProgressBar.module.scss';
+import { Progress } from '@/types/Progress';
 
 interface ProgressBarProps {
-  deck: Deck;
+  progress: Progress[];
   styles?: React.CSSProperties;
   className?: string;
   height: number;
@@ -14,31 +13,7 @@ interface ProgressBarProps {
 
 const pxToRem = (px: number) => `${px / 16}rem`;
 
-const ProgressBar = ({ deck, styles: stylesProp, className, height }: ProgressBarProps) => {
-  const { maturityCounts, overdueCounts, cardCounts } = deck;
-  const learningCounts = cardCounts - maturityCounts - overdueCounts;
-
-  const progress = [
-    {
-      value: maturityCounts,
-      label: String(maturityCounts),
-      tooltip: 'Completed',
-      color: LEARNING_PROGRESS_BAR_COLORS.completed
-    },
-    {
-      value: overdueCounts,
-      label: String(overdueCounts),
-      tooltip: 'Learning',
-      color: LEARNING_PROGRESS_BAR_COLORS.learning
-    },
-    {
-      value: learningCounts,
-      label: String(learningCounts),
-      tooltip: 'New',
-      color: LEARNING_PROGRESS_BAR_COLORS.reviewing
-    }
-  ];
-
+const ProgressBar = ({ progress, styles: stylesProp, className, height }: ProgressBarProps) => {
   // values의 누적합의 비중을 계산하여 백분율로 변환
   // 오른쪽 끝 bar는 100%이고 오른쪽부터 왼쪽으로 겹쳐가면서 렌더링하기 위해 reverse
   const values = progress.map((bar) => bar.value);

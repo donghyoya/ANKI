@@ -87,6 +87,13 @@ openapi3{
 	format = "yaml"
 }
 
+postman {
+	title = 'anki'
+	version = '0.1.0'
+	baseUrl = 'http://hada.zapto.org:7070'
+//	baseUrl = 'http://localhost:7070'
+}
+
 def loadEnv() {
 	def envFile = file('.env')
 	if (envFile.exists()) {

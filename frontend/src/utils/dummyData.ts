@@ -81,7 +81,7 @@ export const DUMMY_CARD_STUDY_INFO: CardStudyInfo = {
 export const DUMMY_STUDY_CARD_FORM: StudyCardForm = {
   lapses: 0,
   reps: 0,
-  due: '2025-01-01',
+  due: new Date(),
   scheduledDays: 0,
   lastReview: '2025-01-01',
   state: 'new',
@@ -95,10 +95,21 @@ export const DUMMY_USER_CARD: UserCard = {
 };
 
 export const DUMMY_USER_CARDS: Paginated<UserCard> = {
-  size: 2,
+  size: 10,
   pageSize: 1,
   page: 1,
-  content: [DUMMY_USER_CARD, DUMMY_USER_CARD]
+  content: [
+    { ...DUMMY_USER_CARD, koreanWord: '하나', foreignWord: 'one', cardId: 1, state: 'overdue' },
+    { ...DUMMY_USER_CARD, koreanWord: '둘', foreignWord: 'two', cardId: 2, state: 'overdue' },
+    { ...DUMMY_USER_CARD, koreanWord: '셋', foreignWord: 'three', cardId: 3, state: 'overdue' },
+    { ...DUMMY_USER_CARD, koreanWord: '넷', foreignWord: 'four', cardId: 4, state: 'overdue' },
+    { ...DUMMY_USER_CARD, koreanWord: '다섯', foreignWord: 'five', cardId: 5, state: 'overdue' },
+    { ...DUMMY_USER_CARD, koreanWord: '여섯', foreignWord: 'six', cardId: 6, state: 'new' },
+    { ...DUMMY_USER_CARD, koreanWord: '일곱', foreignWord: 'seven', cardId: 7, state: 'new' },
+    { ...DUMMY_USER_CARD, koreanWord: '여덟', foreignWord: 'eight', cardId: 8, state: 'new' },
+    { ...DUMMY_USER_CARD, koreanWord: '아홉', foreignWord: 'nine', cardId: 9, state: 'new' },
+    { ...DUMMY_USER_CARD, koreanWord: '열', foreignWord: 'ten', cardId: 10, state: 'new' }
+  ]
 };
 
 export const DUMMY_DECK: Deck = {

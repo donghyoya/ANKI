@@ -2,7 +2,7 @@ import { Locale } from './Locale';
 
 export type CardLevel = 'easy' | 'normal' | 'hard';
 
-export type StudyType = 'review' | 'study';
+export type StudyType = 'review' | 'new';
 
 export type Level = 'easy' | 'normal' | 'hard';
 
@@ -67,6 +67,10 @@ export const allMeanings: Meaning[] = [
   'ADMINISTRATION'
 ];
 
+export type CardCategory = Level | Meaning;
+
+export const allCardCategories: CardCategory[] = [...allLevels, ...allMeanings];
+
 export type Paginated<T> = {
   size: number;
   pageSize: number;
@@ -96,7 +100,7 @@ export interface CardStudyInfo {
 export interface UserCard extends Card {
   lapses: number;
   reps: number;
-  due: string;
+  due: Date;
   difficulty: number;
   scheduledDays: number;
   lastReview: string;
@@ -107,7 +111,7 @@ export interface UserCard extends Card {
 export interface StudyCardForm {
   lapses: number;
   reps: number;
-  due: string;
+  due: Date;
   scheduledDays: number;
   lastReview: string;
   state: string;

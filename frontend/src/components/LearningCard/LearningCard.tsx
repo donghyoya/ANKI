@@ -1,5 +1,5 @@
 import { FilledCard } from '../Card/Card';
-import { CardDetail } from '@/types/schemes';
+import { UserCard } from '@/types/schemes';
 
 import styles from './LearningCard.module.scss';
 import ConjugationSection from './ConjugationSection';
@@ -14,6 +14,8 @@ import { MenuItem as MenuItemType } from '@/types/Menu';
 import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
+import { DUMMY_CARD_DETAIL } from '@/utils/dummyData';
+
 export interface LearningCardState {
   isRevealed: boolean;
   showDetail: boolean;
@@ -22,7 +24,7 @@ export interface LearningCardState {
 }
 
 interface LearningCardProps {
-  card: CardDetail;
+  card: UserCard;
   className?: string;
   style?: React.CSSProperties;
   cardState: LearningCardState;
@@ -86,15 +88,15 @@ const LearningCard = ({
 
       {cardState.isRevealed && cardState.showDetail && (
         <div className={`${styles['content-container']} ${styles['detailed']}`}>
-          <WordSection card={card} />
+          <WordSection card={DUMMY_CARD_DETAIL} />
           <div>
             <ConjugationSection
-              conjugations={card.inflection.split(', ')}
+              conjugations={DUMMY_CARD_DETAIL.inflection.split(', ')}
               toggleExpanded={toggleConjugation}
               isExpanded={cardState.showConjugation}
             />
             <ExampleSection
-              examples={card.exampleUsage}
+              examples={DUMMY_CARD_DETAIL.exampleUsage}
               toggleExpanded={toggleExample}
               isExpanded={cardState.showExample}
             />

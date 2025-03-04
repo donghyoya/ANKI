@@ -110,3 +110,17 @@
     }
   }
 }
+
+.button-container-compact {
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+  width: 100%;
+  padding: 10px 16px;
+  background-color: #f3edf7;
+
+  .learn-button-compact {
+    width: 100%;
+  }
+}

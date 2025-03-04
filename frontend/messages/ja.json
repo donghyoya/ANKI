@@ -11,6 +11,8 @@
 
   "hideKorean": "韓国語を隠す",
   "hideForeign": "日本語を隠す",
+  "showKorean": "韓国語を表示",
+  "showForeign": "日本語を表示",
 
   "settingsPage": {
     "settings": "設定",

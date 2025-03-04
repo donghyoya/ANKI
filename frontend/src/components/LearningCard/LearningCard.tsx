@@ -26,8 +26,8 @@ interface LearningCardProps {
   className?: string;
   style?: React.CSSProperties;
   cardState: LearningCardState;
-  handleReveal: () => void;
-  handleShowDetail: () => void;
+  handleReveal?: () => void;
+  handleShowDetail?: () => void;
   toggleConjugation: () => void;
   toggleExample: () => void;
   menuItems: MenuItemType[];

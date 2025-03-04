@@ -1,26 +1,70 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useMemo } from 'react';
+
 import { OutlinedCard } from '../Card/Card';
+import LearningCard, { LearningCardState } from '@/components/LearningCard/LearningCard';
+
+import { MenuItem } from '@/types/Menu';
+import { DUMMY_CARD } from '@/utils/dummyData';
+
 import styles from './WordList.module.scss';
+import { WordListProps } from './types';
 
-interface WordListProps {
-  KoreanWord: string;
-  ForeignWord: string;
-}
+const WordList = ({ KoreanWord, ForeignWord, isHideKorean, isHideForeign }: WordListProps) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [contentHeight, setContentHeight] = useState(0);
+  const [cardState, setCardState] = useState<LearningCardState>({
+    isRevealed: true,
+    showDetail: true,
+    showConjugation: false,
+    showExample: false
+  });
 
-const WordList = ({ KoreanWord, ForeignWord }: WordListProps) => {
+  const handleClick = () => {
+    setIsExpanded((prev) => !prev);
+  };
+
+  const toggleConjugation = () => {
+    setCardState((prev) => ({ ...prev, showConjugation: !prev.showConjugation }));
+  };
+
+  const toggleExample = () => {
+    setCardState((prev) => ({ ...prev, showExample: !prev.showExample }));
+  };
+
+  const menu_items: MenuItem[] = useMemo(
+    () => [
+      { label: '사과', onClick: () => {} },
+      { label: '바나나', onClick: () => {} },
+      { label: 'cancel', onClick: handleClick }
+    ],
+    []
+  );
+
   return (
     <div>
-      <OutlinedCard className={styles.card}>
-        <div className={styles.content}>
-          <h3 className={styles['korean-word']}>{KoreanWord}</h3>
-          <div className={styles['right-container']}>
-            <div className={styles.line}></div>
-            <h3 className={styles['foreign-word']}>{ForeignWord}</h3>
+      {!isExpanded && (
+        <OutlinedCard className={styles.card} onClick={handleClick}>
+          <div className={styles.content}>
+            <h3 className={styles['korean-word']}>{isHideKorean ? '' : KoreanWord}</h3>
+            <div className={styles['right-container']}>
+              <div className={styles.line}></div>
+              <h3 className={styles['foreign-word']}>{isHideForeign ? '' : ForeignWord}</h3>
+            </div>
           </div>
-        </div>
-      </OutlinedCard>
+        </OutlinedCard>
+      )}
+      {isExpanded && (
+        <LearningCard
+          card={DUMMY_CARD}
+          cardState={cardState}
+          toggleConjugation={toggleConjugation}
+          toggleExample={toggleExample}
+          menuItems={menu_items}
+          setContentHeight={setContentHeight}
+        />
+      )}
     </div>
   );
 };

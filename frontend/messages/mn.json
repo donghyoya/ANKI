@@ -10,7 +10,9 @@
   "viewWords": "Үгсийг харах",
 
   "hideKorean": "Солонгос хэл нуух",
-  "hideForeign": "Гадаад хэл нуух",
+  "hideForeign": "Монгол хэл нуух",
+  "showKorean": "Солонгос хэлийг харуулах",
+  "showForeign": "Монгол хэлийг харуулах",
 
   "settingsPage": {
     "settings": "Тохиргоо",

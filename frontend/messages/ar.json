@@ -10,7 +10,9 @@
   "viewWords": "عرض الكلمات",
 
   "hideKorean": "إخفاء الكورية",
-  "hideForeign": "إخفاء الأجنبية",
+  "hideForeign": "إخفاء العربية",
+  "showKorean": "إظهار الكورية",
+  "showForeign": "إظهار العربية",
 
   "settingsPage": {
     "settings": "الإعدادات",

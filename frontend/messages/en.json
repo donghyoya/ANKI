@@ -11,6 +11,8 @@
 
   "hideKorean": "Hide Korean",
   "hideForeign": "Hide English",
+  "showKorean": "Show Korean",
+  "showForeign": "Show English",
 
   "settingsPage": {
     "settings": "Settings",

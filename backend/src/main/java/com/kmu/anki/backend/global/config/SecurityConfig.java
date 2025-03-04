@@ -2,6 +2,7 @@ package com.kmu.anki.backend.global.config;
 
 import com.kmu.anki.backend.domain.auth.service.CustomOAuth2UserService;
 import com.kmu.anki.backend.domain.auth.service.CustomUserService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,12 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class SecurityConfig {
@@ -49,7 +45,7 @@ public class SecurityConfig {
         http
                 // 0. CSRF 비활성화 (필요 시)
                 .csrf(csrf -> csrf.disable())
-                .cors(cors->cors.configurationSource(corsConfigurationSource()))
+                .cors(cors->cors.disable())
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 )
@@ -68,7 +64,6 @@ public class SecurityConfig {
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").authenticated()
                         .anyRequest().authenticated()                                   // 나머지는 인증 필요
                 )
-
                 // 2. Form 기반 로그인 설정
                 .formLogin(form -> form
                         .loginPage("/api/auth/login.do") // 커스텀 로그인 페이지
@@ -87,26 +82,15 @@ public class SecurityConfig {
                 )
                 // 4. 로그아웃 설정
                 .logout(logout -> logout
-                        .logoutUrl("/logout")                     // 로그아웃 처리 URL
-                        .logoutSuccessUrl("/")                    // 로그아웃 성공 후 이동할 URL
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/api/auth/logout.do", "GET"))
+                        .logoutSuccessHandler((request, response, authentication) -> {
+                            response.setStatus(HttpServletResponse.SC_OK);
+                            response.getWriter().write("{\"message\": \"로그아웃 성공\"}");
+                        })     // 로그아웃 성공 후 이동할 URL
                         .invalidateHttpSession(true)              // 세션 무효화
                         .deleteCookies("JSESSIONID")// 쿠키 삭제
                 );
         return http.build();
-    }
-
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST"));
-        configuration.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
-        configuration.setAllowCredentials(true);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-
-        return source;
     }
 
     @Bean

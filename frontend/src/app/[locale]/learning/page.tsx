@@ -11,14 +11,18 @@ import RatingButtonContainer from '@/components/RatingButton/RatingButtonContain
 import styles from './layout.module.scss';
 
 import {
-  DUMMY_CARD,
+  DUMMY_CARD_DETAIL,
   DUMMY_PROGRESS,
   DUMMY_RATING_PREVIEW,
   DUMMY_MENU_ITEMS
 } from '@/utils/dummyData';
+import { mockGetCard, mockGetCardStudyInfo, mockGetUserCards } from '@/api/mock';
+import { UserCard } from '@/types/schemes';
 
 export default function LearningPage() {
   const t = useTranslations();
+
+  const category = 'easy';
 
   const [contentHeight, setContentHeight] = useState(0);
 
@@ -37,10 +41,6 @@ export default function LearningPage() {
     cardWidth: document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0
   });
 
-  useEffect(() => {
-    console.log('cardStyle:', cardStyle);
-  }, [cardStyle]);
-
   const handleReveal = () => {
     setCardState((prev) => ({ ...prev, isRevealed: true }));
   };
@@ -57,6 +57,21 @@ export default function LearningPage() {
     setCardState((prev) => ({ ...prev, showExample: !prev.showExample }));
   };
 
+  const studyCards = useAppSelector((state) => state.studyCards[category]);
+
+  const [userCards, setUserCards] = useState<UserCard[]>([]);
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      const response = await mockGetUserCards();
+      console.log('mockGetCardsFromDeck response:', response);
+      if (response && 'content' in response) {
+        setUserCards(response.content);
+      }
+    };
+    fetchCards();
+  }, []);
+
   return (
     <div className={styles['learning-container']}>
       <div className={styles['progress-container-wrapper']}>
@@ -68,7 +83,7 @@ export default function LearningPage() {
               {t('learning.reviews')}
             </span>
           </div>
-          <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} />
+          {/* <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} /> */}
         </div>
         <div className={styles['progress-container']}>
           <div className={styles['progress-label-container']}>
@@ -78,11 +93,11 @@ export default function LearningPage() {
               {t('learning.news')}
             </span>
           </div>
-          <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} />
+          {/* <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} /> */}
         </div>
       </div>
       <LearningCard
-        card={DUMMY_CARD}
+        card={DUMMY_CARD_DETAIL}
         className={styles['learning-card']}
         cardState={cardState}
         handleReveal={handleReveal}

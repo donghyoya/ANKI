@@ -19,6 +19,7 @@ export interface LearningCardState {
   showDetail: boolean;
   showConjugation: boolean;
   showExample: boolean;
+  isKoreanToForeign?: boolean;
 }
 
 interface LearningCardProps {
@@ -70,7 +71,9 @@ const LearningCard = ({
     >
       {!cardState.isRevealed && (
         <div className={styles['content-container']}>
-          <span className={styles['korean-word']}>{card.wordInfo.koreanWord}</span>
+          <span className={styles['korean-word']}>
+            {cardState.isKoreanToForeign ? card.wordInfo.koreanWord : card.wordInfo.foreignWord}
+          </span>
           <span className={`${styles['foreign-word']} ${styles['revealed']}`}>
             {t('learning.checkAnswer')}
           </span>
@@ -79,8 +82,12 @@ const LearningCard = ({
 
       {cardState.isRevealed && !cardState.showDetail && (
         <div className={styles['content-container']}>
-          <span className={styles['korean-word']}>{card.wordInfo.koreanWord}</span>
-          <span className={styles['foreign-word']}>{card.wordInfo.foreignWord}</span>
+          <span className={styles['korean-word']}>
+            {cardState.isKoreanToForeign ? card.wordInfo.koreanWord : card.wordInfo.foreignWord}
+          </span>
+          <span className={styles['foreign-word']}>
+            {cardState.isKoreanToForeign ? card.wordInfo.foreignWord : card.wordInfo.koreanWord}
+          </span>
         </div>
       )}
 
@@ -111,11 +118,18 @@ const LearningCard = ({
               id="learning-card-menu"
               anchor="learning-card-menu-button"
               anchorCorner="end-start"
-              xOffset={-60}
+              xOffset={-160}
               yOffset={4}
+              style={{ minWidth: '200px' }}
             >
               {menuItems.map((item) => (
-                <MenuItem key={item.label} onClick={item.onClick}>
+                <MenuItem
+                  key={item.label}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    item.onClick();
+                  }}
+                >
                   {item.label}
                 </MenuItem>
               ))}

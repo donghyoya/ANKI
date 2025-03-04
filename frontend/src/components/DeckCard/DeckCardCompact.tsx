@@ -12,7 +12,7 @@ import { DeckCardProps } from '@/components/DeckCard/types';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
 import { OutlinedCard } from '@/components/Card/Card';
 
-import { getWordCount } from './wordCount';
+import { getFormatUnit } from '@/utils/unitFormatter';
 import { Progress } from '@/types/Progress';
 import { DUMMY_PROGRESS } from '@/utils/dummyData';
 import styles from './DeckCardCompact.module.scss';
@@ -64,7 +64,7 @@ const DeckCardCompact = ({
             <Link href={`/difficulty/${level}`}>
               <TextButton onClick={(e) => e.stopPropagation()}>{buttonLabels.viewWords}</TextButton>
             </Link>
-            <span className={styles['word-count']}>{getWordCount(wordCount, locale)}</span>
+            <span className={styles['word-count']}>{getFormatUnit(locale, 'word', wordCount, true)}</span>
           </div>
         )}
         <ProgressBar progress={progress} height={isExpanded ? 12 : 6}></ProgressBar>

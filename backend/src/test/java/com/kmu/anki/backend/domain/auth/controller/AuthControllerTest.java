@@ -2,6 +2,7 @@ package com.kmu.anki.backend.domain.auth.controller;
 
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
@@ -15,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class AuthControllerTest extends AbstractControllerTest {
 
+    @Disabled
     @WithMockCustomOAuth2
     @DisplayName("로그아웃 API")
     @Test

@@ -7,7 +7,7 @@ import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import org.springframework.data.domain.Page;
 
 public interface UserCardCacheRepository {
-    Page<UserCardDto> findByDailyUserCard(Long userId, LanguageCode languageCode, CardTopicEnums cardTopicEnums);
+    Page<UserCardDto> findDailyUserCard(Long userId, LanguageCode languageCode, CardTopicEnums cardTopicEnums);
 
     Page<UserCardDto> findDailyUserCard(Long userId, LanguageCode languageCode, CardLevel cardLevel);
 

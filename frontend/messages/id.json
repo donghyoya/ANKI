@@ -1,40 +1,61 @@
 {
-  "level": {
+  "learn": "Belajar",
+  "viewWords": "Lihat kata",
+  "goalComplete": "Tujuan harian tercapai!",
+  "continuePrompt": "Ingin melanjutkan?",
+  "chooseOption": "Pilih opsi di bawah ini:",
+  "learnMore": "Pelajari lebih lanjut",
+  "reviewMore": "Tinjau lebih banyak",
+  "hideKorean": "Sembunyikan Korea",
+  "hideForeign": "Sembunyikan Indonesia",
+  "showKorean": "Tampilkan bahasa Indonesia",
+  "showForeign": "Tampilkan bahasa Indonesia",
+  "expandAll": "Perluas semua",
+  "collapseAll": "Tutup semua",
+
+  "menu": {
+    "difficulty": "Kesulitan",
+    "meanings": "Arti",
+    "settings": "Pengaturan"
+  },
+
+  "difficulty": {
     "wordsByDifficulty": "Kata berdasarkan tingkat kesulitan",
     "beginner": "Pemula",
     "intermediate": "Menengah",
     "advanced": "Lanjutan"
   },
 
-  "learn": "Belajar",
-  "viewWords": "Lihat kata",
-
-  "hideKorean": "Sembunyikan Korea",
-  "hideForeign": "Sembunyikan Indonesia",
-  "showKorean": "Tampilkan bahasa Indonesia",
-  "showForeign": "Tampilkan bahasa Indonesia",
-
-  "settingsPage": {
-    "settings": "Pengaturan",
-    "system": "Sistem",
-    "language": "Bahasa",
-    "theme": "Tema",
-    "learning": "Pembelajaran",
-    "reviewCount": "Jumlah kata yang ditinjau setiap hari",
-    "newCount": "Jumlah kata baru setiap hari",
-    "account": "Akun",
-    "signOut": "Keluar",
-    "deleteAccount": "Hapus akun"
+  "meanings": {
+    "wordsByMeanings": "Mots par signification",
+    "action": "Action",
+    "administration": "Administration",
+    "communication": "Communication",
+    "concept": "Concept",
+    "culture": "Culture",
+    "economy": "Économie",
+    "fashion": "Mode et apparence",
+    "feeling": "Sentiment",
+    "food": "Nourriture",
+    "grammar": "Grammaire et langue",
+    "home": "Maison",
+    "hospital": "Hôpital",
+    "life": "Vie",
+    "living": "Habitation",
+    "nature": "Nature",
+    "news": "Actualités",
+    "number": "Nombre",
+    "personality": "Personnalité",
+    "politics": "Politique",
+    "relationships": "Relations",
+    "religion": "Religion",
+    "school": "École",
+    "science": "Science",
+    "time": "Temps",
+    "transport": "Transport",
+    "weather": "Météo",
+    "work": "Travail"
   },
-  "goalComplete": "Tujuan harian tercapai!",
-  "continuePrompt": "Ingin melanjutkan?",
-  "chooseOption": "Pilih opsi di bawah ini:",
-  "learnMore": "Pelajari lebih lanjut",
-  "reviewMore": "Tinjau lebih banyak",
-
-  "difficulty": "Kesulitan",
-  "meanings": "Arti",
-  "settings": "Pengaturan",
 
   "learning": {
     "reviews": "Ulasan",
@@ -58,5 +79,18 @@
     "phrase": "Frasa",
     "sentence": "Kalimat",
     "conversation": "Percakapan"
+  },
+
+  "settings": {
+    "settings": "Pengaturan",
+    "system": "Sistem",
+    "language": "Bahasa",
+    "theme": "Tema",
+    "learning": "Pembelajaran",
+    "reviewCount": "Jumlah kata yang ditinjau setiap hari",
+    "newCount": "Jumlah kata baru setiap hari",
+    "account": "Akun",
+    "signOut": "Keluar",
+    "deleteAccount": "Hapus akun"
   }
 }

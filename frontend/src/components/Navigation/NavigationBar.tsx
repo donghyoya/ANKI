@@ -36,7 +36,7 @@ const NavigationBar = ({
               <Icon>{destination.icon}</Icon>
             </div>
             <span className={`${styles['label']} ${isSelected ? styles.selected : ''}`}>
-              {t(destination.label)}
+              {t(`menu.${destination.label}`)}
             </span>
           </button>
         );

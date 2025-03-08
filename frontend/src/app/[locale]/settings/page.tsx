@@ -60,11 +60,11 @@ export default function SettingsPage() {
   const webView = (
     <div className={styles.page}>
       <div className={styles.contents}>
-        <h1 className={styles.title}>{t('settingsPage.settings')}</h1>
+        <h1 className={styles.title}>{t('settings.settings')}</h1>
         <div className={styles['group']}>
-          <h3 className={styles['group-title']}>{t('settingsPage.system')}</h3>
+          <h3 className={styles['group-title']}>{t('settings.system')}</h3>
           <div className={classNames(styles['field-section'], styles['first-field-section'])}>
-            <label className={styles.label}>{t('settingsPage.language')}</label>
+            <label className={styles.label}>{t('settings.language')}</label>
             <OutlinedSelect value={locale}>
               {languageOptions.map((lang) => (
                 <SelectOption
@@ -79,7 +79,7 @@ export default function SettingsPage() {
             </OutlinedSelect>
           </div>
           <div className={styles['field-section']}>
-            <label className={styles.label}>{t('settingsPage.theme')}</label>
+            <label className={styles.label}>{t('settings.theme')}</label>
             <OutlinedSelect>
               <SelectOption value="classic" selected>
                 <div>Classic</div>
@@ -88,22 +88,22 @@ export default function SettingsPage() {
           </div>
         </div>
         <div className={styles['group']}>
-          <h3 className={styles['group-title']}>{t('settingsPage.learning')}</h3>
+          <h3 className={styles['group-title']}>{t('settings.learning')}</h3>
           <div className={classNames(styles['field-section'], styles['first-field-section'])}>
-            <label className={styles.label}>{t('settingsPage.reviewCount')}</label>
+            <label className={styles.label}>{t('settings.reviewCount')}</label>
             <OutlinedTextField value="20"></OutlinedTextField>
           </div>
           <div className={styles['field-section']}>
-            <label className={styles.label}>{t('settingsPage.newCount')}</label>
+            <label className={styles.label}>{t('settings.newCount')}</label>
             <OutlinedTextField value="20"></OutlinedTextField>
           </div>
         </div>
         <div className={styles['group']}>
-          <h3 className={styles['group-title']}>{t('settingsPage.account')}</h3>
+          <h3 className={styles['group-title']}>{t('settings.account')}</h3>
           <div className={styles['sign-out-button']}>
-            <TextButton>{t('settingsPage.signOut')}</TextButton>
+            <TextButton>{t('settings.signOut')}</TextButton>
           </div>
-          <TextButton>{t('settingsPage.deleteAccount')}</TextButton>
+          <TextButton>{t('settings.deleteAccount')}</TextButton>
         </div>
       </div>
     </div>
@@ -114,7 +114,7 @@ export default function SettingsPage() {
       <List className={styles.list}>
         <div style={{ position: 'relative' }}>
           <ListItem type="button" id="language-anchor" onClick={handleLanguageMenuClick}>
-            <div slot="headline">{t('settingsPage.language')}</div>
+            <div slot="headline">{t('settings.language')}</div>
             <div slot="supporting-text">
               {languageOptions.find((lang) => lang.code === locale)?.label || 'English'}
             </div>
@@ -136,7 +136,7 @@ export default function SettingsPage() {
         </div>
         <div style={{ position: 'relative' }}>
           <ListItem type="button" id="theme-anchor" onClick={handleThemeMenuClick}>
-            <div slot="headline">{t('settingsPage.theme')}</div>
+            <div slot="headline">{t('settings.theme')}</div>
             <div slot="supporting-text">classic</div>
             <Icon slot="end">arrow_drop_down</Icon>
           </ListItem>
@@ -145,15 +145,15 @@ export default function SettingsPage() {
           </Menu>
         </div>
         <ListItem type="button">
-          <div slot="headline">{t('settingsPage.reviewCount')}</div>
+          <div slot="headline">{t('settings.reviewCount')}</div>
           <div slot="trailing-supporting-text">20</div>
         </ListItem>
         <ListItem type="button">
-          <div slot="headline">{t('settingsPage.newCount')}</div>
+          <div slot="headline">{t('settings.newCount')}</div>
           <div slot="trailing-supporting-text">20</div>
         </ListItem>
-        <ListItem type="button">{t('settingsPage.signOut')}</ListItem>
-        <ListItem type="button">{t('settingsPage.deleteAccount')}</ListItem>
+        <ListItem type="button">{t('settings.signOut')}</ListItem>
+        <ListItem type="button">{t('settings.deleteAccount')}</ListItem>
       </List>
     </div>
   );

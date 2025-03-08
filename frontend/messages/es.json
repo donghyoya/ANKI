@@ -1,40 +1,61 @@
 {
-  "level": {
+  "learn": "Aprender",
+  "viewWords": "Ver palabras",
+  "goalComplete": "¡Meta diaria completada!",
+  "continuePrompt": "¿Quieres seguir adelante?",
+  "chooseOption": "Elige una opción abajo:",
+  "learnMore": "Aprender más",
+  "reviewMore": "Revisar más",
+  "hideKorean": "Ocultar coreano",
+  "hideForeign": "Ocultar español",
+  "showKorean": "Mostrar coreano",
+  "showForeign": "Mostrar español",
+  "expandAll": "Expandir todo",
+  "collapseAll": "Colapsar todo",
+
+  "menu": {
+    "difficulty": "Dificultad",
+    "meanings": "Significado",
+    "settings": "Configuración"
+  },
+
+  "difficulty": {
     "wordsByDifficulty": "Palabras por dificultad",
     "beginner": "Principiante",
     "intermediate": "Intermedio",
     "advanced": "Avanzado"
   },
 
-  "learn": "Aprender",
-  "viewWords": "Ver palabras",
-
-  "hideKorean": "Ocultar coreano",
-  "hideForeign": "Ocultar español",
-  "showKorean": "Mostrar coreano",
-  "showForeign": "Mostrar español",
-
-  "settingsPage": {
-    "settings": "Configuración",
-    "system": "Sistema",
-    "language": "Idioma",
-    "theme": "Tema",
-    "learning": "Aprendizaje",
-    "reviewCount": "Cantidad diaria de palabras revisadas",
-    "newCount": "Cantidad diaria de palabras nuevas",
-    "account": "Cuenta",
-    "signOut": "Cerrar sesión",
-    "deleteAccount": "Eliminar cuenta"
+  "meanings": {
+    "wordsByMeanings": "Palabras por significado",
+    "action": "Acción",
+    "administration": "Administración",
+    "communication": "Comunicación",
+    "concept": "Concepto",
+    "culture": "Cultura",
+    "economy": "Economía",
+    "fashion": "Moda y apariencia",
+    "feeling": "Sentimiento",
+    "food": "Comida",
+    "grammar": "Gramática y lenguaje",
+    "home": "Hogar",
+    "hospital": "Hospital",
+    "life": "Vida",
+    "living": "Vivienda",
+    "nature": "Naturaleza",
+    "news": "Noticias",
+    "number": "Número",
+    "personality": "Personalidad",
+    "politics": "Política",
+    "relationships": "Relaciones",
+    "religion": "Religión",
+    "school": "Escuela",
+    "science": "Ciencia",
+    "time": "Tiempo",
+    "transport": "Transporte",
+    "weather": "Clima",
+    "work": "Trabajo"
   },
-  "goalComplete": "¡Meta diaria completada!",
-  "continuePrompt": "¿Quieres seguir adelante?",
-  "chooseOption": "Elige una opción abajo:",
-  "learnMore": "Aprender más",
-  "reviewMore": "Revisar más",
-
-  "difficulty": "Dificultad",
-  "meanings": "Significado",
-  "settings": "Configuración",
 
   "learning": {
     "reviews": "Reseñas",
@@ -58,5 +79,18 @@
     "phrase": "Frase",
     "sentence": "Oración",
     "conversation": "Conversación"
+  },
+
+  "settings": {
+    "settings": "Configuración",
+    "system": "Sistema",
+    "language": "Idioma",
+    "theme": "Tema",
+    "learning": "Aprendizaje",
+    "reviewCount": "Cantidad diaria de palabras revisadas",
+    "newCount": "Cantidad diaria de palabras nuevas",
+    "account": "Cuenta",
+    "signOut": "Cerrar sesión",
+    "deleteAccount": "Eliminar cuenta"
   }
 }

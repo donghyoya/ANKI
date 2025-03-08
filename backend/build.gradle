@@ -68,6 +68,8 @@ dependencies {
 	// test : spring security
 	testImplementation "org.springframework.security:spring-security-test"
 
+	// in memory cache
+	implementation 'com.github.ben-manes.caffeine:caffeine:3.1.8'
 }
 
 openapi3{

@@ -2,22 +2,20 @@ package com.kmu.anki.backend.domain.user.dto;
 
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.User;
-import jakarta.annotation.Nullable;
-import jakarta.persistence.Column;
 import lombok.Getter;
 
 @Getter
 public class UserOptionDto {
     private Long id;
-    private Integer todayStudyWords;
-    private Integer todayReviewWords;
+    private Integer dailyStudyWords;
+    private Integer dailyReviewWords;
     private Integer utcOffset;
     private LanguageCode languageCode;
 
-    public UserOptionDto(Long id, Integer todayStudyWords, Integer todayReviewWords, LanguageCode languageCode, Integer utcOffset) {
+    public UserOptionDto(Long id, Integer dailyStudyWords, Integer dailyReviewWords, LanguageCode languageCode, Integer utcOffset) {
         this.id = id;
-        this.todayStudyWords = todayStudyWords;
-        this.todayReviewWords = todayReviewWords;
+        this.dailyStudyWords = dailyStudyWords;
+        this.dailyReviewWords = dailyReviewWords;
         this.languageCode = languageCode;
         this.utcOffset = utcOffset;
     }
@@ -25,8 +23,8 @@ public class UserOptionDto {
     public static UserOptionDto of(User user) {
         return new UserOptionDto(
             user.getId(),
-            user.getTodayStudyWords(),
-            user.getTodayStudyWords(),
+            user.getDailyStudyWords(),
+            user.getDailyReviewWords(),
             user.getLanguageCode(),
             user.getUtcOffset()
         );

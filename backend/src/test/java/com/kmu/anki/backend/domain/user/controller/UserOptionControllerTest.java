@@ -51,8 +51,8 @@ class UserOptionControllerTest extends AbstractControllerTest {
     @EnumSource(LanguageCode.class)
     void putUserOption(LanguageCode code) throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("todayStudyWords", 30);
-        map.put("todayReviewWords", 30);
+        map.put("dailyStudyWords", 30);
+        map.put("dailyReviewWords", 30);
         map.put("languageCode", code);
         map.put("utcOffset", +9);
         mockMvc.perform(

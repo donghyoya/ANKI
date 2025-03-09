@@ -62,8 +62,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService{
         // dto도 아니고 왜 Entity를 여기에 넣는지?
 //        httpSession.setAttribute("user", user);
         userAttributes.put("userId", user.getId());
-        userAttributes.put("todayStudyWords", user.getTodayStudyWords());
-        userAttributes.put("todayReviewWords", user.getTodayReviewWords());
+        userAttributes.put("todayStudyWords", user.getDailyStudyWords());
+        userAttributes.put("todayReviewWords", user.getDailyReviewWords());
         userAttributes.put("languageCode", user.getLanguageCode());
 
         return new DefaultOAuth2User(

@@ -5,7 +5,6 @@ import com.kmu.anki.backend.domain.user.dto.UserOptionDto;
 import com.kmu.anki.backend.domain.user.service.UserOptionService;
 import com.kmu.anki.backend.domain.user.utils.SessionUtils;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +22,8 @@ public class UserOptionController {
         UserOptionDto userOptionDto = userOptionService.readOption(id);
         SessionUtils.setUserOptions(
                 request,
-                userOptionDto.getTodayStudyWords(),
-                userOptionDto.getTodayReviewWords(),
+                userOptionDto.getDailyStudyWords(),
+                userOptionDto.getDailyReviewWords(),
                 userOptionDto.getLanguageCode()
         );
         return userOptionDto;
@@ -38,16 +37,16 @@ public class UserOptionController {
 
         UserOptionDto userOptionDto = userOptionService.updateOption(
                 id,
-                form.getTodayStudyWords(),
-                form.getTodayReviewWords(),
+                form.getDailyStudyWords(),
+                form.getDailyReviewWords(),
                 form.getLanguageCode(),
                 form.getUtcOffset()
         );
 
         SessionUtils.setUserOptions(
                 request,
-                userOptionDto.getTodayStudyWords(),
-                userOptionDto.getTodayReviewWords(),
+                userOptionDto.getDailyStudyWords(),
+                userOptionDto.getDailyReviewWords(),
                 userOptionDto.getLanguageCode()
         );
 

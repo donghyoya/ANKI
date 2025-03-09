@@ -24,10 +24,10 @@ public class User {
     private Long id;
 
     @Column
-    private Integer todayStudyWords;
+    private Integer dailyStudyWords;
 
     @Column
-    private Integer todayReviewWords;
+    private Integer dailyReviewWords;
 
     @Column
     private String email;
@@ -51,9 +51,9 @@ public class User {
     @Column(columnDefinition = "INTEGER DEFAULT 0")
     private Integer utcOffset;
 
-    public void update(Integer todayStudyWords, Integer todayReviewWords,LanguageCode languageCode, Integer utcOffset){
-        this.todayStudyWords = todayStudyWords;
-        this.todayReviewWords = todayReviewWords;
+    public void update(Integer dailyStudyWords, Integer dailyReviewWords,LanguageCode languageCode, Integer utcOffset){
+        this.dailyStudyWords = dailyStudyWords;
+        this.dailyReviewWords = dailyReviewWords;
         this.languageCode = languageCode;
         this.utcOffset = utcOffset;
     }
@@ -84,9 +84,9 @@ public class User {
         this(todayStudyWords, todayReviewWords, LanguageCode.en);
     }
 
-    public User(Integer todayStudyWords, Integer todayReviewWords, LanguageCode languageCode) {
-        this.todayStudyWords = todayStudyWords;
-        this.todayReviewWords = todayReviewWords;
+    public User(Integer dailyStudyWords, Integer dailyReviewWords, LanguageCode languageCode) {
+        this.dailyStudyWords = dailyStudyWords;
+        this.dailyReviewWords = dailyReviewWords;
         this.languageCode = languageCode;
     }
 
@@ -102,8 +102,8 @@ public class User {
         this.loginId = dto.getLoginId();
         this.loginPwd = dto.getLoginPwd();
         this.role = dto.getRole();
-        this.todayStudyWords = 30;
-        this.todayReviewWords = 10;
+        this.dailyStudyWords = 30;
+        this.dailyReviewWords = 10;
         this.languageCode = LanguageCode.en;
     }
 }

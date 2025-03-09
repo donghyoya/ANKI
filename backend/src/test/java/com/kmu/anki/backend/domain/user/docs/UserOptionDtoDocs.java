@@ -13,7 +13,6 @@ public class UserOptionDtoDocs {
 
     public static FieldDescriptor[] userOptionDto(String prefix){
         return new FieldDescriptor[]{
-                fieldWithPath(prefix+"id").type(JsonFieldType.NUMBER).optional().description("user의 고유번호"),
                 fieldWithPath(prefix+"dailyStudyWords").description("오늘 공부할 단어 수"),
                 fieldWithPath(prefix+"dailyReviewWords").description("오늘 복습할 단어 수"),
                 fieldWithPath(prefix+"languageCode").description("어떤 언어로 학습할지 그 언어코드"),

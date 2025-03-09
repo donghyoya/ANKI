@@ -6,14 +6,12 @@ import lombok.Getter;
 
 @Getter
 public class UserOptionDto {
-    private Long id;
     private Integer dailyStudyWords;
     private Integer dailyReviewWords;
     private Integer utcOffset;
     private LanguageCode languageCode;
 
-    public UserOptionDto(Long id, Integer dailyStudyWords, Integer dailyReviewWords, LanguageCode languageCode, Integer utcOffset) {
-        this.id = id;
+    public UserOptionDto(Integer dailyStudyWords, Integer dailyReviewWords, LanguageCode languageCode, Integer utcOffset) {
         this.dailyStudyWords = dailyStudyWords;
         this.dailyReviewWords = dailyReviewWords;
         this.languageCode = languageCode;
@@ -22,7 +20,6 @@ public class UserOptionDto {
 
     public static UserOptionDto of(User user) {
         return new UserOptionDto(
-            user.getId(),
             user.getDailyStudyWords(),
             user.getDailyReviewWords(),
             user.getLanguageCode(),

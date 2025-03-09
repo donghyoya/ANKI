@@ -24,6 +24,13 @@ public class UserCardDto {
     private Double stability;
     private CardState state;
     private Double difficulty;
+    private String originalLanguage;
+    private String homographNumber; // 동형어 번호
+    private String partsOfSpeech; // 품사
+    private String pronunciation; // 발음
+    private String relatedWords; // 관련어
+    private String inflection; // 활용
+    private String exampleUsage; // 용례
 
     public UserCardDto(
             Long cardId,
@@ -57,4 +64,27 @@ public class UserCardDto {
         this.difficulty = difficulty;
     }
 
+    public UserCardDto(Long cardId, String koreanWord, String foreignWord, CardLevel level, LanguageCode languageCode, Long userCardId, LocalDateTime due, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state, Double difficulty, String originalLanguage, String homographNumber, String partsOfSpeech, String pronunciation, String relatedWords, String inflection, String exampleUsage) {
+        this.cardId = cardId;
+        this.koreanWord = koreanWord;
+        this.foreignWord = foreignWord;
+        this.level = level;
+        this.languageCode = languageCode;
+        this.userCardId = userCardId;
+        this.due = due;
+        this.lapses = lapses;
+        this.lastReview = lastReview;
+        this.reps = reps;
+        this.scheduledDays = scheduledDays;
+        this.stability = stability;
+        this.state = state;
+        this.difficulty = difficulty;
+        this.originalLanguage = originalLanguage;
+        this.homographNumber = homographNumber;
+        this.partsOfSpeech = partsOfSpeech;
+        this.pronunciation = pronunciation;
+        this.relatedWords = relatedWords;
+        this.inflection = inflection;
+        this.exampleUsage = exampleUsage;
+    }
 }

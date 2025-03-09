@@ -4,6 +4,7 @@ import com.epages.restdocs.apispec.Schema;
 import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
 import com.kmu.anki.backend.global.BaseDocs;
 import org.springframework.restdocs.payload.FieldDescriptor;
+import org.springframework.restdocs.payload.JsonFieldType;
 
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 
@@ -27,7 +28,27 @@ public class UserCardDtoDocs {
                 fieldWithPath(prefix+"scheduledDays").description("현재 복습 간격"),
                 fieldWithPath(prefix+"stability").description("기억의 안정도"),
                 fieldWithPath(prefix+"state").description("카드의 현재 상태"),
-                fieldWithPath(prefix+"difficulty").description("카드의 난이도 (학습)")
+                fieldWithPath(prefix+"difficulty").description("카드의 난이도 (학습)"),
+                fieldWithPath(prefix+"originalLanguage")
+                        .type(JsonFieldType.STRING)
+                        .optional().description("단어의 원어"),
+                fieldWithPath(prefix+"homographNumber")
+                        .type(JsonFieldType.STRING)
+                        .optional().description("동형어 번호"),
+                fieldWithPath(prefix+"partsOfSpeech")
+                        .type(JsonFieldType.STRING)
+                        .optional().description("품사"),
+                fieldWithPath(prefix+"pronunciation")
+                        .type(JsonFieldType.STRING)
+                        .optional().description("발음"),
+                fieldWithPath(prefix+"relatedWords")
+                        .type(JsonFieldType.STRING).optional().description("관련어"),
+                fieldWithPath(prefix+"inflection")
+                        .type(JsonFieldType.STRING)
+                        .optional().description("활용"),
+                fieldWithPath(prefix+"exampleUsage")
+                        .type(JsonFieldType.STRING)
+                        .optional().description("용례"),
         };
         return BaseDocs.combine(CardDtoDocs.cardFields(prefix), userCardDto);
     }

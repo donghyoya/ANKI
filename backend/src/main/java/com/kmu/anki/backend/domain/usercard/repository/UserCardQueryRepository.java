@@ -10,6 +10,7 @@ import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.QUserCard;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -41,28 +42,12 @@ public class UserCardQueryRepository {
             Long userId,
             LanguageCode code,
             CardLevel difficulty,
-            CardTopicEnums topic, // TODO
+            CardTopicEnums topic,
             LocalDateTime now,
             Pageable pageable
     ){
         List<UserCardDto> contents = queryFactory.select(
-                        Projections.constructor(
-                                UserCardDto.class,
-                                koreanCard.id,
-                                koreanCard.koreanWord,
-                                foreignCard.foreignWord,
-                                koreanCard.level,
-                                foreignCard.languageCode,
-                                userCard.id,
-                                userCard.due,
-                                userCard.lapses,
-                                userCard.lastReview,
-                                userCard.reps,
-                                userCard.scheduledDays,
-                                userCard.stability,
-                                userCard.state,
-                                userCard.difficulty
-                        )
+                        projectionUserCard()
                 )
                 .from(
                         koreanCard
@@ -87,23 +72,7 @@ public class UserCardQueryRepository {
                 .fetch();
         JPAQuery<UserCardDto> countQuery = queryFactory
                 .select(
-                        Projections.constructor(
-                                UserCardDto.class,
-                                koreanCard.id,
-                                koreanCard.koreanWord,
-                                foreignCard.foreignWord,
-                                koreanCard.level,
-                                foreignCard.languageCode,
-                                userCard.id,
-                                userCard.due,
-                                userCard.lapses,
-                                userCard.lastReview,
-                                userCard.reps,
-                                userCard.scheduledDays,
-                                userCard.stability,
-                                userCard.state,
-                                userCard.difficulty
-                        )
+                        projectionUserCard()
                 )
                 .from(
                         koreanCard
@@ -178,6 +147,33 @@ public class UserCardQueryRepository {
                 .and(dueBefore(now))
         ;
         return builder;
+    }
+
+    private ConstructorExpression<UserCardDto> projectionUserCard(){
+        return Projections.constructor(
+                UserCardDto.class,
+                koreanCard.id,
+                koreanCard.koreanWord,
+                foreignCard.foreignWord,
+                koreanCard.level,
+                foreignCard.languageCode,
+                userCard.id,
+                userCard.due,
+                userCard.lapses,
+                userCard.lastReview,
+                userCard.reps,
+                userCard.scheduledDays,
+                userCard.stability,
+                userCard.state,
+                userCard.difficulty,
+                koreanCard.originalLanguage,
+                koreanCard.homographNumber,
+                koreanCard.partsOfSpeech,
+                koreanCard.pronunciation,
+                koreanCard.relatedWords,
+                koreanCard.inflection,
+                koreanCard.exampleUsage
+        );
     }
 
     public BooleanExpression userIdEq(Long userId){

@@ -8,6 +8,7 @@ import com.kmu.anki.backend.domain.user.entity.User;
 import com.kmu.anki.backend.domain.user.repository.UserRepository;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
+import com.kmu.anki.backend.domain.usercard.dto.cache.UserCardCacheO;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import com.kmu.anki.backend.domain.usercard.repository.UserCardQueryRepository;
 import com.kmu.anki.backend.domain.usercard.repository.UserCardRepository;
@@ -47,24 +48,26 @@ public class UserCardService {
         LocalDateTime now = LocalDateTime.now();
         User user = userRepository.findById(userId).orElseThrow();
         PageRequest pageRequest = PageRequest.of(0, user.getTodayStudyWords());
-        Page<UserCardDto> userCards = userCardCacheRepository.findDailyUserCard(userId, languageCode, cardTopicEnums);
-        if(userCards == null){
-            userCards = userCardQueryRepository.findStudyCards(userId, languageCode, null, cardTopicEnums, now, pageRequest);
-            userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardTopicEnums, userCards);
+        UserCardCacheO dailyUserCard = userCardCacheRepository.findDailyUserCard(userId, languageCode, cardTopicEnums);
+        if(dailyUserCard == null){
+            Page<UserCardDto> studyCards = userCardQueryRepository.findStudyCards(userId, languageCode, null, cardTopicEnums, now, pageRequest);
+            dailyUserCard = new UserCardCacheO(studyCards, user.getUtcOffset());
+            userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardTopicEnums, dailyUserCard);
         }
-        return userCards;
+        return dailyUserCard.getUserCardDtos();
     }
 
     public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, CardLevel cardLevel){
         LocalDateTime now = LocalDateTime.now();
         User user = userRepository.findById(userId).orElseThrow();
         PageRequest pageRequest = PageRequest.of(0, user.getTodayStudyWords());
-        Page<UserCardDto> userCards = userCardCacheRepository.findDailyUserCard(userId, languageCode, cardLevel);
-        if(userCards == null){
-            userCards = userCardQueryRepository.findStudyCards(userId, languageCode, cardLevel, null, now, pageRequest);
-            userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardLevel, userCards);
+        UserCardCacheO dailyUserCard = userCardCacheRepository.findDailyUserCard(userId, languageCode, cardLevel);
+        if(dailyUserCard == null){
+            Page<UserCardDto> studyCards = userCardQueryRepository.findStudyCards(userId, languageCode, cardLevel, null, now, pageRequest);
+            dailyUserCard = new UserCardCacheO(studyCards, user.getUtcOffset());
+            userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardLevel, dailyUserCard);
         }
-        return userCards;
+        return dailyUserCard.getUserCardDtos();
     }
 
 

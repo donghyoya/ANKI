@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.domain.card.controller;
 
 import com.kmu.anki.backend.domain.auth.utils.PrincipalUtils;
+import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
 import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.dto.DeckDto;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
@@ -47,14 +48,14 @@ public class DeckController {
     }
 
     @GetMapping("/cards")
-    public BasePageResponse<CardDto> getDeckCards(
+    public BasePageResponse<CardDetailDto> getDeckCards(
             @RequestParam("queryType") QueryType queryType,
             @RequestParam("query") String query,
             @RequestParam(value = "code", required = false) LanguageCode code,
             HttpServletRequest request
     ){
         code = SessionUtils.getLanaguageCode(request).orElse(code);
-        Page<CardDto> cards;
+        Page<CardDetailDto> cards;
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
             cards = deckService.findDeckCards(code, cardTopicEnums);

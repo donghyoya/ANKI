@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.card.service;
 
+import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
 import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.dto.DeckDto;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
@@ -37,11 +38,11 @@ public class DeckService {
 
 
 
-    public Page<CardDto> findDeckCards(LanguageCode languageCode, CardLevel cardLevel){
-        return foreignCardRepository.findDeckCard(languageCode, cardLevel, PageRequest.of(0,20)).map(CardDto::of);
+    public Page<CardDetailDto> findDeckCards(LanguageCode languageCode, CardLevel cardLevel){
+        return cardQueryRepository.findDecksCardByLevel(languageCode, cardLevel, PageRequest.of(0,20));
     }
 
-    public Page<CardDto> findDeckCards(LanguageCode languageCode, CardTopicEnums category){
+    public Page<CardDetailDto> findDeckCards(LanguageCode languageCode, CardTopicEnums category){
         return cardQueryRepository.findDecksCardByTopic(languageCode, category, PageRequest.of(0,20));
     }
 

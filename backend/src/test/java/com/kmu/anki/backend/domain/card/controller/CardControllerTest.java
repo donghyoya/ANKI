@@ -58,9 +58,9 @@ class CardControllerTest extends AbstractControllerTest {
                                                         CardParameters.cardId
                                                 )
                                                 .responseFields(
-                                                        CardDtoDocs.card
+                                                        CardDetailDtoDocs.cardDetailDto
                                                 )
-                                                .responseSchema(CardDtoDocs.cardSchema)
+                                                .responseSchema(CardDetailDtoDocs.cardDetailSchema)
                                                 .build()
                                 )
                         )
@@ -116,9 +116,9 @@ class CardControllerTest extends AbstractControllerTest {
                                                         CardParameters.unAuthlanguageCode
                                                 )
                                                 .responseFields(
-                                                        CardDtoDocs.card
+                                                        CardDetailDtoDocs.cardDetailDto
                                                 )
-                                                .responseSchema(CardDtoDocs.cardSchema)
+                                                .responseSchema(CardDetailDtoDocs.cardDetailSchema)
                                                 .build()
                                 )
                         )

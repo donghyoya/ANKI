@@ -22,13 +22,13 @@ public class CardController {
     private final CardService cardService;
 
     @GetMapping("/{cardId}")
-    public CardDto getCard(
+    public CardDetailDto getCard(
             @PathVariable("cardId") Long cardId,
             @RequestParam(value = "code", required = false) LanguageCode code,
             HttpServletRequest request
     ){
         code = SessionUtils.getLanaguageCode(request).orElse(code);
-        return cardService.readCard(cardId, code);
+        return cardService.readCardDetail(cardId, code);
     }
 
     @GetMapping("/{cardId}/details")

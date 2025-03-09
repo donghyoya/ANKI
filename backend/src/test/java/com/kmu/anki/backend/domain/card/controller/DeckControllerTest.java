@@ -3,6 +3,7 @@ package com.kmu.anki.backend.domain.card.controller;
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
+import com.kmu.anki.backend.domain.card.docs.CardDetailDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.DeckDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.parameters.CardParameters;
@@ -147,9 +148,9 @@ class DeckControllerTest extends AbstractControllerTest {
                                                         DeckParameters.query
                                                 )
                                                 .responseFields(
-                                                        CardDtoDocs.cards
+                                                        CardDetailDtoDocs.cardDetailDtos
                                                 )
-                                                .responseSchema(CardDtoDocs.cardsSchema)
+                                                .responseSchema(CardDetailDtoDocs.cardDetailsSchema)
                                                 .build()
                                 )
                         )
@@ -211,9 +212,9 @@ class DeckControllerTest extends AbstractControllerTest {
                                                         DeckParameters.query
                                                 )
                                                 .responseFields(
-                                                        CardDtoDocs.cards
+                                                        CardDetailDtoDocs.cardDetailDtos
                                                 )
-                                                .responseSchema(CardDtoDocs.cardsSchema)
+                                                .responseSchema(CardDetailDtoDocs.cardDetailsSchema)
                                                 .build()
                                 )
                         )

@@ -4,6 +4,7 @@ import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
 import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.dto.DeckDto;
 import com.kmu.anki.backend.domain.card.entity.*;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.usercard.entity.QUserCard;
@@ -105,23 +106,83 @@ public class CardQueryRepository {
     /**
      * 의미코드에 맞는 Card들 검색
      * @param languageCode
-     * @param category
+     * @param level
      * @param pageable
      * @return
      */
-    public Page<CardDto> findDecksCardByTopic(
+    public Page<CardDetailDto> findDecksCardByLevel(
             LanguageCode languageCode,
-            CardTopicEnums category,
+            CardLevel level,
             Pageable pageable
     ){
-        List<CardDto> cards = queryFactory.select(
+        List<CardDetailDto> cards = queryFactory.select(
                         Projections.constructor(
-                                CardDto.class,
+                                CardDetailDto.class,
                                 koreanCard.id,
                                 koreanCard.koreanWord,
                                 foreignCard.foreignWord,
                                 koreanCard.level,
-                                foreignCard.languageCode
+                                foreignCard.languageCode,
+                                koreanCard.originalLanguage,
+                                koreanCard.homographNumber,
+                                koreanCard.partsOfSpeech,
+                                koreanCard.pronunciation,
+                                koreanCard.relatedWords,
+                                koreanCard.inflection,
+                                koreanCard.exampleUsage
+                        )
+                ).from(koreanCard)
+                .join(koreanCard.foreignCards, foreignCard)
+                .where(
+                        koreanCard.level.eq(level).and(
+                                foreignCard.languageCode.eq(languageCode)
+                        )
+                )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        JPAQuery<KoreanCard> countq = queryFactory.select(koreanCard)
+                .from(koreanCard)
+                .where(
+                        koreanCard.level.eq(level)
+                )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize());
+
+        return PageableExecutionUtils.getPage(
+                cards, pageable, ()->  countq.fetch().size()
+        );
+    }
+
+
+    /**
+     * 의미코드에 맞는 Card들 검색
+     * @param languageCode
+     * @param category
+     * @param pageable
+     * @return
+     */
+    public Page<CardDetailDto> findDecksCardByTopic(
+            LanguageCode languageCode,
+            CardTopicEnums category,
+            Pageable pageable
+    ){
+        List<CardDetailDto> cards = queryFactory.select(
+                        Projections.constructor(
+                                CardDetailDto.class,
+                                koreanCard.id,
+                                koreanCard.koreanWord,
+                                foreignCard.foreignWord,
+                                koreanCard.level,
+                                foreignCard.languageCode,
+                                koreanCard.originalLanguage,
+                                koreanCard.homographNumber,
+                                koreanCard.partsOfSpeech,
+                                koreanCard.pronunciation,
+                                koreanCard.relatedWords,
+                                koreanCard.inflection,
+                                koreanCard.exampleUsage
                         )
                 ).from(koreanCard)
                 .join(koreanCard.foreignCards, foreignCard)

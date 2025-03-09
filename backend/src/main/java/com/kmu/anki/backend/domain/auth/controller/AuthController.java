@@ -35,7 +35,7 @@ import java.util.Map;
 
 @Slf4j
 @RequestMapping("/api/auth")
-@RestController
+@Controller
 public class AuthController {
 
     @Autowired

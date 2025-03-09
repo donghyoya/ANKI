@@ -17,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Disabled
 class AuthControllerTest extends AbstractControllerTest {
 
+    @Disabled
     @WithMockCustomOAuth2
     @DisplayName("로그아웃 API")
     @Test

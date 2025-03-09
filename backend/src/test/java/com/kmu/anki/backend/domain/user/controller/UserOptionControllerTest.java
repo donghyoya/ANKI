@@ -54,6 +54,7 @@ class UserOptionControllerTest extends AbstractControllerTest {
         map.put("todayStudyWords", 30);
         map.put("todayReviewWords", 30);
         map.put("languageCode", code);
+        map.put("utcOffset", +9);
         mockMvc.perform(
                 post("/user/option")
                         .session(session)

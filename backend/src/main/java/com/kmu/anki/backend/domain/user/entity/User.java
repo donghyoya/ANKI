@@ -48,10 +48,14 @@ public class User {
     @Column
     private LanguageCode languageCode;
 
-    public void update(Integer todayStudyWords, Integer todayReviewWords,LanguageCode languageCode){
+    @Column(columnDefinition = "INTEGER DEFAULT 0")
+    private Integer utcOffset;
+
+    public void update(Integer todayStudyWords, Integer todayReviewWords,LanguageCode languageCode, Integer utcOffset){
         this.todayStudyWords = todayStudyWords;
         this.todayReviewWords = todayReviewWords;
         this.languageCode = languageCode;
+        this.utcOffset = utcOffset;
     }
 
     /* 관계 : 유저덱 */

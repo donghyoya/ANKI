@@ -40,7 +40,8 @@ public class UserOptionController {
                 id,
                 form.getTodayStudyWords(),
                 form.getTodayReviewWords(),
-                form.getLanguageCode()
+                form.getLanguageCode(),
+                form.getUtcOffset()
         );
 
         SessionUtils.setUserOptions(

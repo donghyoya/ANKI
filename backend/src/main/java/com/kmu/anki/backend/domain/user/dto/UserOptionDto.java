@@ -11,13 +11,15 @@ public class UserOptionDto {
     private Long id;
     private Integer todayStudyWords;
     private Integer todayReviewWords;
+    private Integer utcOffset;
     private LanguageCode languageCode;
 
-    public UserOptionDto(Long id, Integer todayStudyWords, Integer todayReviewWords, LanguageCode languageCode) {
+    public UserOptionDto(Long id, Integer todayStudyWords, Integer todayReviewWords, LanguageCode languageCode, Integer utcOffset) {
         this.id = id;
         this.todayStudyWords = todayStudyWords;
         this.todayReviewWords = todayReviewWords;
         this.languageCode = languageCode;
+        this.utcOffset = utcOffset;
     }
 
     public static UserOptionDto of(User user) {
@@ -25,7 +27,8 @@ public class UserOptionDto {
             user.getId(),
             user.getTodayStudyWords(),
             user.getTodayStudyWords(),
-            user.getLanguageCode()
+            user.getLanguageCode(),
+            user.getUtcOffset()
         );
     }
 }

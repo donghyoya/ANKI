@@ -25,6 +25,7 @@ create table users (
                        login_pwd varchar(255),
                        name varchar(255),
                        role varchar(255) check (role in ('GUEST','USER','ADMIN')),
+                       utc_offset integer default +9,
                        primary key (user_id)
 );
 create table card_topics (

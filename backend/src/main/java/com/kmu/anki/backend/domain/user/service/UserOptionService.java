@@ -20,9 +20,9 @@ public class UserOptionService {
     }
 
     @Transactional
-    public UserOptionDto updateOption(Long id, Integer todayStudyWords, Integer todayReviewWords, LanguageCode languageCode){
+    public UserOptionDto updateOption(Long id, Integer todayStudyWords, Integer todayReviewWords, LanguageCode languageCode, Integer utcOffset){
         User user = userRepository.findById(id).orElseThrow();
-        user.update(todayStudyWords, todayReviewWords, languageCode);
+        user.update(todayStudyWords, todayReviewWords, languageCode, utcOffset);
         return UserOptionDto.of(user);
     }
 

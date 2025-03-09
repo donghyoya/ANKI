@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.global.controller;
 
+import com.kmu.anki.backend.domain.auth.utils.NullAuthenticationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,13 @@ public class GlobalExceptionController {
         log.error("[400] MethodArgumentNotValidException: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(ExceptionResponse.of(400, "query parameter is invalid"), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(NullAuthenticationException.class)
+    public ResponseEntity<ExceptionResponse> handleNullAuthenticationException(NullAuthenticationException ex){
+        log.error("[401] NullAuthenticationException: {}", ex.getMessage(), ex);
+        return new ResponseEntity<>(ExceptionResponse.of(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase()), HttpStatus.UNAUTHORIZED);
+    }
+
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ExceptionResponse> handleRunTimeException(RuntimeException ex){

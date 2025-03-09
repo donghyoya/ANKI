@@ -218,6 +218,38 @@ class UserCardControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @Test
+    void getStudyCardWithoutAuth() throws Exception{
+        String identifier = String.format("{class-name}/{method-name}/without_auth");
+        mockMvc.perform(
+                        get("/cards/study")
+                                .param("studyType", StudyType.study.toString())
+                                .param("queryType", QueryType.level.toString())
+                                .param("query",CardLevel.easy.toString())
+                ).andExpect(status().isUnauthorized())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                identifier, //"{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("StudyCards")
+                                                .summary("오늘 공부할 카드 모음 ")
+                                                .queryParameters(
+                                                        UserCardParameters.studyType,
+                                                        DeckParameters.queryType,
+                                                        DeckParameters.query
+                                                )
+                                                .responseFields(
+                                                        ExceptionResponseDocs.exceptionResponse
+                                                )
+                                                .responseSchema(ExceptionResponseDocs.exceptionResponseSchema)
+                                                .build()
+                                )
+                        )
+                );
+    }
+
+
     @WithMockCustomOAuth2
     @Test
     void getStudyCard400() throws Exception{

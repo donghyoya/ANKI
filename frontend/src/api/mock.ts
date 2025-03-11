@@ -143,10 +143,10 @@ export const mockGetUserOption = async () => {
   });
 };
 
-export const mockPostUserOption = async () => {
+export const mockPostUserOption = async (userOption: UserOption) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const data = DUMMY_USER_OPTION;
+      const data = userOption;
       console.log('mockPostUserOption:', data);
       resolve(data);
     }, 500);

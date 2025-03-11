@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -15,7 +15,10 @@ import { Menu, MenuItem } from '@/components/material-components/Menu';
 
 import classNames from 'classnames';
 import { useWindowSize } from '@/hooks/useWindowSize';
-
+import { LANGUAGE_OPTIONS } from '@/utils/dummyData';
+import { mockGetUserOption, mockPostUserOption } from '@/api/mock';
+import { UserOption } from '@/types/schemes';
+import { MdOutlinedTextField } from '@material/web/textfield/outlined-text-field';
 export default function SettingsPage() {
   const locale = useLocale();
   const router = useRouter();
@@ -25,21 +28,6 @@ export default function SettingsPage() {
   const isCompact = width < 1200;
 
   const [selectedLocale, setSelectedLocale] = useState(locale);
-
-  const languageOptions = [
-    { code: 'ar', label: 'العربية' }, // 아랍어
-    { code: 'en', label: 'English' }, // 영어
-    { code: 'es', label: 'Español' }, // 스페인어
-    { code: 'fr', label: 'Français' }, // 프랑스어
-    { code: 'id', label: 'Bahasa Indonesia' }, // 인도네시아어
-    { code: 'ja', label: '日本語' }, // 일본어
-    { code: 'ko', label: '한국어' }, // 한국어
-    { code: 'mn', label: 'Монгол' }, // 몽골어
-    { code: 'ru', label: 'Русский' }, // 러시아어
-    { code: 'th', label: 'ไทย' }, // 태국어
-    { code: 'vi', label: 'Tiếng Việt' }, // 베트남어
-    { code: 'zh', label: '中文' } // 중국어
-  ];
 
   const handleChangeLanguage = (newLocale: string) => {
     setSelectedLocale(newLocale);
@@ -57,6 +45,41 @@ export default function SettingsPage() {
     menu.open = !menu.open;
   };
 
+  const [userOptions, setUserOptions] = useState<UserOption | null>(null);
+
+  const handleOnChangeTextField = (e: FormEvent<MdOutlinedTextField>) => {
+    const value = Number((e.target as MdOutlinedTextField).value);
+    const id = (e.target as MdOutlinedTextField).id;
+    if (userOptions === null) return;
+    setUserOptions({
+      ...userOptions,
+      [id]: value
+    });
+  };
+
+  useEffect(() => {
+    const fetchOptions = async () => {
+      const options = await mockGetUserOption();
+      console.log(options);
+      setUserOptions(options as UserOption);
+    };
+    fetchOptions();
+
+    const postOptions = async () => {
+      if (userOptions === null) return;
+      await mockPostUserOption(userOptions);
+    };
+    postOptions();
+    return () => {
+      postOptions();
+    };
+  }, [locale, userOptions]);
+
+  useEffect(() => {
+    if (userOptions === null) return;
+    console.log(userOptions);
+  }, [userOptions]);
+
   const webView = (
     <div className={styles.page}>
       <div className={styles.contents}>
@@ -66,7 +89,7 @@ export default function SettingsPage() {
           <div className={classNames(styles['field-section'], styles['first-field-section'])}>
             <label className={styles.label}>{t('settingsPage.language')}</label>
             <OutlinedSelect value={locale}>
-              {languageOptions.map((lang) => (
+              {LANGUAGE_OPTIONS.map((lang) => (
                 <SelectOption
                   key={lang.code}
                   value={lang.code}
@@ -91,11 +114,19 @@ export default function SettingsPage() {
           <h3 className={styles['group-title']}>{t('settingsPage.learning')}</h3>
           <div className={classNames(styles['field-section'], styles['first-field-section'])}>
             <label className={styles.label}>{t('settingsPage.reviewCount')}</label>
-            <OutlinedTextField value="20"></OutlinedTextField>
+            <OutlinedTextField
+              id="todayReviewWords"
+              value={userOptions?.todayReviewWords.toString()}
+              onChange={handleOnChangeTextField}
+            ></OutlinedTextField>
           </div>
           <div className={styles['field-section']}>
             <label className={styles.label}>{t('settingsPage.newCount')}</label>
-            <OutlinedTextField value="20"></OutlinedTextField>
+            <OutlinedTextField
+              id="todayStudyWords"
+              value={userOptions?.todayStudyWords.toString()}
+              onChange={handleOnChangeTextField}
+            ></OutlinedTextField>
           </div>
         </div>
         <div className={styles['group']}>
@@ -115,12 +146,12 @@ export default function SettingsPage() {
         <ListItem type="button" id="language-anchor" onClick={handleLanguageMenuClick}>
           <div slot="headline">{t('settingsPage.language')}</div>
           <div slot="supporting-text">
-            {languageOptions.find((lang) => lang.code === locale)?.label || 'English'}
+            {LANGUAGE_OPTIONS.find((lang) => lang.code === locale)?.label || 'English'}
           </div>
           <Icon slot="end">arrow_drop_down</Icon>
         </ListItem>
         <Menu id="language-menu" anchor="language-anchor" anchorCorner="end-end" xOffset={-160}>
-          {languageOptions.map((lang) => (
+          {LANGUAGE_OPTIONS.map((lang) => (
             <MenuItem
               key={lang.code}
               selected={lang.code === selectedLocale}

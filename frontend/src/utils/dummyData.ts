@@ -35,6 +35,21 @@ export const DUMMY_MENU_ITEMS: MenuItem[] = [
   { label: '오렌지', onClick: () => {} }
 ];
 
+export const LANGUAGE_OPTIONS = [
+  { code: 'ar', label: 'العربية' }, // 아랍어
+  { code: 'en', label: 'English' }, // 영어
+  { code: 'es', label: 'Español' }, // 스페인어
+  { code: 'fr', label: 'Français' }, // 프랑스어
+  { code: 'id', label: 'Bahasa Indonesia' }, // 인도네시아어
+  { code: 'ja', label: '日本語' }, // 일본어
+  { code: 'ko', label: '한국어' }, // 한국어
+  { code: 'mn', label: 'Монгол' }, // 몽골어
+  { code: 'ru', label: 'Русский' }, // 러시아어
+  { code: 'th', label: 'ไทย' }, // 태국어
+  { code: 'vi', label: 'Tiếng Việt' }, // 베트남어
+  { code: 'zh', label: '中文' } // 중국어
+];
+
 // Dummy data for api mocking
 export const DUMMY_CARD: Card = {
   level: 'easy',

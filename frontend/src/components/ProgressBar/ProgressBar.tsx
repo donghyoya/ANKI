@@ -3,6 +3,7 @@ import React from 'react';
 import TooltipProvider from '@/components/Tooltips/TooltipProvider';
 import styles from './ProgressBar.module.scss';
 import { Progress } from '@/types/Progress';
+import { LEARNING_PROGRESS_BAR_COLORS } from '@/utils/constants';
 
 interface ProgressBarProps {
   progress: Progress[];
@@ -40,6 +41,12 @@ const ProgressBar = ({ progress, styles: stylesProp, className, height }: Progre
       <LabelContent />
     );
   };
+
+  const fallbackProgress = [{ value: 1, label: '', color: LEARNING_PROGRESS_BAR_COLORS.reviewing }];
+
+  if (progress.some((p) => p.value === null)) {
+    progress = fallbackProgress;
+  }
 
   return (
     <div className={`${styles['container']} ${className}`} style={{ ...stylesProp, height }}>

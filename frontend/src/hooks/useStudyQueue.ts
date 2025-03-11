@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { CardCategory, UserCard } from '@/types/schemes';
 import { DUMMY_RATING_PREVIEW } from '@/utils/dummyData';
 import { Rating } from '@/types/IntervalPreview';
-import { getUserCards } from '@/api/api';
+import { getUserCards } from '@/api/study';
 
 export const useStudyQueue = (category: CardCategory) => {
   const initialStudyQueue = useAppSelector((state) => state.studyQueue[category]);

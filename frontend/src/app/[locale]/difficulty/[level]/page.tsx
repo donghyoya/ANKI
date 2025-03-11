@@ -9,7 +9,7 @@ import WordList from '@/components/WordList/WordList';
 import styles from './Level.module.scss';
 import { Menu, MenuItem } from '@/components/material-components/Menu';
 import { Card, Level } from '@/types/schemes';
-import { getCardsFromDeck } from '@/api/api';
+import { getCardsFromDeck } from '@/api/decks';
 
 const difficulty = ['easy', 'normal', 'hard'];
 

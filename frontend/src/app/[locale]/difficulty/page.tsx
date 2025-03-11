@@ -12,7 +12,7 @@ import { Icon, IconButton } from '@/components/material-components/IconButton/Ic
 
 import styles from './Difficulty.module.scss';
 import { Paginated, Deck } from '@/types/schemes';
-import { getDecks } from '@/api/api';
+import { getDecks } from '@/api/decks';
 
 export default function DifficultyPage() {
   const t = useTranslations();

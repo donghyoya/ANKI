@@ -3,7 +3,7 @@
 import { Locale } from '../types/Locale';
 import { CardDetail, Card, ExceptionResponse, Paginated } from '../types/schemes';
 
-const endpoint = process.env.NEXT_PUBLIC_API_ENDPOINT;
+const endpoint = process.env.NEXT_PUBLIC_API_URL;
 
 // TODO
 const locale: Locale = 'en';

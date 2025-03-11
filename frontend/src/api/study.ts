@@ -12,7 +12,7 @@ import {
   StudyCardForm
 } from '@/types/schemes';
 
-const endpoint = process.env.NEXT_PUBLIC_API_ENDPOINT;
+const endpoint = process.env.NEXT_PUBLIC_API_URL;
 
 const requestOptions: RequestInit = {
   headers: {

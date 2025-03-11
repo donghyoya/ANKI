@@ -7,9 +7,9 @@ import FilledButton from '@/components/material-components/FilledButton';
 import TextButton from '@/components/material-components/TextButton';
 import { Icon } from '@/components/material-components/IconButton/IconButton';
 import { OutlinedCard } from '@/components/Card/Card';
-import ProgressBar from '@/components/ProgressBar/ProgressBar';
 import classnames from 'classnames';
 import Link from 'next/link';
+import DeckProgressBar from '../ProgressBar/DeckProgressBar';
 
 const DeckCardCompact = ({
   deck,
@@ -62,7 +62,7 @@ const DeckCardCompact = ({
             </span>
           </div>
         )}
-        <ProgressBar deck={deck} height={isExpanded ? 12 : 6}></ProgressBar>
+        <DeckProgressBar deck={deck} height={isExpanded ? 12 : 6}></DeckProgressBar>
       </div>
     </OutlinedCard>
   );

@@ -7,7 +7,7 @@ import FilledButton from '@/components/material-components/FilledButton';
 import TextButton from '@/components/material-components/TextButton';
 import { Icon } from '@/components/material-components/IconButton/IconButton';
 import { OutlinedCard } from '@/components/Card/Card';
-import ProgressBar from '@/components/ProgressBar/ProgressBar';
+import DeckProgressBar from '@/components/ProgressBar/DeckProgressBar';
 import Link from 'next/link';
 
 // DeckCard 컴포넌트
@@ -30,7 +30,7 @@ const DeckCard = ({ deck, isCompleted, locale, buttonLabels, onLearn }: DeckCard
           </Link>
           <FilledButton onClick={onLearn}>{buttonLabels.learn}</FilledButton>
         </div>
-        <ProgressBar deck={deck} height={12}></ProgressBar>
+        <DeckProgressBar deck={deck} height={12}></DeckProgressBar>
       </div>
     </OutlinedCard>
   );

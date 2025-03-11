@@ -53,11 +53,11 @@ export default function LearningPage() {
   );
 
   if (studyQueue === null) {
-    return <div>Loading...</div>;
+    return <div className={styles['page']}>Loading...</div>;
   }
 
   if (currentCard === null) {
-    return <div>학습 끝</div>;
+    return <div className={styles['page']}>학습 끝</div>;
   }
 
   const handleOnRepeat = (rating: Rating) => {

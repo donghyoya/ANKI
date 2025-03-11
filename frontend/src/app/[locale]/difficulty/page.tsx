@@ -11,14 +11,8 @@ import TextButton from '@/components/material-components/TextButton';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
 
 import styles from './Difficulty.module.scss';
-import { mockGetDecks } from '@/api/mock';
 import { Paginated, Deck } from '@/types/schemes';
-
-// const difficultyLevels = [
-//   { name: 'Beginner', level: 'beginner', isCompleted: true, wordCount: 1234 },
-//   { name: 'Intermediate', level: 'intermediate', isCompleted: false, wordCount: 2345 },
-//   { name: 'Advanced', level: 'advanced', isCompleted: false, wordCount: 983 }
-// ];
+import { getDecks } from '@/api/api';
 
 export default function DifficultyPage() {
   const t = useTranslations();
@@ -28,8 +22,8 @@ export default function DifficultyPage() {
   useEffect(() => {
     const fetchDecks = async () => {
       try {
-        const response = await mockGetDecks('level');
-        console.log('mockGetDecks response:', response);
+        const response = await getDecks('level');
+        console.log('getDecks response:', response);
         setDecks(response as Paginated<Deck>);
       } catch (error) {
         console.error('Failed to fetch decks:', error);
@@ -70,6 +64,10 @@ export default function DifficultyPage() {
       setIsDialogOpen(true);
     }
   };
+
+  if (decks === null) {
+    return <div className={styles['page']}>Loading...</div>;
+  }
 
   const CardComponent = isCompact ? DeckCardCompact : DeckCard;
 

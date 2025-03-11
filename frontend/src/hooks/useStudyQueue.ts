@@ -1,9 +1,9 @@
 import { useAppSelector } from '@/store/hooks';
 import { useEffect, useState } from 'react';
 import { CardCategory, UserCard } from '@/types/schemes';
-import { mockGetUserCards } from '@/api/mock';
 import { DUMMY_RATING_PREVIEW } from '@/utils/dummyData';
 import { Rating } from '@/types/IntervalPreview';
+import { getUserCards } from '@/api/api';
 
 export const useStudyQueue = (category: CardCategory) => {
   const initialStudyQueue = useAppSelector((state) => state.studyQueue[category]);
@@ -11,14 +11,6 @@ export const useStudyQueue = (category: CardCategory) => {
 
   const [studyQueue, setStudyQueue] = useState<UserCard[] | null>(initialStudyQueue || null);
   const [currentCard, setCurrentCard] = useState<UserCard | null>(null);
-
-  const fetchCards = async () => {
-    const response = await mockGetUserCards();
-    if (response && 'content' in response) {
-      setStudyQueue(response.content);
-      setCurrentCard(response.content.filter((card) => card.state !== 'matured')[0] ?? null);
-    }
-  };
 
   const repeat = (rating: Rating) => {
     if (studyQueue === null || currentCard === null) return;
@@ -31,10 +23,18 @@ export const useStudyQueue = (category: CardCategory) => {
   };
 
   useEffect(() => {
+    const fetchCards = async () => {
+      const response = await getUserCards('new', category);
+      console.log('fetchCards', response);
+      if (response && 'content' in response) {
+        setStudyQueue(response.content);
+        setCurrentCard(response.content.filter((card) => card.state !== 'matured')[0] ?? null);
+      }
+    };
     if (studyQueue === null) {
       fetchCards();
     }
-  }, [studyQueue]);
+  }, [studyQueue, category]);
 
   useEffect(() => {
     console.log('studyQueue:', studyQueue);

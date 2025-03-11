@@ -156,3 +156,7 @@ export type ExceptionResponse = {
   code: number;
   message: string;
 };
+
+export const isLevel = (query: Level | Meaning | string): query is Level => {
+  return allLevels.includes(query as Level);
+};

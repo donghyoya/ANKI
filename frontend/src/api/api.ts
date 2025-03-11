@@ -16,15 +16,17 @@ import {
   Deck,
   UserCard
 } from '../types/schemes';
-
+import { isLevel } from '../types/schemes';
 const endpoint = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 const locale: Locale = 'en';
 
 const requestOptions: RequestInit = {
   headers: {
-    accept: 'application/json;charset=UTF-8'
+    accept: 'application/json;charset=UTF-8',
+    'Content-Type': 'application/json'
   },
+  credentials: 'include',
   cache: 'no-store'
 };
 
@@ -83,11 +85,8 @@ export const getCardDetail = async (cardId: number) => {
   }
 };
 
-export const getUserCards = async (
-  studyType: StudyType,
-  queryType: 'level' | 'meaning',
-  query: Level | Meaning
-) => {
+export const getUserCards = async (studyType: StudyType, query: Level | Meaning) => {
+  const queryType = isLevel(query) ? 'level' : 'meaning';
   const url = `${endpoint}/cards/study?studyType=${studyType}&queryType=${queryType}&query=${query}`;
   const response = await fetch(url, requestOptions);
   const data = await response.json();
@@ -139,7 +138,8 @@ export const getDecks = async (queryType: 'level' | 'meaning') => {
   }
 };
 
-export const getCardsFromDeck = async (queryType: 'level' | 'meaning', query: Level | Meaning) => {
+export const getCardsFromDeck = async (query: Level | Meaning | string) => {
+  const queryType = isLevel(query) ? 'level' : 'meaning';
   const url = `${endpoint}/decks/cards?queryType=${queryType}&query=${query}`;
   const response = await fetch(url, requestOptions);
   const data = await response.json();

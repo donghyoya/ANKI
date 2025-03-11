@@ -8,10 +8,10 @@ import { Icon, IconButton } from '@/components/material-components/IconButton/Ic
 import WordList from '@/components/WordList/WordList';
 import styles from './Level.module.scss';
 import { Menu, MenuItem } from '@/components/material-components/Menu';
-import { Card } from '@/types/schemes';
-import { mockGetCardsFromDeck } from '@/api/mock';
+import { Card, Level } from '@/types/schemes';
+import { getCardsFromDeck } from '@/api/api';
 
-const difficulty = ['beginner', 'intermediate', 'advanced'];
+const difficulty = ['easy', 'normal', 'hard'];
 
 export default function DifficultyWordsPage() {
   const t = useTranslations();
@@ -48,13 +48,13 @@ export default function DifficultyWordsPage() {
     );
   };
 
-  const [cards, setCards] = useState<Card[]>([]);
+  const [cards, setCards] = useState<Card[] | null>(null);
 
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await mockGetCardsFromDeck();
-        console.log('mockGetCardsFromDeck response:', response);
+        const response = await getCardsFromDeck(level as Level);
+        console.log('getCardsFromDeck response:', response);
         if (response && 'content' in response) {
           setCards(response.content as Card[]);
         }
@@ -63,7 +63,11 @@ export default function DifficultyWordsPage() {
       }
     };
     fetchCards();
-  }, []);
+  }, [level]);
+
+  if (cards === null) {
+    return <div className={styles['page']}>Loading...</div>;
+  }
 
   return (
     <div className={styles['page']}>

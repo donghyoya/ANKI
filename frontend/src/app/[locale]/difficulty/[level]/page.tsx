@@ -8,16 +8,14 @@ import { Icon, IconButton } from '@/components/material-components/IconButton/Ic
 import WordList from '@/components/WordList/WordList';
 import styles from './Level.module.scss';
 import { Menu, MenuItem } from '@/components/material-components/Menu';
-import { Card, Level } from '@/types/schemes';
+import { allLevels, Card, Level } from '@/types/schemes';
 import { getCardsFromDeck } from '@/api/decks';
-
-const difficulty = ['easy', 'normal', 'hard'];
 
 export default function DifficultyWordsPage() {
   const t = useTranslations();
   const { level } = useParams() ?? {};
 
-  if (!difficulty.includes(level as string)) {
+  if (!allLevels.includes(level as Level)) {
     notFound();
   }
 

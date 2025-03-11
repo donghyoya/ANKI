@@ -34,9 +34,9 @@ export const getDecks = async (queryType: 'level' | 'meaning') => {
   }
 };
 
-export const getCardsFromDeck = async (query: Level | Meaning | string) => {
+export const getCardsFromDeck = async (locale: string, query: Level | Meaning | string) => {
   const queryType = isLevel(query) ? 'level' : 'meaning';
-  const url = `${endpoint}/decks/cards?queryType=${queryType}&query=${query}`;
+  const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${query}`;
   const response = await fetch(url, requestOptions);
   const data = await response.json();
 

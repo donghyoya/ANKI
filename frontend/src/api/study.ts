@@ -7,10 +7,11 @@ import {
   Level,
   Meaning,
   StudyType,
-  isLevel,
   CardStudyInfo,
   StudyCardForm
 } from '@/types/schemes';
+
+import { isLevel } from '@/types/schemes';
 
 const endpoint = process.env.NEXT_PUBLIC_API_URL;
 
@@ -24,8 +25,10 @@ const requestOptions: RequestInit = {
 };
 
 export const getUserCards = async (studyType: StudyType, query: Level | Meaning) => {
+  const queryStudyType = studyType === 'new' ? 'study' : 'review';
   const queryType = isLevel(query) ? 'level' : 'meaning';
-  const url = `${endpoint}/cards/study?studyType=${studyType}&queryType=${queryType}&query=${query}`;
+  const url = `${endpoint}/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${query}`;
+  console.log('url:', url);
   const response = await fetch(url, requestOptions);
   const data = await response.json();
 

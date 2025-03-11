@@ -13,7 +13,7 @@ import { getCardsFromDeck } from '@/api/decks';
 
 export default function DifficultyWordsPage() {
   const t = useTranslations();
-  const { level } = useParams() ?? {};
+  const { level, locale } = useParams() ?? {};
 
   if (!allLevels.includes(level as Level)) {
     notFound();
@@ -51,7 +51,7 @@ export default function DifficultyWordsPage() {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await getCardsFromDeck(level as Level);
+        const response = await getCardsFromDeck(locale as string, level as Level);
         console.log('getCardsFromDeck response:', response);
         if (response && 'content' in response) {
           setCards(response.content as Card[]);
@@ -61,7 +61,7 @@ export default function DifficultyWordsPage() {
       }
     };
     fetchCards();
-  }, [level]);
+  }, [locale, level]);
 
   if (cards === null) {
     return <div className={styles['page']}>Loading...</div>;

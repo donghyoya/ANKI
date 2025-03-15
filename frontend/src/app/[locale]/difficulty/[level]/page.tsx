@@ -74,8 +74,16 @@ export default function DifficultyWordsPage() {
           {!isLarge && <MenuItem onClick={toggleCollapseAll}>Collapse all</MenuItem>}
           <MenuItem>Sort by xxx</MenuItem>
           <MenuItem>Sort by xxx</MenuItem>
-          {isLarge && <MenuItem onClick={toggleHideKorean}>{isHideKorean ? t('showKorean') : t('hideKorean')}</MenuItem>}
-          {isLarge && <MenuItem onClick={toggleHideForeign}>{isHideForeign ? t('showForeign') : t('hideForeign')}</MenuItem>}
+          {isLarge && (
+            <MenuItem onClick={toggleHideKorean}>
+              {isHideKorean ? t('showKorean') : t('hideKorean')}
+            </MenuItem>
+          )}
+          {isLarge && (
+            <MenuItem onClick={toggleHideForeign}>
+              {isHideForeign ? t('showForeign') : t('hideForeign')}
+            </MenuItem>
+          )}
         </Menu>
       </div>
     );
@@ -104,8 +112,8 @@ export default function DifficultyWordsPage() {
               KoreanWord={word.KoreanWord}
               ForeignWord={word.ForeignWord}
               isExpanded={!isLarge ? isExpanded : undefined}
-              isHideKorean={isLarge ? isHideKorean: undefined}
-              isHideForeign={isLarge? isHideForeign: undefined}
+              isHideKorean={isLarge ? isHideKorean : undefined}
+              isHideForeign={isLarge ? isHideForeign : undefined}
             />
           ))}
         </div>

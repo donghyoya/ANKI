@@ -46,7 +46,7 @@ const NavigationDrawer = ({
               <Ripple />
               <Icon>{destination.icon}</Icon>
               <span className={`${styles['item-label']} ${isSelected ? styles.selected : ''}`}>
-                {t(destination.label)}
+                {t(`menu.${destination.label}`)}
               </span>
             </button>
           );

@@ -1,40 +1,61 @@
 {
-  "level": {
+  "learn": "تعلم",
+  "viewWords": "عرض الكلمات",
+  "goalComplete": "تم تحقيق الهدف اليومي!",
+  "continuePrompt": "هل تريد الاستمرار؟",
+  "chooseOption": "اختر خيارًا أدناه:",
+  "learnMore": "تعلم المزيد",
+  "reviewMore": "مراجعة المزيد",
+  "hideKorean": "إخفاء الكورية",
+  "hideForeign": "إخفاء العربية",
+  "showKorean": "إظهار الكورية",
+  "showForeign": "إظهار العربية",
+  "expandAll": "توسيع الكل",
+  "collapseAll": "طي الكل",
+
+  "menu": {
+    "difficulty": "الصعوبة",
+    "meanings": "المعنى",
+    "settings": "الإعدادات"
+  },
+
+  "difficulty": {
     "wordsByDifficulty": "الكلمات حسب الصعوبة",
     "beginner": "مبتدئ",
     "intermediate": "متوسط",
     "advanced": "متقدم"
   },
 
-  "learn": "تعلم",
-  "viewWords": "عرض الكلمات",
-
-  "hideKorean": "إخفاء الكورية",
-  "hideForeign": "إخفاء العربية",
-  "showKorean": "إظهار الكورية",
-  "showForeign": "إظهار العربية",
-
-  "settingsPage": {
-    "settings": "الإعدادات",
-    "system": "النظام",
-    "language": "اللغة",
-    "theme": "السمة",
-    "learning": "التعلم",
-    "reviewCount": "عدد الكلمات اليومية للمراجعة",
-    "newCount": "عدد الكلمات الجديدة يومياً",
-    "account": "الحساب",
-    "signOut": "تسجيل الخروج",
-    "deleteAccount": "حذف الحساب"
+  "meanings": {
+    "wordsByMeanings": "الكلمات حسب المعاني",
+    "action": "عمل",
+    "administration": "إدارة",
+    "communication": "اتصال",
+    "concept": "مفهوم",
+    "culture": "ثقافة",
+    "economy": "اقتصاد",
+    "fashion": "الموضة والمظهر",
+    "feeling": "شعور",
+    "food": "طعام",
+    "grammar": "القواعد واللغة",
+    "home": "منزل",
+    "hospital": "مستشفى",
+    "life": "حياة",
+    "living": "معيشة",
+    "nature": "طبيعة",
+    "news": "أخبار",
+    "number": "عدد",
+    "personality": "شخصية",
+    "politics": "سياسة",
+    "relationships": "علاقات",
+    "religion": "دين",
+    "school": "مدرسة",
+    "science": "علم",
+    "time": "وقت",
+    "transport": "نقل",
+    "weather": "طقس",
+    "work": "عمل"
   },
-  "goalComplete": "تم تحقيق الهدف اليومي!",
-  "continuePrompt": "هل تريد الاستمرار؟",
-  "chooseOption": "اختر خيارًا أدناه:",
-  "learnMore": "تعلم المزيد",
-  "reviewMore": "مراجعة المزيد",
-
-  "difficulty": "الصعوبة",
-  "meanings": "المعنى",
-  "settings": "الإعدادات",
 
   "learning": {
     "reviews": "المراجعات",
@@ -58,5 +79,18 @@
     "phrase": "عبارة",
     "sentence": "جملة",
     "conversation": "محادثة"
+  },
+
+  "settings": {
+    "settings": "الإعدادات",
+    "system": "النظام",
+    "language": "اللغة",
+    "theme": "السمة",
+    "learning": "التعلم",
+    "reviewCount": "عدد الكلمات اليومية للمراجعة",
+    "newCount": "عدد الكلمات الجديدة يومياً",
+    "account": "الحساب",
+    "signOut": "تسجيل الخروج",
+    "deleteAccount": "حذف الحساب"
   }
 }

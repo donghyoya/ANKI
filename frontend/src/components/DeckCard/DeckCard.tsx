@@ -22,7 +22,9 @@ const DeckCard = ({
   wordCount,
   locale,
   buttonLabels,
+  isDifficulty,
   level,
+  category,
   onLearn
 }: DeckCardProps) => {
   return (
@@ -32,11 +34,13 @@ const DeckCard = ({
           <h2 className={styles.title}>{title}</h2>
           {isCompleted && <Icon className={styles['check-icon']}>check_circle</Icon>}
         </div>
-        <span className={styles['word-count']}>{getFormatUnit(locale, 'word', wordCount, true)}</span>
+        <span className={styles['word-count']}>
+          {getFormatUnit(locale, 'word', wordCount, true)}
+        </span>
       </div>
       <div className={styles['bottom-contents']}>
         <div className={styles['button-container']}>
-          <Link href={`/difficulty/${level}`}>
+          <Link href={isDifficulty ? `/difficulty/${level}` : `/meanings/${category}`}>
             <TextButton>{buttonLabels.viewWords}</TextButton>
           </Link>
           <FilledButton onClick={onLearn}>{buttonLabels.learn}</FilledButton>

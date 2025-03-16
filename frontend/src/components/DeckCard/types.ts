@@ -7,7 +7,9 @@ export interface DeckCardProps {
     viewWords: string;
     learn: string;
   };
-  level: string;
+  isDifficulty: boolean;
+  level?: string;
+  category?: string;
   onLearn: () => void;
   onViewWords: () => void;
 }

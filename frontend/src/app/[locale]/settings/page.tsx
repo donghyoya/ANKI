@@ -120,7 +120,13 @@ export default function SettingsPage() {
             </div>
             <Icon slot="end">arrow_drop_down</Icon>
           </ListItem>
-          <Menu id="language-menu" anchor="language-anchor" anchorCorner="end-end" xOffset={-160}>
+          <Menu
+            id="language-menu"
+            anchor="language-anchor"
+            anchorCorner="end-end"
+            xOffset={-160}
+            className={styles['language-menu']}
+          >
             {languageOptions.map((lang) => (
               <MenuItem
                 key={lang.code}

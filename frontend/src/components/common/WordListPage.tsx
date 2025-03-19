@@ -11,15 +11,24 @@ import { Menu, MenuItem } from '@/components/material-components/Menu';
 import WordList from '@/components/WordList/WordList';
 import WordListCompact from '@/components/WordList/WordListCompact';
 
-import styles from './Level.module.scss';
+import styles from './WordListPage.module.scss';
 
-const difficulty = ['beginner', 'intermediate', 'advanced'];
+interface WordListPageProps {
+  wordType: string;
+  validKeys: string[];
+}
 
-export default function WordListPage() {
+export default function WordListPage({ wordType, validKeys }: WordListPageProps) {
   const t = useTranslations();
-  const { level } = useParams() ?? {};
+  const { level, category } = useParams() ?? {};
   const router = useRouter();
   const { width } = useWindowSize();
+
+  const key = level || category;
+
+  if (!key || !validKeys.includes(key as string)) {
+    notFound();
+  }
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHideKorean, setIsHideKorean] = useState(false);
@@ -27,10 +36,6 @@ export default function WordListPage() {
 
   const isCompact = width < 600;
   const isLarge = width >= 1200;
-
-  if (!difficulty.includes(level as string)) {
-    notFound();
-  }
 
   const onLearnClick = () => {
     router.push('/learning');
@@ -70,8 +75,8 @@ export default function WordListPage() {
           yOffset={47}
           style={{ minWidth: '200px' }}
         >
-          {!isLarge && <MenuItem onClick={toggleExpandAll}>Expand all</MenuItem>}
-          {!isLarge && <MenuItem onClick={toggleCollapseAll}>Collapse all</MenuItem>}
+          {!isLarge && <MenuItem onClick={toggleExpandAll}>{t('expandAll')}</MenuItem>}
+          {!isLarge && <MenuItem onClick={toggleCollapseAll}>{t('collapseAll')}</MenuItem>}
           <MenuItem>Sort by xxx</MenuItem>
           <MenuItem>Sort by xxx</MenuItem>
           {isLarge && (
@@ -97,7 +102,7 @@ export default function WordListPage() {
     <div className={styles['page']}>
       <div className={styles['content']}>
         <div className={styles['header-container']}>
-          <h1 className={styles.title}>{t(`level.${level}`)}</h1>
+          <h1 className={styles.title}>{t(`${wordType}.${key}`)}</h1>
           <div className={styles['button-container']}>
             <FilledButton className={styles['learn-button']} onClick={onLearnClick}>
               {t('learn')}

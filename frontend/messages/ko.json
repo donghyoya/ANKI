@@ -1,40 +1,61 @@
 {
-  "level": {
+  "learn": "학습하기",
+  "viewWords": "단어 보기",
+  "goalComplete": "오늘의 목표 달성!",
+  "continuePrompt": "계속 진행할까요?",
+  "chooseOption": "아래에서 선택하세요:",
+  "learnMore": "더 배우기",
+  "reviewMore": "더 복습하기",
+  "hideKorean": "한국어 숨기기",
+  "hideForeign": "외국어 숨기기",
+  "showKorean": "한국어 표시",
+  "showForeign": "외국어 표시",
+  "expandAll": "모두 펼치기",
+  "collapseAll": "모두 접기",
+
+  "menu": {
+    "difficulty": "난이도",
+    "meanings": "의미",
+    "settings": "설정"
+  },
+
+  "difficulty": {
     "wordsByDifficulty": "난이도별 단어",
     "beginner": "초급",
     "intermediate": "중급",
     "advanced": "고급"
   },
 
-  "learn": "학습하기",
-  "viewWords": "단어 보기",
-
-  "hideKorean": "한국어 숨기기",
-  "hideForeign": "외국어 숨기기",
-  "showKorean": "한국어 표시",
-  "showForeign": "외국어 표시",
-
-  "settingsPage": {
-    "settings": "설정",
-    "system": "시스템",
-    "language": "언어",
-    "theme": "테마",
-    "learning": "학습",
-    "reviewCount": "일일 복습 단어 수",
-    "newCount": "일일 새로운 단어 수",
-    "account": "계정",
-    "signOut": "로그아웃",
-    "deleteAccount": "계정 삭제"
+  "meanings": {
+    "wordsByMeanings": "의미별 단어",
+    "action": "행동",
+    "administration": "행정",
+    "communication": "소통",
+    "concept": "개념",
+    "culture": "문화",
+    "economy": "경제",
+    "fashion": "패션과 외모",
+    "feeling": "느낌",
+    "food": "음식",
+    "grammar": "문법과 언어",
+    "home": "집",
+    "hospital": "병원",
+    "life": "삶",
+    "living": "생활",
+    "nature": "자연",
+    "news": "뉴스",
+    "number": "수",
+    "personality": "성격",
+    "politics": "정치",
+    "relationships": "인간관계",
+    "religion": "종교",
+    "school": "학교",
+    "science": "과학",
+    "time": "시간",
+    "transport": "교통",
+    "weather": "날씨",
+    "work": "직장"
   },
-  "goalComplete": "오늘의 목표 달성!",
-  "continuePrompt": "계속 진행할까요?",
-  "chooseOption": "아래에서 선택하세요:",
-  "learnMore": "더 배우기",
-  "reviewMore": "더 복습하기",
-
-  "difficulty": "난이도",
-  "meanings": "의미",
-  "settings": "설정",
 
   "learning": {
     "reviews": "복습",
@@ -58,5 +79,18 @@
     "phrase": "구",
     "sentence": "문장",
     "conversation": "대화"
+  },
+
+  "settings": {
+    "settings": "설정",
+    "system": "시스템",
+    "language": "언어",
+    "theme": "테마",
+    "learning": "학습",
+    "reviewCount": "일일 복습 단어 수",
+    "newCount": "일일 새로운 단어 수",
+    "account": "계정",
+    "signOut": "로그아웃",
+    "deleteAccount": "계정 삭제"
   }
 }

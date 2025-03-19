@@ -23,7 +23,9 @@ const DeckCardCompact = ({
   wordCount,
   locale,
   buttonLabels,
+  isDifficulty,
   level,
+  category,
   onLearn
 }: DeckCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -31,8 +33,6 @@ const DeckCardCompact = ({
   const handleClick = () => {
     setIsExpanded((prev) => !prev);
   };
-
-  console.log('isExpanded', isExpanded);
 
   const progress = DUMMY_PROGRESS.reduce((acc, curr) => {
     acc.push({ ...curr, label: isExpanded ? curr.label : '' });
@@ -61,10 +61,12 @@ const DeckCardCompact = ({
         </div>
         {isExpanded && (
           <div className={styles['extra-contents']}>
-            <Link href={`/difficulty/${level}`}>
+            <Link href={isDifficulty ? `/difficulty/${level}` : `/meanings/${category}`}>
               <TextButton onClick={(e) => e.stopPropagation()}>{buttonLabels.viewWords}</TextButton>
             </Link>
-            <span className={styles['word-count']}>{getFormatUnit(locale, 'word', wordCount, true)}</span>
+            <span className={styles['word-count']}>
+              {getFormatUnit(locale, 'word', wordCount, true)}
+            </span>
           </div>
         )}
         <ProgressBar progress={progress} height={isExpanded ? 12 : 6}></ProgressBar>

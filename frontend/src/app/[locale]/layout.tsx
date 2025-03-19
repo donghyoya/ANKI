@@ -1,12 +1,5 @@
-import Navigation from '@/components/Navigation/Navigation';
-import I18nProvider from './providers/I18nProvider';
-import './layout.scss';
+import I18nProvider from '../../providers/I18nProvider';
 
 export default async function LocaleLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <I18nProvider>
-      <Navigation />
-      <main className="layout-container-main">{children}</main>
-    </I18nProvider>
-  );
+  return <I18nProvider>{children}</I18nProvider>;
 }

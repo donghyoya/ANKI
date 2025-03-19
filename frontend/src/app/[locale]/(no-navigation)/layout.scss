@@ -10,18 +10,15 @@
   @include gs.grid-system;
 
   @include bp.respond-to('compact') {
-    padding: 80px 16px 96px;
-    background-color: var(--md-sys-color-background);
+    padding: 16px;
   }
 
   @include bp.respond-to('medium') {
     padding: 24px 32px;
-    background-color: var(--md-sys-color-background);
   }
 
   @include bp.respond-to('expanded') {
     padding: 36px 24px;
-    background-color: var(--md-sys-color-background);
   }
 
   @include bp.respond-to('large') {

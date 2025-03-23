@@ -58,7 +58,8 @@
       color: var(--md-sys-color-on-surface-variant);
 
       &.selected {
-        background-color: var(--md-sys-color-primary-container);
+        background-color: var(--md-sys-color-secondary-container);
+        color: var(--md-sys-color-on-secondary-container);
         font-variation-settings: 'FILL' 1;
       }
 
@@ -73,8 +74,6 @@
       height: 16px;
       margin: 4px;
       color: var(--md-sys-color-on-surface-variant);
-      font-weight: 600;
-      font-size: 12px;
       @include tp.label-medium;
 
       &.selected {

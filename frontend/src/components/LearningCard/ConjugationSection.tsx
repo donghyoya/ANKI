@@ -37,7 +37,7 @@ const ConjugationSection = ({
         <IconButton onClick={toggleExpanded}>
           <Icon>{isExpanded ? 'arrow_drop_up' : 'arrow_drop_down'}</Icon>
         </IconButton>
-        <span className={`${styles['conjugations-header-title']}`}>
+        <span className={styles['conjugations-header-title']}>
           {t('learning.conjugations')}
         </span>
       </div>

@@ -4,6 +4,7 @@ import { Elevation } from '@/components/material-components/Elevation/Elevation'
 import { Ripple } from '@/components/material-components/Ripple';
 
 import styles from './Card.module.scss';
+import classNames from 'classnames';
 
 interface CardProps {
   children: React.ReactNode;
@@ -22,7 +23,7 @@ export const ElevatedCard = ({
 }: CardProps) => {
   return (
     <div
-      className={`${styles['elevated-card']} ${propsClassName || ''}`}
+      className={classNames(styles['elevated-card'], propsClassName)}
       style={propsStyle}
       onClick={onClick}
     >
@@ -42,7 +43,7 @@ export const FilledCard = ({
 }: CardProps) => {
   return (
     <div
-      className={`${styles['filled-card']} ${propsClassName || ''}`}
+      className={classNames(styles['filled-card'], propsClassName)}
       style={propsStyle}
       onClick={onClick}
     >
@@ -62,7 +63,7 @@ export const OutlinedCard = ({
 }: CardProps) => {
   return (
     <div
-      className={`${styles['outlined-card']} ${propsClassName || ''}`}
+      className={classNames(styles['outlined-card'], propsClassName)}
       style={propsStyle}
       onClick={onClick}
     >

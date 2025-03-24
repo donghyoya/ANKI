@@ -2,6 +2,7 @@ import { FilledCard } from '../Card/Card';
 import { UserCard } from '@/types/schemes';
 
 import styles from './LearningCard.module.scss';
+import classNames from 'classnames';
 import ConjugationSection from './ConjugationSection';
 import ExampleSection from './ExampleSection';
 import WordSection from './WordSection';
@@ -66,7 +67,7 @@ const LearningCard = ({
 
   return (
     <FilledCard
-      className={`${styles['learning-card']} ${className}`}
+      className={classNames(styles['learning-card'], className)}
       ripple={false}
       onClick={handleReveal}
       style={style}
@@ -76,7 +77,7 @@ const LearningCard = ({
           <span className={styles['korean-word']}>
             {cardState.isKoreanToForeign ? card.koreanWord : card.foreignWord}
           </span>
-          <span className={`${styles['foreign-word']} ${styles['revealed']}`}>
+          <span className={classNames(styles['foreign-word'], styles['revealed'])}>
             {t('learning.checkAnswer')}
           </span>
         </div>
@@ -94,7 +95,7 @@ const LearningCard = ({
       )}
 
       {cardState.isRevealed && cardState.showDetail && (
-        <div className={`${styles['content-container']} ${styles['detailed']}`}>
+        <div className={classNames(styles['content-container'], styles['detailed'])}>
           <WordSection card={card} />
           <div>
             <ConjugationSection

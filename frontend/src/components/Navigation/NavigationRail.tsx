@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import styles from './NavigationRail.module.scss';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
 import { Ripple } from '@/components/material-components/Ripple';
+import classNames from 'classnames';
 
 const NavigationRail = ({
   destinations,
@@ -43,7 +44,9 @@ const NavigationRail = ({
             onClick={() => handleDestinationClick(destination.label)}
           >
             <button
-              className={`${styles['navigation-item-button']} ${selectedDestination === destination.label ? styles['selected'] : ''}`}
+              className={classNames(styles['navigation-item-button'], {
+                [styles['selected']]: selectedDestination === destination.label
+              })}
             >
               <Ripple />
               <div className={styles['navigation-item-icon']}>
@@ -51,7 +54,9 @@ const NavigationRail = ({
               </div>
             </button>
             <div
-              className={`${styles['navigation-item-label']} ${selectedDestination === destination.label ? styles['selected'] : ''}`}
+              className={classNames(styles['navigation-item-label'], {
+                [styles['selected']]: selectedDestination === destination.label
+              })}
             >
               <span>{t(`menu.${destination.label}`)}</span>
             </div>

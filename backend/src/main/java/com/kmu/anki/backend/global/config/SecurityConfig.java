@@ -70,8 +70,8 @@ public class SecurityConfig {
                                 "/cards/korean-search"
                         ).permitAll()
                         .requestMatchers("/api/auth/**", "/css/**").permitAll() // 누구나 접근 가능
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").authenticated()
-                        .anyRequest().authenticated()                                   // 나머지는 인증 필요
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .anyRequest().permitAll()                                   // 나머지는 인증 필요
                 )
         ;
         return http.build();

@@ -1,7 +1,7 @@
 package com.kmu.anki.backend.security.token;
 
+import com.kmu.anki.backend.security.auth.token.JwtTokenService;
 import io.jsonwebtoken.Claims;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.kmu.anki.backend.security.token;
+package com.kmu.anki.backend.security.auth.token;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;

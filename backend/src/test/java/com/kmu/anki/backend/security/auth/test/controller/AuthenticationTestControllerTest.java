@@ -4,19 +4,19 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.epages.restdocs.apispec.Schema;
-import com.kmu.anki.backend.domain.PageParameters;
-import com.kmu.anki.backend.domain.study.history.controller.docs.UserStudyHistoryDtoDocs;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.security.auth.token.JwtTokenService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.web.servlet.ResultMatcher;
+import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.Map;
 
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class AuthenticationTestControllerTest extends AbstractControllerTest {
 
@@ -51,5 +51,30 @@ class AuthenticationTestControllerTest extends AbstractControllerTest {
                         )
                 )
         ;
+    }
+
+    @Test
+    void getTestToken() throws Exception{
+        MvcResult mvcResult = mockMvc.perform(get("/get-test-token"))
+                .andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                "{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("AuthTest")
+                                                .summary("jwt 인증 테스트용 토큰 발급")
+                                                .responseFields(
+                                                        fieldWithPath("token").description("test용 jwt token")
+                                                )
+                                                .responseSchema(new Schema("AuthTestTokenSchema"))
+                                                .build()
+                                )
+                        )
+                )
+                .andReturn();
+        Map<String, String> body = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), Map.class);
+        String token = body.get("token");
+        assertTrue(jwtTokenService.validateToken(token));
     }
 }

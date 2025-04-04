@@ -21,6 +21,7 @@ spring:
             client-secret: ${GOOGLE_CL_SECRET_DEV}
             redirect-uri: http://localhost:7070/api/auth/oauth2/google
             scope:
+              - openid
               - email
               - profile
   thymeleaf:

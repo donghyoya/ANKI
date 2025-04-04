@@ -1,12 +1,10 @@
 package com.kmu.anki.backend.global.config;
 
-import com.kmu.anki.backend.domain.auth.legacy.service.CustomOAuth2UserService;
-import com.kmu.anki.backend.domain.auth.legacy.service.CustomUserService;
 import com.kmu.anki.backend.security.auth.filter.JwtAuthenticationFilter;
 import com.kmu.anki.backend.security.auth.oauth2.CustomOidcService;
+import com.kmu.anki.backend.security.auth.oauth2.TokenProvideSuccessHandler;
 import com.kmu.anki.backend.security.auth.token.JwtTokenService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +15,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -25,7 +24,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @RequiredArgsConstructor
 @Configuration
 public class SecurityConfig {
-    @Value("${jwt.secret:defaultsecretkeydefaultsecretkeydefaultsecretkey==}")
+    @Value("${auth.jwt.secret:defaultsecretkeydefaultsecretkeydefaultsecretkey==}")
     private String secretKey; // properties에서 읽어옴
 
     private final CustomOidcService oidcService;
@@ -57,7 +56,7 @@ public class SecurityConfig {
                 .oauth2Login(
                         config->config.userInfoEndpoint(
                                 userInfoEndpointConfig -> userInfoEndpointConfig.oidcUserService(oidcService)
-                        )
+                        ).successHandler(authenticationSuccessHandler())
                 )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.GET, "/decks").permitAll()
@@ -104,6 +103,11 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(); // 비밀번호 암호화용
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler(){
+        return new TokenProvideSuccessHandler(jwtTokenService());
     }
 
 }

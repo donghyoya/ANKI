@@ -1,35 +1,27 @@
-package com.kmu.anki.backend.domain.auth.controller;
+package com.kmu.anki.backend.domain.auth.legacy.controller;
 
-import com.kmu.anki.backend.domain.auth.service.CustomOAuth2UserService;
-import com.kmu.anki.backend.domain.auth.service.OAuth2AccessTokenService;
-import com.kmu.anki.backend.domain.user.entity.User;
+import com.kmu.anki.backend.domain.auth.legacy.service.CustomOAuth2UserService;
+import com.kmu.anki.backend.domain.auth.legacy.service.OAuth2AccessTokenService;
 import com.kmu.anki.backend.domain.user.utils.SessionUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 

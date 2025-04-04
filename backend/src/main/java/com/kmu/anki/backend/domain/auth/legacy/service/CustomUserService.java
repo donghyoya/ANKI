@@ -1,4 +1,4 @@
-package com.kmu.anki.backend.domain.auth.service;
+package com.kmu.anki.backend.domain.auth.legacy.service;
 
 import com.kmu.anki.backend.domain.user.entity.User;
 import com.kmu.anki.backend.domain.user.repository.UserRepository;

@@ -1,6 +1,6 @@
 package com.kmu.anki.backend.security.auth.test.service;
 
-import com.kmu.anki.backend.domain.auth.vo.Role;
+import com.kmu.anki.backend.domain.auth.legacy.vo.Role;
 import com.kmu.anki.backend.domain.user.dto.CreateUserDto;
 import com.kmu.anki.backend.domain.user.dto.UserDto;
 import com.kmu.anki.backend.domain.user.entity.User;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Transactional(readOnly = true)

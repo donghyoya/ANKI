@@ -1,4 +1,4 @@
-package com.kmu.anki.backend.domain.auth.vo;
+package com.kmu.anki.backend.domain.auth.legacy.vo;
 
 import lombok.Data;
 

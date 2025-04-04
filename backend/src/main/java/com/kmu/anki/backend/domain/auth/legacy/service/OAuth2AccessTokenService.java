@@ -1,4 +1,4 @@
-package com.kmu.anki.backend.domain.auth.service;
+package com.kmu.anki.backend.domain.auth.legacy.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

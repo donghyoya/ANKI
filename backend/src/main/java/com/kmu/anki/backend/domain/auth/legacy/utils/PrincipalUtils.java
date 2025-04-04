@@ -1,4 +1,4 @@
-package com.kmu.anki.backend.domain.auth.utils;
+package com.kmu.anki.backend.domain.auth.legacy.utils;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;

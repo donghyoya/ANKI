@@ -1,6 +1,6 @@
 package com.kmu.anki.backend.domain.user.entity;
 
-import com.kmu.anki.backend.domain.auth.vo.Role;
+import com.kmu.anki.backend.domain.auth.legacy.vo.Role;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.study.history.entity.UserStudyHistory;
 import com.kmu.anki.backend.domain.user.dto.CreateUserDto;

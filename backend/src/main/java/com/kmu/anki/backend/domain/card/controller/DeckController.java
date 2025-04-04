@@ -1,8 +1,7 @@
 package com.kmu.anki.backend.domain.card.controller;
 
-import com.kmu.anki.backend.domain.auth.utils.PrincipalUtils;
+import com.kmu.anki.backend.domain.auth.legacy.utils.PrincipalUtils;
 import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
-import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.dto.DeckDto;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
@@ -13,7 +12,6 @@ import com.kmu.anki.backend.domain.user.utils.SessionUtils;
 import com.kmu.anki.backend.global.schema.BaseListReponse;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;

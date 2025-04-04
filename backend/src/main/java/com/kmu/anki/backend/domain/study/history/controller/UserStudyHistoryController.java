@@ -1,16 +1,14 @@
 package com.kmu.anki.backend.domain.study.history.controller;
 
-import com.kmu.anki.backend.domain.auth.utils.PrincipalUtils;
+import com.kmu.anki.backend.domain.auth.legacy.utils.PrincipalUtils;
 import com.kmu.anki.backend.domain.study.history.dto.UserStudyHistoryDto;
 import com.kmu.anki.backend.domain.study.history.service.UserStudyHistoryService;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,6 +1,6 @@
 package com.kmu.anki.backend.domain.user.controller;
 
-import com.kmu.anki.backend.domain.auth.utils.PrincipalUtils;
+import com.kmu.anki.backend.domain.auth.legacy.utils.PrincipalUtils;
 import com.kmu.anki.backend.domain.user.dto.UserOptionDto;
 import com.kmu.anki.backend.domain.user.service.UserOptionService;
 import com.kmu.anki.backend.domain.user.utils.SessionUtils;

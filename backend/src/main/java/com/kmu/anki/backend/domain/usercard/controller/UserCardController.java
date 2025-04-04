@@ -1,6 +1,6 @@
 package com.kmu.anki.backend.domain.usercard.controller;
 
-import com.kmu.anki.backend.domain.auth.utils.PrincipalUtils;
+import com.kmu.anki.backend.domain.auth.legacy.utils.PrincipalUtils;
 import com.kmu.anki.backend.domain.card.controller.QueryType;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;

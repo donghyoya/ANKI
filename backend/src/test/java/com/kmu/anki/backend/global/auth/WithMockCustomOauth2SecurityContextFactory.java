@@ -1,6 +1,6 @@
 package com.kmu.anki.backend.global.auth;
 
-import com.kmu.anki.backend.domain.auth.vo.Role;
+import com.kmu.anki.backend.domain.auth.legacy.vo.Role;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

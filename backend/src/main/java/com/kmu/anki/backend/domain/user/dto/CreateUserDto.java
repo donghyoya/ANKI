@@ -1,9 +1,8 @@
 package com.kmu.anki.backend.domain.user.dto;
 
-import com.kmu.anki.backend.domain.auth.vo.Role;
+import com.kmu.anki.backend.domain.auth.legacy.vo.Role;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Builder
 @Getter

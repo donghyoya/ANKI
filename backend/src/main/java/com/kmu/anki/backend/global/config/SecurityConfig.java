@@ -70,7 +70,7 @@ public class SecurityConfig {
                         ).permitAll()
                         .requestMatchers("/api/auth/**", "/css/**").permitAll() // 누구나 접근 가능
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .anyRequest().permitAll()                                   // 나머지는 인증 필요
+                        .anyRequest().authenticated()                                   // 나머지는 인증 필요
                 )
         ;
         return http.build();
@@ -91,7 +91,9 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         // 모든 cors 옵션 허용
-        configuration.addAllowedOriginPattern("*");
+        configuration.addAllowedOrigin("http://localhost:3000");
+        configuration.addAllowedOriginPattern("http://hada.zapto.org:3000");
+        configuration.addAllowedOriginPattern("http://*.hada.zapto.org:3000");
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);

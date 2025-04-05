@@ -3,6 +3,7 @@ package com.kmu.anki.backend.security.auth.filter;
 import com.kmu.anki.backend.security.auth.token.JwtTokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -47,10 +48,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
      * @return
      */
     private String resolveToken(HttpServletRequest request) {
+        // 1. Header에 있는지 찾기
         String bearerToken = request.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
         }
+
+        // 2. Header에 없으면 쿠키에서 토큰 찾기
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if ("token".equals(cookie.getName())) {
+                    return cookie.getValue();
+                }
+            }
+        }
+
         return null;
     }
 }

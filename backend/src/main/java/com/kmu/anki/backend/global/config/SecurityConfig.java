@@ -57,6 +57,7 @@ public class SecurityConfig {
                         config->config.userInfoEndpoint(
                                 userInfoEndpointConfig -> userInfoEndpointConfig.oidcUserService(oidcService)
                         ).successHandler(authenticationSuccessHandler())
+                                .redirectionEndpoint(redirectionEndpointConfig -> redirectionEndpointConfig.baseUri("/api/auth/oauth2/google"))
                 )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.GET, "/decks").permitAll()

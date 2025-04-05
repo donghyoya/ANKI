@@ -6,6 +6,8 @@ import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.study.history.service.UserStudyHistoryService;
+import com.kmu.anki.backend.domain.user.dto.UserOptionDto;
+import com.kmu.anki.backend.domain.user.service.UserOptionService;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyCardForm;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserCardController {
     private final UserCardService userCardService;
     private final UserStudyHistoryService userStudyHistoryService;
+    private final UserOptionService userOptionService;
 
     @GetMapping("/{cardId}/study")
     public CardStudyDto getCardsStudyInfo(
@@ -55,8 +58,9 @@ public class UserCardController {
             @RequestParam("query") String query,
             Authentication authentication
     ){
-        LanguageCode languageCode = LanguageCode.en;
-        Long userId = PrincipalUtils.extractUserId(authentication);
+        Long userId = Long.parseLong(authentication.getName());
+        UserOptionDto userOptionDto = userOptionService.readOption(userId);
+        LanguageCode languageCode = userOptionDto.getLanguageCode();
         Page<UserCardDto> cards;
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);

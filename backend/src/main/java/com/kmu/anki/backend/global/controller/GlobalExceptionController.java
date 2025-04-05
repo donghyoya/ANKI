@@ -33,7 +33,6 @@ public class GlobalExceptionController {
         return new ResponseEntity<>(ExceptionResponse.of(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase()), HttpStatus.UNAUTHORIZED);
     }
 
-
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ExceptionResponse> handleRunTimeException(RuntimeException ex){
         log.error("[500] RuntimeException: {}", ex.getMessage(), ex);

@@ -469,139 +469,139 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":20,\"content\":[{\"\
                     cardId\":1,\"koreanWord\":\"안녕\",\"foreignWord\":\"hello\",\"\
                     level\":\"easy\",\"languageCode\":\"en\",\"userCardId\":181,\"\
-                    due\":\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\"\
                     :\"New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":2,\"\
                     koreanWord\":\"사과\",\"foreignWord\":\"apple\",\"level\":\"easy\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":182,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":182,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":3,\"koreanWord\":\"물\"\
                     ,\"foreignWord\":\"water\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":183,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":183,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":4,\"koreanWord\":\"책\"\
                     ,\"foreignWord\":\"book\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":184,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":184,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":5,\"koreanWord\":\"밥\"\
                     ,\"foreignWord\":\"rice\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":185,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":185,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":6,\"koreanWord\":\"학교\
                     \",\"foreignWord\":\"school\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":186,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":186,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":7,\"koreanWord\":\"공\"\
                     ,\"foreignWord\":\"ball\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":187,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":187,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":8,\"koreanWord\":\"연필\
                     \",\"foreignWord\":\"pencil\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":188,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":188,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":9,\"koreanWord\":\"의자\
                     \",\"foreignWord\":\"chair\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":189,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":189,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":10,\"koreanWord\":\"친\
                     구\",\"foreignWord\":\"friend\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":190,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":190,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":11,\"koreanWord\":\"우\
                     유\",\"foreignWord\":\"milk\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":191,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":191,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":12,\"koreanWord\":\"하\
                     늘\",\"foreignWord\":\"sky\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":192,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":192,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":13,\"koreanWord\":\"강\
                     아지\",\"foreignWord\":\"puppy\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":193,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":193,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":14,\"koreanWord\":\"고\
                     양이\",\"foreignWord\":\"cat\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":194,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":194,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":15,\"koreanWord\":\"집\
                     \",\"foreignWord\":\"house\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":195,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":195,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":16,\"koreanWord\":\"사\
                     람\",\"foreignWord\":\"person\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":196,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":196,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":17,\"koreanWord\":\"나\
                     무\",\"foreignWord\":\"tree\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":197,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":197,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":18,\"koreanWord\":\"바\
                     다\",\"foreignWord\":\"sea\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":198,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":198,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":19,\"koreanWord\":\"시\
                     간\",\"foreignWord\":\"time\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":199,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":199,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":20,\"koreanWord\":\"꽃\
                     \",\"foreignWord\":\"flower\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":200,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":200,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -611,139 +611,139 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":20,\"content\":[{\"\
                     cardId\":41,\"koreanWord\":\"불가사의\",\"foreignWord\":\"mystery\"\
                     ,\"level\":\"hard\",\"languageCode\":\"en\",\"userCardId\":221,\"\
-                    due\":\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\"\
                     :\"New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":42,\"\
                     koreanWord\":\"천둥\",\"foreignWord\":\"thunder\",\"level\":\"hard\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":222,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":222,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":43,\"koreanWord\":\"번\
                     개\",\"foreignWord\":\"lightning\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":223,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":223,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":44,\"koreanWord\":\"우\
                     주\",\"foreignWord\":\"universe\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":224,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":224,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":45,\"koreanWord\":\"행\
                     성\",\"foreignWord\":\"planet\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":225,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":225,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":46,\"koreanWord\":\"철\
                     학\",\"foreignWord\":\"philosophy\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":226,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":226,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":47,\"koreanWord\":\"사\
                     상\",\"foreignWord\":\"thought\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":227,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":227,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":48,\"koreanWord\":\"문\
                     학\",\"foreignWord\":\"literature\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":228,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":228,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":49,\"koreanWord\":\"예\
                     술\",\"foreignWord\":\"art\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":229,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":229,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":50,\"koreanWord\":\"역\
                     사\",\"foreignWord\":\"history\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":230,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":230,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":51,\"koreanWord\":\"기\
                     술\",\"foreignWord\":\"technology\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":231,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":231,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":52,\"koreanWord\":\"과\
                     학\",\"foreignWord\":\"science\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":232,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":232,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":53,\"koreanWord\":\"수\
                     학\",\"foreignWord\":\"mathematics\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":233,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":233,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":54,\"koreanWord\":\"논\
                     리\",\"foreignWord\":\"logic\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":234,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":234,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":55,\"koreanWord\":\"법\
                     률\",\"foreignWord\":\"law\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":235,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":235,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":56,\"koreanWord\":\"사\
                     회\",\"foreignWord\":\"society\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":236,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":236,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":57,\"koreanWord\":\"경\
                     제\",\"foreignWord\":\"economy\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":237,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":237,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":58,\"koreanWord\":\"정\
                     치\",\"foreignWord\":\"politics\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":238,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":238,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":59,\"koreanWord\":\"철\
                     학자\",\"foreignWord\":\"philosopher\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":239,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":239,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":60,\"koreanWord\":\"우\
                     주선\",\"foreignWord\":\"spaceship\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":240,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":240,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -753,139 +753,139 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":20,\"content\":[{\"\
                     cardId\":21,\"koreanWord\":\"사랑\",\"foreignWord\":\"love\",\"\
                     level\":\"normal\",\"languageCode\":\"en\",\"userCardId\":201,\"\
-                    due\":\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\"\
                     :\"New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":22,\"\
                     koreanWord\":\"희망\",\"foreignWord\":\"hope\",\"level\":\"normal\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":202,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":202,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":23,\"koreanWord\":\"추\
                     억\",\"foreignWord\":\"memory\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":203,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":203,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":24,\"koreanWord\":\"인\
                     생\",\"foreignWord\":\"life\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":204,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":204,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":25,\"koreanWord\":\"세\
                     상\",\"foreignWord\":\"world\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":205,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":205,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":26,\"koreanWord\":\"행\
                     복\",\"foreignWord\":\"happiness\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":206,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":206,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":27,\"koreanWord\":\"가\
                     족\",\"foreignWord\":\"family\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":207,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":207,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":28,\"koreanWord\":\"음\
                     악\",\"foreignWord\":\"music\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":208,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":208,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":29,\"koreanWord\":\"여\
                     행\",\"foreignWord\":\"travel\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":209,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":209,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":30,\"koreanWord\":\"노\
                     래\",\"foreignWord\":\"song\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":210,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":210,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":31,\"koreanWord\":\"그\
                     림\",\"foreignWord\":\"painting\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":211,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":211,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":32,\"koreanWord\":\"빛\
                     \",\"foreignWord\":\"light\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":212,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":212,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":33,\"koreanWord\":\"어\
                     둠\",\"foreignWord\":\"darkness\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":213,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":213,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":34,\"koreanWord\":\"별\
                     \",\"foreignWord\":\"star\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":214,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":214,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":35,\"koreanWord\":\"바\
                     람\",\"foreignWord\":\"wind\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":215,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":215,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":36,\"koreanWord\":\"꿈\
                     \",\"foreignWord\":\"dream\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":216,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":216,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":37,\"koreanWord\":\"산\
                     \",\"foreignWord\":\"mountain\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":217,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":217,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":38,\"koreanWord\":\"강\
                     \",\"foreignWord\":\"river\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":218,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":218,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":39,\"koreanWord\":\"겨\
                     울\",\"foreignWord\":\"winter\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":219,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":219,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":40,\"koreanWord\":\"여\
                     름\",\"foreignWord\":\"summer\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":220,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":220,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -895,13 +895,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :25,\"koreanWord\":\"세상\",\"foreignWord\":\"world\",\"level\"\
                     :\"normal\",\"languageCode\":\"en\",\"userCardId\":205,\"due\"\
-                    :\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    :\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":52,\"\
                     koreanWord\":\"과학\",\"foreignWord\":\"science\",\"level\":\"hard\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":232,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":232,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -911,14 +911,14 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :26,\"koreanWord\":\"행복\",\"foreignWord\":\"happiness\",\"level\"\
                     :\"normal\",\"languageCode\":\"en\",\"userCardId\":206,\"due\"\
-                    :\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    :\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":53,\"\
                     koreanWord\":\"수학\",\"foreignWord\":\"mathematics\",\"level\"\
                     :\"hard\",\"languageCode\":\"en\",\"userCardId\":233,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
@@ -926,14 +926,14 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-COMMUNICATION:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :14,\"koreanWord\":\"고양이\",\"foreignWord\":\"cat\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":194,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":194,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":41,\"koreanWord\":\"불\
                     가사의\",\"foreignWord\":\"mystery\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":221,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":221,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -943,13 +943,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :27,\"koreanWord\":\"가족\",\"foreignWord\":\"family\",\"level\"\
                     :\"normal\",\"languageCode\":\"en\",\"userCardId\":207,\"due\"\
-                    :\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    :\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":54,\"\
                     koreanWord\":\"논리\",\"foreignWord\":\"logic\",\"level\":\"hard\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":234,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":234,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -959,13 +959,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :8,\"koreanWord\":\"연필\",\"foreignWord\":\"pencil\",\"level\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":188,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":35,\"\
                     koreanWord\":\"바람\",\"foreignWord\":\"wind\",\"level\":\"normal\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":215,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":215,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -974,21 +974,21 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-ECONOMY:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":3,\"content\":[{\"cardId\"\
                     :1,\"koreanWord\":\"안녕\",\"foreignWord\":\"hello\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":181,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":181,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":28,\"koreanWord\":\"음\
                     악\",\"foreignWord\":\"music\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":208,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":208,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":55,\"koreanWord\":\"법\
                     률\",\"foreignWord\":\"law\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":235,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":235,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -998,13 +998,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :23,\"koreanWord\":\"추억\",\"foreignWord\":\"memory\",\"level\"\
                     :\"normal\",\"languageCode\":\"en\",\"userCardId\":203,\"due\"\
-                    :\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    :\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":50,\"\
                     koreanWord\":\"역사\",\"foreignWord\":\"history\",\"level\":\"hard\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":230,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":230,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1014,20 +1014,20 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":3,\"content\":[{\"cardId\"\
                     :6,\"koreanWord\":\"학교\",\"foreignWord\":\"school\",\"level\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":186,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":33,\"\
                     koreanWord\":\"어둠\",\"foreignWord\":\"darkness\",\"level\":\"\
                     normal\",\"languageCode\":\"en\",\"userCardId\":213,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":60,\"\
                     koreanWord\":\"우주선\",\"foreignWord\":\"spaceship\",\"level\":\"\
-                    hard\",\"languageCode\":\"en\",\"userCardId\":240,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    hard\",\"languageCode\":\"en\",\"userCardId\":240,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1037,13 +1037,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :16,\"koreanWord\":\"사람\",\"foreignWord\":\"person\",\"level\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":196,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":43,\"\
                     koreanWord\":\"번개\",\"foreignWord\":\"lightning\",\"level\":\"\
-                    hard\",\"languageCode\":\"en\",\"userCardId\":223,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    hard\",\"languageCode\":\"en\",\"userCardId\":223,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1052,14 +1052,14 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-GRAMMAR_AND_LANGUAGE:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :7,\"koreanWord\":\"공\",\"foreignWord\":\"ball\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":187,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":187,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":34,\"koreanWord\":\"별\
                     \",\"foreignWord\":\"star\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":214,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":214,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1069,13 +1069,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :22,\"koreanWord\":\"희망\",\"foreignWord\":\"hope\",\"level\":\"\
                     normal\",\"languageCode\":\"en\",\"userCardId\":202,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":49,\"\
                     koreanWord\":\"예술\",\"foreignWord\":\"art\",\"level\":\"hard\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":229,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":229,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1084,14 +1084,14 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-HOSPITAL:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :9,\"koreanWord\":\"의자\",\"foreignWord\":\"chair\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":189,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":189,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":36,\"koreanWord\":\"꿈\
                     \",\"foreignWord\":\"dream\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":216,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":216,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1101,13 +1101,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :10,\"koreanWord\":\"친구\",\"foreignWord\":\"friend\",\"level\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":190,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":37,\"\
                     koreanWord\":\"산\",\"foreignWord\":\"mountain\",\"level\":\"normal\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":217,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":217,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1116,14 +1116,14 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-LIVING:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :11,\"koreanWord\":\"우유\",\"foreignWord\":\"milk\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":191,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":191,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":38,\"koreanWord\":\"강\
                     \",\"foreignWord\":\"river\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":218,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":218,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1132,14 +1132,14 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-NATURE:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :18,\"koreanWord\":\"바다\",\"foreignWord\":\"sea\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":198,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":198,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":45,\"koreanWord\":\"행\
                     성\",\"foreignWord\":\"planet\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":225,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":225,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1148,21 +1148,21 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-NEWS:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":3,\"content\":[{\"cardId\"\
                     :5,\"koreanWord\":\"밥\",\"foreignWord\":\"rice\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":185,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":185,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":32,\"koreanWord\":\"빛\
                     \",\"foreignWord\":\"light\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":212,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":212,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":59,\"koreanWord\":\"철\
                     학자\",\"foreignWord\":\"philosopher\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":239,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":239,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1172,13 +1172,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :13,\"koreanWord\":\"강아지\",\"foreignWord\":\"puppy\",\"level\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":193,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":40,\"\
                     koreanWord\":\"여름\",\"foreignWord\":\"summer\",\"level\":\"normal\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":220,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":220,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1187,14 +1187,14 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-PERSONALITY:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :12,\"koreanWord\":\"하늘\",\"foreignWord\":\"sky\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":192,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":192,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":39,\"koreanWord\":\"겨\
                     울\",\"foreignWord\":\"winter\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":219,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":219,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1203,14 +1203,14 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-POLITICS:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :19,\"koreanWord\":\"시간\",\"foreignWord\":\"time\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":199,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":199,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":46,\"koreanWord\":\"철\
                     학\",\"foreignWord\":\"philosophy\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":226,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":226,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1219,14 +1219,14 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-RELATIONSHIPS:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :17,\"koreanWord\":\"나무\",\"foreignWord\":\"tree\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":197,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":197,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":44,\"koreanWord\":\"우\
                     주\",\"foreignWord\":\"universe\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":224,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":224,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1236,13 +1236,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :20,\"koreanWord\":\"꽃\",\"foreignWord\":\"flower\",\"level\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":200,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":47,\"\
                     koreanWord\":\"사상\",\"foreignWord\":\"thought\",\"level\":\"hard\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":227,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":227,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1252,13 +1252,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :24,\"koreanWord\":\"인생\",\"foreignWord\":\"life\",\"level\":\"\
                     normal\",\"languageCode\":\"en\",\"userCardId\":204,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":51,\"\
                     koreanWord\":\"기술\",\"foreignWord\":\"technology\",\"level\":\"\
-                    hard\",\"languageCode\":\"en\",\"userCardId\":231,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    hard\",\"languageCode\":\"en\",\"userCardId\":231,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1267,21 +1267,21 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-SCIENCE:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":3,\"content\":[{\"cardId\"\
                     :2,\"koreanWord\":\"사과\",\"foreignWord\":\"apple\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":182,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":182,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":29,\"koreanWord\":\"여\
                     행\",\"foreignWord\":\"travel\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":209,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":209,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":56,\"koreanWord\":\"사\
                     회\",\"foreignWord\":\"society\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":236,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":236,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1290,14 +1290,14 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-TIME:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :15,\"koreanWord\":\"집\",\"foreignWord\":\"house\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":195,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":195,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":42,\"koreanWord\":\"천\
                     둥\",\"foreignWord\":\"thunder\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":222,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":222,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1306,21 +1306,21 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-TRANSPORT:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":3,\"content\":[{\"cardId\"\
                     :3,\"koreanWord\":\"물\",\"foreignWord\":\"water\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":183,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":183,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":30,\"koreanWord\":\"노\
                     래\",\"foreignWord\":\"song\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":210,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":210,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":57,\"koreanWord\":\"경\
                     제\",\"foreignWord\":\"economy\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":237,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":237,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1329,21 +1329,21 @@ paths:
                 user-card-controller-test/get-study-card/review-meaning-WEATHER:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":3,\"content\":[{\"cardId\"\
                     :4,\"koreanWord\":\"책\",\"foreignWord\":\"book\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":184,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":184,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":31,\"koreanWord\":\"그\
                     림\",\"foreignWord\":\"painting\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":211,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":211,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":58,\"koreanWord\":\"정\
                     치\",\"foreignWord\":\"politics\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":238,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":238,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1353,13 +1353,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :21,\"koreanWord\":\"사랑\",\"foreignWord\":\"love\",\"level\":\"\
                     normal\",\"languageCode\":\"en\",\"userCardId\":201,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":48,\"\
                     koreanWord\":\"문학\",\"foreignWord\":\"literature\",\"level\":\"\
-                    hard\",\"languageCode\":\"en\",\"userCardId\":228,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    hard\",\"languageCode\":\"en\",\"userCardId\":228,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1369,139 +1369,139 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":20,\"content\":[{\"\
                     cardId\":1,\"koreanWord\":\"안녕\",\"foreignWord\":\"hello\",\"\
                     level\":\"easy\",\"languageCode\":\"en\",\"userCardId\":181,\"\
-                    due\":\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\"\
                     :\"New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":2,\"\
                     koreanWord\":\"사과\",\"foreignWord\":\"apple\",\"level\":\"easy\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":182,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":182,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":3,\"koreanWord\":\"물\"\
                     ,\"foreignWord\":\"water\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":183,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":183,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":4,\"koreanWord\":\"책\"\
                     ,\"foreignWord\":\"book\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":184,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":184,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":5,\"koreanWord\":\"밥\"\
                     ,\"foreignWord\":\"rice\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":185,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":185,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":6,\"koreanWord\":\"학교\
                     \",\"foreignWord\":\"school\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":186,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":186,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":7,\"koreanWord\":\"공\"\
                     ,\"foreignWord\":\"ball\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":187,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":187,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":8,\"koreanWord\":\"연필\
                     \",\"foreignWord\":\"pencil\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":188,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":188,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":9,\"koreanWord\":\"의자\
                     \",\"foreignWord\":\"chair\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":189,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":189,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":10,\"koreanWord\":\"친\
                     구\",\"foreignWord\":\"friend\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":190,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":190,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":11,\"koreanWord\":\"우\
                     유\",\"foreignWord\":\"milk\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":191,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":191,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":12,\"koreanWord\":\"하\
                     늘\",\"foreignWord\":\"sky\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":192,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":192,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":13,\"koreanWord\":\"강\
                     아지\",\"foreignWord\":\"puppy\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":193,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":193,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":14,\"koreanWord\":\"고\
                     양이\",\"foreignWord\":\"cat\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":194,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":194,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":15,\"koreanWord\":\"집\
                     \",\"foreignWord\":\"house\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":195,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":195,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":16,\"koreanWord\":\"사\
                     람\",\"foreignWord\":\"person\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":196,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":196,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":17,\"koreanWord\":\"나\
                     무\",\"foreignWord\":\"tree\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":197,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":197,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":18,\"koreanWord\":\"바\
                     다\",\"foreignWord\":\"sea\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":198,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":198,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":19,\"koreanWord\":\"시\
                     간\",\"foreignWord\":\"time\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":199,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":199,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":20,\"koreanWord\":\"꽃\
                     \",\"foreignWord\":\"flower\",\"level\":\"easy\",\"languageCode\"\
-                    :\"en\",\"userCardId\":200,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":200,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1511,139 +1511,139 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":20,\"content\":[{\"\
                     cardId\":41,\"koreanWord\":\"불가사의\",\"foreignWord\":\"mystery\"\
                     ,\"level\":\"hard\",\"languageCode\":\"en\",\"userCardId\":221,\"\
-                    due\":\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\"\
                     :\"New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":42,\"\
                     koreanWord\":\"천둥\",\"foreignWord\":\"thunder\",\"level\":\"hard\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":222,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":222,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":43,\"koreanWord\":\"번\
                     개\",\"foreignWord\":\"lightning\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":223,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":223,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":44,\"koreanWord\":\"우\
                     주\",\"foreignWord\":\"universe\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":224,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":224,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":45,\"koreanWord\":\"행\
                     성\",\"foreignWord\":\"planet\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":225,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":225,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":46,\"koreanWord\":\"철\
                     학\",\"foreignWord\":\"philosophy\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":226,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":226,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":47,\"koreanWord\":\"사\
                     상\",\"foreignWord\":\"thought\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":227,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":227,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":48,\"koreanWord\":\"문\
                     학\",\"foreignWord\":\"literature\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":228,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":228,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":49,\"koreanWord\":\"예\
                     술\",\"foreignWord\":\"art\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":229,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":229,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":50,\"koreanWord\":\"역\
                     사\",\"foreignWord\":\"history\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":230,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":230,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":51,\"koreanWord\":\"기\
                     술\",\"foreignWord\":\"technology\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":231,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":231,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":52,\"koreanWord\":\"과\
                     학\",\"foreignWord\":\"science\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":232,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":232,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":53,\"koreanWord\":\"수\
                     학\",\"foreignWord\":\"mathematics\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":233,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":233,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":54,\"koreanWord\":\"논\
                     리\",\"foreignWord\":\"logic\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":234,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":234,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":55,\"koreanWord\":\"법\
                     률\",\"foreignWord\":\"law\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":235,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":235,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":56,\"koreanWord\":\"사\
                     회\",\"foreignWord\":\"society\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":236,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":236,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":57,\"koreanWord\":\"경\
                     제\",\"foreignWord\":\"economy\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":237,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":237,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":58,\"koreanWord\":\"정\
                     치\",\"foreignWord\":\"politics\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":238,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":238,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":59,\"koreanWord\":\"철\
                     학자\",\"foreignWord\":\"philosopher\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":239,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":239,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":60,\"koreanWord\":\"우\
                     주선\",\"foreignWord\":\"spaceship\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":240,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":240,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1653,139 +1653,139 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":20,\"content\":[{\"\
                     cardId\":21,\"koreanWord\":\"사랑\",\"foreignWord\":\"love\",\"\
                     level\":\"normal\",\"languageCode\":\"en\",\"userCardId\":201,\"\
-                    due\":\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\"\
                     :\"New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":22,\"\
                     koreanWord\":\"희망\",\"foreignWord\":\"hope\",\"level\":\"normal\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":202,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":202,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":23,\"koreanWord\":\"추\
                     억\",\"foreignWord\":\"memory\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":203,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":203,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":24,\"koreanWord\":\"인\
                     생\",\"foreignWord\":\"life\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":204,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":204,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":25,\"koreanWord\":\"세\
                     상\",\"foreignWord\":\"world\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":205,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":205,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":26,\"koreanWord\":\"행\
                     복\",\"foreignWord\":\"happiness\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":206,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":206,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":27,\"koreanWord\":\"가\
                     족\",\"foreignWord\":\"family\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":207,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":207,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":28,\"koreanWord\":\"음\
                     악\",\"foreignWord\":\"music\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":208,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":208,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":29,\"koreanWord\":\"여\
                     행\",\"foreignWord\":\"travel\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":209,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":209,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":30,\"koreanWord\":\"노\
                     래\",\"foreignWord\":\"song\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":210,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":210,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":31,\"koreanWord\":\"그\
                     림\",\"foreignWord\":\"painting\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":211,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":211,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":32,\"koreanWord\":\"빛\
                     \",\"foreignWord\":\"light\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":212,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":212,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":33,\"koreanWord\":\"어\
                     둠\",\"foreignWord\":\"darkness\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":213,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":213,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":34,\"koreanWord\":\"별\
                     \",\"foreignWord\":\"star\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":214,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":214,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":35,\"koreanWord\":\"바\
                     람\",\"foreignWord\":\"wind\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":215,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":215,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":36,\"koreanWord\":\"꿈\
                     \",\"foreignWord\":\"dream\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":216,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":216,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":37,\"koreanWord\":\"산\
                     \",\"foreignWord\":\"mountain\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":217,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":217,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":38,\"koreanWord\":\"강\
                     \",\"foreignWord\":\"river\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":218,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":218,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":39,\"koreanWord\":\"겨\
                     울\",\"foreignWord\":\"winter\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":219,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":219,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":40,\"koreanWord\":\"여\
                     름\",\"foreignWord\":\"summer\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":220,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":220,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1795,13 +1795,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :25,\"koreanWord\":\"세상\",\"foreignWord\":\"world\",\"level\"\
                     :\"normal\",\"languageCode\":\"en\",\"userCardId\":205,\"due\"\
-                    :\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    :\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":52,\"\
                     koreanWord\":\"과학\",\"foreignWord\":\"science\",\"level\":\"hard\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":232,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":232,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1811,14 +1811,14 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :26,\"koreanWord\":\"행복\",\"foreignWord\":\"happiness\",\"level\"\
                     :\"normal\",\"languageCode\":\"en\",\"userCardId\":206,\"due\"\
-                    :\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    :\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":53,\"\
                     koreanWord\":\"수학\",\"foreignWord\":\"mathematics\",\"level\"\
                     :\"hard\",\"languageCode\":\"en\",\"userCardId\":233,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
@@ -1826,14 +1826,14 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-COMMUNICATION:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :14,\"koreanWord\":\"고양이\",\"foreignWord\":\"cat\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":194,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":194,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":41,\"koreanWord\":\"불\
                     가사의\",\"foreignWord\":\"mystery\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":221,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":221,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1843,13 +1843,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :27,\"koreanWord\":\"가족\",\"foreignWord\":\"family\",\"level\"\
                     :\"normal\",\"languageCode\":\"en\",\"userCardId\":207,\"due\"\
-                    :\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    :\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":54,\"\
                     koreanWord\":\"논리\",\"foreignWord\":\"logic\",\"level\":\"hard\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":234,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":234,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1859,13 +1859,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :8,\"koreanWord\":\"연필\",\"foreignWord\":\"pencil\",\"level\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":188,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":35,\"\
                     koreanWord\":\"바람\",\"foreignWord\":\"wind\",\"level\":\"normal\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":215,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":215,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1874,21 +1874,21 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-ECONOMY:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":3,\"content\":[{\"cardId\"\
                     :1,\"koreanWord\":\"안녕\",\"foreignWord\":\"hello\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":181,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":181,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":28,\"koreanWord\":\"음\
                     악\",\"foreignWord\":\"music\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":208,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":208,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":55,\"koreanWord\":\"법\
                     률\",\"foreignWord\":\"law\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":235,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":235,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1898,13 +1898,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :23,\"koreanWord\":\"추억\",\"foreignWord\":\"memory\",\"level\"\
                     :\"normal\",\"languageCode\":\"en\",\"userCardId\":203,\"due\"\
-                    :\"2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    :\"2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":50,\"\
                     koreanWord\":\"역사\",\"foreignWord\":\"history\",\"level\":\"hard\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":230,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":230,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1914,20 +1914,20 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":3,\"content\":[{\"cardId\"\
                     :6,\"koreanWord\":\"학교\",\"foreignWord\":\"school\",\"level\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":186,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":33,\"\
                     koreanWord\":\"어둠\",\"foreignWord\":\"darkness\",\"level\":\"\
                     normal\",\"languageCode\":\"en\",\"userCardId\":213,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":60,\"\
                     koreanWord\":\"우주선\",\"foreignWord\":\"spaceship\",\"level\":\"\
-                    hard\",\"languageCode\":\"en\",\"userCardId\":240,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    hard\",\"languageCode\":\"en\",\"userCardId\":240,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1937,13 +1937,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :16,\"koreanWord\":\"사람\",\"foreignWord\":\"person\",\"level\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":196,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":43,\"\
                     koreanWord\":\"번개\",\"foreignWord\":\"lightning\",\"level\":\"\
-                    hard\",\"languageCode\":\"en\",\"userCardId\":223,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    hard\",\"languageCode\":\"en\",\"userCardId\":223,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1952,14 +1952,14 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-GRAMMAR_AND_LANGUAGE:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :7,\"koreanWord\":\"공\",\"foreignWord\":\"ball\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":187,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":187,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":34,\"koreanWord\":\"별\
                     \",\"foreignWord\":\"star\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":214,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":214,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1969,13 +1969,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :22,\"koreanWord\":\"희망\",\"foreignWord\":\"hope\",\"level\":\"\
                     normal\",\"languageCode\":\"en\",\"userCardId\":202,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":49,\"\
                     koreanWord\":\"예술\",\"foreignWord\":\"art\",\"level\":\"hard\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":229,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":229,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -1984,14 +1984,14 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-HOSPITAL:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :9,\"koreanWord\":\"의자\",\"foreignWord\":\"chair\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":189,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":189,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":36,\"koreanWord\":\"꿈\
                     \",\"foreignWord\":\"dream\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":216,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":216,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2001,13 +2001,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :10,\"koreanWord\":\"친구\",\"foreignWord\":\"friend\",\"level\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":190,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":37,\"\
                     koreanWord\":\"산\",\"foreignWord\":\"mountain\",\"level\":\"normal\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":217,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":217,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2016,14 +2016,14 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-LIVING:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :11,\"koreanWord\":\"우유\",\"foreignWord\":\"milk\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":191,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":191,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":38,\"koreanWord\":\"강\
                     \",\"foreignWord\":\"river\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":218,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":218,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2032,14 +2032,14 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-NATURE:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :18,\"koreanWord\":\"바다\",\"foreignWord\":\"sea\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":198,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":198,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":45,\"koreanWord\":\"행\
                     성\",\"foreignWord\":\"planet\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":225,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":225,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2048,21 +2048,21 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-NEWS:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":3,\"content\":[{\"cardId\"\
                     :5,\"koreanWord\":\"밥\",\"foreignWord\":\"rice\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":185,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":185,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":32,\"koreanWord\":\"빛\
                     \",\"foreignWord\":\"light\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":212,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":212,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":59,\"koreanWord\":\"철\
                     학자\",\"foreignWord\":\"philosopher\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":239,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":239,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2072,13 +2072,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :13,\"koreanWord\":\"강아지\",\"foreignWord\":\"puppy\",\"level\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":193,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":40,\"\
                     koreanWord\":\"여름\",\"foreignWord\":\"summer\",\"level\":\"normal\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":220,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":220,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2087,14 +2087,14 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-PERSONALITY:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :12,\"koreanWord\":\"하늘\",\"foreignWord\":\"sky\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":192,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":192,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":39,\"koreanWord\":\"겨\
                     울\",\"foreignWord\":\"winter\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":219,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":219,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2103,14 +2103,14 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-POLITICS:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :19,\"koreanWord\":\"시간\",\"foreignWord\":\"time\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":199,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":199,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":46,\"koreanWord\":\"철\
                     학\",\"foreignWord\":\"philosophy\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":226,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":226,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2119,14 +2119,14 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-RELATIONSHIPS:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :17,\"koreanWord\":\"나무\",\"foreignWord\":\"tree\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":197,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":197,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":44,\"koreanWord\":\"우\
                     주\",\"foreignWord\":\"universe\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":224,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":224,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2136,13 +2136,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :20,\"koreanWord\":\"꽃\",\"foreignWord\":\"flower\",\"level\"\
                     :\"easy\",\"languageCode\":\"en\",\"userCardId\":200,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":47,\"\
                     koreanWord\":\"사상\",\"foreignWord\":\"thought\",\"level\":\"hard\"\
-                    ,\"languageCode\":\"en\",\"userCardId\":227,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    ,\"languageCode\":\"en\",\"userCardId\":227,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2152,13 +2152,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :24,\"koreanWord\":\"인생\",\"foreignWord\":\"life\",\"level\":\"\
                     normal\",\"languageCode\":\"en\",\"userCardId\":204,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":51,\"\
                     koreanWord\":\"기술\",\"foreignWord\":\"technology\",\"level\":\"\
-                    hard\",\"languageCode\":\"en\",\"userCardId\":231,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    hard\",\"languageCode\":\"en\",\"userCardId\":231,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2167,21 +2167,21 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-SCIENCE:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":3,\"content\":[{\"cardId\"\
                     :2,\"koreanWord\":\"사과\",\"foreignWord\":\"apple\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":182,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":182,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":29,\"koreanWord\":\"여\
                     행\",\"foreignWord\":\"travel\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":209,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":209,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":56,\"koreanWord\":\"사\
                     회\",\"foreignWord\":\"society\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":236,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":236,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2190,14 +2190,14 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-TIME:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :15,\"koreanWord\":\"집\",\"foreignWord\":\"house\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":195,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":195,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":42,\"koreanWord\":\"천\
                     둥\",\"foreignWord\":\"thunder\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":222,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":222,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2206,21 +2206,21 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-TRANSPORT:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":3,\"content\":[{\"cardId\"\
                     :3,\"koreanWord\":\"물\",\"foreignWord\":\"water\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":183,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":183,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":30,\"koreanWord\":\"노\
                     래\",\"foreignWord\":\"song\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":210,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":210,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":57,\"koreanWord\":\"경\
                     제\",\"foreignWord\":\"economy\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":237,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":237,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2229,21 +2229,21 @@ paths:
                 user-card-controller-test/get-study-card/study-meaning-WEATHER:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":3,\"content\":[{\"cardId\"\
                     :4,\"koreanWord\":\"책\",\"foreignWord\":\"book\",\"level\":\"\
-                    easy\",\"languageCode\":\"en\",\"userCardId\":184,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    easy\",\"languageCode\":\"en\",\"userCardId\":184,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":31,\"koreanWord\":\"그\
                     림\",\"foreignWord\":\"painting\",\"level\":\"normal\",\"languageCode\"\
-                    :\"en\",\"userCardId\":211,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":211,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
                     :null,\"pronunciation\":null,\"relatedWords\":null,\"inflection\"\
                     :null,\"exampleUsage\":null},{\"cardId\":58,\"koreanWord\":\"정\
                     치\",\"foreignWord\":\"politics\",\"level\":\"hard\",\"languageCode\"\
-                    :\"en\",\"userCardId\":238,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    :\"en\",\"userCardId\":238,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2253,13 +2253,13 @@ paths:
                   value: "{\"page\":1,\"pageSize\":1,\"size\":2,\"content\":[{\"cardId\"\
                     :21,\"koreanWord\":\"사랑\",\"foreignWord\":\"love\",\"level\":\"\
                     normal\",\"languageCode\":\"en\",\"userCardId\":201,\"due\":\"\
-                    2025-04-05T19:44:05.557008\",\"lapses\":0,\"lastReview\":null,\"\
+                    2025-04-05T20:25:44.195539\",\"lapses\":0,\"lastReview\":null,\"\
                     reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"state\":\"\
                     New\",\"difficulty\":0.0,\"originalLanguage\":null,\"homographNumber\"\
                     :null,\"partsOfSpeech\":null,\"pronunciation\":null,\"relatedWords\"\
                     :null,\"inflection\":null,\"exampleUsage\":null},{\"cardId\":48,\"\
                     koreanWord\":\"문학\",\"foreignWord\":\"literature\",\"level\":\"\
-                    hard\",\"languageCode\":\"en\",\"userCardId\":228,\"due\":\"2025-04-05T19:44:05.557008\"\
+                    hard\",\"languageCode\":\"en\",\"userCardId\":228,\"due\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\",\"difficulty\":0.0,\"\
                     originalLanguage\":null,\"homographNumber\":null,\"partsOfSpeech\"\
@@ -2268,7 +2268,7 @@ paths:
         "401":
           description: "401"
           content:
-            application/json;charset=UTF-8:
+            application/json:
               schema:
                 $ref: "#/components/schemas/exceptionResponse"
               examples:
@@ -2284,6 +2284,8 @@ paths:
                 user-card-controller-test/get-study-card400:
                   value: "{\"code\":400,\"message\":\"query parameter is invalid\"\
                     }"
+      security:
+      - bearerAuthJWT: []
   /cards/{id}:
     get:
       tags:
@@ -2433,7 +2435,7 @@ paths:
                 $ref: "#/components/schemas/cardStudyInfo"
               examples:
                 user-card-controller-test/get-card-study-info:
-                  value: "{\"cardId\":1,\"nextStudyDate\":\"2025-04-05T19:44:05.557008\"\
+                  value: "{\"cardId\":1,\"nextStudyDate\":\"2025-04-05T20:25:44.195539\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":\"New\"}"
         "404":
@@ -2445,6 +2447,8 @@ paths:
               examples:
                 user-card-controller-test/get-card-study-info404:
                   value: "{\"code\":404,\"message\":\"NOT FOUND\"}"
+      security:
+      - bearerAuthJWT: []
     post:
       tags:
       - StudyCards
@@ -2465,12 +2469,12 @@ paths:
               $ref: "#/components/schemas/studyCardForm"
             examples:
               user-card-controller-test/put-user-cards:
-                value: "{\"lapses\":5,\"reps\":72,\"due\":\"2025-04-05T19:44:07.1234309\"\
-                  ,\"scheduledDays\":0.9,\"lastReview\":\"2025-04-05T19:44:07.1234309\"\
+                value: "{\"lapses\":5,\"reps\":72,\"due\":\"2025-04-05T20:25:45.6773973\"\
+                  ,\"scheduledDays\":0.9,\"lastReview\":\"2025-04-05T20:25:45.6773973\"\
                   ,\"state\":\"Review\",\"stability\":1.3}"
               user-card-controller-test/put-user-cards404:
-                value: "{\"lapses\":5,\"reps\":72,\"due\":\"2025-04-05T19:44:07.2024314\"\
-                  ,\"scheduledDays\":0.9,\"lastReview\":\"2025-04-05T19:44:07.2024314\"\
+                value: "{\"lapses\":5,\"reps\":72,\"due\":\"2025-04-05T20:25:45.7443975\"\
+                  ,\"scheduledDays\":0.9,\"lastReview\":\"2025-04-05T20:25:45.7443975\"\
                   ,\"state\":\"Review\",\"stability\":1.3}"
       responses:
         "200":
@@ -2481,8 +2485,8 @@ paths:
                 $ref: "#/components/schemas/cardStudyInfo"
               examples:
                 user-card-controller-test/put-user-cards:
-                  value: "{\"cardId\":1,\"nextStudyDate\":\"2025-04-05T19:44:07.1234309\"\
-                    ,\"lapses\":5,\"lastReview\":\"2025-04-05T19:44:07.1234309\",\"\
+                  value: "{\"cardId\":1,\"nextStudyDate\":\"2025-04-05T20:25:45.6773973\"\
+                    ,\"lapses\":5,\"lastReview\":\"2025-04-05T20:25:45.6773973\",\"\
                     reps\":72,\"scheduledDays\":0.9,\"stability\":1.3,\"state\":\"\
                     Review\"}"
         "404":
@@ -2494,6 +2498,8 @@ paths:
               examples:
                 user-card-controller-test/put-user-cards404:
                   value: "{\"code\":404,\"message\":\"NOT FOUND\"}"
+      security:
+      - bearerAuthJWT: []
   /decks:
     get:
       tags:
@@ -2601,6 +2607,8 @@ paths:
                 deck-controller-test/get-decks400:
                   value: "{\"code\":400,\"message\":\"query parameter is invalid\"\
                     }"
+      security:
+      - bearerAuthJWT: []
   /decks/cards:
     get:
       tags:
@@ -3332,6 +3340,8 @@ paths:
                 deck-controller-test/get-decks-card400:
                   value: "{\"code\":400,\"message\":\"query parameter is invalid\"\
                     }"
+      security:
+      - bearerAuthJWT: []
   /decks/history:
     get:
       tags:
@@ -3363,10 +3373,10 @@ paths:
                 user-study-history-controller-test/get-user-history:
                   value: "{\"page\":2,\"pageSize\":2,\"size\":3,\"content\":[{\"deckType\"\
                     :\"level\",\"deckName\":\"easy\",\"studyType\":\"study\",\"studyDate\"\
-                    :\"2025-04-05T19:44:04.9983207\"},{\"deckType\":\"level\",\"deckName\"\
-                    :\"easy\",\"studyType\":\"review\",\"studyDate\":\"2025-04-05T19:44:04.9983207\"\
+                    :\"2025-04-05T20:25:43.6774177\"},{\"deckType\":\"level\",\"deckName\"\
+                    :\"easy\",\"studyType\":\"review\",\"studyDate\":\"2025-04-05T20:25:43.6774177\"\
                     },{\"deckType\":\"meaning\",\"deckName\":\"FASHION_AND_APPEARANCE\"\
-                    ,\"studyType\":\"study\",\"studyDate\":\"2025-04-05T19:44:04.9983207\"\
+                    ,\"studyType\":\"study\",\"studyDate\":\"2025-04-05T20:25:43.6774177\"\
                     }]}"
   /decks/latest:
     get:
@@ -3385,7 +3395,7 @@ paths:
               examples:
                 user-study-history-controller-test/get-latest-study:
                   value: "{\"deckType\":\"level\",\"deckName\":\"easy\",\"studyType\"\
-                    :\"study\",\"studyDate\":\"2025-04-05T19:44:04.9334283\"}"
+                    :\"study\",\"studyDate\":\"2025-04-05T20:25:43.6150116\"}"
   /get-test-token:
     get:
       tags:
@@ -3402,7 +3412,7 @@ paths:
                 $ref: "#/components/schemas/AuthTestTokenSchema"
               examples:
                 authentication-test-controller-test/get-test-token:
-                  value: "{\"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiUk9MRV9VU0VSIiwic3ViIjoiMSIsImlhdCI6MTc0Mzg0OTg0NywiZXhwIjoxNzQzOTM2MjQ3fQ.58w6TZ-w1OIAL253sMowIWu88G0q_kEAawFqZmL3VNc\"\
+                  value: "{\"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiUk9MRV9VU0VSIiwic3ViIjoiMSIsImlhdCI6MTc0Mzg1MjM0NiwiZXhwIjoxNzQzOTM4NzQ2fQ.SDAe8i-Hn7Sbv7u-A0V2xwpiMquL9uW2HGvlUThCz9U\"\
                     }"
   /user/option:
     get:

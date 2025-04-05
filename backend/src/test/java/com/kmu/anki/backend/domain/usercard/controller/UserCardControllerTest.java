@@ -41,11 +41,11 @@ class UserCardControllerTest extends AbstractControllerTest {
     @Autowired
     private UserCardService userCardService;
 
-    @WithMockCustomOAuth2
     @Test
     void getCardStudyInfo() throws Exception{
         mockMvc.perform(
                         get("/cards/{id}/study", 1)
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -67,11 +67,11 @@ class UserCardControllerTest extends AbstractControllerTest {
                 );
     }
 
-    @WithMockCustomOAuth2
     @Test
     void getCardStudyInfo404() throws Exception{
         mockMvc.perform(
                         get("/cards/{id}/study", -1)
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isNotFound())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -94,7 +94,6 @@ class UserCardControllerTest extends AbstractControllerTest {
     }
 
 
-    @WithMockCustomOAuth2
     @Test
     void putUserCards() throws Exception {
         Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
@@ -112,7 +111,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         mockMvc.perform(
                         post("/cards/{id}/study", userCardId)
                                 .contentType("application/json")
-                                .session(session)
+                                .header("Authorization", "Bearer " + token)
                                 .content(objectMapper.writeValueAsString(map))
                 ).andExpect(status().isOk())
                 .andDo(
@@ -139,7 +138,6 @@ class UserCardControllerTest extends AbstractControllerTest {
                 );
     }
 
-    @WithMockCustomOAuth2
     @Test
     void putUserCards404() throws Exception {
         Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
@@ -157,6 +155,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         mockMvc.perform(
                         post("/cards/{id}/study", -1)
                                 .contentType("application/json")
+                                .header("Authorization", "Bearer " + token)
                                 .content(objectMapper.writeValueAsString(map))
                 ).andExpect(status().isNotFound())
                 .andDo(
@@ -184,7 +183,6 @@ class UserCardControllerTest extends AbstractControllerTest {
     }
 
 
-    @WithMockCustomOAuth2
     @ParameterizedTest
     @MethodSource("getStudyCardParams")
     void getStudyCard(String studyType, String queryType, String query) throws Exception{
@@ -194,7 +192,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                                 .param("studyType", studyType)
                                 .param("queryType", queryType)
                                 .param("query",query)
-                                .session(session)
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -250,7 +248,6 @@ class UserCardControllerTest extends AbstractControllerTest {
     }
 
 
-    @WithMockCustomOAuth2
     @Test
     void getStudyCard400() throws Exception{
         String identifier = String.format("{class-name}/{method-name}");
@@ -259,6 +256,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                                 .param("studyType", "studyType")
                                 .param("queryType", "queryType")
                                 .param("query","query")
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isBadRequest())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(

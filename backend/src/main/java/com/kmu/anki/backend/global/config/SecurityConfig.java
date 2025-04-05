@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.global.config;
 
 import com.kmu.anki.backend.security.auth.filter.JwtAuthenticationFilter;
+import com.kmu.anki.backend.security.auth.handler.CustomAuthenticationEntryPoint;
 import com.kmu.anki.backend.security.auth.oauth2.CustomOidcService;
 import com.kmu.anki.backend.security.auth.oauth2.TokenProvideSuccessHandler;
 import com.kmu.anki.backend.security.auth.token.JwtTokenService;
@@ -15,6 +16,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
@@ -32,6 +34,7 @@ public class SecurityConfig {
     private String secretKey; // properties에서 읽어옴
 
     private final CustomOidcService oidcService;
+    private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
     @Bean
     @Profile({"dev", "prod", "test"}) // dev, test 프로파일에서만 적용
@@ -54,8 +57,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.GET, "/decks").permitAll()
                         .requestMatchers(HttpMethod.GET, "/decks/cards").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/cards/{id}").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/cards/{id}/details").permitAll()
                         .requestMatchers(
                                 "/cards/foreign-search",
                                 "/cards/korean-search"
@@ -63,9 +64,17 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**", "/css/**").permitAll() // 누구나 접근 가능
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/get-test-token").permitAll()
+
+                        // user card에 대한 접근은 authentication에 의해 이루어져야함
+                        .requestMatchers("/cards/study").authenticated()
+                        .requestMatchers("/cards/{id}/study").authenticated()
+
+                        // 개별 카드에 대한 간단한 정보는 authentication이 없어도 작동하게끔
+                        .requestMatchers(HttpMethod.GET, "/cards/{id}").permitAll() // cards/study에서 study를 id로 인식하여 허용하는 문제가 있음
+                        .requestMatchers(HttpMethod.GET, "/cards/{id}/details").permitAll()
                         .anyRequest().authenticated()                                   // 나머지는 인증 필요
                 ).exceptionHandling(exception -> exception
-                        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                        .authenticationEntryPoint(customAuthenticationEntryPoint)
                 )
         ;
         return http.build();

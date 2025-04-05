@@ -17,9 +17,7 @@ public class UserOptionController {
 
     @GetMapping()
     public UserOptionDto getUserOption(Authentication authentication, HttpServletRequest request){
-        Long id = PrincipalUtils.extractUserId(authentication);
-
-        UserOptionDto userOptionDto = userOptionService.readOption(id);
+        UserOptionDto userOptionDto = userOptionService.readOption(authentication.getName());
         SessionUtils.setUserOptions(
                 request,
                 userOptionDto.getDailyStudyWords(),
@@ -33,8 +31,7 @@ public class UserOptionController {
     public UserOptionDto putUserOption(
             @RequestBody UserOptionDto form, Authentication authentication, HttpServletRequest request
     ){
-        Long id = PrincipalUtils.extractUserId(authentication);
-
+        Long id = Long.parseLong(authentication.getName());
         UserOptionDto userOptionDto = userOptionService.updateOption(
                 id,
                 form.getDailyStudyWords(),

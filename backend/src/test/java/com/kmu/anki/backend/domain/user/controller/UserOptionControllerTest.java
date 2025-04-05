@@ -21,12 +21,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class UserOptionControllerTest extends AbstractControllerTest {
 
-    @WithMockCustomOAuth2
     @Test
     void getUserOption() throws Exception {
         mockMvc.perform(
                 get("/user/option")
-                        .session(session)
+                        .header("Authorization", "Bearer " + token)
         ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -46,7 +45,6 @@ class UserOptionControllerTest extends AbstractControllerTest {
                 );
     }
 
-    @WithMockCustomOAuth2
     @ParameterizedTest
     @EnumSource(LanguageCode.class)
     void putUserOption(LanguageCode code) throws Exception {
@@ -57,7 +55,7 @@ class UserOptionControllerTest extends AbstractControllerTest {
         map.put("utcOffset", +9);
         mockMvc.perform(
                 post("/user/option")
-                        .session(session)
+                        .header("Authorization", "Bearer " + token)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(map))
         ).andExpect(status().isOk())

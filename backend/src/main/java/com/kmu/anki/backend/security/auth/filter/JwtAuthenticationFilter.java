@@ -7,6 +7,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
@@ -18,12 +19,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtTokenService jwtTokenService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        log.info("[jwt filter] authentication check");
         String token = resolveToken(request);
 
         if (token != null && jwtTokenService.validateToken(token)) {
@@ -38,6 +41,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             SecurityContext context = SecurityContextHolder.getContextHolderStrategy().createEmptyContext();
             context.setAuthentication(authentication);
             SecurityContextHolder.getContextHolderStrategy().setContext(context);
+            log.info("[jwt filter] authentication OK");
+        }else {
+            log.info("[jwt filter] authentication fail");
         }
         filterChain.doFilter(request, response);
     }

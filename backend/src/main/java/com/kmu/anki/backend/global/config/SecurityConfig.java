@@ -10,12 +10,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -28,18 +30,6 @@ public class SecurityConfig {
     private String secretKey; // properties에서 읽어옴
 
     private final CustomOidcService oidcService;
-
-
-//    @Bean
-//    @Profile({"test"}) // dev, test 프로파일에서만 적용
-//    public SecurityFilterChain prodSecurityFilterChain(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeHttpRequests(auth -> auth
-//                        .anyRequest().permitAll()
-//                )
-//                .csrf(AbstractHttpConfigurer::disable);
-//        return http.build();
-//    }
 
     @Bean
     @Profile({"dev", "prod", "test"}) // dev, test 프로파일에서만 적용
@@ -71,6 +61,8 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**", "/css/**").permitAll() // 누구나 접근 가능
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated()                                   // 나머지는 인증 필요
+                ).exceptionHandling(exception -> exception
+                        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 )
         ;
         return http.build();

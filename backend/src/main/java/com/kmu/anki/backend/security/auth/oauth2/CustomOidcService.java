@@ -12,6 +12,7 @@ import com.kmu.anki.backend.domain.user.service.UserService;
 import com.kmu.anki.backend.security.auth.oauth2.dto.CustomOidcUser;
 import com.kmu.anki.backend.security.auth.oauth2.dto.OidcUserDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,6 +28,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @RequiredArgsConstructor
 @Component
 public class CustomOidcService extends OidcUserService{
@@ -35,6 +37,7 @@ public class CustomOidcService extends OidcUserService{
 
     @Override
     public OidcUser loadUser(OidcUserRequest userRequest) throws OAuth2AuthenticationException {
+        log.info("[oidcService] loadUser"); // TODO 로그 레벨이 너무 높음
         OidcUser oAuth2User = super.loadUser(userRequest);
         ClientRegistration clientRegistration = userRequest.getClientRegistration();
 

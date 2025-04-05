@@ -24,14 +24,14 @@ public class UserStudyHistoryController {
             @RequestParam("pageSize") Integer pageSize,
             Authentication authentication
     ){
-        Long userId = PrincipalUtils.extractUserId(authentication);
+        Long userId = Long.parseLong(authentication.getName());
         Page<UserStudyHistoryDto> userStudyHistoryDtos = userStudyHistoryService.readUserHistory(userId, page-1, pageSize);
         return BasePageResponse.of(userStudyHistoryDtos);
     }
 
     @GetMapping("/decks/latest")
     public UserStudyHistoryDto getLatestStudy(Authentication authentication){
-        Long userId = PrincipalUtils.extractUserId(authentication);
+        Long userId = Long.parseLong(authentication.getName());
         return userStudyHistoryService.readLatestDecks(userId);
     }
 }

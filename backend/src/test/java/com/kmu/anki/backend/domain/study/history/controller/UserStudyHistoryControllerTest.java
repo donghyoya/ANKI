@@ -32,7 +32,6 @@ class UserStudyHistoryControllerTest extends AbstractControllerTest {
     @MockitoBean
     private UserStudyHistoryService userStudyHistoryService; // MockBean으로 등록
 
-    @WithMockCustomOAuth2
     @Test
     void getUserHistory() throws Exception {
         List<UserStudyHistoryDto> historyDtos = Arrays.asList(
@@ -63,7 +62,7 @@ class UserStudyHistoryControllerTest extends AbstractControllerTest {
                         get("/decks/history")
                                 .param("page", "1")
                                 .param("pageSize", "20")
-                                .session(session)
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -87,7 +86,6 @@ class UserStudyHistoryControllerTest extends AbstractControllerTest {
         ;
     }
 
-    @WithMockCustomOAuth2
     @Test
     void getLatestStudy() throws Exception {
         List<UserStudyHistoryDto> historyDtos = Arrays.asList(
@@ -116,7 +114,7 @@ class UserStudyHistoryControllerTest extends AbstractControllerTest {
 
         mockMvc.perform(
                         get("/decks/latest")
-                                .session(session)
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -134,6 +132,5 @@ class UserStudyHistoryControllerTest extends AbstractControllerTest {
                         )
                 )
         ;
-
     }
 }

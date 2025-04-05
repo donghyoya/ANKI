@@ -40,12 +40,11 @@ class CardControllerTest extends AbstractControllerTest {
         koreanCardRepository = context.getBean(KoreanCardRepository.class);
     }
 
-    @WithMockCustomOAuth2
     @Test
     void getCard() throws Exception{
         mockMvc.perform(
                         get("/cards/{id}", 1)
-                        .session(session)
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -67,13 +66,11 @@ class CardControllerTest extends AbstractControllerTest {
                 );
     }
 
-    @WithMockCustomOAuth2
     @Test
     void getCard404() throws Exception {
         mockMvc.perform(
                         get("/cards/{id}", -1)
-                                .session(session)
-
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isNotFound())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -125,13 +122,11 @@ class CardControllerTest extends AbstractControllerTest {
                 );
     }
 
-    @WithMockCustomOAuth2
     @Test
     void getCardDetails() throws Exception {
         mockMvc.perform(
                         get("/cards/{id}/details", 1)
-                                .session(session)
-
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -153,12 +148,11 @@ class CardControllerTest extends AbstractControllerTest {
                 );
     }
 
-    @WithMockCustomOAuth2
     @Test
     void getCardDetails404() throws Exception {
         mockMvc.perform(
                         get("/cards/{id}/details", -1)
-                                .session(session)
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isNotFound())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -180,7 +174,6 @@ class CardControllerTest extends AbstractControllerTest {
                 );
     }
 
-    @WithAnonymousUser
     @Test
     void getCardDetailsWithoutAuth() throws Exception {
         mockMvc.perform(
@@ -211,7 +204,6 @@ class CardControllerTest extends AbstractControllerTest {
     }
 
 
-    @WithMockCustomOAuth2
     @ParameterizedTest
     @MethodSource("getForeignSearch")
     void getForeignSearch(Long id, LanguageCode code, String query) throws Exception{
@@ -255,7 +247,6 @@ class CardControllerTest extends AbstractControllerTest {
                 .map(fc -> Arguments.of(fc.getId(), fc.getLanguageCode(), fc.getForeignWord()));
     }
 
-    @WithMockCustomOAuth2
     @ParameterizedTest
     @MethodSource("getKoreanSearch")
     void getKoreanSearch(Long id, String query) throws Exception{
@@ -266,7 +257,7 @@ class CardControllerTest extends AbstractControllerTest {
                                 .param("query", query)
                                 .param("page", "1")
                                 .param("pageSize", "20")
-                                .session(session)
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(

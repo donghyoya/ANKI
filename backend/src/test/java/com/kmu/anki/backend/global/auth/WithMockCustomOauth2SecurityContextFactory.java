@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+@Deprecated
 public class WithMockCustomOauth2SecurityContextFactory implements WithSecurityContextFactory<WithMockCustomOAuth2> {
 
     @Override

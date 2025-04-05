@@ -60,9 +60,9 @@ public abstract class AbstractControllerTest extends AbstractIntegrationTest{
      */
     void generateToken(){
         // given
-        String subject = "testUser";
+        String subject = "1";
         String role = "ROLE_ADMIN";
         Map<String, Object> claims = Map.of("role", role);
-        String token = jwtTokenService.generateToken(subject, claims);
+        token = jwtTokenService.generateToken(subject, claims);
     }
 }

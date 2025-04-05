@@ -4,6 +4,7 @@ import org.springframework.security.test.context.support.WithSecurityContext;
 
 import java.lang.annotation.*;
 
+@Deprecated
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
@@ -12,7 +13,7 @@ import java.lang.annotation.*;
         factory = WithMockCustomOauth2SecurityContextFactory.class
 )
 public @interface WithMockCustomOAuth2 {
-    String name() default "name";
+    String name() default "1";
 
     String email() default "testuser@fortest.email";
 

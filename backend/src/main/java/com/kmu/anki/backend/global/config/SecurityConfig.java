@@ -23,6 +23,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Configuration
 public class SecurityConfig {
@@ -83,9 +85,11 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         // 모든 cors 옵션 허용
-        configuration.addAllowedOrigin("http://localhost:3000");
-        configuration.addAllowedOriginPattern("http://hada.zapto.org:3000");
-        configuration.addAllowedOriginPattern("http://*.hada.zapto.org:3000");
+        configuration.setAllowedOrigins(List.of(
+                "http://localhost:3000",
+                "http://hada.zapto.org:3000",
+                "http://local.hada.zapto.org:3000"
+        ));
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);

@@ -1,6 +1,5 @@
 package com.kmu.anki.backend;
 
-import com.kmu.anki.backend.domain.auth.legacy.service.OAuth2AccessTokenService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
@@ -20,9 +19,6 @@ import org.springframework.test.context.jdbc.SqlConfig;
 //)
 @SpringBootTest
 class BackendApplicationTests {
-
-	@MockitoBean
-	private OAuth2AccessTokenService oAuth2AccessTokenService;
 
 	@MockitoBean
 	private ClientRegistrationRepository clientRegistrationRepository;

@@ -1,7 +1,6 @@
 package com.kmu.anki.backend.global;
 
 import com.kmu.anki.backend.TestcontainersConfiguration;
-import com.kmu.anki.backend.domain.auth.legacy.service.OAuth2AccessTokenService;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
@@ -20,9 +19,6 @@ import org.springframework.test.context.jdbc.SqlConfig;
 @Sql(scripts = "classpath:/test-data/test-data-drop.sql", executionPhase= Sql.ExecutionPhase.AFTER_TEST_CLASS,  config = @SqlConfig(encoding = "UTF-8"))
 @SpringBootTest
 public abstract class AbstractIntegrationTest {
-    @MockitoBean
-    private OAuth2AccessTokenService oAuth2AccessTokenService;
-
     @MockitoBean
     private ClientRegistrationRepository clientRegistrationRepository;
 }

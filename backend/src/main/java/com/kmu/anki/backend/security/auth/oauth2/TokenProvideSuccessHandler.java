@@ -31,7 +31,7 @@ public class TokenProvideSuccessHandler extends SimpleUrlAuthenticationSuccessHa
     @Override
     protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         CustomOidcUser principal = (CustomOidcUser) authentication.getPrincipal();
-        String token = jwtTokenService.generateToken(principal.getUser().getName(), Map.of("Role", "User"));
+        String token = jwtTokenService.generateToken(principal.getUser().getId().toString(), Map.of("Role", "User"));
 
         String redirectUri = UriComponentsBuilder.fromHttpUrl(redirectUrl).queryParam("token", token).build().encode().toUriString();
         getRedirectStrategy().sendRedirect(request, response, redirectUri);

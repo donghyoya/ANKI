@@ -36,6 +36,6 @@ public class TestAuthenticationService {
             User newTestUser = userService.saveUser(createUser);
             testUser = UserDto.of(newTestUser);
         }
-        return jwtTokenService.generateToken(testUser.getName(), Map.of("Role", "ROLE_USER"));
+        return jwtTokenService.generateToken(testUser.getId().toString(), Map.of("Role", "ROLE_USER"));
     }
 }

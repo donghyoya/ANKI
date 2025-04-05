@@ -18,13 +18,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ *
+ * 본 테스트 class는 아래와 같은 api에 대해 test를 수행함
+ * /auth-test : 인증 시험 api
+ * /get-test-token : 디버깅용 코드 제공 api
+ *
+ */
 class AuthenticationTestControllerTest extends AbstractControllerTest {
-
-    @Autowired private JwtTokenService jwtTokenService;
 
     @Test
     void authTest() throws Exception {
-        // given
         String subject = "testUser";
         String role = "ROLE_ADMIN";
         Map<String, Object> claims = Map.of("role", role);
@@ -32,7 +36,8 @@ class AuthenticationTestControllerTest extends AbstractControllerTest {
 
         // when & then
         mockMvc.perform(get("/auth-test")
-                        .header("Authorization", "Bearer " + token))
+                        .header("Authorization", "Bearer " + token)
+                )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.username").value(subject))
                 .andDo(

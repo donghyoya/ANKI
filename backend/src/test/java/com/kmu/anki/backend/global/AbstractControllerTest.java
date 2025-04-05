@@ -2,6 +2,7 @@ package com.kmu.anki.backend.global;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.security.auth.token.JwtTokenService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,16 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
+import java.util.Map;
+
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 
 @ExtendWith(RestDocumentationExtension.class)
 @AutoConfigureMockMvc
 public abstract class AbstractControllerTest extends AbstractIntegrationTest{
+
+    @Autowired protected JwtTokenService jwtTokenService;
 
     @Autowired
     protected ObjectMapper objectMapper;
@@ -30,6 +35,8 @@ public abstract class AbstractControllerTest extends AbstractIntegrationTest{
 
     protected MockMvc mockMvc;
 
+    protected String token;
+
     protected MockHttpSession session = new MockHttpSession();
 
     @BeforeEach
@@ -37,6 +44,9 @@ public abstract class AbstractControllerTest extends AbstractIntegrationTest{
         session.setAttribute("todayStudyWords", 20);
         session.setAttribute("todayReviewWords", 20);
         session.setAttribute("languageCode", LanguageCode.en);
+
+        generateToken();
+
         this.mockMvc = MockMvcBuilders.webAppContextSetup(context)
                 .apply(documentationConfiguration(restDocumentation))
                 .apply(springSecurity())
@@ -45,4 +55,14 @@ public abstract class AbstractControllerTest extends AbstractIntegrationTest{
                 .build();
     }
 
+    /**
+     * JWT 인증을 위해서
+     */
+    void generateToken(){
+        // given
+        String subject = "testUser";
+        String role = "ROLE_ADMIN";
+        Map<String, Object> claims = Map.of("role", role);
+        String token = jwtTokenService.generateToken(subject, claims);
+    }
 }

@@ -62,6 +62,7 @@ public class SecurityConfig {
                         ).permitAll()
                         .requestMatchers("/api/auth/**", "/css/**").permitAll() // 누구나 접근 가능
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/get-test-token").permitAll()
                         .anyRequest().authenticated()                                   // 나머지는 인증 필요
                 ).exceptionHandling(exception -> exception
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))

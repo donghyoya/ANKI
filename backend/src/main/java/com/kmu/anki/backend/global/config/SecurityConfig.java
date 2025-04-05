@@ -62,7 +62,7 @@ public class SecurityConfig {
                                 "/cards/korean-search"
                         ).permitAll()
                         .requestMatchers("/api/auth/**", "/css/**").permitAll() // 누구나 접근 가능
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/docs/openapi3.yaml").permitAll() // swagger에 대해서 permit
                         .requestMatchers("/get-test-token").permitAll()
 
                         // user card에 대한 접근은 authentication에 의해 이루어져야함

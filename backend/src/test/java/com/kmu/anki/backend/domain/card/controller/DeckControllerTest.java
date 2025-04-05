@@ -30,7 +30,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class DeckControllerTest extends AbstractControllerTest {
 
-    @WithMockCustomOAuth2
     @ParameterizedTest
     @EnumSource(QueryType.class)
     void getDecks(QueryType type) throws Exception {
@@ -39,7 +38,7 @@ class DeckControllerTest extends AbstractControllerTest {
         mockMvc.perform(
                 get("/decks")
                         .param("queryType", type.name())
-                        .session(session)
+                        .header("Authorization", "Bearer " + token)
         ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -93,7 +92,6 @@ class DeckControllerTest extends AbstractControllerTest {
     }
 
 
-    @WithMockCustomOAuth2
     @Test
     void getDecks400() throws Exception {
         String identifier = String.format("{class-name}/{method-name}");
@@ -101,6 +99,7 @@ class DeckControllerTest extends AbstractControllerTest {
         mockMvc.perform(
                         get("/decks")
                                 .param("queryType", "fail")
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isBadRequest())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -124,7 +123,6 @@ class DeckControllerTest extends AbstractControllerTest {
     }
 
 
-    @WithMockCustomOAuth2
     @ParameterizedTest
     @MethodSource("getDecksCardParams")
     void getDecksCard(String queryType, String query) throws Exception{
@@ -134,7 +132,7 @@ class DeckControllerTest extends AbstractControllerTest {
                 get("/decks/cards")
                         .param("queryType", queryType)
                         .param("query",query)
-                        .session(session)
+                        .header("Authorization", "Bearer " + token)
         ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -157,7 +155,6 @@ class DeckControllerTest extends AbstractControllerTest {
                 );
     }
 
-    @WithMockCustomOAuth2
     @Test
     void getDecksCard400() throws Exception{
         String identifier = String.format("{class-name}/{method-name}");
@@ -166,6 +163,7 @@ class DeckControllerTest extends AbstractControllerTest {
                         get("/decks/cards")
                                 .param("queryType", "queryType")
                                 .param("query","fail")
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isBadRequest())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -188,7 +186,6 @@ class DeckControllerTest extends AbstractControllerTest {
                 );
     }
 
-    @WithAnonymousUser
     @Test
     void getDecksCardWithoutAuth() throws Exception{
         String identifier = String.format("{class-name}/{method-name}/without-auth");
@@ -198,6 +195,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                 .param("queryType", QueryType.level.name())
                                 .param("query","easy")
                                 .param("code", LanguageCode.en.name())
+                                .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(

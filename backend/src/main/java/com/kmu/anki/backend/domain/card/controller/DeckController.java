@@ -8,12 +8,15 @@ import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.service.CardService;
 import com.kmu.anki.backend.domain.card.service.DeckService;
+import com.kmu.anki.backend.domain.user.dto.UserOptionDto;
+import com.kmu.anki.backend.domain.user.service.UserOptionService;
 import com.kmu.anki.backend.domain.user.utils.SessionUtils;
 import com.kmu.anki.backend.global.schema.BaseListReponse;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +29,7 @@ import java.util.List;
 public class DeckController {
     private final CardService cardService;
     private final DeckService deckService;
+    private final UserOptionService userOptionService;
 
     @GetMapping
     public BaseListReponse<DeckDto> getDecks(
@@ -33,8 +37,8 @@ public class DeckController {
             Authentication authentication
     ){
         Long userId = null;
-        if(authentication != null && authentication.isAuthenticated()){
-            userId = PrincipalUtils.extractUserId(authentication);
+        if(authentication != null && authentication.isAuthenticated() && authentication instanceof UsernamePasswordAuthenticationToken){
+            userId = Long.parseLong(authentication.getName());
         }
         List<DeckDto> decks = new ArrayList<>();
         if(queryType == QueryType.level){
@@ -50,9 +54,12 @@ public class DeckController {
             @RequestParam("queryType") QueryType queryType,
             @RequestParam("query") String query,
             @RequestParam(value = "code", required = false) LanguageCode code,
-            HttpServletRequest request
+            Authentication authentication
     ){
-        code = SessionUtils.getLanaguageCode(request).orElse(code);
+        if(code == null){
+            UserOptionDto userOptionDto = userOptionService.readOption(authentication.getName());
+            code = userOptionDto.getLanguageCode();
+        }
         Page<CardDetailDto> cards;
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);

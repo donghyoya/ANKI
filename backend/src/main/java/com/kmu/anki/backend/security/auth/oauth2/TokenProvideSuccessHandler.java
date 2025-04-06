@@ -5,6 +5,7 @@ import com.kmu.anki.backend.security.auth.token.JwtTokenService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -32,8 +33,12 @@ public class TokenProvideSuccessHandler extends SimpleUrlAuthenticationSuccessHa
     protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         CustomOidcUser principal = (CustomOidcUser) authentication.getPrincipal();
         String token = jwtTokenService.generateToken(principal.getUser().getId().toString(), Map.of("Role", "User"));
-
-        String redirectUri = UriComponentsBuilder.fromHttpUrl(redirectUrl).queryParam("token", token).build().encode().toUriString();
+        HttpSession session = request.getSession(false);
+        String redirectUri = redirectUrl;
+        if(session!=null){
+             redirectUri = (String) session.getAttribute("redirect_uri");
+        }
+        redirectUri = UriComponentsBuilder.fromHttpUrl(redirectUri).queryParam("token", token).build().encode().toUriString();
         getRedirectStrategy().sendRedirect(request, response, redirectUri);
     }
 

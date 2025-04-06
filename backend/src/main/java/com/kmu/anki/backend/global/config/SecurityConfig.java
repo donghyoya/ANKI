@@ -61,6 +61,9 @@ public class SecurityConfig {
                                 "/cards/foreign-search",
                                 "/cards/korean-search"
                         ).permitAll()
+
+                        .requestMatchers("/auth2/authorization/google").permitAll()
+
                         .requestMatchers("/api/auth/**", "/css/**").permitAll() // 누구나 접근 가능
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/docs/openapi3.yaml").permitAll() // swagger에 대해서 permit
                         .requestMatchers("/get-test-token").permitAll()

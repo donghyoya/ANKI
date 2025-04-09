@@ -13,23 +13,21 @@ import {
 
 import { isLevel } from '@/types/schemes';
 
-const endpoint = process.env.NEXT_PUBLIC_API_URL;
+const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
-const requestOptions: RequestInit = {
-  headers: {
-    accept: 'application/json;charset=UTF-8',
-    'Content-Type': 'application/json'
-  },
-  credentials: 'include',
-  cache: 'no-store'
-};
-
-export const getUserCards = async (studyType: StudyType, query: Level | Meaning) => {
+export const getUserCards = async (studyType: StudyType, query: Level | Meaning, token: string) => {
   const queryStudyType = studyType === 'new' ? 'study' : 'review';
   const queryType = isLevel(query) ? 'level' : 'meaning';
   const url = `${endpoint}/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${query}`;
-  console.log('url:', url);
-  const response = await fetch(url, requestOptions);
+  console.log('getUserCards url:', url);
+  console.log('getUserCards token:', token);
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
   const data = await response.json();
 
   if (response.ok) {
@@ -39,9 +37,15 @@ export const getUserCards = async (studyType: StudyType, query: Level | Meaning)
   }
 };
 
-export const getCardStudyInfo = async (cardId: number) => {
+export const getCardStudyInfo = async (cardId: number, token: string) => {
   const url = `${endpoint}/cards/${cardId}/study`;
-  const response = await fetch(url, requestOptions);
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
   const data = await response.json();
 
   if (response.ok) {
@@ -51,12 +55,18 @@ export const getCardStudyInfo = async (cardId: number) => {
   }
 };
 
-export const postCardStudyInfo = async (cardId: number, studyCardForm: StudyCardForm) => {
+export const postCardStudyInfo = async (
+  cardId: number,
+  studyCardForm: StudyCardForm,
+  token: string
+) => {
   const url = `${endpoint}/cards/${cardId}/study`;
   const response = await fetch(url, {
-    ...requestOptions,
     method: 'POST',
-    body: JSON.stringify(studyCardForm)
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
   });
   const data = await response.json();
 

@@ -10,10 +10,12 @@ import styles from './Level.module.scss';
 import { Menu, MenuItem } from '@/components/material-components/Menu';
 import { allLevels, Card, Level } from '@/types/schemes';
 import { getCardsFromDeck } from '@/api/decks';
+import { useToken } from '@/hooks/useToken';
 
 export default function DifficultyWordsPage() {
   const t = useTranslations();
   const { level, locale } = useParams() ?? {};
+  const { token } = useToken();
 
   if (!allLevels.includes(level as Level)) {
     notFound();
@@ -49,9 +51,10 @@ export default function DifficultyWordsPage() {
   const [cards, setCards] = useState<Card[] | null>(null);
 
   useEffect(() => {
+    if (!token) return;
     const fetchCards = async () => {
       try {
-        const response = await getCardsFromDeck(locale as string, level as Level);
+        const response = await getCardsFromDeck(level as Level, token);
         console.log('getCardsFromDeck response:', response);
         if (response && 'content' in response) {
           setCards(response.content as Card[]);
@@ -61,7 +64,7 @@ export default function DifficultyWordsPage() {
       }
     };
     fetchCards();
-  }, [locale, level]);
+  }, [locale, level, token]);
 
   if (cards === null) {
     return <div className={styles['page']}>Loading...</div>;

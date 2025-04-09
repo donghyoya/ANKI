@@ -8,22 +8,19 @@ const endpoint = process.env.NEXT_PUBLIC_API_URL;
 // TODO
 const locale: Locale = 'en';
 
-const requestOptions: RequestInit = {
-  headers: {
-    accept: 'application/json;charset=UTF-8',
-    'Content-Type': 'application/json'
-  },
-  credentials: 'include',
-  cache: 'no-store'
-};
-
-export const forignSearch = async (query: string) => {
+export const forignSearch = async (query: string, token: string) => {
   const page = 1;
   const pageSize = 10;
   const url = `${endpoint}/cards/foreign-search?code=${locale}&query=${query}&page=${page}&pageSize=${pageSize}`;
   console.log(url);
 
-  const response = await fetch(url, requestOptions);
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
 
   const data = await response.json();
 
@@ -34,11 +31,17 @@ export const forignSearch = async (query: string) => {
   }
 };
 
-export const koreanSearch = async (query: string) => {
+export const koreanSearch = async (query: string, token: string) => {
   const page = 1;
   const pageSize = 10;
   const url = `${endpoint}/cards/korean-search?code=${locale}&query=${query}&page=${page}&pageSize=${pageSize}`;
-  const response = await fetch(url, requestOptions);
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
   const data = await response.json();
 
   if (response.ok) {
@@ -48,9 +51,15 @@ export const koreanSearch = async (query: string) => {
   }
 };
 
-export const getCard = async (cardId: number) => {
+export const getCard = async (cardId: number, token: string) => {
   const url = `${endpoint}/cards/${cardId}`;
-  const response = await fetch(url, requestOptions);
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
   const data = await response.json();
 
   if (response.ok) {
@@ -60,9 +69,15 @@ export const getCard = async (cardId: number) => {
   }
 };
 
-export const getCardDetail = async (cardId: number) => {
+export const getCardDetail = async (cardId: number, token: string) => {
   const url = `${endpoint}/cards/${cardId}/details`;
-  const response = await fetch(url, requestOptions);
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
   const data = await response.json();
 
   if (response.ok) {

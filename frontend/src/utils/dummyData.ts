@@ -106,7 +106,8 @@ export const DUMMY_STUDY_CARD_FORM: StudyCardForm = {
 
 export const DUMMY_USER_CARD: UserCard = {
   ...DUMMY_CARD,
-  ...DUMMY_STUDY_CARD_FORM
+  ...DUMMY_STUDY_CARD_FORM,
+  ...DUMMY_CARD_DETAIL
 };
 
 export const DUMMY_USER_CARDS: Paginated<UserCard> = {

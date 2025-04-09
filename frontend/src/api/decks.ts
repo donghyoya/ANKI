@@ -1,7 +1,6 @@
 'use server';
 
 import {
-  Deck,
   ExceptionResponse,
   Paginated,
   Level,
@@ -11,33 +10,41 @@ import {
   UserStudyHistory
 } from '@/types/schemes';
 
-const endpoint = process.env.NEXT_PUBLIC_API_URL;
+// TODO
+const locale = 'en';
 
-const requestOptions: RequestInit = {
-  headers: {
-    accept: 'application/json;charset=UTF-8',
-    'Content-Type': 'application/json'
-  },
-  credentials: 'include',
-  cache: 'no-store'
-};
+const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
-export const getDecks = async (queryType: 'level' | 'meaning') => {
-  const url = `${endpoint}/decks?queryType=${queryType}`;
-  const response = await fetch(url, requestOptions);
-  const data = await response.json();
-
-  if (response.ok) {
-    return data as Paginated<Deck>;
-  } else {
-    return data as ExceptionResponse;
+export const getDecks = async (queryType: 'level' | 'meaning', token: string) => {
+  try {
+    const url = `${endpoint}/decks?queryType=${queryType}`;
+    console.log('요청 URL:', url);
+    console.log('요청 토큰:', token);
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+    return response.json();
+  } catch (error) {
+    console.error('getDecks:', error);
+    throw error;
   }
 };
 
-export const getCardsFromDeck = async (locale: string, query: Level | Meaning | string) => {
+export const getCardsFromDeck = async (query: Level | Meaning | string, token: string) => {
   const queryType = isLevel(query) ? 'level' : 'meaning';
   const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${query}`;
-  const response = await fetch(url, requestOptions);
+  console.log('요청 URL:', url);
+  console.log('요청 토큰:', token);
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
   const data = await response.json();
 
   if (response.ok) {
@@ -47,9 +54,15 @@ export const getCardsFromDeck = async (locale: string, query: Level | Meaning | 
   }
 };
 
-export const getUserStudyHistories = async () => {
+export const getUserStudyHistories = async (token: string) => {
   const url = `${endpoint}/decks/history`;
-  const response = await fetch(url, requestOptions);
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
   const data = await response.json();
 
   if (response.ok) {
@@ -59,9 +72,15 @@ export const getUserStudyHistories = async () => {
   }
 };
 
-export const getLatestUserStudyHistory = async () => {
+export const getLatestUserStudyHistory = async (token: string) => {
   const url = `${endpoint}/decks/latest`;
-  const response = await fetch(url, requestOptions);
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
   const data = await response.json();
 
   if (response.ok) {

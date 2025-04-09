@@ -4,10 +4,12 @@ import { CardCategory, UserCard } from '@/types/schemes';
 import { DUMMY_RATING_PREVIEW } from '@/utils/dummyData';
 import { Rating } from '@/types/IntervalPreview';
 import { getUserCards } from '@/api/study';
+import { useToken } from '@/hooks/useToken';
 
 export const useStudyQueue = (category: CardCategory) => {
   const initialStudyQueue = useAppSelector((state) => state.studyQueue[category]);
   const intervalPreview = DUMMY_RATING_PREVIEW;
+  const { token } = useToken();
 
   const [studyQueue, setStudyQueue] = useState<UserCard[] | null>(initialStudyQueue || null);
   const [currentCard, setCurrentCard] = useState<UserCard | null>(null);
@@ -24,7 +26,8 @@ export const useStudyQueue = (category: CardCategory) => {
 
   useEffect(() => {
     const fetchCards = async () => {
-      const response = await getUserCards('new', category);
+      if (!token) return;
+      const response = await getUserCards('new', category, token);
       console.log('fetchCards', response);
       if (response && 'content' in response) {
         setStudyQueue(response.content);
@@ -34,7 +37,7 @@ export const useStudyQueue = (category: CardCategory) => {
     if (studyQueue === null) {
       fetchCards();
     }
-  }, [studyQueue, category]);
+  }, [studyQueue, category, token]);
 
   useEffect(() => {
     console.log('studyQueue:', studyQueue);

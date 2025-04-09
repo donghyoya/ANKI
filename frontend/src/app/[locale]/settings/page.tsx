@@ -19,6 +19,7 @@ import { LANGUAGE_OPTIONS } from '@/utils/dummyData';
 import { mockGetUserOption, mockPostUserOption } from '@/api/mock';
 import { UserOption } from '@/types/schemes';
 import { MdOutlinedTextField } from '@material/web/textfield/outlined-text-field';
+
 export default function SettingsPage() {
   const locale = useLocale();
   const router = useRouter();

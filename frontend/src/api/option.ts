@@ -4,18 +4,15 @@ import { ExceptionResponse, UserOption } from '@/types/schemes';
 
 const endpoint = process.env.NEXT_PUBLIC_API_URL;
 
-const requestOptions: RequestInit = {
-  headers: {
-    accept: 'application/json;charset=UTF-8',
-    'Content-Type': 'application/json'
-  },
-  credentials: 'include',
-  cache: 'no-store'
-};
-
-export const getUserOption = async () => {
+export const getUserOption = async (token: string) => {
   const url = `${endpoint}/option`;
-  const response = await fetch(url, requestOptions);
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
   const data = await response.json();
 
   if (response.ok) {
@@ -25,12 +22,14 @@ export const getUserOption = async () => {
   }
 };
 
-export const postUserOption = async (userOption: UserOption) => {
+export const postUserOption = async (userOption: UserOption, token: string) => {
   const url = `${endpoint}/option`;
   const response = await fetch(url, {
-    ...requestOptions,
     method: 'POST',
-    body: JSON.stringify(userOption)
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
   });
   const data = await response.json();
 

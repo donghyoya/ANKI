@@ -13,24 +13,32 @@ import { Icon, IconButton } from '@/components/material-components/IconButton/Ic
 import styles from './Difficulty.module.scss';
 import { Paginated, Deck } from '@/types/schemes';
 import { getDecks } from '@/api/decks';
+import { useToken } from '@/hooks/useToken';
 
 export default function DifficultyPage() {
   const t = useTranslations();
   const locale = useLocale(); // 현재 로케일 가져오기
   const [decks, setDecks] = useState<Paginated<Deck> | null>(null);
+  const { token } = useToken();
 
   useEffect(() => {
+    console.log('token:', token);
+    if (!token) return;
     const fetchDecks = async () => {
       try {
-        const response = await getDecks('level');
+        const response = await getDecks('level', token);
         console.log('getDecks response:', response);
-        setDecks(response as Paginated<Deck>);
+        if (response && 'message' in response && 'code' in response) {
+          console.error('Failed to fetch decks:', response);
+        } else {
+          setDecks(response as Paginated<Deck>);
+        }
       } catch (error) {
         console.error('Failed to fetch decks:', error);
       }
     };
     fetchDecks();
-  }, []);
+  }, [token]);
 
   const { width } = useWindowSize();
   const isCompact = width < 1200;

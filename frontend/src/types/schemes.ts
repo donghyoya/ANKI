@@ -106,6 +106,14 @@ export interface UserCard extends Card {
   lastReview: string;
   state: string;
   stability: number;
+
+  originalLanguage: string;
+  homographNumber: number;
+  partsOfSpeech: string;
+  pronunciation: string;
+  relatedWords: string;
+  inflection: string;
+  exampleUsage: string;
 }
 
 export interface StudyCardForm {

@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 export default function GoogleLoginRedirectPage() {
   const router = useRouter();
@@ -10,19 +11,10 @@ export default function GoogleLoginRedirectPage() {
 
   useEffect(() => {
     if (token) {
-      fetch('/api/auth/set-token', {
-        // next.js 서버에 연락. token을 next.js 서버의 cookie로 설정
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ token: token })
-      }).then(() => {
-        // router.replace('/auth/test');
-        localStorage.setItem('hada-token', token);
-      });
+      localStorage.setItem('hada-token', token);
+      redirect('/difficulty');
     } else {
-      // router.replace('/login');
+      redirect('/login');
     }
   }, [token, router]);
 

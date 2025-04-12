@@ -1,38 +1,61 @@
 {
-  "level": {
+  "learn": "Учить",
+  "viewWords": "Просмотр слов",
+  "goalComplete": "Ежедневная цель выполнена!",
+  "continuePrompt": "Хотите продолжить?",
+  "chooseOption": "Выберите вариант ниже:",
+  "learnMore": "Узнать больше",
+  "reviewMore": "Повторить больше",
+  "hideKorean": "Скрыть корейский",
+  "hideForeign": "Скрыть русский",
+  "showKorean": "Показать корейский",
+  "showForeign": "Показать русский",
+  "expandAll": "Развернуть все",
+  "collapseAll": "Свернуть все",
+
+  "menu": {
+    "difficulty": "Сложность",
+    "meanings": "Значение",
+    "settings": "Настройки"
+  },
+
+  "difficulty": {
     "wordsByDifficulty": "Слова по уровню сложности",
     "beginner": "Новичок",
     "intermediate": "Средний",
     "advanced": "Продвинутый"
   },
 
-  "learn": "Учить",
-  "viewWords": "Просмотр слов",
-
-  "hideKorean": "Скрыть корейский",
-  "hideForeign": "Скрыть русский",
-
-  "settingsPage": {
-    "settings": "Настройки",
-    "system": "Система",
-    "language": "Язык",
-    "theme": "Тема",
-    "learning": "Обучение",
-    "reviewCount": "Количество слов для повторения в день",
-    "newCount": "Количество новых слов в день",
-    "account": "Аккаунт",
-    "signOut": "Выйти",
-    "deleteAccount": "Удалить аккаунт"
+  "meanings": {
+    "wordsByMeanings": "Слова по значению",
+    "action": "Действие",
+    "administration": "Администрация",
+    "communication": "Коммуникация",
+    "concept": "Концепция",
+    "culture": "Культура",
+    "economy": "Экономика",
+    "fashion": "Мода и внешний вид",
+    "feeling": "Чувство",
+    "food": "Еда",
+    "grammar": "Грамматика и язык",
+    "home": "Дом",
+    "hospital": "Больница",
+    "life": "Жизнь",
+    "living": "Быт",
+    "nature": "Природа",
+    "news": "Новости",
+    "number": "Число",
+    "personality": "Личность",
+    "politics": "Политика",
+    "relationships": "Отношения",
+    "religion": "Религия",
+    "school": "Школа",
+    "science": "Наука",
+    "time": "Время",
+    "transport": "Транспорт",
+    "weather": "Погода",
+    "work": "Работа"
   },
-  "goalComplete": "Ежедневная цель выполнена!",
-  "continuePrompt": "Хотите продолжить?",
-  "chooseOption": "Выберите вариант ниже:",
-  "learnMore": "Узнать больше",
-  "reviewMore": "Повторить больше",
-
-  "difficulty": "Сложность",
-  "meanings": "Значение",
-  "settings": "Настройки",
 
   "learning": {
     "reviews": "Отзывы",
@@ -42,10 +65,6 @@
     "hard": "Сложно",
     "good": "Хорошо",
     "easy": "Легко",
-    "min": "мин",
-    "mins": "минут",
-    "hours": "часы",
-    "weeks": "недели",
     "showDetails": "Включить подробный просмотр",
     "hideDetails": "Отключить подробный просмотр",
     "foreignToKorean": "Русский → Корейский",
@@ -60,5 +79,18 @@
     "phrase": "Фраза",
     "sentence": "Предложение",
     "conversation": "Разговор"
+  },
+
+  "settings": {
+    "settings": "Настройки",
+    "system": "Система",
+    "language": "Язык",
+    "theme": "Тема",
+    "learning": "Обучение",
+    "reviewCount": "Количество слов для повторения в день",
+    "newCount": "Количество новых слов в день",
+    "account": "Аккаунт",
+    "signOut": "Выйти",
+    "deleteAccount": "Удалить аккаунт"
   }
 }

@@ -1,5 +1,5 @@
-import { useTranslations } from 'next-intl';
-import { formatDuration } from '@/utils/formatDuration';
+import { useLocale, useTranslations } from 'next-intl';
+import { formatDuration } from '@/utils/timeFormatter';
 import styles from './RatingButton.module.scss';
 
 interface RatingButtonProps {
@@ -11,6 +11,7 @@ interface RatingButtonProps {
 
 const RatingButton = ({ label, interval, isError = false, onClick }: RatingButtonProps) => {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <button
@@ -18,7 +19,7 @@ const RatingButton = ({ label, interval, isError = false, onClick }: RatingButto
       onClick={onClick}
     >
       <span className={styles['rating-button-label']}>{t(`learning.${label}`)}</span>
-      <span className={styles['rating-button-interval']}>{formatDuration(interval)}</span>
+      <span className={styles['rating-button-interval']}>{formatDuration(interval, locale)}</span>
     </button>
   );
 };

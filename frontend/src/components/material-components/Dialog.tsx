@@ -8,6 +8,9 @@ const Dialog = createComponent({
     tagName: 'md-dialog',
     elementClass: MdDialog,
     react: React,
+    events: {
+        onCancel: 'cancel'
+    },
 });
 
 export default Dialog;

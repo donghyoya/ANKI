@@ -1,22 +1,29 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from './DeckCardCompact.module.scss';
-import { DeckCardProps } from '@/components/DeckCard/types';
+import Link from 'next/link';
+import classnames from 'classnames';
+
 import FilledButton from '@/components/material-components/FilledButton';
 import TextButton from '@/components/material-components/TextButton';
 import { Icon } from '@/components/material-components/IconButton/IconButton';
+
+import { DeckCardProps } from '@/components/DeckCard/types';
+import DeckProgressBar from '@/components/ProgressBar/DeckProgressBar';
 import { OutlinedCard } from '@/components/Card/Card';
-import classnames from 'classnames';
-import Link from 'next/link';
-import DeckProgressBar from '../ProgressBar/DeckProgressBar';
+
+import { getFormatUnit } from '@/utils/unitFormatter';
+import styles from './DeckCardCompact.module.scss';
 
 const DeckCardCompact = ({
   deck,
   isCompleted,
   locale,
   buttonLabels,
-  onViewWords,
+  wordCount,
+  isDifficulty,
+  level,
+  category,
   onLearn
 }: DeckCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -47,18 +54,11 @@ const DeckCardCompact = ({
         </div>
         {isExpanded && (
           <div className={styles['extra-contents']}>
-            <Link href={`/difficulty/${deck.category}`}>
-              <TextButton
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onViewWords();
-                }}
-              >
-                {buttonLabels.viewWords}
-              </TextButton>
+            <Link href={isDifficulty ? `/difficulty/${level}` : `/meanings/${category}`}>
+              <TextButton onClick={(e) => e.stopPropagation()}>{buttonLabels.viewWords}</TextButton>
             </Link>
             <span className={styles['word-count']}>
-              {deck.cardCounts.toLocaleString(locale)} words
+              {getFormatUnit(locale, 'word', wordCount, true)}
             </span>
           </div>
         )}

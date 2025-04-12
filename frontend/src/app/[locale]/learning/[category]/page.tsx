@@ -15,7 +15,12 @@ import { useParams } from 'next/navigation';
 import { useStudyQueue } from '@/hooks/useStudyQueue';
 import { Rating } from '@/types/IntervalPreview';
 
+import { MenuItem } from '@/types/Menu';
+import { useTranslations } from 'next-intl';
+
 export default function LearningPage() {
+  const t = useTranslations();
+
   const { category } = useParams() ?? {};
 
   const [contentHeight, setContentHeight] = useState(0);
@@ -24,7 +29,8 @@ export default function LearningPage() {
     isRevealed: false,
     showDetail: false,
     showConjugation: false,
-    showExample: false
+    showExample: false,
+    isKoreanToForeign: true
   });
 
   const cardStyle = useLearningCardLayout({
@@ -65,6 +71,39 @@ export default function LearningPage() {
     repeat(rating);
   };
 
+  const toggleDetailedView = () => {
+    setCardState((prev) => ({ ...prev, showDetail: !prev.showDetail }));
+  };
+
+  const toggleLangDirection = () => {
+    setCardState((prev) => ({ ...prev, isKoreanToForeign: !prev.isKoreanToForeign }));
+  };
+
+  const handleRevertReveal = () => {
+    setCardState((prev) => ({ ...prev, isRevealed: false }));
+  };
+
+  const menuItems: MenuItem[] = [
+    {
+      label: cardState.showDetail ? t('learning.hideDetails') : t('learning.showDetails'),
+      onClick: toggleDetailedView
+    },
+    {
+      label: cardState.isKoreanToForeign
+        ? t('learning.foreignToKorean')
+        : t('learning.koreanToForeign'),
+      onClick: toggleLangDirection
+    },
+    ...(cardState.isRevealed
+      ? [
+          {
+            label: t('learning.undoCheckAnswer'),
+            onClick: handleRevertReveal
+          }
+        ]
+      : [])
+  ];
+
   return (
     <div className={styles['learning-container']}>
       <div className={styles['progress-container-wrapper']}>
@@ -81,7 +120,7 @@ export default function LearningPage() {
         toggleConjugation={toggleConjugation}
         toggleExample={toggleExample}
         style={cardStyle}
-        menuItems={DUMMY_MENU_ITEMS}
+        menuItems={menuItems}
         setContentHeight={setContentHeight}
       />
       <RatingButtonContainer

@@ -1,38 +1,61 @@
 {
-  "level": {
+  "learn": "Learn",
+  "viewWords": "View words",
+  "goalComplete": "Daily goal completed!",
+  "continuePrompt": "Want to Keep going?",
+  "chooseOption": "Choose an option below:",
+  "learnMore": "Learn more",
+  "reviewMore": "Review more",
+  "hideKorean": "Hide Korean",
+  "hideForeign": "Hide English",
+  "showKorean": "Show Korean",
+  "showForeign": "Show English",
+  "expandAll": "Expand all",
+  "collapseAll": "Collapse all",
+
+  "menu": {
+    "difficulty": "Difficulty",
+    "meanings": "Meanings",
+    "settings": "Settings"
+  },
+
+  "difficulty": {
     "wordsByDifficulty": "Words by difficulty",
     "beginner": "Beginner",
     "intermediate": "Intermediate",
     "advanced": "Advanced"
   },
 
-  "learn": "Learn",
-  "viewWords": "View words",
-
-  "hideKorean": "Hide Korean",
-  "hideForeign": "Hide English",
-
-  "settingsPage": {
-    "settings": "Settings",
-    "system": "System",
-    "language": "Language",
-    "theme": "Theme",
-    "learning": "Learning",
-    "reviewCount": "Daily review word count",
-    "newCount": "Daily new word count",
-    "account": "Account",
-    "signOut": "Sign out",
-    "deleteAccount": "Delete account"
+  "meanings": {
+    "wordsByMeanings": "Words by meanings",
+    "action": "Action",
+    "administration": "Administration",
+    "communication": "Communication",
+    "concept": "Concept",
+    "culture": "Culture",
+    "economy": "Economy",
+    "fashion": "Fashion and appearance",
+    "feeling": "Feeling",
+    "food": "Food",
+    "grammar": "Grammar and language",
+    "home": "Home",
+    "hospital": "Hospital",
+    "life": "Life",
+    "living": "Living",
+    "nature": "Nature",
+    "news": "News",
+    "number": "Number",
+    "personality": "Personality",
+    "politics": "Politics",
+    "relationships": "Relationships",
+    "religion": "Religion",
+    "school": "School",
+    "science": "Science",
+    "time": "Time",
+    "transport": "Transport",
+    "weather": "Weather",
+    "work": "Work"
   },
-  "goalComplete": "Daily goal completed!",
-  "continuePrompt": "Want to Keep going?",
-  "chooseOption": "Choose an option below:",
-  "learnMore": "Learn more",
-  "reviewMore": "Review more",
-
-  "difficulty": "Difficulty",
-  "meanings": "Meanings",
-  "settings": "Settings",
 
   "learning": {
     "reviews": "Reviews",
@@ -42,10 +65,6 @@
     "hard": "Hard",
     "good": "Good",
     "easy": "Easy",
-    "min": "min",
-    "mins": "mins",
-    "hours": "hours",
-    "weeks": "weeks",
     "showDetails": "Enable detailed view",
     "hideDetails": "Disable detailed view",
     "foreignToKorean": "English → Korean",
@@ -60,5 +79,18 @@
     "phrase": "Phrase",
     "sentence": "Sentence",
     "conversation": "Conversation"
+  },
+
+  "settings": {
+    "settings": "Settings",
+    "system": "System",
+    "language": "Language",
+    "theme": "Theme",
+    "learning": "Learning",
+    "reviewCount": "Daily review word count",
+    "newCount": "Daily new word count",
+    "account": "Account",
+    "signOut": "Sign out",
+    "deleteAccount": "Delete account"
   }
 }

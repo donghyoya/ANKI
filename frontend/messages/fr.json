@@ -1,38 +1,61 @@
 {
-  "level": {
+  "learn": "Apprendre",
+  "viewWords": "Voir les mots",
+  "goalComplete": "Objectif quotidien atteint !",
+  "continuePrompt": "Voulez-vous continuer ?",
+  "chooseOption": "Choisissez une option ci-dessous :",
+  "learnMore": "En savoir plus",
+  "reviewMore": "Réviser plus",
+  "hideKorean": "Masquer le coréen",
+  "hideForeign": "Masquer le français",
+  "showKorean": "Afficher le coréen",
+  "showForeign": "Afficher le français",
+  "expandAll": "Tout développer",
+  "collapseAll": "Tout réduire",
+
+  "menu": {
+    "difficulty": "Difficulté",
+    "meanings": "Signification",
+    "settings": "Paramètres"
+  },
+
+  "difficulty": {
     "wordsByDifficulty": "Mots par difficulté",
     "beginner": "Débutant",
     "intermediate": "Intermédiaire",
     "advanced": "Avancé"
   },
 
-  "learn": "Apprendre",
-  "viewWords": "Voir les mots",
-
-  "hideKorean": "Masquer le coréen",
-  "hideForeign": "Masquer le français",
-
-  "settingsPage": {
-    "settings": "Paramètres",
-    "system": "Système",
-    "language": "Langue",
-    "theme": "Thème",
-    "learning": "Apprentissage",
-    "reviewCount": "Nombre de mots révisés quotidiennement",
-    "newCount": "Nombre de nouveaux mots quotidiens",
-    "account": "Compte",
-    "signOut": "Se déconnecter",
-    "deleteAccount": "Supprimer le compte"
+  "meanings": {
+    "wordsByMeanings": "Mots par signification",
+    "action": "Action",
+    "administration": "Administration",
+    "communication": "Communication",
+    "concept": "Concept",
+    "culture": "Culture",
+    "economy": "Économie",
+    "fashion": "Mode et apparence",
+    "feeling": "Sentiment",
+    "food": "Nourriture",
+    "grammar": "Grammaire et langue",
+    "home": "Maison",
+    "hospital": "Hôpital",
+    "life": "Vie",
+    "living": "Habitation",
+    "nature": "Nature",
+    "news": "Actualités",
+    "number": "Nombre",
+    "personality": "Personnalité",
+    "politics": "Politique",
+    "relationships": "Relations",
+    "religion": "Religion",
+    "school": "École",
+    "science": "Science",
+    "time": "Temps",
+    "transport": "Transport",
+    "weather": "Météo",
+    "work": "Travail"
   },
-  "goalComplete": "Objectif quotidien atteint !",
-  "continuePrompt": "Voulez-vous continuer ?",
-  "chooseOption": "Choisissez une option ci-dessous :",
-  "learnMore": "En savoir plus",
-  "reviewMore": "Réviser plus",
-
-  "difficulty": "Difficulté",
-  "meanings": "Signification",
-  "settings": "Paramètres",
 
   "learning": {
     "reviews": "Avis",
@@ -42,10 +65,6 @@
     "hard": "Difficile",
     "good": "Bon",
     "easy": "Facile",
-    "min": "min",
-    "mins": "mins",
-    "hours": "heures",
-    "weeks": "semaines",
     "showDetails": "Activer l'affichage détaillé",
     "hideDetails": "Désactiver l'affichage détaillé",
     "foreignToKorean": "Français → Coréen",
@@ -60,5 +79,18 @@
     "phrase": "Phrase",
     "sentence": "Phrase complète",
     "conversation": "Conversation"
+  },
+
+  "settings": {
+    "settings": "Paramètres",
+    "system": "Système",
+    "language": "Langue",
+    "theme": "Thème",
+    "learning": "Apprentissage",
+    "reviewCount": "Nombre de mots révisés quotidiennement",
+    "newCount": "Nombre de nouveaux mots quotidiens",
+    "account": "Compte",
+    "signOut": "Se déconnecter",
+    "deleteAccount": "Supprimer le compte"
   }
 }

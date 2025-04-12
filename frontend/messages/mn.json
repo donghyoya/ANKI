@@ -1,38 +1,61 @@
 {
-  "level": {
+  "learn": "Сурах",
+  "viewWords": "Үгсийг харах",
+  "goalComplete": "Өдрийн зорилго биелсэн!",
+  "continuePrompt": "Үргэлжлүүлэх үү?",
+  "chooseOption": "Доорх сонголтыг хийнэ үү:",
+  "learnMore": "Дэлгэрэнгүй сурах",
+  "reviewMore": "Дахин шалгах",
+  "hideKorean": "Солонгос хэл нуух",
+  "hideForeign": "Монгол хэл нуух",
+  "showKorean": "Солонгос хэлийг харуулах",
+  "showForeign": "Монгол хэлийг харуулах",
+  "expandAll": "Бүгдийг өргөжүүлэх",
+  "collapseAll": "Бүгдийг хаах",
+
+  "menu": {
+    "difficulty": "Хүндийн зэрэг",
+    "meanings": "Утга",
+    "settings": "Тохиргоо"
+  },
+
+  "difficulty": {
     "wordsByDifficulty": "Үгийн түвшинээр",
     "beginner": "Анхан шат",
     "intermediate": "Дунд шат",
     "advanced": "Ахисан шат"
   },
 
-  "learn": "Сурах",
-  "viewWords": "Үгсийг харах",
-
-  "hideKorean": "Солонгос хэл нуух",
-  "hideForeign": "Гадаад хэл нуух",
-
-  "settingsPage": {
-    "settings": "Тохиргоо",
-    "system": "Систем",
-    "language": "Хэл",
-    "theme": "Сэдэв",
-    "learning": "Суралцах",
-    "reviewCount": "Өдөр бүр давтах үгийн тоо",
-    "newCount": "Өдөр бүр шинэ үгийн тоо",
-    "account": "Бүртгэл",
-    "signOut": "Гарах",
-    "deleteAccount": "Бүртгэл устгах"
+  "meanings": {
+    "wordsByMeanings": "Утгаараа ангилсан үгс",
+    "action": "Үйлдэл",
+    "administration": "Удирдлага",
+    "communication": "Харилцаа",
+    "concept": "Ойлголт",
+    "culture": "Соёл",
+    "economy": "Эдийн засаг",
+    "fashion": "Хувцас загвар ба гадаад төрх",
+    "feeling": "Мэдрэмж",
+    "food": "Хоол",
+    "grammar": "Дүрэм ба хэл",
+    "home": "Гэр",
+    "hospital": "Эмнэлэг",
+    "life": "Амьдрал",
+    "living": "Амьдрах орчин",
+    "nature": "Байгаль",
+    "news": "Мэдээ",
+    "number": "Тоо",
+    "personality": "Зан чанар",
+    "politics": "Улс төр",
+    "relationships": "Харилцаа холбоо",
+    "religion": "Шашин",
+    "school": "Сургууль",
+    "science": "Шинжлэх ухаан",
+    "time": "Цаг хугацаа",
+    "transport": "Тээвэр",
+    "weather": "Цаг агаар",
+    "work": "Ажил"
   },
-  "goalComplete": "Өдрийн зорилго биелсэн!",
-  "continuePrompt": "Үргэлжлүүлэх үү?",
-  "chooseOption": "Доорх сонголтыг хийнэ үү:",
-  "learnMore": "Дэлгэрэнгүй сурах",
-  "reviewMore": "Дахин шалгах",
-
-  "difficulty": "Хүндийн зэрэг",
-  "meanings": "Утга",
-  "settings": "Тохиргоо",
 
   "learning": {
     "reviews": "Хяналт",
@@ -42,10 +65,6 @@
     "hard": "Хүнд",
     "good": "Сайн",
     "easy": "Хялбар",
-    "min": "мин",
-    "mins": "минут",
-    "hours": "цаг",
-    "weeks": "долоо хоног",
     "showDetails": "Дэлгэрэнгүй харах",
     "hideDetails": "Дэлгэрэнгүй хаах",
     "foreignToKorean": "Монгол → Солонгос",
@@ -60,5 +79,18 @@
     "phrase": "Хэлц үг",
     "sentence": "Өгүүлбэр",
     "conversation": "Яриа"
+  },
+
+  "settings": {
+    "settings": "Тохиргоо",
+    "system": "Систем",
+    "language": "Хэл",
+    "theme": "Сэдэв",
+    "learning": "Суралцах",
+    "reviewCount": "Өдөр бүр давтах үгийн тоо",
+    "newCount": "Өдөр бүр шинэ үгийн тоо",
+    "account": "Бүртгэл",
+    "signOut": "Гарах",
+    "deleteAccount": "Бүртгэл устгах"
   }
 }

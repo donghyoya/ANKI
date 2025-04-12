@@ -1,38 +1,61 @@
 {
-  "level": {
+  "learn": "เรียนรู้",
+  "viewWords": "ดูคำศัพท์",
+  "goalComplete": "เป้าหมายรายวันสำเร็จแล้ว!",
+  "continuePrompt": "ต้องการดำเนินการต่อหรือไม่?",
+  "chooseOption": "เลือกตัวเลือกด้านล่าง:",
+  "learnMore": "เรียนรู้เพิ่มเติม",
+  "reviewMore": "ทบทวนเพิ่มเติม",
+  "hideKorean": "ซ่อนภาษาเกาหลี",
+  "hideForeign": "ซ่อนภาษาไทย",
+  "showKorean": "แสดงภาษาเกาหลี",
+  "showForeign": "แสดงภาษาไทย",
+  "expandAll": "ขยายทั้งหมด",
+  "collapseAll": "ยุบทั้งหมด",
+
+  "menu": {
+    "difficulty": "ความยาก",
+    "meanings": "ความหมาย",
+    "settings": "การตั้งค่า"
+  },
+
+  "difficulty": {
     "wordsByDifficulty": "คำตามระดับความยาก",
     "beginner": "ระดับเริ่มต้น",
     "intermediate": "ระดับกลาง",
     "advanced": "ระดับสูง"
   },
 
-  "learn": "เรียนรู้",
-  "viewWords": "ดูคำศัพท์",
-
-  "hideKorean": "ซ่อนภาษาเกาหลี",
-  "hideForeign": "ซ่อนภาษาไทย",
-
-  "settingsPage": {
-    "settings": "การตั้งค่า",
-    "system": "ระบบ",
-    "language": "ภาษา",
-    "theme": "ธีม",
-    "learning": "การเรียนรู้",
-    "reviewCount": "จำนวนคำที่ทบทวนต่อวัน",
-    "newCount": "จำนวนคำใหม่ต่อวัน",
-    "account": "บัญชี",
-    "signOut": "ออกจากระบบ",
-    "deleteAccount": "ลบบัญชี"
+  "meanings": {
+    "wordsByMeanings": "คำตามความหมาย",
+    "action": "การกระทำ",
+    "administration": "การบริหาร",
+    "communication": "การสื่อสาร",
+    "concept": "แนวคิด",
+    "culture": "วัฒนธรรม",
+    "economy": "เศรษฐกิจ",
+    "fashion": "แฟชั่นและรูปลักษณ์",
+    "feeling": "ความรู้สึก",
+    "food": "อาหาร",
+    "grammar": "ไวยากรณ์และภาษา",
+    "home": "บ้าน",
+    "hospital": "โรงพยาบาล",
+    "life": "ชีวิต",
+    "living": "ความเป็นอยู่",
+    "nature": "ธรรมชาติ",
+    "news": "ข่าว",
+    "number": "ตัวเลข",
+    "personality": "บุคลิกภาพ",
+    "politics": "การเมือง",
+    "relationships": "ความสัมพันธ์",
+    "religion": "ศาสนา",
+    "school": "โรงเรียน",
+    "science": "วิทยาศาสตร์",
+    "time": "เวลา",
+    "transport": "การขนส่ง",
+    "weather": "สภาพอากาศ",
+    "work": "งาน"
   },
-  "goalComplete": "เป้าหมายรายวันสำเร็จแล้ว!",
-  "continuePrompt": "ต้องการดำเนินการต่อหรือไม่?",
-  "chooseOption": "เลือกตัวเลือกด้านล่าง:",
-  "learnMore": "เรียนรู้เพิ่มเติม",
-  "reviewMore": "ทบทวนเพิ่มเติม",
-
-  "difficulty": "ความยาก",
-  "meanings": "ความหมาย",
-  "settings": "การตั้งค่า",
 
   "learning": {
     "reviews": "รีวิว",
@@ -42,10 +65,6 @@
     "hard": "ยาก",
     "good": "ดี",
     "easy": "ง่าย",
-    "min": "นาที",
-    "mins": "นาที",
-    "hours": "ชั่วโมง",
-    "weeks": "สัปดาห์",
     "showDetails": "เปิดใช้งานมุมมองรายละเอียด",
     "hideDetails": "ปิดใช้งานมุมมองรายละเอียด",
     "foreignToKorean": "ไทย → เกาหลี",
@@ -60,5 +79,18 @@
     "phrase": "วลี",
     "sentence": "ประโยค",
     "conversation": "การสนทนา"
+  },
+
+  "settings": {
+    "settings": "การตั้งค่า",
+    "system": "ระบบ",
+    "language": "ภาษา",
+    "theme": "ธีม",
+    "learning": "การเรียนรู้",
+    "reviewCount": "จำนวนคำที่ทบทวนต่อวัน",
+    "newCount": "จำนวนคำใหม่ต่อวัน",
+    "account": "บัญชี",
+    "signOut": "ออกจากระบบ",
+    "deleteAccount": "ลบบัญชี"
   }
 }

@@ -68,16 +68,28 @@
   padding: 0 10px;
   gap: 10px;
 
-  @include bp.respond-to('large') {
-    .foreign-word {
+  .foreign-word {
+    @include tp.body-large;
+
+    @include bp.respond-to('large') {
       @include tp.title-large;
     }
-    .foreign-word-sub {
-      @include tp.title-medium;
+
+    @include bp.respond-to('extra-large') {
+      @include tp.headline-small;
     }
   }
-}
 
-.foreign-word-sub {
-  padding-left: 0px;
+  .foreign-word-sub {
+    padding-left: 0px;
+    @include tp.label-medium;
+
+    @include bp.respond-to('large') {
+      @include tp.title-medium;
+    }
+
+    @include bp.respond-to('extra-large') {
+      @include tp.title-large;
+    }
+  }
 }

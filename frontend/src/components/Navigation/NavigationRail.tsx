@@ -53,7 +53,7 @@ const NavigationRail = ({
             <div
               className={`${styles['navigation-item-label']} ${selectedDestination === destination.label ? styles['selected'] : ''}`}
             >
-              <span>{t(destination.label)}</span>
+              <span>{t(`menu.${destination.label}`)}</span>
             </div>
           </div>
         ))}

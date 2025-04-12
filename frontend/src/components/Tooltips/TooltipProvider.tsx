@@ -21,19 +21,31 @@ const TooltipProvider = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<DOMRect>();
 
-  useEffect(() => {
-    const handleResize = debounce(() => {
-      if (!wrapperRef.current) return;
-      setRect(wrapperRef.current.getBoundingClientRect());
-    }, DEBOUNCE_TIME);
+  const updatePosition = debounce(() => {
+    if (!wrapperRef.current) return;
+    setRect(wrapperRef.current.getBoundingClientRect());
+  }, DEBOUNCE_TIME);
 
-    window.addEventListener('resize', handleResize);
+  useEffect(() => {
+    const observer = new ResizeObserver(updatePosition);
+    const current = wrapperRef.current;
+    if (current) {
+      observer.observe(current);
+    }
+
+    window.addEventListener('scroll', updatePosition, true);
+    window.addEventListener('resize', updatePosition);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      handleResize.cancel();
+      if (current) {
+        observer.unobserve(current);
+      }
+      observer.disconnect();
+      window.removeEventListener('scroll', updatePosition, true);
+      window.removeEventListener('resize', updatePosition);
+      updatePosition.cancel();
     };
-  }, []);
+  }, [updatePosition]);
 
   useEffect(() => {
     if (!wrapperRef.current) return;

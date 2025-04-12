@@ -1,38 +1,61 @@
 {
-  "level": {
+  "learn": "学習",
+  "viewWords": "単語を見る",
+  "goalComplete": "デイリー目標を達成しました！",
+  "continuePrompt": "続けますか？",
+  "chooseOption": "以下のオプションを選択してください:",
+  "learnMore": "詳しく学ぶ",
+  "reviewMore": "もっと復習する",
+  "hideKorean": "韓国語を隠す",
+  "hideForeign": "日本語を隠す",
+  "showKorean": "韓国語を表示",
+  "showForeign": "日本語を表示",
+  "expandAll": "すべて展開",
+  "collapseAll": "すべて折りたたむ",
+
+  "menu": {
+    "difficulty": "難易度",
+    "meanings": "意味",
+    "settings": "設定"
+  },
+
+  "difficulty": {
     "wordsByDifficulty": "難易度別の単語",
     "beginner": "初心者",
     "intermediate": "中級",
     "advanced": "上級"
   },
 
-  "learn": "学習",
-  "viewWords": "単語を見る",
-
-  "hideKorean": "韓国語を隠す",
-  "hideForeign": "日本語を隠す",
-
-  "settingsPage": {
-    "settings": "設定",
-    "system": "システム",
-    "language": "言語",
-    "theme": "テーマ",
-    "learning": "学習",
-    "reviewCount": "毎日の復習単語数",
-    "newCount": "毎日の新しい単語数",
-    "account": "アカウント",
-    "signOut": "サインアウト",
-    "deleteAccount": "アカウントを削除"
+  "meanings": {
+    "wordsByMeanings": "意味別の単語",
+    "action": "行動",
+    "administration": "行政",
+    "communication": "コミュニケーション",
+    "concept": "概念",
+    "culture": "文化",
+    "economy": "経済",
+    "fashion": "ファッションと外見",
+    "feeling": "感情",
+    "food": "食べ物",
+    "grammar": "文法と言語",
+    "home": "家",
+    "hospital": "病院",
+    "life": "人生",
+    "living": "生活",
+    "nature": "自然",
+    "news": "ニュース",
+    "number": "数字",
+    "personality": "性格",
+    "politics": "政治",
+    "relationships": "人間関係",
+    "religion": "宗教",
+    "school": "学校",
+    "science": "科学",
+    "time": "時間",
+    "transport": "交通",
+    "weather": "天気",
+    "work": "仕事"
   },
-  "goalComplete": "デイリー目標を達成しました！",
-  "continuePrompt": "続けますか？",
-  "chooseOption": "以下のオプションを選択してください:",
-  "learnMore": "詳しく学ぶ",
-  "reviewMore": "もっと復習する",
-
-  "difficulty": "難易度",
-  "meanings": "意味",
-  "settings": "設定",
 
   "learning": {
     "reviews": "レビュー",
@@ -42,10 +65,6 @@
     "hard": "難しい",
     "good": "良い",
     "easy": "簡単",
-    "min": "分",
-    "mins": "分",
-    "hours": "時間",
-    "weeks": "週間",
     "showDetails": "詳細表示を有効にする",
     "hideDetails": "詳細表示を無効にする",
     "foreignToKorean": "日本語 → 韓国語",
@@ -60,5 +79,18 @@
     "phrase": "フレーズ",
     "sentence": "文",
     "conversation": "会話"
+  },
+
+  "settings": {
+    "settings": "設定",
+    "system": "システム",
+    "language": "言語",
+    "theme": "テーマ",
+    "learning": "学習",
+    "reviewCount": "毎日の復習単語数",
+    "newCount": "毎日の新しい単語数",
+    "account": "アカウント",
+    "signOut": "サインアウト",
+    "deleteAccount": "アカウントを削除"
   }
 }

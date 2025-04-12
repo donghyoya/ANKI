@@ -1,38 +1,61 @@
 {
-  "level": {
+  "learn": "学习",
+  "viewWords": "查看单词",
+  "goalComplete": "每日目标已完成！",
+  "continuePrompt": "想继续吗？",
+  "chooseOption": "请选择一个选项：",
+  "learnMore": "了解更多",
+  "reviewMore": "复习更多",
+  "hideKorean": "隐藏韩语",
+  "hideForeign": "隐藏中文",
+  "showKorean": "显示韩语",
+  "showForeign": "显示中文",
+  "expandAll": "展开全部",
+  "collapseAll": "收起全部",
+
+  "menu": {
+    "difficulty": "难度",
+    "meanings": "含义",
+    "settings": "设置"
+  },
+
+  "difficulty": {
     "wordsByDifficulty": "按难度分类的单词",
     "beginner": "初级",
     "intermediate": "中级",
     "advanced": "高级"
   },
 
-  "learn": "学习",
-  "viewWords": "查看单词",
-
-  "hideKorean": "隐藏韩语",
-  "hideForeign": "隐藏中文",
-
-  "settingsPage": {
-    "settings": "设置",
-    "system": "系统",
-    "language": "语言",
-    "theme": "主题",
-    "learning": "学习",
-    "reviewCount": "每日复习单词数",
-    "newCount": "每日新增单词数",
-    "account": "账户",
-    "signOut": "退出登录",
-    "deleteAccount": "删除账户"
+  "meanings": {
+    "wordsByMeanings": "按含义分类的单词",
+    "action": "行动",
+    "administration": "行政",
+    "communication": "沟通",
+    "concept": "概念",
+    "culture": "文化",
+    "economy": "经济",
+    "fashion": "时尚与外貌",
+    "feeling": "感觉",
+    "food": "食物",
+    "grammar": "语法和语言",
+    "home": "家",
+    "hospital": "医院",
+    "life": "生活",
+    "living": "居住",
+    "nature": "自然",
+    "news": "新闻",
+    "number": "数字",
+    "personality": "个性",
+    "politics": "政治",
+    "relationships": "人际关系",
+    "religion": "宗教",
+    "school": "学校",
+    "science": "科学",
+    "time": "时间",
+    "transport": "交通",
+    "weather": "天气",
+    "work": "工作"
   },
-  "goalComplete": "每日目标已完成！",
-  "continuePrompt": "想继续吗？",
-  "chooseOption": "请选择一个选项：",
-  "learnMore": "了解更多",
-  "reviewMore": "复习更多",
-
-  "difficulty": "难度",
-  "meanings": "含义",
-  "settings": "设置",
 
   "learning": {
     "reviews": "评论",
@@ -42,10 +65,6 @@
     "hard": "困难",
     "good": "好",
     "easy": "容易",
-    "min": "分钟",
-    "mins": "分钟",
-    "hours": "小时",
-    "weeks": "周",
     "showDetails": "启用详细视图",
     "hideDetails": "禁用详细视图",
     "foreignToKorean": "中文 → 韩语",
@@ -60,5 +79,18 @@
     "phrase": "短语",
     "sentence": "句子",
     "conversation": "对话"
+  },
+
+  "settings": {
+    "settings": "设置",
+    "system": "系统",
+    "language": "语言",
+    "theme": "主题",
+    "learning": "学习",
+    "reviewCount": "每日复习单词数",
+    "newCount": "每日新增单词数",
+    "account": "账户",
+    "signOut": "退出登录",
+    "deleteAccount": "删除账户"
   }
 }

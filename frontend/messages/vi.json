@@ -1,38 +1,61 @@
 {
-  "level": {
+  "learn": "Học",
+  "viewWords": "Xem từ",
+  "goalComplete": "Mục tiêu hàng ngày đã hoàn thành!",
+  "continuePrompt": "Bạn muốn tiếp tục không?",
+  "chooseOption": "Chọn một tùy chọn bên dưới:",
+  "learnMore": "Tìm hiểu thêm",
+  "reviewMore": "Ôn tập thêm",
+  "hideKorean": "Ẩn tiếng Hàn",
+  "hideForeign": "Ẩn tiếng Việt",
+  "showKorean": "Hiển thị tiếng Hàn",
+  "showForeign": "Hiển thị tiếng Việt",
+  "expandAll": "Mở rộng tất cả",
+  "collapseAll": "Thu gọn tất cả",
+
+  "menu": {
+    "difficulty": "Độ khó",
+    "meanings": "Ý nghĩa",
+    "settings": "Cài đặt"
+  },
+
+  "difficulty": {
     "wordsByDifficulty": "Từ vựng theo mức độ khó",
     "beginner": "Người mới bắt đầu",
     "intermediate": "Trung cấp",
     "advanced": "Nâng cao"
   },
 
-  "learn": "Học",
-  "viewWords": "Xem từ",
-
-  "hideKorean": "Ẩn tiếng Hàn",
-  "hideForeign": "Ẩn tiếng Việt",
-
-  "settingsPage": {
-    "settings": "Cài đặt",
-    "system": "Hệ thống",
-    "language": "Ngôn ngữ",
-    "theme": "Chủ đề",
-    "learning": "Học tập",
-    "reviewCount": "Số từ ôn tập hàng ngày",
-    "newCount": "Số từ mới hàng ngày",
-    "account": "Tài khoản",
-    "signOut": "Đăng xuất",
-    "deleteAccount": "Xóa tài khoản"
+  "meanings": {
+    "wordsByMeanings": "Từ theo ý nghĩa",
+    "action": "Hành động",
+    "administration": "Quản lý",
+    "communication": "Giao tiếp",
+    "concept": "Khái niệm",
+    "culture": "Văn hóa",
+    "economy": "Kinh tế",
+    "fashion": "Thời trang và ngoại hình",
+    "feeling": "Cảm xúc",
+    "food": "Thức ăn",
+    "grammar": "Ngữ pháp và ngôn ngữ",
+    "home": "Nhà",
+    "hospital": "Bệnh viện",
+    "life": "Cuộc sống",
+    "living": "Đời sống",
+    "nature": "Thiên nhiên",
+    "news": "Tin tức",
+    "number": "Số",
+    "personality": "Tính cách",
+    "politics": "Chính trị",
+    "relationships": "Mối quan hệ",
+    "religion": "Tôn giáo",
+    "school": "Trường học",
+    "science": "Khoa học",
+    "time": "Thời gian",
+    "transport": "Giao thông",
+    "weather": "Thời tiết",
+    "work": "Công việc"
   },
-  "goalComplete": "Mục tiêu hàng ngày đã hoàn thành!",
-  "continuePrompt": "Bạn muốn tiếp tục không?",
-  "chooseOption": "Chọn một tùy chọn bên dưới:",
-  "learnMore": "Tìm hiểu thêm",
-  "reviewMore": "Ôn tập thêm",
-
-  "difficulty": "Độ khó",
-  "meanings": "Ý nghĩa",
-  "settings": "Cài đặt",
 
   "learning": {
     "reviews": "Đánh giá",
@@ -42,10 +65,6 @@
     "hard": "Khó",
     "good": "Tốt",
     "easy": "Dễ",
-    "min": "phút",
-    "mins": "phút",
-    "hours": "giờ",
-    "weeks": "tuần",
     "showDetails": "Bật chế độ xem chi tiết",
     "hideDetails": "Tắt chế độ xem chi tiết",
     "foreignToKorean": "Tiếng Việt → Tiếng Hàn",
@@ -60,5 +79,18 @@
     "phrase": "Cụm từ",
     "sentence": "Câu",
     "conversation": "Hội thoại"
+  },
+
+  "settings": {
+    "settings": "Cài đặt",
+    "system": "Hệ thống",
+    "language": "Ngôn ngữ",
+    "theme": "Chủ đề",
+    "learning": "Học tập",
+    "reviewCount": "Số từ ôn tập hàng ngày",
+    "newCount": "Số từ mới hàng ngày",
+    "account": "Tài khoản",
+    "signOut": "Đăng xuất",
+    "deleteAccount": "Xóa tài khoản"
   }
 }

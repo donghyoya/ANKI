@@ -1,21 +1,30 @@
 'use client';
 
+import React, { useEffect, useState } from 'react';
+
+import { getDecks } from '@/api/decks';
+import { useToken } from '@/hooks/useToken';
+import { Deck } from '@/types/schemes';
 import DeckListPage from '@/components/common/DeckListPage';
 
-import React from 'react';
-
-const difficultyLevels = [
-  { name: 'Beginner', key: 'beginner', isCompleted: true, wordCount: 1234 },
-  { name: 'Intermediate', key: 'intermediate', isCompleted: false, wordCount: 2345 },
-  { name: 'Advanced', key: 'advanced', isCompleted: false, wordCount: 983 }
-];
-
 export default function DifficultyPage() {
-  return (
-    <DeckListPage
-      title="difficulty.wordsByDifficulty"
-      data={difficultyLevels}
-      isDifficulty={true}
-    />
-  );
+  const { token } = useToken();
+
+  const [decks, setDecks] = useState<Deck[]>();
+
+  useEffect(() => {
+    const fetchUserCards = async () => {
+      const fetchedDecks = await getDecks('level', token ?? '');
+      if (fetchedDecks) {
+        setDecks(fetchedDecks.content);
+      }
+    };
+    fetchUserCards();
+  }, [token]);
+
+  if (!decks) {
+    return <div>Loading...</div>;
+  }
+
+  return <DeckListPage decks={decks} category="difficulty" />;
 }

@@ -6,7 +6,7 @@ import {
   Level,
   Meaning,
   isLevel,
-  Card,
+  CardDetail,
   UserStudyHistory
 } from '@/types/schemes';
 
@@ -48,9 +48,9 @@ export const getCardsFromDeck = async (query: Level | Meaning | string, token: s
   const data = await response.json();
 
   if (response.ok) {
-    return data as Paginated<Card>;
+    return data as Paginated<CardDetail>;
   } else {
-    return data as ExceptionResponse;
+    throw new Error(data.message);
   }
 };
 

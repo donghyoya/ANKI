@@ -4,7 +4,7 @@ import styles from './LearningProgressBar.module.scss';
 
 import { UserCard } from '@/types/schemes';
 import { Progress } from '@/types/Progress';
-import { LEARNING_PROGRESS_BAR_COLORS } from '@/utils/constants';
+import { LEARNING_PROGRESS_BAR_COLORS } from '@/constants/colors';
 
 const LearningProgressBar = ({
   userCards,

@@ -1,35 +1,32 @@
-import WordListPage from '@/components/common/WordListPage';
+'use client';
 
-const meaningCategories = [
-  'action',
-  'administration',
-  'communication',
-  'concept',
-  'culture',
-  'economy',
-  'fashion',
-  'feeling',
-  'food',
-  'grammar',
-  'home',
-  'hospital',
-  'life',
-  'living',
-  'nature',
-  'news',
-  'number',
-  'personality',
-  'politics',
-  'relationships',
-  'religion',
-  'school',
-  'science',
-  'time',
-  'transport',
-  'weather',
-  'work'
-];
+import { getCardsFromDeck } from '@/api/decks';
+import WordListPage from '@/components/common/WordListPage';
+import { useToken } from '@/hooks/useToken';
+import { CardDetail, Paginated } from '@/types/schemes';
+import { useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import { useState } from 'react';
 
 export default function MeaningsWordsPage() {
-  return <WordListPage wordType="meanings" validKeys={meaningCategories} />;
+  const { category } = useParams() ?? {};
+  const { token } = useToken();
+
+  const [userCards, setUserCards] = useState<Paginated<CardDetail>>();
+
+  useEffect(() => {
+    const fetchUserCards = async () => {
+      const cards = await getCardsFromDeck(category as string, token ?? '');
+      if (cards) {
+        setUserCards(cards);
+      }
+    };
+    fetchUserCards();
+  }, [category, token]);
+
+  if (!userCards) {
+    return <div>Loading...</div>;
+  }
+
+  return <WordListPage wordList={userCards.content} category={category as string} />;
 }

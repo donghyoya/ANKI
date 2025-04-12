@@ -9,7 +9,6 @@ import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
 
 import styles from './layout.module.scss';
 
-import { DUMMY_MENU_ITEMS } from '@/utils/dummyData';
 import { CardCategory } from '@/types/schemes';
 import { useParams } from 'next/navigation';
 import { useStudyQueue } from '@/hooks/useStudyQueue';

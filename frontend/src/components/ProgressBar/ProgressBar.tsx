@@ -3,7 +3,7 @@ import React from 'react';
 import TooltipProvider from '@/components/Tooltips/TooltipProvider';
 import styles from './ProgressBar.module.scss';
 import { Progress } from '@/types/Progress';
-import { LEARNING_PROGRESS_BAR_COLORS } from '@/utils/constants';
+import { LEARNING_PROGRESS_BAR_COLORS } from '@/constants/colors';
 
 interface ProgressBarProps {
   progress: Progress[];

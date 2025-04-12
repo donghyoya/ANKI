@@ -19,6 +19,7 @@ export default function GoogleLoginRedirectPage() {
         body: JSON.stringify({ token: token })
       }).then(() => {
         // router.replace('/auth/test');
+        localStorage.setItem('hada-token', token);
       });
     } else {
       // router.replace('/login');

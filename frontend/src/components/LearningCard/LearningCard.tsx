@@ -74,7 +74,7 @@ const LearningCard = ({
       {!cardState.isRevealed && (
         <div className={styles['content-container']}>
           <span className={styles['korean-word']}>
-            {cardState.isKoreanToForeign ? card.wordInfo.koreanWord : card.wordInfo.foreignWord}
+            {cardState.isKoreanToForeign ? card.koreanWord : card.foreignWord}
           </span>
           <span className={`${styles['foreign-word']} ${styles['revealed']}`}>
             {t('learning.checkAnswer')}
@@ -85,10 +85,10 @@ const LearningCard = ({
       {cardState.isRevealed && !cardState.showDetail && (
         <div className={styles['content-container']}>
           <span className={styles['korean-word']}>
-            {cardState.isKoreanToForeign ? card.wordInfo.koreanWord : card.wordInfo.foreignWord}
+            {cardState.isKoreanToForeign ? card.koreanWord : card.foreignWord}
           </span>
           <span className={styles['foreign-word']}>
-            {cardState.isKoreanToForeign ? card.wordInfo.foreignWord : card.wordInfo.koreanWord}
+            {cardState.isKoreanToForeign ? card.foreignWord : card.koreanWord}
           </span>
         </div>
       )}

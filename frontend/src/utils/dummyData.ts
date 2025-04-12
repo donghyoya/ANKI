@@ -1,4 +1,4 @@
-import { LEARNING_PROGRESS_BAR_COLORS } from '@/utils/constants';
+import { LEARNING_PROGRESS_BAR_COLORS } from '@/constants/colors';
 import { IntervalPreview } from '@/types/IntervalPreview';
 import { MenuItem } from '@/types/Menu';
 import { Progress } from '@/types/Progress';

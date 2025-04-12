@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useParams, notFound, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useWindowSize } from '@/hooks/useWindowSize';
 
@@ -10,25 +10,19 @@ import { Icon, IconButton } from '@/components/material-components/IconButton/Ic
 import { Menu, MenuItem } from '@/components/material-components/Menu';
 import WordList from '@/components/WordList/WordList';
 import WordListCompact from '@/components/WordList/WordListCompact';
-
+import { CardDetail } from '@/types/schemes';
 import styles from './WordListPage.module.scss';
 
-interface WordListPageProps {
-  wordType: string;
-  validKeys: string[];
-}
-
-export default function WordListPage({ wordType, validKeys }: WordListPageProps) {
+export default function WordListPage({
+  wordList,
+  category
+}: {
+  wordList: CardDetail[];
+  category: string;
+}) {
   const t = useTranslations();
-  const { level, category } = useParams() ?? {};
   const router = useRouter();
   const { width } = useWindowSize();
-
-  const key = level || category;
-
-  if (!key || !validKeys.includes(key as string)) {
-    notFound();
-  }
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHideKorean, setIsHideKorean] = useState(false);
@@ -96,13 +90,11 @@ export default function WordListPage({ wordType, validKeys }: WordListPageProps)
 
   const WordListComponent = !isLarge ? WordListCompact : WordList;
 
-  const words = Array(50).fill({ KoreanWord: '안녕', ForeignWord: 'hi' });
-
   return (
     <div className={styles['page']}>
       <div className={styles['content']}>
         <div className={styles['header-container']}>
-          <h1 className={styles.title}>{t(`${wordType}.${key}`)}</h1>
+          <h1 className={styles.title}>{t(category)}</h1>
           <div className={styles['button-container']}>
             <FilledButton className={styles['learn-button']} onClick={onLearnClick}>
               {t('learn')}
@@ -111,11 +103,11 @@ export default function WordListPage({ wordType, validKeys }: WordListPageProps)
           </div>
         </div>
         <div className={styles['list-container']}>
-          {words.map((word, index) => (
+          {wordList.map((word, index) => (
             <WordListComponent
               key={index}
-              KoreanWord={word.KoreanWord}
-              ForeignWord={word.ForeignWord}
+              KoreanWord={word.koreanWord}
+              ForeignWord={word.foreignWord}
               isExpanded={!isLarge ? isExpanded : undefined}
               isHideKorean={isLarge ? isHideKorean : undefined}
               isHideForeign={isLarge ? isHideForeign : undefined}

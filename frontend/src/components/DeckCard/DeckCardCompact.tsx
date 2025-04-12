@@ -14,23 +14,16 @@ import { OutlinedCard } from '@/components/Card/Card';
 
 import { getFormatUnit } from '@/utils/unitFormatter';
 import styles from './DeckCardCompact.module.scss';
+import { isLevel } from '@/types/schemes';
 
-const DeckCardCompact = ({
-  deck,
-  isCompleted,
-  locale,
-  buttonLabels,
-  wordCount,
-  isDifficulty,
-  level,
-  category,
-  onLearn
-}: DeckCardProps) => {
+const DeckCardCompact = ({ deck, isCompleted, locale, buttonLabels, onLearn }: DeckCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleClick = () => {
     setIsExpanded((prev) => !prev);
   };
+
+  const isDifficulty = isLevel(deck.category);
 
   return (
     <OutlinedCard ripple={false}>
@@ -54,11 +47,11 @@ const DeckCardCompact = ({
         </div>
         {isExpanded && (
           <div className={styles['extra-contents']}>
-            <Link href={isDifficulty ? `/difficulty/${level}` : `/meanings/${category}`}>
+            <Link href={`${isDifficulty ? '/difficulty' : '/meanings'}/${deck.category}`}>
               <TextButton onClick={(e) => e.stopPropagation()}>{buttonLabels.viewWords}</TextButton>
             </Link>
             <span className={styles['word-count']}>
-              {getFormatUnit(locale, 'word', wordCount, true)}
+              {getFormatUnit(locale, 'word', deck.cardCounts, true)}
             </span>
           </div>
         )}

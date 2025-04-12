@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Deck } from '@/types/schemes';
-import { LEARNING_PROGRESS_BAR_COLORS } from '@/utils/constants';
+import { LEARNING_PROGRESS_BAR_COLORS } from '@/constants/colors';
 import { Progress } from '@/types/Progress';
 import ProgressBar from './ProgressBar';
 

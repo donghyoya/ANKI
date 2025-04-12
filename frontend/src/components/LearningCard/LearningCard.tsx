@@ -95,15 +95,15 @@ const LearningCard = ({
 
       {cardState.isRevealed && cardState.showDetail && (
         <div className={`${styles['content-container']} ${styles['detailed']}`}>
-          <WordSection card={DUMMY_CARD_DETAIL} />
+          <WordSection card={card} />
           <div>
             <ConjugationSection
-              conjugations={DUMMY_CARD_DETAIL.inflection.split(', ')}
+              conjugations={card.inflection.split(', ')}
               toggleExpanded={toggleConjugation}
               isExpanded={cardState.showConjugation}
             />
             <ExampleSection
-              examples={DUMMY_CARD_DETAIL.exampleUsage}
+              examples={card.exampleUsage.trim().split('\n')}
               toggleExpanded={toggleExample}
               isExpanded={cardState.showExample}
             />

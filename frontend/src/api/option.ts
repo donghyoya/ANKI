@@ -1,6 +1,6 @@
 'use server';
 
-import { ExceptionResponse, UserOption } from '@/types/schemes';
+import { UserOption } from '@/types/schemes';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 

@@ -1,7 +1,6 @@
 'use server';
 
 import {
-  ExceptionResponse,
   UserCard,
   Paginated,
   Level,
@@ -19,8 +18,6 @@ export const getUserCards = async (studyType: StudyType, query: Level | Meaning,
   const queryStudyType = studyType === 'new' ? 'study' : 'review';
   const queryType = isLevel(query) ? 'level' : 'meaning';
   const url = `${endpoint}/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${query}`;
-  console.log('getUserCards url:', url);
-  console.log('getUserCards token:', token);
   const response = await fetch(url, {
     method: 'GET',
     headers: {
@@ -33,7 +30,7 @@ export const getUserCards = async (studyType: StudyType, query: Level | Meaning,
   if (response.ok) {
     return data as Paginated<UserCard>;
   } else {
-    return data as ExceptionResponse;
+    throw new Error('Failed to fetch user cards');
   }
 };
 
@@ -51,7 +48,7 @@ export const getCardStudyInfo = async (cardId: number, token: string) => {
   if (response.ok) {
     return data as CardStudyInfo;
   } else {
-    return data as ExceptionResponse;
+    throw new Error('Failed to fetch card study info');
   }
 };
 
@@ -73,6 +70,6 @@ export const postCardStudyInfo = async (
   if (response.ok) {
     return data as CardStudyInfo;
   } else {
-    return data as ExceptionResponse;
+    throw new Error('Failed to post card study info');
   }
 };

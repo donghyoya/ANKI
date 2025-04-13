@@ -1,14 +1,6 @@
 'use server';
 
-import {
-  ExceptionResponse,
-  Paginated,
-  Level,
-  Meaning,
-  isLevel,
-  CardDetail,
-  UserStudyHistory
-} from '@/types/schemes';
+import { Paginated, Level, Meaning, isLevel, CardDetail, UserStudyHistory } from '@/types/schemes';
 
 // TODO
 const locale = 'en';
@@ -68,7 +60,7 @@ export const getUserStudyHistories = async (token: string) => {
   if (response.ok) {
     return data as Paginated<UserStudyHistory>;
   } else {
-    return data as ExceptionResponse;
+    throw new Error('Failed to fetch user study histories');
   }
 };
 
@@ -86,6 +78,6 @@ export const getLatestUserStudyHistory = async (token: string) => {
   if (response.ok) {
     return data as UserStudyHistory;
   } else {
-    return data as ExceptionResponse;
+    throw new Error('Failed to fetch latest user study history');
   }
 };

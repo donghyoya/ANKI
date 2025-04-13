@@ -1,7 +1,7 @@
 'use server';
 
 import { Locale } from '../types/Locale';
-import { CardDetail, Card, ExceptionResponse, Paginated } from '../types/schemes';
+import { CardDetail, Card, Paginated } from '../types/schemes';
 
 const endpoint = process.env.NEXT_PUBLIC_API_URL;
 
@@ -12,7 +12,6 @@ export const forignSearch = async (query: string, token: string) => {
   const page = 1;
   const pageSize = 10;
   const url = `${endpoint}/cards/foreign-search?code=${locale}&query=${query}&page=${page}&pageSize=${pageSize}`;
-  console.log(url);
 
   const response = await fetch(url, {
     method: 'GET',
@@ -27,7 +26,7 @@ export const forignSearch = async (query: string, token: string) => {
   if (response.ok) {
     return data as Paginated<Card>;
   } else {
-    return data as ExceptionResponse;
+    throw new Error('Failed to fetch foreign search');
   }
 };
 
@@ -47,7 +46,7 @@ export const koreanSearch = async (query: string, token: string) => {
   if (response.ok) {
     return data as Paginated<Card>;
   } else {
-    return data as ExceptionResponse;
+    throw new Error('Failed to fetch korean search');
   }
 };
 
@@ -65,7 +64,7 @@ export const getCard = async (cardId: number, token: string) => {
   if (response.ok) {
     return data as Card;
   } else {
-    return data as ExceptionResponse;
+    throw new Error('Failed to fetch card');
   }
 };
 
@@ -83,6 +82,6 @@ export const getCardDetail = async (cardId: number, token: string) => {
   if (response.ok) {
     return data as CardDetail;
   } else {
-    return data as ExceptionResponse;
+    throw new Error('Failed to fetch card detail');
   }
 };

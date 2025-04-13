@@ -8,7 +8,6 @@ import {
   CardDetail,
   CardStudyInfo,
   UserOption,
-  ExceptionResponse,
   UserStudyHistory,
   Deck,
   StudyCardForm,
@@ -171,13 +170,8 @@ export const DUMMY_USER_STUDY_HISTORIES: Paginated<UserStudyHistory> = {
 };
 
 export const DUMMY_USER_OPTION: UserOption = {
-  todayReviewWords: 0,
-  todayStudyWords: 0,
-  id: 1,
+  dailyReviewWords: 0,
+  dailyStudyWords: 0,
+  utcOffset: 0,
   languageCode: 'en'
-};
-
-export const DUMMY_EXCEPTION_RESPONSE: ExceptionResponse = {
-  code: 400,
-  message: 'Bad Request'
 };

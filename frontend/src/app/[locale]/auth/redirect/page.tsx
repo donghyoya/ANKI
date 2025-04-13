@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { redirect } from 'next/navigation';
+import { getUserOption } from '@/api/option';
 
 export default function GoogleLoginRedirectPage() {
   const router = useRouter();
@@ -10,12 +11,20 @@ export default function GoogleLoginRedirectPage() {
   const token = searchParams?.get('token'); // URL에서 token 읽기
 
   useEffect(() => {
-    if (token) {
-      localStorage.setItem('hada-token', token);
-      redirect('/difficulty');
-    } else {
-      redirect('/login');
-    }
+    (async function () {
+      if (token) {
+        localStorage.setItem('hada-token', token);
+        const userOption = await getUserOption(token);
+
+        if (userOption.utcOffset === null) {
+          redirect('/settings');
+        } else {
+          redirect('/difficulty');
+        }
+      } else {
+        redirect('/login');
+      }
+    })();
   }, [token, router]);
 
   return (

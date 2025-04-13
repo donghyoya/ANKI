@@ -50,6 +50,14 @@ export const LANGUAGE_OPTIONS = [
   { code: 'zh', label: '中文' } // 중국어
 ];
 
+export const UTC_OFFSET_OPTIONS = [
+  { code: 0, label: 'UTC+00:00' },
+  { code: 1, label: 'UTC+01:00' },
+  { code: 2, label: 'UTC+02:00' },
+  { code: 3, label: 'UTC+03:00' },
+  { code: 4, label: 'UTC+04:00' }
+];
+
 // Dummy data for api mocking
 export const DUMMY_CARD: Card = {
   level: 'easy',

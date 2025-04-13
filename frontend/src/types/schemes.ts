@@ -154,9 +154,9 @@ export interface UserStudyHistory {
 }
 
 export type UserOption = {
-  todayReviewWords: number;
-  todayStudyWords: number;
-  id: number;
+  dailyReviewWords: number;
+  dailyStudyWords: number;
+  utcOffset: number | null;
   languageCode: Locale;
 };
 

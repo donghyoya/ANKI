@@ -5,10 +5,7 @@ import { CardDetail, Card, Paginated } from '../types/schemes';
 
 const endpoint = process.env.NEXT_PUBLIC_API_URL;
 
-// TODO
-const locale: Locale = 'en';
-
-export const forignSearch = async (query: string, token: string) => {
+export const forignSearch = async (locale: Locale, query: string, token: string) => {
   const page = 1;
   const pageSize = 10;
   const url = `${endpoint}/cards/foreign-search?code=${locale}&query=${query}&page=${page}&pageSize=${pageSize}`;
@@ -30,7 +27,7 @@ export const forignSearch = async (query: string, token: string) => {
   }
 };
 
-export const koreanSearch = async (query: string, token: string) => {
+export const koreanSearch = async (locale: Locale, query: string, token: string) => {
   const page = 1;
   const pageSize = 10;
   const url = `${endpoint}/cards/korean-search?code=${locale}&query=${query}&page=${page}&pageSize=${pageSize}`;

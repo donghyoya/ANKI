@@ -1,9 +1,7 @@
 'use server';
 
+import { Locale } from '@/types/Locale';
 import { Paginated, Level, Meaning, isLevel, CardDetail, UserStudyHistory } from '@/types/schemes';
-
-// TODO
-const locale = 'en';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
@@ -25,7 +23,11 @@ export const getDecks = async (queryType: 'level' | 'meaning', token: string) =>
   }
 };
 
-export const getCardsFromDeck = async (query: Level | Meaning | string, token: string) => {
+export const getCardsFromDeck = async (
+  locale: Locale,
+  query: Level | Meaning | string,
+  token: string
+) => {
   const queryType = isLevel(query) ? 'level' : 'meaning';
   const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${query}`;
   console.log('요청 URL:', url);

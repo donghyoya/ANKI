@@ -7,22 +7,24 @@ import { CardDetail, Paginated } from '@/types/schemes';
 import { useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
+import { Locale } from '@/types/Locale';
 
 export default function MeaningsWordsPage() {
   const { category } = useParams() ?? {};
   const { token } = useToken();
+  const { locale } = useParams() ?? {};
 
   const [userCards, setUserCards] = useState<Paginated<CardDetail>>();
 
   useEffect(() => {
     const fetchUserCards = async () => {
-      const cards = await getCardsFromDeck(category as string, token ?? '');
+      const cards = await getCardsFromDeck(locale as Locale, category as string, token ?? '');
       if (cards) {
         setUserCards(cards);
       }
     };
     fetchUserCards();
-  }, [category, token]);
+  }, [category, token, locale]);
 
   if (!userCards) {
     return <div>Loading...</div>;

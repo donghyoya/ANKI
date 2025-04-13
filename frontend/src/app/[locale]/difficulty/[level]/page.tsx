@@ -7,16 +7,18 @@ import { CardDetail, Paginated } from '@/types/schemes';
 import { useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
+import { Locale } from '@/types/Locale';
 
 export default function DifficultyWordsPage() {
   const { level } = useParams() ?? {};
   const { token } = useToken();
+  const { locale } = useParams() ?? {};
 
   const [userCards, setUserCards] = useState<Paginated<CardDetail>>();
 
   useEffect(() => {
     const fetchUserCards = async () => {
-      const cards = await getCardsFromDeck(level as string, token ?? '');
+      const cards = await getCardsFromDeck(locale as Locale, level as string, token ?? '');
       if (cards) {
         setUserCards(cards);
       }

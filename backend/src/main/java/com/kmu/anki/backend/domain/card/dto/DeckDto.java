@@ -9,9 +9,9 @@ public class DeckDto {
     private String category;
     private Long cardCounts;
     private Integer overdueCounts;
-    private Integer maturitiyCounts;
+    private Integer maturityCounts;
     private Double overdueRate;
-    private Double maturitiyRate;
+    private Double maturityRate;
 
     public DeckDto(CardLevel level, Long cardCounts) {
         this.category = level.toString();
@@ -23,12 +23,12 @@ public class DeckDto {
         this.cardCounts = cardCounts;
     }
 
-    public DeckDto(String category, Long cardCounts, Integer overdueCounts, Integer maturitiyCounts) {
+    public DeckDto(String category, Long cardCounts, Integer overdueCounts, Integer maturityCounts) {
         this.category = category;
         this.cardCounts = cardCounts;
         this.overdueCounts = overdueCounts;
-        this.maturitiyCounts = maturitiyCounts;
+        this.maturityCounts = maturityCounts;
         this.overdueRate = (double) (overdueCounts / cardCounts);
-        this.maturitiyRate = (double) (maturitiyCounts / cardCounts);
+        this.maturityRate = (double) (maturityCounts / cardCounts);
     }
 }

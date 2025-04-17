@@ -25,13 +25,13 @@ public class DeckDtoDocs {
                 fieldWithPath(prefix+"overdueRate")
                         .type(JsonFieldType.NUMBER).optional()
                         .description("due가 지난 상태인 카드 비율"),
-                fieldWithPath(prefix+"maturitiyRate")
+                fieldWithPath(prefix+"maturityRate")
                         .type(JsonFieldType.NUMBER).optional()
                         .description("state가 review인 카드 비율:"),
                 fieldWithPath(prefix+"overdueCounts")
                         .type(JsonFieldType.NUMBER).optional()
                         .description("due가 지난 상태인 카드 개수"),
-                fieldWithPath(prefix+"maturitiyCounts")
+                fieldWithPath(prefix+"maturityCounts")
                         .type(JsonFieldType.NUMBER).optional()
                         .description("state가 review인 카드 개수")
         };

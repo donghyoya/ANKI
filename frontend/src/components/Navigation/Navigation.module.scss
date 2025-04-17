@@ -3,6 +3,7 @@
 @media (max-width: 600px) {
   .mobile-view {
     display: block;
+    position: fixed;
   }
   .desktop-view {
     display: none;
@@ -15,6 +16,7 @@
   }
   .desktop-view {
     display: block;
+    position: fixed;
   }
 }
 

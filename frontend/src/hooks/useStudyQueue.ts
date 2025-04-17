@@ -18,10 +18,10 @@ export const useStudyQueue = (category: CardCategory) => {
     if (studyQueue === null || currentCard === null) return;
     const newStudyQueue = [
       ...studyQueue.filter((card) => card.cardId !== currentCard.cardId),
-      { ...currentCard, state: rating === ('again' as Rating) ? 'learning' : 'matured' }
+      { ...currentCard, state: rating === ('again' as Rating) ? 'Learning' : 'Matured' }
     ];
     setStudyQueue(newStudyQueue);
-    setCurrentCard(newStudyQueue.filter((card) => card.state !== 'matured')[0] ?? null);
+    setCurrentCard(newStudyQueue.filter((card) => card.state !== 'Matured')[0] ?? null);
   };
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export const useStudyQueue = (category: CardCategory) => {
       console.log('fetchCards', response);
       if (response && 'content' in response) {
         setStudyQueue(response.content);
-        setCurrentCard(response.content.filter((card) => card.state !== 'matured')[0] ?? null);
+        setCurrentCard(response.content.filter((card) => card.state !== 'Matured')[0] ?? null);
       }
     };
     if (studyQueue === null) {

@@ -42,7 +42,7 @@ const ProgressBar = ({ progress, styles: stylesProp, className, height }: Progre
     );
   };
 
-  const fallbackProgress = [{ value: 1, label: '', color: LEARNING_PROGRESS_BAR_COLORS.reviewing }];
+  const fallbackProgress = [{ value: 0, label: '', color: LEARNING_PROGRESS_BAR_COLORS.reviewing }];
 
   if (progress.some((p) => p.value === null)) {
     progress = fallbackProgress;

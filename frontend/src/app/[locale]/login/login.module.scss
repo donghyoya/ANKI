@@ -1,0 +1,51 @@
+@use '@/styles/grid-system' as gs;
+@use '@/styles/breakpoints' as bp;
+
+.page {
+  @include bp.respond-to('compact') {
+    grid-column: span 4;
+    gap: 16px;
+  }
+
+  @include bp.respond-to('medium') {
+    grid-column: 2 / span 6;
+    gap: 16px;
+  }
+
+  @include bp.respond-to('expanded') {
+    grid-column: 3 / span 8;
+    gap: 24px;
+  }
+
+  @include bp.respond-to('large') {
+    grid-column: 3 / span 8;
+    gap: 24px;
+  }
+
+  @include bp.respond-to('extra-large') {
+    grid-column: 3 / span 8;
+    gap: 24px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 150px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 150px;
+}
+
+.login-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

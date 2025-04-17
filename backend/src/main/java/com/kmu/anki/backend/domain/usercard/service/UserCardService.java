@@ -93,5 +93,11 @@ public class UserCardService {
     }
 
     /* DELETE */
+    public void deleteCache(Long userId, LanguageCode languageCode, CardTopicEnums cardTopicEnums) {
+        userCardCacheRepository.deleteDailyUserCard(userId, languageCode, cardTopicEnums);
+    }
 
+    public void deleteCache(Long userId, LanguageCode languageCode, CardLevel cardLevel) {
+        userCardCacheRepository.deleteDailyUserCard(userId, languageCode, cardLevel);
+    }
 }

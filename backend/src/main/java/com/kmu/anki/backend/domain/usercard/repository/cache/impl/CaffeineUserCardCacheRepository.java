@@ -54,4 +54,15 @@ public class CaffeineUserCardCacheRepository implements UserCardCacheRepository 
     public void saveDailyUserCard(Long userId, LanguageCode languageCode, CardLevel cardLevel, UserCardCacheO cacheO) {
         cache.put(buildKey(userId, languageCode, cardLevel), cacheO);
     }
+
+    @Override
+    public void deleteDailyUserCard(Long userId, LanguageCode languageCode, CardTopicEnums cardTopicEnums) {
+        cache.invalidate(buildKey(userId,languageCode,cardTopicEnums));
+
+    }
+
+    @Override
+    public void deleteDailyUserCard(Long userId, LanguageCode languageCode, CardLevel cardLevel) {
+        cache.invalidate(buildKey(userId,languageCode,cardLevel));
+    }
 }

@@ -15,4 +15,7 @@ public interface UserCardCacheRepository {
     void saveDailyUserCard(Long userId, LanguageCode languageCode, CardTopicEnums cardTopicEnums, UserCardCacheO cacheO);
     void saveDailyUserCard(Long userId, LanguageCode languageCode, CardLevel cardLevel, UserCardCacheO cacheO);
 
+    void deleteDailyUserCard(Long userId, LanguageCode languageCode, CardTopicEnums cardTopicEnums);
+
+    void deleteDailyUserCard(Long userId, LanguageCode languageCode, CardLevel cardLevel);
 }

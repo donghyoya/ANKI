@@ -19,6 +19,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RequiredArgsConstructor
 @RequestMapping("/cards")
 @RestController
@@ -76,4 +78,28 @@ public class UserCardController {
 
         return BasePageResponse.of(cards);
     }
+
+    @GetMapping("/delete-cache")
+    public Map<String, String> deleteCache(
+            @RequestParam("studyType") StudyType studyType,
+            @RequestParam("queryType") QueryType queryType,
+            @RequestParam("query") String query,
+            Authentication authentication
+    ){
+        Long userId = Long.parseLong(authentication.getName());
+        UserOptionDto userOptionDto = userOptionService.readOption(userId);
+        LanguageCode languageCode = userOptionDto.getLanguageCode();
+        if(queryType == QueryType.meaning){
+            CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
+            userCardService.deleteCache(userId, languageCode, cardTopicEnums);
+            // 최근 학습 덱을 보여주기 위해서
+        }else {
+            CardLevel cardLevel = CardLevel.valueOf(query);
+            userCardService.deleteCache(userId, languageCode, cardLevel);
+        }
+        return Map.of("message", "cache-deleted");
+    }
+
+
+
 }

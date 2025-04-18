@@ -83,5 +83,4 @@ public class CardController {
         return BasePageResponse.of(cardService.searchKoreanCards(code, query, page-1, pageSize));
     }
 
-
 }

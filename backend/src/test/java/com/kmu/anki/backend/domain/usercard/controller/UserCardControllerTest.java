@@ -33,6 +33,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.stream.Stream;
 
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -294,4 +295,34 @@ class UserCardControllerTest extends AbstractControllerTest {
                 ));
     }
 
+    @Test
+    void deleteCache() throws Exception {
+        String identifier = String.format("{class-name}/{method-name}");
+        mockMvc.perform(
+                        get("/cards/delete-cache")
+                                .param("studyType", StudyType.study.toString())
+                                .param("queryType", QueryType.level.toString())
+                                .param("query",CardLevel.easy.toString())
+                                .header("Authorization", "Bearer " + token)
+                ).andExpect(status().isOk())
+                .andDo(
+                        MockMvcRestDocumentationWrapper.document(
+                                identifier, //"{class-name}/{method-name}",
+                                ResourceDocumentation.resource(
+                                        ResourceSnippetParameters.builder()
+                                                .tag("StudyCards")
+                                                .summary("디버그용 캐시삭제 로직")
+                                                .queryParameters(
+                                                        UserCardParameters.studyType,
+                                                        DeckParameters.queryType,
+                                                        DeckParameters.query
+                                                )
+                                                .responseFields(
+                                                        fieldWithPath("message").description("디버그용 메시지")
+                                                )
+                                                .build()
+                                )
+                        )
+                );
+    }
 }

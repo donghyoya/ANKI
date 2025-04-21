@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.global.controller;
 
 import com.kmu.anki.backend.domain.auth.legacy.utils.NullAuthenticationException;
+import com.kmu.anki.backend.domain.user.exception.UserOptionRequiredException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,13 @@ import java.util.NoSuchElementException;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionController {
+
+    @ExceptionHandler(UserOptionRequiredException.class)
+    public ResponseEntity<ExceptionResponse> handleUserOptionRequiredException(UserOptionRequiredException ex){
+        log.error("[400] UserOptionRequiredException: {}", ex.getMessage(), ex);
+        return new ResponseEntity<>(ExceptionResponse.of(400, ex.getMessage()), HttpStatus.BAD_REQUEST);
+
+    }
 
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<ExceptionResponse> handleNotFound(NoSuchElementException ex) {
@@ -38,5 +46,5 @@ public class GlobalExceptionController {
         log.error("[500] RuntimeException: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(ExceptionResponse.of(500, "INTERNAL_SERVER_ERROR"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
+    
 }

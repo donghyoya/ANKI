@@ -62,6 +62,7 @@ public class UserCardController {
     ){
         Long userId = Long.parseLong(authentication.getName());
         UserOptionDto userOptionDto = userOptionService.readOption(userId);
+        UserOptionDto.validate(userOptionDto);
         LanguageCode languageCode = userOptionDto.getLanguageCode();
         Page<UserCardDto> cards;
         if(queryType == QueryType.meaning){

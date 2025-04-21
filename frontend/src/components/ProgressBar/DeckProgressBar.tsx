@@ -21,19 +21,25 @@ const DeckProgressBar = ({ deck, styles: stylesProp, className, height }: DeckPr
       value: maturityCounts,
       label: String(maturityCounts),
       tooltip: 'Learned',
-      color: LEARNING_PROGRESS_BAR_COLORS.completed
+      color: LEARNING_PROGRESS_BAR_COLORS.matured
     },
     {
       value: overdueCounts,
       label: String(overdueCounts),
       tooltip: 'Overdue',
-      color: LEARNING_PROGRESS_BAR_COLORS.learning
+      color: LEARNING_PROGRESS_BAR_COLORS.overdue
     },
     {
       value: learningCounts,
       label: String(learningCounts),
+      tooltip: 'Learning',
+      color: LEARNING_PROGRESS_BAR_COLORS.learning
+    },
+    {
+      value: 0,
+      label: String(0),
       tooltip: 'New',
-      color: LEARNING_PROGRESS_BAR_COLORS.reviewing
+      color: LEARNING_PROGRESS_BAR_COLORS.new
     }
   ];
 

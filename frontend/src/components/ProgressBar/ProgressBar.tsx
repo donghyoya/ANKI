@@ -26,23 +26,7 @@ const ProgressBar = ({ progress, styles: stylesProp, className, height }: Progre
     })
     .reverse();
 
-  const renderLabel = (label: string, percentage: number, tooltip?: string) => {
-    // 값의 비중이 10% 이하일 때 라벨 표시 안 함
-    if (percentage <= 10) return null;
-
-    const LabelContent = () => <span className={styles['label']}>{label}</span>;
-
-    // 툴팁이 있을 때 툴팁 표시
-    return tooltip ? (
-      <TooltipProvider text={tooltip}>
-        <LabelContent />
-      </TooltipProvider>
-    ) : (
-      <LabelContent />
-    );
-  };
-
-  const fallbackProgress = [{ value: 0, label: '', color: LEARNING_PROGRESS_BAR_COLORS.reviewing }];
+  const fallbackProgress = [{ value: 0, label: '', color: LEARNING_PROGRESS_BAR_COLORS.new }];
 
   if (progress.some((p) => p.value === null)) {
     progress = fallbackProgress;
@@ -63,7 +47,9 @@ const ProgressBar = ({ progress, styles: stylesProp, className, height }: Progre
             }}
           >
             <div className={styles['label-container']}>
-              {renderLabel(bar.label, percentages[index], bar.tooltip)}
+              <TooltipProvider text={bar.tooltip}>
+                <span className={styles['label']}>{bar.label ? bar.label : ''}</span>
+              </TooltipProvider>
             </div>
           </div>
         );

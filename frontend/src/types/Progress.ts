@@ -1,6 +1,6 @@
 export interface Progress {
   value: number;
-  label: string;
+  label: string | number;
   tooltip?: string;
   color: string;
 }

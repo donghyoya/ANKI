@@ -15,11 +15,13 @@ const TooltipProvider = ({
   extraGap
 }: {
   children: React.ReactNode;
-  text: string;
+  text: string | undefined;
   extraGap?: boolean;
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<DOMRect>();
+
+  if (!text) return children;
 
   const updatePosition = debounce(() => {
     if (!wrapperRef.current) return;

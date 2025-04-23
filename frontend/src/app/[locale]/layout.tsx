@@ -1,15 +1,20 @@
 import Navigation from '@/components/Navigation/Navigation';
-import I18nProvider from './providers/I18nProvider';
+import I18nProvider from '../../providers/I18nProvider';
 import { StoreProvider } from './providers/StoreProvider';
-import './layout.scss';
 
-export default async function LocaleLayout({ children }: { children: React.ReactNode }) {
+import styles from './layout.module.scss';
+
+const NavigationLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <StoreProvider>
-      <I18nProvider>
-        <Navigation />
-        <main className="layout-container-main">{children}</main>
-      </I18nProvider>
+      <div className={styles['navigation-layout']}>
+        <I18nProvider>
+          <Navigation />
+          {children}
+        </I18nProvider>
+      </div>
     </StoreProvider>
   );
-}
+};
+
+export default NavigationLayout;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-
+import { usePathname } from 'next/navigation';
 import NavigationRail from './NavigationRail';
 import NavigationDrawer from './NavigationDrawer';
 import TopAppBar from '@/components/Navigation/TopAppBar';
@@ -11,13 +11,18 @@ import { IconButton, Icon } from '@/components/material-components/IconButton/Ic
 import styles from './Navigation.module.scss';
 
 const Navigation = () => {
+  const pathname = usePathname();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const isLoginPage = pathname?.includes('/login');
+
+  if (isLoginPage) return null;
+
   const destinations = [
     { icon: 'folder', label: 'difficulty' },
     { icon: 'folder', label: 'meanings' },
     { icon: 'settings', label: 'settings' }
   ];
-
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);

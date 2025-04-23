@@ -9,7 +9,7 @@ import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
 
 import styles from './layout.module.scss';
 
-import { CardCategory } from '@/types/schemes';
+import { Category } from '@/types/Category';
 import { useParams } from 'next/navigation';
 import { useStudyQueue } from '@/hooks/useStudyQueue';
 import { Rating } from '@/types/IntervalPreview';
@@ -37,6 +37,20 @@ export default function LearningPage() {
     cardWidth: document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0
   });
 
+  const { currentCard, studyQueue, intervalPreview, repeat, error } = useStudyQueue(
+    category as Category
+  );
+
+  if (error) throw error;
+
+  if (studyQueue === null) {
+    return <div className={styles['page']}>Loading...</div>;
+  }
+
+  if (currentCard === null) {
+    return <div className={styles['page']}>학습 끝</div>;
+  }
+
   const handleReveal = () => {
     setCardState((prev) => ({ ...prev, isRevealed: true }));
   };
@@ -52,18 +66,6 @@ export default function LearningPage() {
   const toggleExample = () => {
     setCardState((prev) => ({ ...prev, showExample: !prev.showExample }));
   };
-
-  const { currentCard, studyQueue, intervalPreview, repeat } = useStudyQueue(
-    category as CardCategory
-  );
-
-  if (studyQueue === null) {
-    return <div className={styles['page']}>Loading...</div>;
-  }
-
-  if (currentCard === null) {
-    return <div className={styles['page']}>학습 끝</div>;
-  }
 
   const handleOnRepeat = (rating: Rating) => {
     setCardState((prev) => ({ ...prev, isRevealed: false }));

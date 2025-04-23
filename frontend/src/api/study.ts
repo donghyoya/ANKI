@@ -25,7 +25,12 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
   if (response.ok) {
     return data as Paginated<UserCard>;
   } else {
-    throw new Error('Failed to fetch user cards');
+    console.log(data);
+    if (response.status === 400) {
+      throw new Error('SETUP_REQUIRED');
+    } else {
+      throw new Error('Failed to fetch user cards');
+    }
   }
 };
 

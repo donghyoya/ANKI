@@ -21,8 +21,6 @@ const TooltipProvider = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<DOMRect>();
 
-  if (!text) return children;
-
   const updatePosition = debounce(() => {
     if (!wrapperRef.current) return;
     setRect(wrapperRef.current.getBoundingClientRect());
@@ -53,6 +51,8 @@ const TooltipProvider = ({
     if (!wrapperRef.current) return;
     setRect(wrapperRef.current.getBoundingClientRect());
   }, [text]);
+
+  if (!text) return children;
 
   return (
     <div className={styles['tooltip-wrap']} ref={wrapperRef}>

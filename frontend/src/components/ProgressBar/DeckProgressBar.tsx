@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Deck } from '@/types/schemes';
 import { LEARNING_PROGRESS_BAR_COLORS } from '@/constants/colors';
@@ -9,42 +9,56 @@ interface DeckProgressBarProps {
   deck: Deck;
   styles?: React.CSSProperties;
   className?: string;
-  height: number;
+  isExpanded?: boolean;
 }
 
-const DeckProgressBar = ({ deck, styles: stylesProp, className, height }: DeckProgressBarProps) => {
+const DeckProgressBar = ({
+  deck,
+  styles: stylesProp,
+  className,
+  isExpanded
+}: DeckProgressBarProps) => {
   const { maturityCounts, overdueCounts, cardCounts } = deck;
   const learningCounts = cardCounts - maturityCounts - overdueCounts;
+
+  useEffect(() => {
+    console.log(deck);
+  }, [deck]);
 
   const progress: Progress[] = [
     {
       value: maturityCounts,
-      label: String(maturityCounts),
+      label: isExpanded ? maturityCounts : '',
       tooltip: 'Learned',
       color: LEARNING_PROGRESS_BAR_COLORS.matured
     },
     {
       value: overdueCounts,
-      label: String(overdueCounts),
+      label: isExpanded ? overdueCounts : '',
       tooltip: 'Overdue',
       color: LEARNING_PROGRESS_BAR_COLORS.overdue
     },
     {
       value: learningCounts,
-      label: String(learningCounts),
+      label: isExpanded ? learningCounts : '',
       tooltip: 'Learning',
       color: LEARNING_PROGRESS_BAR_COLORS.learning
     },
     {
       value: 0,
-      label: String(0),
+      label: isExpanded ? 0 : '',
       tooltip: 'New',
       color: LEARNING_PROGRESS_BAR_COLORS.new
     }
   ];
 
   return (
-    <ProgressBar progress={progress} styles={stylesProp} className={className} height={height} />
+    <ProgressBar
+      progress={progress}
+      styles={stylesProp}
+      className={className}
+      height={isExpanded ? 12 : 6}
+    />
   );
 };
 

@@ -35,7 +35,7 @@ const DeckCard = ({ deck, isCompleted, locale, buttonLabels, onLearn }: DeckCard
           </Link>
           <FilledButton onClick={onLearn}>{buttonLabels.learn}</FilledButton>
         </div>
-        <DeckProgressBar deck={deck} height={12}></DeckProgressBar>
+        <DeckProgressBar deck={deck} isExpanded></DeckProgressBar>
       </div>
     </OutlinedCard>
   );

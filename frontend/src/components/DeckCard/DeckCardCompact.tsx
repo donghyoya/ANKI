@@ -53,7 +53,7 @@ const DeckCardCompact = ({ deck, isCompleted, locale, buttonLabels, onLearn }: D
             </span>
           </div>
         )}
-        <DeckProgressBar deck={deck} height={isExpanded ? 12 : 6}></DeckProgressBar>
+        <DeckProgressBar deck={deck} isExpanded={isExpanded}></DeckProgressBar>
       </div>
     </OutlinedCard>
   );

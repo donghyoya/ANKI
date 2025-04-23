@@ -18,17 +18,6 @@ export interface Card {
   foreignWord: string;
 }
 
-export interface CardStudyInfo {
-  lapses: number;
-  reps: number;
-  scheduledDays: number;
-  cardId: number;
-  lastReview: string;
-  nextStudyDate: string;
-  state: string;
-  stability: number;
-}
-
 export interface FSRSParameters {
   lapses: number;
   reps: number;
@@ -38,6 +27,11 @@ export interface FSRSParameters {
   lastReview: string;
   state: string;
   stability: number;
+}
+
+export interface CardStudyInfo extends FSRSParameters {
+  cardId: number;
+  nextStudyDate: string;
 }
 
 export interface UserCard extends Card {

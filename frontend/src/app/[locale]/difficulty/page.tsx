@@ -7,6 +7,8 @@ import { useToken } from '@/hooks/useToken';
 import { Deck } from '@/types/schemes';
 import DeckListPage from '@/components/common/DeckListPage';
 
+import { difficultiesInDisplayOrder } from '@/types/Category';
+
 export default function DifficultyPage() {
   const { token } = useToken();
 
@@ -26,5 +28,11 @@ export default function DifficultyPage() {
     return <div>Loading...</div>;
   }
 
-  return <DeckListPage decks={decks} category="difficulty" />;
+  return (
+    <DeckListPage
+      decks={decks}
+      categoryType="difficulty"
+      displayOrder={difficultiesInDisplayOrder}
+    />
+  );
 }

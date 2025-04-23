@@ -10,8 +10,17 @@ import CustomDialog from '@/components/Dialogs/CustomDialog';
 
 import styles from './DeckListPage.module.scss';
 import { Deck } from '@/types/schemes';
+import { Category } from '@/types/Category';
 
-export default function DeckListPage({ decks, category }: { decks: Deck[]; category: string }) {
+export default function DeckListPage({
+  decks,
+  categoryType,
+  displayOrder
+}: {
+  decks: Deck[];
+  categoryType: 'difficulty' | 'meaning';
+  displayOrder: Category[];
+}) {
   const t = useTranslations();
   const locale = useLocale(); // 현재 로케일 가져오기
 
@@ -32,13 +41,19 @@ export default function DeckListPage({ decks, category }: { decks: Deck[]; categ
 
   const DeckCard = isCompact ? DeckCardCompact : DeckCardDesktop;
 
+  const sortedDecks = useMemo(() => {
+    return decks.sort(
+      (a, b) => displayOrder.indexOf(a.category) - displayOrder.indexOf(b.category)
+    );
+  }, [decks, displayOrder]);
+
   return (
     <>
       <div className={styles['page']}>
         <div className={styles['content']}>
-          {!isCompact && <h1 className={styles.title}>{t(category)}</h1>}
+          {!isCompact && <h1 className={styles.title}>{t(categoryType)}</h1>}
           <div className={styles.cards}>
-            {decks.map((deck) => (
+            {sortedDecks.map((deck) => (
               <DeckCard
                 key={deck.category}
                 deck={deck}

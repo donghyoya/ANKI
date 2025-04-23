@@ -1,4 +1,4 @@
-import { Difficulty } from './Category';
+import { Difficulty, Category } from './Category';
 import { Locale } from './Locale';
 
 export type StudyType = 'review' | 'new';
@@ -72,7 +72,7 @@ export interface Deck {
   overdueCounts: number;
   maturityRate: number;
   maturityCounts: number;
-  category: string;
+  category: Category;
 }
 
 export interface UserStudyHistory {

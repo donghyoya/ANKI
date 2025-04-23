@@ -9,6 +9,7 @@ import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import { Locale } from '@/types/Locale';
 import { Category } from '@/types/Category';
+
 export default function DifficultyWordsPage() {
   const { category } = useParams() ?? {};
   const { token } = useToken();

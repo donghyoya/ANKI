@@ -14,7 +14,7 @@ export default function DifficultyPage() {
 
   useEffect(() => {
     const fetchUserCards = async () => {
-      const fetchedDecks = await getDecks('level', token ?? '');
+      const fetchedDecks = await getDecks('difficulty', token ?? '');
       if (fetchedDecks) {
         setDecks(fetchedDecks.content);
       }

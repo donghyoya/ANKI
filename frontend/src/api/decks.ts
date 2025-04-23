@@ -1,13 +1,14 @@
 'use server';
 
 import { Locale } from '@/types/Locale';
-import { Paginated, Level, Meaning, isLevel, CardDetail, UserStudyHistory } from '@/types/schemes';
+import { Paginated, CardDetail, UserStudyHistory } from '@/types/schemes';
+import { Category, getCategoryType } from '@/types/Category';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
-export const getDecks = async (queryType: 'level' | 'meaning', token: string) => {
+export const getDecks = async (queryType: 'difficulty' | 'meaning', token: string) => {
   try {
-    const url = `${endpoint}/decks?queryType=${queryType}`;
+    const url = `${endpoint}/decks?queryType=${queryType === 'difficulty' ? 'level' : 'meaning'}`;
     console.log('요청 URL:', url);
     console.log('요청 토큰:', token);
     const response = await fetch(url, {
@@ -23,12 +24,8 @@ export const getDecks = async (queryType: 'level' | 'meaning', token: string) =>
   }
 };
 
-export const getCardsFromDeck = async (
-  locale: Locale,
-  query: Level | Meaning | string,
-  token: string
-) => {
-  const queryType = isLevel(query) ? 'level' : 'meaning';
+export const getCardsFromDeck = async (locale: Locale, query: Category, token: string) => {
+  const queryType = getCategoryType(query) === 'difficulty' ? 'level' : query;
   const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${query}`;
   console.log('요청 URL:', url);
   console.log('요청 토큰:', token);

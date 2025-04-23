@@ -14,7 +14,7 @@ import { OutlinedCard } from '@/components/Card/Card';
 
 import { getFormatUnit } from '@/utils/unitFormatter';
 import styles from './DeckCardCompact.module.scss';
-import { isLevel } from '@/types/schemes';
+import { getCategoryType } from '@/types/Category';
 
 const DeckCardCompact = ({ deck, isCompleted, locale, buttonLabels, onLearn }: DeckCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -22,8 +22,6 @@ const DeckCardCompact = ({ deck, isCompleted, locale, buttonLabels, onLearn }: D
   const handleClick = () => {
     setIsExpanded((prev) => !prev);
   };
-
-  const isDifficulty = isLevel(deck.category);
 
   return (
     <OutlinedCard ripple={false}>
@@ -47,7 +45,7 @@ const DeckCardCompact = ({ deck, isCompleted, locale, buttonLabels, onLearn }: D
         </div>
         {isExpanded && (
           <div className={styles['extra-contents']}>
-            <Link href={`${isDifficulty ? '/difficulty' : '/meanings'}/${deck.category}`}>
+            <Link href={`${getCategoryType(deck.category)}/${deck.category}`}>
               <TextButton onClick={(e) => e.stopPropagation()}>{buttonLabels.viewWords}</TextButton>
             </Link>
             <span className={styles['word-count']}>

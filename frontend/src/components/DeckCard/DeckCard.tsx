@@ -13,12 +13,10 @@ import { getFormatUnit } from '@/utils/unitFormatter';
 import styles from './DeckCard.module.scss';
 import { OutlinedCard } from '@/components/Card/Card';
 import DeckProgressBar from '@/components/ProgressBar/DeckProgressBar';
-import { isLevel } from '@/types/schemes';
+import { getCategoryType } from '@/types/Category';
 
 // DeckCard 컴포넌트
 const DeckCard = ({ deck, isCompleted, locale, buttonLabels, onLearn }: DeckCardProps) => {
-  const isDifficulty = isLevel(deck.category);
-
   return (
     <OutlinedCard className={styles.card} ripple={false}>
       <div className={styles.info}>
@@ -32,7 +30,7 @@ const DeckCard = ({ deck, isCompleted, locale, buttonLabels, onLearn }: DeckCard
       </div>
       <div className={styles['bottom-contents']}>
         <div className={styles['button-container']}>
-          <Link href={`${isDifficulty ? '/difficulty' : '/meanings'}/${deck.category}`}>
+          <Link href={`${getCategoryType(deck.category)}/${deck.category}`}>
             <TextButton>{buttonLabels.viewWords}</TextButton>
           </Link>
           <FilledButton onClick={onLearn}>{buttonLabels.learn}</FilledButton>

@@ -1,22 +1,13 @@
 'use server';
 
-import {
-  UserCard,
-  Paginated,
-  Level,
-  Meaning,
-  StudyType,
-  CardStudyInfo,
-  StudyCardForm
-} from '@/types/schemes';
-
-import { isLevel } from '@/types/schemes';
+import { UserCard, Paginated, StudyType, CardStudyInfo, StudyCardForm } from '@/types/schemes';
+import { Category, getCategoryType } from '@/types/Category';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
-export const getUserCards = async (studyType: StudyType, query: Level | Meaning, token: string) => {
+export const getUserCards = async (studyType: StudyType, query: Category, token: string) => {
   const queryStudyType = studyType === 'new' ? 'study' : 'review';
-  const queryType = isLevel(query) ? 'level' : 'meaning';
+  const queryType = getCategoryType(query) === 'difficulty' ? 'level' : query;
   const url = `${endpoint}/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${query}`;
   const response = await fetch(url, {
     method: 'GET',

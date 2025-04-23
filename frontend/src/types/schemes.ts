@@ -1,75 +1,7 @@
+import { Difficulty } from './Category';
 import { Locale } from './Locale';
 
-export type CardLevel = 'easy' | 'normal' | 'hard';
-
 export type StudyType = 'review' | 'new';
-
-export type Level = 'easy' | 'normal' | 'hard';
-
-export const allLevels: Level[] = ['easy', 'normal', 'hard'];
-
-export type Meaning =
-  | 'CONCEPT'
-  | 'ECONOMY'
-  | 'SCIENCE'
-  | 'TRANSPORT'
-  | 'WEATHER'
-  | 'NEWS'
-  | 'FEELING'
-  | 'GRAMMAR_AND_LANGUAGE'
-  | 'CULTURE'
-  | 'HOSPITAL'
-  | 'LIFE'
-  | 'LIVING'
-  | 'PERSONALITY'
-  | 'NUMBER'
-  | 'COMMUNICATION'
-  | 'TIME'
-  | 'FOOD'
-  | 'RELATIONSHIPS'
-  | 'NATURE'
-  | 'POLITICS'
-  | 'RELIGION'
-  | 'WORK'
-  | 'HOME'
-  | 'FASHION_AND_APPEARANCE'
-  | 'SCHOOL'
-  | 'ACTION'
-  | 'ADMINISTRATION';
-
-export const allMeanings: Meaning[] = [
-  'CONCEPT',
-  'ECONOMY',
-  'SCIENCE',
-  'TRANSPORT',
-  'WEATHER',
-  'NEWS',
-  'FEELING',
-  'GRAMMAR_AND_LANGUAGE',
-  'CULTURE',
-  'HOSPITAL',
-  'LIFE',
-  'LIVING',
-  'PERSONALITY',
-  'NUMBER',
-  'COMMUNICATION',
-  'TIME',
-  'FOOD',
-  'RELATIONSHIPS',
-  'NATURE',
-  'POLITICS',
-  'RELIGION',
-  'WORK',
-  'HOME',
-  'FASHION_AND_APPEARANCE',
-  'SCHOOL',
-  'ACTION',
-  'ADMINISTRATION'
-];
-
-export type CardCategory = Level | Meaning;
-
-export const allCardCategories: CardCategory[] = [...allLevels, ...allMeanings];
 
 export type Paginated<T> = {
   size: number;
@@ -79,7 +11,7 @@ export type Paginated<T> = {
 };
 
 export interface Card {
-  level: CardLevel;
+  difficulty: Difficulty;
   cardId: number;
   koreanWord: string;
   languageCode: Locale;
@@ -97,7 +29,7 @@ export interface CardStudyInfo {
   stability: number;
 }
 
-export interface UserCard extends Card {
+export interface FSRSParameters {
   lapses: number;
   reps: number;
   due: Date;
@@ -106,7 +38,10 @@ export interface UserCard extends Card {
   lastReview: string;
   state: string;
   stability: number;
+}
 
+export interface UserCard extends Card {
+  fsrsParameters: FSRSParameters;
   originalLanguage: string;
   homographNumber: number;
   partsOfSpeech: string;
@@ -158,8 +93,4 @@ export type UserOption = {
   dailyStudyWords: number;
   utcOffset: number | null;
   languageCode: Locale;
-};
-
-export const isLevel = (query: Level | Meaning | string): query is Level => {
-  return allLevels.includes(query as Level);
 };

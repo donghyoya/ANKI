@@ -8,9 +8,9 @@ import { useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import { Locale } from '@/types/Locale';
-
+import { Category } from '@/types/Category';
 export default function DifficultyWordsPage() {
-  const { level } = useParams() ?? {};
+  const { category } = useParams() ?? {};
   const { token } = useToken();
   const { locale } = useParams() ?? {};
 
@@ -18,17 +18,17 @@ export default function DifficultyWordsPage() {
 
   useEffect(() => {
     const fetchUserCards = async () => {
-      const cards = await getCardsFromDeck(locale as Locale, level as string, token ?? '');
+      const cards = await getCardsFromDeck(locale as Locale, category as Category, token ?? '');
       if (cards) {
         setUserCards(cards);
       }
     };
     fetchUserCards();
-  }, [level, token]);
+  }, [category, token, locale]);
 
   if (!userCards) {
     return <div>Loading...</div>;
   }
 
-  return <WordListPage wordList={userCards.content} category={level as string} />;
+  return <WordListPage wordList={userCards.content} category={category as Category} />;
 }

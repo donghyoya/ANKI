@@ -1,6 +1,6 @@
-export type Difficulty = 'EASY' | 'NORMAL' | 'HARD';
+export type Difficulty = 'easy' | 'normal' | 'hard';
 
-export const difficultiesInDisplayOrder: Difficulty[] = ['EASY', 'NORMAL', 'HARD'];
+export const difficultiesInDisplayOrder: Difficulty[] = ['easy', 'normal', 'hard'];
 
 export type Meaning =
   | 'CONCEPT'

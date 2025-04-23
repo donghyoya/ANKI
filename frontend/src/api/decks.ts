@@ -25,8 +25,8 @@ export const getDecks = async (queryType: 'difficulty' | 'meaning', token: strin
 };
 
 export const getCardsFromDeck = async (locale: Locale, query: Category, token: string) => {
-  const queryType = getCategoryType(query) === 'difficulty' ? 'level' : query;
-  const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${query}`;
+  const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
+  const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
   console.log('요청 URL:', url);
   console.log('요청 토큰:', token);
   const response = await fetch(url, {

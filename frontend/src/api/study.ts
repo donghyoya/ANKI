@@ -7,8 +7,12 @@ const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
 export const getUserCards = async (studyType: StudyType, query: Category, token: string) => {
   const queryStudyType = studyType === 'new' ? 'study' : 'review';
-  const queryType = getCategoryType(query) === 'difficulty' ? 'level' : query;
-  const url = `${endpoint}/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${query}`;
+
+  const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
+
+  const url = `${endpoint}/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
+
+  console.log(url);
   const response = await fetch(url, {
     method: 'GET',
     headers: {

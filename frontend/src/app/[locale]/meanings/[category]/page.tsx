@@ -1,13 +1,15 @@
 'use client';
 
 import { getCardsFromDeck } from '@/api/decks';
-import WordListPage from '@/components/common/WordListPage';
 import { useToken } from '@/hooks/useToken';
-import { CardDetail, Paginated } from '@/types/schemes';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { useState } from 'react';
+
+import WordListPage from '@/components/common/WordListPage';
+
 import { Locale } from '@/types/Locale';
+import { Category } from '@/types/Category';
+import { CardDetail, Paginated } from '@/types/schemes';
 
 export default function MeaningsWordsPage() {
   const { category } = useParams() ?? {};
@@ -18,7 +20,7 @@ export default function MeaningsWordsPage() {
 
   useEffect(() => {
     const fetchUserCards = async () => {
-      const cards = await getCardsFromDeck(locale as Locale, category as string, token ?? '');
+      const cards = await getCardsFromDeck(locale as Locale, category as Category, token ?? '');
       if (cards) {
         setUserCards(cards);
       }
@@ -30,5 +32,5 @@ export default function MeaningsWordsPage() {
     return <div>Loading...</div>;
   }
 
-  return <WordListPage wordList={userCards.content} category={category as string} />;
+  return <WordListPage wordList={userCards.content} category={category as Category} />;
 }

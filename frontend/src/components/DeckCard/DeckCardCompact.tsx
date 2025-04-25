@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import classnames from 'classnames';
+import { motion } from 'motion/react';
 
 import FilledButton from '@/components/material-components/FilledButton';
 import TextButton from '@/components/material-components/TextButton';
@@ -25,9 +26,16 @@ const DeckCardCompact = ({ deck, isCompleted, locale, buttonLabels, onLearn }: D
 
   return (
     <OutlinedCard ripple={false}>
-      <div
+      <motion.div
         className={classnames(styles.card, { [styles['card-expanded']]: isExpanded })}
         onClick={handleClick}
+        animate={{
+          height: isExpanded ? '6.75rem' : '3.875rem'
+        }}
+        transition={{
+          duration: 0.2,
+          ease: 'easeInOut'
+        }}
       >
         <div className={styles['main-contents']}>
           <div className={styles['title-container']}>
@@ -54,7 +62,7 @@ const DeckCardCompact = ({ deck, isCompleted, locale, buttonLabels, onLearn }: D
           </div>
         )}
         <DeckProgressBar deck={deck} isExpanded={isExpanded}></DeckProgressBar>
-      </div>
+      </motion.div>
     </OutlinedCard>
   );
 };

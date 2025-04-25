@@ -1,6 +1,13 @@
 'use server';
 
-import { UserCard, Paginated, StudyType, CardStudyInfo, StudyCardForm } from '@/types/schemes';
+import {
+  Paginated,
+  StudyType,
+  CardStudyInfo,
+  StudyCardForm,
+  UserCardServerResponse,
+  convertUserCardServerResponseToUserCard
+} from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
@@ -20,14 +27,22 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
       'Content-Type': 'application/json'
     }
   });
-  const data = await response.json();
+  const data: Paginated<UserCardServerResponse> = await response.json();
 
   if (response.ok) {
-    return data as Paginated<UserCard>;
+    const convertedData = data.content.map((card) => convertUserCardServerResponseToUserCard(card));
+    return {
+      ...data,
+      content: convertedData
+    };
   } else {
     console.log(data);
     if (response.status === 400) {
       throw new Error('SETUP_REQUIRED');
+    } else if (response.status === 401) {
+      throw new Error('UNAUTHORIZED');
+    } else if (response.status === 404) {
+      throw new Error('NOT_FOUND');
     } else {
       throw new Error('Failed to fetch user cards');
     }

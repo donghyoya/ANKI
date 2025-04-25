@@ -11,26 +11,26 @@ const LearningProgressBar = ({ userCards }: { userCards: UserCard[]; className: 
   const progress: Progress[] = useMemo(
     () => [
       {
-        value: userCards.filter((card) => card.state === 'Matured').length || 0,
-        label: userCards.filter((card) => card.state === 'Matured').length,
+        value: userCards.filter((card) => card.fsrsParameters.state === 'Matured').length || 0,
+        label: userCards.filter((card) => card.fsrsParameters.state === 'Matured').length,
         tooltip: 'Matured',
         color: LEARNING_PROGRESS_BAR_COLORS.matured
       },
       {
-        value: userCards.filter((card) => card.state === 'Learning').length || 0,
-        label: userCards.filter((card) => card.state === 'Learning').length,
+        value: userCards.filter((card) => card.fsrsParameters.state === 'Learning').length || 0,
+        label: userCards.filter((card) => card.fsrsParameters.state === 'Learning').length,
         tooltip: 'Learning',
         color: LEARNING_PROGRESS_BAR_COLORS.learning
       },
       {
-        value: userCards.filter((card) => card.state === 'Overdue').length || 0,
-        label: userCards.filter((card) => card.state === 'Overdue').length,
+        value: userCards.filter((card) => card.fsrsParameters.state === 'Overdue').length || 0,
+        label: userCards.filter((card) => card.fsrsParameters.state === 'Overdue').length,
         tooltip: 'Overdue',
         color: LEARNING_PROGRESS_BAR_COLORS.overdue
       },
       {
-        value: userCards.filter((card) => card.state === 'New').length || 0,
-        label: userCards.filter((card) => card.state === 'New').length,
+        value: userCards.filter((card) => card.fsrsParameters.state === 'New').length || 0,
+        label: userCards.filter((card) => card.fsrsParameters.state === 'New').length,
         tooltip: 'New',
         color: LEARNING_PROGRESS_BAR_COLORS.new
       }

@@ -22,7 +22,13 @@ export const useStudyQueue = (category: Category) => {
     if (studyQueue === null || currentCard === null) return;
     const newStudyQueue = [
       ...studyQueue.filter((card) => card.cardId !== currentCard.cardId),
-      { ...currentCard, state: rating === ('again' as Rating) ? 'Learning' : 'Matured' }
+      {
+        ...currentCard,
+        fsrsParameters: {
+          ...currentCard.fsrsParameters,
+          state: rating === 'again' ? 'Learning' : 'Matured'
+        }
+      }
     ];
     setStudyQueue(newStudyQueue);
     setCurrentCard(

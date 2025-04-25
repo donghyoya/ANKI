@@ -34,17 +34,6 @@ export interface CardStudyInfo extends FSRSParameters {
   nextStudyDate: string;
 }
 
-export interface UserCard extends Card {
-  fsrsParameters: FSRSParameters;
-  originalLanguage: string;
-  homographNumber: number;
-  partsOfSpeech: string;
-  pronunciation: string;
-  relatedWords: string;
-  inflection: string;
-  exampleUsage: string;
-}
-
 export interface StudyCardForm {
   lapses: number;
   reps: number;
@@ -64,6 +53,16 @@ export interface CardDetail extends Card {
   relatedWords: string;
   inflection: string;
   exampleUsage: string;
+}
+
+export interface UserCard extends CardDetail {
+  fsrsParameters: FSRSParameters;
+}
+
+export interface UserCardServerResponse extends Omit<CardDetail, 'difficulty'>, FSRSParameters {
+  // 서버에서는 difficulty가 아니라 level로 받아옴
+  level: Difficulty;
+  userCardId: number;
 }
 
 export interface Deck {
@@ -88,3 +87,29 @@ export type UserOption = {
   utcOffset: number | null;
   languageCode: Locale;
 };
+
+export function convertUserCardServerResponseToUserCard(card: UserCardServerResponse): UserCard {
+  const {
+    lapses,
+    reps,
+    due,
+    scheduledDays,
+    lastReview,
+    stability,
+    difficulty,
+    state,
+    level,
+    ...rest
+  } = card;
+  const fsrsParameters = {
+    lapses,
+    reps,
+    due,
+    scheduledDays,
+    lastReview,
+    stability,
+    difficulty,
+    state
+  };
+  return { ...rest, difficulty: level, fsrsParameters };
+}

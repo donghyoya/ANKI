@@ -1,25 +1,17 @@
 'use server';
 
-import {
-  Paginated,
-  StudyType,
-  CardStudyInfo,
-  StudyCardForm,
-  UserCardServerResponse,
-  convertUserCardServerResponseToUserCard
-} from '@/types/schemes';
+import { StudyType, CardStudyInfo, UserCardServerResponse } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
+import { FSRSCard } from '@/types/FSRS';
+import { convertUserCardServerResponseToUserCard, convertQuery } from '@/utils/converter';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
 export const getUserCards = async (studyType: StudyType, query: Category, token: string) => {
-  const queryStudyType = studyType === 'new' ? 'study' : 'review';
+  const queryStudyType = convertQuery(studyType);
+  const queryType = convertQuery(getCategoryType(query));
+  const url = `${endpoint}/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${convertQuery(query)}`;
 
-  const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
-
-  const url = `${endpoint}/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
-
-  console.log(url);
   const response = await fetch(url, {
     method: 'GET',
     headers: {
@@ -27,10 +19,12 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
       'Content-Type': 'application/json'
     }
   });
-  const data: Paginated<UserCardServerResponse> = await response.json();
+  const data = await response.json();
 
   if (response.ok) {
-    const convertedData = data.content.map((card) => convertUserCardServerResponseToUserCard(card));
+    const convertedData = data.content.map((card: UserCardServerResponse) =>
+      convertUserCardServerResponseToUserCard(card)
+    );
     return {
       ...data,
       content: convertedData
@@ -38,7 +32,11 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
   } else {
     console.log(data);
     if (response.status === 400) {
-      throw new Error('SETUP_REQUIRED');
+      if (data.message === 'query parameter is invalid') {
+        throw new Error('INVALID_QUERY_PARAMETER');
+      } else {
+        throw new Error('SETUP_REQUIRED');
+      }
     } else if (response.status === 401) {
       throw new Error('UNAUTHORIZED');
     } else if (response.status === 404) {
@@ -67,11 +65,7 @@ export const getCardStudyInfo = async (cardId: number, token: string) => {
   }
 };
 
-export const postCardStudyInfo = async (
-  cardId: number,
-  studyCardForm: StudyCardForm,
-  token: string
-) => {
+export const postCardStudyInfo = async (cardId: number, studyCardForm: FSRSCard, token: string) => {
   const url = `${endpoint}/cards/${cardId}/study`;
   const response = await fetch(url, {
     method: 'POST',

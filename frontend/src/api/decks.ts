@@ -3,14 +3,13 @@
 import { Locale } from '@/types/Locale';
 import { Paginated, CardDetail, UserStudyHistory } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
+import { convertQuery } from '@/utils/converter';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
 export const getDecks = async (queryType: 'difficulty' | 'meaning', token: string) => {
   try {
-    const url = `${endpoint}/decks?queryType=${queryType === 'difficulty' ? 'level' : 'meaning'}`;
-    console.log('요청 URL:', url);
-    console.log('요청 토큰:', token);
+    const url = `${endpoint}/decks?queryType=${convertQuery(queryType)}`;
     const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -25,10 +24,9 @@ export const getDecks = async (queryType: 'difficulty' | 'meaning', token: strin
 };
 
 export const getCardsFromDeck = async (locale: Locale, query: Category, token: string) => {
-  const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
-  const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
-  console.log('요청 URL:', url);
-  console.log('요청 토큰:', token);
+  const queryType = convertQuery(getCategoryType(query));
+  const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${convertQuery(query)}`;
+  console.log('myurl', url);
   const response = await fetch(url, {
     method: 'GET',
     headers: {

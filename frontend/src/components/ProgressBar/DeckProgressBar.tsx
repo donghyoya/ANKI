@@ -29,26 +29,26 @@ const DeckProgressBar = ({
     {
       value: maturityCounts,
       label: isExpanded ? maturityCounts : '',
-      tooltip: 'Learned',
-      color: LEARNING_PROGRESS_BAR_COLORS.matured
-    },
-    {
-      value: overdueCounts,
-      label: isExpanded ? overdueCounts : '',
-      tooltip: 'Overdue',
-      color: LEARNING_PROGRESS_BAR_COLORS.overdue
+      tooltip: 'Review',
+      color: LEARNING_PROGRESS_BAR_COLORS.Review
     },
     {
       value: learningCounts,
       label: isExpanded ? learningCounts : '',
       tooltip: 'Learning',
-      color: LEARNING_PROGRESS_BAR_COLORS.learning
+      color: LEARNING_PROGRESS_BAR_COLORS.Learning
+    },
+    {
+      value: overdueCounts,
+      label: isExpanded ? overdueCounts : '',
+      tooltip: 'Relearning',
+      color: LEARNING_PROGRESS_BAR_COLORS.Relearning
     },
     {
       value: 0,
       label: isExpanded ? 0 : '',
       tooltip: 'New',
-      color: LEARNING_PROGRESS_BAR_COLORS.new
+      color: LEARNING_PROGRESS_BAR_COLORS.New
     }
   ];
 

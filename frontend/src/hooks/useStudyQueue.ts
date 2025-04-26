@@ -1,71 +1,104 @@
-import { useAppSelector } from '@/store/hooks';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useToken } from '@/hooks/useToken';
 
-import { UserCard } from '@/types/schemes';
-import { Rating } from '@/types/IntervalPreview';
-import { Category } from '@/types/Category';
+import { getUserCards, postCardStudyInfo } from '@/api/study';
 
-import { getUserCards } from '@/api/study';
-import { DUMMY_RATING_PREVIEW } from '@/utils/dummyData';
+import { UserCard } from '@/types/schemes';
+import { Category } from '@/types/Category';
+import { IPreview, Rating } from 'ts-fsrs';
+import { createFSRS } from '@/utils/FSRS';
+import { FSRSCard } from '@/types/FSRS';
 
 export const useStudyQueue = (category: Category) => {
-  const initialStudyQueue = useAppSelector((state) => state.studyQueue[category]);
-  const intervalPreview = DUMMY_RATING_PREVIEW;
   const { token } = useToken();
 
-  const [studyQueue, setStudyQueue] = useState<UserCard[] | null>(initialStudyQueue || null);
+  const [studyQueue, setStudyQueue] = useState<UserCard[] | null>(null);
   const [currentCard, setCurrentCard] = useState<UserCard | null>(null);
+  const [isCompleted, setIsCompleted] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
-  const repeat = (rating: Rating) => {
-    if (studyQueue === null || currentCard === null) return;
-    const newStudyQueue = [
-      ...studyQueue.filter((card) => card.cardId !== currentCard.cardId),
-      {
-        ...currentCard,
-        fsrsParameters: {
-          ...currentCard.fsrsParameters,
-          state: rating === 'again' ? 'Learning' : 'Matured'
-        }
-      }
-    ];
-    setStudyQueue(newStudyQueue);
-    setCurrentCard(
-      newStudyQueue.filter((card) => card.fsrsParameters.state !== 'Matured')[0] ?? null
-    );
+  const f = createFSRS();
+
+  const repeat = async (rating: Rating) => {
+    // 에러 처리
+    if (!token) {
+      setError(new Error('UNAUTHORIZED'));
+      return;
+    }
+    if (!currentCard) {
+      setError(new Error('CURRENT_CARD_NOT_FOUND'));
+      return;
+    }
+    if (!studyQueue) {
+      setError(new Error('STUDY_QUEUE_NOT_FOUND'));
+      return;
+    }
+
+    // 새로운 카드 상태 계산
+    const newIPreview = f.repeat(currentCard.fsrsParameters, new Date());
+    const newRecordLogItem = newIPreview[rating as keyof IPreview];
+
+    const newFsrsParameters: FSRSCard =
+      typeof newRecordLogItem === 'function'
+        ? newRecordLogItem().next().value.card
+        : newRecordLogItem.card;
+
+    // 서버에 카드 상태 업데이트
+    try {
+      await postCardStudyInfo(currentCard.cardId, newFsrsParameters, token);
+    } catch (error) {
+      setError(error as Error);
+      return;
+    }
+
+    // 로컬 상태 업데이트
+    const newCard = {
+      ...currentCard,
+      fsrsParameters: newFsrsParameters
+    } as UserCard;
+    setStudyQueue(studyQueue?.map((c) => (c.cardId === currentCard.cardId ? newCard : c)));
   };
 
+  // 학습 큐 요청하기
   useEffect(() => {
-    const fetchCards = async () => {
+    async function fetchStudyQueue() {
       if (!token) return;
       try {
-        const response = await getUserCards('new', category, token);
-        console.log('fetchCards', response);
-        if (response && 'content' in response) {
-          setStudyQueue(response.content);
-          setCurrentCard(
-            response.content.filter((card) => card.fsrsParameters.state !== 'Matured')[0] ?? null
-          );
-        }
+        const newCards = await getUserCards('new', category, token);
+        // const reviewCards = await getUserCards('review', category, token);
+        setStudyQueue([...newCards.content]);
       } catch (error) {
-        console.error('Error fetching cards:', error);
         setError(error as Error);
       }
-    };
-    if (studyQueue === null) {
-      fetchCards();
     }
-  }, [studyQueue, category, token]);
+    fetchStudyQueue();
+  }, [category, token]);
 
+  // 현재 카드 설정하기
   useEffect(() => {
-    console.log('studyQueue:', studyQueue);
-    // TODO: 서버, store 업데이트
+    if (studyQueue) {
+      console.log('studyQueue', studyQueue);
+      let newCard;
+      // 학습 큐에 card.due < new Date()인 카드가 있으면 그 카드를 현재 카드로 설정
+      newCard = studyQueue.find((c) => new Date(c.fsrsParameters.due) < new Date());
+      if (!newCard) {
+        // state가 learned가 아닌 카드 중에서 due가 가장 작은 카드
+        newCard = studyQueue.reduce((minCard, card) => {
+          return new Date(card.fsrsParameters.due) < new Date(minCard.fsrsParameters.due)
+            ? card
+            : minCard;
+        });
+      }
+      if (newCard) setCurrentCard(newCard);
+      else setIsCompleted(true);
+    }
   }, [studyQueue]);
 
-  useEffect(() => {
-    console.log('currentCard:', currentCard);
-  }, [currentCard]);
+  // 예상 학습 시간 계산하기
+  const IPreview = useMemo(() => {
+    if (!currentCard) return null;
+    return f.repeat(currentCard.fsrsParameters, new Date());
+  }, [currentCard, f]);
 
-  return { currentCard, studyQueue, intervalPreview, repeat, error };
+  return { currentCard, studyQueue, IPreview, repeat, error, isCompleted };
 };

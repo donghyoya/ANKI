@@ -2,20 +2,19 @@
 
 import { useState } from 'react';
 import useLearningCardLayout from '@/hooks/useLearningCardLayout';
+import { useParams } from 'next/navigation';
+import { useStudyQueue } from '@/hooks/useStudyQueue';
+import { useTranslations } from 'next-intl';
 
 import LearningCard, { LearningCardState } from '@/components/LearningCard/LearningCard';
 import RatingButtonContainer from '@/components/RatingButton/RatingButtonContainer';
 import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
 
-import styles from './layout.module.scss';
-
 import { Category } from '@/types/Category';
-import { useParams } from 'next/navigation';
-import { useStudyQueue } from '@/hooks/useStudyQueue';
-import { Rating } from '@/types/IntervalPreview';
-
 import { MenuItem } from '@/types/Menu';
-import { useTranslations } from 'next-intl';
+import { Rating } from 'ts-fsrs';
+
+import styles from './layout.module.scss';
 
 export default function LearningPage() {
   const t = useTranslations();
@@ -37,18 +36,18 @@ export default function LearningPage() {
     cardWidth: document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0
   });
 
-  const { currentCard, studyQueue, intervalPreview, repeat, error } = useStudyQueue(
+  const { currentCard, studyQueue, IPreview, repeat, error, isCompleted } = useStudyQueue(
     category as Category
   );
 
   if (error) throw error;
 
-  if (studyQueue === null) {
-    return <div className={styles['page']}>Loading...</div>;
+  if (isCompleted) {
+    return <div className={styles['page']}>학습 끝</div>;
   }
 
-  if (currentCard === null) {
-    return <div className={styles['page']}>학습 끝</div>;
+  if (studyQueue === null || currentCard === null) {
+    return <div className={styles['page']}>Loading...</div>;
   }
 
   const handleReveal = () => {
@@ -125,7 +124,7 @@ export default function LearningPage() {
         setContentHeight={setContentHeight}
       />
       <RatingButtonContainer
-        intervalPreview={intervalPreview}
+        iPreview={IPreview}
         isRevealed={cardState.isRevealed}
         onRepeat={handleOnRepeat}
       />

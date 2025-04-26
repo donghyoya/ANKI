@@ -26,7 +26,7 @@ const ProgressBar = ({ progress, styles: stylesProp, className, height }: Progre
     })
     .reverse();
 
-  const fallbackProgress = [{ value: 0, label: '', color: LEARNING_PROGRESS_BAR_COLORS.new }];
+  const fallbackProgress = [{ value: 0, label: '', color: LEARNING_PROGRESS_BAR_COLORS.New }];
 
   if (progress.some((p) => p.value === null)) {
     progress = fallbackProgress;

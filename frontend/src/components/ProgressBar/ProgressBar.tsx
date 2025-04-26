@@ -54,10 +54,10 @@ const ProgressBar = ({
     >
       {[...progressBarSegments].reverse().map((bar, index) => {
         return (
-          <div
+          <motion.div
             key={index}
             className={styles['bar']}
-            style={{
+            animate={{
               backgroundColor: bar.color,
               width: percentages[index] + '%',
               paddingLeft: `${percentages[index + 1] ?? 0}%`,
@@ -69,7 +69,7 @@ const ProgressBar = ({
                 <span className={styles['label']}>{bar.label ? bar.label : ''}</span>
               </TooltipProvider>
             </div>
-          </div>
+          </motion.div>
         );
       })}
     </motion.div>

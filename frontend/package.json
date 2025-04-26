@@ -22,7 +22,8 @@
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
-    "sass": "^1.83.4"
+    "sass": "^1.83.4",
+    "ts-fsrs": "^4.7.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

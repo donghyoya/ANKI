@@ -13,12 +13,13 @@ export const getUserOption = async (token: string) => {
       'Content-Type': 'application/json'
     }
   });
+
   const data = await response.json();
 
   if (response.ok) {
     return data as UserOption;
   } else {
-    throw new Error('Failed to fetch user option');
+    throw new Error(data.message);
   }
 };
 
@@ -33,9 +34,11 @@ export const postUserOption = async (userOption: UserOption, token: string) => {
     body: JSON.stringify(userOption)
   });
 
+  const data = await response.json();
+
   if (response.ok) {
-    return response.json();
+    return data as UserOption;
   } else {
-    throw new Error('Failed to post user option');
+    throw new Error(data.message);
   }
 };

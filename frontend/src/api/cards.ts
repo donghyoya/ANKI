@@ -23,7 +23,7 @@ export const forignSearch = async (locale: Locale, query: string, token: string)
   if (response.ok) {
     return data as Paginated<Card>;
   } else {
-    throw new Error('Failed to fetch foreign search');
+    throw new Error(data.message);
   }
 };
 
@@ -31,6 +31,7 @@ export const koreanSearch = async (locale: Locale, query: string, token: string)
   const page = 1;
   const pageSize = 10;
   const url = `${endpoint}/cards/korean-search?code=${locale}&query=${query}&page=${page}&pageSize=${pageSize}`;
+
   const response = await fetch(url, {
     method: 'GET',
     headers: {
@@ -38,17 +39,19 @@ export const koreanSearch = async (locale: Locale, query: string, token: string)
       'Content-Type': 'application/json'
     }
   });
+
   const data = await response.json();
 
   if (response.ok) {
     return data as Paginated<Card>;
   } else {
-    throw new Error('Failed to fetch korean search');
+    throw new Error(data.message);
   }
 };
 
 export const getCard = async (cardId: number, token: string) => {
   const url = `${endpoint}/cards/${cardId}`;
+
   const response = await fetch(url, {
     method: 'GET',
     headers: {
@@ -56,12 +59,13 @@ export const getCard = async (cardId: number, token: string) => {
       'Content-Type': 'application/json'
     }
   });
+
   const data = await response.json();
 
   if (response.ok) {
     return data as Card;
   } else {
-    throw new Error('Failed to fetch card');
+    throw new Error(data.message);
   }
 };
 
@@ -79,6 +83,6 @@ export const getCardDetail = async (cardId: number, token: string) => {
   if (response.ok) {
     return data as CardDetail;
   } else {
-    throw new Error('Failed to fetch card detail');
+    throw new Error(data.message);
   }
 };

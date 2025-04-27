@@ -1,26 +1,26 @@
 'use server';
 
 import { Locale } from '@/types/Locale';
-import { Paginated, CardDetail, UserStudyHistory } from '@/types/schemes';
+import { Paginated, CardDetail, UserStudyHistory, Deck } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
 export const getDecks = async (queryType: 'difficulty' | 'meaning', token: string) => {
-  try {
-    const url = `${endpoint}/decks?queryType=${queryType === 'difficulty' ? 'level' : 'meaning'}`;
-    console.log('요청 URL:', url);
-    console.log('요청 토큰:', token);
-    const response = await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
-    });
-    return response.json();
-  } catch (error) {
-    console.error('getDecks:', error);
-    throw error;
+  const url = `${endpoint}/decks?queryType=${queryType === 'difficulty' ? 'level' : 'meaning'}`;
+  console.log('요청 URL:', url);
+  console.log('요청 토큰:', token);
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
+  const data = await response.json();
+  if (response.ok) {
+    return data as Paginated<Deck>;
+  } else {
+    throw new Error(data.message);
   }
 };
 
@@ -59,7 +59,7 @@ export const getUserStudyHistories = async (token: string) => {
   if (response.ok) {
     return data as Paginated<UserStudyHistory>;
   } else {
-    throw new Error('Failed to fetch user study histories');
+    throw new Error(data.message);
   }
 };
 
@@ -77,6 +77,6 @@ export const getLatestUserStudyHistory = async (token: string) => {
   if (response.ok) {
     return data as UserStudyHistory;
   } else {
-    throw new Error('Failed to fetch latest user study history');
+    throw new Error(data.message);
   }
 };

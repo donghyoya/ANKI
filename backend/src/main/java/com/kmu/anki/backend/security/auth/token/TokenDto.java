@@ -4,10 +4,12 @@ import lombok.Getter;
 
 @Getter
 public class TokenDto {
+    private String subject;
     private Long userId;
     private String role;
 
-    public TokenDto(Long userId, String role) {
+    public TokenDto(String subject, Long userId, String role) {
+        this.subject = subject;
         this.userId = userId;
         this.role = role;
     }

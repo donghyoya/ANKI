@@ -58,7 +58,7 @@ class JwtTokenServiceTest {
     @DisplayName("토큰 검증 및 claims 추출 테스트")
     void validateAndGetClaimsTest(){
         // given
-        String subject = "4";
+        String subject = "testUser";
         String role = "ROLE_ADMIN";
         Map<String, Object> claims = Map.of("role", role);
 
@@ -69,7 +69,7 @@ class JwtTokenServiceTest {
         assertNotEquals("", token);
         TokenDto tokenDto = jwtTokenService.validateAndGetClaims(token);
 
-        assertEquals(subject, tokenDto.getUserId().toString());
+        assertEquals(subject, tokenDto.getSubject());
         assertEquals(role, tokenDto.getRole());
     }
 }

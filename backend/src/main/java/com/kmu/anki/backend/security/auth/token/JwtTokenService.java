@@ -50,9 +50,13 @@ public class JwtTokenService {
     public TokenDto validateAndGetClaims(String token){
         try {
             Claims claims = getClaims(token);
-            String userId = claims.getSubject();
+            String subject = claims.getSubject();
+            Long userId = claims.get("userId", Long.class);
             String role = claims.get("role", String.class);
-            return new TokenDto(Long.parseLong(userId), role);
+            if(role == null){
+                throw new InvalidTokenException();
+            }
+            return new TokenDto(subject, userId,role);
         } catch (ExpiredJwtException ex){
             // 만료된 토큰
             throw ex;
@@ -77,12 +81,12 @@ public class JwtTokenService {
             return true;
         } catch (ExpiredJwtException ex){
             // 만료된 토큰
-            throw ex;
+            return false;
         } catch(JwtException | IllegalArgumentException ex) {
             // 잘못된 토큰
-            throw new InvalidTokenException();
+            return false;
         }catch (RuntimeException ex){
-            throw new InvalidTokenException();
+            return false;
         }
     }
 

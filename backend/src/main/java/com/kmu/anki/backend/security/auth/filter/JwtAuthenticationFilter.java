@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.security.auth.filter;
 
 import com.kmu.anki.backend.security.auth.token.JwtTokenService;
+import com.kmu.anki.backend.security.auth.token.TokenDto;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -25,26 +26,37 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtTokenService jwtTokenService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        log.info("[jwt filter] authentication check");
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+        log.info("[JWT Filter] Authentication check started");
+
         String token = resolveToken(request);
 
-        if (token != null && jwtTokenService.validateToken(token)) {
-            String username = jwtTokenService.getSubject(token);
+        if (token != null) {
+            try {
+                TokenDto tokenDto = jwtTokenService.validateAndGetClaims(token);
+                String username = tokenDto.getSubject();
+                String role = tokenDto.getRole();
 
-            UsernamePasswordAuthenticationToken authentication =
-                    new UsernamePasswordAuthenticationToken(
-                            username,
-                            null,
-                            List.of(new SimpleGrantedAuthority("ROLE_USER")) // TODO user roles
-                    );
-            SecurityContext context = SecurityContextHolder.getContextHolderStrategy().createEmptyContext();
-            context.setAuthentication(authentication);
-            SecurityContextHolder.getContextHolderStrategy().setContext(context);
-            log.info("[jwt filter] authentication OK");
-        }else {
-            log.info("[jwt filter] authentication fail");
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                        username,
+                        null,
+                        List.of(new SimpleGrantedAuthority(role))
+                );
+
+                SecurityContext context = SecurityContextHolder.createEmptyContext();
+                context.setAuthentication(authentication);
+                SecurityContextHolder.setContext(context);
+
+                log.info("[JWT Filter] Authentication success for user: {}", username);
+
+            } catch (Exception e) {
+                log.warn("[JWT Filter] Authentication failed: {}", e.getMessage());
+            }
+        } else {
+            log.info("[JWT Filter] No token provided");
         }
+
         filterChain.doFilter(request, response);
     }
 

@@ -1,6 +1,6 @@
 import Navigation from '@/components/Navigation/Navigation';
-import I18nProvider from '../../providers/I18nProvider';
-import { StoreProvider } from './providers/StoreProvider';
+import I18nProvider from '@/providers/I18nProvider';
+import { StoreProvider } from '@/providers/StoreProvider';
 
 import styles from './layout.module.scss';
 

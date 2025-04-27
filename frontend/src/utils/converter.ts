@@ -93,3 +93,19 @@ export function convertToCamelCase<T extends Record<string, unknown>>(obj: T) {
     return { ...acc, [camelKey]: value };
   }, {});
 }
+
+export function convertToCamelCaseDeep<T>(obj: T): T {
+  if (obj instanceof Date) {
+    return obj as T;
+  }
+  if (Array.isArray(obj)) {
+    return obj.map(convertToCamelCaseDeep) as T;
+  } else if (obj !== null && typeof obj === 'object') {
+    return Object.entries(obj).reduce((acc: Record<string, unknown>, [key, value]) => {
+      const camelKey = camelCase(key);
+      acc[camelKey] = convertToCamelCaseDeep(value);
+      return acc;
+    }, {}) as T;
+  }
+  return obj;
+}

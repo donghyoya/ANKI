@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.security.auth.token;
 
+import com.kmu.anki.backend.security.auth.exception.InvalidTokenException;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -37,6 +38,7 @@ public class JwtTokenService {
     public String generateToken(String subject, Map<String, Object> claims) {
         long now = System.currentTimeMillis();
         return Jwts.builder()
+                .setHeaderParam("typ", "JWT")
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(now))
@@ -45,18 +47,42 @@ public class JwtTokenService {
                 .compact();
     }
 
+    public TokenDto validateAndGetClaims(String token){
+        try {
+            Claims claims = getClaims(token);
+            String userId = claims.getSubject();
+            String role = claims.get("role", String.class);
+            return new TokenDto(Long.parseLong(userId), role);
+        } catch (ExpiredJwtException ex){
+            // 만료된 토큰
+            throw ex;
+        } catch(JwtException | IllegalArgumentException ex) {
+            // 잘못된 토큰
+            throw new InvalidTokenException();
+        }catch (RuntimeException ex){
+            throw new InvalidTokenException();
+        }
+
+    }
+
     /**
      * 토큰 검증 
      * @param token 검증할 JWT 토큰 
      * @return 토큰 검증 결과 
      */
+    @Deprecated
     public boolean validateToken(String token) {
         try {
-            Jws<Claims> claimsJws = parser.parseClaimsJws(token);
+            Claims claims = getClaims(token);
             return true;
-        } catch (JwtException | IllegalArgumentException e) {
+        } catch (ExpiredJwtException ex){
+            // 만료된 토큰
+            throw ex;
+        } catch(JwtException | IllegalArgumentException ex) {
             // 잘못된 토큰
-            return false;
+            throw new InvalidTokenException();
+        }catch (RuntimeException ex){
+            throw new InvalidTokenException();
         }
     }
 

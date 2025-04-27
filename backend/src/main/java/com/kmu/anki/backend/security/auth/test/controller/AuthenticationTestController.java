@@ -29,8 +29,7 @@ public class AuthenticationTestController {
     @ResponseBody
     @GetMapping("/get-test-token")
     public Map<String, String> getTestToken(){
-        String testToken = testAuthenticationService.getTestToken();
-        return Map.of("token", testToken);
+        return testAuthenticationService.getTestTokens();
     }
 
     /**

@@ -8,7 +8,7 @@ import java.util.Map;
 @Getter
 @NoArgsConstructor
 public class TokenClaimBuilder {
-    private String userId;
+    private Long userId;
     private String role;
 
     public Map<String, Object> build(){
@@ -24,7 +24,7 @@ public class TokenClaimBuilder {
         return this;
     }
 
-    public TokenClaimBuilder userId(String userId) {
+    public TokenClaimBuilder userId(Long userId) {
         this.userId = userId;
         return this;
     }

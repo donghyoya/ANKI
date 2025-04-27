@@ -22,7 +22,7 @@ public class AuthenticationController {
         Long userId = Long.parseLong(authentication.getName());
         LoginUserDto userDto = userService.loadUserDetail(userId);
         TokenClaimBuilder builder = TokenClaimBuilder.builder()
-                .userId(userDto.getId().toString())
+                .userId(userDto.getId())
                 .role(userDto.getRole().toString());
         String accessToken = jwtTokenService.generateAccessToken(userId.toString(), builder);
         String refreshToken = jwtTokenService.generateRefreshToken(userId.toString(), builder);

@@ -35,7 +35,7 @@ class AuthenticationControllerTest extends AbstractControllerTest {
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
                                                 .tag("Authentication")
-                                                .summary("실제 사용하는 토큰 발급하기")
+                                                .summary("실제 사용하는 토큰 발급하기. 단 authenticationToken, refreshToken만 사용할 것")
                                                 .responseFields(
                                                         fieldWithPath("accessToken").description("accessToken"),
                                                         fieldWithPath("refreshToken").description("refreshToken"),

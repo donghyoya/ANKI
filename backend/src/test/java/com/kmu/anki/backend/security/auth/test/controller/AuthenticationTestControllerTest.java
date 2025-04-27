@@ -70,7 +70,10 @@ class AuthenticationTestControllerTest extends AbstractControllerTest {
                                                 .tag("AuthTest")
                                                 .summary("jwt 인증 테스트용 토큰 발급")
                                                 .responseFields(
-                                                        fieldWithPath("token").description("test용 jwt token")
+                                                        fieldWithPath("authenticationToken").description("authenticationToken"),
+                                                        fieldWithPath("accessToken").description("accessToken"),
+                                                        fieldWithPath("refreshToken").description("refreshToken"),
+                                                        fieldWithPath("firstLogin").description("firstLogin")
                                                 )
                                                 .responseSchema(new Schema("AuthTestTokenSchema"))
                                                 .build()
@@ -79,7 +82,11 @@ class AuthenticationTestControllerTest extends AbstractControllerTest {
                 )
                 .andReturn();
         Map<String, String> body = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), Map.class);
-        String token = body.get("token");
-        assertTrue(jwtTokenService.validateToken(token));
+        String accessToken = body.get("accessToken");
+        assertTrue(jwtTokenService.validateToken(accessToken));
+        String authenticationToken = body.get("authenticationToken");
+        assertTrue(jwtTokenService.validateToken(authenticationToken));
+        String refreshToken = body.get("refreshToken");
+        assertTrue(jwtTokenService.validateToken(refreshToken));
     }
 }

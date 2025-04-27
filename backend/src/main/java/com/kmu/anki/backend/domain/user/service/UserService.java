@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.domain.user.service;
 
 import com.kmu.anki.backend.domain.user.dto.CreateUserDto;
+import com.kmu.anki.backend.domain.user.dto.LoginUserDto;
 import com.kmu.anki.backend.domain.user.dto.UserDto;
 import com.kmu.anki.backend.domain.user.entity.User;
 import com.kmu.anki.backend.domain.user.repository.UserRepository;
@@ -29,5 +30,10 @@ public class UserService {
 
     public Optional<User> findUserByUsername(String username){
         return userRepository.findByName(username);
+    }
+
+    public LoginUserDto loadUserDetail(Long userId){
+        User user = userRepository.findById(userId).orElseThrow();
+        return LoginUserDto.of(user);
     }
 }

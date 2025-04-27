@@ -1,16 +1,17 @@
 package com.kmu.anki.backend.security.auth.token;
 
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 public class TokenDto {
-    private String subject;
-    private Long userId;
-    private String role;
+    private String accessToken;
+    private String refreshToken;
+    private boolean isFirstLogin;
 
-    public TokenDto(String subject, Long userId, String role) {
-        this.subject = subject;
-        this.userId = userId;
-        this.role = role;
+    public TokenDto(String accessToken, String refreshToken, boolean isFirstLogin) {
+        this.accessToken = accessToken;
+        this.refreshToken = refreshToken;
+        this.isFirstLogin = isFirstLogin;
     }
 }

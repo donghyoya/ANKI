@@ -1,7 +1,7 @@
 package com.kmu.anki.backend.security.auth.filter;
 
 import com.kmu.anki.backend.security.auth.token.JwtTokenService;
-import com.kmu.anki.backend.security.auth.token.TokenDto;
+import com.kmu.anki.backend.security.auth.token.TokenClaimsDto;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -16,8 +16,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Slf4j
@@ -34,9 +32,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         if (token != null) {
             try {
-                TokenDto tokenDto = jwtTokenService.validateAndGetClaims(token);
-                String username = tokenDto.getSubject();
-                String role = tokenDto.getRole();
+                TokenClaimsDto tokenClaimsDto = jwtTokenService.validateAndGetClaims(token);
+                String username = tokenClaimsDto.getSubject();
+                String role = tokenClaimsDto.getRole();
 
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         username,

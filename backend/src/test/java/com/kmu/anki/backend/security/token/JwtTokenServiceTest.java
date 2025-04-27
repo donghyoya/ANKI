@@ -1,7 +1,7 @@
 package com.kmu.anki.backend.security.token;
 
 import com.kmu.anki.backend.security.auth.token.JwtTokenService;
-import com.kmu.anki.backend.security.auth.token.TokenDto;
+import com.kmu.anki.backend.security.auth.token.TokenClaimsDto;
 import io.jsonwebtoken.Claims;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -67,9 +67,9 @@ class JwtTokenServiceTest {
 
         // then
         assertNotEquals("", token);
-        TokenDto tokenDto = jwtTokenService.validateAndGetClaims(token);
+        TokenClaimsDto tokenClaimsDto = jwtTokenService.validateAndGetClaims(token);
 
-        assertEquals(subject, tokenDto.getSubject());
-        assertEquals(role, tokenDto.getRole());
+        assertEquals(subject, tokenClaimsDto.getSubject());
+        assertEquals(role, tokenClaimsDto.getRole());
     }
 }

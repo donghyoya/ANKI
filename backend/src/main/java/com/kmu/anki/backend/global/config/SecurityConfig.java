@@ -75,6 +75,8 @@ public class SecurityConfig {
                         // 개별 카드에 대한 간단한 정보는 authentication이 없어도 작동하게끔
                         .requestMatchers(HttpMethod.GET, "/cards/{id}").permitAll() // cards/study에서 study를 id로 인식하여 허용하는 문제가 있음
                         .requestMatchers(HttpMethod.GET, "/cards/{id}/details").permitAll()
+                        // 토큰 로그인 관련
+                        .requestMatchers("/auth/token").hasAnyRole("AUTHENTICATION", "REFRESH")
                         .anyRequest().authenticated()                                   // 나머지는 인증 필요
                 ).exceptionHandling(exception -> exception
                         .authenticationEntryPoint(customAuthenticationEntryPoint)

@@ -4,19 +4,23 @@ import React, { useState, useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useWindowSize } from '@/hooks/useWindowSize';
 
-import DeckCard from '@/components/DeckCard/DeckCard';
+import DeckCardDesktop from '@/components/DeckCard/DeckCard';
 import DeckCardCompact from '@/components/DeckCard/DeckCardCompact';
 import CustomDialog from '@/components/Dialogs/CustomDialog';
 
 import styles from './DeckListPage.module.scss';
+import { Deck } from '@/types/schemes';
+import { Category } from '@/types/Category';
 
-interface DeckListPageProps {
-  title: string;
-  data: Array<{ name: string; key: string; isCompleted: boolean; wordCount: number }>;
-  isDifficulty: boolean;
-}
-
-export default function DeckListPage({ title, data, isDifficulty }: DeckListPageProps) {
+export default function DeckListPage({
+  decks,
+  categoryType,
+  displayOrder
+}: {
+  decks: Deck[];
+  categoryType: 'difficulty' | 'meaning';
+  displayOrder: Category[];
+}) {
   const t = useTranslations();
   const locale = useLocale(); // 현재 로케일 가져오기
 
@@ -35,26 +39,28 @@ export default function DeckListPage({ title, data, isDifficulty }: DeckListPage
 
   const handleLearn = (isCompleted: boolean) => setIsDialogOpen(isCompleted);
 
-  const CardComponent = isCompact ? DeckCardCompact : DeckCard;
+  const DeckCard = isCompact ? DeckCardCompact : DeckCardDesktop;
+
+  const sortedDecks = useMemo(() => {
+    return decks.sort(
+      (a, b) => displayOrder.indexOf(a.category) - displayOrder.indexOf(b.category)
+    );
+  }, [decks, displayOrder]);
 
   return (
     <>
       <div className={styles['page']}>
         <div className={styles['content']}>
-          {!isCompact && <h1 className={styles.title}>{t(title)}</h1>}
+          {!isCompact && <h1 className={styles.title}>{t(categoryType)}</h1>}
           <div className={styles.cards}>
-            {data.map((item) => (
-              <CardComponent
-                key={item.key}
-                title={t(`${isDifficulty ? 'difficulty' : 'meanings'}.${item.key}`)}
-                isCompleted={item.isCompleted}
-                wordCount={item.wordCount}
+            {sortedDecks.map((deck) => (
+              <DeckCard
+                key={deck.category}
+                deck={deck}
+                isCompleted={false} // TODO
                 locale={locale}
                 buttonLabels={buttonLabels}
-                isDifficulty={isDifficulty}
-                level={isDifficulty ? item.key : undefined}
-                category={!isDifficulty ? item.key : undefined}
-                onLearn={() => handleLearn(item.isCompleted)}
+                onLearn={() => handleLearn(false)}
                 onViewWords={() => {}}
               />
             ))}

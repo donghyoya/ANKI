@@ -15,7 +15,7 @@ const TooltipProvider = ({
   extraGap
 }: {
   children: React.ReactNode;
-  text: string;
+  text: string | undefined;
   extraGap?: boolean;
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -51,6 +51,8 @@ const TooltipProvider = ({
     if (!wrapperRef.current) return;
     setRect(wrapperRef.current.getBoundingClientRect());
   }, [text]);
+
+  if (!text) return children;
 
   return (
     <div className={styles['tooltip-wrap']} ref={wrapperRef}>

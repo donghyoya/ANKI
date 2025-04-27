@@ -2,11 +2,17 @@ import { IconButton, Icon } from '@/components/material-components/IconButton/Ic
 import styles from './ConjugationSection.module.scss';
 import { useTranslations } from 'next-intl';
 
-const CONJUGATION_LABELS = [
+const PredicateConjugationLabels = [
   { key: 'pastParticiple', lable: 'Past participle' },
   { key: 'connective', lable: 'Connective' },
   { key: 'seqConnect', lable: 'Sequential connective' },
   { key: 'formalPresent', lable: 'Formal polite present' }
+];
+
+const NounConjugationLabels = [
+  { key: 'subjectMarker', lable: 'Subject marker' },
+  { key: 'alsoTooParticle', lable: 'Also/too particle' },
+  { key: 'onlyJustParticle', lable: 'Only/just particle' }
 ];
 
 interface ConjugationSectionProps {
@@ -22,6 +28,9 @@ const ConjugationSection = ({
 }: ConjugationSectionProps) => {
   const t = useTranslations();
 
+  const conjugationLabels =
+    conjugations.length > 3 ? PredicateConjugationLabels : NounConjugationLabels;
+
   return (
     <div className={styles['conjugations-container']}>
       <div className={styles['conjugations-header']}>
@@ -35,7 +44,7 @@ const ConjugationSection = ({
       {isExpanded && (
         <div className={styles['conjugations-list']}>
           <div className={styles['conjugation-item-container']}>
-            {CONJUGATION_LABELS.map((label) => (
+            {conjugationLabels.map((label) => (
               <div className={styles['conjugation-item']} key={label.key}>
                 <span className={styles['conjugation-item-label']}>
                   {t(`learning.${label.key}`)}

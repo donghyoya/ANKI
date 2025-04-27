@@ -1,0 +1,38 @@
+@use '@/styles/typography' as tp;
+@use '@/styles/breakpoints' as bp;
+
+.example-item {
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+  gap: 8px;
+
+  &:first-child {
+    margin-bottom: 12px;
+  }
+}
+
+.example-item-label {
+  color: var(--md-sys-color-secondary);
+  @include tp.label-medium;
+
+  @include bp.respond-to('large') {
+    @include tp.title-small;
+  }
+
+  @include bp.respond-to('extra-large') {
+    @include tp.title-medium;
+  }
+}
+
+.example-item-list-text {
+  color: var(--md-sys-color-on-surface);
+  @include tp.label-medium;
+
+  @include bp.respond-to('large') {
+    @include tp.body-medium;
+  }
+  @include bp.respond-to('extra-large') {
+    @include tp.body-large;
+  }
+}

@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
-import styles from './Settings.module.scss';
 import { OutlinedTextField } from '@/components/material-components/TextField';
 import { Icon } from '@/components/material-components/IconButton/IconButton';
 import { OutlinedSelect, SelectOption } from '@/components/material-components/Select';
@@ -15,6 +14,16 @@ import { Menu, MenuItem } from '@/components/material-components/Menu';
 
 import classNames from 'classnames';
 import { useWindowSize } from '@/hooks/useWindowSize';
+import { LANGUAGE_OPTIONS, UTC_OFFSET_OPTIONS } from '@/utils/dummyData';
+
+import { getUserOption, postUserOption } from '@/api/option';
+import { UserOption } from '@/types/schemes';
+import { MdOutlinedTextField } from '@material/web/textfield/outlined-text-field';
+
+import styles from './SettingsPage.module.scss';
+import FilledButton from '@/components/material-components/FilledButton';
+import { useToken } from '@/hooks/useToken';
+import { Locale } from '@/types/Locale';
 
 export default function SettingsPage() {
   const locale = useLocale();
@@ -24,31 +33,17 @@ export default function SettingsPage() {
   const { width } = useWindowSize();
   const isCompact = width < 1200;
 
-  const [selectedLocale, setSelectedLocale] = useState(locale);
+  const [userOptions, setUserOptions] = useState<UserOption | null>(null);
+  const { token } = useToken();
 
-  const languageOptions = [
-    { code: 'ar', label: 'العربية' }, // 아랍어
-    { code: 'en', label: 'English' }, // 영어
-    { code: 'es', label: 'Español' }, // 스페인어
-    { code: 'fr', label: 'Français' }, // 프랑스어
-    { code: 'id', label: 'Bahasa Indonesia' }, // 인도네시아어
-    { code: 'ja', label: '日本語' }, // 일본어
-    { code: 'ko', label: '한국어' }, // 한국어
-    { code: 'mn', label: 'Монгол' }, // 몽골어
-    { code: 'ru', label: 'Русский' }, // 러시아어
-    { code: 'th', label: 'ไทย' }, // 태국어
-    { code: 'vi', label: 'Tiếng Việt' }, // 베트남어
-    { code: 'zh', label: '中文' } // 중국어
-  ];
-
-  const handleChangeLanguage = (newLocale: string) => {
-    setSelectedLocale(newLocale);
-    router.push(`/${newLocale}/settings`);
-    router.refresh();
+  const handleChangeLanguage = (newLocale: Locale) => {
+    if (userOptions === null) return;
+    setUserOptions({ ...userOptions, languageCode: newLocale });
   };
 
-  const handleLanguageMenuClick = () => {
+  const handleLanguageMenuClick = (e: FormEvent<MdOutlinedTextField>) => {
     const menu = document.getElementById('language-menu') as HTMLDialogElement;
+    console.log(e);
     menu.open = !menu.open;
   };
 
@@ -57,21 +52,71 @@ export default function SettingsPage() {
     menu.open = !menu.open;
   };
 
+  const handleUtcOffsetMenuClick = () => {
+    const menu = document.getElementById('utc-offset-menu') as HTMLDialogElement;
+    menu.open = !menu.open;
+  };
+
+  const handleOnChangeTextField = (e: FormEvent<MdOutlinedTextField>) => {
+    // const value = Number((e.target as MdOutlinedTextField).value);
+    // if (userOptions === null) return;
+    // setUserOptions({
+    //   ...userOptions,
+    // });
+  };
+
+  const handleChangeUtcOffset = (newUtcOffset: number) => {
+    if (userOptions === null) return;
+    setUserOptions({ ...userOptions, utcOffset: newUtcOffset });
+  };
+
+  const handleSave = async () => {
+    if (userOptions === null || token === null) return;
+    try {
+      await postUserOption(userOptions, token);
+      // TODO: replace alert with modal
+      alert('Saved');
+    } catch {
+      alert('Failed to save');
+    }
+
+    if (locale !== userOptions.languageCode) {
+      router.push(`/${userOptions.languageCode}/settings`);
+      router.refresh();
+    }
+  };
+
+  useEffect(() => {
+    if (token === null) return;
+    const fetchOptions = async () => {
+      const options = await getUserOption(token);
+      console.log(options);
+      setUserOptions(options as UserOption);
+    };
+    fetchOptions();
+  }, [token]);
+
+  useEffect(() => {
+    if (userOptions === null) return;
+    console.log('userOptions', userOptions);
+  }, [userOptions]);
+
   const webView = (
     <div className={styles.page}>
       <div className={styles.contents}>
+        <FilledButton onClick={handleSave}>Save</FilledButton>
         <h1 className={styles.title}>{t('settings.settings')}</h1>
         <div className={styles['group']}>
           <h3 className={styles['group-title']}>{t('settings.system')}</h3>
           <div className={classNames(styles['field-section'], styles['first-field-section'])}>
             <label className={styles.label}>{t('settings.language')}</label>
             <OutlinedSelect value={locale}>
-              {languageOptions.map((lang) => (
+              {LANGUAGE_OPTIONS.map((lang) => (
                 <SelectOption
                   key={lang.code}
                   value={lang.code}
                   selected={lang.code === locale}
-                  onClick={() => handleChangeLanguage(lang.code)}
+                  onClick={() => handleChangeLanguage(lang.code as Locale)}
                 >
                   {lang.label}
                 </SelectOption>
@@ -91,11 +136,19 @@ export default function SettingsPage() {
           <h3 className={styles['group-title']}>{t('settings.learning')}</h3>
           <div className={classNames(styles['field-section'], styles['first-field-section'])}>
             <label className={styles.label}>{t('settings.reviewCount')}</label>
-            <OutlinedTextField value="20"></OutlinedTextField>
+            <OutlinedTextField
+              id="dailyReviewWords"
+              value={userOptions?.dailyReviewWords?.toString()}
+              onChange={handleOnChangeTextField}
+            ></OutlinedTextField>
           </div>
           <div className={styles['field-section']}>
             <label className={styles.label}>{t('settings.newCount')}</label>
-            <OutlinedTextField value="20"></OutlinedTextField>
+            <OutlinedTextField
+              id="dailyStudyWords"
+              value={userOptions?.dailyStudyWords?.toString()}
+              onChange={handleOnChangeTextField}
+            ></OutlinedTextField>
           </div>
         </div>
         <div className={styles['group']}>
@@ -111,28 +164,24 @@ export default function SettingsPage() {
 
   const mobileView = (
     <div className={styles.page}>
+      <FilledButton onClick={handleSave}>Save</FilledButton>
       <List className={styles.list}>
         <div style={{ position: 'relative' }}>
           <ListItem type="button" id="language-anchor" onClick={handleLanguageMenuClick}>
             <div slot="headline">{t('settings.language')}</div>
             <div slot="supporting-text">
-              {languageOptions.find((lang) => lang.code === locale)?.label || 'English'}
+              {LANGUAGE_OPTIONS.find((lang) => lang.code === userOptions?.languageCode)?.label ||
+                'English'}
             </div>
             <Icon slot="end">arrow_drop_down</Icon>
           </ListItem>
-          <Menu
-            id="language-menu"
-            anchor="language-anchor"
-            anchorCorner="end-end"
-            xOffset={-160}
-            className={styles['language-menu']}
-          >
-            {languageOptions.map((lang) => (
+          <Menu id="language-menu" anchor="language-anchor" anchorCorner="end-end" xOffset={-160}>
+            {LANGUAGE_OPTIONS.map((lang) => (
               <MenuItem
                 key={lang.code}
-                selected={lang.code === selectedLocale}
+                selected={lang.code === userOptions?.languageCode}
                 onClick={() => {
-                  handleChangeLanguage(lang.code);
+                  handleChangeLanguage(lang.code as Locale);
                 }}
               >
                 {lang.label}
@@ -148,6 +197,34 @@ export default function SettingsPage() {
           </ListItem>
           <Menu id="theme-menu" anchor="theme-anchor" anchorCorner="end-end" xOffset={-112}>
             <MenuItem>classic</MenuItem>
+          </Menu>
+        </div>
+        <div style={{ position: 'relative' }}>
+          <ListItem type="button" id="utc-offset-anchor" onClick={handleUtcOffsetMenuClick}>
+            <div slot="headline">{t('settings.utcOffset')}</div>
+            <div slot="supporting-text">
+              {UTC_OFFSET_OPTIONS.find((offset) => offset.code === userOptions?.utcOffset)?.label ||
+                'UTC+00:00'}
+            </div>
+            <Icon slot="end">arrow_drop_down</Icon>
+          </ListItem>
+          <Menu
+            id="utc-offset-menu"
+            anchor="utc-offset-anchor"
+            anchorCorner="end-end"
+            xOffset={-160}
+          >
+            {UTC_OFFSET_OPTIONS.map((offset) => (
+              <MenuItem
+                key={offset.code}
+                selected={offset.code === userOptions?.utcOffset}
+                onClick={() => {
+                  handleChangeUtcOffset(offset.code);
+                }}
+              >
+                {offset.label}
+              </MenuItem>
+            ))}
           </Menu>
         </div>
         <ListItem type="button">

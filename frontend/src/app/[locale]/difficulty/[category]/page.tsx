@@ -1,17 +1,17 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useToken } from '@/hooks/useToken';
-import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 
 import { getCardsFromDeck } from '@/api/decks';
 import WordListPage from '@/components/common/WordListPage';
 
+import { CardDetail, Paginated } from '@/types/schemes';
 import { Locale } from '@/types/Locale';
 import { Category } from '@/types/Category';
-import { CardDetail, Paginated } from '@/types/schemes';
 
-export default function MeaningsWordsPage() {
+export default function DifficultyWordsPage() {
   const { category, locale } = useParams() ?? {};
   const { token } = useToken();
 

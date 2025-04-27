@@ -1,18 +1,28 @@
 import { useTranslations } from 'next-intl';
 
-import { WordExample } from '@/types/Card';
 import { IconButton, Icon } from '@/components/material-components/IconButton/IconButton';
+import ExampleItem from './ExampleItem';
 
 import styles from './ExampleSection.module.scss';
 
 interface ExampleSectionProps {
-  examples: WordExample;
+  examples: string[];
   isExpanded: boolean;
   toggleExpanded: () => void;
 }
 
 const ExampleSection = ({ examples, isExpanded, toggleExpanded }: ExampleSectionProps) => {
   const t = useTranslations();
+
+  const phraseExamples = examples
+    .filter((example) => example.startsWith('<구>'))
+    .map((example) => example.replace('<구>', ''));
+  const sentenceExamples = examples
+    .filter((example) => example.startsWith('<문장>'))
+    .map((example) => example.replace('<문장>', ''));
+  const conversationExamples = examples
+    .filter((example) => example.startsWith('<대화>'))
+    .map((example) => example.replace('<대화>', ''));
 
   return (
     <div className={styles['example-container']}>
@@ -24,20 +34,13 @@ const ExampleSection = ({ examples, isExpanded, toggleExpanded }: ExampleSection
       </div>
       {isExpanded && (
         <div className={styles['example-list']}>
-          {Object.keys(examples).map((key, index) => (
-            <div className={styles['example-item-container']} key={index}>
-              <div className={styles['example-item']} key={index}>
-                <span className={styles['example-item-label']}>{t(`learning.${key}`)}</span>
-              </div>
-              <span className={styles['example-item-list']}>
-                {examples[key as keyof WordExample].map((example, index) => (
-                  <div className={styles['example-item-list-text']} key={index}>
-                    <span key={index}>{example}</span>
-                  </div>
-                ))}
-              </span>
-            </div>
-          ))}
+          {phraseExamples.length > 0 && <ExampleItem title="phrase" examples={phraseExamples} />}
+          {sentenceExamples.length > 0 && (
+            <ExampleItem title="sentence" examples={sentenceExamples} />
+          )}
+          {conversationExamples.length > 0 && (
+            <ExampleItem title="conversation" examples={conversationExamples} />
+          )}
         </div>
       )}
     </div>

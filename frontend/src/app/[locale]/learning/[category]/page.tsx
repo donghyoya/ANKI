@@ -1,48 +1,55 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import useLearningCardLayout from '@/hooks/useLearningCardLayout';
-import { useTranslations } from 'next-intl';
 
-import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
 import LearningCard, { LearningCardState } from '@/components/LearningCard/LearningCard';
 import RatingButtonContainer from '@/components/RatingButton/RatingButtonContainer';
+import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
 
 import styles from './layout.module.scss';
 
-import {
-  DUMMY_CARD,
-  DUMMY_PROGRESS,
-  DUMMY_RATING_PREVIEW,
-  DUMMY_MENU_ITEMS
-} from '@/utils/dummyData';
+import { Category } from '@/types/Category';
+import { useParams } from 'next/navigation';
+import { useStudyQueue } from '@/hooks/useStudyQueue';
+import { Rating } from '@/types/IntervalPreview';
 
 import { MenuItem } from '@/types/Menu';
+import { useTranslations } from 'next-intl';
 
 export default function LearningPage() {
   const t = useTranslations();
+
+  const { category } = useParams() ?? {};
 
   const [contentHeight, setContentHeight] = useState(0);
 
   const [cardState, setCardState] = useState<LearningCardState>({
     isRevealed: false,
-    showDetail: true,
+    showDetail: false,
     showConjugation: false,
     showExample: false,
     isKoreanToForeign: true
   });
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [learningType, setLearningType] = useState<'reviews' | 'news'>('reviews');
 
   const cardStyle = useLearningCardLayout({
     contentHeight,
     cardWidth: document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0
   });
 
-  useEffect(() => {
-    console.log('cardStyle:', cardStyle);
-  }, [cardStyle]);
+  const { currentCard, studyQueue, intervalPreview, repeat, error } = useStudyQueue(
+    category as Category
+  );
+
+  if (error) throw error;
+
+  if (studyQueue === null) {
+    return <div className={styles['page']}>Loading...</div>;
+  }
+
+  if (currentCard === null) {
+    return <div className={styles['page']}>학습 끝</div>;
+  }
 
   const handleReveal = () => {
     setCardState((prev) => ({ ...prev, isRevealed: true }));
@@ -58,6 +65,11 @@ export default function LearningPage() {
 
   const toggleExample = () => {
     setCardState((prev) => ({ ...prev, showExample: !prev.showExample }));
+  };
+
+  const handleOnRepeat = (rating: Rating) => {
+    setCardState((prev) => ({ ...prev, isRevealed: false }));
+    repeat(rating);
   };
 
   const toggleDetailedView = () => {
@@ -97,28 +109,11 @@ export default function LearningPage() {
     <div className={styles['learning-container']}>
       <div className={styles['progress-container-wrapper']}>
         <div className={styles['progress-container']}>
-          <div className={styles['progress-label-container']}>
-            <span
-              className={`${styles['progress-label']} ${learningType === 'reviews' ? styles['active'] : ''}`}
-            >
-              {t('learning.reviews')}
-            </span>
-          </div>
-          <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} />
-        </div>
-        <div className={styles['progress-container']}>
-          <div className={styles['progress-label-container']}>
-            <span
-              className={`${styles['progress-label']} ${learningType === 'news' ? styles['active'] : ''}`}
-            >
-              {t('learning.news')}
-            </span>
-          </div>
-          <LearningProgressBar className={styles['progress-bar']} progress={DUMMY_PROGRESS} />
+          <LearningProgressBar className={styles['progress-bar']} userCards={studyQueue} />
         </div>
       </div>
       <LearningCard
-        card={DUMMY_CARD}
+        card={currentCard}
         className={styles['learning-card']}
         cardState={cardState}
         handleReveal={handleReveal}
@@ -130,8 +125,9 @@ export default function LearningPage() {
         setContentHeight={setContentHeight}
       />
       <RatingButtonContainer
-        intervalPreview={DUMMY_RATING_PREVIEW}
+        intervalPreview={intervalPreview}
         isRevealed={cardState.isRevealed}
+        onRepeat={handleOnRepeat}
       />
     </div>
   );

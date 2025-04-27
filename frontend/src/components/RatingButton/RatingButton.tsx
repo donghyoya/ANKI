@@ -6,14 +6,18 @@ interface RatingButtonProps {
   label: string;
   interval: number;
   isError?: boolean;
+  onClick: () => void;
 }
 
-const RatingButton = ({ label, interval, isError = false }: RatingButtonProps) => {
+const RatingButton = ({ label, interval, isError = false, onClick }: RatingButtonProps) => {
   const t = useTranslations();
   const locale = useLocale();
 
   return (
-    <button className={styles['rating-button'] + (isError ? ' ' + styles['error'] : '')}>
+    <button
+      className={styles['rating-button'] + (isError ? ' ' + styles['error'] : '')}
+      onClick={onClick}
+    >
       <span className={styles['rating-button-label']}>{t(`learning.${label}`)}</span>
       <span className={styles['rating-button-interval']}>{formatDuration(interval, locale)}</span>
     </button>

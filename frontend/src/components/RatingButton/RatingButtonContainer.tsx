@@ -1,14 +1,15 @@
 import RatingButton from './RatingButton';
-import { IntervalPreview } from '@/types/IntervalPreview';
+import { IntervalPreview, Rating } from '@/types/IntervalPreview';
 
 import styles from './RatingButtonContainer.module.scss';
 
 interface RatingButtonContainerProps {
   intervalPreview: IntervalPreview;
   isRevealed: boolean;
+  onRepeat: (label: Rating) => void;
 }
 
-const RatingButtons = ({ intervalPreview, isRevealed }: RatingButtonContainerProps) => {
+const RatingButtons = ({ intervalPreview, isRevealed, onRepeat }: RatingButtonContainerProps) => {
   return (
     <div className={styles['rating-button-container']}>
       {isRevealed &&
@@ -18,6 +19,7 @@ const RatingButtons = ({ intervalPreview, isRevealed }: RatingButtonContainerPro
             label={label}
             interval={dueDate - Date.now()}
             isError={label === 'again'}
+            onClick={() => onRepeat(label as Rating)}
           />
         ))}
     </div>

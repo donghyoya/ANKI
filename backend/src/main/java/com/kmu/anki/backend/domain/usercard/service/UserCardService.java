@@ -48,7 +48,7 @@ public class UserCardService {
     public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums cardTopicEnums){
         LocalDateTime now = LocalDateTime.now();
         User user = userRepository.findById(userId).orElseThrow();
-        PageRequest pageRequest = PageRequest.of(0, user.getDailyStudyWords());
+        PageRequest pageRequest = PageRequest.of(0, studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords());
         UserCardCacheO dailyUserCard = userCardCacheRepository.findDailyUserCard(userId, languageCode, studyType, cardTopicEnums);
         if(dailyUserCard == null){
             Page<UserCardDto> studyCards = userCardQueryRepository.findStudyCards(userId, languageCode, null, cardTopicEnums, now, studyType, pageRequest);
@@ -61,7 +61,7 @@ public class UserCardService {
     public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel){
         LocalDateTime now = LocalDateTime.now();
         User user = userRepository.findById(userId).orElseThrow();
-        PageRequest pageRequest = PageRequest.of(0, user.getDailyStudyWords());
+        PageRequest pageRequest = PageRequest.of(0, studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords());
         UserCardCacheO dailyUserCard = userCardCacheRepository.findDailyUserCard(userId, languageCode, studyType, cardLevel);
         if(dailyUserCard == null){
             Page<UserCardDto> studyCards = userCardQueryRepository.findStudyCards(userId, languageCode, cardLevel, null, now, studyType,pageRequest);

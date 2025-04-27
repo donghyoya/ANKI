@@ -1,10 +1,10 @@
 'use client';
 
-import { getCardsFromDeck } from '@/api/decks';
 import { useToken } from '@/hooks/useToken';
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 
+import { getCardsFromDeck } from '@/api/decks';
 import WordListPage from '@/components/common/WordListPage';
 
 import { Locale } from '@/types/Locale';
@@ -12,9 +12,8 @@ import { Category } from '@/types/Category';
 import { CardDetail, Paginated } from '@/types/schemes';
 
 export default function MeaningsWordsPage() {
-  const { category } = useParams() ?? {};
+  const { category, locale } = useParams() ?? {};
   const { token } = useToken();
-  const { locale } = useParams() ?? {};
 
   const [userCards, setUserCards] = useState<Paginated<CardDetail>>();
 

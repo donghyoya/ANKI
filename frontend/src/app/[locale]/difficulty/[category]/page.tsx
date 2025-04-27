@@ -1,19 +1,19 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import { useToken } from '@/hooks/useToken';
+import { useParams } from 'next/navigation';
+
 import { getCardsFromDeck } from '@/api/decks';
 import WordListPage from '@/components/common/WordListPage';
-import { useToken } from '@/hooks/useToken';
+
 import { CardDetail, Paginated } from '@/types/schemes';
-import { useEffect } from 'react';
-import { useParams } from 'next/navigation';
-import { useState } from 'react';
 import { Locale } from '@/types/Locale';
 import { Category } from '@/types/Category';
 
 export default function DifficultyWordsPage() {
-  const { category } = useParams() ?? {};
+  const { category, locale } = useParams() ?? {};
   const { token } = useToken();
-  const { locale } = useParams() ?? {};
 
   const [userCards, setUserCards] = useState<Paginated<CardDetail>>();
 

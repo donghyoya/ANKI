@@ -6,7 +6,6 @@ import {
   CardStudyInfo,
   UserStudyHistory,
   UserOption,
-  ExceptionResponse,
   UserCard
 } from '@/types/schemes';
 
@@ -24,7 +23,7 @@ import {
 } from '@/utils/dummyData';
 
 export const mockForeignSearch = async () => {
-  return new Promise<Paginated<Card> | ExceptionResponse>((resolve) => {
+  return new Promise<Paginated<Card>>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_CARDS;
       console.log('mockForeignSearch:', data);
@@ -34,7 +33,7 @@ export const mockForeignSearch = async () => {
 };
 
 export const mockKoreanSearch = async () => {
-  return new Promise<Paginated<Card> | ExceptionResponse>((resolve) => {
+  return new Promise<Paginated<Card>>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_CARDS;
       console.log('mockKoreanSearch:', data);
@@ -44,7 +43,7 @@ export const mockKoreanSearch = async () => {
 };
 
 export const mockGetCard = async () => {
-  return new Promise<Card | ExceptionResponse>((resolve) => {
+  return new Promise<Card>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_CARD;
       console.log('mockGetCard:', data);
@@ -54,7 +53,7 @@ export const mockGetCard = async () => {
 };
 
 export const mockGetCardDetail = async () => {
-  return new Promise<CardDetail | ExceptionResponse>((resolve) => {
+  return new Promise<CardDetail>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_CARD_DETAIL;
       console.log('mockGetCardDetail:', data);
@@ -64,7 +63,7 @@ export const mockGetCardDetail = async () => {
 };
 
 export const mockGetUserCards = async () => {
-  return new Promise<Paginated<UserCard> | ExceptionResponse>((resolve) => {
+  return new Promise<Paginated<UserCard>>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_USER_CARDS;
       console.log('mockGetUserCards:', data);
@@ -74,7 +73,7 @@ export const mockGetUserCards = async () => {
 };
 
 export const mockGetCardStudyInfo = async () => {
-  return new Promise<CardStudyInfo | ExceptionResponse>((resolve) => {
+  return new Promise<CardStudyInfo>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_CARD_STUDY_INFO;
       console.log('mockGetCardStudyInfo:', data);
@@ -94,7 +93,7 @@ export const mockPostCardStudyInfo = async () => {
 };
 
 export const mockGetDecks = async (queryType: 'level' | 'meaning') => {
-  return new Promise<Paginated<Deck> | ExceptionResponse>((resolve) => {
+  return new Promise<Paginated<Deck>>((resolve) => {
     setTimeout(() => {
       const data = queryType === 'level' ? DUMMY_DECKS : DUMMY_DECKS;
       console.log('mockGetDecks:', data);
@@ -104,7 +103,7 @@ export const mockGetDecks = async (queryType: 'level' | 'meaning') => {
 };
 
 export const mockGetCardsFromDeck = async () => {
-  return new Promise<Paginated<Card> | ExceptionResponse>((resolve) => {
+  return new Promise<Paginated<Card>>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_CARDS;
       console.log('mockGetCardsFromDeck:', data);
@@ -114,7 +113,7 @@ export const mockGetCardsFromDeck = async () => {
 };
 
 export const mockGetUserStudyHistories = async () => {
-  return new Promise<Paginated<UserStudyHistory> | ExceptionResponse>((resolve) => {
+  return new Promise<Paginated<UserStudyHistory>>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_USER_STUDY_HISTORIES;
       console.log('mockGetUserStudyHistories:', data);
@@ -124,7 +123,7 @@ export const mockGetUserStudyHistories = async () => {
 };
 
 export const mockGetLatestUserStudyHistory = async () => {
-  return new Promise<UserStudyHistory | ExceptionResponse>((resolve) => {
+  return new Promise<UserStudyHistory>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_USER_STUDY_HISTORY;
       console.log('mockGetLatestUserStudyHistory:', data);
@@ -134,7 +133,7 @@ export const mockGetLatestUserStudyHistory = async () => {
 };
 
 export const mockGetUserOption = async () => {
-  return new Promise<UserOption | ExceptionResponse>((resolve) => {
+  return new Promise<UserOption>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_USER_OPTION;
       console.log('mockGetUserOption:', data);

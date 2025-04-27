@@ -16,9 +16,9 @@ import {
 } from '@/types/schemes';
 
 export const DUMMY_PROGRESS: Progress[] = [
-  { value: 10, label: '10', tooltip: 'Completed', color: LEARNING_PROGRESS_BAR_COLORS.completed },
+  { value: 10, label: '10', tooltip: 'Matured', color: LEARNING_PROGRESS_BAR_COLORS.matured },
   { value: 20, label: '20', tooltip: 'Learning', color: LEARNING_PROGRESS_BAR_COLORS.learning },
-  { value: 30, label: '30', tooltip: 'Reviewing', color: LEARNING_PROGRESS_BAR_COLORS.reviewing }
+  { value: 30, label: '30', tooltip: 'New', color: LEARNING_PROGRESS_BAR_COLORS.new }
 ];
 
 export const DUMMY_RATING_PREVIEW: IntervalPreview = {
@@ -60,7 +60,7 @@ export const UTC_OFFSET_OPTIONS = [
 
 // Dummy data for api mocking
 export const DUMMY_CARD: Card = {
-  level: 'easy',
+  difficulty: 'easy',
   cardId: 1,
   koreanWord: '사랑',
   languageCode: 'en',
@@ -71,7 +71,7 @@ export const DUMMY_CARD_DETAIL: CardDetail = {
   cardId: 1,
   koreanWord: '가깝다',
   foreignWord: 'near; close; adjacent',
-  level: 'easy',
+  difficulty: 'easy',
   languageCode: 'ko',
   originalLanguage: '家具',
   homographNumber: 1,
@@ -98,7 +98,9 @@ export const DUMMY_CARD_STUDY_INFO: CardStudyInfo = {
   lastReview: '2025-01-01',
   nextStudyDate: '2025-01-01',
   state: 'new',
-  stability: 0
+  stability: 0,
+  due: new Date(),
+  difficulty: 0
 };
 
 export const DUMMY_STUDY_CARD_FORM: StudyCardForm = {
@@ -114,8 +116,8 @@ export const DUMMY_STUDY_CARD_FORM: StudyCardForm = {
 
 export const DUMMY_USER_CARD: UserCard = {
   ...DUMMY_CARD,
-  ...DUMMY_STUDY_CARD_FORM,
-  ...DUMMY_CARD_DETAIL
+  ...DUMMY_CARD_DETAIL,
+  fsrsParameters: DUMMY_STUDY_CARD_FORM
 };
 
 export const DUMMY_USER_CARDS: Paginated<UserCard> = {
@@ -123,16 +125,16 @@ export const DUMMY_USER_CARDS: Paginated<UserCard> = {
   pageSize: 1,
   page: 1,
   content: [
-    { ...DUMMY_USER_CARD, koreanWord: '하나', foreignWord: 'one', cardId: 1, state: 'overdue' },
-    { ...DUMMY_USER_CARD, koreanWord: '둘', foreignWord: 'two', cardId: 2, state: 'overdue' },
-    { ...DUMMY_USER_CARD, koreanWord: '셋', foreignWord: 'three', cardId: 3, state: 'overdue' },
-    { ...DUMMY_USER_CARD, koreanWord: '넷', foreignWord: 'four', cardId: 4, state: 'overdue' },
-    { ...DUMMY_USER_CARD, koreanWord: '다섯', foreignWord: 'five', cardId: 5, state: 'overdue' },
-    { ...DUMMY_USER_CARD, koreanWord: '여섯', foreignWord: 'six', cardId: 6, state: 'new' },
-    { ...DUMMY_USER_CARD, koreanWord: '일곱', foreignWord: 'seven', cardId: 7, state: 'new' },
-    { ...DUMMY_USER_CARD, koreanWord: '여덟', foreignWord: 'eight', cardId: 8, state: 'new' },
-    { ...DUMMY_USER_CARD, koreanWord: '아홉', foreignWord: 'nine', cardId: 9, state: 'new' },
-    { ...DUMMY_USER_CARD, koreanWord: '열', foreignWord: 'ten', cardId: 10, state: 'new' }
+    { ...DUMMY_USER_CARD, koreanWord: '하나', foreignWord: 'one', cardId: 1 },
+    { ...DUMMY_USER_CARD, koreanWord: '둘', foreignWord: 'two', cardId: 2 },
+    { ...DUMMY_USER_CARD, koreanWord: '셋', foreignWord: 'three', cardId: 3 },
+    { ...DUMMY_USER_CARD, koreanWord: '넷', foreignWord: 'four', cardId: 4 },
+    { ...DUMMY_USER_CARD, koreanWord: '다섯', foreignWord: 'five', cardId: 5 },
+    { ...DUMMY_USER_CARD, koreanWord: '여섯', foreignWord: 'six', cardId: 6 },
+    { ...DUMMY_USER_CARD, koreanWord: '일곱', foreignWord: 'seven', cardId: 7 },
+    { ...DUMMY_USER_CARD, koreanWord: '여덟', foreignWord: 'eight', cardId: 8 },
+    { ...DUMMY_USER_CARD, koreanWord: '아홉', foreignWord: 'nine', cardId: 9 },
+    { ...DUMMY_USER_CARD, koreanWord: '열', foreignWord: 'ten', cardId: 10 }
   ]
 };
 
@@ -142,7 +144,7 @@ export const DUMMY_DECK: Deck = {
   overdueCounts: 10,
   maturityRate: 0.1,
   maturityCounts: 10,
-  category: 'category'
+  category: 'easy'
 };
 
 export const DUMMY_DECKS: Paginated<Deck> = {
@@ -157,9 +159,9 @@ export const DUMMY_DECKS: Paginated<Deck> = {
 };
 
 export const DUMMY_USER_STUDY_HISTORY: UserStudyHistory = {
-  deckType: 'deckType',
+  deckType: 'level',
   studyType: 'review',
-  deckName: 'deckName',
+  deckName: 'easy',
   studyDate: '2025-01-01'
 };
 

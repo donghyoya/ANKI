@@ -75,9 +75,9 @@ export interface Deck {
 }
 
 export interface UserStudyHistory {
-  deckType: string;
+  deckType: 'level' | 'meaning';
   studyType: StudyType;
-  deckName: string;
+  deckName: Category;
   studyDate: string;
 }
 

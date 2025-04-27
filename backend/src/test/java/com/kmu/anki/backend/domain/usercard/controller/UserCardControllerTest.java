@@ -97,7 +97,7 @@ class UserCardControllerTest extends AbstractControllerTest {
 
     @Test
     void putUserCards() throws Exception {
-        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
+        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, StudyType.study,CardLevel.easy);
         Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
 
         HashMap<String, Object> map = new HashMap<>();
@@ -141,7 +141,7 @@ class UserCardControllerTest extends AbstractControllerTest {
 
     @Test
     void putUserCards404() throws Exception {
-        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, CardLevel.easy);
+        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, StudyType.study,CardLevel.easy);
         Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
 
         HashMap<String, Object> map = new HashMap<>();

@@ -67,12 +67,12 @@ public class UserCardController {
         Page<UserCardDto> cards;
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
-            cards = userCardService.readStudyUserCard(userId, languageCode, cardTopicEnums);
+            cards = userCardService.readStudyUserCard(userId, languageCode, studyType,cardTopicEnums);
             // 최근 학습 덱을 보여주기 위해서
             userStudyHistoryService.createHistory(studyType, queryType, cardTopicEnums, userId);
         }else {
             CardLevel cardLevel = CardLevel.valueOf(query);
-            cards = userCardService.readStudyUserCard(userId, languageCode, cardLevel);
+            cards = userCardService.readStudyUserCard(userId, languageCode, studyType, cardLevel);
             // 최근 학습 덱을 보여주기 위해서
             userStudyHistoryService.createHistory(studyType, queryType, cardLevel, userId);
         }
@@ -92,11 +92,11 @@ public class UserCardController {
         LanguageCode languageCode = userOptionDto.getLanguageCode();
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
-            userCardService.deleteCache(userId, languageCode, cardTopicEnums);
+            userCardService.deleteCache(userId, languageCode, studyType,cardTopicEnums);
             // 최근 학습 덱을 보여주기 위해서
         }else {
             CardLevel cardLevel = CardLevel.valueOf(query);
-            userCardService.deleteCache(userId, languageCode, cardLevel);
+            userCardService.deleteCache(userId, languageCode, studyType, cardLevel);
         }
         return Map.of("message", "cache-deleted");
     }

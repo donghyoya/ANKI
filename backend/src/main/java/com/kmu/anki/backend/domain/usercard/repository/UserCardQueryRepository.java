@@ -6,6 +6,8 @@ import com.kmu.anki.backend.domain.card.entity.QKoreanCard;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.user.entity.CardState;
+import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.QUserCard;
@@ -45,6 +47,7 @@ public class UserCardQueryRepository {
             CardLevel difficulty,
             CardTopicEnums topic,
             LocalDateTime now,
+            StudyType studyType,
             Pageable pageable
     ){
         List<UserCardDto> contents = queryFactory.select(
@@ -65,7 +68,8 @@ public class UserCardQueryRepository {
                                 code,
                                 difficulty,
                                 topic,
-                                now
+                                now,
+                                studyType
                         )
                 )
                 .orderBy(Expressions.numberTemplate(Double.class, "RANDOM()").asc())
@@ -91,7 +95,8 @@ public class UserCardQueryRepository {
                                 code,
                                 difficulty,
                                 topic,
-                                now
+                                now,
+                                studyType
                         )
                 )
                 .offset(pageable.getOffset())
@@ -138,7 +143,8 @@ public class UserCardQueryRepository {
             LanguageCode code,
             CardLevel difficulty,
             CardTopicEnums topic,
-            LocalDateTime now
+            LocalDateTime now,
+            StudyType studyType
     ){
         BooleanBuilder builder = new BooleanBuilder();
         builder
@@ -147,6 +153,7 @@ public class UserCardQueryRepository {
                 .and(difficultyEq(difficulty))
                 .and(topicEq(topic))
                 .and(dueBefore(now))
+                .and(studyTpye(studyType))
         ;
         return builder;
     }
@@ -202,4 +209,7 @@ public class UserCardQueryRepository {
         return dateTime == null ? null : userCard.due.before(dateTime);
     }
 
+    public BooleanExpression studyTpye(StudyType type){
+        return type == StudyType.study ? userCard.state.eq(CardState.New) : userCard.state.ne(CardState.New);
+    }
 }

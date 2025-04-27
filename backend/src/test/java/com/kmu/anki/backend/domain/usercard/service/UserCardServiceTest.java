@@ -3,6 +3,7 @@ package com.kmu.anki.backend.domain.usercard.service;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.user.entity.CardState;
+import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.global.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
@@ -23,12 +24,12 @@ class UserCardServiceTest extends AbstractIntegrationTest {
         LanguageCode code = LanguageCode.en;
         CardLevel level = CardLevel.easy;
 
-        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(userId, code, level);
+        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(userId, code, StudyType.study,level);
         UserCardDto userCardDto = userCardDtos.getContent().get(0);
 
         userCardService.updateUserCard(userCardDto.getUserCardId(), LocalDateTime.now(), 1, LocalDateTime.now(), 1, 0.1d, 0.1d, CardState.Review);
 
-        Page<UserCardDto> repeatUserCardDtos = userCardService.readStudyUserCard(userId, code, level);
+        Page<UserCardDto> repeatUserCardDtos = userCardService.readStudyUserCard(userId, code, StudyType.study, level);
 
         assertEquals(userCardDtos, repeatUserCardDtos);
     }

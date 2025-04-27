@@ -56,10 +56,10 @@ public class TestAuthenticationService {
             User newTestUser = userService.saveUser(createUser);
             testUser = LoginUserDto.of(newTestUser);
         }
-        TokenClaimBuilder builder = TokenClaimBuilder.builder().userId(testUser.getId()).role(testUser.getRole().toString());
+        TokenClaimBuilder builder = TokenClaimBuilder.builder().userId(testUser.getId()).role(testUser.getRole());
         String accessToken = jwtTokenService.generateAccessToken(testUser.getId().toString(), builder);
         String refresshToken = jwtTokenService.generateRefreshToken(testUser.getId().toString(), builder);
-        String authenticationToken = jwtTokenService.generateAuthenticationToken(testUser.getId().toString(), builder.role("ROLE_AUTHENTICATION").build());
+        String authenticationToken = jwtTokenService.generateAuthenticationToken(testUser.getId().toString(), builder.role(Role.AUTHENTICAITON).build());
         return Map.of("accessToken", accessToken, "refreshToken", refresshToken, "firstLogin", testUser.isFirst()?"true":"false", "authenticationToken", authenticationToken);
     }
 

@@ -69,15 +69,15 @@ public class SecurityConfig {
                         .requestMatchers("/get-test-token").permitAll()
 
                         // user card에 대한 접근은 authentication에 의해 이루어져야함
-                        .requestMatchers("/cards/study").authenticated()
-                        .requestMatchers("/cards/{id}/study").authenticated()
+                        .requestMatchers("/cards/study").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/cards/{id}/study").hasAnyRole("USER", "ADMIN")
 
                         // 개별 카드에 대한 간단한 정보는 authentication이 없어도 작동하게끔
                         .requestMatchers(HttpMethod.GET, "/cards/{id}").permitAll() // cards/study에서 study를 id로 인식하여 허용하는 문제가 있음
                         .requestMatchers(HttpMethod.GET, "/cards/{id}/details").permitAll()
                         // 토큰 로그인 관련
                         .requestMatchers("/auth/token").hasAnyRole("AUTHENTICATION", "REFRESH")
-                        .anyRequest().authenticated()                                   // 나머지는 인증 필요
+                        .anyRequest().hasAnyRole("USER", "ADMIN")                                   // 나머지는 인증 필요
                 ).exceptionHandling(exception -> exception
                         .authenticationEntryPoint(customAuthenticationEntryPoint)
                 )

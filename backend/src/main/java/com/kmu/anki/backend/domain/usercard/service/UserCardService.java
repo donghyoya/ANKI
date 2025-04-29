@@ -18,10 +18,13 @@ import com.kmu.anki.backend.domain.usercard.repository.cache.UserCardCacheReposi
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -48,27 +51,77 @@ public class UserCardService {
     public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums cardTopicEnums){
         LocalDateTime now = LocalDateTime.now();
         User user = userRepository.findById(userId).orElseThrow();
-        PageRequest pageRequest = PageRequest.of(0, studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords());
+        Integer words = studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords();
+        PageRequest pageRequest = PageRequest.of(0, words);
         UserCardCacheO dailyUserCard = userCardCacheRepository.findDailyUserCard(userId, languageCode, studyType, cardTopicEnums);
+        Page<UserCardDto> ret = null;
         if(dailyUserCard == null){
-            Page<UserCardDto> studyCards = userCardQueryRepository.findStudyCards(userId, languageCode, null, cardTopicEnums, now, studyType, pageRequest);
-            dailyUserCard = new UserCardCacheO(studyCards, user.getUtcOffset());
+            ret = userCardQueryRepository.findStudyCards(userId, languageCode, null, cardTopicEnums, now, studyType, pageRequest);
+            dailyUserCard = new UserCardCacheO(ret, user.getUtcOffset());
             userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardTopicEnums, studyType, dailyUserCard);
+        }else { // 캐시된 것이 없는 경우
+            int cachedWords = dailyUserCard.getUserCardDtos().getSize();
+            if(words < cachedWords){
+                List<UserCardDto> contents = dailyUserCard.getUserCardDtos().getContent().subList(0, words);// userOptions에 맞게 데이터 빼기
+                ret = PageableExecutionUtils.getPage(
+                        contents,
+                        PageRequest.of(0, words),
+                        ()->words
+                );
+            }else if(words > cachedWords){
+                Page<UserCardDto> cards = userCardQueryRepository.findStudyCards(userId, languageCode, null, cardTopicEnums, now, studyType, pageRequest);
+                List<UserCardDto> concat = new ArrayList<>(dailyUserCard.getUserCardDtos().getContent());
+                concat.addAll(cards.getContent());
+                ret = PageableExecutionUtils.getPage(
+                        concat,
+                        PageRequest.of(0, words),
+                        ()->cards.getSize()
+                );
+                userCardCacheRepository.deleteDailyUserCard(userId, languageCode, studyType, cardTopicEnums);
+                userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardTopicEnums, studyType, new UserCardCacheO(ret, user.getUtcOffset()));
+            }else {
+                ret = dailyUserCard.getUserCardDtos();
+            }
         }
-        return dailyUserCard.getUserCardDtos();
+        return ret;
     }
 
     public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel){
         LocalDateTime now = LocalDateTime.now();
         User user = userRepository.findById(userId).orElseThrow();
-        PageRequest pageRequest = PageRequest.of(0, studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords());
+        Integer words = studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords();
+        PageRequest pageRequest = PageRequest.of(0, words);
         UserCardCacheO dailyUserCard = userCardCacheRepository.findDailyUserCard(userId, languageCode, studyType, cardLevel);
-        if(dailyUserCard == null){
-            Page<UserCardDto> studyCards = userCardQueryRepository.findStudyCards(userId, languageCode, cardLevel, null, now, studyType,pageRequest);
-            dailyUserCard = new UserCardCacheO(studyCards, user.getUtcOffset());
+        Page<UserCardDto> ret = null;
+        if(dailyUserCard == null){ // 캐시된 것이 있는 경우
+            ret = userCardQueryRepository.findStudyCards(userId, languageCode, cardLevel, null, now, studyType,pageRequest);
+            dailyUserCard = new UserCardCacheO(ret, user.getUtcOffset());
             userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardLevel, studyType, dailyUserCard);
+        }else { // 캐시된 것이 없는 경우
+            int cachedWords = dailyUserCard.getUserCardDtos().getSize();
+            if(words < cachedWords){
+                List<UserCardDto> contents = dailyUserCard.getUserCardDtos().getContent().subList(0, words);// userOptions에 맞게 데이터 빼기
+                ret = PageableExecutionUtils.getPage(
+                        contents,
+                        PageRequest.of(0, words),
+                        ()->words
+                );
+            }else if(words > cachedWords){
+                Page<UserCardDto> cards = userCardQueryRepository.findStudyCards(userId, languageCode, cardLevel, null, now, studyType, PageRequest.of(0, words - cachedWords));
+                List<UserCardDto> concat = new ArrayList<>(dailyUserCard.getUserCardDtos().getContent());
+                concat.addAll(cards.getContent());
+                ret = PageableExecutionUtils.getPage(
+                        concat,
+                        PageRequest.of(0, words),
+                        ()->cards.getSize()
+                );
+                userCardCacheRepository.deleteDailyUserCard(userId, languageCode, studyType, cardLevel);
+                userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardLevel, studyType, new UserCardCacheO(ret, user.getUtcOffset()));
+            }else {
+                ret = dailyUserCard.getUserCardDtos();
+            }
         }
-        return dailyUserCard.getUserCardDtos();
+        return ret;
     }
 
 

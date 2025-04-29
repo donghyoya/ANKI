@@ -22,12 +22,6 @@ public class DeckDtoDocs {
         return new FieldDescriptor[]{
                 fieldWithPath(prefix+"category").type(JsonFieldType.STRING).description("카드 분류"),
                 fieldWithPath(prefix+"cardCounts").type(JsonFieldType.NUMBER).description("덱에 포함된 카드 개수"),
-                fieldWithPath(prefix+"overdueRate")
-                        .type(JsonFieldType.NUMBER).optional()
-                        .description("due가 지난 상태인 카드 비율"),
-                fieldWithPath(prefix+"maturityRate")
-                        .type(JsonFieldType.NUMBER).optional()
-                        .description("state가 review인 카드 비율:"),
                 fieldWithPath(prefix+"overdueCounts")
                         .type(JsonFieldType.NUMBER).optional()
                         .description("due가 지난 상태인 카드 개수"),

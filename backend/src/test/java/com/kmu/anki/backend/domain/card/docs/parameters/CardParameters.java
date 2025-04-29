@@ -12,6 +12,7 @@ import static org.springframework.restdocs.request.RequestDocumentation.paramete
 public class CardParameters {
     /* parameters */
     public static ParameterDescriptor cardId = parameterWithName("id").description("카드의 고유번호");
+    public static ParameterDescriptor userCardId = parameterWithName("userCardId").description("유저카드의 고유번호");
 
     public static ParameterDescriptor query = parameterWithName("query").description("검색어");
 

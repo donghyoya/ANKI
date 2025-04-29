@@ -36,13 +36,13 @@ public class UserCardController {
         return userCardService.readCardStudyInfo(cardId);
     }
 
-    @PostMapping("/{cardId}/study")
+    @PostMapping("/{userCardId}/study")
     public CardStudyDto putUserCards(
-            @PathVariable("cardId") Long cardId,
+            @PathVariable("userCardId") Long userCardId,
             @RequestBody StudyCardForm form
     ){
         return userCardService.updateUserCard(
-                cardId,
+                userCardId,
                 form.getDue(),
                 form.getLapses(),
                 form.getLastReview(),

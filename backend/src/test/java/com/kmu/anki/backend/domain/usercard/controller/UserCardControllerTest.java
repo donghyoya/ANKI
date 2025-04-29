@@ -110,7 +110,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         map.put("state", CardState.Review);
 
         mockMvc.perform(
-                        post("/cards/{id}/study", userCardId)
+                        post("/cards/{userCardId}/study", userCardId)
                                 .contentType("application/json")
                                 .header("Authorization", "Bearer " + token)
                                 .content(objectMapper.writeValueAsString(map))
@@ -123,7 +123,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                                                 .tag("StudyCards")
                                                 .summary("Card 학습결과를 갱신")
                                                 .pathParameters(
-                                                        CardParameters.cardId
+                                                        CardParameters.userCardId
                                                 )
                                                 .requestFields(
                                                         StudyCardFormDocs.studyCardForm
@@ -154,7 +154,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         map.put("state", CardState.Review);
 
         mockMvc.perform(
-                        post("/cards/{id}/study", -1)
+                        post("/cards/{userCardId}/study", -1)
                                 .contentType("application/json")
                                 .header("Authorization", "Bearer " + token)
                                 .content(objectMapper.writeValueAsString(map))
@@ -167,7 +167,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                                                 .tag("StudyCards")
                                                 .summary("Card 학습결과를 갱신")
                                                 .pathParameters(
-                                                        CardParameters.cardId
+                                                        CardParameters.userCardId
                                                 )
                                                 .requestFields(
                                                         StudyCardFormDocs.studyCardForm

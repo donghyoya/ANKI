@@ -132,7 +132,7 @@ public class UserCardService {
     /* UPDATE */
 
     @Transactional
-    public CardStudyDto updateUserCard(Long userCardId, LocalDateTime due, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
+    public CardStudyDto updateUserCard(Long userCardId, LocalDateTime due, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, Double difficulty,CardState state){
         UserCard userCard = userCardRepository.findById(userCardId).orElseThrow();
         userCard.update(
                 due,
@@ -141,6 +141,7 @@ public class UserCardService {
                 reps,
                 scheduledDays,
                 stability,
+                difficulty,
                 state
         );
         return CardStudyDto.of(userCard);

@@ -65,13 +65,14 @@ public class UserCard {
     private Long koreanCardId;
 
     /* 로직 */
-    public void update(LocalDateTime due, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state){
+    public void update(LocalDateTime due, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, Double difficulty, CardState state){
         this.due = due;
         this.lapses = lapses;
         this.lastReview = lastReview;
         this.reps = reps;
         this.scheduledDays = scheduledDays;
         this.stability = stability;
+        this.difficulty = difficulty;
         this.state = state;
     }
 }

@@ -49,6 +49,7 @@ public class UserCardController {
                 form.getReps(),
                 form.getScheduledDays(),
                 form.getStability(),
+                form.getDifficulty(),
                 form.getState()
         );
     }

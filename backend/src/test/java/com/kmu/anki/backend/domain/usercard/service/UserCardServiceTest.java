@@ -27,7 +27,7 @@ class UserCardServiceTest extends AbstractIntegrationTest {
         Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(userId, code, StudyType.study,level);
         UserCardDto userCardDto = userCardDtos.getContent().get(0);
 
-        userCardService.updateUserCard(userCardDto.getUserCardId(), LocalDateTime.now(), 1, LocalDateTime.now(), 1, 0.1d, 0.1d, CardState.Review);
+        userCardService.updateUserCard(userCardDto.getUserCardId(), LocalDateTime.now(), 1, LocalDateTime.now(), 1, 0.1d, 0.1d, 0.1d,CardState.Review);
 
         Page<UserCardDto> repeatUserCardDtos = userCardService.readStudyUserCard(userId, code, StudyType.study, level);
 

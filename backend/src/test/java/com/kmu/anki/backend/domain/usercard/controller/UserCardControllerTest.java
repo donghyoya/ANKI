@@ -107,7 +107,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         map.put("reps", 72);
         map.put("scheduledDays", 0.9);
         map.put("stability", 1.3);
-        map.put("state", CardState.Review);
+        map.put("state", CardState.Review.getPriority());
 
         mockMvc.perform(
                         post("/cards/{userCardId}/study", userCardId)
@@ -151,7 +151,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         map.put("reps", 72);
         map.put("scheduledDays", 0.9);
         map.put("stability", 1.3);
-        map.put("state", CardState.Review);
+        map.put("state", CardState.Review.getPriority());
 
         mockMvc.perform(
                         post("/cards/{userCardId}/study", -1)

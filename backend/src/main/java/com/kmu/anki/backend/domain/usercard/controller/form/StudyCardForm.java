@@ -14,5 +14,5 @@ public class StudyCardForm {
     private Double scheduledDays;
     private Double stability;
     private Double difficulty;
-    private CardState state;
+    private Integer state;
 }

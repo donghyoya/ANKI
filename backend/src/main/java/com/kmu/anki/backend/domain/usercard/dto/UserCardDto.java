@@ -22,7 +22,7 @@ public class UserCardDto {
     private Integer reps;
     private Double scheduledDays;
     private Double stability;
-    private CardState state;
+    private Integer state;
     private Double difficulty;
     private String originalLanguage;
     private String homographNumber; // 동형어 번호
@@ -60,7 +60,7 @@ public class UserCardDto {
         this.reps = reps;
         this.scheduledDays = scheduledDays;
         this.stability = stability;
-        this.state = state;
+        this.state = state.getPriority();
         this.difficulty = difficulty;
     }
 
@@ -77,7 +77,7 @@ public class UserCardDto {
         this.reps = reps;
         this.scheduledDays = scheduledDays;
         this.stability = stability;
-        this.state = state;
+        this.state = state.getPriority();
         this.difficulty = difficulty;
         this.originalLanguage = originalLanguage;
         this.homographNumber = homographNumber;

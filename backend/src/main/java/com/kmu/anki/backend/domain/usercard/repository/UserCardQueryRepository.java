@@ -72,7 +72,10 @@ public class UserCardQueryRepository {
                                 studyType
                         )
                 )
-                .orderBy(Expressions.numberTemplate(Double.class, "RANDOM()").asc())
+                .orderBy(
+                        userCard.statePriority.desc(),
+                        Expressions.numberTemplate(Double.class, "RANDOM()").asc()
+                )
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();

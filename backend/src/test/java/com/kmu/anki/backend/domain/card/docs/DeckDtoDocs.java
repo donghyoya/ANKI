@@ -22,12 +22,18 @@ public class DeckDtoDocs {
         return new FieldDescriptor[]{
                 fieldWithPath(prefix+"category").type(JsonFieldType.STRING).description("카드 분류"),
                 fieldWithPath(prefix+"cardCounts").type(JsonFieldType.NUMBER).description("덱에 포함된 카드 개수"),
+                fieldWithPath(prefix+"newCounts")
+                        .type(JsonFieldType.NUMBER).optional()
+                        .description("아예 본 적 없는 카드(State가 New)의 수"),
+                fieldWithPath(prefix+"learningCounts")
+                        .type(JsonFieldType.NUMBER).optional()
+                        .description("학습을 했다가 due가 지난 카드(State가 Review고 due가 지남)의 수"),
                 fieldWithPath(prefix+"overdueCounts")
                         .type(JsonFieldType.NUMBER).optional()
-                        .description("due가 지난 상태인 카드 개수"),
+                        .description("최근에 입력한 Rating이 Again인 카드(State가 Learning 또는 Relearning)의 수"),
                 fieldWithPath(prefix+"maturityCounts")
                         .type(JsonFieldType.NUMBER).optional()
-                        .description("state가 review인 카드 개수")
+                        .description("사용자가 기억하고 있다고 추정되는 카드(State가 Review)의 수")
         };
     }
 

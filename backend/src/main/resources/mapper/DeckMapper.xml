@@ -8,8 +8,10 @@
         SELECT
         korean_cards.level AS category,
         COUNT(korean_card_id) AS cardsCounts,
-        SUM(CASE WHEN user_cards.due &lt;= NOW() THEN 1 ELSE 0 END) AS overdueCounts,
-        SUM(CASE WHEN user_cards.user_card_state = 'review' THEN 1 ELSE 0 END) AS maturityCounts
+        SUM(CASE WHEN user_cards.user_card_state = 'New' THEN 1 ELSE 0 END) AS newCounts,
+        SUM(CASE WHEN user_cards.user_card_state = 'Learning' or user_cards.user_card_state = 'Relearning' THEN 1 ELSE 0 END) AS learningCounts,
+        SUM(CASE WHEN user_cards.due &lt;= NOW() and user_cards.user_card_state = 'Review' THEN 1 ELSE 0 END) AS overdueCounts,
+        SUM(CASE WHEN user_cards.user_card_state = 'Review' THEN 1 ELSE 0 END) AS maturityCounts
         FROM korean_cards
         JOIN user_cards USING (korean_card_id)
         WHERE user_cards.user_id = #{userId}
@@ -21,8 +23,10 @@
         SELECT
         card_topics.topic_id AS category,
         COUNT(korean_card_id) AS cardsCounts,
-        SUM(CASE WHEN user_cards.due &lt;= NOW() THEN 1 ELSE 0 END) AS overdueCounts,
-        SUM(CASE WHEN user_cards.user_card_state = 'review' THEN 1 ELSE 0 END) AS maturityCounts
+        SUM(CASE WHEN user_cards.user_card_state = 'New' THEN 1 ELSE 0 END) AS newCounts,
+        SUM(CASE WHEN user_cards.user_card_state = 'Learning' or user_cards.user_card_state = 'Relearning' THEN 1 ELSE 0 END) AS learningCounts,
+        SUM(CASE WHEN user_cards.due &lt;= NOW() and user_cards.user_card_state = 'Review' THEN 1 ELSE 0 END) AS overdueCounts,
+        SUM(CASE WHEN user_cards.user_card_state = 'Review' THEN 1 ELSE 0 END) AS maturityCounts
         FROM korean_cards
         JOIN user_cards USING (korean_card_id)
         JOIN card_topics USING (korean_card_id)

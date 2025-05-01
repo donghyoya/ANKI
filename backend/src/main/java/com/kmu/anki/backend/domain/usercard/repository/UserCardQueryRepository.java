@@ -218,6 +218,8 @@ public class UserCardQueryRepository {
     }
 
     public BooleanExpression studyTpye(StudyType type){
-        return type == StudyType.study ? userCard.state.eq(CardState.New) : userCard.state.ne(CardState.New);
+        return type == StudyType.study
+                ? userCard.state.eq(CardState.New).or(userCard.state.eq(CardState.Learning))
+                : userCard.state.eq(CardState.Review).or(userCard.state.eq(CardState.Relearning));
     }
 }

@@ -113,12 +113,13 @@ public class UserCardQueryRepository {
     }
 
     public Optional<CardStudyDto> findCardStudyDto(
-            Long cardId
+            Long userCardId
     ){
         CardStudyDto cardStudyDto = queryFactory.select(
                         Projections.constructor(
                                 CardStudyDto.class,
                                 koreanCard.id,
+                                userCard.id,
                                 userCard.due,
                                 userCard.lapses,
                                 userCard.lastReview,
@@ -134,7 +135,7 @@ public class UserCardQueryRepository {
                         userCard.koreanCard, koreanCard
                 )
                 .where(
-                        koreanCardIdEq(cardId)
+                        userCardIdEq(userCardId)
                 )
                 .fetchOne();
         return Optional.ofNullable(cardStudyDto);
@@ -186,6 +187,10 @@ public class UserCardQueryRepository {
                 koreanCard.inflection,
                 koreanCard.exampleUsage
         );
+    }
+
+    public BooleanExpression userCardIdEq(Long userCardId) {
+        return userCardId == null ? null : userCard.id.eq(userCardId);
     }
 
     public BooleanExpression userIdEq(Long userId){

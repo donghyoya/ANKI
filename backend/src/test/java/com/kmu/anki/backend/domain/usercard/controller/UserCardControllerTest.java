@@ -44,8 +44,11 @@ class UserCardControllerTest extends AbstractControllerTest {
 
     @Test
     void getCardStudyInfo() throws Exception{
+        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, StudyType.study,CardLevel.easy);
+        Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
+
         mockMvc.perform(
-                        get("/cards/{id}/study", 1)
+                        get("/cards/{userCardId}/study", userCardId)
                                 .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isOk())
                 .andDo(
@@ -56,7 +59,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                                                 .tag("StudyCards")
                                                 .summary("Card 학습 정보 보기")
                                                 .pathParameters(
-                                                        CardParameters.cardId
+                                                        CardParameters.userCardId
                                                 )
                                                 .responseFields(
                                                         CardStudyDtoDocs.cardStudyInfo
@@ -71,7 +74,7 @@ class UserCardControllerTest extends AbstractControllerTest {
     @Test
     void getCardStudyInfo404() throws Exception{
         mockMvc.perform(
-                        get("/cards/{id}/study", -1)
+                        get("/cards/{userCardId}/study", -1)
                                 .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isNotFound())
                 .andDo(
@@ -82,7 +85,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                                                 .tag("StudyCards")
                                                 .summary("Card 학습 정보 보기")
                                                 .pathParameters(
-                                                        CardParameters.cardId
+                                                        CardParameters.userCardId
                                                 )
                                                 .responseFields(
                                                         ExceptionResponseDocs.exceptionResponse

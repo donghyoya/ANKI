@@ -15,6 +15,7 @@ public class CardStudyDtoDocs {
     public static FieldDescriptor[] cardStudyDto(String prefix){
         return new FieldDescriptor[]{
                 fieldWithPath(prefix+"cardId").description("Card의 고유번호"),
+                fieldWithPath(prefix+"userCardId").description("userCardId의 고유번호"),
                 fieldWithPath(prefix+"nextStudyDate").description("다음 학습할 날짜"),
                 fieldWithPath(prefix+"lapses").type(JsonFieldType.NUMBER).optional().description("Again을 누른 횟수"),
                 fieldWithPath(prefix+"lastReview").type(JsonFieldType.STRING).optional().description("마지막으로 복습한 날짜"),

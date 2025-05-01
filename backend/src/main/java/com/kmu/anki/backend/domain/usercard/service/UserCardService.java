@@ -125,8 +125,8 @@ public class UserCardService {
     }
 
 
-    public CardStudyDto readCardStudyInfo(Long cardId){
-        return userCardQueryRepository.findCardStudyDto(cardId).orElseThrow();
+    public CardStudyDto readCardStudyInfo(Long userCardId){
+        return userCardQueryRepository.findCardStudyDto(userCardId).orElseThrow();
     }
 
     /* UPDATE */

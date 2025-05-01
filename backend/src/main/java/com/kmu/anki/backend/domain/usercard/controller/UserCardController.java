@@ -29,11 +29,11 @@ public class UserCardController {
     private final UserStudyHistoryService userStudyHistoryService;
     private final UserOptionService userOptionService;
 
-    @GetMapping("/{cardId}/study")
+    @GetMapping("/{userCardId}/study")
     public CardStudyDto getCardsStudyInfo(
-            @PathVariable("cardId") Long cardId
+            @PathVariable("userCardId") Long userCardId
     ){
-        return userCardService.readCardStudyInfo(cardId);
+        return userCardService.readCardStudyInfo(userCardId);
     }
 
     @PostMapping("/{userCardId}/study")

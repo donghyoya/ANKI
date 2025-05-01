@@ -5,32 +5,36 @@ import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 public class CardStudyDto {
     private Long cardId;
+    private Long userCardId;
     private LocalDateTime nextStudyDate;
     private Integer lapses;
     private LocalDateTime lastReview;
     private Integer reps;
     private Double scheduledDays;
     private Double stability;
-    private CardState state;
+    private Integer state;
 
-    public CardStudyDto(Long cardId, LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state) {
+    public CardStudyDto(Long cardId, Long userCardId, LocalDateTime nextStudyDate, Integer lapses, LocalDateTime lastReview, Integer reps, Double scheduledDays, Double stability, CardState state) {
         this.cardId = cardId;
+        this.userCardId = userCardId;
         this.nextStudyDate = nextStudyDate;
         this.lapses = lapses == null ? 0 : lapses;
         this.lastReview = lastReview;
         this.reps = reps;
         this.scheduledDays = scheduledDays;
         this.stability = stability;
-        this.state = state;
+        this.state = state.getPriority();
     }
 
     public static CardStudyDto of(UserCard userCard){
         return new CardStudyDto(
                 userCard.getKoreanCardId(),
+                userCard.getId(),
                 userCard.getDue(),
                 userCard.getLapses(),
                 userCard.getLastReview(),

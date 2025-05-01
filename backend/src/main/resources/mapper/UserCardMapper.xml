@@ -3,8 +3,8 @@
 
 <mapper namespace="com.kmu.anki.backend.domain.usercard.repository.UserCardMapper">
     <insert id="studyDeck" parameterType="java.lang.Long">
-        INSERT INTO user_cards(korean_card_id, user_id, user_card_state)
-        SELECT korean_cards.korean_card_id, #{userId}, 'New'
+        INSERT INTO user_cards(korean_card_id, user_id, user_card_state, user_card_state_priority)
+        SELECT korean_cards.korean_card_id, #{userId}, 'New', 0
         FROM korean_cards
     </insert>
 </mapper>

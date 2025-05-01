@@ -35,12 +35,21 @@ public class UserCard {
     @Column(columnDefinition = "FLOAT DEFAULT 0")
     private Double stability;
 
+    @Column(columnDefinition = "FLOAT DEFAULT 0")
+    private Double difficulty;
+
+    /* State */
     @Enumerated(EnumType.STRING)
     @Column(name = "user_card_state")
     private CardState state;
 
-    @Column(columnDefinition = "FLOAT DEFAULT 0")
-    private Double difficulty;
+    @Column(name = "user_card_state_priority")
+    private Integer statePriority;
+
+    private void setState(CardState cardState){
+        this.state = cardState;
+        this.statePriority = cardState.getPriority();
+    }
 
     /* 관계 User */
 
@@ -73,6 +82,6 @@ public class UserCard {
         this.scheduledDays = scheduledDays;
         this.stability = stability;
         this.difficulty = difficulty;
-        this.state = state;
+        this.setState(state);
     }
 }

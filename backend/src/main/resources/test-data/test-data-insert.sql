@@ -208,6 +208,6 @@ VALUES('1', 'ECONOMY'),('2', 'SCIENCE'),('3', 'TRANSPORT'),('4', 'WEATHER'),('5'
 insert into users(user_id, email, name, daily_study_words, language_code, daily_review_words, role) values (1, 'testuser1@fortest.email', 'testuser1', 30, 'en', 20, 'USER');
 insert into users(user_id, email, name, daily_study_words, language_code, daily_review_words, role) values (2, 'testuser2@fortest.email', 'testuser2', 30, 'en', 20, 'USER');
 
-INSERT INTO user_cards(korean_card_id, user_id, user_card_state)
-SELECT korean_cards.korean_card_id, 1, 'New'
+INSERT INTO user_cards(korean_card_id, user_id, user_card_state, user_card_state_priority)
+SELECT korean_cards.korean_card_id, 1, 'New', 0
 FROM korean_cards;

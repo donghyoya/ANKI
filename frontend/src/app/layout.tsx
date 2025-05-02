@@ -3,6 +3,8 @@ import { getLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import type { Metadata } from 'next';
+import { ThemeProvider } from '@/context/ThemeContext';
+import classNames from 'classnames';
 import {
   Noto_Sans_KR,
   Roboto,
@@ -78,7 +80,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang={locale}>
       <body
-        className={`antialiased ${theme} ${notoSansKr.className} ${roboto.className} ${fonts[locale as keyof typeof fonts]?.className || ''}`}
+        className={classNames(
+          'antialiased',
+          theme,
+          notoSansKr.className,
+          roboto.className,
+          fonts[locale as keyof typeof fonts]?.className
+        )}
       >
         {children}
       </body>

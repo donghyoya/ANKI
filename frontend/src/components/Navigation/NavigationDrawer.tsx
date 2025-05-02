@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { Ripple } from '@/components/material-components/Ripple';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
 import styles from './NavigationDrawer.module.scss';
+import classNames from 'classnames';
 
 const NavigationDrawer = ({
   destinations,
@@ -40,12 +41,12 @@ const NavigationDrawer = ({
           return (
             <button
               key={destination.label}
-              className={`${styles['item']} ${isSelected ? styles.selected : ''}`}
+              className={classNames(styles['item'], { [styles.selected]: isSelected })}
               onClick={() => handleNavItemClick(destination.label)}
             >
               <Ripple />
               <Icon>{destination.icon}</Icon>
-              <span className={`${styles['item-label']} ${isSelected ? styles.selected : ''}`}>
+              <span className={classNames(styles['item-label'], { [styles.selected]: isSelected })}>
                 {t(`menu.${destination.label}`)}
               </span>
             </button>

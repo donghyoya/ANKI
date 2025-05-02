@@ -4,6 +4,7 @@ import TooltipProvider from '@/components/Tooltips/TooltipProvider';
 import styles from './ProgressBar.module.scss';
 import { Progress } from '@/types/Progress';
 import { LEARNING_PROGRESS_BAR_COLORS } from '@/constants/colors';
+import classNames from 'classnames';
 
 interface ProgressBarProps {
   progress: Progress[];
@@ -33,7 +34,7 @@ const ProgressBar = ({ progress, styles: stylesProp, className, height }: Progre
   }
 
   return (
-    <div className={`${styles['container']} ${className}`} style={{ ...stylesProp, height }}>
+    <div className={classNames(styles['container'], className)} style={{ ...stylesProp, height }}>
       {[...progress].reverse().map((bar, index) => {
         return (
           <div

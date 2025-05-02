@@ -5,6 +5,7 @@ import { Ripple } from '@/components/material-components/Ripple';
 import { Icon } from '@/components/material-components/IconButton/IconButton';
 
 import styles from './NavigationBar.module.scss';
+import classNames from 'classnames';
 
 const NavigationBar = ({
   destinations,
@@ -28,14 +29,16 @@ const NavigationBar = ({
         return (
           <button
             key={destination.label}
-            className={`${styles.destination} ${isSelected ? styles.selected : ''}`}
+            className={classNames(styles.destination, { [styles.selected]: isSelected })}
             onClick={() => handleDestinationClick(destination.label)}
           >
-            <div className={`${styles['icon-container']} ${isSelected ? styles.selected : ''}`}>
+            <div
+              className={classNames(styles['icon-container'], { [styles.selected]: isSelected })}
+            >
               <Ripple />
               <Icon>{destination.icon}</Icon>
             </div>
-            <span className={`${styles['label']} ${isSelected ? styles.selected : ''}`}>
+            <span className={classNames(styles['label'], { [styles.selected]: isSelected })}>
               {t(`menu.${destination.label}`)}
             </span>
           </button>

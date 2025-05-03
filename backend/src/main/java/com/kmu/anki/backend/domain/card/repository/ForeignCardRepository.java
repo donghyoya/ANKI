@@ -13,7 +13,7 @@ import org.springframework.data.repository.query.Param;
 public interface ForeignCardRepository extends JpaRepository<ForeignCard, Long> {
     @Query("""
         select fc
-        from ForeignCard fc join fetch fc.koreanCard kc
+        from ForeignCard fc join fetch fc.koreanMeaning km join fetch km.koreanCard kc
         where
             fc.languageCode = :languageCode
             and kc.level = :difficulty

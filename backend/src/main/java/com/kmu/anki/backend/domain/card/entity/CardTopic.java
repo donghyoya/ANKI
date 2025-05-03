@@ -11,14 +11,13 @@ public class CardTopic {
     @Column(name = "card_topic_id")
     private Long id;
 
-
-    /* 관계 : KoreanCard */
+    /* 관계 : KoreanMeaning */
     @ManyToOne
-    @JoinColumn(name = "korean_card_id")
-    private KoreanCard koreanCard;
+    @JoinColumn(name = "korean_meaning_id")
+    private KoreanMeaning koreanMeaning;
 
-    @Column(name = "korean_card_id", insertable = false, updatable = false)
-    private Long koreanCardId;
+    @Column(name = "korean_meaning_id", insertable = false, updatable = false)
+    private Long koreanMeaningId;
 
 
     /* 관계 meaningGroup */

@@ -25,14 +25,14 @@ public class ForeignCard {
 
     /* 관계 - 한국어 카드 */
     @ManyToOne
-    @JoinColumn(name = "korean_card_id")
-    private KoreanCard koreanCard;
+    @JoinColumn(name = "korean_meaning_id")
+    private KoreanMeaning koreanMeaning;
 
-    @Column(name = "korean_card_id", insertable = false, updatable = false)
-    private Long koreanCardId;
+    @Column(name = "korean_meaning_id", insertable = false, updatable = false)
+    private Long koreanMeaningId;
 
-    public void mapKoreanCard(KoreanCard koreanCard){
-        this.koreanCard = koreanCard;
-        this.koreanCard.addForeignCards(this);
+    public void mapKoreanMeaning(KoreanMeaning koreanMeaning){
+        this.koreanMeaning = koreanMeaning;
+        this.koreanMeaning.addForeignCards(this);
     }
 }

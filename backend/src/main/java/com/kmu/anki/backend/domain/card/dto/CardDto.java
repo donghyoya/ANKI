@@ -21,12 +21,14 @@ public class CardDto {
         this.languageCode = languageCode;
     }
 
+    /* TODO */
+
     public static CardDto of(ForeignCard foreignCard){
         return new CardDto(
-                foreignCard.getKoreanCard().getId(),
-                foreignCard.getKoreanCard().getKoreanWord(),
+                foreignCard.getKoreanMeaning().getId(),
+                foreignCard.getKoreanMeaning().getKoreanCard().getKoreanWord(),
                 foreignCard.getForeignWord(),
-                foreignCard.getKoreanCard().getLevel(),
+                foreignCard.getKoreanMeaning().getKoreanCard().getLevel(),
                 foreignCard.getLanguageCode()
         );
     }

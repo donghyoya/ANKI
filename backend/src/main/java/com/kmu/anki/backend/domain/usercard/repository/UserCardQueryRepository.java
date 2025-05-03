@@ -30,6 +30,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+// TODO
+
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Repository
@@ -50,95 +52,97 @@ public class UserCardQueryRepository {
             StudyType studyType,
             Pageable pageable
     ){
-        List<UserCardDto> contents = queryFactory.select(
-                        projectionUserCard()
-                )
-                .from(
-                        koreanCard
-                ).join(
-                        koreanCard.userCards, userCard
-                ).join(
-                        koreanCard.foreignCards, foreignCard
-                ).join(
-                        koreanCard.cardTopics, cardTopic
-                )
-                .where(
-                        combineQuery(
-                                userId,
-                                code,
-                                difficulty,
-                                topic,
-                                now,
-                                studyType
-                        )
-                )
-                .orderBy(
-                        userCard.statePriority.desc(),
-                        Expressions.numberTemplate(Double.class, "RANDOM()").asc()
-                )
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetch();
-        JPAQuery<UserCardDto> countQuery = queryFactory
-                .select(
-                        projectionUserCard()
-                )
-                .from(
-                        koreanCard
-                ).join(
-                        koreanCard.userCards, userCard
-                ).join(
-                        koreanCard.foreignCards, foreignCard
-                ).join(
-                        koreanCard.cardTopics, cardTopic
-                )
-                .where(
-                        combineQuery(
-                                userId,
-                                code,
-                                difficulty,
-                                topic,
-                                now,
-                                studyType
-                        )
-                )
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize());
-
-        return PageableExecutionUtils.getPage(
-                contents,
-                pageable,
-                ()->countQuery.fetch().size()
-        );
+//        List<UserCardDto> contents = queryFactory.select(
+//                        projectionUserCard()
+//                )
+//                .from(
+//                        koreanCard
+//                ).join(
+//                        koreanCard.userCards, userCard
+//                ).join(
+//                        koreanCard.foreignCards, foreignCard
+//                ).join(
+//                        koreanCard.cardTopics, cardTopic
+//                )
+//                .where(
+//                        combineQuery(
+//                                userId,
+//                                code,
+//                                difficulty,
+//                                topic,
+//                                now,
+//                                studyType
+//                        )
+//                )
+//                .orderBy(
+//                        userCard.statePriority.desc(),
+//                        Expressions.numberTemplate(Double.class, "RANDOM()").asc()
+//                )
+//                .offset(pageable.getOffset())
+//                .limit(pageable.getPageSize())
+//                .fetch();
+//        JPAQuery<UserCardDto> countQuery = queryFactory
+//                .select(
+//                        projectionUserCard()
+//                )
+//                .from(
+//                        koreanCard
+//                ).join(
+//                        koreanCard.userCards, userCard
+//                ).join(
+//                        koreanCard.foreignCards, foreignCard
+//                ).join(
+//                        koreanCard.cardTopics, cardTopic
+//                )
+//                .where(
+//                        combineQuery(
+//                                userId,
+//                                code,
+//                                difficulty,
+//                                topic,
+//                                now,
+//                                studyType
+//                        )
+//                )
+//                .offset(pageable.getOffset())
+//                .limit(pageable.getPageSize());
+//
+//        return PageableExecutionUtils.getPage(
+//                contents,
+//                pageable,
+//                ()->countQuery.fetch().size()
+//        );
+        return null;
     }
 
     public Optional<CardStudyDto> findCardStudyDto(
             Long userCardId
     ){
-        CardStudyDto cardStudyDto = queryFactory.select(
-                        Projections.constructor(
-                                CardStudyDto.class,
-                                koreanCard.id,
-                                userCard.id,
-                                userCard.due,
-                                userCard.lapses,
-                                userCard.lastReview,
-                                userCard.reps,
-                                userCard.scheduledDays,
-                                userCard.stability,
-                                userCard.state
-                        )
-                )
-                .from(
-                        userCard
-                ).join(
-                        userCard.koreanCard, koreanCard
-                )
-                .where(
-                        userCardIdEq(userCardId)
-                )
-                .fetchOne();
-        return Optional.ofNullable(cardStudyDto);
+//        CardStudyDto cardStudyDto = queryFactory.select(
+//                        Projections.constructor(
+//                                CardStudyDto.class,
+//                                koreanCard.id,
+//                                userCard.id,
+//                                userCard.due,
+//                                userCard.lapses,
+//                                userCard.lastReview,
+//                                userCard.reps,
+//                                userCard.scheduledDays,
+//                                userCard.stability,
+//                                userCard.state
+//                        )
+//                )
+//                .from(
+//                        userCard
+//                ).join(
+//                        userCard.koreanCard, koreanCard
+//                )
+//                .where(
+//                        userCardIdEq(userCardId)
+//                )
+//                .fetchOne();
+//        return Optional.ofNullable(cardStudyDto);
+        return Optional.empty();
     }
 
     /* 조건식 */
@@ -163,30 +167,31 @@ public class UserCardQueryRepository {
     }
 
     private ConstructorExpression<UserCardDto> projectionUserCard(){
-        return Projections.constructor(
-                UserCardDto.class,
-                koreanCard.id,
-                koreanCard.koreanWord,
-                foreignCard.foreignWord,
-                koreanCard.level,
-                foreignCard.languageCode,
-                userCard.id,
-                userCard.due,
-                userCard.lapses,
-                userCard.lastReview,
-                userCard.reps,
-                userCard.scheduledDays,
-                userCard.stability,
-                userCard.state,
-                userCard.difficulty,
-                koreanCard.originalLanguage,
-                koreanCard.homographNumber,
-                koreanCard.partsOfSpeech,
-                koreanCard.pronunciation,
-                koreanCard.relatedWords,
-                koreanCard.inflection,
-                koreanCard.exampleUsage
-        );
+//        return Projections.constructor(
+//                UserCardDto.class,
+//                koreanCard.id,
+//                koreanCard.koreanWord,
+//                foreignCard.foreignWord,
+//                koreanCard.level,
+//                foreignCard.languageCode,
+//                userCard.id,
+//                userCard.due,
+//                userCard.lapses,
+//                userCard.lastReview,
+//                userCard.reps,
+//                userCard.scheduledDays,
+//                userCard.stability,
+//                userCard.state,
+//                userCard.difficulty,
+//                koreanCard.originalLanguage,
+//                koreanCard.homographNumber,
+//                koreanCard.partsOfSpeech,
+//                koreanCard.pronunciation,
+//                koreanCard.relatedWords,
+//                koreanCard.inflection,
+//                koreanCard.exampleUsage
+//        );
+        return null;
     }
 
     public BooleanExpression userCardIdEq(Long userCardId) {

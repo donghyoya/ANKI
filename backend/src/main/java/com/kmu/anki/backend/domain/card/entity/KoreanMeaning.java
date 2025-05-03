@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name = "korean_meanings")
 public class KoreanMeaning {
     @Id
     @GeneratedValue
@@ -35,7 +36,11 @@ public class KoreanMeaning {
 
     /* 관계 - KoreanCard */
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "korean_card_id")
     private KoreanCard koreanCard;
+
+    @Column(name = "korean_card_id", updatable = false, insertable = false)
+    private Long koreanCardId;
 
     private void mapKoreanCard(KoreanCard koreanCard){
         this.koreanCard = koreanCard;

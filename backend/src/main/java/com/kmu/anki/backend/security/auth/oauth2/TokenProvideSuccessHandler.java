@@ -32,7 +32,7 @@ public class TokenProvideSuccessHandler extends SimpleUrlAuthenticationSuccessHa
     @Override
     protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         CustomOidcUser principal = (CustomOidcUser) authentication.getPrincipal();
-        String token = jwtTokenService.generateAuthenticationToken(principal.getUser().getId().toString(), Map.of("Role", "ROLE_AUTHENTICATION")); // 초기에는 authentication token발급
+        String token = jwtTokenService.generateAuthenticationToken(principal.getUser().getId().toString(), Map.of("role", "ROLE_AUTHENTICATION")); // 초기에는 authentication token발급
         HttpSession session = request.getSession(false);
         String redirectUri = redirectUrl;
         if(session!=null){

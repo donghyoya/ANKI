@@ -1,6 +1,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { formatDuration } from '@/utils/timeFormatter';
 import styles from './RatingButton.module.scss';
+import classNames from 'classnames';
 
 interface RatingButtonProps {
   label: string;
@@ -15,7 +16,7 @@ const RatingButton = ({ label, interval, isError = false, onClick }: RatingButto
 
   return (
     <button
-      className={styles['rating-button'] + (isError ? ' ' + styles['error'] : '')}
+      className={classNames(styles['rating-button'], { [styles['error']]: isError })}
       onClick={onClick}
     >
       <span className={styles['rating-button-label']}>{t(`learning.${label}`)}</span>

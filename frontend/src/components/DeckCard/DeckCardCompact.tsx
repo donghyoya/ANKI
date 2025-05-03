@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 import FilledButton from '@/components/material-components/FilledButton';
 import TextButton from '@/components/material-components/TextButton';
@@ -26,7 +26,7 @@ const DeckCardCompact = ({ deck, isCompleted, locale, buttonLabels, onLearn }: D
   return (
     <OutlinedCard ripple={false}>
       <div
-        className={classnames(styles.card, { [styles['card-expanded']]: isExpanded })}
+        className={classNames(styles.card, { [styles['card-expanded']]: isExpanded })}
         onClick={handleClick}
       >
         <div className={styles['main-contents']}>

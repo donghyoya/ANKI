@@ -3,7 +3,7 @@
 import { Locale } from '../types/Locale';
 import { CardDetail, Card, Paginated } from '../types/schemes';
 
-const endpoint = process.env.NEXT_PUBLIC_API_URL;
+const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
 export const forignSearch = async (locale: Locale, query: string, token: string) => {
   const page = 1;

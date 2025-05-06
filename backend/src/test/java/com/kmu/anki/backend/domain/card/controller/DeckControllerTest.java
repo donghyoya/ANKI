@@ -6,6 +6,7 @@ import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.card.docs.CardDetailDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.DeckDtoDocs;
+import com.kmu.anki.backend.domain.card.docs.KoreanCardDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.parameters.CardParameters;
 import com.kmu.anki.backend.domain.card.docs.parameters.DeckParameters;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
@@ -146,9 +147,9 @@ class DeckControllerTest extends AbstractControllerTest {
                                                         DeckParameters.query
                                                 )
                                                 .responseFields(
-                                                        CardDetailDtoDocs.cardDetailDtos
+                                                        KoreanCardDtoDocs.koreanCardDtos
                                                 )
-                                                .responseSchema(CardDetailDtoDocs.cardDetailsSchema)
+                                                .responseSchema(KoreanCardDtoDocs.koreanCardSchemas)
                                                 .build()
                                 )
                         )
@@ -210,9 +211,9 @@ class DeckControllerTest extends AbstractControllerTest {
                                                         DeckParameters.query
                                                 )
                                                 .responseFields(
-                                                        CardDetailDtoDocs.cardDetailDtos
+                                                        KoreanCardDtoDocs.koreanCardDtos
                                                 )
-                                                .responseSchema(CardDetailDtoDocs.cardDetailsSchema)
+                                                .responseSchema(KoreanCardDtoDocs.koreanCardSchemas)
                                                 .build()
                                 )
                         )

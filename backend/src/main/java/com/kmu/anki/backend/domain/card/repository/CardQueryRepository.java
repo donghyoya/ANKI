@@ -1,9 +1,6 @@
 package com.kmu.anki.backend.domain.card.repository;
 
-import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
-import com.kmu.anki.backend.domain.card.dto.CardDto;
-import com.kmu.anki.backend.domain.card.dto.CardMeaningWithForeign;
-import com.kmu.anki.backend.domain.card.dto.DeckDto;
+import com.kmu.anki.backend.domain.card.dto.*;
 import com.kmu.anki.backend.domain.card.entity.*;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
@@ -110,104 +107,60 @@ public class CardQueryRepository {
      * @param pageable
      * @return
      */
-    public Page<CardDetailDto> findDecksCardByLevel(
+    public Page<KoreanCard> findDecksCardByLevel(
             LanguageCode languageCode,
             CardLevel level,
             Pageable pageable
     ){
-//        List<CardDetailDto> cards = queryFactory.select(
-//                        Projections.constructor(
-//                                CardDetailDto.class,
-//                                koreanCard.id,
-//                                koreanCard.koreanWord,
-//                                foreignCard.foreignWord,
-//                                koreanCard.level,
-//                                foreignCard.languageCode,
-//                                koreanCard.originalLanguage,
-//                                koreanCard.homographNumber,
-//                                koreanCard.partsOfSpeech,
-//                                koreanCard.pronunciation,
-//                                koreanCard.relatedWords,
-//                                koreanCard.inflection,
-//                                koreanCard.exampleUsage
-//                        )
-//                ).from(koreanCard)
-//                .join(koreanCard.foreignCards, foreignCard)
-//                .where(
-//                        koreanCard.level.eq(level).and(
-//                                foreignCard.languageCode.eq(languageCode)
-//                        )
-//                )
-//                .offset(pageable.getOffset())
-//                .limit(pageable.getPageSize())
-//                .fetch();
-//
-//        JPAQuery<KoreanCard> countq = queryFactory.select(koreanCard)
-//                .from(koreanCard)
-//                .where(
-//                        koreanCard.level.eq(level)
-//                )
-//                .offset(pageable.getOffset())
-//                .limit(pageable.getPageSize());
-//
-//        return PageableExecutionUtils.getPage(
-//                cards, pageable, ()->  countq.fetch().size()
-//        );
-        return null;
+        List<KoreanCard> cards = queryFactory.select(koreanCard)
+                .from(koreanCard)
+                .join(koreanCard.cardTopics, cardTopic).fetchJoin()
+                .where(koreanCard.level.eq(level))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+        JPAQuery<KoreanCard> countq = queryFactory.select(koreanCard)
+                .from(koreanCard)
+                .where(
+                        koreanCard.level.eq(level)
+                )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize());
+        return PageableExecutionUtils.getPage(
+                cards, pageable, ()->  countq.fetch().size()
+        );
     }
 
 
     /**
      * 의미코드에 맞는 Card들 검색
      * @param languageCode
-     * @param category
+     * @param topic
      * @param pageable
      * @return
      */
-    public Page<CardDetailDto> findDecksCardByTopic(
+    public Page<KoreanCard> findDecksCardByTopic(
             LanguageCode languageCode,
-            CardTopicEnums category,
+            CardTopicEnums topic,
             Pageable pageable
     ){
-//        List<CardDetailDto> cards = queryFactory.select(
-//                        Projections.constructor(
-//                                CardDetailDto.class,
-//                                koreanCard.id,
-//                                koreanCard.koreanWord,
-//                                foreignCard.foreignWord,
-//                                koreanCard.level,
-//                                foreignCard.languageCode,
-//                                koreanCard.originalLanguage,
-//                                koreanCard.homographNumber,
-//                                koreanCard.partsOfSpeech,
-//                                koreanCard.pronunciation,
-//                                koreanCard.relatedWords,
-//                                koreanCard.inflection,
-//                                koreanCard.exampleUsage
-//                        )
-//                ).from(koreanCard)
-//                .join(koreanCard.foreignCards, foreignCard)
-//                .join(koreanCard.cardTopics, cardTopic)
-//                .where(
-//                    cardTopic.topicId.eq(category).and(
-//                        foreignCard.languageCode.eq(languageCode)
-//                    )
-//                )
-//                .offset(pageable.getOffset())
-//                .limit(pageable.getPageSize())
-//                .fetch();
-//        JPAQuery<KoreanCard> countq = queryFactory.select(koreanCard)
-//                .from(koreanCard)
-//                .join(koreanCard.cardTopics, cardTopic)
-//                .where(
-//                        cardTopic.topicId.eq(category)
-//                )
-//                .offset(pageable.getOffset())
-//                .limit(pageable.getPageSize());
-//        return PageableExecutionUtils.getPage(
-//            cards, pageable, ()->  countq.fetch().size()
-//        );
-        return null;
+        List<KoreanCard> cards = queryFactory.select(koreanCard)
+                .from(koreanCard)
+                .join(koreanCard.cardTopics, cardTopic).fetchJoin()
+                .where(cardTopic.topicId.eq(topic))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+        JPAQuery<KoreanCard> countq = queryFactory.select(koreanCard)
+                .from(koreanCard)
+                .where(
+                        cardTopic.topicId.eq(topic)
+                )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize());
+        return PageableExecutionUtils.getPage(
+                cards, pageable, ()->  countq.fetch().size()
+        );
     }
 
     /**

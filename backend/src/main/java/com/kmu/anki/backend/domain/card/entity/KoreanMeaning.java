@@ -46,10 +46,6 @@ public class KoreanMeaning {
         this.koreanCard = koreanCard;
     }
 
-    /* 관계 - CardTopics */
-    @OneToMany(mappedBy = "koreanMeaning")
-    private List<CardTopic> cardTopics;
-
     /* 관계 - 외국어 카드 */
     @OneToMany(mappedBy = "koreanMeaning")
     private List<ForeignCard> foreignCards;

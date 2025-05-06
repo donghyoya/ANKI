@@ -31,10 +31,18 @@ public class KoreanCard {
 
     /* 관계 - 유저 카드 */
     @OneToMany(mappedBy = "koreanCard")
-    private List<UserCard> userCards;
+    private List<UserCard> userCards = new ArrayList<>();
 
     public void addUserCards(UserCard card){
         userCards.add(card);
+    }
+
+    /* 관계 - koreanCard */
+    @OneToMany(mappedBy = "koreanCard")
+    private List<CardTopic> cardTopics = new ArrayList<>();
+
+    public void addCardTopics(CardTopic cardTopic) {
+        this.cardTopics.add(cardTopic);
     }
 
 }

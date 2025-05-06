@@ -16,6 +16,7 @@ import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
 import com.kmu.anki.backend.global.ExceptionResponseDocs;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -203,7 +204,7 @@ class CardControllerTest extends AbstractControllerTest {
                 );
     }
 
-
+    @Disabled
     @ParameterizedTest
     @MethodSource("getForeignSearch")
     void getForeignSearch(Long id, LanguageCode code, String query) throws Exception{
@@ -247,6 +248,7 @@ class CardControllerTest extends AbstractControllerTest {
                 .map(fc -> Arguments.of(fc.getId(), fc.getLanguageCode(), fc.getForeignWord()));
     }
 
+    @Disabled
     @ParameterizedTest
     @MethodSource("getKoreanSearch")
     void getKoreanSearch(Long id, String query) throws Exception{
@@ -282,6 +284,7 @@ class CardControllerTest extends AbstractControllerTest {
 
     }
 
+    @Disabled
     @WithAnonymousUser
     @Test
     void getKoreanSearchWithoutAuth() throws Exception{

@@ -33,6 +33,9 @@ public class CardDetailDto {
     }
 
     public static CardDetailDto of(KoreanCard card, List<CardMeaningWithForeign> meanings){
+        if(card == null || meanings == null){
+            return null;
+        }
         return new CardDetailDto(
             card.getId(),
             card.getKoreanWord(),

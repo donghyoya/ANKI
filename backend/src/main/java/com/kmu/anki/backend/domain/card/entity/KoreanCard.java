@@ -4,6 +4,7 @@ import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import jakarta.persistence.*;
 import lombok.Getter;
+import org.apache.ibatis.annotations.One;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,4 +46,7 @@ public class KoreanCard {
         this.cardTopics.add(cardTopic);
     }
 
+    /* 관계 - KoreanMeaning*/
+    @OneToMany(mappedBy = "koreanCard")
+    private List<KoreanMeaning> koreanCards = new ArrayList<>();
 }

@@ -2,7 +2,9 @@ package com.kmu.anki.backend.domain.card.entity;
 
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity
 @Table(name = "card_topics")
 public class CardTopic {

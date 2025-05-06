@@ -2,6 +2,7 @@ package com.kmu.anki.backend.domain.card.repository;
 
 import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
 import com.kmu.anki.backend.domain.card.dto.CardDto;
+import com.kmu.anki.backend.domain.card.dto.CardMeaningWithForeign;
 import com.kmu.anki.backend.domain.card.dto.DeckDto;
 import com.kmu.anki.backend.domain.card.entity.*;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
@@ -38,6 +39,7 @@ public class CardQueryRepository {
     private final QUserCard userCard = QUserCard.userCard;
     private final QCardTopic cardTopic = QCardTopic.cardTopic;
     private final QTopic topic = QTopic.topic1;
+    private final QKoreanMeaning koreanMeaning = QKoreanMeaning.koreanMeaning;
 
     /**
      * koreanCard-ForeignCard를 합쳐서 가져오기
@@ -76,35 +78,29 @@ public class CardQueryRepository {
      * @return 카드 세부정보 DTO
      */
     public Optional<CardDetailDto> findDetailById(Long cardId, LanguageCode code){
-//        CardDetailDto cardDetailDto = queryFactory
-//                .select(
-//                        Projections.constructor(
-//                                CardDetailDto.class,
-//                                koreanCard.id,
-//                                koreanCard.koreanWord,
-//                                foreignCard.foreignWord,
-//                                koreanCard.level,
-//                                foreignCard.languageCode,
-//                                koreanCard.originalLanguage,
-//                                koreanCard.homographNumber,
-//                                koreanCard.partsOfSpeech,
-//                                koreanCard.pronunciation,
-//                                koreanCard.relatedWords,
-//                                koreanCard.inflection,
-//                                koreanCard.exampleUsage
-//                        )
-//                ).from(
-//                        foreignCard
-//                ).join(foreignCard.koreanCard, koreanCard)
-//                .where(
-//                        koreanCard.id.eq(cardId)
-//                                .and(
-//                                        foreignCard.languageCode.eq(code)
-//                                )
-//                )
-//                .fetchOne();
-//        return Optional.ofNullable(cardDetailDto);
-        return Optional.empty();
+        KoreanCard card = queryFactory.select(koreanCard)
+                .from(koreanCard)
+                .join(koreanCard.cardTopics, cardTopic).fetchJoin()
+                .where(koreanCard.id.eq(cardId))
+                .fetchOne();
+        List<CardMeaningWithForeign> cardMeanings = queryFactory.select(Projections.constructor(
+                        CardMeaningWithForeign.class,
+                        koreanMeaning.originalLanguage,
+                        koreanMeaning.partsOfSpeech,
+                        koreanMeaning.pronunciation,
+                        koreanMeaning.relatedWords,
+                        koreanMeaning.inflection,
+                        koreanMeaning.exampleUsage,
+                        foreignCard.languageCode,
+                        foreignCard.foreignWord,
+                        foreignCard.foreignMeaning
+                ))
+                .from(koreanMeaning)
+                .join(koreanMeaning.foreignCards, foreignCard)
+                .where(foreignCard.languageCode.eq(code).and(koreanMeaning.koreanCardId.eq(cardId)))
+                .fetch();
+        CardDetailDto cardDetailDto = CardDetailDto.of(card, cardMeanings);
+        return Optional.ofNullable(cardDetailDto);
     }
 
     /**

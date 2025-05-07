@@ -15,29 +15,29 @@
 
   "menu": {
     "difficulty": "الصعوبة",
-    "meanings": "المعنى",
+    "meaning": "المعنى",
     "settings": "الإعدادات"
   },
 
   "difficulty": {
     "wordsByDifficulty": "الكلمات حسب الصعوبة",
-    "beginner": "مبتدئ",
-    "intermediate": "متوسط",
-    "advanced": "متقدم"
+    "easy": "مبتدئ",
+    "normal": "متوسط",
+    "hard": "متقدم"
   },
 
-  "meanings": {
-    "wordsByMeanings": "الكلمات حسب المعاني",
+  "meaning": {
+    "wordsByMeaning": "الكلمات حسب المعنى",
     "action": "عمل",
     "administration": "إدارة",
     "communication": "اتصال",
     "concept": "مفهوم",
     "culture": "ثقافة",
     "economy": "اقتصاد",
-    "fashion": "الموضة والمظهر",
+    "fashionAndAppearance": "الموضة والمظهر",
     "feeling": "شعور",
     "food": "طعام",
-    "grammar": "القواعد واللغة",
+    "grammarAndLanguage": "القواعد واللغة",
     "home": "منزل",
     "hospital": "مستشفى",
     "life": "حياة",

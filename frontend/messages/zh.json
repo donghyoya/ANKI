@@ -15,29 +15,29 @@
 
   "menu": {
     "difficulty": "难度",
-    "meanings": "含义",
+    "meaning": "含义",
     "settings": "设置"
   },
 
   "difficulty": {
     "wordsByDifficulty": "按难度分类的单词",
-    "beginner": "初级",
-    "intermediate": "中级",
-    "advanced": "高级"
+    "easy": "初级",
+    "normal": "中级",
+    "hard": "高级"
   },
 
-  "meanings": {
-    "wordsByMeanings": "按含义分类的单词",
+  "meaning": {
+    "wordsByMeaning": "按含义分类的单词",
     "action": "行动",
     "administration": "行政",
     "communication": "沟通",
     "concept": "概念",
     "culture": "文化",
     "economy": "经济",
-    "fashion": "时尚与外貌",
+    "fashionAndAppearance": "时尚与外貌",
     "feeling": "感觉",
     "food": "食物",
-    "grammar": "语法和语言",
+    "grammarAndLanguage": "语法和语言",
     "home": "家",
     "hospital": "医院",
     "life": "生活",

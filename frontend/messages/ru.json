@@ -15,29 +15,29 @@
 
   "menu": {
     "difficulty": "Сложность",
-    "meanings": "Значение",
+    "meaning": "Значение",
     "settings": "Настройки"
   },
 
   "difficulty": {
     "wordsByDifficulty": "Слова по уровню сложности",
-    "beginner": "Новичок",
-    "intermediate": "Средний",
-    "advanced": "Продвинутый"
+    "easy": "Новичок",
+    "normal": "Средний",
+    "hard": "Продвинутый"
   },
 
-  "meanings": {
-    "wordsByMeanings": "Слова по значению",
+  "meaning": {
+    "wordsByMeaning": "Слова по значению",
     "action": "Действие",
     "administration": "Администрация",
     "communication": "Коммуникация",
     "concept": "Концепция",
     "culture": "Культура",
     "economy": "Экономика",
-    "fashion": "Мода и внешний вид",
+    "fashionAndAppearance": "Мода и внешний вид",
     "feeling": "Чувство",
     "food": "Еда",
-    "grammar": "Грамматика и язык",
+    "grammarAndLanguage": "Грамматика и язык",
     "home": "Дом",
     "hospital": "Больница",
     "life": "Жизнь",

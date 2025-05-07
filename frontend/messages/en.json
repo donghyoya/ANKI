@@ -15,29 +15,29 @@
 
   "menu": {
     "difficulty": "Difficulty",
-    "meanings": "Meanings",
+    "meaning": "Meaning",
     "settings": "Settings"
   },
 
   "difficulty": {
     "wordsByDifficulty": "Words by difficulty",
-    "beginner": "Beginner",
-    "intermediate": "Intermediate",
-    "advanced": "Advanced"
+    "easy": "Beginner",
+    "normal": "Intermediate",
+    "hard": "Advanced"
   },
 
-  "meanings": {
-    "wordsByMeanings": "Words by meanings",
+  "meaning": {
+    "wordsByMeaning": "Words by meaning",
     "action": "Action",
     "administration": "Administration",
     "communication": "Communication",
     "concept": "Concept",
     "culture": "Culture",
     "economy": "Economy",
-    "fashion": "Fashion and appearance",
+    "fashionAndAppearance": "Fashion and appearance",
     "feeling": "Feeling",
     "food": "Food",
-    "grammar": "Grammar and language",
+    "grammarAndLanguage": "Grammar and language",
     "home": "Home",
     "hospital": "Hospital",
     "life": "Life",

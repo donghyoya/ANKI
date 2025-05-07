@@ -15,29 +15,29 @@
 
   "menu": {
     "difficulty": "Độ khó",
-    "meanings": "Ý nghĩa",
+    "meaning": "Ý nghĩa",
     "settings": "Cài đặt"
   },
 
   "difficulty": {
     "wordsByDifficulty": "Từ vựng theo mức độ khó",
-    "beginner": "Người mới bắt đầu",
-    "intermediate": "Trung cấp",
-    "advanced": "Nâng cao"
+    "easy": "Người mới bắt đầu",
+    "normal": "Trung cấp",
+    "hard": "Nâng cao"
   },
 
-  "meanings": {
-    "wordsByMeanings": "Từ theo ý nghĩa",
+  "meaning": {
+    "wordsByMeaning": "Từ theo ý nghĩa",
     "action": "Hành động",
     "administration": "Quản lý",
     "communication": "Giao tiếp",
     "concept": "Khái niệm",
     "culture": "Văn hóa",
     "economy": "Kinh tế",
-    "fashion": "Thời trang và ngoại hình",
+    "fashionAndAppearance": "Thời trang và ngoại hình",
     "feeling": "Cảm xúc",
     "food": "Thức ăn",
-    "grammar": "Ngữ pháp và ngôn ngữ",
+    "grammarAndLanguage": "Ngữ pháp và ngôn ngữ",
     "home": "Nhà",
     "hospital": "Bệnh viện",
     "life": "Cuộc sống",

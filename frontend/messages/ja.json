@@ -15,29 +15,29 @@
 
   "menu": {
     "difficulty": "難易度",
-    "meanings": "意味",
+    "meaning": "意味",
     "settings": "設定"
   },
 
   "difficulty": {
     "wordsByDifficulty": "難易度別の単語",
-    "beginner": "初心者",
-    "intermediate": "中級",
-    "advanced": "上級"
+    "easy": "初心者",
+    "normal": "中級",
+    "hard": "上級"
   },
 
-  "meanings": {
-    "wordsByMeanings": "意味別の単語",
+  "meaning": {
+    "wordsByMeaning": "意味別の単語",
     "action": "行動",
     "administration": "行政",
     "communication": "コミュニケーション",
     "concept": "概念",
     "culture": "文化",
     "economy": "経済",
-    "fashion": "ファッションと外見",
+    "fashionAndAppearance": "ファッションと外見",
     "feeling": "感情",
     "food": "食べ物",
-    "grammar": "文法と言語",
+    "grammarAndLanguage": "文法と言語",
     "home": "家",
     "hospital": "病院",
     "life": "人生",

@@ -15,29 +15,29 @@
 
   "menu": {
     "difficulty": "난이도",
-    "meanings": "의미",
+    "meaning": "의미",
     "settings": "설정"
   },
 
   "difficulty": {
     "wordsByDifficulty": "난이도별 단어",
-    "beginner": "초급",
-    "intermediate": "중급",
-    "advanced": "고급"
+    "easy": "초급",
+    "normal": "중급",
+    "hard": "고급"
   },
 
-  "meanings": {
-    "wordsByMeanings": "의미별 단어",
+  "meaning": {
+    "wordsByMeaning": "의미별 단어",
     "action": "행동",
     "administration": "행정",
     "communication": "소통",
     "concept": "개념",
     "culture": "문화",
     "economy": "경제",
-    "fashion": "패션과 외모",
+    "fashionAndAppearance": "패션과 외모",
     "feeling": "느낌",
     "food": "음식",
-    "grammar": "문법과 언어",
+    "grammarAndLanguage": "문법과 언어",
     "home": "집",
     "hospital": "병원",
     "life": "삶",

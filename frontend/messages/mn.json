@@ -15,29 +15,29 @@
 
   "menu": {
     "difficulty": "Хүндийн зэрэг",
-    "meanings": "Утга",
+    "meaning": "Утга",
     "settings": "Тохиргоо"
   },
 
   "difficulty": {
     "wordsByDifficulty": "Үгийн түвшинээр",
-    "beginner": "Анхан шат",
-    "intermediate": "Дунд шат",
-    "advanced": "Ахисан шат"
+    "easy": "Анхан шат",
+    "normal": "Дунд шат",
+    "hard": "Ахисан шат"
   },
 
-  "meanings": {
-    "wordsByMeanings": "Утгаараа ангилсан үгс",
+  "meaning": {
+    "wordsByMeaning": "Утгаар нь ангилсан үгс",
     "action": "Үйлдэл",
     "administration": "Удирдлага",
     "communication": "Харилцаа",
     "concept": "Ойлголт",
     "culture": "Соёл",
     "economy": "Эдийн засаг",
-    "fashion": "Хувцас загвар ба гадаад төрх",
+    "fashionAndAppearance": "Хувцас загвар ба гадаад төрх",
     "feeling": "Мэдрэмж",
     "food": "Хоол",
-    "grammar": "Дүрэм ба хэл",
+    "grammarAndLanguage": "Дүрэм ба хэл",
     "home": "Гэр",
     "hospital": "Эмнэлэг",
     "life": "Амьдрал",

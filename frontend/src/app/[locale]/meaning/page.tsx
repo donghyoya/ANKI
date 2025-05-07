@@ -1,14 +1,14 @@
 'use client';
 
 import DeckListPage from '@/components/common/DeckListPage';
-import { meaningsInDisplayOrder } from '@/types/Category';
+import { meaningInDisplayOrder } from '@/types/Category';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useToken } from '@/hooks/useToken';
 import { getDecks } from '@/api/decks';
 import { Deck } from '@/types/schemes';
 
-export default function MeaningsPage() {
+export default function MeaningPage() {
   const { token } = useToken();
 
   const [decks, setDecks] = useState<Deck[]>();
@@ -27,6 +27,6 @@ export default function MeaningsPage() {
     return <div>Loading...</div>;
   }
   return (
-    <DeckListPage decks={decks} categoryType="meaning" displayOrder={meaningsInDisplayOrder} />
+    <DeckListPage decks={decks} categoryType="meaning" displayOrder={meaningInDisplayOrder} />
   );
 }

@@ -33,7 +33,7 @@ export type Meaning =
 
 export type Category = Meaning | Difficulty;
 
-export const meaningsInDisplayOrder: Meaning[] = [
+export const meaningInDisplayOrder: Meaning[] = [
   'CONCEPT',
   'ECONOMY',
   'SCIENCE',

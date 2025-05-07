@@ -16,7 +16,7 @@ import { getFormatUnit } from '@/utils/unitFormatter';
 import styles from './DeckCardCompact.module.scss';
 import { getCategoryType } from '@/types/Category';
 
-const DeckCardCompact = ({ deck, isCompleted, locale, buttonLabels, onLearn }: DeckCardProps) => {
+const DeckCardCompact = ({ deck, title, isCompleted, locale, buttonLabels, onLearn }: DeckCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleClick = () => {
@@ -31,7 +31,7 @@ const DeckCardCompact = ({ deck, isCompleted, locale, buttonLabels, onLearn }: D
       >
         <div className={styles['main-contents']}>
           <div className={styles['title-container']}>
-            <h2 className={styles.title}>{deck.category}</h2>
+            <h2 className={styles.title}>{title}</h2>
             {isCompleted && <Icon className={styles['check-icon']}>check_circle</Icon>}
           </div>
           <FilledButton

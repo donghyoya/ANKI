@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.domain.usercard.repository;
 
+import com.kmu.anki.backend.domain.card.entity.KoreanCard;
 import com.kmu.anki.backend.domain.card.entity.QCardTopic;
 import com.kmu.anki.backend.domain.card.entity.QForeignCard;
 import com.kmu.anki.backend.domain.card.entity.QKoreanCard;
@@ -11,6 +12,7 @@ import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.QUserCard;
+import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Predicate;
@@ -52,103 +54,64 @@ public class UserCardQueryRepository {
             StudyType studyType,
             Pageable pageable
     ){
-//        List<UserCardDto> contents = queryFactory.select(
-//                        projectionUserCard()
-//                )
-//                .from(
-//                        koreanCard
-//                ).join(
-//                        koreanCard.userCards, userCard
-//                ).join(
-//                        koreanCard.foreignCards, foreignCard
-//                ).join(
-//                        koreanCard.cardTopics, cardTopic
-//                )
-//                .where(
-//                        combineQuery(
-//                                userId,
-//                                code,
-//                                difficulty,
-//                                topic,
-//                                now,
-//                                studyType
-//                        )
-//                )
-//                .orderBy(
-//                        userCard.statePriority.desc(),
-//                        Expressions.numberTemplate(Double.class, "RANDOM()").asc()
-//                )
-//                .offset(pageable.getOffset())
-//                .limit(pageable.getPageSize())
-//                .fetch();
-//        JPAQuery<UserCardDto> countQuery = queryFactory
-//                .select(
-//                        projectionUserCard()
-//                )
-//                .from(
-//                        koreanCard
-//                ).join(
-//                        koreanCard.userCards, userCard
-//                ).join(
-//                        koreanCard.foreignCards, foreignCard
-//                ).join(
-//                        koreanCard.cardTopics, cardTopic
-//                )
-//                .where(
-//                        combineQuery(
-//                                userId,
-//                                code,
-//                                difficulty,
-//                                topic,
-//                                now,
-//                                studyType
-//                        )
-//                )
-//                .offset(pageable.getOffset())
-//                .limit(pageable.getPageSize());
-//
-//        return PageableExecutionUtils.getPage(
-//                contents,
-//                pageable,
-//                ()->countQuery.fetch().size()
-//        );
-        return null;
+        List<UserCard> userCards = queryFactory.select(userCard)
+                .from(userCard)
+                .join(userCard.koreanCard, koreanCard).fetchJoin()
+                .join(koreanCard.cardTopics, cardTopic).fetchJoin()
+                .where(
+                        combineQuery(userId, difficulty, topic, now, studyType)
+                )
+                .orderBy(
+                        userCard.statePriority.desc(),
+                        Expressions.numberTemplate(Double.class, "RANDOM()").asc()
+                )
+                .fetch();
+        JPAQuery<KoreanCard> countq = queryFactory.select(koreanCard)
+                .from(koreanCard)
+                .where(
+                        combineQuery(userId, difficulty, topic, now, studyType)
+                )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+        ;
+        List<UserCardDto> ret = userCards.stream().map(UserCardDto::of).toList();
+        return PageableExecutionUtils.getPage(
+                ret, pageable, ()->  countq.fetch().size()
+        );
     }
 
     public Optional<CardStudyDto> findCardStudyDto(
             Long userCardId
     ){
-//        CardStudyDto cardStudyDto = queryFactory.select(
-//                        Projections.constructor(
-//                                CardStudyDto.class,
-//                                koreanCard.id,
-//                                userCard.id,
-//                                userCard.due,
-//                                userCard.lapses,
-//                                userCard.lastReview,
-//                                userCard.reps,
-//                                userCard.scheduledDays,
-//                                userCard.stability,
-//                                userCard.state
-//                        )
-//                )
-//                .from(
-//                        userCard
-//                ).join(
-//                        userCard.koreanCard, koreanCard
-//                )
-//                .where(
-//                        userCardIdEq(userCardId)
-//                )
-//                .fetchOne();
-//        return Optional.ofNullable(cardStudyDto);
-        return Optional.empty();
+        CardStudyDto cardStudyDto = queryFactory.select(
+                        Projections.constructor(
+                                CardStudyDto.class,
+                                koreanCard.id,
+                                userCard.id,
+                                userCard.due,
+                                userCard.lapses,
+                                userCard.lastReview,
+                                userCard.reps,
+                                userCard.scheduledDays,
+                                userCard.stability,
+                                userCard.state
+                        )
+                )
+                .from(
+                        userCard
+                ).join(
+                        userCard.koreanCard, koreanCard
+                )
+                .where(
+                        userCardIdEq(userCardId)
+                )
+                .fetchOne();
+        return Optional.ofNullable(cardStudyDto);
     }
 
     /* 조건식 */
     private Predicate combineQuery(
             Long userId,
-            LanguageCode code,
             CardLevel difficulty,
             CardTopicEnums topic,
             LocalDateTime now,
@@ -157,41 +120,12 @@ public class UserCardQueryRepository {
         BooleanBuilder builder = new BooleanBuilder();
         builder
                 .and(userIdEq(userId))
-                .and(languageCodeEq(code))
                 .and(difficultyEq(difficulty))
                 .and(topicEq(topic))
                 .and(dueBefore(now))
                 .and(studyTpye(studyType))
         ;
         return builder;
-    }
-
-    private ConstructorExpression<UserCardDto> projectionUserCard(){
-//        return Projections.constructor(
-//                UserCardDto.class,
-//                koreanCard.id,
-//                koreanCard.koreanWord,
-//                foreignCard.foreignWord,
-//                koreanCard.level,
-//                foreignCard.languageCode,
-//                userCard.id,
-//                userCard.due,
-//                userCard.lapses,
-//                userCard.lastReview,
-//                userCard.reps,
-//                userCard.scheduledDays,
-//                userCard.stability,
-//                userCard.state,
-//                userCard.difficulty,
-//                koreanCard.originalLanguage,
-//                koreanCard.homographNumber,
-//                koreanCard.partsOfSpeech,
-//                koreanCard.pronunciation,
-//                koreanCard.relatedWords,
-//                koreanCard.inflection,
-//                koreanCard.exampleUsage
-//        );
-        return null;
     }
 
     public BooleanExpression userCardIdEq(Long userCardId) {

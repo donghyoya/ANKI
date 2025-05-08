@@ -61,6 +61,7 @@ create table users (
                        login_pwd varchar(255),
                        name varchar(255),
                        role varchar(255) check (role in ('GUEST','USER','ADMIN','AUTHENTICAITON','REFRESH')),
+                       first_login boolean default true,
                        primary key (user_id)
 );
 create table user_study_history (

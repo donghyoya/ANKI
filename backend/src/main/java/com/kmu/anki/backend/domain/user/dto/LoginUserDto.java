@@ -15,22 +15,15 @@ public class LoginUserDto {
         this.id = id;
         this.name = name;
         this.role = role;
+        this.isFirst = isFirst;
     }
 
     public static LoginUserDto of (User user){
-        boolean isFirst = false;
-        if (user.getDailyReviewWords() == null ||
-                user.getDailyStudyWords() == null ||
-                user.getLanguageCode() == null ||
-                user.getUtcOffset() == null
-        ){
-            isFirst = true;
-        }
         return new LoginUserDto(
                 user.getId(),
                 user.getName(),
                 user.getRole(),
-                isFirst
+                user.isFirstLogin()
         );
     }
 }

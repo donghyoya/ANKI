@@ -51,11 +51,17 @@ public class User {
     @Column(columnDefinition = "INTEGER DEFAULT 0")
     private Integer utcOffset;
 
+    @Column
+    private boolean firstLogin;
+
     public void update(Integer dailyStudyWords, Integer dailyReviewWords,LanguageCode languageCode, Integer utcOffset){
         this.dailyStudyWords = dailyStudyWords;
         this.dailyReviewWords = dailyReviewWords;
         this.languageCode = languageCode;
         this.utcOffset = utcOffset;
+        if(this.firstLogin){
+            this.firstLogin = true;
+        }
     }
 
     /* 관계 : 유저덱 */
@@ -88,11 +94,7 @@ public class User {
         this.dailyStudyWords = dailyStudyWords;
         this.dailyReviewWords = dailyReviewWords;
         this.languageCode = languageCode;
-    }
-
-    public User(String loginId, String loginPwd){
-        this.loginId = loginId;
-        this.loginPwd = loginPwd;
+        this.firstLogin = true;
     }
 
     public User(CreateUserDto dto){

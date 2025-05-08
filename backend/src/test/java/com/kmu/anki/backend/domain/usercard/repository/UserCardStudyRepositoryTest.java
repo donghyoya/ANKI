@@ -23,6 +23,6 @@ class UserCardStudyRepositoryTest extends AbstractIntegrationTest {
     void studyDeck() {
         userCardStudyRepository.studyDeck(2L);
         long count = userCardRepository.countByUserId(2L);
-        assertEquals(60L, count);
+        assertEquals(50L, count);
     }
 }

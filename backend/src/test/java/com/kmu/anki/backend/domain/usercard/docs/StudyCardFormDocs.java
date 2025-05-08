@@ -16,7 +16,8 @@ public class StudyCardFormDocs {
             fieldWithPath("reps").description("총 복습횟수"),
             fieldWithPath("scheduledDays").description("현재 복습 간격"),
             fieldWithPath("stability").description("기억의 안정도"),
-            fieldWithPath("state").description("카드의 현재 상태")
+            fieldWithPath("state").description("카드의 현재 상태"),
+            fieldWithPath("difficulty").description("difficulty")
     };
 
 }

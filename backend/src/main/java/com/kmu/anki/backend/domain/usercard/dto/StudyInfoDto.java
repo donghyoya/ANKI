@@ -5,9 +5,11 @@ import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+@Getter
 public class StudyInfoDto {
     private LocalDateTime due;
     private Integer lapses;

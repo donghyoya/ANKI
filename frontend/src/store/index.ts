@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import studyQueueReducer from './slices/studySlice';
+import authReducer from './slices/authSlice';
 
 export const store = configureStore({
   reducer: {
-    studyQueue: studyQueueReducer
+    studyQueue: studyQueueReducer,
+    auth: authReducer
   }
 });
 

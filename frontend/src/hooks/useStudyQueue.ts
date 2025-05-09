@@ -1,18 +1,20 @@
 import { useAppSelector } from '@/store/hooks';
 import { useEffect, useState } from 'react';
-import { useToken } from '@/hooks/useToken';
+import { useSelector } from 'react-redux';
 
 import { UserCard } from '@/types/schemes';
 import { Rating } from '@/types/IntervalPreview';
 import { Category } from '@/types/Category';
 
 import { getUserCards } from '@/api/study';
+import { RootState } from '@/store';
 import { DUMMY_RATING_PREVIEW } from '@/utils/dummyData';
 
 export const useStudyQueue = (category: Category) => {
   const initialStudyQueue = useAppSelector((state) => state.studyQueue[category]);
   const intervalPreview = DUMMY_RATING_PREVIEW;
-  const { token } = useToken();
+
+  const { accessToken } = useSelector((state: RootState) => state.auth);
 
   const [studyQueue, setStudyQueue] = useState<UserCard[] | null>(initialStudyQueue || null);
   const [currentCard, setCurrentCard] = useState<UserCard | null>(null);
@@ -38,9 +40,9 @@ export const useStudyQueue = (category: Category) => {
 
   useEffect(() => {
     const fetchCards = async () => {
-      if (!token) return;
+      if (!accessToken) return;
       try {
-        const response = await getUserCards('new', category, token);
+        const response = await getUserCards('new', category, accessToken);
         console.log('fetchCards', response);
         if (response && 'content' in response) {
           setStudyQueue(response.content);
@@ -56,7 +58,7 @@ export const useStudyQueue = (category: Category) => {
     if (studyQueue === null) {
       fetchCards();
     }
-  }, [studyQueue, category, token]);
+  }, [studyQueue, category, accessToken]);
 
   useEffect(() => {
     console.log('studyQueue:', studyQueue);

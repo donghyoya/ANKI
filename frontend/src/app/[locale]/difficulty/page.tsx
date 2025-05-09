@@ -1,28 +1,30 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import { getDecks } from '@/api/decks';
-import { useToken } from '@/hooks/useToken';
-import { Deck } from '@/types/schemes';
 import DeckListPage from '@/components/common/DeckListPage';
+import { getDecks } from '@/api/decks';
 
+import { Deck } from '@/types/schemes';
 import { difficultiesInDisplayOrder } from '@/types/Category';
+import { RootState } from '@/store';
 
 export default function DifficultyPage() {
-  const { token } = useToken();
+  const { accessToken } = useSelector((state: RootState) => state.auth);
 
   const [decks, setDecks] = useState<Deck[]>();
 
   useEffect(() => {
+    if (!accessToken) return;
     const fetchUserCards = async () => {
-      const fetchedDecks = await getDecks('difficulty', token ?? '');
+      const fetchedDecks = await getDecks('difficulty', accessToken);
       if (fetchedDecks) {
         setDecks(fetchedDecks.content);
       }
     };
     fetchUserCards();
-  }, [token]);
+  }, [accessToken]);
 
   if (!decks) {
     return <div>Loading...</div>;

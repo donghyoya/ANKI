@@ -1,25 +1,38 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { redirect } from 'next/navigation';
+
 import { getUserOption } from '@/api/option';
 import { getToken } from '@/api/auth';
+import { setCookie } from '@/api/cookie';
+import { setAccessToken } from '@/store/slices/authSlice';
 
 export default function GoogleLoginRedirectPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const authenticationToken = searchParams?.get('token'); // URL에서 token 읽기
+  const dispatch = useDispatch();
 
+  // URL에서 임시 토큰 읽기
+  const authenticationToken = searchParams?.get('token');
+
+  // 토큰 저장 로직
   useEffect(() => {
     (async function () {
+      console.log(authenticationToken);
       if (authenticationToken) {
-        const { accessToken, refreshToken } = await getToken(authenticationToken);
-        console.log(accessToken);
-        localStorage.setItem('hada-access-token', accessToken);
-        localStorage.setItem('hada-refresh-token', refreshToken);
-        const userOption = await getUserOption(accessToken);
+        const data = await getToken(authenticationToken);
+        console.log('getToken:', data);
 
+        // accessToken을 store에 저장
+        dispatch(setAccessToken(data.accessToken));
+        // refreshToken을 cookie에 저장
+        setCookie({ name: 'refreshToken', value: data.refreshToken });
+
+        // 유저의 옵션 상태에 따라 리디렉션
+        const userOption = await getUserOption(data.accessToken);
         if (userOption.utcOffset === null) {
           redirect('/settings');
         } else {
@@ -29,7 +42,7 @@ export default function GoogleLoginRedirectPage() {
         redirect('/login');
       }
     })();
-  }, [authenticationToken, router]);
+  }, [authenticationToken, router, dispatch]);
 
   return (
     <div>

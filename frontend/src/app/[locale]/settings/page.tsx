@@ -4,6 +4,7 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useSelector } from 'react-redux';
 
 import { OutlinedTextField } from '@/components/material-components/TextField';
 import { Icon } from '@/components/material-components/IconButton/IconButton';
@@ -11,19 +12,19 @@ import { OutlinedSelect, SelectOption } from '@/components/material-components/S
 import TextButton from '@/components/material-components/TextButton';
 import { List, ListItem } from '@/components/material-components/List';
 import { Menu, MenuItem } from '@/components/material-components/Menu';
-
-import classNames from 'classnames';
-import { useWindowSize } from '@/hooks/useWindowSize';
-import { LANGUAGE_OPTIONS, UTC_OFFSET_OPTIONS } from '@/utils/dummyData';
-
-import { getUserOption, postUserOption } from '@/api/option';
-import { UserOption } from '@/types/schemes';
+import FilledButton from '@/components/material-components/FilledButton';
 import { MdOutlinedTextField } from '@material/web/textfield/outlined-text-field';
 
-import styles from './SettingsPage.module.scss';
-import FilledButton from '@/components/material-components/FilledButton';
-import { useToken } from '@/hooks/useToken';
+import { useWindowSize } from '@/hooks/useWindowSize';
+import { getUserOption, postUserOption } from '@/api/option';
+
+import { UserOption } from '@/types/schemes';
 import { Locale } from '@/types/Locale';
+import { LANGUAGE_OPTIONS, UTC_OFFSET_OPTIONS } from '@/utils/dummyData';
+import { RootState } from '@/store';
+
+import classNames from 'classnames';
+import styles from './SettingsPage.module.scss';
 
 export default function SettingsPage() {
   const locale = useLocale();
@@ -34,7 +35,7 @@ export default function SettingsPage() {
   const isCompact = width < 1200;
 
   const [userOptions, setUserOptions] = useState<UserOption | null>(null);
-  const { token } = useToken();
+  const { accessToken } = useSelector((state: RootState) => state.auth);
 
   const handleChangeLanguage = (newLocale: Locale) => {
     if (userOptions === null) return;
@@ -71,9 +72,9 @@ export default function SettingsPage() {
   };
 
   const handleSave = async () => {
-    if (userOptions === null || token === null) return;
+    if (userOptions === null || accessToken === null) return;
     try {
-      await postUserOption(userOptions, token);
+      await postUserOption(userOptions, accessToken);
       // TODO: replace alert with modal
       alert('Saved');
     } catch {
@@ -87,17 +88,17 @@ export default function SettingsPage() {
   };
 
   useEffect(() => {
-    if (token === null) return;
+    if (!accessToken) return;
     const fetchOptions = async () => {
-      const options = await getUserOption(token);
+      const options = await getUserOption(accessToken);
       console.log(options);
       setUserOptions(options as UserOption);
     };
     fetchOptions();
-  }, [token]);
+  }, [accessToken]);
 
   useEffect(() => {
-    if (userOptions === null) return;
+    if (!userOptions) return;
     console.log('userOptions', userOptions);
   }, [userOptions]);
 

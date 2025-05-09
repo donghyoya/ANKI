@@ -1,27 +1,30 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import DeckListPage from '@/components/common/DeckListPage';
-import { meaningsInDisplayOrder } from '@/types/Category';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useToken } from '@/hooks/useToken';
 import { getDecks } from '@/api/decks';
+
+import { meaningsInDisplayOrder } from '@/types/Category';
 import { Deck } from '@/types/schemes';
+import { RootState } from '@/store';
 
 export default function MeaningsPage() {
-  const { token } = useToken();
+  const { accessToken } = useSelector((state: RootState) => state.auth);
 
   const [decks, setDecks] = useState<Deck[]>();
 
   useEffect(() => {
+    if (!accessToken) return;
     const fetchUserCards = async () => {
-      const fetchedDecks = await getDecks('meaning', token ?? '');
+      const fetchedDecks = await getDecks('meaning', accessToken);
       if (fetchedDecks) {
         setDecks(fetchedDecks.content);
       }
     };
     fetchUserCards();
-  }, [token]);
+  }, [accessToken]);
 
   if (!decks) {
     return <div>Loading...</div>;

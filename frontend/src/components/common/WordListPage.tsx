@@ -32,7 +32,7 @@ export default function WordListPage({
   const isLarge = width >= 1200;
 
   const onLearnClick = () => {
-    router.push('/learning');
+    router.push(`/learning/${category}`);
   };
 
   const toggleExpandAll = () => {

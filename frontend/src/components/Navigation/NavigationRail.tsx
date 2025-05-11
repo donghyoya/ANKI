@@ -7,6 +7,7 @@ import styles from './NavigationRail.module.scss';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
 import { Ripple } from '@/components/material-components/Ripple';
 import classNames from 'classnames';
+import { useRouter } from 'next/navigation';
 
 const NavigationRail = ({
   destinations,
@@ -20,11 +21,13 @@ const NavigationRail = ({
   toggleDrawer: () => void;
 }) => {
   const t = useTranslations();
+  const router = useRouter();
 
   const [selectedDestination, setSelectedDestination] = useState<string | null>(initialDestination);
 
   const handleDestinationClick = (destination: string) => {
     setSelectedDestination(destination);
+    router.push(`/${destination}`);
   };
 
   return (

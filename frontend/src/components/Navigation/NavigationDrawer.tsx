@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 import { Ripple } from '@/components/material-components/Ripple';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
+
 import styles from './NavigationDrawer.module.scss';
 import classNames from 'classnames';
 
@@ -20,9 +22,11 @@ const NavigationDrawer = ({
   const t = useTranslations();
 
   const [selectedDestination, setSelectedDestination] = useState<string>(initialDestination);
+  const router = useRouter();
 
   const handleNavItemClick = (navItem: string) => {
     setSelectedDestination(navItem);
+    router.push(`/${navItem}`);
   };
 
   return (
@@ -33,7 +37,7 @@ const NavigationDrawer = ({
             <Icon>menu</Icon>
           </IconButton>
         </div>
-        {/* <Logo /> */}
+        {/* TODO: <Logo /> */}
       </div>
       <div className={styles['list-container']}>
         {destinations.map((destination) => {

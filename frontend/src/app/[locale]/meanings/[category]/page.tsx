@@ -19,9 +19,12 @@ export default function MeaningsWordsPage() {
   const [userCards, setUserCards] = useState<Paginated<CardDetail>>();
 
   useEffect(() => {
-    if (!accessToken) return;
     const fetchUserCards = async () => {
-      const cards = await getCardsFromDeck(locale as Locale, category as Category, accessToken);
+      const cards = await getCardsFromDeck(
+        locale as Locale,
+        category as Category,
+        accessToken ?? ''
+      );
       if (cards) {
         setUserCards(cards);
       }

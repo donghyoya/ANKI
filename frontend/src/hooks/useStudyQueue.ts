@@ -40,9 +40,8 @@ export const useStudyQueue = (category: Category) => {
 
   useEffect(() => {
     const fetchCards = async () => {
-      if (!accessToken) return;
       try {
-        const response = await getUserCards('new', category, accessToken);
+        const response = await getUserCards('new', category, accessToken ?? '');
         console.log('fetchCards', response);
         if (response && 'content' in response) {
           setStudyQueue(response.content);

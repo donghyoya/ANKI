@@ -11,6 +11,7 @@ import { CardDetail, Paginated } from '@/types/schemes';
 import { Locale } from '@/types/Locale';
 import { Category } from '@/types/Category';
 import { RootState } from '@/store';
+import { refreshToken } from '@/api/utils';
 
 export default function DifficultyWordsPage() {
   const { category, locale } = useParams() ?? {};
@@ -18,10 +19,24 @@ export default function DifficultyWordsPage() {
 
   const [userCards, setUserCards] = useState<Paginated<CardDetail>>();
 
+  // getCardsFromDeck는 accessToken이 optional이므로
+  // 호출 전에 로그인 상태 확인(refreshToken 호출)
+  // 토큰 갱신에 실패하더라도 오류 발생하지 않음
   useEffect(() => {
-    if (!accessToken) return;
     const fetchUserCards = async () => {
-      const cards = await getCardsFromDeck(locale as Locale, category as Category, accessToken);
+      console.log('accessToken', accessToken);
+      if (!accessToken) {
+        try {
+          await refreshToken();
+        } catch (error) {
+          console.error('토큰 갱신 실패', error);
+        }
+      }
+      const cards = await getCardsFromDeck(
+        locale as Locale,
+        category as Category,
+        accessToken ?? ''
+      );
       if (cards) {
         setUserCards(cards);
       }

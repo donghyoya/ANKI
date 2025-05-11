@@ -9,16 +9,27 @@ import { getDecks } from '@/api/decks';
 import { Deck } from '@/types/schemes';
 import { difficultiesInDisplayOrder } from '@/types/Category';
 import { RootState } from '@/store';
+import { refreshToken } from '@/api/utils';
 
 export default function DifficultyPage() {
   const { accessToken } = useSelector((state: RootState) => state.auth);
 
   const [decks, setDecks] = useState<Deck[]>();
 
+  // getDecks는 accessToken이 optional이므로
+  // 호출 전에 로그인 상태 확인(refreshToken 호출)
+  // 토큰 갱신에 실패하더라도 오류 발생하지 않음
   useEffect(() => {
-    if (!accessToken) return;
     const fetchUserCards = async () => {
-      const fetchedDecks = await getDecks('difficulty', accessToken);
+      console.log('accessToken', accessToken);
+      if (!accessToken) {
+        try {
+          await refreshToken();
+        } catch (error) {
+          console.error('토큰 갱신 실패', error);
+        }
+      }
+      const fetchedDecks = await getDecks('difficulty', accessToken ?? '');
       if (fetchedDecks) {
         setDecks(fetchedDecks.content);
       }

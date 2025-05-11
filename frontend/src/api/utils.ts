@@ -21,18 +21,26 @@ interface ApiRequestParams<T = unknown> {
   body?: T;
 }
 
+export async function refreshToken() {
+  const refreshToken = await getCookie('refreshToken');
+  if (!refreshToken.value) {
+    throw new ApiError(401, 'UNAUTHORIZED');
+  }
+
+  const newTokens = await getToken(refreshToken.value);
+  // accessToken을 store에 저장
+  store.dispatch(setAccessToken(newTokens.accessToken));
+  // refreshToken을 cookie에 저장
+  setCookie({ name: 'refreshToken', value: newTokens.refreshToken });
+
+  return newTokens;
+}
+
 async function handleTokenRefresh<T = unknown>(params: ApiRequestParams<T>) {
   try {
     const { url, method = 'GET', body } = params;
 
-    const refreshToken = await getCookie('refreshToken');
-    if (!refreshToken.value) {
-      throw new ApiError(401, 'UNAUTHORIZED');
-    }
-
-    const newTokens = await getToken(refreshToken.value);
-    store.dispatch(setAccessToken(newTokens.accessToken));
-    setCookie({ name: 'refreshToken', value: newTokens.refreshToken });
+    const newTokens = await refreshToken();
 
     const headers = {
       'Content-Type': 'application/json',
@@ -58,6 +66,7 @@ export async function apiRequest<T, B = unknown>(params: ApiRequestParams<B>): P
   try {
     const { url, method = 'GET', token, body } = params;
 
+    console.log('apiRequest', url, method, token, body);
     const headers = {
       'Content-Type': 'application/json'
     } as Record<string, string>;

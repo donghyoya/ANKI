@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useWindowSize } from '@/hooks/useWindowSize';
+import { useRouter } from 'next/navigation';
 
 import DeckCardDesktop from '@/components/DeckCard/DeckCard';
 import DeckCardCompact from '@/components/DeckCard/DeckCardCompact';
@@ -23,7 +24,8 @@ export default function DeckListPage({
   displayOrder: Category[];
 }) {
   const t = useTranslations();
-  const locale = useLocale(); // 현재 로케일 가져오기
+  const locale = useLocale();
+  const router = useRouter();
 
   const { width } = useWindowSize();
   const isCompact = width < 1200;
@@ -39,6 +41,10 @@ export default function DeckListPage({
   );
 
   const handleLearn = (isCompleted: boolean) => setIsDialogOpen(isCompleted);
+
+  const handleViewWords = (deck: Deck) => {
+    router.push(`/${locale}/${categoryType}/${deck.category}`);
+  };
 
   const DeckCard = isCompact ? DeckCardCompact : DeckCardDesktop;
 
@@ -74,7 +80,7 @@ export default function DeckListPage({
                 locale={locale}
                 buttonLabels={buttonLabels}
                 onLearn={() => handleLearn(false)}
-                onViewWords={() => {}}
+                onViewWords={() => handleViewWords(deck)}
               />
             ))}
           </div>

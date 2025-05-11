@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import classNames from 'classnames';
 
 import FilledButton from '@/components/material-components/FilledButton';
@@ -14,9 +13,16 @@ import { OutlinedCard } from '@/components/Card/Card';
 
 import { getFormatUnit } from '@/utils/unitFormatter';
 import styles from './DeckCardCompact.module.scss';
-import { getCategoryType } from '@/types/Category';
 
-const DeckCardCompact = ({ deck, title, isCompleted, locale, buttonLabels, onLearn }: DeckCardProps) => {
+const DeckCardCompact = ({
+  deck,
+  title,
+  isCompleted,
+  locale,
+  buttonLabels,
+  onLearn,
+  onViewWords
+}: DeckCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleClick = () => {
@@ -34,20 +40,11 @@ const DeckCardCompact = ({ deck, title, isCompleted, locale, buttonLabels, onLea
             <h2 className={styles.title}>{title}</h2>
             {isCompleted && <Icon className={styles['check-icon']}>check_circle</Icon>}
           </div>
-          <FilledButton
-            onClick={(e) => {
-              e.stopPropagation();
-              onLearn();
-            }}
-          >
-            {buttonLabels.learn}
-          </FilledButton>
+          <FilledButton onClick={onLearn}>{buttonLabels.learn}</FilledButton>
         </div>
         {isExpanded && (
           <div className={styles['extra-contents']}>
-            <Link href={`${getCategoryType(deck.category)}/${deck.category}`}>
-              <TextButton onClick={(e) => e.stopPropagation()}>{buttonLabels.viewWords}</TextButton>
-            </Link>
+            <TextButton onClick={onViewWords}>{buttonLabels.viewWords}</TextButton>
             <span className={styles['word-count']}>
               {getFormatUnit(locale, 'word', deck.cardCounts, true)}
             </span>

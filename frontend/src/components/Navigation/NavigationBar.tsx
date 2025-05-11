@@ -6,6 +6,7 @@ import { Icon } from '@/components/material-components/IconButton/IconButton';
 
 import styles from './NavigationBar.module.scss';
 import classNames from 'classnames';
+import { useRouter } from 'next/navigation';
 
 const NavigationBar = ({
   destinations,
@@ -15,11 +16,13 @@ const NavigationBar = ({
   initialDestination: string;
 }) => {
   const t = useTranslations();
+  const router = useRouter();
 
   const [selectedDestination, setSelectedDestination] = useState<string>(initialDestination);
 
   const handleDestinationClick = (destination: string) => {
     setSelectedDestination(destination);
+    router.push(`/${destination}`);
   };
 
   return (

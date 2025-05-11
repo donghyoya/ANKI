@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { redirect } from 'next/navigation';
 
-import { getUserOption } from '@/api/option';
 import { getToken } from '@/api/auth';
 import { setCookie } from '@/api/cookie';
 import { setAccessToken } from '@/store/slices/authSlice';
@@ -23,20 +22,19 @@ export default function GoogleLoginRedirectPage() {
     (async function () {
       console.log(authenticationToken);
       if (authenticationToken) {
-        const data = await getToken(authenticationToken);
-        console.log('getToken:', data);
+        const { accessToken, refreshToken, setup } = await getToken(authenticationToken);
+        console.log('getToken:', { accessToken, refreshToken, setup });
 
         // accessToken을 store에 저장
-        dispatch(setAccessToken(data.accessToken));
+        dispatch(setAccessToken(accessToken));
         // refreshToken을 cookie에 저장
-        setCookie({ name: 'refreshToken', value: data.refreshToken });
+        setCookie({ name: 'refreshToken', value: refreshToken });
 
         // 유저의 옵션 상태에 따라 리디렉션
-        const userOption = await getUserOption(data.accessToken);
-        if (userOption.utcOffset === null) {
-          redirect('/settings');
-        } else {
+        if (setup) {
           redirect('/difficulty');
+        } else {
+          redirect('/settings');
         }
       } else {
         redirect('/login');

@@ -153,6 +153,7 @@ public class CardQueryRepository {
                 .fetch();
         JPAQuery<KoreanCard> countq = queryFactory.select(koreanCard)
                 .from(koreanCard)
+                .join(koreanCard.cardTopics, cardTopic).fetchJoin()
                 .where(
                         cardTopic.topicId.eq(topic)
                 )

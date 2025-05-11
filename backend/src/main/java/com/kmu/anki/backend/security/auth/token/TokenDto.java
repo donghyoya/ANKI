@@ -7,11 +7,11 @@ import lombok.Getter;
 public class TokenDto {
     private String accessToken;
     private String refreshToken;
-    private boolean isFirstLogin;
+    private boolean isSetup;
 
     public TokenDto(String accessToken, String refreshToken, boolean isFirstLogin) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
-        this.isFirstLogin = isFirstLogin;
+        this.isSetup  = isFirstLogin;
     }
 }

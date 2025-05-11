@@ -39,7 +39,7 @@ class AuthenticationControllerTest extends AbstractControllerTest {
                                                 .responseFields(
                                                         fieldWithPath("accessToken").description("accessToken"),
                                                         fieldWithPath("refreshToken").description("refreshToken"),
-                                                        fieldWithPath("firstLogin").description("userOption을 바탕으로 최초 로그인 여부를 판별함")
+                                                        fieldWithPath("isSetup").description("userOption을 바탕으로 최초 로그인 여부를 판별함")
                                                 )
                                                 .responseSchema(new Schema("TokenProviderSchema"))
                                                 .build()

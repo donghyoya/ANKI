@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useLearningCardLayout from '@/hooks/useLearningCardLayout';
 
 import LearningCard, { LearningCardState } from '@/components/LearningCard/LearningCard';
@@ -24,6 +24,12 @@ export default function LearningPage() {
 
   const [contentHeight, setContentHeight] = useState(0);
 
+  const [cardWidth, setCardWidth] = useState(0);
+
+  useEffect(() => {
+    setCardWidth(document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0);
+  }, []);
+
   const [cardState, setCardState] = useState<LearningCardState>({
     isRevealed: false,
     showDetail: false,
@@ -34,12 +40,18 @@ export default function LearningPage() {
 
   const cardStyle = useLearningCardLayout({
     contentHeight,
-    cardWidth: document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0
+    cardWidth
   });
 
   const { currentCard, studyQueue, intervalPreview, repeat, error } = useStudyQueue(
     category as Category
   );
+
+  useEffect(() => {
+    if (error) {
+      console.error('error:', error);
+    }
+  }, [error]);
 
   if (error) throw error;
 

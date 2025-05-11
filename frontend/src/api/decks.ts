@@ -13,11 +13,11 @@ export const getDecks = async (queryType: 'difficulty' | 'meaning', token: strin
   return response;
 };
 
-export const getCardsFromDeck = async (locale: Locale, query: Category, token: string) => {
+export const getCardsFromDeck = async (locale: Locale, query: Category) => {
   const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
   const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
 
-  const response = await apiRequest<Paginated<CardDetail>>({ url, token });
+  const response = await apiRequest<Paginated<CardDetail>>({ url });
   return response;
 };
 

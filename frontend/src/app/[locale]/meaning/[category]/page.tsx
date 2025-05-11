@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { useSelector } from 'react-redux';
 
 import { getCardsFromDeck } from '@/api/decks';
 import WordListPage from '@/components/common/WordListPage';
@@ -10,27 +9,21 @@ import WordListPage from '@/components/common/WordListPage';
 import { Locale } from '@/types/Locale';
 import { Category } from '@/types/Category';
 import { CardDetail, Paginated } from '@/types/schemes';
-import { RootState } from '@/store';
 
 export default function MeaningWordsPage() {
   const { category, locale } = useParams() ?? {};
-  const { accessToken } = useSelector((state: RootState) => state.auth);
 
   const [userCards, setUserCards] = useState<Paginated<CardDetail>>();
 
   useEffect(() => {
     const fetchUserCards = async () => {
-      const cards = await getCardsFromDeck(
-        locale as Locale,
-        category as Category,
-        accessToken ?? ''
-      );
+      const cards = await getCardsFromDeck(locale as Locale, category as Category);
       if (cards) {
         setUserCards(cards);
       }
     };
     fetchUserCards();
-  }, [category, accessToken, locale]);
+  }, [category, locale]);
 
   if (!userCards) {
     return <div>Loading...</div>;

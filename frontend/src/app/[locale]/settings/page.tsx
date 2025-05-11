@@ -25,6 +25,7 @@ import { RootState } from '@/store';
 
 import classNames from 'classnames';
 import styles from './SettingsPage.module.scss';
+import { useErrorBoundary } from 'react-error-boundary';
 
 export default function SettingsPage() {
   const locale = useLocale();
@@ -36,6 +37,7 @@ export default function SettingsPage() {
 
   const [userOptions, setUserOptions] = useState<UserOption | null>(null);
   const { accessToken } = useSelector((state: RootState) => state.auth);
+  const { showBoundary } = useErrorBoundary();
 
   const handleChangeLanguage = (newLocale: Locale) => {
     if (userOptions === null) return;
@@ -88,14 +90,17 @@ export default function SettingsPage() {
   };
 
   useEffect(() => {
-    if (!accessToken) return;
     const fetchOptions = async () => {
-      const options = await getUserOption(accessToken);
-      console.log(options);
-      setUserOptions(options as UserOption);
+      try {
+        const response = await getUserOption(accessToken);
+        console.log(response);
+        setUserOptions(response as UserOption);
+      } catch (error) {
+        showBoundary(error);
+      }
     };
     fetchOptions();
-  }, [accessToken]);
+  }, [accessToken, showBoundary]);
 
   useEffect(() => {
     if (!userOptions) return;

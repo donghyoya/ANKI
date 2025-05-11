@@ -16,9 +16,8 @@ export default function MeaningsPage() {
   const [decks, setDecks] = useState<Deck[]>();
 
   useEffect(() => {
-    if (!accessToken) return;
     const fetchUserCards = async () => {
-      const fetchedDecks = await getDecks('meaning', accessToken);
+      const fetchedDecks = await getDecks('meaning', accessToken ?? '');
       if (fetchedDecks) {
         setDecks(fetchedDecks.content);
       }

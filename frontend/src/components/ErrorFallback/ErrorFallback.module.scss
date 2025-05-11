@@ -1,11 +1,11 @@
-@use '@/styles/grid-system' as gs;
+@use '@/styles/typography' as tp;
 @use '@/styles/breakpoints' as bp;
 
-.error-container {
+.page {
   box-sizing: border-box;
   display: flex;
-
   flex-direction: column;
+  justify-content: center;
   height: 100%;
 
   @include bp.respond-to('compact') {

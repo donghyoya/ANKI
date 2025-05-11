@@ -88,7 +88,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           fonts[locale as keyof typeof fonts]?.className
         )}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

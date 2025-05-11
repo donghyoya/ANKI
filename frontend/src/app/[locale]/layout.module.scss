@@ -13,6 +13,8 @@
 
   @include bp.respond-to('compact') {
     padding: 80px 16px 96px;
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
   }
 
   @include bp.respond-to('medium') {

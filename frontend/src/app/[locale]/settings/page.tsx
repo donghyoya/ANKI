@@ -1,10 +1,11 @@
 'use client';
 
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useSelector } from 'react-redux';
+import { useErrorBoundary } from 'react-error-boundary';
 
 import { OutlinedTextField } from '@/components/material-components/TextField';
 import { Icon } from '@/components/material-components/IconButton/IconButton';
@@ -13,19 +14,20 @@ import TextButton from '@/components/material-components/TextButton';
 import { List, ListItem } from '@/components/material-components/List';
 import { Menu, MenuItem } from '@/components/material-components/Menu';
 import FilledButton from '@/components/material-components/FilledButton';
-import { MdOutlinedTextField } from '@material/web/textfield/outlined-text-field';
 
 import { useWindowSize } from '@/hooks/useWindowSize';
 import { getUserOption, postUserOption } from '@/api/option';
+import { Theme, useTheme } from '@/context/ThemeContext';
 
 import { UserOption } from '@/types/schemes';
 import { Locale } from '@/types/Locale';
-import { LANGUAGE_OPTIONS, UTC_OFFSET_OPTIONS } from '@/utils/dummyData';
 import { RootState } from '@/store';
+import { LANGUAGE_OPTIONS, UTC_OFFSET_OPTIONS, THEME_OPTIONS } from '@/utils/dummyData';
 
 import classNames from 'classnames';
 import styles from './SettingsPage.module.scss';
-import { useErrorBoundary } from 'react-error-boundary';
+import { MdListItem } from '@material/web/list/list-item';
+import { MdOutlinedTextField } from '@material/web/textfield/outlined-text-field';
 
 export default function SettingsPage() {
   const locale = useLocale();
@@ -38,13 +40,18 @@ export default function SettingsPage() {
   const [userOptions, setUserOptions] = useState<UserOption | null>(null);
   const { accessToken } = useSelector((state: RootState) => state.auth);
   const { showBoundary } = useErrorBoundary();
+  const { theme, setTheme } = useTheme();
+
+  const handleChangeTheme = (newTheme: Theme) => {
+    setTheme(newTheme);
+  };
 
   const handleChangeLanguage = (newLocale: Locale) => {
     if (userOptions === null) return;
     setUserOptions({ ...userOptions, languageCode: newLocale });
   };
 
-  const handleLanguageMenuClick = (e: FormEvent<MdOutlinedTextField>) => {
+  const handleLanguageMenuClick = (e: React.MouseEvent<MdListItem>) => {
     const menu = document.getElementById('language-menu') as HTMLDialogElement;
     console.log(e);
     menu.open = !menu.open;
@@ -60,7 +67,8 @@ export default function SettingsPage() {
     menu.open = !menu.open;
   };
 
-  const handleOnChangeTextField = (e: FormEvent<MdOutlinedTextField>) => {
+  const handleOnChangeTextField = (e: React.FormEvent<MdOutlinedTextField>) => {
+    console.log(e);
     // const value = Number((e.target as MdOutlinedTextField).value);
     // if (userOptions === null) return;
     // setUserOptions({
@@ -92,7 +100,7 @@ export default function SettingsPage() {
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        const response = await getUserOption(accessToken);
+        const response = await getUserOption(accessToken ?? '');
         console.log(response);
         setUserOptions(response as UserOption);
       } catch (error) {
@@ -131,10 +139,16 @@ export default function SettingsPage() {
           </div>
           <div className={styles['field-section']}>
             <label className={styles.label}>{t('settings.theme')}</label>
-            <OutlinedSelect>
-              <SelectOption value="classic" selected>
-                <div>Classic</div>
-              </SelectOption>
+            <OutlinedSelect value={theme}>
+              {THEME_OPTIONS.map((theme) => (
+                <SelectOption
+                  key={theme.value}
+                  value={theme.value}
+                  onClick={() => handleChangeTheme(theme.value as Theme)}
+                >
+                  {t(theme.messageKey)}
+                </SelectOption>
+              ))}
             </OutlinedSelect>
           </div>
         </div>
@@ -198,11 +212,25 @@ export default function SettingsPage() {
         <div style={{ position: 'relative' }}>
           <ListItem type="button" id="theme-anchor" onClick={handleThemeMenuClick}>
             <div slot="headline">{t('settings.theme')}</div>
-            <div slot="supporting-text">classic</div>
+            <div slot="supporting-text">{t(`settings.${theme}`)}</div>
             <Icon slot="end">arrow_drop_down</Icon>
           </ListItem>
-          <Menu id="theme-menu" anchor="theme-anchor" anchorCorner="end-end" xOffset={-112}>
-            <MenuItem>classic</MenuItem>
+          <Menu
+            id="theme-menu"
+            anchor="theme-anchor"
+            anchorCorner="end-end"
+            xOffset={-200}
+            className={styles['theme-menu']}
+          >
+            {THEME_OPTIONS.map((theme) => (
+              <MenuItem
+                key={theme.value}
+                // selected={theme.value === theme}
+                onClick={() => handleChangeTheme(theme.value as Theme)}
+              >
+                {t(theme.messageKey)}
+              </MenuItem>
+            ))}
           </Menu>
         </div>
         <div style={{ position: 'relative' }}>
@@ -225,7 +253,35 @@ export default function SettingsPage() {
                 key={offset.code}
                 selected={offset.code === userOptions?.utcOffset}
                 onClick={() => {
-                  handleChangeUtcOffset(offset.code);
+                  handleChangeUtcOffset(offset.code ?? 0);
+                }}
+              >
+                {offset.label}
+              </MenuItem>
+            ))}
+          </Menu>
+        </div>
+        <div style={{ position: 'relative' }}>
+          <ListItem type="button" id="utc-offset-anchor" onClick={handleUtcOffsetMenuClick}>
+            <div slot="headline">{t('settings.utcOffset')}</div>
+            <div slot="supporting-text">
+              {UTC_OFFSET_OPTIONS.find((offset) => offset.code === userOptions?.utcOffset)?.label ||
+                'UTC+00:00'}
+            </div>
+            <Icon slot="end">arrow_drop_down</Icon>
+          </ListItem>
+          <Menu
+            id="utc-offset-menu"
+            anchor="utc-offset-anchor"
+            anchorCorner="end-end"
+            xOffset={-160}
+          >
+            {UTC_OFFSET_OPTIONS.map((offset) => (
+              <MenuItem
+                key={offset.code}
+                selected={offset.code === userOptions?.utcOffset}
+                onClick={() => {
+                  handleChangeUtcOffset(offset.code ?? 0);
                 }}
               >
                 {offset.label}

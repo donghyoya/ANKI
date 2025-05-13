@@ -6,6 +6,8 @@ import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter
 public class KoreanCardDto {
@@ -13,9 +15,9 @@ public class KoreanCardDto {
     private String koreanWord; // 표제어
     private String homographNumber; // 동형어 번호
     private CardLevel level; // 난이도
-    private List<CardTopicEnums> topics; // 카드의 분류
+    private Set<CardTopicEnums> topics; // 카드의 분류
 
-    public KoreanCardDto(Long cardId, String koreanWord, String homographNumber, CardLevel level, List<CardTopicEnums> topics) {
+    public KoreanCardDto(Long cardId, String koreanWord, String homographNumber, CardLevel level, Set<CardTopicEnums> topics) {
         this.cardId = cardId;
         this.koreanWord = koreanWord;
         this.homographNumber = homographNumber;
@@ -32,7 +34,7 @@ public class KoreanCardDto {
                 card.getKoreanWord(),
                 card.getHomographNumber(),
                 card.getLevel(),
-                card.getCardTopics().stream().map(topic->topic.getTopicId()).toList()
+                card.getCardTopics().stream().map(topic->topic.getTopicId()).collect(Collectors.toSet())
         );
     }
 

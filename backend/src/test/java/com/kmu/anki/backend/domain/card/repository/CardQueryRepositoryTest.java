@@ -23,7 +23,7 @@ class CardQueryRepositoryTest extends AbstractIntegrationTest {
         assertTrue(opt.isPresent(), "쿼리의 결과가 null이 아님을 확인");
 
         CardDetailDto cardDetailDto = opt.get();
-        assertEquals(2, cardDetailDto.getTopics().size(), "2개의 cardTopic이 모두 포함되는 지 확인");
+        assertEquals(1, cardDetailDto.getTopics().size(), "중복되는 cardTopic이 잘 처리되는 지");
         assertEquals(2, cardDetailDto.getMeanings().size(), "2개의 의미가 모두 포함되는 지 확인");
         assertNotNull(cardDetailDto.getMeanings().getFirst().getForeignWord(), "외국어가 null이 아닌지 확인");
     }

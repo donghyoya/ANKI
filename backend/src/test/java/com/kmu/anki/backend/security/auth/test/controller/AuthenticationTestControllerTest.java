@@ -73,7 +73,7 @@ class AuthenticationTestControllerTest extends AbstractControllerTest {
                                                         fieldWithPath("authenticationToken").description("authenticationToken"),
                                                         fieldWithPath("accessToken").description("accessToken"),
                                                         fieldWithPath("refreshToken").description("refreshToken"),
-                                                        fieldWithPath("firstLogin").description("firstLogin")
+                                                        fieldWithPath("isSetup").description("제대로 로그인 되었는가")
                                                 )
                                                 .responseSchema(new Schema("AuthTestTokenSchema"))
                                                 .build()

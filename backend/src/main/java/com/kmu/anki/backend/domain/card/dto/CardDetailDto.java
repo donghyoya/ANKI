@@ -10,6 +10,8 @@ import jakarta.persistence.Enumerated;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter
 public class CardDetailDto {
@@ -20,10 +22,10 @@ public class CardDetailDto {
     private String koreanWord; // 표제어
     private String homographNumber; // 동형어 번호
     private CardLevel level; // 난이도
-    private List<CardTopicEnums> topics; // 카드의 분류
+    private Set<CardTopicEnums> topics; // 카드의 분류
     private List<CardMeaningWithForeign> meanings;
 
-    public CardDetailDto(Long cardId, String koreanWord, String homographNumber, CardLevel level, List<CardTopicEnums> topics, List<CardMeaningWithForeign> meanings) {
+    public CardDetailDto(Long cardId, String koreanWord, String homographNumber, CardLevel level, Set<CardTopicEnums> topics, List<CardMeaningWithForeign> meanings) {
         this.cardId = cardId;
         this.koreanWord = koreanWord;
         this.homographNumber = homographNumber;
@@ -41,7 +43,7 @@ public class CardDetailDto {
             card.getKoreanWord(),
             card.getHomographNumber(),
             card.getLevel(),
-            card.getCardTopics().stream().map(topic->topic.getTopicId()).toList(),
+            card.getCardTopics().stream().map(topic->topic.getTopicId()).collect(Collectors.toSet()),
             meanings
         );
     }

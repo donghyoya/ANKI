@@ -1,9 +1,6 @@
 package com.kmu.anki.backend.domain.usercard.repository;
 
-import com.kmu.anki.backend.domain.card.entity.KoreanCard;
-import com.kmu.anki.backend.domain.card.entity.QCardTopic;
-import com.kmu.anki.backend.domain.card.entity.QForeignCard;
-import com.kmu.anki.backend.domain.card.entity.QKoreanCard;
+import com.kmu.anki.backend.domain.card.entity.*;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
@@ -54,7 +51,8 @@ public class UserCardQueryRepository {
             StudyType studyType,
             Pageable pageable
     ){
-        List<UserCard> userCards = queryFactory.select(userCard)
+        List<UserCard> userCards = queryFactory
+                .select(userCard)
                 .from(userCard)
                 .join(userCard.koreanCard, koreanCard).fetchJoin()
                 .join(koreanCard.cardTopics, cardTopic).fetchJoin()
@@ -65,9 +63,14 @@ public class UserCardQueryRepository {
                         userCard.statePriority.desc(),
                         Expressions.numberTemplate(Double.class, "RANDOM()").asc()
                 )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
                 .fetch();
-        JPAQuery<KoreanCard> countq = queryFactory.select(koreanCard)
-                .from(koreanCard)
+        JPAQuery<UserCard> countq = queryFactory
+                .select(userCard)
+                .from(userCard)
+                .join(userCard.koreanCard, koreanCard)
+                .join(koreanCard.cardTopics, cardTopic)
                 .where(
                         combineQuery(userId, difficulty, topic, now, studyType)
                 )

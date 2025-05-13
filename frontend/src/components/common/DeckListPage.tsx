@@ -11,7 +11,7 @@ import CustomDialog from '@/components/Dialogs/CustomDialog';
 import styles from './DeckListPage.module.scss';
 import { Deck } from '@/types/schemes';
 import { Category } from '@/types/Category';
-import { upperSnakeToCamel } from '@/utils/changeCase';
+import { camelCase } from 'lodash';
 
 export default function DeckListPage({
   decks,
@@ -51,7 +51,7 @@ export default function DeckListPage({
   const getTitle =
     categoryType === 'difficulty'
       ? (category: string) => `difficulty.${category}`
-      : (category: string) => `meaning.${upperSnakeToCamel(category)}`;
+      : (category: string) => `meaning.${camelCase(category)}`;
 
   return (
     <>

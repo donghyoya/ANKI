@@ -13,7 +13,8 @@ import WordListCompact from '@/components/WordList/WordListCompact';
 import { CardDetail } from '@/types/schemes';
 import styles from './WordListPage.module.scss';
 import { getCategoryType } from '@/types/Category';
-import { upperSnakeToCamel } from '@/utils/changeCase';
+import { camelCase } from 'lodash';
+
 
 export default function WordListPage({
   wordList,
@@ -38,7 +39,7 @@ export default function WordListPage({
   const title =
     getCategoryType(category) === 'difficulty'
       ? `difficulty.${category}`
-      : `meaning.${upperSnakeToCamel(category)}`;
+      : `meaning.${camelCase(category)}`;
 
   const onLearnClick = () => {
     router.push('/learning');

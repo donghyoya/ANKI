@@ -58,6 +58,15 @@ export const UTC_OFFSET_OPTIONS = [
   { code: 4, label: 'UTC+04:00' }
 ];
 
+export const THEME_OPTIONS = [
+  { value: 'light', messageKey: 'settings.light' },
+  { value: 'dark', messageKey: 'settings.dark' },
+  { value: 'lightMediumContrast', messageKey: 'settings.lightMediumContrast' },
+  { value: 'darkMediumContrast', messageKey: 'settings.darkMediumContrast' },
+  { value: 'lightHighContrast', messageKey: 'settings.lightHighContrast' },
+  { value: 'darkHighContrast', messageKey: 'settings.darkHighContrast' }
+];
+
 // Dummy data for api mocking
 export const DUMMY_CARD: Card = {
   difficulty: 'easy',

@@ -14,7 +14,7 @@ export class ApiError extends Error {
   }
 }
 
-interface ApiRequestParams<T = unknown> {
+interface RequestApiParams<T = unknown> {
   url: string;
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
   token?: string;
@@ -36,7 +36,7 @@ export async function refreshToken() {
   return newTokens;
 }
 
-async function handleTokenRefresh<T = unknown>(params: ApiRequestParams<T>) {
+async function handleTokenRefresh<T = unknown>(params: RequestApiParams<T>) {
   try {
     const { url, method = 'GET', body } = params;
 
@@ -62,11 +62,11 @@ async function handleTokenRefresh<T = unknown>(params: ApiRequestParams<T>) {
   }
 }
 
-export async function apiRequest<T, B = unknown>(params: ApiRequestParams<B>): Promise<T> {
+export async function requestApi<T, B = unknown>(params: RequestApiParams<B>): Promise<T> {
   try {
     const { url, method = 'GET', token, body } = params;
 
-    console.log('apiRequest', url, method, token, body);
+    console.log('requestApi', url, method, token, body);
     const headers = {
       'Content-Type': 'application/json'
     } as Record<string, string>;

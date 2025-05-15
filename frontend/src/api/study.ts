@@ -9,7 +9,7 @@ import {
   convertUserCardServerResponseToUserCard
 } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
-import { apiRequest } from './utils';
+import { requestApi } from './utils';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
@@ -20,7 +20,7 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
 
   const url = `${endpoint}/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
 
-  const response = await apiRequest<Paginated<UserCardServerResponse>>({ url, token });
+  const response = await requestApi<Paginated<UserCardServerResponse>>({ url, token });
 
   const convertedData = response.content.map((card) =>
     convertUserCardServerResponseToUserCard(card)
@@ -34,7 +34,7 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
 
 export const getCardStudyInfo = async (cardId: number, token: string) => {
   const url = `${endpoint}/cards/${cardId}/study`;
-  const response = await apiRequest<CardStudyInfo>({ url, token });
+  const response = await requestApi<CardStudyInfo>({ url, token });
   return response;
 };
 
@@ -44,7 +44,7 @@ export const postCardStudyInfo = async (
   token: string
 ) => {
   const url = `${endpoint}/cards/${cardId}/study`;
-  const response = await apiRequest<CardStudyInfo>({
+  const response = await requestApi<CardStudyInfo>({
     url,
     token,
     method: 'POST',

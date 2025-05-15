@@ -3,13 +3,14 @@
 import { Locale } from '@/types/Locale';
 import { Paginated, CardDetail, UserStudyHistory, Deck } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
-import { requestApi } from './utils';
+import { requestApi, tryRefresh } from './utils';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
 export const getDecks = async (queryType: 'difficulty' | 'meaning', token: string) => {
+  const accessToken = await tryRefresh(token);
   const url = `${endpoint}/decks?queryType=${queryType === 'difficulty' ? 'level' : 'meaning'}`;
-  const response = await requestApi<Paginated<Deck>>({ url, token });
+  const response = await requestApi<Paginated<Deck>>({ url, token: accessToken });
   return response;
 };
 

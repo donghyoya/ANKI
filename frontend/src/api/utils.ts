@@ -21,6 +21,19 @@ interface RequestApiParams<T = unknown> {
   body?: T;
 }
 
+export async function tryRefresh(accessToken: string | null) {
+  if (!accessToken) {
+    try {
+      const { accessToken: newAccessToken } = await refreshToken();
+      return newAccessToken;
+    } catch (error) {
+      console.error('토큰 갱신 실패', error);
+      return null;
+    }
+  }
+  return accessToken;
+}
+
 export async function refreshToken() {
   const refreshToken = await getCookie('refreshToken');
   if (!refreshToken.value) {

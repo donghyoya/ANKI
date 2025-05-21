@@ -1,40 +1,55 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { redirect } from 'next/navigation';
-import { getUserOption } from '@/api/option';
+
+import { getToken } from '@/api/auth';
+import { setCookie } from '@/api/cookie';
+import { setAccessToken } from '@/store/slices/authSlice';
 
 export default function GoogleLoginRedirectPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const token = searchParams?.get('token'); // URL에서 token 읽기
+  const dispatch = useDispatch();
 
+  // URL에서 임시 토큰 읽기
+  const authenticationToken = searchParams?.get('token');
+
+  // 토큰 저장 로직
   useEffect(() => {
     (async function () {
-      if (token) {
-        localStorage.setItem('hada-token', token);
-        const userOption = await getUserOption(token);
+      console.log(authenticationToken);
+      if (authenticationToken) {
+        const { accessToken, refreshToken, setup } = await getToken(authenticationToken);
+        console.log('getToken:', { accessToken, refreshToken, setup });
 
-        if (userOption.utcOffset === null) {
-          redirect('/settings');
-        } else {
+        // accessToken을 store에 저장
+        dispatch(setAccessToken(accessToken));
+        // refreshToken을 cookie에 저장
+        setCookie({ name: 'refreshToken', value: refreshToken });
+
+        // 유저의 옵션 상태에 따라 리디렉션
+        if (setup) {
           redirect('/difficulty');
+        } else {
+          redirect('/settings');
         }
       } else {
         redirect('/login');
       }
     })();
-  }, [token, router]);
+  }, [authenticationToken, router, dispatch]);
 
   return (
     <div>
       <div>
-        {token ? (
+        {authenticationToken ? (
           <>
             <h1>로그인 성공</h1>
             <p>Auth Token:</p>
-            <code>{token}</code>
+            <code>{authenticationToken}</code>
           </>
         ) : (
           <>

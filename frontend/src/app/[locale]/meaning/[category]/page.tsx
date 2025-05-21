@@ -1,6 +1,5 @@
 'use client';
 
-import { useToken } from '@/hooks/useToken';
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 
@@ -13,19 +12,18 @@ import { CardDetail, Paginated } from '@/types/schemes';
 
 export default function MeaningWordsPage() {
   const { category, locale } = useParams() ?? {};
-  const { token } = useToken();
 
   const [userCards, setUserCards] = useState<Paginated<CardDetail>>();
 
   useEffect(() => {
     const fetchUserCards = async () => {
-      const cards = await getCardsFromDeck(locale as Locale, category as Category, token ?? '');
+      const cards = await getCardsFromDeck(locale as Locale, category as Category);
       if (cards) {
         setUserCards(cards);
       }
     };
     fetchUserCards();
-  }, [category, token, locale]);
+  }, [category, locale]);
 
   if (!userCards) {
     return <div>Loading...</div>;

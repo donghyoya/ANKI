@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useToken } from '@/hooks/useToken';
 import { useParams } from 'next/navigation';
 
 import { getCardsFromDeck } from '@/api/decks';
@@ -13,19 +12,18 @@ import { Category } from '@/types/Category';
 
 export default function DifficultyWordsPage() {
   const { category, locale } = useParams() ?? {};
-  const { token } = useToken();
 
   const [userCards, setUserCards] = useState<Paginated<CardDetail>>();
 
   useEffect(() => {
     const fetchUserCards = async () => {
-      const cards = await getCardsFromDeck(locale as Locale, category as Category, token ?? '');
+      const cards = await getCardsFromDeck(locale as Locale, category as Category);
       if (cards) {
         setUserCards(cards);
       }
     };
     fetchUserCards();
-  }, [category, token, locale]);
+  }, [category, locale]);
 
   if (!userCards) {
     return <div>Loading...</div>;

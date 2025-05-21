@@ -3,80 +3,33 @@
 import { Locale } from '@/types/Locale';
 import { Paginated, CardDetail, UserStudyHistory, Deck } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
+import { requestApi, tryRefresh } from './utils';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
 export const getDecks = async (queryType: 'difficulty' | 'meaning', token: string) => {
+  const accessToken = await tryRefresh(token);
   const url = `${endpoint}/decks?queryType=${queryType === 'difficulty' ? 'level' : 'meaning'}`;
-  console.log('요청 URL:', url);
-  console.log('요청 토큰:', token);
-  const response = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
-  });
-  const data = await response.json();
-  if (response.ok) {
-    return data as Paginated<Deck>;
-  } else {
-    throw new Error(data.message);
-  }
+  const response = await requestApi<Paginated<Deck>>({ url, token: accessToken });
+  return response;
 };
 
-export const getCardsFromDeck = async (locale: Locale, query: Category, token: string) => {
+export const getCardsFromDeck = async (locale: Locale, query: Category) => {
   const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
   const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
-  console.log('요청 URL:', url);
-  console.log('요청 토큰:', token);
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
-  });
-  const data = await response.json();
 
-  if (response.ok) {
-    return data as Paginated<CardDetail>;
-  } else {
-    throw new Error(data.message);
-  }
+  const response = await requestApi<Paginated<CardDetail>>({ url });
+  return response;
 };
 
 export const getUserStudyHistories = async (token: string) => {
   const url = `${endpoint}/decks/history`;
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
-  });
-  const data = await response.json();
-
-  if (response.ok) {
-    return data as Paginated<UserStudyHistory>;
-  } else {
-    throw new Error(data.message);
-  }
+  const response = await requestApi<Paginated<UserStudyHistory>>({ url, token });
+  return response;
 };
 
 export const getLatestUserStudyHistory = async (token: string) => {
   const url = `${endpoint}/decks/latest`;
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
-  });
-  const data = await response.json();
-
-  if (response.ok) {
-    return data as UserStudyHistory;
-  } else {
-    throw new Error(data.message);
-  }
+  const response = await requestApi<UserStudyHistory>({ url, token });
+  return response;
 };

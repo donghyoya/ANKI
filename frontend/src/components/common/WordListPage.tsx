@@ -42,7 +42,7 @@ export default function WordListPage({
       : `meaning.${camelCase(category)}`;
 
   const onLearnClick = () => {
-    router.push('/learning');
+    router.push(`/learning/${category}`);
   };
 
   const toggleExpandAll = () => {

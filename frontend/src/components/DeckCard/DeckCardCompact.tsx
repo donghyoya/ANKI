@@ -34,6 +34,11 @@ const DeckCardCompact = ({
     onViewWords();
   };
 
+  const handleLearn = (e: Event) => {
+    e.stopPropagation();
+    onLearn();
+  };
+
   return (
     <OutlinedCard ripple={false}>
       <div
@@ -45,7 +50,7 @@ const DeckCardCompact = ({
             <h2 className={styles.title}>{title}</h2>
             {isCompleted && <Icon className={styles['check-icon']}>check_circle</Icon>}
           </div>
-          <FilledButton onClick={onLearn}>{buttonLabels.learn}</FilledButton>
+          <FilledButton onClick={handleLearn}>{buttonLabels.learn}</FilledButton>
         </div>
         {isExpanded && (
           <div className={styles['extra-contents']}>

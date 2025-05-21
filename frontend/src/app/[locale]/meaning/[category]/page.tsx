@@ -11,7 +11,7 @@ import { Locale } from '@/types/Locale';
 import { Category } from '@/types/Category';
 import { CardDetail, Paginated } from '@/types/schemes';
 
-export default function MeaningsWordsPage() {
+export default function MeaningWordsPage() {
   const { category, locale } = useParams() ?? {};
   const { token } = useToken();
 

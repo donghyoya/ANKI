@@ -11,6 +11,7 @@ import CustomDialog from '@/components/Dialogs/CustomDialog';
 import styles from './DeckListPage.module.scss';
 import { Deck } from '@/types/schemes';
 import { Category } from '@/types/Category';
+import { camelCase } from 'lodash';
 
 export default function DeckListPage({
   decks,
@@ -47,16 +48,28 @@ export default function DeckListPage({
     );
   }, [decks, displayOrder]);
 
+  const getTitle =
+    categoryType === 'difficulty'
+      ? (category: string) => `difficulty.${category}`
+      : (category: string) => `meaning.${camelCase(category)}`;
+
   return (
     <>
       <div className={styles['page']}>
         <div className={styles['content']}>
-          {!isCompact && <h1 className={styles.title}>{t(categoryType)}</h1>}
+          {!isCompact && (
+            <h1 className={styles.title}>
+              {t(
+                `${categoryType}.wordsBy${categoryType.charAt(0).toUpperCase() + categoryType.slice(1)}`
+              )}
+            </h1>
+          )}
           <div className={styles.cards}>
             {sortedDecks.map((deck) => (
               <DeckCard
                 key={deck.category}
                 deck={deck}
+                title={t(getTitle(deck.category))}
                 isCompleted={false} // TODO
                 locale={locale}
                 buttonLabels={buttonLabels}

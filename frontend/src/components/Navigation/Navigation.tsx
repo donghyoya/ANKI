@@ -20,7 +20,7 @@ const Navigation = () => {
 
   const destinations = [
     { icon: 'folder', label: 'difficulty' },
-    { icon: 'folder', label: 'meanings' },
+    { icon: 'folder', label: 'meaning' },
     { icon: 'settings', label: 'settings' }
   ];
 

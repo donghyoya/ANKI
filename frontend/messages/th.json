@@ -15,29 +15,29 @@
 
   "menu": {
     "difficulty": "ความยาก",
-    "meanings": "ความหมาย",
+    "meaning": "ความหมาย",
     "settings": "การตั้งค่า"
   },
 
   "difficulty": {
     "wordsByDifficulty": "คำตามระดับความยาก",
-    "beginner": "ระดับเริ่มต้น",
-    "intermediate": "ระดับกลาง",
-    "advanced": "ระดับสูง"
+    "easy": "ระดับเริ่มต้น",
+    "normal": "ระดับกลาง",
+    "hard": "ระดับสูง"
   },
 
-  "meanings": {
-    "wordsByMeanings": "คำตามความหมาย",
+  "meaning": {
+    "wordsByMeaning": "คำตามความหมาย",
     "action": "การกระทำ",
     "administration": "การบริหาร",
     "communication": "การสื่อสาร",
     "concept": "แนวคิด",
     "culture": "วัฒนธรรม",
     "economy": "เศรษฐกิจ",
-    "fashion": "แฟชั่นและรูปลักษณ์",
+    "fashionAndAppearance": "แฟชั่นและรูปลักษณ์",
     "feeling": "ความรู้สึก",
     "food": "อาหาร",
-    "grammar": "ไวยากรณ์และภาษา",
+    "grammarAndLanguage": "ไวยากรณ์และภาษา",
     "home": "บ้าน",
     "hospital": "โรงพยาบาล",
     "life": "ชีวิต",

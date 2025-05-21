@@ -12,6 +12,9 @@ import WordList from '@/components/WordList/WordList';
 import WordListCompact from '@/components/WordList/WordListCompact';
 import { CardDetail } from '@/types/schemes';
 import styles from './WordListPage.module.scss';
+import { getCategoryType } from '@/types/Category';
+import { camelCase } from 'lodash';
+
 
 export default function WordListPage({
   wordList,
@@ -30,6 +33,13 @@ export default function WordListPage({
 
   const isCompact = width < 600;
   const isLarge = width >= 1200;
+
+  const WordListComponent = !isLarge ? WordListCompact : WordList;
+
+  const title =
+    getCategoryType(category) === 'difficulty'
+      ? `difficulty.${category}`
+      : `meaning.${camelCase(category)}`;
 
   const onLearnClick = () => {
     router.push('/learning');
@@ -88,13 +98,11 @@ export default function WordListPage({
     );
   };
 
-  const WordListComponent = !isLarge ? WordListCompact : WordList;
-
   return (
     <div className={styles['page']}>
       <div className={styles['content']}>
         <div className={styles['header-container']}>
-          <h1 className={styles.title}>{t(category)}</h1>
+          <h1 className={styles.title}>{t(title)}</h1>
           <div className={styles['button-container']}>
             <FilledButton className={styles['learn-button']} onClick={onLearnClick}>
               {t('learn')}

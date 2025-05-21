@@ -29,6 +29,11 @@ const DeckCardCompact = ({
     setIsExpanded((prev) => !prev);
   };
 
+  const handleViewWords = (e: Event) => {
+    e.stopPropagation();
+    onViewWords();
+  };
+
   return (
     <OutlinedCard ripple={false}>
       <div
@@ -44,7 +49,7 @@ const DeckCardCompact = ({
         </div>
         {isExpanded && (
           <div className={styles['extra-contents']}>
-            <TextButton onClick={onViewWords}>{buttonLabels.viewWords}</TextButton>
+            <TextButton onClick={handleViewWords}>{buttonLabels.viewWords}</TextButton>
             <span className={styles['word-count']}>
               {getFormatUnit(locale, 'word', deck.cardCounts, true)}
             </span>

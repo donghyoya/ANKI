@@ -60,6 +60,12 @@ public class User {
         this.languageCode = languageCode;
         this.utcOffset = utcOffset;
         if(this.firstLogin){
+            this.firstLogin = false;
+        }
+
+        // 디버깅을 위해서 잠깐 null을 허용
+        // 원래는 null 들어오면 작동 안되게 해야함
+        if(this.dailyReviewWords== null || this.dailyStudyWords == null|| this.languageCode == null|| this.utcOffset == null){
             this.firstLogin = true;
         }
     }

@@ -60,7 +60,7 @@ public class TestAuthenticationService {
         String accessToken = jwtTokenService.generateAccessToken(testUser.getId().toString(), builder);
         String refresshToken = jwtTokenService.generateRefreshToken(testUser.getId().toString(), builder);
         String authenticationToken = jwtTokenService.generateAuthenticationToken(testUser.getId().toString(), builder.role(Role.AUTHENTICAITON).build());
-        return Map.of("accessToken", accessToken, "refreshToken", refresshToken, "isSetup", testUser.isFirst()?"true":"false", "authenticationToken", authenticationToken);
+        return Map.of("accessToken", accessToken, "refreshToken", refresshToken, "isSetup", testUser.isFirst()?"false":"true", "authenticationToken", authenticationToken);
     }
 
 }

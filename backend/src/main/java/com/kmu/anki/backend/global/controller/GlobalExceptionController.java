@@ -46,5 +46,4 @@ public class GlobalExceptionController {
         log.error("[500] RuntimeException: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(ExceptionResponse.of(500, "INTERNAL_SERVER_ERROR"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    
 }

@@ -14,7 +14,7 @@ public class CardTopic {
     private Long id;
 
     /* 관계 : KoreanCard */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "korean_card_id")
     private KoreanCard koreanCard;
 
@@ -23,7 +23,7 @@ public class CardTopic {
 
 
     /* 관계 meaningGroup */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "topic_id")
     private Topic topic;
 

@@ -54,8 +54,8 @@ public class UserCardQueryRepository {
         List<UserCard> userCards = queryFactory
                 .select(userCard)
                 .from(userCard)
-                .join(userCard.koreanCard, koreanCard).fetchJoin()
-                .join(koreanCard.cardTopics, cardTopic).fetchJoin()
+                .join(userCard.koreanCard, koreanCard)
+                .join(koreanCard.cardTopics, cardTopic)
                 .where(
                         combineQuery(userId, difficulty, topic, now, studyType)
                 )

@@ -24,7 +24,7 @@ public class ForeignCard {
     private String foreignMeaning;
 
     /* 관계 - 한국어 카드 */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "korean_meaning_id")
     private KoreanMeaning koreanMeaning;
 

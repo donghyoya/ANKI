@@ -49,12 +49,17 @@ public class UserCardService {
     /* READ */
 
     public Page<UserCardDto> readStudyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums cardTopicEnums){
+        // 오늘 날짜를 꺼낸다
         LocalDateTime now = LocalDateTime.now();
+        // 유저 정보를 꺼내라
         User user = userRepository.findById(userId).orElseThrow();
+        // 오늘 공부할 단어 목록
         Integer words = studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords();
+        // pageRequest 만들기 (page가 아니어도 되지 않나?)
         PageRequest pageRequest = PageRequest.of(0, words);
+        // cache에서 꺼내기
         UserCardCacheO dailyUserCard = userCardCacheRepository.findDailyUserCard(userId, languageCode, studyType, cardTopicEnums);
-        Page<UserCardDto> ret = null;
+        Page<UserCardDto> ret = null; // 반환값
         if(dailyUserCard == null){
             ret = userCardQueryRepository.findStudyCards(userId, languageCode, null, cardTopicEnums, now, studyType, pageRequest);
             dailyUserCard = new UserCardCacheO(ret, user.getUtcOffset());

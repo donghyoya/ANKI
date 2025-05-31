@@ -49,7 +49,7 @@ public class UserStudyHistory {
 
     /* 관계 - User */
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

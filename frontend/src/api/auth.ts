@@ -3,7 +3,7 @@ import { ApiError } from './utils';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
-export const getToken = async (authenticationToken: string) => {
+export const getToken = async (authenticationToken: string): Promise<TokenResponseDTO> => {
   try {
     const url = `${endpoint}/auth/token`;
     console.log('authenticationToken', authenticationToken);

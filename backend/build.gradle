@@ -79,6 +79,11 @@ dependencies {
 
 	// csv import library
 	implementation 'com.github.js990311:csvloader:0.2.0'
+
+	// hibernate search
+	implementation 'org.hibernate.search:hibernate-search-mapper-orm:7.2.3.Final'
+	implementation 'org.hibernate.search:hibernate-search-backend-lucene:7.2.3.Final'
+	implementation 'org.apache.lucene:lucene-analysis-nori:9.11.1' // for korean. hibernate search7이 lucene 9.11.1을 사용하기 때문에 9.11.1버전으로 맞춤
 }
 
 openapi3{

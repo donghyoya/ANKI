@@ -5,12 +5,15 @@ import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.apache.ibatis.annotations.One;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Entity
+@Indexed
 @Table(name = "korean_cards")
 public class KoreanCard {
     @Id
@@ -18,6 +21,7 @@ public class KoreanCard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @FullTextField
     @Column
     private String koreanWord;
 

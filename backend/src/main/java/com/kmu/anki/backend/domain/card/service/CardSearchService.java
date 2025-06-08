@@ -1,7 +1,7 @@
 package com.kmu.anki.backend.domain.card.service;
 
 import com.kmu.anki.backend.domain.card.dto.KoreanCardDto;
-import com.kmu.anki.backend.domain.card.repository.CardSearchRepository;
+import com.kmu.anki.backend.domain.card.repository.search.CardSearchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

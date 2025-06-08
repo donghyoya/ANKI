@@ -1,4 +1,4 @@
-package com.kmu.anki.backend.domain.card.repository;
+package com.kmu.anki.backend.domain.card.repository.search;
 
 import com.kmu.anki.backend.domain.card.entity.KoreanCard;
 import jakarta.persistence.EntityManager;

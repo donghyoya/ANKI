@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.domain.card.repository;
 
 import com.kmu.anki.backend.domain.card.dto.KoreanCardDto;
+import com.kmu.anki.backend.domain.card.repository.search.CardSearchRepository;
 import com.kmu.anki.backend.global.AbstractIntegrationTest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

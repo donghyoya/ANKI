@@ -1,7 +1,7 @@
 'use server';
 
 import { Locale } from '@/types/Locale';
-import { Paginated, CardDetail, UserStudyHistory, Deck } from '@/types/schemes';
+import { Paginated, KoreanCardDetail, UserStudyHistory, Deck } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
 import { requestApi, tryRefresh } from './utils';
 
@@ -18,7 +18,7 @@ export const getCardsFromDeck = async (locale: Locale, query: Category) => {
   const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
   const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
 
-  const response = await requestApi<Paginated<CardDetail>>({ url });
+  const response = await requestApi<Paginated<KoreanCardDetail>>({ url });
   return response;
 };
 

@@ -1,4 +1,4 @@
-import { CardDetail } from '@/types/schemes';
+import { KoreanCardDetail } from '@/types/schemes';
 
 import styles from './WordSection.module.scss';
 
@@ -9,11 +9,11 @@ const levelStars = {
 };
 
 interface WordSectionProps {
-  card: CardDetail;
+  card: KoreanCardDetail;
 }
 
 const WordSection = ({ card }: WordSectionProps) => {
-  const levelLabel = levelStars[card.difficulty as keyof typeof levelStars] || '';
+  const levelLabel = levelStars[card.level as keyof typeof levelStars] || '';
 
   return (
     <>
@@ -23,16 +23,16 @@ const WordSection = ({ card }: WordSectionProps) => {
         <div className={styles['korean-info-container']}>
           <span className={styles['korean-level']}>{levelLabel}</span>
           <div className={styles['korean-info-sub-container']}>
-            <span className={styles['pronunciation']}>{`[${card.pronunciation}]`}</span>
-            <span className={styles['origin']}>{card.originalLanguage ?? ''}</span>
+            <span className={styles['pronunciation']}>{`[${card.meanings.pronunciation}]`}</span>
+            <span className={styles['origin']}>{card.meanings.originalLanguage ?? ''}</span>
           </div>
         </div>
       </div>
       <div className={styles['foreign-container']}>
         <span className={styles['foreign-word']}>
-          1. {card.partsOfSpeech} {card.foreignWord}
+          1. {card.meanings.partsOfSpeech} {card.meanings.foreignWord}
         </span>
-        <span className={styles['foreign-word-sub']}>{card.relatedWords}</span>
+        <span className={styles['foreign-word-sub']}>{card.meanings.relatedWords}</span>
       </div>
     </>
   );

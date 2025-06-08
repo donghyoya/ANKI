@@ -6,14 +6,14 @@ import { useParams } from 'next/navigation';
 import { getCardsFromDeck } from '@/api/decks';
 import WordListPage from '@/components/common/WordListPage';
 
-import { CardDetail, Paginated } from '@/types/schemes';
+import { KoreanCardDetail, Paginated } from '@/types/schemes';
 import { Locale } from '@/types/Locale';
 import { Category } from '@/types/Category';
 
 export default function DifficultyWordsPage() {
   const { category, locale } = useParams() ?? {};
 
-  const [userCards, setUserCards] = useState<Paginated<CardDetail>>();
+  const [userCards, setUserCards] = useState<Paginated<KoreanCardDetail>>();
 
   useEffect(() => {
     const fetchUserCards = async () => {

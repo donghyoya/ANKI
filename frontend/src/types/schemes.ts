@@ -20,14 +20,26 @@ export interface Card {
   foreignWord: string;
 }
 
-export interface CardDetail extends Card {
-  originalLanguage: string;
+export interface KoreanCard {
   homographNumber: number;
-  partsOfSpeech: string;
-  pronunciation: string;
-  relatedWords: string;
-  inflection: string;
-  exampleUsage: string;
+  level: Difficulty;
+  topics: string[];
+  cardId: number;
+  koreanWord: string;
+}
+
+export interface KoreanCardDetail extends KoreanCard {
+  meanings: {
+    foreignMeaning: string;
+    partsOfSpeech: string;
+    pronunciation: string;
+    languageCode: Locale;
+    originalLanguage: string;
+    foreignWord: string;
+    relatedWords: string;
+    inflection: string;
+    exampleUsage: string;
+  };
 }
 
 export type StudyInfo = {
@@ -42,12 +54,16 @@ export type StudyInfoDTO = Omit<
   state: 'New' | 'Learning' | 'Review' | 'Relearning';
 };
 
-export interface UserCard extends CardDetail {
+export interface UserCard {
+  koreanCard: KoreanCard;
   studyInfo: StudyInfo;
+  userCardId: number;
 }
 
-export interface UserCardDTO extends CardDetail {
+export interface UserCardDTO {
+  koreanCard: KoreanCard;
   studyInfo: StudyInfoDTO;
+  userCardId: number;
 }
 
 export interface Deck {

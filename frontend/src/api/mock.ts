@@ -2,7 +2,7 @@ import {
   Paginated,
   Deck,
   Card,
-  CardDetail,
+  KoreanCardDetail,
   StudyInfo,
   UserStudyHistory,
   UserOption,
@@ -53,7 +53,7 @@ export const mockGetCard = async () => {
 };
 
 export const mockGetCardDetail = async () => {
-  return new Promise<CardDetail>((resolve) => {
+  return new Promise<KoreanCardDetail>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_CARD_DETAIL;
       console.log('mockGetCardDetail:', data);

@@ -1,5 +1,5 @@
 import { FilledCard } from '../Card/Card';
-import { UserCard } from '@/types/schemes';
+import { KoreanCardDetail } from '@/types/schemes';
 
 import styles from './LearningCard.module.scss';
 import classNames from 'classnames';
@@ -24,7 +24,7 @@ export interface LearningCardState {
 }
 
 interface LearningCardProps {
-  card: UserCard;
+  card: KoreanCardDetail;
   className?: string;
   style?: React.CSSProperties;
   cardState: LearningCardState;
@@ -73,7 +73,7 @@ const LearningCard = ({
       {!cardState.isRevealed && (
         <div className={styles['content-container']}>
           <span className={styles['korean-word']}>
-            {cardState.isKoreanToForeign ? card.koreanWord : card.foreignWord}
+            {cardState.isKoreanToForeign ? card.koreanWord : card.meanings.foreignWord}
           </span>
           <span className={classNames(styles['foreign-word'], styles['revealed'])}>
             {t('learning.checkAnswer')}
@@ -84,10 +84,10 @@ const LearningCard = ({
       {cardState.isRevealed && !cardState.showDetail && (
         <div className={styles['content-container']}>
           <span className={styles['korean-word']}>
-            {cardState.isKoreanToForeign ? card.koreanWord : card.foreignWord}
+            {cardState.isKoreanToForeign ? card.koreanWord : card.meanings.foreignWord}
           </span>
           <span className={styles['foreign-word']}>
-            {cardState.isKoreanToForeign ? card.foreignWord : card.koreanWord}
+            {cardState.isKoreanToForeign ? card.meanings.foreignWord : card.koreanWord}
           </span>
         </div>
       )}
@@ -97,12 +97,12 @@ const LearningCard = ({
           <WordSection card={card} />
           <div>
             <ConjugationSection
-              conjugations={card.inflection.split(', ')}
+              conjugations={card.meanings.inflection.split(', ')}
               toggleExpanded={toggleConjugation}
               isExpanded={cardState.showConjugation}
             />
             <ExampleSection
-              examples={card.exampleUsage.trim().split('\n')}
+              examples={card.meanings.exampleUsage.trim().split('\n')}
               toggleExpanded={toggleExample}
               isExpanded={cardState.showExample}
             />

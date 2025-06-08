@@ -5,7 +5,8 @@ import { Progress } from '@/types/Progress';
 
 import {
   Card,
-  CardDetail,
+  KoreanCard,
+  KoreanCardDetail,
   StudyInfo,
   UserOption,
   UserStudyHistory,
@@ -77,20 +78,28 @@ export const DUMMY_CARD: Card = {
   foreignWord: 'love'
 };
 
-export const DUMMY_CARD_DETAIL: CardDetail = {
+export const DUMMY_KOR_CARD: KoreanCard = {
   cardId: 1,
   koreanWord: '가깝다',
-  foreignWord: 'near; close; adjacent',
-  difficulty: 'easy',
-  languageCode: 'ko',
-  originalLanguage: '家具',
   homographNumber: 1,
-  partsOfSpeech: '(adj.)',
-  pronunciation: '가깝따',
-  relatedWords: '반댓말 멀다2 반댓말 멀다2, 멀다2',
-  inflection: '가까운, 가꾸어(가꿔), 가까우니, 가깝습니다',
-  exampleUsage:
-    '<구> 안녕하세요\n<구> 안녕하세요\n<구> 안녕하세요\n<문> 안녕하세요\n<문> 안녕하세요\n<문> 안녕하세요\n<대화> 안녕하세요\n<대화> 안녕하세요\n<대화> 안녕하세요'
+  level: 'easy',
+  topics: []
+};
+
+export const DUMMY_CARD_DETAIL: KoreanCardDetail = {
+  ...DUMMY_KOR_CARD,
+  meanings: {
+    foreignWord: 'near; close; adjacent',
+    foreignMeaning: 'near; close; adjacent',
+    languageCode: 'ko',
+    originalLanguage: '家具',
+    partsOfSpeech: '(adj.)',
+    pronunciation: '가깝따',
+    relatedWords: '반댓말 멀다2 반댓말 멀다2, 멀다2',
+    inflection: '가까운, 가꾸어(가꿔), 가까우니, 가깝습니다',
+    exampleUsage:
+      '<구> 안녕하세요\n<구> 안녕하세요\n<구> 안녕하세요\n<문> 안녕하세요\n<문> 안녕하세요\n<문> 안녕하세요\n<대화> 안녕하세요\n<대화> 안녕하세요\n<대화> 안녕하세요'
+  }
 };
 
 export const DUMMY_CARDS: Paginated<Card> = {
@@ -125,9 +134,9 @@ export const DUMMY_STUDY_INFO_DTO: StudyInfoDTO = {
 };
 
 export const DUMMY_USER_CARD: UserCard = {
-  ...DUMMY_CARD,
-  ...DUMMY_CARD_DETAIL,
-  studyInfo: DUMMY_STUDY_INFO
+  koreanCard: DUMMY_KOR_CARD,
+  studyInfo: DUMMY_STUDY_INFO,
+  userCardId: 1
 };
 
 export const DUMMY_USER_CARDS: Paginated<UserCard> = {
@@ -135,16 +144,16 @@ export const DUMMY_USER_CARDS: Paginated<UserCard> = {
   pageSize: 1,
   page: 1,
   content: [
-    { ...DUMMY_USER_CARD, koreanWord: '하나', foreignWord: 'one', cardId: 1 },
-    { ...DUMMY_USER_CARD, koreanWord: '둘', foreignWord: 'two', cardId: 2 },
-    { ...DUMMY_USER_CARD, koreanWord: '셋', foreignWord: 'three', cardId: 3 },
-    { ...DUMMY_USER_CARD, koreanWord: '넷', foreignWord: 'four', cardId: 4 },
-    { ...DUMMY_USER_CARD, koreanWord: '다섯', foreignWord: 'five', cardId: 5 },
-    { ...DUMMY_USER_CARD, koreanWord: '여섯', foreignWord: 'six', cardId: 6 },
-    { ...DUMMY_USER_CARD, koreanWord: '일곱', foreignWord: 'seven', cardId: 7 },
-    { ...DUMMY_USER_CARD, koreanWord: '여덟', foreignWord: 'eight', cardId: 8 },
-    { ...DUMMY_USER_CARD, koreanWord: '아홉', foreignWord: 'nine', cardId: 9 },
-    { ...DUMMY_USER_CARD, koreanWord: '열', foreignWord: 'ten', cardId: 10 }
+    { ...DUMMY_USER_CARD, koreanCard: { ...DUMMY_KOR_CARD, koreanWord: '하나', cardId: 1 } },
+    { ...DUMMY_USER_CARD, koreanCard: { ...DUMMY_KOR_CARD, koreanWord: '둘', cardId: 2 } },
+    { ...DUMMY_USER_CARD, koreanCard: { ...DUMMY_KOR_CARD, koreanWord: '셋', cardId: 3 } },
+    { ...DUMMY_USER_CARD, koreanCard: { ...DUMMY_KOR_CARD, koreanWord: '넷', cardId: 4 } },
+    { ...DUMMY_USER_CARD, koreanCard: { ...DUMMY_KOR_CARD, koreanWord: '다섯', cardId: 5 } },
+    { ...DUMMY_USER_CARD, koreanCard: { ...DUMMY_KOR_CARD, koreanWord: '여섯', cardId: 6 } },
+    { ...DUMMY_USER_CARD, koreanCard: { ...DUMMY_KOR_CARD, koreanWord: '일곱', cardId: 7 } },
+    { ...DUMMY_USER_CARD, koreanCard: { ...DUMMY_KOR_CARD, koreanWord: '여덟', cardId: 8 } },
+    { ...DUMMY_USER_CARD, koreanCard: { ...DUMMY_KOR_CARD, koreanWord: '아홉', cardId: 9 } },
+    { ...DUMMY_USER_CARD, koreanCard: { ...DUMMY_KOR_CARD, koreanWord: '열', cardId: 10 } }
   ]
 };
 

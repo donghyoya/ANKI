@@ -10,17 +10,16 @@ import { Icon, IconButton } from '@/components/material-components/IconButton/Ic
 import { Menu, MenuItem } from '@/components/material-components/Menu';
 import WordList from '@/components/WordList/WordList';
 import WordListCompact from '@/components/WordList/WordListCompact';
-import { CardDetail } from '@/types/schemes';
+import { KoreanCardDetail } from '@/types/schemes';
 import styles from './WordListPage.module.scss';
 import { getCategoryType } from '@/types/Category';
 import { camelCase } from 'lodash';
-
 
 export default function WordListPage({
   wordList,
   category
 }: {
-  wordList: CardDetail[];
+  wordList: KoreanCardDetail[];
   category: string;
 }) {
   const t = useTranslations();

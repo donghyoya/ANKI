@@ -8,12 +8,12 @@ import WordListPage from '@/components/common/WordListPage';
 
 import { Locale } from '@/types/Locale';
 import { Category } from '@/types/Category';
-import { CardDetail, Paginated } from '@/types/schemes';
+import { KoreanCardDetail, Paginated } from '@/types/schemes';
 
 export default function MeaningWordsPage() {
   const { category, locale } = useParams() ?? {};
 
-  const [userCards, setUserCards] = useState<Paginated<CardDetail>>();
+  const [userCards, setUserCards] = useState<Paginated<KoreanCardDetail>>();
 
   useEffect(() => {
     const fetchUserCards = async () => {

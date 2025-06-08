@@ -24,7 +24,7 @@ export const useStudyQueue = (category: Category) => {
   const repeat = (rating: Rating) => {
     if (studyQueue === null || currentCard === null) return;
     const newStudyQueue = [
-      ...studyQueue.filter((card) => card.cardId !== currentCard.cardId),
+      ...studyQueue.filter((card) => card.userCardId !== currentCard.userCardId),
       {
         ...currentCard,
         studyInfo: {

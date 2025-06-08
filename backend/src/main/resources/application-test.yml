@@ -16,6 +16,7 @@ spring:
         default_batch_fetch_size: 50
       hibernate.search.backend.type: lucene
       hibernate.search.backend.directory.type: local-heap
+      hibernate.search.backend.analysis.configurer: com.kmu.anki.backend.global.config.search.KoreanLuceneAnalysisConfigurerImpl
 
   sql:
     init:

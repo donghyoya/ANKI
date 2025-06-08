@@ -24,7 +24,7 @@ public class KoreanCard {
     @GenericField(name = "koreanCardId", projectable = Projectable.YES)
     private Long id;
 
-    @FullTextField(name = "koreanWord")
+    @FullTextField(name = "koreanWord", analyzer = "korean-analysis")
     @Column
     private String koreanWord;
 

@@ -16,6 +16,7 @@ spring:
       hibernate.search.backend.type: lucene
       hibernate.search.backend.directory.type: local-filesystem
       hibernate.search.backend.directory.root: ./files/indexes
+      hibernate.search.backend.analysis.configurer: com.kmu.anki.backend.global.config.search.KoreanLuceneAnalysisConfigurerImpl
   security:
     oauth2:
       client:

@@ -3,7 +3,7 @@ package com.kmu.anki.backend.domain.card.entity;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.*;
 import org.apache.ibatis.annotations.One;
 import org.hibernate.search.engine.backend.types.Projectable;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
@@ -13,6 +13,9 @@ import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 import java.util.ArrayList;
 import java.util.List;
 
+@Builder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Getter
 @Entity
 @Indexed
@@ -39,6 +42,7 @@ public class KoreanCard {
 
     /* 관계 - 유저 카드 */
     @OneToMany(mappedBy = "koreanCard")
+    @Builder.Default
     private List<UserCard> userCards = new ArrayList<>();
 
     public void addUserCards(UserCard card){
@@ -47,6 +51,7 @@ public class KoreanCard {
 
     /* 관계 - koreanCard */
     @OneToMany(mappedBy = "koreanCard")
+    @Builder.Default
     private List<CardTopic> cardTopics = new ArrayList<>();
 
     public void addCardTopics(CardTopic cardTopic) {
@@ -55,5 +60,11 @@ public class KoreanCard {
 
     /* 관계 - KoreanMeaning*/
     @OneToMany(mappedBy = "koreanCard")
+    @Builder.Default
     private List<KoreanMeaning> koreanCards = new ArrayList<>();
+
+    public void addMeanings(KoreanMeaning koreanMeaning){
+        koreanCards.add(koreanMeaning);
+        koreanMeaning.mapKoreanCard(this);
+    }
 }

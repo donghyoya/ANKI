@@ -23,37 +23,41 @@ public class CardDetailDtoDocs {
 
 
     public static FieldDescriptor[] cardDetailDto(String prefix){
-        return new FieldDescriptor[]{
-                fieldWithPath(prefix+"cardId").description("단어카드의 고유번호"),
-                fieldWithPath(prefix+"koreanWord").description("한국어 단어"),
-                fieldWithPath(prefix+"level").description("단어의 수준 (easy, normal, hard)"),
-                fieldWithPath(prefix+"topics").type(JsonFieldType.ARRAY).description("카드의 분류"),
-                fieldWithPath(prefix+"homographNumber")
+        FieldDescriptor[] cardDetail = {
+                fieldWithPath(prefix + "cardId").description("단어카드의 고유번호"),
+                fieldWithPath(prefix + "koreanWord").description("한국어 단어"),
+                fieldWithPath(prefix + "level").description("단어의 수준 (easy, normal, hard)"),
+                fieldWithPath(prefix + "topics").type(JsonFieldType.ARRAY).description("카드의 분류"),
+                fieldWithPath(prefix + "homographNumber")
                         .type(JsonFieldType.STRING)
                         .optional().description("동형어 번호"),
+        };
+        return BaseDocs.combine(cardDetail, cardMeaningWithForeign("meanings[]."));
+    }
 
-                fieldWithPath(prefix+"meanings[].originalLanguage")
+    public static FieldDescriptor[] cardMeaningWithForeign(String prefix){
+        return new FieldDescriptor[]{
+                fieldWithPath(prefix+"originalLanguage")
                         .type(JsonFieldType.STRING)
                         .optional().description("단어의 원어"),
-                fieldWithPath(prefix+"meanings[].partsOfSpeech")
+                fieldWithPath(prefix+"partsOfSpeech")
                         .type(JsonFieldType.STRING)
                         .optional().description("품사"),
-                fieldWithPath(prefix+"meanings[].pronunciation")
+                fieldWithPath(prefix+"pronunciation")
                         .type(JsonFieldType.STRING)
                         .optional().description("발음"),
-                fieldWithPath(prefix+"meanings[].relatedWords")
+                fieldWithPath(prefix+"relatedWords")
                         .type(JsonFieldType.STRING).optional().description("관련어"),
-                fieldWithPath(prefix+"meanings[].inflection")
+                fieldWithPath(prefix+"inflection")
                         .type(JsonFieldType.STRING)
                         .optional().description("활용"),
-                fieldWithPath(prefix+"meanings[].exampleUsage")
+                fieldWithPath(prefix+"exampleUsage")
                         .type(JsonFieldType.STRING)
                         .optional().description("용례"),
 
-                fieldWithPath(prefix+"meanings[].languageCode").description("언어코드 (ISO 639-1)"),
-                fieldWithPath(prefix+"meanings[].foreignWord").description("외국어 표제어"),
-                fieldWithPath(prefix+"meanings[].foreignMeaning").description("외국어 뜻풀이"),
-
+                fieldWithPath(prefix+"languageCode").description("언어코드 (ISO 639-1)"),
+                fieldWithPath(prefix+"foreignWord").description("외국어 표제어"),
+                fieldWithPath(prefix+"foreignMeaning").description("외국어 뜻풀이"),
         };
     }
 }

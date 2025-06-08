@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.domain.card.docs.parameters;
 
 import com.kmu.anki.backend.domain.card.controller.QueryType;
+import com.kmu.anki.backend.domain.card.controller.option.ForeignCardSearchOption;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import org.springframework.restdocs.request.ParameterDescriptor;
 import org.springframework.restdocs.snippet.Attributes;
@@ -24,5 +25,9 @@ public class CardParameters {
             .description("검색하고자 하는 언어 코드 / 로그인하지 않았을 경우에만 작동함")
             .optional()
             .attributes(Attributes.key("enumValues").value(Arrays.asList(LanguageCode.values())));
+
+    public static ParameterDescriptor foreignCardSearchOption = parameterWithName("option")
+            .description("외국어 검색 옵션 (용어검색 / 의미 검색 / 동시검색)")
+            .attributes(Attributes.key("enumValues").value(Arrays.asList(ForeignCardSearchOption.values())));
 
 }

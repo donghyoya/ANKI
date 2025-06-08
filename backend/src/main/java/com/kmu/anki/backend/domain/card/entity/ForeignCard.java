@@ -2,11 +2,14 @@ package com.kmu.anki.backend.domain.card.entity;
 
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.*;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.GenericField;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Table(name = "foreign_cards")
 @Entity
@@ -40,6 +43,5 @@ public class ForeignCard {
 
     public void mapKoreanMeaning(KoreanMeaning koreanMeaning){
         this.koreanMeaning = koreanMeaning;
-        this.koreanMeaning.addForeignCards(this);
     }
 }

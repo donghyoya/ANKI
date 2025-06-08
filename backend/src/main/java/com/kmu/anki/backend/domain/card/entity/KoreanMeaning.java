@@ -1,14 +1,16 @@
 package com.kmu.anki.backend.domain.card.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Getter
-@NoArgsConstructor
 @Table(name = "korean_meanings")
 public class KoreanMeaning {
     @Id
@@ -42,15 +44,17 @@ public class KoreanMeaning {
     @Column(name = "korean_card_id", updatable = false, insertable = false)
     private Long koreanCardId;
 
-    private void mapKoreanCard(KoreanCard koreanCard){
+    public void mapKoreanCard(KoreanCard koreanCard){
         this.koreanCard = koreanCard;
     }
 
     /* 관계 - 외국어 카드 */
     @OneToMany(mappedBy = "koreanMeaning")
-    private List<ForeignCard> foreignCards;
+    @Builder.Default
+    private List<ForeignCard> foreignCards = new ArrayList<>();
 
     public void addForeignCards(ForeignCard card){
         foreignCards.add(card);
+        card.mapKoreanMeaning(this);
     }
 }

@@ -6,14 +6,15 @@ import { Progress } from '@/types/Progress';
 import {
   Card,
   CardDetail,
-  CardStudyInfo,
+  StudyInfo,
   UserOption,
   UserStudyHistory,
   Deck,
-  StudyCardForm,
+  StudyInfoDTO,
   Paginated,
   UserCard
 } from '@/types/schemes';
+import { State } from 'ts-fsrs';
 
 export const DUMMY_PROGRESS: Progress[] = [
   { value: 10, label: '10', tooltip: 'Matured', color: LEARNING_PROGRESS_BAR_COLORS.matured },
@@ -99,26 +100,26 @@ export const DUMMY_CARDS: Paginated<Card> = {
   content: [DUMMY_CARD, DUMMY_CARD, DUMMY_CARD]
 };
 
-export const DUMMY_CARD_STUDY_INFO: CardStudyInfo = {
+export const DUMMY_STUDY_INFO: StudyInfo = {
+  due: new Date(),
   lapses: 0,
   reps: 0,
   scheduledDays: 0,
-  cardId: 1,
-  lastReview: '2025-01-01',
-  nextStudyDate: '2025-01-01',
-  state: 'new',
+  lastReview: new Date('2025-01-01'),
+  state: State.New,
   stability: 0,
-  due: new Date(),
-  difficulty: 0
+  difficulty: 0,
+  elapsedDays: 0,
+  learningSteps: 0
 };
 
-export const DUMMY_STUDY_CARD_FORM: StudyCardForm = {
+export const DUMMY_STUDY_INFO_DTO: StudyInfoDTO = {
   lapses: 0,
   reps: 0,
   due: new Date(),
   scheduledDays: 0,
   lastReview: '2025-01-01',
-  state: 'new',
+  state: 'New',
   stability: 0,
   difficulty: 0
 };
@@ -126,7 +127,7 @@ export const DUMMY_STUDY_CARD_FORM: StudyCardForm = {
 export const DUMMY_USER_CARD: UserCard = {
   ...DUMMY_CARD,
   ...DUMMY_CARD_DETAIL,
-  fsrsParameters: DUMMY_STUDY_CARD_FORM
+  studyInfo: DUMMY_STUDY_INFO
 };
 
 export const DUMMY_USER_CARDS: Paginated<UserCard> = {

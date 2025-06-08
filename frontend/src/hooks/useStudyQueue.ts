@@ -9,6 +9,7 @@ import { Category } from '@/types/Category';
 import { getUserCards } from '@/api/study';
 import { RootState } from '@/store';
 import { DUMMY_RATING_PREVIEW } from '@/utils/dummyData';
+import { State } from 'ts-fsrs';
 
 export const useStudyQueue = (category: Category) => {
   const initialStudyQueue = useAppSelector((state) => state.studyQueue[category]);
@@ -26,15 +27,15 @@ export const useStudyQueue = (category: Category) => {
       ...studyQueue.filter((card) => card.cardId !== currentCard.cardId),
       {
         ...currentCard,
-        fsrsParameters: {
-          ...currentCard.fsrsParameters,
-          state: rating === 'again' ? 'Learning' : 'Matured'
+        studyInfo: {
+          ...currentCard.studyInfo,
+          state: rating === 'again' ? State.Learning : State.Review
         }
       }
     ];
     setStudyQueue(newStudyQueue);
     setCurrentCard(
-      newStudyQueue.filter((card) => card.fsrsParameters.state !== 'Matured')[0] ?? null
+      newStudyQueue.filter((card) => card.studyInfo.state !== State.Review)[0] ?? null
     );
   };
 
@@ -46,7 +47,7 @@ export const useStudyQueue = (category: Category) => {
         if (response && 'content' in response) {
           setStudyQueue(response.content);
           setCurrentCard(
-            response.content.filter((card) => card.fsrsParameters.state !== 'Matured')[0] ?? null
+            response.content.filter((card) => card.studyInfo.state !== State.Review)[0] ?? null
           );
         }
       } catch (error) {

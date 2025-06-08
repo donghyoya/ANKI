@@ -3,7 +3,7 @@ import {
   Deck,
   Card,
   CardDetail,
-  CardStudyInfo,
+  StudyInfo,
   UserStudyHistory,
   UserOption,
   UserCard
@@ -13,13 +13,13 @@ import {
   DUMMY_CARD,
   DUMMY_CARDS,
   DUMMY_DECKS,
-  DUMMY_STUDY_CARD_FORM,
   DUMMY_USER_CARDS,
   DUMMY_USER_OPTION,
   DUMMY_USER_STUDY_HISTORIES,
   DUMMY_USER_STUDY_HISTORY,
   DUMMY_CARD_DETAIL,
-  DUMMY_CARD_STUDY_INFO
+  DUMMY_STUDY_INFO,
+  DUMMY_STUDY_INFO_DTO
 } from '@/utils/dummyData';
 
 export const mockForeignSearch = async () => {
@@ -73,9 +73,9 @@ export const mockGetUserCards = async () => {
 };
 
 export const mockGetCardStudyInfo = async () => {
-  return new Promise<CardStudyInfo>((resolve) => {
+  return new Promise<StudyInfo>((resolve) => {
     setTimeout(() => {
-      const data = DUMMY_CARD_STUDY_INFO;
+      const data = DUMMY_STUDY_INFO;
       console.log('mockGetCardStudyInfo:', data);
       resolve(data);
     }, 500);
@@ -85,7 +85,7 @@ export const mockGetCardStudyInfo = async () => {
 export const mockPostCardStudyInfo = async () => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const data = DUMMY_STUDY_CARD_FORM;
+      const data = DUMMY_STUDY_INFO_DTO;
       console.log('mockPostCardStudyInfo:', data);
       resolve(data);
     }, 500);

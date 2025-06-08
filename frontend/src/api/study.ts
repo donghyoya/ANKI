@@ -3,10 +3,10 @@
 import {
   Paginated,
   StudyType,
-  CardStudyInfo,
-  StudyCardForm,
-  UserCardServerResponse,
-  convertUserCardServerResponseToUserCard
+  StudyInfo,
+  StudyInfoDTO,
+  UserCardDTO,
+  convertUserCardDTOToUserCard
 } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
 import { requestApi } from './utils';
@@ -20,11 +20,9 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
 
   const url = `${endpoint}/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
 
-  const response = await requestApi<Paginated<UserCardServerResponse>>({ url, token });
+  const response = await requestApi<Paginated<UserCardDTO>>({ url, token });
 
-  const convertedData = response.content.map((card) =>
-    convertUserCardServerResponseToUserCard(card)
-  );
+  const convertedData = response.content.map((card) => convertUserCardDTOToUserCard(card));
 
   return {
     ...response,
@@ -34,21 +32,17 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
 
 export const getCardStudyInfo = async (cardId: number, token: string) => {
   const url = `${endpoint}/cards/${cardId}/study`;
-  const response = await requestApi<CardStudyInfo>({ url, token });
+  const response = await requestApi<StudyInfo>({ url, token });
   return response;
 };
 
-export const postCardStudyInfo = async (
-  cardId: number,
-  studyCardForm: StudyCardForm,
-  token: string
-) => {
+export const postCardStudyInfo = async (cardId: number, studyInfo: StudyInfoDTO, token: string) => {
   const url = `${endpoint}/cards/${cardId}/study`;
-  const response = await requestApi<CardStudyInfo>({
+  const response = await requestApi<StudyInfo>({
     url,
     token,
     method: 'POST',
-    body: studyCardForm
+    body: studyInfo
   });
   return response;
 };

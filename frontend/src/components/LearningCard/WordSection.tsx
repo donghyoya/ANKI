@@ -13,7 +13,7 @@ interface WordSectionProps {
 }
 
 const WordSection = ({ card }: WordSectionProps) => {
-  const levelLabel = levelStars[card.level as keyof typeof levelStars] || '';
+  const levelLabel = levelStars[card.difficulty as keyof typeof levelStars] || '';
 
   return (
     <>

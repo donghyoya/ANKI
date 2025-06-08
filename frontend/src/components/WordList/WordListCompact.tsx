@@ -5,7 +5,7 @@ import { WordListProps } from './types';
 import { OutlinedCard } from '../Card/Card';
 import styles from './WordListCompact.module.scss';
 
-const wordListCompact = ({ KoreanWord, ForeignWord, isExpanded }: WordListProps) => {
+const WordListCompact = ({ KoreanWord, ForeignWord, isExpanded }: WordListProps) => {
   const [expanded, setExpanded] = useState(isExpanded || false);
 
   useEffect(() => {
@@ -28,4 +28,4 @@ const wordListCompact = ({ KoreanWord, ForeignWord, isExpanded }: WordListProps)
   );
 };
 
-export default wordListCompact;
+export default WordListCompact;

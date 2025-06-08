@@ -69,7 +69,7 @@ class CardSearchControllerTest extends AbstractControllerTest {
                                 "{class-name}/{method-name}",
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
-                                                .tag("Decks")
+                                                .tag("CardSearch")
                                                 .summary("덱에 포함된 카드 모음")
                                                 .queryParameters(
                                                         CardParameters.query,

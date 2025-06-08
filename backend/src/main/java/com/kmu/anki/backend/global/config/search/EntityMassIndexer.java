@@ -1,5 +1,6 @@
 package com.kmu.anki.backend.global.config.search;
 
+import com.kmu.anki.backend.domain.card.entity.ForeignCard;
 import com.kmu.anki.backend.domain.card.entity.KoreanCard;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +28,18 @@ public class EntityMassIndexer implements CommandLineRunner {
                 .threadsToLoadObjects(1)
                 .batchSizeToLoadObjects(512);
 
-        log.info("[mass-indexer] Start");
+        log.info("[mass-indexer] KoreanCard mass index Start");
         massIndexer.startAndWait();
-        log.info("[mass-indexer] End");
+        log.info("[mass-indexer] KoreanCard mass index End");
+
+        massIndexer = searchSession
+                .massIndexer(ForeignCard.class)
+                .threadsToLoadObjects(1)
+                .batchSizeToLoadObjects(512);
+
+        log.info("[mass-indexer] ForeignCard mass index Start");
+        massIndexer.startAndWait();
+        log.info("[mass-indexer] ForeignCard mass index End");
+
     }
 }

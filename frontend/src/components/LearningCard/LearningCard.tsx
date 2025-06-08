@@ -15,8 +15,6 @@ import { MenuItem as MenuItemType } from '@/types/Menu';
 import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
-import { DUMMY_CARD_DETAIL } from '@/utils/dummyData';
-
 export interface LearningCardState {
   isRevealed: boolean;
   showDetail: boolean;

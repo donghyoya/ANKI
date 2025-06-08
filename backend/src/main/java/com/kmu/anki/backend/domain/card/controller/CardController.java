@@ -68,19 +68,5 @@ public class CardController {
         return BasePageResponse.of(cardService.searchForeignCards(code, query, page-1, pageSize));
     }
 
-    @GetMapping("/korean-search")
-    public BasePageResponse<CardDetailDto> getForeignSearch(
-            @RequestParam("query") String query,
-            @RequestParam("page") Integer page,
-            @RequestParam("pageSize") Integer pageSize,
-            @RequestParam(value = "code", required = false) LanguageCode code,
-            Authentication authentication
-    ){
-        if(code == null){
-            UserOptionDto userOptionDto = userOptionService.readOption(authentication.getName());
-            code = userOptionDto.getLanguageCode();
-        }
-        return BasePageResponse.of(cardService.searchKoreanCards(code, query, page-1, pageSize));
-    }
 
 }

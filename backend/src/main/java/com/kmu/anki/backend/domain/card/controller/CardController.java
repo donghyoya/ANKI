@@ -52,21 +52,4 @@ public class CardController {
         }
         return cardService.readCardDetail(cardId, code);
     }
-
-    @GetMapping("/foreign-search")
-    public BasePageResponse<CardDetailDto> getForeignSearch(
-            @RequestParam(value = "code", required = false) LanguageCode code,
-            @RequestParam("query") String query,
-            @RequestParam("page") Integer page,
-            @RequestParam("pageSize") Integer pageSize,
-            Authentication authentication
-    ){
-        if(code == null){
-            UserOptionDto userOptionDto = userOptionService.readOption(authentication.getName());
-            code = userOptionDto.getLanguageCode();
-        }
-        return BasePageResponse.of(cardService.searchForeignCards(code, query, page-1, pageSize));
-    }
-
-
 }

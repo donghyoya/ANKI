@@ -14,6 +14,8 @@ spring:
     properties:
       hibernate:
         default_batch_fetch_size: 50
+      hibernate.search.backend.type: lucene
+      hibernate.search.backend.directory.type: local-heap
 
   sql:
     init:

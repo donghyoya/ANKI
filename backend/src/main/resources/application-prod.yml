@@ -15,6 +15,9 @@ spring:
       hibernate:
         format_sql: true
         default_batch_fetch_size: 50
+      hibernate.search.backend.type: lucene
+      hibernate.search.backend.directory.type: local-filesystem
+      hibernate.search.backend.directory.root: ./files/indexes
   security:
     oauth2:
       client:

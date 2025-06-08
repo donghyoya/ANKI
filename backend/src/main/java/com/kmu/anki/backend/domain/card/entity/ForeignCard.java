@@ -3,6 +3,7 @@ package com.kmu.anki.backend.domain.card.entity;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.search.engine.backend.types.Projectable;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.GenericField;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
@@ -18,7 +19,7 @@ public class ForeignCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "foreign_card_id")
-    @GenericField(name = "foreignCardId")
+    @GenericField(name = "foreignCardId", projectable = Projectable.YES)
     private Long id;
 
     @Enumerated(EnumType.STRING)

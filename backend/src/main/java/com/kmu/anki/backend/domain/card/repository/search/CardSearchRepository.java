@@ -45,6 +45,7 @@ public class CardSearchRepository {
                 .join(foreignCard.koreanMeaning, koreanMeaning).fetchJoin()
                 .join(koreanMeaning.koreanCard, koreanCard).fetchJoin()
                 .join(koreanCard.cardTopics, cardTopic).fetchJoin()
+                .where(foreignCard.id.in(ids.getContent()))
                 .fetch();
         return PageableExecutionUtils.getPage(foreignCards.stream().map(ForeignCardSearchResult::of).toList(), pageable, ids::getTotalElements);
 

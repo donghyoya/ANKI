@@ -43,9 +43,8 @@ export default function LearningPage() {
     cardWidth
   });
 
-  const { currentCard, studyQueue, intervalPreview, repeat, error } = useStudyQueue(
-    category as Category
-  );
+  const { currentCard, currentCardDetail, studyQueue, intervalPreview, repeat, error } =
+    useStudyQueue(category as Category);
 
   useEffect(() => {
     if (error) {
@@ -117,6 +116,10 @@ export default function LearningPage() {
       : [])
   ];
 
+  if (currentCardDetail === null) {
+    return <div className={styles['page']}>Loading...</div>;
+  }
+
   return (
     <div className={styles['learning-container']}>
       <div className={styles['progress-container-wrapper']}>
@@ -125,7 +128,7 @@ export default function LearningPage() {
         </div>
       </div>
       <LearningCard
-        card={currentCard}
+        card={currentCardDetail}
         className={styles['learning-card']}
         cardState={cardState}
         handleReveal={handleReveal}

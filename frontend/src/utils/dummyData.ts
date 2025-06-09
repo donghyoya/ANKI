@@ -86,7 +86,7 @@ export const DUMMY_KOR_CARD: KoreanCard = {
   topics: []
 };
 
-export const DUMMY_CARD_DETAIL: KoreanCardDetail = {
+export const DUMMY_KOR_CARD_DETAIL: KoreanCardDetail = {
   ...DUMMY_KOR_CARD,
   meanings: {
     foreignWord: 'near; close; adjacent',
@@ -107,6 +107,13 @@ export const DUMMY_CARDS: Paginated<Card> = {
   pageSize: 1,
   page: 1,
   content: [DUMMY_CARD, DUMMY_CARD, DUMMY_CARD]
+};
+
+export const DUMMY_KOR_CARD_DETAILS: Paginated<KoreanCardDetail> = {
+  size: 1,
+  pageSize: 1,
+  page: 1,
+  content: [DUMMY_KOR_CARD_DETAIL, DUMMY_KOR_CARD_DETAIL, DUMMY_KOR_CARD_DETAIL]
 };
 
 export const DUMMY_STUDY_INFO: StudyInfo = {

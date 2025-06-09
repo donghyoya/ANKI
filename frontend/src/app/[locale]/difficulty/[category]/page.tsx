@@ -3,11 +3,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 
-import { getCardsFromDeck } from '@/api/decks';
+import { getKoreanCardDetailsFromDeck } from '@/api/decks';
 import WordListPage from '@/components/common/WordListPage';
 
 import { KoreanCardDetail, Paginated } from '@/types/schemes';
-import { Locale } from '@/types/Locale';
 import { Category } from '@/types/Category';
 
 export default function DifficultyWordsPage() {
@@ -17,7 +16,7 @@ export default function DifficultyWordsPage() {
 
   useEffect(() => {
     const fetchUserCards = async () => {
-      const cards = await getCardsFromDeck(locale as Locale, category as Category);
+      const cards = await getKoreanCardDetailsFromDeck();
       if (cards) {
         setUserCards(cards);
       }

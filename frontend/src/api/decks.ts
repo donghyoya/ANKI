@@ -1,7 +1,14 @@
 'use server';
 
 import { Locale } from '@/types/Locale';
-import { Paginated, KoreanCardDetail, UserStudyHistory, Deck } from '@/types/schemes';
+import {
+  Paginated,
+  UserCardDTO,
+  UserStudyHistory,
+  Deck,
+  KoreanCardDetail,
+  convertUserCardDTOToUserCard
+} from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
 import { requestApi, tryRefresh } from './utils';
 
@@ -14,10 +21,17 @@ export const getDecks = async (queryType: 'difficulty' | 'meaning', token: strin
   return response;
 };
 
-export const getCardsFromDeck = async (locale: Locale, query: Category) => {
+export const getUserCardsFromDeck = async (locale: Locale, query: Category) => {
   const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
   const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
 
+  const response = await requestApi<Paginated<UserCardDTO>>({ url });
+  const cards = response.content.map((card) => convertUserCardDTOToUserCard(card));
+  return { ...response, content: cards };
+};
+
+export const getKoreanCardDetailsFromDeck = async () => {
+  const url = 'not implemented';
   const response = await requestApi<Paginated<KoreanCardDetail>>({ url });
   return response;
 };

@@ -2,7 +2,7 @@ import { useAppSelector } from '@/store/hooks';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { UserCard } from '@/types/schemes';
+import { KoreanCardDetail, UserCard } from '@/types/schemes';
 import { Rating } from '@/types/IntervalPreview';
 import { Category } from '@/types/Category';
 
@@ -19,6 +19,7 @@ export const useStudyQueue = (category: Category) => {
 
   const [studyQueue, setStudyQueue] = useState<UserCard[] | null>(initialStudyQueue || null);
   const [currentCard, setCurrentCard] = useState<UserCard | null>(null);
+  const [currentCardDetail, setCurrentCardDetail] = useState<KoreanCardDetail | null>(null);
   const [error, setError] = useState<Error | null>(null);
 
   const repeat = (rating: Rating) => {
@@ -69,5 +70,5 @@ export const useStudyQueue = (category: Category) => {
     console.log('currentCard:', currentCard);
   }, [currentCard]);
 
-  return { currentCard, studyQueue, intervalPreview, repeat, error };
+  return { currentCard, currentCardDetail, studyQueue, intervalPreview, repeat, error };
 };

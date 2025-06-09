@@ -1,15 +1,9 @@
 'use server';
 
-import {
-  Paginated,
-  StudyType,
-  StudyInfo,
-  StudyInfoDTO,
-  UserCardDTO,
-  convertUserCardDTOToUserCard
-} from '@/types/schemes';
+import { Paginated, StudyType, StudyInfo, StudyInfoDTO, UserCardDTO } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
 import { requestApi } from './utils';
+import { toStudyInfo, toStudyInfoDTO, toUserCard } from '@/utils/converter';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
@@ -22,7 +16,7 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
 
   const response = await requestApi<Paginated<UserCardDTO>>({ url, token });
 
-  const convertedData = response.content.map((card) => convertUserCardDTOToUserCard(card));
+  const convertedData = response.content.map((card) => toUserCard(card));
 
   return {
     ...response,
@@ -32,17 +26,19 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
 
 export const getCardStudyInfo = async (cardId: number, token: string) => {
   const url = `${endpoint}/cards/${cardId}/study`;
-  const response = await requestApi<StudyInfo>({ url, token });
-  return response;
+  const data = await requestApi<StudyInfoDTO>({ url, token });
+  const convertedData = toStudyInfo(data);
+  return convertedData;
 };
 
-export const postCardStudyInfo = async (cardId: number, studyInfo: StudyInfoDTO, token: string) => {
+export const postCardStudyInfo = async (cardId: number, studyInfo: StudyInfo, token: string) => {
   const url = `${endpoint}/cards/${cardId}/study`;
-  const response = await requestApi<StudyInfo>({
+  const data = await requestApi<StudyInfoDTO>({
     url,
     token,
     method: 'POST',
-    body: studyInfo
+    body: toStudyInfoDTO(studyInfo)
   });
-  return response;
+  const convertedData = toStudyInfo(data);
+  return convertedData;
 };

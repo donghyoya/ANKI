@@ -1,7 +1,7 @@
 import { Difficulty, Category } from './Category';
 import { Locale } from './Locale';
 import { SnakeToCamelCase } from './typeTransform';
-import { Card as FSRSCard, State } from 'ts-fsrs';
+import { Card as FSRSCard } from 'ts-fsrs';
 
 export type StudyType = 'review' | 'new';
 
@@ -88,22 +88,3 @@ export type UserOption = {
   utcOffset: number | null;
   languageCode: Locale;
 };
-
-export function convertUserCardDTOToUserCard(card: UserCardDTO): UserCard {
-  const { studyInfo, ...rest } = card;
-  const { lapses, reps, due, scheduledDays, stability, difficulty, state } = studyInfo;
-  const newStudyInfo = {
-    lapses,
-    reps,
-    due,
-    scheduledDays,
-    lastReview: studyInfo.lastReview ? new Date(studyInfo.lastReview) : undefined,
-    stability,
-    difficulty,
-    state: state === 'New' ? State.New : state === 'Learning' ? State.Learning : State.Review,
-    elapsedDays: 0,
-    learningSteps: 0
-  } as StudyInfo;
-
-  return { ...rest, studyInfo: newStudyInfo };
-}

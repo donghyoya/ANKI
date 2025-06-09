@@ -1,16 +1,10 @@
 'use server';
 
 import { Locale } from '@/types/Locale';
-import {
-  Paginated,
-  UserCardDTO,
-  UserStudyHistory,
-  Deck,
-  KoreanCardDetail,
-  convertUserCardDTOToUserCard
-} from '@/types/schemes';
+import { Paginated, UserCardDTO, UserStudyHistory, Deck, KoreanCardDetail } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
 import { requestApi, tryRefresh } from './utils';
+import { toUserCard } from '@/utils/converter';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
@@ -26,7 +20,7 @@ export const getUserCardsFromDeck = async (locale: Locale, query: Category) => {
   const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
 
   const response = await requestApi<Paginated<UserCardDTO>>({ url });
-  const cards = response.content.map((card) => convertUserCardDTOToUserCard(card));
+  const cards = response.content.map((card) => toUserCard(card));
   return { ...response, content: cards };
 };
 

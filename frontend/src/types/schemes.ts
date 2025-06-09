@@ -67,12 +67,12 @@ export interface UserCardDTO {
 }
 
 export interface Deck {
-  overdueRate: number;
-  cardCounts: number;
-  overdueCounts: number;
-  maturityRate: number;
-  maturityCounts: number;
   category: Category;
+  cardCounts: number;
+  learningCounts: number;
+  newCounts: number;
+  overdueCounts: number;
+  maturityCounts: number;
 }
 
 export interface UserStudyHistory {

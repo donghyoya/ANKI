@@ -165,10 +165,10 @@ export const DUMMY_USER_CARDS: Paginated<UserCard> = {
 };
 
 export const DUMMY_DECK: Deck = {
-  overdueRate: 0.1,
   cardCounts: 100,
+  learningCounts: 10,
+  newCounts: 10,
   overdueCounts: 10,
-  maturityRate: 0.1,
   maturityCounts: 10,
   category: 'easy'
 };

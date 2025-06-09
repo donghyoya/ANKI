@@ -114,7 +114,7 @@ export default function WordListPage({
             <WordListComponent
               key={index}
               KoreanWord={word.koreanWord}
-              ForeignWord={word.foreignWord}
+              ForeignWord={word.meanings.foreignWord}
               isExpanded={!isLarge ? isExpanded : undefined}
               isHideKorean={isLarge ? isHideKorean : undefined}
               isHideForeign={isLarge ? isHideForeign : undefined}

@@ -6,7 +6,7 @@ import { OutlinedCard } from '../Card/Card';
 import LearningCard, { LearningCardState } from '@/components/LearningCard/LearningCard';
 
 import { MenuItem } from '@/types/Menu';
-import { DUMMY_CARD } from '@/utils/dummyData';
+import { DUMMY_KOR_CARD_DETAIL } from '@/utils/dummyData';
 
 import styles from './WordList.module.scss';
 import { WordListProps } from './types';
@@ -57,7 +57,7 @@ const WordList = ({ KoreanWord, ForeignWord, isHideKorean, isHideForeign }: Word
       )}
       {isExpanded && (
         <LearningCard
-          card={DUMMY_CARD}
+          card={DUMMY_KOR_CARD_DETAIL}
           cardState={cardState}
           toggleConjugation={toggleConjugation}
           toggleExample={toggleExample}

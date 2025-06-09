@@ -1,10 +1,10 @@
 'use server';
 
 import { Locale } from '@/types/Locale';
-import { Paginated, UserCardDTO, UserStudyHistory, Deck, KoreanCardDetail } from '@/types/schemes';
+import { Paginated, UserCardDTO, UserStudyHistory, Deck } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
 import { requestApi, tryRefresh } from './utils';
-import { toUserCard } from '@/utils/converter';
+import { toKoreanCardDetail, toUserCard } from '@/utils/converter';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
@@ -24,10 +24,14 @@ export const getUserCardsFromDeck = async (locale: Locale, query: Category) => {
   return { ...response, content: cards };
 };
 
-export const getKoreanCardDetailsFromDeck = async () => {
-  const url = 'not implemented';
-  const response = await requestApi<Paginated<KoreanCardDetail>>({ url });
-  return response;
+// API 미구현으로 인해 타입만 맞춰서 반환
+export const getKoreanCardDetailsFromDeck = async (locale: Locale, query: Category) => {
+  const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
+  const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
+  const response = await requestApi<Paginated<UserCardDTO>>({ url });
+
+  const cards = response.content.map((card) => toKoreanCardDetail(card));
+  return { ...response, content: cards };
 };
 
 export const getUserStudyHistories = async (token: string) => {

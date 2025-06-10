@@ -88,3 +88,9 @@ export type UserOption = {
   utcOffset: number | null;
   languageCode: Locale;
 };
+
+export type TokenDTO = {
+  accessToken: string;
+  refreshToken: string;
+  isSetup: boolean;
+};

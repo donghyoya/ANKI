@@ -147,9 +147,9 @@ class DeckControllerTest extends AbstractControllerTest {
                                                         DeckParameters.query
                                                 )
                                                 .responseFields(
-                                                        KoreanCardDtoDocs.koreanCardDtos
+                                                        KoreanCardDtoDocs.koreanCardWithForeignWordDtos
                                                 )
-                                                .responseSchema(KoreanCardDtoDocs.koreanCardSchemas)
+                                                .responseSchema(KoreanCardDtoDocs.koreanCardWithForeignWordSchemas)
                                                 .build()
                                 )
                         )
@@ -211,9 +211,9 @@ class DeckControllerTest extends AbstractControllerTest {
                                                         DeckParameters.query
                                                 )
                                                 .responseFields(
-                                                        KoreanCardDtoDocs.koreanCardDtos
+                                                        KoreanCardDtoDocs.koreanCardWithForeignWordDtos
                                                 )
-                                                .responseSchema(KoreanCardDtoDocs.koreanCardSchemas)
+                                                .responseSchema(KoreanCardDtoDocs.koreanCardWithForeignWordSchemas)
                                                 .build()
                                 )
                         )

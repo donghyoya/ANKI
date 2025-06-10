@@ -11,6 +11,8 @@ public class KoreanCardDtoDocs {
     public static final Schema koreanCardSchema = new Schema("koreanCard");
     public static final Schema koreanCardSchemas = new Schema("koreanCards");
 
+    public static final Schema koreanCardWithForeignWordSchema = new Schema("koreanCardWithForeignWord");
+    public static final Schema koreanCardWithForeignWordSchemas = new Schema("koreanCardWithForeignWords");
 
     public static FieldDescriptor[] koreanCardDto = koreanCardDtoDocs("");
 
@@ -18,7 +20,6 @@ public class KoreanCardDtoDocs {
             BaseDocs.basePageResponse(),
             koreanCardDtoDocs(BaseDocs.basePageResponsePrefix)
     );
-
 
     public static FieldDescriptor[] koreanCardDtoDocs(String prefix){
         return new FieldDescriptor[]{
@@ -31,4 +32,20 @@ public class KoreanCardDtoDocs {
                         .optional().description("동형어 번호"),
         };
     }
+
+    public static FieldDescriptor[] koreanCardWithForeignWordDtos = BaseDocs.combine(
+            BaseDocs.basePageResponse(),
+            koreanCardWithForeignWordDocs(BaseDocs.basePageResponsePrefix)
+    );
+
+    public static FieldDescriptor[] koreanCardWithForeignWordDocs(String prefix){
+        FieldDescriptor[] foreignWords = {
+                fieldWithPath(prefix + "foreignWords").optional().type(JsonFieldType.ARRAY).description("외국어 단어")
+        };
+        return BaseDocs.combine(
+                koreanCardDtoDocs(prefix),
+                foreignWords
+        );
+    }
+
 }

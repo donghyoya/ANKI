@@ -1,9 +1,6 @@
 package com.kmu.anki.backend.domain.card.service;
 
-import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
-import com.kmu.anki.backend.domain.card.dto.CardDto;
-import com.kmu.anki.backend.domain.card.dto.DeckDto;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardDto;
+import com.kmu.anki.backend.domain.card.dto.*;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
@@ -39,12 +36,12 @@ public class DeckService {
 
 
 
-    public Page<KoreanCardDto> findDeckCards(LanguageCode languageCode, CardLevel cardLevel){
-        return cardQueryRepository.findDecksCardByLevel(languageCode, cardLevel, PageRequest.of(0,20)).map(KoreanCardDto::of);
+    public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardLevel cardLevel){
+        return cardQueryRepository.findDecksCardByLevel(languageCode, cardLevel, PageRequest.of(0,20)).map(KoreanCardWithForeignWord::of);
     }
 
-    public Page<KoreanCardDto> findDeckCards(LanguageCode languageCode, CardTopicEnums category){
-        return cardQueryRepository.findDecksCardByTopic(languageCode, category, PageRequest.of(0,20)).map(KoreanCardDto::of);
+    public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardTopicEnums category){
+        return cardQueryRepository.findDecksCardByTopic(languageCode, category, PageRequest.of(0,20)).map(KoreanCardWithForeignWord::of);
     }
 
 }

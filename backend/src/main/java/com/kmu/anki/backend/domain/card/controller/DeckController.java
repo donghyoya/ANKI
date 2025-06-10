@@ -4,6 +4,7 @@ import com.kmu.anki.backend.domain.auth.legacy.utils.PrincipalUtils;
 import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
 import com.kmu.anki.backend.domain.card.dto.DeckDto;
 import com.kmu.anki.backend.domain.card.dto.KoreanCardDto;
+import com.kmu.anki.backend.domain.card.dto.KoreanCardWithForeignWord;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
@@ -51,7 +52,7 @@ public class DeckController {
     }
 
     @GetMapping("/cards")
-    public BasePageResponse<KoreanCardDto> getDeckCards(
+    public BasePageResponse<KoreanCardWithForeignWord> getDeckCards(
             @RequestParam("queryType") QueryType queryType,
             @RequestParam("query") String query,
             @RequestParam(value = "code", required = false) LanguageCode code,
@@ -61,7 +62,7 @@ public class DeckController {
             UserOptionDto userOptionDto = userOptionService.readOption(authentication.getName());
             code = userOptionDto.getLanguageCode();
         }
-        Page<KoreanCardDto> cards;
+        Page<KoreanCardWithForeignWord> cards;
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
             cards = deckService.findDeckCards(code, cardTopicEnums);

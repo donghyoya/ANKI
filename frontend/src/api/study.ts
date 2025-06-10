@@ -13,6 +13,7 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
   const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
 
   const url = `${endpoint}/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
+  console.log('LOGGING: url', url);
 
   const response = await requestApi<Paginated<UserCardDTO>>({ url, token });
 

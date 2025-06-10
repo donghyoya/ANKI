@@ -19,20 +19,13 @@ import { useTranslations } from 'next-intl';
 
 export default function LearningPage() {
   const t = useTranslations();
-
   const { category } = useParams() ?? {};
-
   const [contentHeight, setContentHeight] = useState(0);
-
   const [cardWidth, setCardWidth] = useState(0);
-
-  useEffect(() => {
-    setCardWidth(document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0);
-  }, []);
 
   const [cardState, setCardState] = useState<LearningCardState>({
     isRevealed: false,
-    showDetail: false,
+    showDetail: true,
     showConjugation: false,
     showExample: false,
     isKoreanToForeign: true
@@ -43,24 +36,9 @@ export default function LearningPage() {
     cardWidth
   });
 
-  const { currentCard, currentCardDetail, studyQueue, intervalPreview, repeat, error } =
-    useStudyQueue(category as Category);
-
-  useEffect(() => {
-    if (error) {
-      console.error('error:', error);
-    }
-  }, [error]);
-
-  if (error) throw error;
-
-  if (studyQueue === null) {
-    return <div className={styles['page']}>Loading...</div>;
-  }
-
-  if (currentCard === null) {
-    return <div className={styles['page']}>학습 끝</div>;
-  }
+  const { currentCardDetail, studyQueue, intervalPreview, repeat, error } = useStudyQueue(
+    category as Category
+  );
 
   const handleReveal = () => {
     setCardState((prev) => ({ ...prev, isRevealed: true }));
@@ -116,8 +94,28 @@ export default function LearningPage() {
       : [])
   ];
 
-  if (currentCardDetail === null) {
+  useEffect(() => {
+    console.log('currentCardDetail', currentCardDetail);
+  }, [currentCardDetail]);
+
+  useEffect(() => {
+    setCardWidth(document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0);
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      console.error('error:', error);
+    }
+  }, [error]);
+
+  if (error) throw error;
+
+  if (studyQueue === null) {
     return <div className={styles['page']}>Loading...</div>;
+  }
+
+  if (currentCardDetail === null) {
+    return <div className={styles['page']}>학습 끝</div>;
   }
 
   return (

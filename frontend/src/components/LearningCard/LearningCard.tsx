@@ -63,6 +63,10 @@ const LearningCard = ({
     setContentHeight(height);
   }, [cardState, setContentHeight]);
 
+  useEffect(() => {
+    console.log('inflection', card.meanings[0]);
+  }, [card]);
+
   return (
     <FilledCard
       className={classNames(styles['learning-card'], className)}
@@ -73,7 +77,7 @@ const LearningCard = ({
       {!cardState.isRevealed && (
         <div className={styles['content-container']}>
           <span className={styles['korean-word']}>
-            {cardState.isKoreanToForeign ? card.koreanWord : card.meanings.foreignWord}
+            {cardState.isKoreanToForeign ? card.koreanWord : card.meanings[0].foreignWord}
           </span>
           <span className={classNames(styles['foreign-word'], styles['revealed'])}>
             {t('learning.checkAnswer')}
@@ -84,10 +88,10 @@ const LearningCard = ({
       {cardState.isRevealed && !cardState.showDetail && (
         <div className={styles['content-container']}>
           <span className={styles['korean-word']}>
-            {cardState.isKoreanToForeign ? card.koreanWord : card.meanings.foreignWord}
+            {cardState.isKoreanToForeign ? card.koreanWord : card.meanings[0].foreignWord}
           </span>
           <span className={styles['foreign-word']}>
-            {cardState.isKoreanToForeign ? card.meanings.foreignWord : card.koreanWord}
+            {cardState.isKoreanToForeign ? card.meanings[0].foreignWord : card.koreanWord}
           </span>
         </div>
       )}
@@ -97,12 +101,12 @@ const LearningCard = ({
           <WordSection card={card} />
           <div>
             <ConjugationSection
-              conjugations={card.meanings.inflection.split(', ')}
+              conjugations={card.meanings[0]?.inflection?.split(', ') ?? []}
               toggleExpanded={toggleConjugation}
               isExpanded={cardState.showConjugation}
             />
             <ExampleSection
-              examples={card.meanings.exampleUsage.trim().split('\n')}
+              examples={card.meanings[0]?.exampleUsage?.trim().split('\n') ?? []}
               toggleExpanded={toggleExample}
               isExpanded={cardState.showExample}
             />

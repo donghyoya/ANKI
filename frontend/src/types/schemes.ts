@@ -29,7 +29,7 @@ export interface KoreanCard {
 }
 
 export interface KoreanCardDetail extends KoreanCard {
-  meanings: {
+  meanings: Array<{
     foreignMeaning: string;
     partsOfSpeech: string;
     pronunciation: string;
@@ -39,7 +39,7 @@ export interface KoreanCardDetail extends KoreanCard {
     relatedWords: string;
     inflection: string;
     exampleUsage: string;
-  };
+  }>;
 }
 
 export type StudyInfo = {

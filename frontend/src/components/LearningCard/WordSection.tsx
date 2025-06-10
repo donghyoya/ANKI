@@ -1,11 +1,12 @@
 import { KoreanCardDetail } from '@/types/schemes';
 
 import styles from './WordSection.module.scss';
+import { Fragment } from 'react';
 
 const levelStars = {
-  beginner: '★★★',
-  intermediate: '★★',
-  advanced: '★'
+  easy: '★★★',
+  medium: '★★',
+  hard: '★'
 };
 
 interface WordSectionProps {
@@ -13,6 +14,7 @@ interface WordSectionProps {
 }
 
 const WordSection = ({ card }: WordSectionProps) => {
+  console.log('level', card.level);
   const levelLabel = levelStars[card.level as keyof typeof levelStars] || '';
 
   return (
@@ -23,17 +25,22 @@ const WordSection = ({ card }: WordSectionProps) => {
         <div className={styles['korean-info-container']}>
           <span className={styles['korean-level']}>{levelLabel}</span>
           <div className={styles['korean-info-sub-container']}>
-            <span className={styles['pronunciation']}>{`[${card.meanings.pronunciation}]`}</span>
-            <span className={styles['origin']}>{card.meanings.originalLanguage ?? ''}</span>
+            <span className={styles['pronunciation']}>{`[${card.meanings[0].pronunciation}]`}</span>
+            <span className={styles['origin']}>{card.meanings[0].originalLanguage ?? ''}</span>
           </div>
         </div>
       </div>
-      <div className={styles['foreign-container']}>
-        <span className={styles['foreign-word']}>
-          1. {card.meanings.partsOfSpeech} {card.meanings.foreignWord}
-        </span>
-        <span className={styles['foreign-word-sub']}>{card.meanings.relatedWords}</span>
-      </div>
+      {card.meanings.map((meaning, index) => (
+        <Fragment key={`${card.koreanWord}-${index}`}>
+          <div className={styles['foreign-container']}>
+            <span className={styles['foreign-word']}>
+              {index + 1}. {meaning.partsOfSpeech} {meaning.foreignWord}
+            </span>
+            <span className={styles['foreign-word-sub']}>{meaning.foreignMeaning}</span>
+            <span className={styles['foreign-word-sub']}>{meaning.relatedWords}</span>
+          </div>
+        </Fragment>
+      ))}
     </>
   );
 };

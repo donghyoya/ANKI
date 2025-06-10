@@ -10,6 +10,9 @@ import { getUserCards } from '@/api/study';
 import { RootState } from '@/store';
 import { DUMMY_RATING_PREVIEW } from '@/utils/dummyData';
 import { State } from 'ts-fsrs';
+import { getCardDetail } from '@/api/cards';
+import { useLocale } from 'next-intl';
+import { Locale } from '@/types/Locale';
 
 export const useStudyQueue = (category: Category) => {
   const initialStudyQueue = useAppSelector((state) => state.studyQueue[category]);
@@ -22,7 +25,8 @@ export const useStudyQueue = (category: Category) => {
   const [currentCardDetail, setCurrentCardDetail] = useState<KoreanCardDetail | null>(null);
   const [error, setError] = useState<Error | null>(null);
 
-  const repeat = (rating: Rating) => {
+  const locale = useLocale() as Locale;
+  const repeat = async (rating: Rating) => {
     if (studyQueue === null || currentCard === null) return;
     const newStudyQueue = [
       ...studyQueue.filter((card) => card.userCardId !== currentCard.userCardId),
@@ -35,9 +39,8 @@ export const useStudyQueue = (category: Category) => {
       }
     ];
     setStudyQueue(newStudyQueue);
-    setCurrentCard(
-      newStudyQueue.filter((card) => card.studyInfo.state !== State.Review)[0] ?? null
-    );
+    const nextCard = newStudyQueue.filter((card) => card.studyInfo.state !== State.Review)[0];
+    setCurrentCard(nextCard ?? null);
   };
 
   useEffect(() => {
@@ -68,7 +71,21 @@ export const useStudyQueue = (category: Category) => {
 
   useEffect(() => {
     console.log('currentCard:', currentCard);
-  }, [currentCard]);
+
+    const fetchCardDetail = async () => {
+      if (currentCard) {
+        const cardDetail = await getCardDetail(
+          currentCard.koreanCard.cardId,
+          locale,
+          accessToken ?? ''
+        );
+        console.log('cardDetail', cardDetail);
+        setCurrentCardDetail(cardDetail);
+      }
+    };
+
+    fetchCardDetail();
+  }, [currentCard, accessToken, locale]);
 
   return { currentCard, currentCardDetail, studyQueue, intervalPreview, repeat, error };
 };

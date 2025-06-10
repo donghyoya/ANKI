@@ -11,6 +11,7 @@ create table foreign_cards (
                                foreign_meaning TEXT,
                                foreign_word TEXT,
                                language_code varchar(255) check (language_code in ('mn','ar','zh','vi','th','id','ru','en','ja','fr','es')),
+                                korean_card_id bigint,
                                primary key (foreign_card_id)
 );
 create table korean_cards (
@@ -102,3 +103,7 @@ alter table if exists user_study_history
     add constraint FKhur8c6xhxd3q6sqbe1a2w1h9l
     foreign key (user_id)
     references users;
+alter table if exists foreign_cards
+    add constraint FK4ptejxymk7o24ngaom2v2dlhd
+    foreign key (korean_card_id)
+    references korean_cards;

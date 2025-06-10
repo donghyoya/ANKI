@@ -3,10 +3,7 @@ package com.kmu.anki.backend.domain.card.controller;
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
-import com.kmu.anki.backend.domain.card.docs.CardDetailDtoDocs;
-import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
-import com.kmu.anki.backend.domain.card.docs.DeckDtoDocs;
-import com.kmu.anki.backend.domain.card.docs.KoreanCardDtoDocs;
+import com.kmu.anki.backend.domain.card.docs.*;
 import com.kmu.anki.backend.domain.card.docs.parameters.CardParameters;
 import com.kmu.anki.backend.domain.card.docs.parameters.DeckParameters;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
@@ -48,6 +45,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                         ResourceSnippetParameters.builder()
                                                 .tag("Decks")
                                                 .summary("검색어 조건에 맞는 Deck 보기")
+                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .queryParameters(
                                                         DeckParameters.queryType
                                                 )
@@ -112,6 +110,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .queryParameters(
                                                         DeckParameters.queryType
                                                 )
+                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         ExceptionResponseDocs.exceptionResponse
                                                 )
@@ -146,6 +145,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                                         DeckParameters.queryType,
                                                         DeckParameters.query
                                                 )
+                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         KoreanCardDtoDocs.koreanCardDtos
                                                 )
@@ -177,6 +177,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                                         DeckParameters.queryType,
                                                         DeckParameters.query
                                                 )
+                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         ExceptionResponseDocs.exceptionResponse
                                                 )
@@ -210,6 +211,7 @@ class DeckControllerTest extends AbstractControllerTest {
                                                         DeckParameters.queryType,
                                                         DeckParameters.query
                                                 )
+                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         KoreanCardDtoDocs.koreanCardDtos
                                                 )

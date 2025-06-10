@@ -8,6 +8,7 @@ import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,7 @@ public class KoreanCardWithForeignWord {
         this.foreignWords = foreignWords;
     }
 
-    public static KoreanCardWithForeignWord of(KoreanCard card){
+    public static KoreanCardWithForeignWord of(KoreanCard card, Map<Long, List<String>> foreignWordMaps){
         if(card == null){
             return null;
         }
@@ -39,7 +40,7 @@ public class KoreanCardWithForeignWord {
                 card.getHomographNumber(),
                 card.getLevel(),
                 card.getCardTopics().stream().map(CardTopic::getTopicId).collect(Collectors.toSet()),
-                card.getForeignCards().stream().map(ForeignCard::getForeignWord).collect(Collectors.toList())
+                foreignWordMaps.get(card.getId())
         );
     }
 

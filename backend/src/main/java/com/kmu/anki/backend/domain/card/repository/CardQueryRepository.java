@@ -19,7 +19,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+
+import static com.querydsl.core.group.GroupBy.groupBy;
+import static com.querydsl.core.group.GroupBy.list;
 
 // TODO
 
@@ -107,27 +111,29 @@ public class CardQueryRepository {
      * @param pageable
      * @return
      */
-    public Page<KoreanCard> findDecksCardByLevel(
+    public Page<KoreanCardWithForeignWord> findDecksCardByLevel(
             LanguageCode languageCode,
             CardLevel level,
             Pageable pageable
     ){
         List<KoreanCard> cards = queryFactory.select(koreanCard)
                 .from(koreanCard)
-                .join(koreanCard.cardTopics, cardTopic).fetchJoin()
-                .where(koreanCard.level.eq(level))
+                .join(koreanCard.foreignCards, foreignCard)
+                .where(koreanCard.level.eq(level)
+                        .and(foreignCard.languageCode.eq(languageCode)))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
         JPAQuery<KoreanCard> countq = queryFactory.select(koreanCard)
                 .from(koreanCard)
-                .where(
-                        koreanCard.level.eq(level)
-                )
+                .join(koreanCard.foreignCards, foreignCard)
+                .where(koreanCard.level.eq(level)
+                        .and(foreignCard.languageCode.eq(languageCode)))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize());
+        Map<Long, List<String>> foreignWords = findForeignWordsByKoreanCardAndLanguageCode(cards, languageCode);
         return PageableExecutionUtils.getPage(
-                cards, pageable, ()->  countq.fetch().size()
+                cards.stream().map(card->KoreanCardWithForeignWord.of(card, foreignWords)).toList(), pageable, ()->  countq.fetch().size()
         );
     }
 
@@ -139,29 +145,43 @@ public class CardQueryRepository {
      * @param pageable
      * @return
      */
-    public Page<KoreanCard> findDecksCardByTopic(
+    public Page<KoreanCardWithForeignWord> findDecksCardByTopic(
             LanguageCode languageCode,
             CardTopicEnums topic,
             Pageable pageable
     ){
         List<KoreanCard> cards = queryFactory.select(koreanCard)
                 .from(koreanCard)
-                .join(koreanCard.cardTopics, cardTopic).fetchJoin()
-                .where(cardTopic.topicId.eq(topic))
+                .join(koreanCard.cardTopics, cardTopic)
+                .join(koreanCard.foreignCards, foreignCard)
+                .where(
+                        cardTopic.topicId.eq(topic)
+                                .and(foreignCard.languageCode.eq(languageCode))
+                )
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
         JPAQuery<KoreanCard> countq = queryFactory.select(koreanCard)
                 .from(koreanCard)
-                .join(koreanCard.cardTopics, cardTopic).fetchJoin()
+                .join(koreanCard.cardTopics, cardTopic)
+                .join(koreanCard.foreignCards, foreignCard)
                 .where(
                         cardTopic.topicId.eq(topic)
+                                .and(foreignCard.languageCode.eq(languageCode))
                 )
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize());
+        Map<Long, List<String>> foreignWords = findForeignWordsByKoreanCardAndLanguageCode(cards, languageCode);
         return PageableExecutionUtils.getPage(
-                cards, pageable, ()->  countq.fetch().size()
+                cards.stream().map(card->KoreanCardWithForeignWord.of(card, foreignWords)).toList(), pageable, ()->  countq.fetch().size()
         );
+    }
+    
+    public Map<Long, List<String>> findForeignWordsByKoreanCardAndLanguageCode(List<KoreanCard> cards, LanguageCode code){
+        return queryFactory
+                .from(foreignCard)
+                .where(foreignCard.koreanCard.in(cards).and(foreignCard.languageCode.eq(code)))
+                .transform(groupBy(foreignCard.koreanCardId).as(list(foreignCard.foreignWord)));
     }
 
     /**

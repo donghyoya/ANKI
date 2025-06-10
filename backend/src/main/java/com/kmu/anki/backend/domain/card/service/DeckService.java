@@ -37,11 +37,11 @@ public class DeckService {
 
 
     public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardLevel cardLevel){
-        return cardQueryRepository.findDecksCardByLevel(languageCode, cardLevel, PageRequest.of(0,20)).map(KoreanCardWithForeignWord::of);
+        return cardQueryRepository.findDecksCardByLevel(languageCode, cardLevel, PageRequest.of(0,20));
     }
 
     public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardTopicEnums category){
-        return cardQueryRepository.findDecksCardByTopic(languageCode, category, PageRequest.of(0,20)).map(KoreanCardWithForeignWord::of);
+        return cardQueryRepository.findDecksCardByTopic(languageCode, category, PageRequest.of(0,20));
     }
 
 }

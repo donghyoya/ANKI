@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.global.config;
 
 import com.kmu.anki.backend.domain.usercard.entity.QUserCard;
+import com.querydsl.jpa.JPQLTemplates;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,6 @@ public class QueryDslConfig {
 
     @Bean
     public JPAQueryFactory jpaQueryFactory(){
-        return new JPAQueryFactory(entityManager);
+        return new JPAQueryFactory(JPQLTemplates.DEFAULT, entityManager);
     }
 }

@@ -67,4 +67,8 @@ public class KoreanCard {
         koreanCards.add(koreanMeaning);
         koreanMeaning.mapKoreanCard(this);
     }
+
+    /* 관계 - ForeignCard */
+    @OneToMany(mappedBy = "koreanCard")
+    private List<ForeignCard> foreignCards = new ArrayList<>();
 }

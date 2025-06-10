@@ -3,6 +3,7 @@ package com.kmu.anki.backend.domain.card.entity;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import jakarta.persistence.*;
 import lombok.*;
+import org.apache.ibatis.annotations.Many;
 import org.hibernate.search.engine.backend.types.Projectable;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.GenericField;
@@ -34,7 +35,7 @@ public class ForeignCard {
     @FullTextField(name = "foreignMeaning", analyzer = "foreign-analysis")
     private String foreignMeaning;
 
-    /* 관계 - 한국어 카드 */
+    /* 관계 - 한국어 의미 카드 */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "korean_meaning_id")
     private KoreanMeaning koreanMeaning;
@@ -45,4 +46,12 @@ public class ForeignCard {
     public void mapKoreanMeaning(KoreanMeaning koreanMeaning){
         this.koreanMeaning = koreanMeaning;
     }
+
+    /* 관계 - 한국어 카드 */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "korean_card_id")
+    private KoreanCard koreanCard;
+
+    @Column(name = "korean_card_id", insertable = false, updatable = false)
+    private Long koreanCardId;
 }

@@ -5,7 +5,6 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.card.controller.QueryType;
-import com.kmu.anki.backend.domain.card.docs.AuthHeaders;
 import com.kmu.anki.backend.domain.card.docs.parameters.CardParameters;
 import com.kmu.anki.backend.domain.card.docs.parameters.DeckParameters;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
@@ -62,7 +61,6 @@ class UserCardControllerTest extends AbstractControllerTest {
                                                 .pathParameters(
                                                         CardParameters.userCardId
                                                 )
-                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         CardStudyDtoDocs.cardStudyInfo
                                                 )
@@ -214,7 +212,6 @@ class UserCardControllerTest extends AbstractControllerTest {
                                                         DeckParameters.queryType,
                                                         DeckParameters.query
                                                 )
-                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         UserCardDtoDocs.userCards
                                                 )

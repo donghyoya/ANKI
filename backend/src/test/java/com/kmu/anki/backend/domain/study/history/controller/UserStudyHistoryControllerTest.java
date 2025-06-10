@@ -5,7 +5,6 @@ import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.PageParameters;
 import com.kmu.anki.backend.domain.card.controller.QueryType;
-import com.kmu.anki.backend.domain.card.docs.AuthHeaders;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.study.history.dto.UserStudyHistoryDto;
@@ -76,7 +75,6 @@ class UserStudyHistoryControllerTest extends AbstractControllerTest {
                                                         PageParameters.page,
                                                         PageParameters.pageSize
                                                 )
-                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         UserStudyHistoryDtoDocs.userStudyHistories
                                                 )
@@ -125,7 +123,6 @@ class UserStudyHistoryControllerTest extends AbstractControllerTest {
                                         ResourceSnippetParameters.builder()
                                                 .tag("Decks")
                                                 .summary("가장 최근 학습한 덱보기")
-                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         UserStudyHistoryDtoDocs.userStudyHistory
                                                 )

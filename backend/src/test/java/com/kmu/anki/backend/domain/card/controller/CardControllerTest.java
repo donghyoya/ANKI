@@ -4,7 +4,6 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.PageParameters;
-import com.kmu.anki.backend.domain.card.docs.AuthHeaders;
 import com.kmu.anki.backend.domain.card.docs.CardDetailDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.parameters.CardParameters;
@@ -58,7 +57,6 @@ class CardControllerTest extends AbstractControllerTest {
                                                 .pathParameters(
                                                         CardParameters.cardId
                                                 )
-                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         CardDetailDtoDocs.cardDetailDto
                                                 )
@@ -85,7 +83,6 @@ class CardControllerTest extends AbstractControllerTest {
                                                 .pathParameters(
                                                         CardParameters.cardId
                                                 )
-                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         ExceptionResponseDocs.exceptionResponse
                                                 )
@@ -142,7 +139,6 @@ class CardControllerTest extends AbstractControllerTest {
                                                 .pathParameters(
                                                         CardParameters.cardId
                                                 )
-                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         CardDetailDtoDocs.cardDetailDto
                                                 )
@@ -169,7 +165,6 @@ class CardControllerTest extends AbstractControllerTest {
                                                 .pathParameters(
                                                         CardParameters.cardId
                                                 )
-                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         ExceptionResponseDocs.exceptionResponse
                                                 )
@@ -278,7 +273,6 @@ class CardControllerTest extends AbstractControllerTest {
                                                         PageParameters.page,
                                                         PageParameters.pageSize
                                                 )
-                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         CardDetailDtoDocs.cardDetailDtos
                                                 )

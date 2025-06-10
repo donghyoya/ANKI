@@ -4,7 +4,6 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.epages.restdocs.apispec.Schema;
-import com.kmu.anki.backend.domain.card.docs.AuthHeaders;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import org.junit.jupiter.api.Test;
 
@@ -37,7 +36,6 @@ class AuthenticationControllerTest extends AbstractControllerTest {
                                         ResourceSnippetParameters.builder()
                                                 .tag("Authentication")
                                                 .summary("실제 사용하는 토큰 발급하기. 단 authenticationToken, refreshToken만 사용할 것")
-                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         fieldWithPath("accessToken").description("accessToken"),
                                                         fieldWithPath("refreshToken").description("refreshToken"),

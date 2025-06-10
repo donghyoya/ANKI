@@ -4,7 +4,6 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.epages.restdocs.apispec.Schema;
-import com.kmu.anki.backend.domain.card.docs.AuthHeaders;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.security.auth.token.JwtTokenService;
 import org.junit.jupiter.api.Test;
@@ -48,7 +47,6 @@ class AuthenticationTestControllerTest extends AbstractControllerTest {
                                         ResourceSnippetParameters.builder()
                                                 .tag("AuthTest")
                                                 .summary("인증이 되는지 테스트하기 ")
-                                                .requestHeaders(AuthHeaders.requestAuthHeader)
                                                 .responseFields(
                                                         fieldWithPath("username").description("token의 username")
                                                 )

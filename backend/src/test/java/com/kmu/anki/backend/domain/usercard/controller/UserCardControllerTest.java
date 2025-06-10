@@ -21,6 +21,7 @@ import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
 import com.kmu.anki.backend.global.ExceptionResponseDocs;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -189,6 +190,7 @@ class UserCardControllerTest extends AbstractControllerTest {
     }
 
 
+    @Order(1)
     @ParameterizedTest
     @MethodSource("getStudyCardParams")
     void getStudyCard(String studyType, String queryType, String query) throws Exception{
@@ -222,6 +224,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @Order(3)
     @Test
     void getStudyCardWithoutAuth() throws Exception{
         String identifier = String.format("{class-name}/{method-name}/without_auth");
@@ -230,6 +233,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                                 .param("studyType", StudyType.study.toString())
                                 .param("queryType", QueryType.level.toString())
                                 .param("query",CardLevel.easy.toString())
+                                .header("Authorization", "")
                 ).andExpect(status().isUnauthorized())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -253,7 +257,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                 );
     }
 
-
+    @Order(2)
     @Test
     void getStudyCard400() throws Exception{
         String identifier = String.format("{class-name}/{method-name}");

@@ -57,6 +57,6 @@ export function toStudyInfoDTO(studyInfo: StudyInfo): StudyInfoDTO {
 export function toKoreanCardDetail(card: UserCardDTO): KoreanCardDetail {
   return {
     ...DUMMY_KOR_CARD_DETAIL,
-    ...card.koreanCard
+    ...card
   };
 }

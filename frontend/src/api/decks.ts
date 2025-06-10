@@ -11,14 +11,13 @@ const endpoint = process.env.NEXT_PUBLIC_SERVER;
 export const getDecks = async (queryType: 'difficulty' | 'meaning', token: string) => {
   const accessToken = await tryRefresh(token);
   const url = `${endpoint}/decks?queryType=${queryType === 'difficulty' ? 'level' : 'meaning'}`;
-  const response = await requestApi<Paginated<Deck>>({ url, token: accessToken });
+  const response = await requestApi<Paginated<Deck>>({ url, token: accessToken ?? '' });
   return response;
 };
 
 export const getUserCardsFromDeck = async (locale: Locale, query: Category) => {
   const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
   const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
-
   const response = await requestApi<Paginated<UserCardDTO>>({ url });
   const cards = response.content.map((card) => toUserCard(card));
   return { ...response, content: cards };
@@ -29,7 +28,6 @@ export const getKoreanCardDetailsFromDeck = async (locale: Locale, query: Catego
   const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
   const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
   const response = await requestApi<Paginated<UserCardDTO>>({ url });
-
   const cards = response.content.map((card) => toKoreanCardDetail(card));
   return { ...response, content: cards };
 };

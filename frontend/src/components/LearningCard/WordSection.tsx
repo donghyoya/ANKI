@@ -21,7 +21,7 @@ const WordSection = ({ card }: WordSectionProps) => {
     <>
       <div className={styles['korean-container']}>
         <span className={styles['korean-word']}>{card.koreanWord}</span>
-        <span className={styles['korean-homograph-number']}>{card.homographNumber}</span>
+        <span className={styles['korean-homograph-number']}>{+card.homographNumber + 1}</span>
         <div className={styles['korean-info-container']}>
           <span className={styles['korean-level']}>{levelLabel}</span>
           <div className={styles['korean-info-sub-container']}>

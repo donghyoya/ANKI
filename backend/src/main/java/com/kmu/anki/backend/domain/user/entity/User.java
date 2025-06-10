@@ -70,6 +70,11 @@ public class User {
         }
     }
 
+    public boolean isSetup(){
+        // 하나라도 null이면 false
+        return this.dailyReviewWords != null && this.dailyStudyWords != null && this.languageCode != null && this.utcOffset != null;
+    }
+
     /* 관계 : 유저덱 */
 
     /**

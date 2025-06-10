@@ -9,13 +9,13 @@ public class LoginUserDto {
     private Long id;
     private String name;
     private Role role;
-    private boolean isFirst;
+    private boolean isSetup;
 
-    public LoginUserDto(Long id, String name, Role role, boolean isFirst) {
+    public LoginUserDto(Long id, String name, Role role, boolean isSetup) {
         this.id = id;
         this.name = name;
         this.role = role;
-        this.isFirst = isFirst;
+        this.isSetup = isSetup;
     }
 
     public static LoginUserDto of (User user){
@@ -23,7 +23,7 @@ public class LoginUserDto {
                 user.getId(),
                 user.getName(),
                 user.getRole(),
-                user.isFirstLogin()
+                user.isSetup()
         );
     }
 }

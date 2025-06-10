@@ -27,6 +27,6 @@ public class AuthenticationController {
         String accessToken = jwtTokenService.generateAccessToken(userId.toString(), builder);
         String refreshToken = jwtTokenService.generateRefreshToken(userId.toString(), builder);
 
-        return new TokenDto(accessToken, refreshToken, userDto.isFirst());
+        return new TokenDto(accessToken, refreshToken, userDto.isSetup());
     }
 }

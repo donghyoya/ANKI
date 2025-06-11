@@ -6,7 +6,7 @@ import { KoreanCardDetail, UserCard } from '@/types/schemes';
 import { Rating } from '@/types/IntervalPreview';
 import { Category } from '@/types/Category';
 
-import { getUserCards } from '@/api/study';
+import { getLearningCards } from '@/api/study';
 import { RootState } from '@/store';
 import { DUMMY_RATING_PREVIEW } from '@/utils/dummyData';
 import { State } from 'ts-fsrs';
@@ -46,7 +46,7 @@ export const useStudyQueue = (category: Category) => {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await getUserCards('new', category, accessToken ?? '');
+        const response = await getLearningCards('new', category, accessToken ?? '');
         console.log('fetchCards', response);
         if (response && 'content' in response) {
           setStudyQueue(response.content);

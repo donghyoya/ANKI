@@ -7,7 +7,7 @@ import { normalizeQuery, toStudyInfo, toStudyInfoDTO, toUserCard } from '@/utils
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
-export const getUserCards = async (studyType: StudyType, query: Category, token: string) => {
+export const getLearningCards = async (studyType: StudyType, query: Category, token: string) => {
   const queryType = normalizeQuery(getCategoryType(query));
   const url = `${endpoint}/cards/study?studyType=${normalizeQuery(studyType)}&queryType=${queryType}&query=${query}`;
 
@@ -21,14 +21,14 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
   };
 };
 
-export const getCardStudyInfo = async (cardId: number, token: string) => {
+export const getStudyInfo = async (cardId: number, token: string) => {
   const url = `${endpoint}/cards/${cardId}/study`;
   const data = await requestApi<StudyInfoDTO>({ url, token });
   const convertedData = toStudyInfo(data);
   return convertedData;
 };
 
-export const postCardStudyInfo = async (cardId: number, studyInfo: StudyInfo, token: string) => {
+export const postStudyInfo = async (cardId: number, studyInfo: StudyInfo, token: string) => {
   const url = `${endpoint}/cards/${cardId}/study`;
   const data = await requestApi<StudyInfoDTO>({
     url,

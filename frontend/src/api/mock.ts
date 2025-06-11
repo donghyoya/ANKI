@@ -24,6 +24,8 @@ import {
   DUMMY_KOR_CARD_WITH_FOREIGN_WORDS
 } from '@/utils/dummyData';
 
+import { toStudyInfo } from '@/utils/converter';
+
 export const mockForeignSearch = async () => {
   return new Promise<Paginated<Card>>((resolve) => {
     setTimeout(() => {
@@ -64,7 +66,7 @@ export const mockGetCardDetail = async () => {
   });
 };
 
-export const mockGetUserCards = async () => {
+export const mockGetLearningCards = async () => {
   return new Promise<Paginated<UserCard>>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_USER_CARDS;
@@ -74,7 +76,7 @@ export const mockGetUserCards = async () => {
   });
 };
 
-export const mockGetCardStudyInfo = async () => {
+export const mockGetStudyInfo = async () => {
   return new Promise<StudyInfo>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_STUDY_INFO;
@@ -84,20 +86,21 @@ export const mockGetCardStudyInfo = async () => {
   });
 };
 
-export const mockPostCardStudyInfo = async () => {
-  return new Promise((resolve) => {
+export const mockPostStudyInfo = async () => {
+  return new Promise<StudyInfo>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_STUDY_INFO_DTO;
+      const convertedData = toStudyInfo(data);
       console.log('mockPostCardStudyInfo:', data);
-      resolve(data);
+      resolve(convertedData);
     }, 500);
   });
 };
 
-export const mockGetDecks = async (queryType: 'level' | 'meaning') => {
+export const mockGetDecks = async () => {
   return new Promise<Paginated<Deck>>((resolve) => {
     setTimeout(() => {
-      const data = queryType === 'level' ? DUMMY_DECKS : DUMMY_DECKS;
+      const data = DUMMY_DECKS;
       console.log('mockGetDecks:', data);
       resolve(data);
     }, 500);

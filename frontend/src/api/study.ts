@@ -2,40 +2,30 @@
 
 import { Paginated, StudyType, StudyInfo, StudyInfoDTO, UserCardDTO } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
-import { requestApi } from './utils';
-import { normalizeQuery, toStudyInfo, toStudyInfoDTO, toUserCard } from '@/utils/converter';
+import { normalizeQuery, toUserCard } from '@/utils/converter';
+import { ServerServiceFactory } from '@/services/ServerServiceFactory';
 
-const endpoint = process.env.NEXT_PUBLIC_SERVER;
+const httpClient = ServerServiceFactory.getHttpClient();
 
-export const getLearningCards = async (studyType: StudyType, query: Category, token: string) => {
+export const getLearningCards = async (studyType: StudyType, query: Category) => {
+  const queryStudyType = normalizeQuery(studyType);
   const queryType = normalizeQuery(getCategoryType(query));
-  const url = `${endpoint}/cards/study?studyType=${normalizeQuery(studyType)}&queryType=${queryType}&query=${query}`;
+  const url = `/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${normalizeQuery(query)}`;
 
-  const response = await requestApi<Paginated<UserCardDTO>>({ url, token });
+  const response = await httpClient.get<Paginated<UserCardDTO>>(url);
+  const convertedData = response.data.content.map((card) => toUserCard(card));
 
-  const convertedData = response.content.map((card) => toUserCard(card));
-
-  return {
-    ...response,
-    content: convertedData
-  };
+  return { ...response.data, content: convertedData };
 };
 
-export const getStudyInfo = async (cardId: number, token: string) => {
-  const url = `${endpoint}/cards/${cardId}/study`;
-  const data = await requestApi<StudyInfoDTO>({ url, token });
-  const convertedData = toStudyInfo(data);
-  return convertedData;
+export const getStudyInfo = async (cardId: number) => {
+  const url = `/cards/${cardId}/study`;
+  const response = await httpClient.get<StudyInfoDTO>(url);
+  return response.data;
 };
 
-export const postStudyInfo = async (cardId: number, studyInfo: StudyInfo, token: string) => {
-  const url = `${endpoint}/cards/${cardId}/study`;
-  const data = await requestApi<StudyInfoDTO>({
-    url,
-    token,
-    method: 'POST',
-    body: toStudyInfoDTO(studyInfo)
-  });
-  const convertedData = toStudyInfo(data);
-  return convertedData;
+export const postStudyInfo = async (cardId: number, userCardId: number, studyInfo: StudyInfo) => {
+  const url = `/cards/${cardId}/study`;
+  const response = await httpClient.post<StudyInfoDTO>(url, studyInfo);
+  return response.data;
 };

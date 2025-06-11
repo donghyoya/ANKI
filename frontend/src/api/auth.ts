@@ -1,9 +1,8 @@
 import { TokenDTO } from '@/types/schemes';
-import { ApiError } from './utils';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
-export const getToken = async (authenticationToken: string): Promise<TokenResponseDTO> => {
+export const getToken = async (authenticationToken: string): Promise<TokenDTO> => {
   try {
     const url = `${endpoint}/auth/token`;
     console.log('authenticationToken', authenticationToken);
@@ -22,7 +21,7 @@ export const getToken = async (authenticationToken: string): Promise<TokenRespon
       return data as TokenDTO;
     }
 
-    throw new ApiError(response.status, '토큰 발급 실패', data);
+    throw new Error('토큰 발급 실패');
   } catch (error) {
     throw error;
   }

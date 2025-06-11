@@ -36,12 +36,12 @@ public class DeckService {
 
 
 
-    public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardLevel cardLevel){
-        return cardQueryRepository.findDecksCardByLevel(languageCode, cardLevel, PageRequest.of(0,20));
+    public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardLevel cardLevel, int page, int pageSize){
+        return cardQueryRepository.findDecksCardByLevel(languageCode, cardLevel, PageRequest.of(page, pageSize));
     }
 
-    public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardTopicEnums category){
-        return cardQueryRepository.findDecksCardByTopic(languageCode, category, PageRequest.of(0,20));
+    public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardTopicEnums category, int page, int pageSize){
+        return cardQueryRepository.findDecksCardByTopic(languageCode, category, PageRequest.of(page, pageSize));
     }
 
 }

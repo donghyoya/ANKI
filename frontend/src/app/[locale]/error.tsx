@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import { ErrorFallback } from '@/components/ErrorFallback';
 
-import { ApiError } from '@/api/utils';
+import { AxiosError } from 'axios';
 
 export default function Error({
   error,
@@ -25,7 +25,7 @@ export default function Error({
       return () => clearTimeout(timer);
     }
 
-    if (error instanceof ApiError && error.status === 401) {
+    if (error instanceof AxiosError && error.status === 401) {
       router.push('/login');
     }
   }, [error, router]);

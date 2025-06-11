@@ -2,37 +2,37 @@
 
 import { Locale } from '../types/Locale';
 import { KoreanCardDetail, Card, Paginated } from '../types/schemes';
-import { requestApi } from './utils';
+import { ServerServiceFactory } from '@/services/ServerServiceFactory';
 
-const endpoint = process.env.NEXT_PUBLIC_SERVER;
+const httpClient = ServerServiceFactory.getHttpClient();
 
-export const forignSearch = async (locale: Locale, query: string, token: string) => {
+export const foreignSearch = async (locale: Locale, query: string) => {
   const page = 1;
   const pageSize = 10;
-  const url = `${endpoint}/cards/foreign-search?code=${locale}&query=${query}&page=${page}&pageSize=${pageSize}`;
+  const url = `/cards/foreign-search?code=${locale}&query=${query}&page=${page}&pageSize=${pageSize}`;
 
-  const response = await requestApi<Paginated<Card>>({ url, token });
-  return response;
+  const response = await httpClient.get<Paginated<Card>>(url);
+  return response.data;
 };
 
-export const koreanSearch = async (locale: Locale, query: string, token: string) => {
+export const koreanSearch = async (locale: Locale, query: string) => {
   const page = 1;
   const pageSize = 10;
-  const url = `${endpoint}/cards/korean-search?code=${locale}&query=${query}&page=${page}&pageSize=${pageSize}`;
+  const url = `/cards/korean-search?code=${locale}&query=${query}&page=${page}&pageSize=${pageSize}`;
 
-  const response = await requestApi<Paginated<Card>>({ url, token });
-  return response;
+  const response = await httpClient.get<Paginated<Card>>(url);
+  return response.data;
 };
 
-export const getCard = async (cardId: number, token: string) => {
-  const url = `${endpoint}/cards/${cardId}`;
+export const getCard = async (cardId: number) => {
+  const url = `/cards/${cardId}`;
 
-  const response = await requestApi<Card>({ url, token });
-  return response;
+  const response = await httpClient.get<Card>(url);
+  return response.data;
 };
 
-export const getCardDetail = async (cardId: number, locale: Locale, token: string) => {
-  const url = `${endpoint}/cards/${cardId}/details?code=${locale}`;
-  const response = await requestApi<KoreanCardDetail>({ url, token });
-  return response;
+export const getKoreanCardDetail = async (cardId: number) => {
+  const url = `/cards/${cardId}/details`;
+  const response = await httpClient.get<KoreanCardDetail>(url);
+  return response.data;
 };

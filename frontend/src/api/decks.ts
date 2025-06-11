@@ -3,33 +3,32 @@
 import { Locale } from '@/types/Locale';
 import { Paginated, UserStudyHistory, Deck, KoreanCardWithForeignWords } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
-import { requestApi, tryRefresh } from './utils';
 import { normalizeQuery } from '@/utils/converter';
+import { ServerServiceFactory } from '@/services/ServerServiceFactory';
 
-const endpoint = process.env.NEXT_PUBLIC_SERVER;
+const httpClient = ServerServiceFactory.getHttpClient();
 
-export const getDecks = async (queryType: 'difficulty' | 'meaning', token: string) => {
-  const accessToken = await tryRefresh(token);
-  const url = `${endpoint}/decks?queryType=${normalizeQuery(queryType)}`;
-  const response = await requestApi<Paginated<Deck>>({ url, token: accessToken ?? '' });
-  return response;
+export const getDecks = async (queryType: 'difficulty' | 'meaning') => {
+  const url = `/decks?queryType=${normalizeQuery(queryType)}`;
+  const response = await httpClient.get<Paginated<Deck>>(url);
+  return response.data;
 };
 
 export const getCardsFromDeck = async (locale: Locale, query: Category) => {
   const queryType = normalizeQuery(getCategoryType(query));
-  const url = `${endpoint}/decks/cards?code=${locale}&queryType=${queryType}&query=${query}`;
-  const response = await requestApi<Paginated<KoreanCardWithForeignWords>>({ url });
-  return response;
+  const url = `/decks/cards?code=${locale}&queryType=${queryType}&query=${normalizeQuery(query)}`;
+  const response = await httpClient.get<Paginated<KoreanCardWithForeignWords>>(url);
+  return response.data;
 };
 
-export const getUserStudyHistories = async (token: string) => {
-  const url = `${endpoint}/decks/history`;
-  const response = await requestApi<Paginated<UserStudyHistory>>({ url, token });
-  return response;
+export const getUserStudyHistories = async () => {
+  const url = `/decks/history`;
+  const response = await httpClient.get<Paginated<UserStudyHistory>>(url);
+  return response.data;
 };
 
-export const getLatestUserStudyHistory = async (token: string) => {
-  const url = `${endpoint}/decks/latest`;
-  const response = await requestApi<UserStudyHistory>({ url, token });
-  return response;
+export const getLatestUserStudyHistory = async () => {
+  const url = `/decks/latest`;
+  const response = await httpClient.get<UserStudyHistory>(url);
+  return response.data;
 };

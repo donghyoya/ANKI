@@ -1,15 +1,15 @@
 'use server';
 
 import { Paginated, StudyType, StudyInfo, StudyInfoDTO, UserCardDTO } from '@/types/schemes';
-import { Category } from '@/types/Category';
+import { Category, getCategoryType } from '@/types/Category';
 import { requestApi } from './utils';
 import { normalizeQuery, toStudyInfo, toStudyInfoDTO, toUserCard } from '@/utils/converter';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
 export const getUserCards = async (studyType: StudyType, query: Category, token: string) => {
-  const url = `${endpoint}/cards/study?studyType=${normalizeQuery(studyType)}&queryType=${normalizeQuery(query)}&query=${query}`;
-  console.log('LOGGING: url', url);
+  const queryType = normalizeQuery(getCategoryType(query));
+  const url = `${endpoint}/cards/study?studyType=${normalizeQuery(studyType)}&queryType=${queryType}&query=${query}`;
 
   const response = await requestApi<Paginated<UserCardDTO>>({ url, token });
 

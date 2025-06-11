@@ -2,23 +2,21 @@ import { jwtDecode } from 'jwt-decode';
 
 import { CookieService } from './CookieService';
 
-import { getToken } from '@/api/auth';
+import { refresh } from '@/api/auth';
 import { TIME } from '@/constants/time';
 
 export class AuthService {
   constructor(private cookieService: CookieService) {}
 
-  async refreshToken(): Promise<void> {
+  async refresh(): Promise<void> {
     const localRefreshToken = await this.getRefreshToken();
     if (!localRefreshToken) throw new Error('No refresh token');
-
-    const { accessToken, refreshToken } = await getToken(localRefreshToken);
-    await this.saveToken(accessToken, refreshToken);
+    await refresh(localRefreshToken);
   }
 
   async getAccessToken(): Promise<string | null> {
     if (await this.shouldRefreshToken()) {
-      await this.refreshToken();
+      await this.refresh();
     }
     return await this.cookieService.get('accessToken');
   }
@@ -26,12 +24,6 @@ export class AuthService {
   async saveToken(accessToken: string, refreshToken: string): Promise<void> {
     await this.cookieService.set('accessToken', accessToken);
     await this.cookieService.set('refreshToken', refreshToken);
-  }
-
-  async handleAuthRedirect(token: string) {
-    const { accessToken, refreshToken, isSetup } = await getToken(token);
-    await this.saveToken(accessToken, refreshToken);
-    return isSetup;
   }
 
   private async shouldRefreshToken(): Promise<boolean> {

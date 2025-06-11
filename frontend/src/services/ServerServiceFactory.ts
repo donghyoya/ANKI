@@ -3,7 +3,7 @@ import { CookieService } from './CookieService';
 import { HttpClient } from './HttpClient';
 import { AuthService } from './AuthService';
 
-const endpoint = process.env.NEXT_PUBLIC_API_URL;
+const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
 export class ServerServiceFactory {
   private static cookieService: CookieService;

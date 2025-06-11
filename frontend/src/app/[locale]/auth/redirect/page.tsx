@@ -3,9 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { redirect } from 'next/navigation';
-
-import { CookieService } from '@/services/CookieService';
-import { AuthService } from '@/services/AuthService';
+import { refresh } from '@/api/auth';
 
 export default function GoogleLoginRedirectPage() {
   // URL에서 임시 토큰 읽기
@@ -18,12 +16,9 @@ export default function GoogleLoginRedirectPage() {
     (async function () {
       if (!authenticationToken) {
         redirect('/login');
-        return;
       }
 
-      const authService = new AuthService(new CookieService());
-      const isSetup = await authService.handleAuthRedirect(authenticationToken);
-
+      const { isSetup } = await refresh(authenticationToken);
       if (isSetup) {
         redirect('/difficulty');
       } else {

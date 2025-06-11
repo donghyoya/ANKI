@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kmu.anki.backend.domain.card.repository.DeckCardsMapper">
+
+    <select id="findDeckCardsByTopic" parameterType="map" resultType="java.lang.Long">
+        select korean_card_id
+        from korean_cards
+        where korean_card_id in (
+            select
+                distinct kc.korean_card_id
+            from
+                korean_cards kc
+                    join
+                card_topics ct
+                on kc.korean_card_id=ct.korean_card_id
+                    join
+                foreign_cards fc
+                on kc.korean_card_id=fc.korean_card_id
+            where
+                ct.topic_id=#{topic}
+              and fc.language_code=#{code}
+        )
+        order by korean_word
+            LIMIT #{limit} OFFSET #{offset}
+        ;
+    </select>
+
+    <select id="countDeckCardsByTopic" parameterType="map" resultType="int">
+        select count(korean_card_id)
+        from korean_cards
+        where korean_card_id in (
+            select
+                distinct kc.korean_card_id
+            from
+                korean_cards kc
+                    join
+                card_topics ct
+                on kc.korean_card_id=ct.korean_card_id
+                    join
+                foreign_cards fc
+                on kc.korean_card_id=fc.korean_card_id
+            where
+                ct.topic_id=#{topic}
+              and fc.language_code=#{code}
+        );
+    </select>
+
+
+</mapper>

@@ -20,15 +20,15 @@ public interface DeckCardsMapper {
     );
 
     List<Long> findDeckCardsByLevel(
-            @Param("level") String level,
             @Param("code") String code,
+            @Param("level") String level,
             long offset,
             int limit
     );
 
     int countDeckCardsByLevel(
-            @Param("level") String level,
-            @Param("code") String code
+            @Param("code") String code,
+            @Param("level") String level
     );
 
 }

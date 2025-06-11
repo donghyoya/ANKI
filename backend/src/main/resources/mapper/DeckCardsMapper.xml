@@ -40,37 +40,28 @@
 
     <select id="findDeckCardsByLevel" parameterType="map" resultType="java.lang.Long">
         select korean_card_id
-        from korean_cards
-        where korean_card_id in (
-            select
-                distinct kc.korean_card_id
-            from
-                korean_cards kc
-                    join foreign_cards fc
-                    on kc.korean_card_id=fc.korean_card_id
-            where
-                kc.level=#{level}
-                and fc.language_code=#{code}
-        )
+        from korean_cards kc
+        where
+            exists (
+                select 1
+                from foreign_cards fc
+                where fc.language_code = #{code} and fc.korean_card_id = kc.korean_card_id
+            ) and kc.level = #{level}
         order by korean_word
             LIMIT #{limit} OFFSET #{offset}
         ;
     </select>
 
     <select id="countDeckCardsByLevel" parameterType="map" resultType="int">
-        select count(korean_card_id)
-        from korean_cards
-        where korean_card_id in (
-            select
-                distinct kc.korean_card_id
-            from
-                korean_cards kc
-                join foreign_cards fc
-                on kc.korean_card_id=fc.korean_card_id
-            where
-                kc.level=#{level}
-                and fc.language_code=#{code}
-        );
+        select count(kc.korean_card_id)
+        from korean_cards kc
+        where
+            exists (
+                select 1
+                from foreign_cards fc
+                where fc.language_code = #{code} and fc.korean_card_id = kc.korean_card_id
+            ) and kc.level = #{level}
+        ;
     </select>
 
 </mapper>

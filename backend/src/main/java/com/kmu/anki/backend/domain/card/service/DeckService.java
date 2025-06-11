@@ -35,7 +35,7 @@ public class DeckService {
 
 
     public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardLevel cardLevel, int page, int pageSize){
-        return cardQueryRepository.findDecksCardByLevel(languageCode, cardLevel, PageRequest.of(page, pageSize));
+        return deckCardsRepository.findDecksCardByLevel(languageCode, cardLevel, PageRequest.of(page, pageSize));
     }
 
     public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardTopicEnums category, int page, int pageSize){

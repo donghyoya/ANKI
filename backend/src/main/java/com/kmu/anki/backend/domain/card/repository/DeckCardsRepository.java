@@ -2,6 +2,7 @@ package com.kmu.anki.backend.domain.card.repository;
 
 import com.kmu.anki.backend.domain.card.dto.KoreanCardWithForeignWord;
 import com.kmu.anki.backend.domain.card.entity.*;
+import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.usercard.entity.QUserCard;
@@ -49,6 +50,24 @@ public class DeckCardsRepository {
                 koreanCards.stream().map(card->KoreanCardWithForeignWord.of(card, foreignWords)).toList(),
                 pageable,
                 ()->deckCardsMapper.countDeckCardsByTopic(languageCode.toString(), topic.toString())
+        );
+    }
+
+    public Page<KoreanCardWithForeignWord> findDecksCardByLevel(
+            LanguageCode languageCode,
+            CardLevel level,
+            Pageable pageable
+    ){
+        List<Long> koreanCardIds = deckCardsMapper.findDeckCardsByLevel(languageCode.toString(), level.toString(), pageable.getOffset(), pageable.getPageSize());
+        List<KoreanCard> koreanCards = queryFactory.select(koreanCard)
+                .from(koreanCard)
+                .join(koreanCard.cardTopics, cardTopic).fetchJoin()
+                .where(koreanCard.id.in(koreanCardIds)).fetch();
+        Map<Long, List<String>> foreignWords = findForeignWordsByKoreanCardAndLanguageCode(koreanCardIds, languageCode);
+        return PageableExecutionUtils.getPage(
+                koreanCards.stream().map(card->KoreanCardWithForeignWord.of(card, foreignWords)).toList(),
+                pageable,
+                ()->deckCardsMapper.countDeckCardsByLevel(languageCode.toString(), level.toString())
         );
     }
 

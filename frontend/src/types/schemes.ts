@@ -42,6 +42,10 @@ export interface KoreanCardDetail extends KoreanCard {
   }>;
 }
 
+export interface KoreanCardWithForeignWords extends KoreanCard {
+  foreignWords: string[];
+}
+
 export type StudyInfo = {
   [K in keyof FSRSCard as SnakeToCamelCase<K>]: FSRSCard[K];
 };

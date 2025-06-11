@@ -1,7 +1,8 @@
 export interface WordListProps {
-    KoreanWord: string;
-    ForeignWord: string;
-    isExpanded?: boolean;
-    isHideKorean?: boolean;
-    isHideForeign?: boolean;
+  KoreanWord: string;
+  ForeignWord: string;
+  isExpanded?: boolean;
+  isHideKorean?: boolean;
+  isHideForeign?: boolean;
+  homographNumber: number;
 }

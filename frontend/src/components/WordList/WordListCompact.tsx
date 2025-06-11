@@ -5,7 +5,12 @@ import { WordListProps } from './types';
 import { OutlinedCard } from '../Card/Card';
 import styles from './WordListCompact.module.scss';
 
-const WordListCompact = ({ KoreanWord, ForeignWord, isExpanded }: WordListProps) => {
+const WordListCompact = ({
+  KoreanWord,
+  ForeignWord,
+  isExpanded,
+  homographNumber
+}: WordListProps) => {
   const [expanded, setExpanded] = useState(isExpanded || false);
 
   useEffect(() => {
@@ -22,7 +27,10 @@ const WordListCompact = ({ KoreanWord, ForeignWord, isExpanded }: WordListProps)
       style={{ height: expanded ? '104px' : '56px' }}
       onClick={handleClick}
     >
-      <div className={styles['korean-word']}>{KoreanWord}</div>
+      <div className={styles['korean-word']}>
+        {KoreanWord}
+        <span className={styles['homograph-number']}>{homographNumber}</span>
+      </div>
       {expanded && <div className={styles['foreign-word']}>{ForeignWord}</div>}
     </OutlinedCard>
   );

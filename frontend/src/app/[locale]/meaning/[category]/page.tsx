@@ -3,21 +3,21 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 
-import { getKoreanCardDetailsFromDeck } from '@/api/decks';
+import { getCardsFromDeck } from '@/api/decks';
 import WordListPage from '@/components/common/WordListPage';
 
 import { Category } from '@/types/Category';
-import { KoreanCardDetail, Paginated } from '@/types/schemes';
+import { KoreanCardWithForeignWords, Paginated } from '@/types/schemes';
 import { Locale } from '@/types/Locale';
 
 export default function MeaningWordsPage() {
   const { category, locale } = useParams() ?? {};
 
-  const [userCards, setUserCards] = useState<Paginated<KoreanCardDetail>>();
+  const [userCards, setUserCards] = useState<Paginated<KoreanCardWithForeignWords>>();
 
   useEffect(() => {
     const fetchUserCards = async () => {
-      const cards = await getKoreanCardDetailsFromDeck(locale as Locale, category as Category);
+      const cards = await getCardsFromDeck(locale as Locale, category as Category);
       if (cards) {
         setUserCards(cards);
       }

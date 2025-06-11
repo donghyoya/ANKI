@@ -6,7 +6,8 @@ import {
   StudyInfo,
   UserStudyHistory,
   UserOption,
-  UserCard
+  UserCard,
+  KoreanCardWithForeignWords
 } from '@/types/schemes';
 
 import {
@@ -19,8 +20,8 @@ import {
   DUMMY_USER_STUDY_HISTORY,
   DUMMY_STUDY_INFO,
   DUMMY_STUDY_INFO_DTO,
-  DUMMY_KOR_CARD_DETAILS,
-  DUMMY_KOR_CARD_DETAIL
+  DUMMY_KOR_CARD_DETAIL,
+  DUMMY_KOR_CARD_WITH_FOREIGN_WORDS
 } from '@/utils/dummyData';
 
 export const mockForeignSearch = async () => {
@@ -103,25 +104,21 @@ export const mockGetDecks = async (queryType: 'level' | 'meaning') => {
   });
 };
 
-export const mockGetUserCardsFromDeck = async () => {
-  return new Promise<Paginated<UserCard>>((resolve) => {
+export const mockGetCardsFromDeck = async () => {
+  return new Promise<Paginated<KoreanCardWithForeignWords>>((resolve) => {
     setTimeout(() => {
-      const data = DUMMY_USER_CARDS;
+      const data = {
+        content: [DUMMY_KOR_CARD_WITH_FOREIGN_WORDS],
+        page: 1,
+        pageSize: 10,
+        size: 1
+      };
       console.log('mockGetCardsFromDeck:', data);
       resolve(data);
     }, 500);
   });
 };
 
-export const mockGetKoreanCardDetailsFromDeck = async () => {
-  return new Promise<Paginated<KoreanCardDetail>>((resolve) => {
-    setTimeout(() => {
-      const data = DUMMY_KOR_CARD_DETAILS;
-      console.log('mockGetCardsFromDeck:', data);
-      resolve(data);
-    }, 500);
-  });
-};
 export const mockGetUserStudyHistories = async () => {
   return new Promise<Paginated<UserStudyHistory>>((resolve) => {
     setTimeout(() => {

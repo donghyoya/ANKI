@@ -13,7 +13,8 @@ import {
   Deck,
   StudyInfoDTO,
   Paginated,
-  UserCard
+  UserCard,
+  KoreanCardWithForeignWords
 } from '@/types/schemes';
 import { State } from 'ts-fsrs';
 
@@ -86,20 +87,27 @@ export const DUMMY_KOR_CARD: KoreanCard = {
   topics: []
 };
 
+export const DUMMY_KOR_CARD_WITH_FOREIGN_WORDS: KoreanCardWithForeignWords = {
+  ...DUMMY_KOR_CARD,
+  foreignWords: ['near; close; adjacent']
+};
+
 export const DUMMY_KOR_CARD_DETAIL: KoreanCardDetail = {
   ...DUMMY_KOR_CARD,
-  meanings: {
-    foreignWord: 'near; close; adjacent',
-    foreignMeaning: 'near; close; adjacent',
-    languageCode: 'ko',
-    originalLanguage: '家具',
-    partsOfSpeech: '(adj.)',
-    pronunciation: '가깝따',
-    relatedWords: '반댓말 멀다2 반댓말 멀다2, 멀다2',
-    inflection: '가까운, 가꾸어(가꿔), 가까우니, 가깝습니다',
-    exampleUsage:
-      '<구> 안녕하세요\n<구> 안녕하세요\n<구> 안녕하세요\n<문> 안녕하세요\n<문> 안녕하세요\n<문> 안녕하세요\n<대화> 안녕하세요\n<대화> 안녕하세요\n<대화> 안녕하세요'
-  }
+  meanings: [
+    {
+      foreignWord: 'near; close; adjacent',
+      foreignMeaning: 'near; close; adjacent',
+      languageCode: 'ko',
+      originalLanguage: '家具',
+      partsOfSpeech: '(adj.)',
+      pronunciation: '가깝따',
+      relatedWords: '반댓말 멀다2 반댓말 멀다2, 멀다2',
+      inflection: '가까운, 가꾸어(가꿔), 가까우니, 가깝습니다',
+      exampleUsage:
+        '<구> 안녕하세요\n<구> 안녕하세요\n<구> 안녕하세요\n<문> 안녕하세요\n<문> 안녕하세요\n<문> 안녕하세요\n<대화> 안녕하세요\n<대화> 안녕하세요\n<대화> 안녕하세요'
+    }
+  ]
 };
 
 export const DUMMY_CARDS: Paginated<Card> = {

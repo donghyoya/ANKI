@@ -4,46 +4,38 @@
 <mapper namespace="com.kmu.anki.backend.domain.card.repository.DeckCardsMapper">
 
     <select id="findDeckCardsByTopic" parameterType="map" resultType="java.lang.Long">
-        select korean_card_id
-        from korean_cards
-        where korean_card_id in (
-            select
-                distinct kc.korean_card_id
-            from
-                korean_cards kc
-                    join
-                card_topics ct
-                on kc.korean_card_id=ct.korean_card_id
-                    join
-                foreign_cards fc
-                on kc.korean_card_id=fc.korean_card_id
-            where
-                ct.topic_id=#{topic}
-              and fc.language_code=#{code}
-        )
+        select kc.korean_card_id
+        from korean_cards kc
+        where
+            exists (
+                select 1
+                from foreign_cards fc
+                where fc.language_code = #{code} and fc.korean_card_id = kc.korean_card_id
+            ) and
+            exists (
+                select 1
+                from card_topics ct
+                where ct.topic_id=#{topic} and ct.korean_card_id = kc.korean_card_id
+            )
         order by korean_word
-            LIMIT #{limit} OFFSET #{offset}
-        ;
+        LIMIT #{limit} OFFSET #{offset};
     </select>
 
     <select id="countDeckCardsByTopic" parameterType="map" resultType="int">
-        select count(korean_card_id)
-        from korean_cards
-        where korean_card_id in (
-            select
-                distinct kc.korean_card_id
-            from
-                korean_cards kc
-                    join
-                card_topics ct
-                on kc.korean_card_id=ct.korean_card_id
-                    join
-                foreign_cards fc
-                on kc.korean_card_id=fc.korean_card_id
-            where
-                ct.topic_id=#{topic}
-              and fc.language_code=#{code}
-        );
+        select count(kc.korean_card_id)
+        from korean_cards kc
+        where
+            exists (
+                select 1
+                from foreign_cards fc
+                where fc.language_code = #{code} and fc.korean_card_id = kc.korean_card_id
+            ) and
+            exists (
+                select 1
+                from card_topics ct
+                where ct.topic_id=#{topic} and ct.korean_card_id = kc.korean_card_id
+            )
+        ;
     </select>
 
     <select id="findDeckCardsByLevel" parameterType="map" resultType="java.lang.Long">

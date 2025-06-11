@@ -1,24 +1,20 @@
 import { useAppSelector } from '@/store/hooks';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import { KoreanCardDetail, UserCard } from '@/types/schemes';
 import { Rating } from '@/types/IntervalPreview';
 import { Category } from '@/types/Category';
 
 import { getLearningCards } from '@/api/study';
-import { RootState } from '@/store';
 import { DUMMY_RATING_PREVIEW } from '@/utils/dummyData';
 import { State } from 'ts-fsrs';
-import { getCardDetail } from '@/api/cards';
+import { getKoreanCardDetail } from '@/api/cards';
 import { useLocale } from 'next-intl';
 import { Locale } from '@/types/Locale';
 
 export const useStudyQueue = (category: Category) => {
   const initialStudyQueue = useAppSelector((state) => state.studyQueue[category]);
   const intervalPreview = DUMMY_RATING_PREVIEW;
-
-  const { accessToken } = useSelector((state: RootState) => state.auth);
 
   const [studyQueue, setStudyQueue] = useState<UserCard[] | null>(initialStudyQueue || null);
   const [currentCard, setCurrentCard] = useState<UserCard | null>(null);
@@ -46,7 +42,7 @@ export const useStudyQueue = (category: Category) => {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await getLearningCards('new', category, accessToken ?? '');
+        const response = await getLearningCards('new', category);
         console.log('fetchCards', response);
         if (response && 'content' in response) {
           setStudyQueue(response.content);
@@ -62,7 +58,7 @@ export const useStudyQueue = (category: Category) => {
     if (studyQueue === null) {
       fetchCards();
     }
-  }, [studyQueue, category, accessToken]);
+  }, [studyQueue, category]);
 
   useEffect(() => {
     console.log('studyQueue:', studyQueue);
@@ -74,18 +70,14 @@ export const useStudyQueue = (category: Category) => {
 
     const fetchCardDetail = async () => {
       if (currentCard) {
-        const cardDetail = await getCardDetail(
-          currentCard.koreanCard.cardId,
-          locale,
-          accessToken ?? ''
-        );
+        const cardDetail = await getKoreanCardDetail(currentCard.koreanCard.cardId);
         console.log('cardDetail', cardDetail);
         setCurrentCardDetail(cardDetail);
       }
     };
 
     fetchCardDetail();
-  }, [currentCard, accessToken, locale]);
+  }, [currentCard, locale]);
 
   return { currentCard, currentCardDetail, studyQueue, intervalPreview, repeat, error };
 };

@@ -4,7 +4,6 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { useSelector } from 'react-redux';
 
 import { OutlinedTextField } from '@/components/material-components/TextField';
 import { Icon } from '@/components/material-components/IconButton/IconButton';
@@ -22,7 +21,6 @@ import { getUserOption, postUserOption } from '@/api/option';
 import { UserOption } from '@/types/schemes';
 import { Locale } from '@/types/Locale';
 import { LANGUAGE_OPTIONS, UTC_OFFSET_OPTIONS, THEME_OPTIONS } from '@/utils/dummyData';
-import { RootState } from '@/store';
 
 import classNames from 'classnames';
 import styles from './SettingsPage.module.scss';
@@ -38,7 +36,6 @@ export default function SettingsPage() {
   const isCompact = width < 1200;
 
   const [userOptions, setUserOptions] = useState<UserOption | null>(null);
-  const { accessToken } = useSelector((state: RootState) => state.auth);
   const { showBoundary } = useErrorBoundary();
   const { theme, setTheme } = useTheme();
 
@@ -82,9 +79,9 @@ export default function SettingsPage() {
   };
 
   const handleSave = async () => {
-    if (userOptions === null || accessToken === null) return;
+    if (userOptions === null) return;
     try {
-      await postUserOption(userOptions, accessToken);
+      await postUserOption(userOptions);
       // TODO: replace alert with modal
       alert('Saved');
     } catch {
@@ -100,7 +97,7 @@ export default function SettingsPage() {
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        const response = await getUserOption(accessToken ?? '');
+        const response = await getUserOption();
         console.log(response);
         setUserOptions(response as UserOption);
       } catch (error) {
@@ -108,7 +105,7 @@ export default function SettingsPage() {
       }
     };
     fetchOptions();
-  }, [accessToken, showBoundary]);
+  }, [showBoundary]);
 
   useEffect(() => {
     if (!userOptions) return;

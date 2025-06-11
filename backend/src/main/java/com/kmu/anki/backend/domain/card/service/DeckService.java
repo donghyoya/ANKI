@@ -4,10 +4,7 @@ import com.kmu.anki.backend.domain.card.dto.*;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
-import com.kmu.anki.backend.domain.card.repository.CardQueryRepository;
-import com.kmu.anki.backend.domain.card.repository.DeckQueryRepository;
-import com.kmu.anki.backend.domain.card.repository.ForeignCardRepository;
-import com.kmu.anki.backend.domain.card.repository.KoreanCardRepository;
+import com.kmu.anki.backend.domain.card.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,6 +21,7 @@ public class DeckService {
     private final ForeignCardRepository foreignCardRepository;
     private final DeckQueryRepository deckQueryRepository;
     private final CardQueryRepository cardQueryRepository;
+    private final DeckCardsRepository deckCardsRepository;
 
     public List<DeckDto> readDeckByDifficulty(Long userId){
         List<DeckDto> decks = deckQueryRepository.findDeckByDifficulty(userId);
@@ -36,12 +34,12 @@ public class DeckService {
 
 
 
-    public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardLevel cardLevel){
-        return cardQueryRepository.findDecksCardByLevel(languageCode, cardLevel, PageRequest.of(0,20));
+    public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardLevel cardLevel, int page, int pageSize){
+        return deckCardsRepository.findDecksCardByLevel(languageCode, cardLevel, PageRequest.of(page, pageSize));
     }
 
-    public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardTopicEnums category){
-        return cardQueryRepository.findDecksCardByTopic(languageCode, category, PageRequest.of(0,20));
+    public Page<KoreanCardWithForeignWord> findDeckCards(LanguageCode languageCode, CardTopicEnums category, int page, int pageSize){
+        return deckCardsRepository.findDecksCardByTopic(languageCode, category, PageRequest.of(page, pageSize));
     }
 
 }

@@ -56,6 +56,8 @@ public class DeckController {
             @RequestParam("queryType") QueryType queryType,
             @RequestParam("query") String query,
             @RequestParam(value = "code", required = false) LanguageCode code,
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestParam(value = "pageSize", defaultValue = "20") Integer pageSize,
             Authentication authentication
     ){
         if(code == null){
@@ -65,10 +67,10 @@ public class DeckController {
         Page<KoreanCardWithForeignWord> cards;
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
-            cards = deckService.findDeckCards(code, cardTopicEnums);
+            cards = deckService.findDeckCards(code, cardTopicEnums, page-1, pageSize);
         }else {
             CardLevel cardLevel = CardLevel.valueOf(query);
-            cards = deckService.findDeckCards(code, cardLevel);
+            cards = deckService.findDeckCards(code, cardLevel, page-1, pageSize);
         }
         return BasePageResponse.of(cards);
     }

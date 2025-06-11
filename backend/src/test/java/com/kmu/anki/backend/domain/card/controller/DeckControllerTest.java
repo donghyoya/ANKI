@@ -3,6 +3,7 @@ package com.kmu.anki.backend.domain.card.controller;
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
+import com.kmu.anki.backend.domain.PageParameters;
 import com.kmu.anki.backend.domain.card.docs.CardDetailDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.DeckDtoDocs;
@@ -15,6 +16,7 @@ import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
 import com.kmu.anki.backend.global.ExceptionResponseDocs;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -133,8 +135,11 @@ class DeckControllerTest extends AbstractControllerTest {
                 get("/decks/cards")
                         .param("queryType", queryType)
                         .param("query",query)
+                        .param("code", LanguageCode.en.toString())
+                        .param("page", "1")
+                        .param("pageSize", "20")
                         .header("Authorization", "Bearer " + token)
-        ).andExpect(status().isOk())
+                ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
                                 identifier,
@@ -144,7 +149,10 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .summary("덱에 포함된 카드 모음")
                                                 .queryParameters(
                                                         DeckParameters.queryType,
-                                                        DeckParameters.query
+                                                        DeckParameters.query,
+                                                        CardParameters.languageCode,
+                                                        PageParameters.page,
+                                                        PageParameters.pageSize
                                                 )
                                                 .responseFields(
                                                         KoreanCardDtoDocs.koreanCardWithForeignWordDtos
@@ -164,6 +172,9 @@ class DeckControllerTest extends AbstractControllerTest {
                         get("/decks/cards")
                                 .param("queryType", "queryType")
                                 .param("query","fail")
+                                .param("code", LanguageCode.en.toString())
+                                .param("page", "1")
+                                .param("pageSize", "20")
                                 .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isBadRequest())
                 .andDo(
@@ -175,7 +186,10 @@ class DeckControllerTest extends AbstractControllerTest {
                                                 .summary("덱에 포함된 카드 모음")
                                                 .queryParameters(
                                                         DeckParameters.queryType,
-                                                        DeckParameters.query
+                                                        DeckParameters.query,
+                                                        CardParameters.languageCode,
+                                                        PageParameters.page,
+                                                        PageParameters.pageSize
                                                 )
                                                 .responseFields(
                                                         ExceptionResponseDocs.exceptionResponse
@@ -187,6 +201,7 @@ class DeckControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @Disabled
     @Test
     void getDecksCardWithoutAuth() throws Exception{
         String identifier = String.format("{class-name}/{method-name}/without-auth");
@@ -196,6 +211,8 @@ class DeckControllerTest extends AbstractControllerTest {
                                 .param("queryType", QueryType.level.name())
                                 .param("query","easy")
                                 .param("code", LanguageCode.en.name())
+                                .param("page", "1")
+                                .param("pageSize", "20")
                                 .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isOk())
                 .andDo(

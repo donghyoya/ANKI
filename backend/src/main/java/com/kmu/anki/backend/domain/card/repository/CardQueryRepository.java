@@ -116,7 +116,7 @@ public class CardQueryRepository {
             CardLevel level,
             Pageable pageable
     ){
-        List<KoreanCard> cards = queryFactory.select(koreanCard)
+        List<KoreanCard> cards = queryFactory.select(koreanCard).distinct()
                 .from(koreanCard)
                 .join(koreanCard.foreignCards, foreignCard)
                 .where(koreanCard.level.eq(level)
@@ -124,16 +124,14 @@ public class CardQueryRepository {
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
-        JPAQuery<KoreanCard> countq = queryFactory.select(koreanCard)
+        JPAQuery<Long> countq = queryFactory.select(koreanCard.count())
                 .from(koreanCard)
                 .join(koreanCard.foreignCards, foreignCard)
                 .where(koreanCard.level.eq(level)
-                        .and(foreignCard.languageCode.eq(languageCode)))
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize());
+                        .and(foreignCard.languageCode.eq(languageCode)));
         Map<Long, List<String>> foreignWords = findForeignWordsByKoreanCardAndLanguageCode(cards, languageCode);
         return PageableExecutionUtils.getPage(
-                cards.stream().map(card->KoreanCardWithForeignWord.of(card, foreignWords)).toList(), pageable, ()->  countq.fetch().size()
+                cards.stream().map(card->KoreanCardWithForeignWord.of(card, foreignWords)).toList(), pageable, countq::fetchOne
         );
     }
 
@@ -150,7 +148,7 @@ public class CardQueryRepository {
             CardTopicEnums topic,
             Pageable pageable
     ){
-        List<KoreanCard> cards = queryFactory.select(koreanCard)
+        List<KoreanCard> cards = queryFactory.select(koreanCard).distinct()
                 .from(koreanCard)
                 .join(koreanCard.cardTopics, cardTopic)
                 .join(koreanCard.foreignCards, foreignCard)
@@ -161,19 +159,17 @@ public class CardQueryRepository {
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
-        JPAQuery<KoreanCard> countq = queryFactory.select(koreanCard)
+        JPAQuery<Long> countq = queryFactory.select(koreanCard.count())
                 .from(koreanCard)
                 .join(koreanCard.cardTopics, cardTopic)
                 .join(koreanCard.foreignCards, foreignCard)
                 .where(
                         cardTopic.topicId.eq(topic)
                                 .and(foreignCard.languageCode.eq(languageCode))
-                )
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize());
+                );
         Map<Long, List<String>> foreignWords = findForeignWordsByKoreanCardAndLanguageCode(cards, languageCode);
         return PageableExecutionUtils.getPage(
-                cards.stream().map(card->KoreanCardWithForeignWord.of(card, foreignWords)).toList(), pageable, ()->  countq.fetch().size()
+                cards.stream().map(card->KoreanCardWithForeignWord.of(card, foreignWords)).toList(), pageable, countq::fetchOne
         );
     }
     

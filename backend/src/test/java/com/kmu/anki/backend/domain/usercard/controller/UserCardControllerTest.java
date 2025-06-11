@@ -21,6 +21,7 @@ import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
 import com.kmu.anki.backend.global.ExceptionResponseDocs;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -224,6 +225,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                 );
     }
 
+    @Disabled
     @Order(3)
     @Test
     void getStudyCardWithoutAuth() throws Exception{

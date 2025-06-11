@@ -1,7 +1,6 @@
 package com.kmu.anki.backend.security.auth.controller;
 
 import com.kmu.anki.backend.domain.user.dto.LoginUserDto;
-import com.kmu.anki.backend.domain.user.dto.UserDto;
 import com.kmu.anki.backend.domain.user.service.UserService;
 import com.kmu.anki.backend.security.auth.token.JwtTokenService;
 import com.kmu.anki.backend.security.auth.token.TokenClaimBuilder;
@@ -26,7 +25,6 @@ public class AuthenticationController {
                 .role(userDto.getRole());
         String accessToken = jwtTokenService.generateAccessToken(userId.toString(), builder);
         String refreshToken = jwtTokenService.generateRefreshToken(userId.toString(), builder);
-
         return new TokenDto(accessToken, refreshToken, userDto.isSetup());
     }
 }

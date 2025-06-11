@@ -18,9 +18,9 @@ public class TokenDto {
         return isSetup;
     }
 
-    public TokenDto(String accessToken, String refreshToken, boolean isFirstLogin) {
+    public TokenDto(String accessToken, String refreshToken, boolean isSetup) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
-        this.isSetup  = !isFirstLogin;
+        this.isSetup  = isSetup;
     }
 }

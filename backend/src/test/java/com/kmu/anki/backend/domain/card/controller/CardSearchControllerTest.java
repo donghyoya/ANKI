@@ -56,7 +56,7 @@ class CardSearchControllerTest extends AbstractControllerTest {
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
                                                 .tag("CardSearch")
-                                                .summary("덱에 포함된 카드 모음")
+                                                .summary("한국어 검색결과")
                                                 .queryParameters(
                                                         CardParameters.query,
                                                         PageParameters.page,
@@ -115,7 +115,7 @@ class CardSearchControllerTest extends AbstractControllerTest {
                                 ResourceDocumentation.resource(
                                         ResourceSnippetParameters.builder()
                                                 .tag("CardSearch")
-                                                .summary("덱에 포함된 카드 모음")
+                                                .summary("외국어 검색결과")
                                                 .queryParameters(
                                                         CardParameters.query,
                                                         CardParameters.foreignCardSearchOption,

@@ -233,7 +233,7 @@ class UserCardControllerTest extends AbstractControllerTest {
                                 .param("studyType", StudyType.study.toString())
                                 .param("queryType", QueryType.level.toString())
                                 .param("query",CardLevel.easy.toString())
-                                .header("Authorization", "")
+                                .header("Authorization", "Bearer token")
                 ).andExpect(status().isUnauthorized())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(

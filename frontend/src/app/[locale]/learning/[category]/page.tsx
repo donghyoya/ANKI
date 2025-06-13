@@ -35,7 +35,7 @@ export default function LearningPage() {
     cardWidth
   });
 
-  const { currentCardDetail, studyQueue, iPreview, repeat, error, isCompleted } = useStudyQueue(
+  const { currentCardDetail, studyQueue, iPreview, repeat, isCompleted } = useStudyQueue(
     category as Category
   );
 
@@ -94,20 +94,8 @@ export default function LearningPage() {
   ];
 
   useEffect(() => {
-    console.log('currentCardDetail', currentCardDetail);
-  }, [currentCardDetail]);
-
-  useEffect(() => {
     setCardWidth(document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0);
   }, []);
-
-  useEffect(() => {
-    if (error) {
-      console.error('error:', error);
-    }
-  }, [error]);
-
-  if (error) throw error;
 
   if (studyQueue === null || currentCardDetail === null) {
     return <div className={styles['page']}>Loading...</div>;

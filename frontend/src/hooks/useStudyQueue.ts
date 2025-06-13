@@ -1,100 +1,113 @@
 import { useEffect, useState } from 'react';
+import { createFSRS } from '@/utils/FSRS';
 
-import { KoreanCardDetail, UserCard } from '@/types/schemes';
-import { Category } from '@/types/Category';
-import { Rating, State } from 'ts-fsrs';
-
-import { getLearningCards } from '@/api/study';
-import { DUMMY_RATING_PREVIEW } from '@/utils/dummyData';
 import { getKoreanCardDetail } from '@/api/cards';
+import { getLearningCards, postStudyInfo } from '@/api/study';
+
+import { UserCard, StudyInfo, KoreanCardDetail } from '@/types/schemes';
+import { Category } from '@/types/Category';
+import { IPreview, Rating, State } from 'ts-fsrs';
 
 export const useStudyQueue = (category: Category) => {
-  const iPreview = DUMMY_RATING_PREVIEW;
-
   const [studyQueue, setStudyQueue] = useState<UserCard[] | null>(null);
   const [currentCard, setCurrentCard] = useState<UserCard | null>(null);
   const [currentCardDetail, setCurrentCardDetail] = useState<KoreanCardDetail | null>(null);
-  const [error, setError] = useState<Error | null>(null);
   const [isCompleted, setIsCompleted] = useState(false);
 
-  const repeat = (rating: Rating) => {
-    if (studyQueue === null || currentCard === null) return;
-    const newStudyQueue = [
-      ...studyQueue.filter((card) => card.koreanCard.cardId !== currentCard.koreanCard.cardId),
-      {
-        ...currentCard,
-        studyInfo: {
-          ...currentCard.studyInfo,
-          state: rating === Rating.Again ? State.Learning : State.Review
-        }
-      }
-    ] as UserCard[];
-    setStudyQueue(newStudyQueue);
-    setCurrentCard(
-      newStudyQueue.filter((card) => card.studyInfo.state !== State.Review)[0] ?? null
+  const f = createFSRS();
+
+  // 학습 큐 우선순위:
+  // 1. 새로운 카드 (State.New)
+  // 2. 기한이 지난 카드 (due < 현재 시간)
+  // 3. 학습 중이거나 재학습 중인 카드 (Learning/Relearning)
+  const getNextCard = (studyQueue: UserCard[]) => {
+    let nextCard;
+
+    // new인 카드 찾기
+    nextCard = studyQueue.find((c) => c.studyInfo.state === State.New);
+    if (nextCard) return nextCard;
+
+    // overdue인 카드 찾기
+    nextCard = studyQueue.find((c) => c.studyInfo.due < new Date());
+    if (nextCard) return nextCard;
+
+    // learning, re-learning인 카드 찾기
+    nextCard = studyQueue.find(
+      (c) => c.studyInfo.state === State.Learning || c.studyInfo.state === State.Relearning
+    );
+    return nextCard;
+  };
+
+  const repeat = async (rating: Rating) => {
+    // 에러 처리
+    if (!currentCard) {
+      throw new Error('CURRENT_CARD_NOT_FOUND');
+    }
+    if (!studyQueue) {
+      throw new Error('STUDY_QUEUE_NOT_FOUND');
+    }
+
+    // 새로운 카드 상태 계산
+    const newIPreview = f.repeat(currentCard.studyInfo, new Date());
+    const newRecordLogItem = newIPreview[rating as keyof IPreview];
+
+    const newStudyInfo: StudyInfo =
+      typeof newRecordLogItem === 'function'
+        ? newRecordLogItem().next().value.card
+        : newRecordLogItem.card;
+
+    const newCard = { ...currentCard, studyInfo: newStudyInfo } as UserCard;
+    console.log('newCard', newCard);
+    updateStudyInfo(newCard);
+  };
+
+  const updateStudyInfo = async (newCard: UserCard) => {
+    // 서버에 카드 상태 업데이트
+    await postStudyInfo(newCard.userCardId, newCard.studyInfo);
+
+    // 로컬 상태 업데이트
+    setStudyQueue(
+      studyQueue?.map((c) => (c.userCardId === newCard.userCardId ? newCard : c)) ?? null
     );
   };
 
   // 학습 큐 요청하기
   useEffect(() => {
     const fetchCards = async () => {
-      try {
-        const response = await getLearningCards('new', category);
-        console.log('fetchCards', response);
-        if (response && 'content' in response) {
-          setStudyQueue(response.content);
-          setCurrentCard(
-            response.content.filter((card) => card.studyInfo.state !== State.Review)[0] ?? null
-          );
-        }
-      } catch (error) {
-        setError(error as Error);
-      }
+      const newCards = await getLearningCards('new', category);
+      const reviewCards = await getLearningCards('review', category);
+      setStudyQueue([...newCards.content, ...reviewCards.content]);
     };
-    if (studyQueue === null) {
-      fetchCards();
-    }
-  }, [studyQueue, category]);
+    fetchCards();
+  }, [category]);
 
-  // 현재 카드 설정하기
+  // 학습 큐가 변경될 때마다:
+  // 1. 다음 학습할 카드를 결정
+  // 2. 해당 카드의 상세 정보를 가져옴
+  // 3. 더 이상 학습할 카드가 없으면 완료 상태로 변경
   useEffect(() => {
-    if (studyQueue) {
-      console.log('studyQueue', studyQueue);
-      let newCard;
-      // 학습 큐에 card.due < new Date()인 카드가 있으면 그 카드를 현재 카드로 설정
-      newCard = studyQueue.find((c) => new Date(c.studyInfo.due) < new Date());
-      if (!newCard) {
-        // state가 learned가 아닌 카드 중에서 due가 가장 작은 카드
-        newCard = studyQueue.reduce((minCard, card) => {
-          return new Date(card.studyInfo.due) < new Date(minCard.studyInfo.due) ? card : minCard;
-        });
+    // 카드 상세 정보 가져오기
+    async function fetchCardDetail(userCard: UserCard) {
+      if (studyQueue) {
+        const newCardDetail = await getKoreanCardDetail(userCard.koreanCard.cardId);
+        setCurrentCardDetail(newCardDetail);
       }
-      if (newCard) setCurrentCard(newCard);
-      else setIsCompleted(true);
+    }
+
+    // 현재 카드 설정하기
+    if (studyQueue) {
+      const nextCard = getNextCard(studyQueue);
+      if (nextCard) {
+        setCurrentCard(nextCard);
+        fetchCardDetail(nextCard);
+      } else {
+        setIsCompleted(true);
+      }
     }
   }, [studyQueue]);
 
-  useEffect(() => {
-    console.log('currentCard:', currentCard);
+  // 예상 학습 시간 계산하기
+  const iPreview = currentCard ? f.repeat(currentCard.studyInfo, new Date()) : null;
 
-    const fetchCardDetail = async () => {
-      if (currentCard) {
-        const cardDetail = await getKoreanCardDetail(currentCard.koreanCard.cardId);
-        console.log('cardDetail', cardDetail);
-        setCurrentCardDetail(cardDetail);
-      }
-    };
-
-    fetchCardDetail();
-  }, [currentCard]);
-
-  return {
-    currentCard,
-    currentCardDetail,
-    studyQueue,
-    iPreview,
-    repeat,
-    error,
-    isCompleted
-  };
+  return { currentCard, currentCardDetail, studyQueue, iPreview, repeat, isCompleted };
 };

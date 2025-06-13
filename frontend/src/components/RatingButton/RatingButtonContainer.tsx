@@ -1,5 +1,5 @@
 import RatingButton from './RatingButton';
-import { Rating, IPreview, RecordLogItem } from 'ts-fsrs';
+import { Rating, IPreview, ReviewLog } from 'ts-fsrs';
 
 import styles from './RatingButtonContainer.module.scss';
 
@@ -17,18 +17,14 @@ const RatingButtons = ({ iPreview, isRevealed, onRepeat }: RatingButtonContainer
     Easy: Rating.Easy
   } as const;
 
-  const cards = Object.values(ratings).map((rating) => {
-    const recordLogItem = iPreview && (iPreview[rating as keyof IPreview] as RecordLogItem);
-    const card = recordLogItem?.card;
-    return card;
-  });
+  const logs: ReviewLog[] = iPreview ? Object.values(iPreview).map((item) => item.log) : [];
 
   return (
     <div className={styles['rating-button-container']}>
       {isRevealed &&
-        cards.map((card, index) => {
-          if (!card) return null;
-          const interval = new Date(card.due).getTime() - new Date().getTime();
+        logs.map((log, index) => {
+          if (!log) return null;
+          const interval = new Date(log.due).getTime() - new Date().getTime();
           return (
             <RatingButton
               key={index}

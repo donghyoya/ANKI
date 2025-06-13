@@ -24,8 +24,8 @@ export const getStudyInfo = async (cardId: number) => {
   return response.data;
 };
 
-export const postStudyInfo = async (cardId: number, userCardId: number, studyInfo: StudyInfo) => {
-  const url = `/cards/${cardId}/study`;
+export const postStudyInfo = async (userCardId: number, studyInfo: StudyInfo) => {
+  const url = `/cards/${userCardId}/study`;
   const response = await httpClient.post<StudyInfoDTO>(url, studyInfo);
   return response.data;
 };

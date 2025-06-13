@@ -9,7 +9,6 @@ spring:
     hibernate:
       ddl-auto: validate
     show-sql: true
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
     properties:
       hibernate:
@@ -17,7 +16,7 @@ spring:
       hibernate.search.backend.type: lucene
       hibernate.search.backend.directory.type: local-heap
       hibernate.search.backend.analysis.configurer: com.kmu.anki.backend.global.config.search.KoreanLuceneAnalysisConfigurerImpl
-
+      hibernate.search.backend.lucene_version: 9.11
   sql:
     init:
       mode: always

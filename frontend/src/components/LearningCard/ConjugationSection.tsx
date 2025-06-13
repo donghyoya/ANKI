@@ -3,16 +3,16 @@ import styles from './ConjugationSection.module.scss';
 import { useTranslations } from 'next-intl';
 
 const PredicateConjugationLabels = [
-  { key: 'pastParticiple', lable: 'Past participle' },
-  { key: 'connective', lable: 'Connective' },
-  { key: 'seqConnect', lable: 'Sequential connective' },
-  { key: 'formalPresent', lable: 'Formal polite present' }
+  { key: 'pastParticiple', label: 'Past participle' },
+  { key: 'connective', label: 'Connective' },
+  { key: 'seqConnect', label: 'Sequential connective' },
+  { key: 'formalPresent', label: 'Formal polite present' }
 ];
 
 const NounConjugationLabels = [
-  { key: 'subjectMarker', lable: 'Subject marker' },
-  { key: 'alsoTooParticle', lable: 'Also/too particle' },
-  { key: 'onlyJustParticle', lable: 'Only/just particle' }
+  { key: 'subjectMarker', label: 'Subject marker' },
+  { key: 'alsoTooParticle', label: 'Also/too particle' },
+  { key: 'onlyJustParticle', label: 'Only/just particle' }
 ];
 
 interface ConjugationSectionProps {
@@ -37,9 +37,7 @@ const ConjugationSection = ({
         <IconButton onClick={toggleExpanded}>
           <Icon>{isExpanded ? 'arrow_drop_up' : 'arrow_drop_down'}</Icon>
         </IconButton>
-        <span className={styles['conjugations-header-title']}>
-          {t('learning.conjugations')}
-        </span>
+        <span className={styles['conjugations-header-title']}>{t('learning.conjugations')}</span>
       </div>
       {isExpanded && (
         <div className={styles['conjugations-list']}>

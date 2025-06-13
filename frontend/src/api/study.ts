@@ -1,30 +1,19 @@
 'use server';
 
-import {
-  Paginated,
-  StudyType,
-  CardStudyInfo,
-  StudyCardForm,
-  UserCardServerResponse,
-  convertUserCardServerResponseToUserCard
-} from '@/types/schemes';
+import { Paginated, StudyType, StudyInfo, StudyInfoDTO, UserCardDTO } from '@/types/schemes';
 import { Category, getCategoryType } from '@/types/Category';
 import { requestApi } from './utils';
+import { normalizeQuery, toStudyInfo, toStudyInfoDTO, toUserCard } from '@/utils/converter';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
-export const getUserCards = async (studyType: StudyType, query: Category, token: string) => {
-  const queryStudyType = studyType === 'new' ? 'study' : 'review';
+export const getLearningCards = async (studyType: StudyType, query: Category, token: string) => {
+  const queryType = normalizeQuery(getCategoryType(query));
+  const url = `${endpoint}/cards/study?studyType=${normalizeQuery(studyType)}&queryType=${queryType}&query=${query}`;
 
-  const queryType = getCategoryType(query) === 'difficulty' ? 'level' : 'meaning';
+  const response = await requestApi<Paginated<UserCardDTO>>({ url, token });
 
-  const url = `${endpoint}/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${queryType === 'level' ? query : query.toUpperCase()}`;
-
-  const response = await requestApi<Paginated<UserCardServerResponse>>({ url, token });
-
-  const convertedData = response.content.map((card) =>
-    convertUserCardServerResponseToUserCard(card)
-  );
+  const convertedData = response.content.map((card) => toUserCard(card));
 
   return {
     ...response,
@@ -32,23 +21,21 @@ export const getUserCards = async (studyType: StudyType, query: Category, token:
   };
 };
 
-export const getCardStudyInfo = async (cardId: number, token: string) => {
+export const getStudyInfo = async (cardId: number, token: string) => {
   const url = `${endpoint}/cards/${cardId}/study`;
-  const response = await requestApi<CardStudyInfo>({ url, token });
-  return response;
+  const data = await requestApi<StudyInfoDTO>({ url, token });
+  const convertedData = toStudyInfo(data);
+  return convertedData;
 };
 
-export const postCardStudyInfo = async (
-  cardId: number,
-  studyCardForm: StudyCardForm,
-  token: string
-) => {
+export const postStudyInfo = async (cardId: number, studyInfo: StudyInfo, token: string) => {
   const url = `${endpoint}/cards/${cardId}/study`;
-  const response = await requestApi<CardStudyInfo>({
+  const data = await requestApi<StudyInfoDTO>({
     url,
     token,
     method: 'POST',
-    body: studyCardForm
+    body: toStudyInfoDTO(studyInfo)
   });
-  return response;
+  const convertedData = toStudyInfo(data);
+  return convertedData;
 };

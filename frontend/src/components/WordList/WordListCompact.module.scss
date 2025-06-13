@@ -14,3 +14,8 @@
 .foreign-word {
   @include tp.body-large;
 }
+
+.homograph-number {
+  @include tp.body-small;
+  color: var(--md-sys-color-on-surface-variant);
+}

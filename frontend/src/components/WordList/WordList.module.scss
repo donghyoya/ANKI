@@ -41,6 +41,11 @@
       @include bp.respond-to('extra-large') {
         @include tp.title-large;
       }
+
+      .homograph-number {
+        @include tp.body-medium;
+        color: var(--md-sys-color-on-surface-variant);
+      }
     }
 
     .right-container {

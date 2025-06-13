@@ -2,24 +2,26 @@ import {
   Paginated,
   Deck,
   Card,
-  CardDetail,
-  CardStudyInfo,
+  KoreanCardDetail,
+  StudyInfo,
   UserStudyHistory,
   UserOption,
-  UserCard
+  UserCard,
+  KoreanCardWithForeignWords
 } from '@/types/schemes';
 
 import {
   DUMMY_CARD,
   DUMMY_CARDS,
   DUMMY_DECKS,
-  DUMMY_STUDY_CARD_FORM,
   DUMMY_USER_CARDS,
   DUMMY_USER_OPTION,
   DUMMY_USER_STUDY_HISTORIES,
   DUMMY_USER_STUDY_HISTORY,
-  DUMMY_CARD_DETAIL,
-  DUMMY_CARD_STUDY_INFO
+  DUMMY_STUDY_INFO,
+  DUMMY_STUDY_INFO_DTO,
+  DUMMY_KOR_CARD_DETAIL,
+  DUMMY_KOR_CARD_WITH_FOREIGN_WORDS
 } from '@/utils/dummyData';
 
 export const mockForeignSearch = async () => {
@@ -53,9 +55,9 @@ export const mockGetCard = async () => {
 };
 
 export const mockGetCardDetail = async () => {
-  return new Promise<CardDetail>((resolve) => {
+  return new Promise<KoreanCardDetail>((resolve) => {
     setTimeout(() => {
-      const data = DUMMY_CARD_DETAIL;
+      const data = DUMMY_KOR_CARD_DETAIL;
       console.log('mockGetCardDetail:', data);
       resolve(data);
     }, 500);
@@ -73,9 +75,9 @@ export const mockGetUserCards = async () => {
 };
 
 export const mockGetCardStudyInfo = async () => {
-  return new Promise<CardStudyInfo>((resolve) => {
+  return new Promise<StudyInfo>((resolve) => {
     setTimeout(() => {
-      const data = DUMMY_CARD_STUDY_INFO;
+      const data = DUMMY_STUDY_INFO;
       console.log('mockGetCardStudyInfo:', data);
       resolve(data);
     }, 500);
@@ -85,7 +87,7 @@ export const mockGetCardStudyInfo = async () => {
 export const mockPostCardStudyInfo = async () => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const data = DUMMY_STUDY_CARD_FORM;
+      const data = DUMMY_STUDY_INFO_DTO;
       console.log('mockPostCardStudyInfo:', data);
       resolve(data);
     }, 500);
@@ -103,9 +105,14 @@ export const mockGetDecks = async (queryType: 'level' | 'meaning') => {
 };
 
 export const mockGetCardsFromDeck = async () => {
-  return new Promise<Paginated<Card>>((resolve) => {
+  return new Promise<Paginated<KoreanCardWithForeignWords>>((resolve) => {
     setTimeout(() => {
-      const data = DUMMY_CARDS;
+      const data = {
+        content: [DUMMY_KOR_CARD_WITH_FOREIGN_WORDS],
+        page: 1,
+        pageSize: 10,
+        size: 1
+      };
       console.log('mockGetCardsFromDeck:', data);
       resolve(data);
     }, 500);

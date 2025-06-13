@@ -1,39 +1,46 @@
-import { CardDetail } from '@/types/schemes';
+import { KoreanCardDetail } from '@/types/schemes';
 
 import styles from './WordSection.module.scss';
+import { Fragment } from 'react';
 
 const levelStars = {
-  beginner: '★★★',
-  intermediate: '★★',
-  advanced: '★'
+  easy: '★★★',
+  medium: '★★',
+  hard: '★'
 };
 
 interface WordSectionProps {
-  card: CardDetail;
+  card: KoreanCardDetail;
 }
 
 const WordSection = ({ card }: WordSectionProps) => {
+  console.log('level', card.level);
   const levelLabel = levelStars[card.level as keyof typeof levelStars] || '';
 
   return (
     <>
       <div className={styles['korean-container']}>
         <span className={styles['korean-word']}>{card.koreanWord}</span>
-        <span className={styles['korean-homograph-number']}>{card.homographNumber}</span>
+        <span className={styles['korean-homograph-number']}>{+card.homographNumber + 1}</span>
         <div className={styles['korean-info-container']}>
           <span className={styles['korean-level']}>{levelLabel}</span>
           <div className={styles['korean-info-sub-container']}>
-            <span className={styles['pronunciation']}>{`[${card.pronunciation}]`}</span>
-            <span className={styles['origin']}>{card.originalLanguage ?? ''}</span>
+            <span className={styles['pronunciation']}>{`[${card.meanings[0].pronunciation}]`}</span>
+            <span className={styles['origin']}>{card.meanings[0].originalLanguage ?? ''}</span>
           </div>
         </div>
       </div>
-      <div className={styles['foreign-container']}>
-        <span className={styles['foreign-word']}>
-          1. {card.partsOfSpeech} {card.foreignWord}
-        </span>
-        <span className={styles['foreign-word-sub']}>{card.relatedWords}</span>
-      </div>
+      {card.meanings.map((meaning, index) => (
+        <Fragment key={`${card.koreanWord}-${index}`}>
+          <div className={styles['foreign-container']}>
+            <span className={styles['foreign-word']}>
+              {index + 1}. {meaning.partsOfSpeech} {meaning.foreignWord}
+            </span>
+            <span className={styles['foreign-word-sub']}>{meaning.foreignMeaning}</span>
+            <span className={styles['foreign-word-sub']}>{meaning.relatedWords}</span>
+          </div>
+        </Fragment>
+      ))}
     </>
   );
 };

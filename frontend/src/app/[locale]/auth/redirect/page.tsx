@@ -22,8 +22,8 @@ export default function GoogleLoginRedirectPage() {
     (async function () {
       console.log(authenticationToken);
       if (authenticationToken) {
-        const { accessToken, refreshToken, setup } = await getToken(authenticationToken);
-        console.log('getToken:', { accessToken, refreshToken, setup });
+        const { accessToken, refreshToken, isSetup } = await getToken(authenticationToken);
+        console.log('getToken:', { accessToken, refreshToken, isSetup });
 
         // accessToken을 store에 저장
         dispatch(setAccessToken(accessToken));
@@ -31,7 +31,7 @@ export default function GoogleLoginRedirectPage() {
         setCookie({ name: 'refreshToken', value: refreshToken });
 
         // 유저의 옵션 상태에 따라 리디렉션
-        if (setup) {
+        if (isSetup) {
           redirect('/difficulty');
         } else {
           redirect('/settings');

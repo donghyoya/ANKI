@@ -10,17 +10,16 @@ import { Icon, IconButton } from '@/components/material-components/IconButton/Ic
 import { Menu, MenuItem } from '@/components/material-components/Menu';
 import WordList from '@/components/WordList/WordList';
 import WordListCompact from '@/components/WordList/WordListCompact';
-import { CardDetail } from '@/types/schemes';
+import { KoreanCardWithForeignWords } from '@/types/schemes';
 import styles from './WordListPage.module.scss';
 import { getCategoryType } from '@/types/Category';
 import { camelCase } from 'lodash';
-
 
 export default function WordListPage({
   wordList,
   category
 }: {
-  wordList: CardDetail[];
+  wordList: KoreanCardWithForeignWords[];
   category: string;
 }) {
   const t = useTranslations();
@@ -115,10 +114,11 @@ export default function WordListPage({
             <WordListComponent
               key={index}
               KoreanWord={word.koreanWord}
-              ForeignWord={word.foreignWord}
-              isExpanded={!isLarge ? isExpanded : undefined}
-              isHideKorean={isLarge ? isHideKorean : undefined}
-              isHideForeign={isLarge ? isHideForeign : undefined}
+              ForeignWord={word.foreignWords[0]}
+              homographNumber={+word.homographNumber + 1}
+              isExpanded={!isLarge && isExpanded}
+              isHideKorean={isLarge && isHideKorean}
+              isHideForeign={isLarge && isHideForeign}
             />
           ))}
         </div>

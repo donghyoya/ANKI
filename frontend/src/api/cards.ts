@@ -1,7 +1,7 @@
 'use server';
 
 import { Locale } from '../types/Locale';
-import { CardDetail, Card, Paginated } from '../types/schemes';
+import { KoreanCardDetail, Card, Paginated } from '../types/schemes';
 import { requestApi } from './utils';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
@@ -31,8 +31,8 @@ export const getCard = async (cardId: number, token: string) => {
   return response;
 };
 
-export const getCardDetail = async (cardId: number, token: string) => {
-  const url = `${endpoint}/cards/${cardId}/details`;
-  const response = await requestApi<CardDetail>({ url, token });
+export const getCardDetail = async (cardId: number, locale: Locale, token: string) => {
+  const url = `${endpoint}/cards/${cardId}/details?code=${locale}`;
+  const response = await requestApi<KoreanCardDetail>({ url, token });
   return response;
 };

@@ -6,12 +6,18 @@ import { OutlinedCard } from '../Card/Card';
 import LearningCard, { LearningCardState } from '@/components/LearningCard/LearningCard';
 
 import { MenuItem } from '@/types/Menu';
-import { DUMMY_CARD } from '@/utils/dummyData';
+import { DUMMY_KOR_CARD_DETAIL } from '@/utils/dummyData';
 
 import styles from './WordList.module.scss';
 import { WordListProps } from './types';
 
-const WordList = ({ KoreanWord, ForeignWord, isHideKorean, isHideForeign }: WordListProps) => {
+const WordList = ({
+  KoreanWord,
+  ForeignWord,
+  isHideKorean,
+  isHideForeign,
+  homographNumber
+}: WordListProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
   const [cardState, setCardState] = useState<LearningCardState>({
@@ -47,7 +53,10 @@ const WordList = ({ KoreanWord, ForeignWord, isHideKorean, isHideForeign }: Word
       {!isExpanded && (
         <OutlinedCard className={styles.card} onClick={handleClick}>
           <div className={styles.content}>
-            <h3 className={styles['korean-word']}>{isHideKorean ? '' : KoreanWord}</h3>
+            <h3 className={styles['korean-word']}>
+              {isHideKorean ? '' : KoreanWord}
+              <span className={styles['homograph-number']}>{homographNumber}</span>
+            </h3>
             <div className={styles['right-container']}>
               <div className={styles.line}></div>
               <h3 className={styles['foreign-word']}>{isHideForeign ? '' : ForeignWord}</h3>
@@ -57,7 +66,7 @@ const WordList = ({ KoreanWord, ForeignWord, isHideKorean, isHideForeign }: Word
       )}
       {isExpanded && (
         <LearningCard
-          card={DUMMY_CARD}
+          card={DUMMY_KOR_CARD_DETAIL}
           cardState={cardState}
           toggleConjugation={toggleConjugation}
           toggleExample={toggleExample}

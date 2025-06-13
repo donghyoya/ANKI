@@ -1,4 +1,5 @@
 import { dateDiffInDays, State } from 'ts-fsrs';
+import { camelCase, snakeCase } from 'lodash';
 
 import { KoreanCardDetail, StudyInfo, StudyInfoDTO, UserCard, UserCardDTO } from '@/types/schemes';
 import { DUMMY_KOR_CARD_DETAIL } from './dummyData';
@@ -75,4 +76,20 @@ export function normalizeQuery(query: string) {
       }
       return query;
   }
+}
+
+// 객체의 key를 snake_case로 변환
+export function convertToSnakeCase<T extends Record<string, unknown>>(obj: T) {
+  return Object.entries(obj).reduce((acc, [key, value]) => {
+    const snakeKey = snakeCase(key);
+    return { ...acc, [snakeKey]: value };
+  }, {});
+}
+
+// 객체의 key를 camelCase로 변환
+export function convertToCamelCase<T extends Record<string, unknown>>(obj: T) {
+  return Object.entries(obj).reduce((acc, [key, value]) => {
+    const camelKey = camelCase(key);
+    return { ...acc, [camelKey]: value };
+  }, {});
 }

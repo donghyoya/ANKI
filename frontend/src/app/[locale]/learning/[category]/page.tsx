@@ -2,20 +2,19 @@
 
 import { useEffect, useState } from 'react';
 import useLearningCardLayout from '@/hooks/useLearningCardLayout';
+import { useParams } from 'next/navigation';
+import { useStudyQueue } from '@/hooks/useStudyQueue';
+import { useTranslations } from 'next-intl';
 
 import LearningCard, { LearningCardState } from '@/components/LearningCard/LearningCard';
 import RatingButtonContainer from '@/components/RatingButton/RatingButtonContainer';
 import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
 
-import styles from './layout.module.scss';
-
 import { Category } from '@/types/Category';
-import { useParams } from 'next/navigation';
-import { useStudyQueue } from '@/hooks/useStudyQueue';
-import { Rating } from '@/types/IntervalPreview';
-
 import { MenuItem } from '@/types/Menu';
-import { useTranslations } from 'next-intl';
+import { Rating } from 'ts-fsrs';
+
+import styles from './layout.module.scss';
 
 export default function LearningPage() {
   const t = useTranslations();
@@ -36,7 +35,7 @@ export default function LearningPage() {
     cardWidth
   });
 
-  const { currentCardDetail, studyQueue, intervalPreview, repeat, error } = useStudyQueue(
+  const { currentCardDetail, studyQueue, iPreview, repeat, error, isCompleted } = useStudyQueue(
     category as Category
   );
 
@@ -110,11 +109,11 @@ export default function LearningPage() {
 
   if (error) throw error;
 
-  if (studyQueue === null) {
+  if (studyQueue === null || currentCardDetail === null) {
     return <div className={styles['page']}>Loading...</div>;
   }
 
-  if (currentCardDetail === null) {
+  if (isCompleted) {
     return <div className={styles['page']}>학습 끝</div>;
   }
 
@@ -138,7 +137,7 @@ export default function LearningPage() {
         setContentHeight={setContentHeight}
       />
       <RatingButtonContainer
-        intervalPreview={intervalPreview}
+        iPreview={iPreview}
         isRevealed={cardState.isRevealed}
         onRepeat={handleOnRepeat}
       />

@@ -1,44 +1,41 @@
-import { useAppSelector } from '@/store/hooks';
 import { useEffect, useState } from 'react';
 
 import { KoreanCardDetail, UserCard } from '@/types/schemes';
-import { Rating } from '@/types/IntervalPreview';
 import { Category } from '@/types/Category';
+import { Rating, State } from 'ts-fsrs';
 
 import { getLearningCards } from '@/api/study';
 import { DUMMY_RATING_PREVIEW } from '@/utils/dummyData';
-import { State } from 'ts-fsrs';
 import { getKoreanCardDetail } from '@/api/cards';
-import { useLocale } from 'next-intl';
-import { Locale } from '@/types/Locale';
 
 export const useStudyQueue = (category: Category) => {
-  const initialStudyQueue = useAppSelector((state) => state.studyQueue[category]);
-  const intervalPreview = DUMMY_RATING_PREVIEW;
+  const iPreview = DUMMY_RATING_PREVIEW;
 
-  const [studyQueue, setStudyQueue] = useState<UserCard[] | null>(initialStudyQueue || null);
+  const [studyQueue, setStudyQueue] = useState<UserCard[] | null>(null);
   const [currentCard, setCurrentCard] = useState<UserCard | null>(null);
   const [currentCardDetail, setCurrentCardDetail] = useState<KoreanCardDetail | null>(null);
   const [error, setError] = useState<Error | null>(null);
+  const [isCompleted, setIsCompleted] = useState(false);
 
-  const locale = useLocale() as Locale;
-  const repeat = async (rating: Rating) => {
+  const repeat = (rating: Rating) => {
     if (studyQueue === null || currentCard === null) return;
     const newStudyQueue = [
-      ...studyQueue.filter((card) => card.userCardId !== currentCard.userCardId),
+      ...studyQueue.filter((card) => card.koreanCard.cardId !== currentCard.koreanCard.cardId),
       {
         ...currentCard,
         studyInfo: {
           ...currentCard.studyInfo,
-          state: rating === 'again' ? State.Learning : State.Review
+          state: rating === Rating.Again ? State.Learning : State.Review
         }
       }
-    ];
+    ] as UserCard[];
     setStudyQueue(newStudyQueue);
-    const nextCard = newStudyQueue.filter((card) => card.studyInfo.state !== State.Review)[0];
-    setCurrentCard(nextCard ?? null);
+    setCurrentCard(
+      newStudyQueue.filter((card) => card.studyInfo.state !== State.Review)[0] ?? null
+    );
   };
 
+  // 학습 큐 요청하기
   useEffect(() => {
     const fetchCards = async () => {
       try {
@@ -51,7 +48,6 @@ export const useStudyQueue = (category: Category) => {
           );
         }
       } catch (error) {
-        console.error('Error fetching cards:', error);
         setError(error as Error);
       }
     };
@@ -60,9 +56,22 @@ export const useStudyQueue = (category: Category) => {
     }
   }, [studyQueue, category]);
 
+  // 현재 카드 설정하기
   useEffect(() => {
-    console.log('studyQueue:', studyQueue);
-    // TODO: 서버, store 업데이트
+    if (studyQueue) {
+      console.log('studyQueue', studyQueue);
+      let newCard;
+      // 학습 큐에 card.due < new Date()인 카드가 있으면 그 카드를 현재 카드로 설정
+      newCard = studyQueue.find((c) => new Date(c.studyInfo.due) < new Date());
+      if (!newCard) {
+        // state가 learned가 아닌 카드 중에서 due가 가장 작은 카드
+        newCard = studyQueue.reduce((minCard, card) => {
+          return new Date(card.studyInfo.due) < new Date(minCard.studyInfo.due) ? card : minCard;
+        });
+      }
+      if (newCard) setCurrentCard(newCard);
+      else setIsCompleted(true);
+    }
   }, [studyQueue]);
 
   useEffect(() => {
@@ -77,7 +86,15 @@ export const useStudyQueue = (category: Category) => {
     };
 
     fetchCardDetail();
-  }, [currentCard, locale]);
+  }, [currentCard]);
 
-  return { currentCard, currentCardDetail, studyQueue, intervalPreview, repeat, error };
+  return {
+    currentCard,
+    currentCardDetail,
+    studyQueue,
+    iPreview,
+    repeat,
+    error,
+    isCompleted
+  };
 };

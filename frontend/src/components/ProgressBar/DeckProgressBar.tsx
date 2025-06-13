@@ -18,7 +18,7 @@ const DeckProgressBar = ({
   className,
   isExpanded
 }: DeckProgressBarProps) => {
-  const { newCounts, learningCounts, maturityCounts, overdueCounts } = deck;
+  const { newCounts, learningCounts, maturityCounts } = deck;
 
   useEffect(() => {
     console.log(deck);
@@ -28,26 +28,20 @@ const DeckProgressBar = ({
     {
       value: maturityCounts,
       label: isExpanded ? maturityCounts : '',
-      tooltip: 'Learned',
-      color: LEARNING_PROGRESS_BAR_COLORS.matured
-    },
-    {
-      value: overdueCounts,
-      label: isExpanded ? overdueCounts : '',
-      tooltip: 'Overdue',
-      color: LEARNING_PROGRESS_BAR_COLORS.overdue
+      tooltip: 'Review',
+      color: LEARNING_PROGRESS_BAR_COLORS.Review
     },
     {
       value: learningCounts,
       label: isExpanded ? learningCounts : '',
       tooltip: 'Learning',
-      color: LEARNING_PROGRESS_BAR_COLORS.learning
+      color: LEARNING_PROGRESS_BAR_COLORS.Learning
     },
     {
       value: newCounts,
       label: isExpanded ? newCounts : '',
       tooltip: 'New',
-      color: LEARNING_PROGRESS_BAR_COLORS.new
+      color: LEARNING_PROGRESS_BAR_COLORS.New
     }
   ];
 

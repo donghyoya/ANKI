@@ -15,25 +15,26 @@ const LearningProgressBar = ({ userCards }: { userCards: UserCard[]; className: 
         value: userCards.filter((card) => card.studyInfo.state === State.Review).length || 0,
         label: userCards.filter((card) => card.studyInfo.state === State.Review).length,
         tooltip: 'Matured',
-        color: LEARNING_PROGRESS_BAR_COLORS.matured
+        color: LEARNING_PROGRESS_BAR_COLORS.Review
       },
       {
-        value: userCards.filter((card) => card.studyInfo.state === State.Learning).length || 0,
-        label: userCards.filter((card) => card.studyInfo.state === State.Learning).length,
+        value:
+          userCards.filter(
+            (card) =>
+              card.studyInfo.state === State.Learning || card.studyInfo.state === State.Relearning
+          ).length || 0,
+        label: userCards.filter(
+          (card) =>
+            card.studyInfo.state === State.Learning || card.studyInfo.state === State.Relearning
+        ).length,
         tooltip: 'Learning',
-        color: LEARNING_PROGRESS_BAR_COLORS.learning
-      },
-      {
-        value: userCards.filter((card) => card.studyInfo.state === State.Review).length || 0,
-        label: userCards.filter((card) => card.studyInfo.state === State.Review).length,
-        tooltip: 'Overdue',
-        color: LEARNING_PROGRESS_BAR_COLORS.overdue
+        color: LEARNING_PROGRESS_BAR_COLORS.Learning
       },
       {
         value: userCards.filter((card) => card.studyInfo.state === State.New).length || 0,
         label: userCards.filter((card) => card.studyInfo.state === State.New).length,
         tooltip: 'New',
-        color: LEARNING_PROGRESS_BAR_COLORS.new
+        color: LEARNING_PROGRESS_BAR_COLORS.New
       }
     ],
     [userCards]

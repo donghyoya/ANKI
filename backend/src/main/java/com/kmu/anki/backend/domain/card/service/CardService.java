@@ -23,15 +23,6 @@ public class CardService {
     private final CardQueryRepository cardQueryRepository;
 
     /**
-     * cardId로 Card Dto 쿼리하는 간단한 로직
-     * @param cardId
-     * @return
-     */
-    public CardDto readCard(Long cardId, LanguageCode code){
-        return cardQueryRepository.findById(cardId, code).orElseThrow();
-    }
-
-    /**
      * Card의 상세 정보
      * @param cardId
      * @param code

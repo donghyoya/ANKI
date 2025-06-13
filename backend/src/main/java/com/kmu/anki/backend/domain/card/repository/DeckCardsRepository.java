@@ -26,6 +26,7 @@ import static com.querydsl.core.group.GroupBy.list;
 @Repository
 @RequiredArgsConstructor
 public class DeckCardsRepository {
+    private final ForeignCardQueryRepository foreignCardQueryRepository;
     private final DeckCardsMapper deckCardsMapper;
     private final JPAQueryFactory queryFactory;
     private final QForeignCard foreignCard = QForeignCard.foreignCard;
@@ -45,7 +46,7 @@ public class DeckCardsRepository {
                 .from(koreanCard)
                 .join(koreanCard.cardTopics, cardTopic).fetchJoin()
                 .where(koreanCard.id.in(koreanCardIds)).fetch();
-        Map<Long, List<String>> foreignWords = findForeignWordsByKoreanCardAndLanguageCode(koreanCardIds, languageCode);
+        Map<Long, List<String>> foreignWords = foreignCardQueryRepository.findForeignWordsByKoreanCardAndLanguageCode(koreanCardIds, languageCode);
         return PageableExecutionUtils.getPage(
                 koreanCards.stream().map(card->KoreanCardWithForeignWord.of(card, foreignWords)).toList(),
                 pageable,
@@ -63,7 +64,7 @@ public class DeckCardsRepository {
                 .from(koreanCard)
                 .join(koreanCard.cardTopics, cardTopic).fetchJoin()
                 .where(koreanCard.id.in(koreanCardIds)).fetch();
-        Map<Long, List<String>> foreignWords = findForeignWordsByKoreanCardAndLanguageCode(koreanCardIds, languageCode);
+        Map<Long, List<String>> foreignWords = foreignCardQueryRepository.findForeignWordsByKoreanCardAndLanguageCode(koreanCardIds, languageCode);
         return PageableExecutionUtils.getPage(
                 koreanCards.stream().map(card->KoreanCardWithForeignWord.of(card, foreignWords)).toList(),
                 pageable,
@@ -71,11 +72,5 @@ public class DeckCardsRepository {
         );
     }
 
-    public Map<Long, List<String>> findForeignWordsByKoreanCardAndLanguageCode(List<Long> cards, LanguageCode code){
-        return queryFactory
-                .from(foreignCard)
-                .where(foreignCard.koreanCardId.in(cards).and(foreignCard.languageCode.eq(code)))
-                .transform(groupBy(foreignCard.koreanCardId).as(list(foreignCard.foreignWord)));
-    }
 
 }

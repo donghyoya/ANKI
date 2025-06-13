@@ -53,5 +53,6 @@ public class ForeignCard {
     private KoreanCard koreanCard;
 
     @Column(name = "korean_card_id", insertable = false, updatable = false)
+    @GenericField(name = "koreanCardId", projectable = Projectable.YES)
     private Long koreanCardId;
 }

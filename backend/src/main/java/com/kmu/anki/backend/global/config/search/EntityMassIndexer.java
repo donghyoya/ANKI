@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @RequiredArgsConstructor
-//@Component
+@Component
 public class EntityMassIndexer implements CommandLineRunner {
     private final EntityManager entityManager;
 

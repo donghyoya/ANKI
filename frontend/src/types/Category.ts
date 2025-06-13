@@ -64,5 +64,8 @@ export const meaningInDisplayOrder: Meaning[] = [
 ];
 
 export const getCategoryType = (query: Difficulty | Meaning | string) => {
-  return difficultiesInDisplayOrder.includes(query as Difficulty) ? 'difficulty' : 'meaning';
+  return meaningInDisplayOrder.includes(query as Meaning) ||
+    meaningInDisplayOrder.includes(query.toUpperCase() as Meaning)
+    ? 'meaning'
+    : 'difficulty';
 };

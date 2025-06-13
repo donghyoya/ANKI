@@ -14,7 +14,6 @@ interface WordSectionProps {
 }
 
 const WordSection = ({ card }: WordSectionProps) => {
-  console.log('level', card.level);
   const levelLabel = levelStars[card.level as keyof typeof levelStars] || '';
 
   return (

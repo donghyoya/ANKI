@@ -31,6 +31,7 @@ import org.springframework.data.domain.Page;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
@@ -44,8 +45,8 @@ class UserCardControllerTest extends AbstractControllerTest {
 
     @Test
     void getCardStudyInfo() throws Exception{
-        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, StudyType.study,CardLevel.easy);
-        Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
+        List<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, StudyType.study,CardLevel.easy);
+        Long userCardId = userCardDtos.get(0).getUserCardId();
 
         mockMvc.perform(
                         get("/cards/{userCardId}/study", userCardId)
@@ -100,8 +101,8 @@ class UserCardControllerTest extends AbstractControllerTest {
 
     @Test
     void putUserCards() throws Exception {
-        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, StudyType.study,CardLevel.easy);
-        Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
+        List<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, StudyType.study,CardLevel.easy);
+        Long userCardId = userCardDtos.get(0).getUserCardId();
 
         HashMap<String, Object> map = new HashMap<>();
         map.put("due", LocalDateTime.now());
@@ -145,8 +146,8 @@ class UserCardControllerTest extends AbstractControllerTest {
 
     @Test
     void putUserCards404() throws Exception {
-        Page<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, StudyType.study,CardLevel.easy);
-        Long userCardId = userCardDtos.getContent().get(0).getUserCardId();
+        List<UserCardDto> userCardDtos = userCardService.readStudyUserCard(1L, LanguageCode.en, StudyType.study,CardLevel.easy);
+        Long userCardId = userCardDtos.get(0).getUserCardId();
 
         HashMap<String, Object> map = new HashMap<>();
         map.put("due", LocalDateTime.now());

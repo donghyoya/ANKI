@@ -12,12 +12,14 @@ import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
+import com.kmu.anki.backend.global.schema.BaseListReponse;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
@@ -54,7 +56,7 @@ public class UserCardController {
     }
 
     @GetMapping("/study")
-    public BasePageResponse<UserCardDto> getStudyCards(
+    public BaseListReponse<UserCardDto> getStudyCards(
             @RequestParam("studyType") StudyType studyType,
             @RequestParam("queryType") QueryType queryType,
             @RequestParam("query") String query,
@@ -64,7 +66,7 @@ public class UserCardController {
         UserOptionDto userOptionDto = userOptionService.readOption(userId);
         UserOptionDto.validate(userOptionDto);
         LanguageCode languageCode = userOptionDto.getLanguageCode();
-        Page<UserCardDto> cards;
+        List<UserCardDto> cards;
         if(queryType == QueryType.meaning){
             CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
             cards = userCardService.readStudyUserCard(userId, languageCode, studyType,cardTopicEnums);
@@ -77,7 +79,7 @@ public class UserCardController {
             userStudyHistoryService.createHistory(studyType, queryType, cardLevel, userId);
         }
 
-        return BasePageResponse.of(cards);
+        return BaseListReponse.of(cards);
     }
 
     @GetMapping("/delete-cache")

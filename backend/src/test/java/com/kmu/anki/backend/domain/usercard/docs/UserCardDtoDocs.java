@@ -14,7 +14,7 @@ public class UserCardDtoDocs {
 
     public static FieldDescriptor[] userCard = userCardDto("");
     public static FieldDescriptor[] userCards = BaseDocs.combine(
-            BaseDocs.basePageResponse(),
+            BaseDocs.baseListResponse(),
             userCardDto(BaseDocs.basePageResponsePrefix)
     );
 

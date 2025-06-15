@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.text.html.Option;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 @Repository
@@ -38,13 +40,13 @@ public class CaffeineUserCardCacheRepository implements UserCardCacheRepository 
     }
 
     @Override
-    public UserCardCacheO findDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType,  CardTopicEnums cardTopicEnums) {
-        return cache.getIfPresent(buildKey(userId, languageCode, studyType, cardTopicEnums));
+    public Optional<UserCardCacheO> findDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums cardTopicEnums) {
+        return Optional.ofNullable(cache.getIfPresent(buildKey(userId, languageCode, studyType, cardTopicEnums)));
     }
 
     @Override
-    public UserCardCacheO findDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel) {
-        return cache.getIfPresent(buildKey(userId, languageCode, studyType, cardLevel));
+    public Optional<UserCardCacheO> findDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel) {
+        return Optional.ofNullable(cache.getIfPresent(buildKey(userId, languageCode, studyType, cardLevel)));
     }
 
     @Override

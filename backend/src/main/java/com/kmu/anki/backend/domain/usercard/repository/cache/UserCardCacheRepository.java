@@ -8,10 +8,12 @@ import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.dto.cache.UserCardCacheO;
 import org.springframework.data.domain.Page;
 
-public interface UserCardCacheRepository {
-    UserCardCacheO findDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums cardTopicEnums);
+import java.util.Optional;
 
-    UserCardCacheO findDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel);
+public interface UserCardCacheRepository {
+    Optional<UserCardCacheO> findDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums cardTopicEnums);
+
+    Optional<UserCardCacheO> findDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel);
 
     void saveDailyUserCard(Long userId, LanguageCode languageCode, CardTopicEnums cardTopicEnums, StudyType studyType, UserCardCacheO cacheO);
     void saveDailyUserCard(Long userId, LanguageCode languageCode, CardLevel cardLevel, StudyType studyType, UserCardCacheO cacheO);

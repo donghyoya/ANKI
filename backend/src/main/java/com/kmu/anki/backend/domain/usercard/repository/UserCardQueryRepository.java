@@ -44,6 +44,45 @@ public class UserCardQueryRepository {
     private final QForeignCard foreignCard = QForeignCard.foreignCard;
     private final QCardTopic cardTopic = QCardTopic.cardTopic;
 
+    public List<UserCardDto> findStudyCardByIds(List<Long> userCardIds){
+        return queryFactory
+                .select(userCard)
+                .from(userCard)
+                .join(userCard.koreanCard, koreanCard)
+                .join(koreanCard.cardTopics, cardTopic)
+                .where(
+                        userCard.id.in(userCardIds)
+                )
+                .fetch().stream().map(UserCardDto::of).toList();
+    }
+
+    public List<Long> findStudyCardIds(
+            Long userId,
+            LanguageCode code,
+            CardLevel difficulty,
+            CardTopicEnums topic,
+            LocalDateTime now,
+            StudyType studyType,
+            int limits
+    ){
+        List<Long> userCardIds;
+        userCardIds = queryFactory
+                .select(userCard.id)
+                .from(userCard)
+                .join(userCard.koreanCard, koreanCard)
+                .join(koreanCard.cardTopics, cardTopic)
+                .where(
+                        combineQuery(userId, difficulty, topic, now, studyType)
+                )
+                .orderBy(
+                        userCard.statePriority.desc(),
+                        Expressions.numberTemplate(Double.class, "RANDOM()").asc()
+                )
+                .limit(limits)
+                .fetch();
+        return userCardIds;
+    }
+
     public Page<UserCardDto> findStudyCards(
             Long userId,
             LanguageCode code,

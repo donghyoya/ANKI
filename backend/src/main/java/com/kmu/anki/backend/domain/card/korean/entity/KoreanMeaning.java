@@ -1,5 +1,6 @@
-package com.kmu.anki.backend.domain.card.entity;
+package com.kmu.anki.backend.domain.card.korean.entity;
 
+import com.kmu.anki.backend.domain.card.foreign.entity.ForeignCard;
 import jakarta.persistence.*;
 import lombok.*;
 

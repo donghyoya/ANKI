@@ -1,7 +1,7 @@
-package com.kmu.anki.backend.domain.card.repository;
+package com.kmu.anki.backend.domain.card.foreign.repository;
 
-import com.kmu.anki.backend.domain.card.entity.QForeignCard;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.card.foreign.entity.QForeignCard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

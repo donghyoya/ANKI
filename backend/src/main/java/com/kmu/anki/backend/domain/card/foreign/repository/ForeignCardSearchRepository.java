@@ -1,6 +1,6 @@
-package com.kmu.anki.backend.domain.card.repository.search;
+package com.kmu.anki.backend.domain.card.foreign.repository;
 
-import com.kmu.anki.backend.domain.card.entity.ForeignCard;
+import com.kmu.anki.backend.domain.card.foreign.entity.ForeignCard;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.search.engine.search.predicate.dsl.BooleanPredicateClausesStep;

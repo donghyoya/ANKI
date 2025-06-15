@@ -1,14 +1,12 @@
-package com.kmu.anki.backend.domain.card.repository;
+package com.kmu.anki.backend.domain.card.decks.repository;
 
-import com.kmu.anki.backend.domain.card.dto.DeckDto;
+import com.kmu.anki.backend.domain.card.decks.repository.mapper.DeckMapper;
+import com.kmu.anki.backend.domain.card.decks.dto.DeckDto;
+import com.kmu.anki.backend.domain.card.korean.repository.KoreanCardRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Transactional(readOnly = true)

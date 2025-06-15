@@ -1,11 +1,17 @@
 package com.kmu.anki.backend.domain.card.repository.search;
 
-import com.kmu.anki.backend.domain.card.dto.ForeignCardSearchResult;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardDto;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardWithForeignWord;
+import com.kmu.anki.backend.domain.card.foreign.dto.ForeignCardSearchResult;
+import com.kmu.anki.backend.domain.card.foreign.entity.QForeignCard;
+import com.kmu.anki.backend.domain.card.korean.dto.KoreanCardWithForeignWord;
 import com.kmu.anki.backend.domain.card.entity.*;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
-import com.kmu.anki.backend.domain.card.repository.ForeignCardQueryRepository;
+import com.kmu.anki.backend.domain.card.foreign.entity.ForeignCard;
+import com.kmu.anki.backend.domain.card.foreign.repository.ForeignCardSearchRepository;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanCard;
+import com.kmu.anki.backend.domain.card.korean.entity.QKoreanCard;
+import com.kmu.anki.backend.domain.card.korean.entity.QKoreanMeaning;
+import com.kmu.anki.backend.domain.card.korean.repository.KoreanCardSearchRepository;
+import com.kmu.anki.backend.domain.card.foreign.repository.ForeignCardQueryRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

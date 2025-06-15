@@ -1,11 +1,10 @@
 package com.kmu.anki.backend.domain.card.docs.parameters;
 
-import com.kmu.anki.backend.domain.card.controller.QueryType;
+import com.kmu.anki.backend.domain.card.controller.option.QueryType;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import org.springframework.restdocs.request.ParameterDescriptor;
 import org.springframework.restdocs.snippet.Attributes;
-import org.testcontainers.shaded.org.checkerframework.checker.units.qual.A;
 
 import java.util.*;
 

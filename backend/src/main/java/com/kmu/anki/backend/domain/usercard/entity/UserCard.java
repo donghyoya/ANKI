@@ -1,6 +1,6 @@
 package com.kmu.anki.backend.domain.usercard.entity;
 
-import com.kmu.anki.backend.domain.card.entity.KoreanCard;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanCard;
 import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.user.entity.User;
 import jakarta.persistence.*;

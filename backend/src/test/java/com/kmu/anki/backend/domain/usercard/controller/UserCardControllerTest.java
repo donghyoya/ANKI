@@ -1,10 +1,9 @@
 package com.kmu.anki.backend.domain.usercard.controller;
 
-import com.epages.restdocs.apispec.HeaderDescriptorWithType;
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
-import com.kmu.anki.backend.domain.card.controller.QueryType;
+import com.kmu.anki.backend.domain.card.controller.option.QueryType;
 import com.kmu.anki.backend.domain.card.docs.parameters.CardParameters;
 import com.kmu.anki.backend.domain.card.docs.parameters.DeckParameters;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
@@ -19,7 +18,6 @@ import com.kmu.anki.backend.domain.usercard.docs.parameters.UserCardParameters;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.AbstractControllerTest;
-import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
 import com.kmu.anki.backend.global.ExceptionResponseDocs;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Order;

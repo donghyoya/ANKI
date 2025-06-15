@@ -8,12 +8,11 @@ import com.kmu.anki.backend.domain.card.controller.option.ForeignCardSearchOptio
 import com.kmu.anki.backend.domain.card.docs.ForeignCardSearchResultDocs;
 import com.kmu.anki.backend.domain.card.docs.KoreanCardDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.parameters.CardParameters;
-import com.kmu.anki.backend.domain.card.dto.ForeignCardSearchResult;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardDto;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardWithForeignWord;
-import com.kmu.anki.backend.domain.card.entity.ForeignCard;
-import com.kmu.anki.backend.domain.card.entity.KoreanCard;
-import com.kmu.anki.backend.domain.card.entity.KoreanMeaning;
+import com.kmu.anki.backend.domain.card.foreign.dto.ForeignCardSearchResult;
+import com.kmu.anki.backend.domain.card.korean.dto.KoreanCardWithForeignWord;
+import com.kmu.anki.backend.domain.card.foreign.entity.ForeignCard;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanCard;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanMeaning;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;

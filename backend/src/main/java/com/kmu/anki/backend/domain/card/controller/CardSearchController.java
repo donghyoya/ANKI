@@ -1,9 +1,8 @@
 package com.kmu.anki.backend.domain.card.controller;
 
 import com.kmu.anki.backend.domain.card.controller.option.ForeignCardSearchOption;
-import com.kmu.anki.backend.domain.card.dto.ForeignCardSearchResult;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardDto;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardWithForeignWord;
+import com.kmu.anki.backend.domain.card.foreign.dto.ForeignCardSearchResult;
+import com.kmu.anki.backend.domain.card.korean.dto.KoreanCardWithForeignWord;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.service.CardSearchService;
 import com.kmu.anki.backend.domain.user.dto.UserOptionDto;

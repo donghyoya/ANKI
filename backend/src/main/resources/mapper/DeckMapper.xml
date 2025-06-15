@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kmu.anki.backend.domain.card.repository.DeckMapper">
+<mapper namespace="com.kmu.anki.backend.domain.card.decks.repository.mapper.DeckMapper">
 
     <!-- 쿼리: 난이도별 카드 통계 조회 -->
-    <select id="findDeckByDifficulty" parameterType="java.lang.Long" resultType="com.kmu.anki.backend.domain.card.dto.DeckDto">
+    <select id="findDeckByDifficulty" parameterType="java.lang.Long" resultType="com.kmu.anki.backend.domain.card.decks.dto.DeckDto">
         SELECT
         korean_cards.level AS category,
         COUNT(korean_card_id) AS cardsCounts,
@@ -19,7 +19,7 @@
     </select>
 
     <!-- 쿼리: 주제별 카드 통계 조회 -->
-    <select id="findDeckByMeaning" parameterType="java.lang.Long" resultType="com.kmu.anki.backend.domain.card.dto.DeckDto">
+    <select id="findDeckByMeaning" parameterType="java.lang.Long" resultType="com.kmu.anki.backend.domain.card.decks.dto.DeckDto">
         SELECT
         card_topics.topic_id AS category,
         COUNT(korean_card_id) AS cardsCounts,
@@ -35,7 +35,7 @@
     </select>
 
     <!-- 쿼리: 주제별 카드 통계 조회 -->
-    <select id="findDeckByMeaningWithoutUser" resultType="com.kmu.anki.backend.domain.card.dto.DeckDto">
+    <select id="findDeckByMeaningWithoutUser" resultType="com.kmu.anki.backend.domain.card.decks.dto.DeckDto">
         SELECT
             card_topics.topic_id AS meaning,
             COUNT(korean_card_id) AS cardsCounts

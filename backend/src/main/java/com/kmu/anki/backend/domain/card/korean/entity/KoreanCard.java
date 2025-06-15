@@ -1,10 +1,11 @@
-package com.kmu.anki.backend.domain.card.entity;
+package com.kmu.anki.backend.domain.card.korean.entity;
 
+import com.kmu.anki.backend.domain.card.entity.CardTopic;
+import com.kmu.anki.backend.domain.card.foreign.entity.ForeignCard;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.ibatis.annotations.One;
 import org.hibernate.search.engine.backend.types.Projectable;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.GenericField;
@@ -70,5 +71,6 @@ public class KoreanCard {
 
     /* 관계 - ForeignCard */
     @OneToMany(mappedBy = "koreanCard")
+    @Builder.Default
     private List<ForeignCard> foreignCards = new ArrayList<>();
 }

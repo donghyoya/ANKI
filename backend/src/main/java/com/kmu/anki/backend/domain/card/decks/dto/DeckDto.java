@@ -1,4 +1,4 @@
-package com.kmu.anki.backend.domain.card.dto;
+package com.kmu.anki.backend.domain.card.decks.dto;
 
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;

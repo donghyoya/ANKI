@@ -1,7 +1,7 @@
 package com.kmu.anki.backend.global.config.search;
 
-import com.kmu.anki.backend.domain.card.entity.ForeignCard;
-import com.kmu.anki.backend.domain.card.entity.KoreanCard;
+import com.kmu.anki.backend.domain.card.foreign.entity.ForeignCard;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanCard;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

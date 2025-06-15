@@ -1,41 +1,45 @@
-package com.kmu.anki.backend.domain.card.dto;
+package com.kmu.anki.backend.domain.card.korean.dto;
 
-import com.kmu.anki.backend.domain.card.entity.KoreanCard;
+import com.kmu.anki.backend.domain.card.entity.CardTopic;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanCard;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Getter
-public class KoreanCardDto {
+public class KoreanCardWithForeignWord {
     private Long cardId;
     private String koreanWord; // 표제어
     private String homographNumber; // 동형어 번호
     private CardLevel level; // 난이도
     private Set<CardTopicEnums> topics; // 카드의 분류
+    private List<String> foreignWords;
 
-    public KoreanCardDto(Long cardId, String koreanWord, String homographNumber, CardLevel level, Set<CardTopicEnums> topics) {
+    public KoreanCardWithForeignWord(Long cardId, String koreanWord, String homographNumber, CardLevel level, Set<CardTopicEnums> topics, List<String> foreignWords) {
         this.cardId = cardId;
         this.koreanWord = koreanWord;
         this.homographNumber = homographNumber;
         this.level = level;
         this.topics = topics;
+        this.foreignWords = foreignWords;
     }
 
-    public static KoreanCardDto of(KoreanCard card){
+    public static KoreanCardWithForeignWord of(KoreanCard card, Map<Long, List<String>> foreignWordMaps){
         if(card == null){
             return null;
         }
-        return new KoreanCardDto(
+        return new KoreanCardWithForeignWord(
                 card.getId(),
                 card.getKoreanWord(),
                 card.getHomographNumber(),
                 card.getLevel(),
-                card.getCardTopics().stream().map(topic->topic.getTopicId()).collect(Collectors.toSet())
+                card.getCardTopics().stream().map(CardTopic::getTopicId).collect(Collectors.toSet()),
+                foreignWordMaps.get(card.getId())
         );
     }
 

@@ -1,12 +1,8 @@
 package com.kmu.anki.backend.domain.card.dto;
 
-import com.kmu.anki.backend.domain.card.entity.KoreanCard;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanCard;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
-import com.kmu.anki.backend.domain.card.enums.LanguageCode;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.Getter;
 
 import java.util.List;

@@ -1,7 +1,6 @@
 package com.kmu.anki.backend.domain.card.repository;
 
-import com.kmu.anki.backend.domain.card.dto.KoreanCardDto;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardWithForeignWord;
+import com.kmu.anki.backend.domain.card.korean.dto.KoreanCardWithForeignWord;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.repository.search.CardSearchRepository;
 import com.kmu.anki.backend.global.AbstractIntegrationTest;

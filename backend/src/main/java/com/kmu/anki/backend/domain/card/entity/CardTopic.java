@@ -1,6 +1,7 @@
 package com.kmu.anki.backend.domain.card.entity;
 
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanCard;
 import jakarta.persistence.*;
 import lombok.Getter;
 

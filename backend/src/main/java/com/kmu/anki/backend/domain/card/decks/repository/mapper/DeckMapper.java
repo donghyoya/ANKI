@@ -1,6 +1,6 @@
-package com.kmu.anki.backend.domain.card.repository;
+package com.kmu.anki.backend.domain.card.decks.repository.mapper;
 
-import com.kmu.anki.backend.domain.card.dto.DeckDto;
+import com.kmu.anki.backend.domain.card.decks.dto.DeckDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

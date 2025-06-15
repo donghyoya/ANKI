@@ -2,30 +2,24 @@ package com.kmu.anki.backend.domain.card.repository;
 
 import com.kmu.anki.backend.domain.card.dto.*;
 import com.kmu.anki.backend.domain.card.entity.*;
-import com.kmu.anki.backend.domain.card.enums.CardLevel;
-import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.card.foreign.entity.QForeignCard;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanCard;
+import com.kmu.anki.backend.domain.card.korean.entity.QKoreanCard;
+import com.kmu.anki.backend.domain.card.korean.entity.QKoreanMeaning;
 import com.kmu.anki.backend.domain.usercard.entity.QUserCard;
 import com.querydsl.core.types.Projections;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import static com.querydsl.core.group.GroupBy.groupBy;
 import static com.querydsl.core.group.GroupBy.list;
-
-// TODO
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -33,8 +27,6 @@ import static com.querydsl.core.group.GroupBy.list;
 public class CardQueryRepository {
     private final JPAQueryFactory queryFactory;
     private final JdbcTemplate jdbcTemplate;
-    private final ForeignCardTextSearchMapper foreignCardTextSearchMapper;
-    private final KoreanCardTextSearchMapper koreanCardTextSearchMapper;
     private final QForeignCard foreignCard = QForeignCard.foreignCard;
     private final QKoreanCard koreanCard = QKoreanCard.koreanCard;
     private final QUserCard userCard = QUserCard.userCard;
@@ -73,26 +65,4 @@ public class CardQueryRepository {
         CardDetailDto cardDetailDto = CardDetailDto.of(card, cardMeanings);
         return Optional.ofNullable(cardDetailDto);
     }
-
-    /**
-     * 외국어 문자 검색
-     * @param languageCode
-     * @param queryText 검색어
-     * @return
-     */
-    public Page<CardDetailDto> searchForeignWord(LanguageCode languageCode, String queryText, Pageable pageable){
-        List<CardDetailDto> cardDetailDtos = foreignCardTextSearchMapper.searchForeignWord(languageCode.toString(), queryText, pageable.getOffset(), pageable.getPageSize());
-        return PageableExecutionUtils.getPage(
-                cardDetailDtos, pageable, () -> foreignCardTextSearchMapper.searchForeignWordCount(languageCode.toString(), queryText)
-        );
-    }
-
-    public Page<CardDetailDto> searchKoreanWord(LanguageCode languageCode, String queryText, Pageable pageable){
-        List<CardDetailDto> cardDetailDtos = koreanCardTextSearchMapper.searchKoreanWord(languageCode.toString(), queryText, pageable.getOffset(), pageable.getPageSize());
-        return PageableExecutionUtils.getPage(
-                cardDetailDtos, pageable, () -> koreanCardTextSearchMapper.searchKoreanWordCount(languageCode.toString(), queryText)
-        );
-
-    }
-
 }

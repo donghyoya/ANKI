@@ -1,15 +1,13 @@
 package com.kmu.anki.backend.domain.card.service;
 
 import com.kmu.anki.backend.domain.card.controller.option.ForeignCardSearchOption;
-import com.kmu.anki.backend.domain.card.dto.ForeignCardSearchResult;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardDto;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardWithForeignWord;
+import com.kmu.anki.backend.domain.card.foreign.dto.ForeignCardSearchResult;
+import com.kmu.anki.backend.domain.card.korean.dto.KoreanCardWithForeignWord;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.repository.search.CardSearchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

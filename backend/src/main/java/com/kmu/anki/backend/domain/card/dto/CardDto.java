@@ -1,6 +1,6 @@
 package com.kmu.anki.backend.domain.card.dto;
 
-import com.kmu.anki.backend.domain.card.entity.ForeignCard;
+import com.kmu.anki.backend.domain.card.foreign.entity.ForeignCard;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import lombok.Getter;

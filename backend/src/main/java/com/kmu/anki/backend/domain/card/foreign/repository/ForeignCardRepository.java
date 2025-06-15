@@ -1,8 +1,7 @@
-package com.kmu.anki.backend.domain.card.repository;
+package com.kmu.anki.backend.domain.card.foreign.repository;
 
-import com.kmu.anki.backend.domain.card.entity.ForeignCard;
+import com.kmu.anki.backend.domain.card.foreign.entity.ForeignCard;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
-import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

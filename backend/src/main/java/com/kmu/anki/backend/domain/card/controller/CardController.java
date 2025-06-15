@@ -1,24 +1,13 @@
 package com.kmu.anki.backend.domain.card.controller;
 
-import com.kmu.anki.backend.domain.auth.legacy.utils.PrincipalUtils;
 import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
-import com.kmu.anki.backend.domain.card.dto.CardDto;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.service.CardService;
 import com.kmu.anki.backend.domain.user.dto.UserOptionDto;
 import com.kmu.anki.backend.domain.user.service.UserOptionService;
-import com.kmu.anki.backend.domain.user.service.UserService;
-import com.kmu.anki.backend.domain.user.utils.SessionUtils;
-import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
-import com.kmu.anki.backend.global.schema.BasePageResponse;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @RequestMapping("/cards")
 @RequiredArgsConstructor

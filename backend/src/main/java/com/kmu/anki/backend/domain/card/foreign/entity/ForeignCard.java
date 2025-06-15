@@ -1,9 +1,10 @@
-package com.kmu.anki.backend.domain.card.entity;
+package com.kmu.anki.backend.domain.card.foreign.entity;
 
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanCard;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanMeaning;
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.ibatis.annotations.Many;
 import org.hibernate.search.engine.backend.types.Projectable;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.GenericField;

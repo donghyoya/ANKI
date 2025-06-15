@@ -1,8 +1,9 @@
-package com.kmu.anki.backend.domain.card.dto;
+package com.kmu.anki.backend.domain.card.foreign.dto;
 
-import com.kmu.anki.backend.domain.card.entity.ForeignCard;
-import com.kmu.anki.backend.domain.card.entity.KoreanMeaning;
-import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.card.dto.CardMeaningWithForeign;
+import com.kmu.anki.backend.domain.card.korean.dto.KoreanCardDto;
+import com.kmu.anki.backend.domain.card.foreign.entity.ForeignCard;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanMeaning;
 import lombok.Getter;
 
 @Getter

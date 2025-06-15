@@ -4,6 +4,8 @@ import com.kmu.anki.backend.domain.card.entity.*;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.card.foreign.entity.QForeignCard;
+import com.kmu.anki.backend.domain.card.korean.entity.QKoreanCard;
 import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;

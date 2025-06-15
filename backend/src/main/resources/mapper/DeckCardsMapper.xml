@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kmu.anki.backend.domain.card.repository.DeckCardsMapper">
+<mapper namespace="com.kmu.anki.backend.domain.card.decks.repository.mapper.DeckCardsMapper">
 
     <select id="findDeckCardsByTopic" parameterType="map" resultType="java.lang.Long">
         select kc.korean_card_id

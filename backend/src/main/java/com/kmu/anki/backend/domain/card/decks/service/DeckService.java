@@ -1,9 +1,14 @@
-package com.kmu.anki.backend.domain.card.service;
+package com.kmu.anki.backend.domain.card.decks.service;
 
-import com.kmu.anki.backend.domain.card.dto.*;
+import com.kmu.anki.backend.domain.card.decks.dto.DeckDto;
+import com.kmu.anki.backend.domain.card.decks.repository.DeckCardsRepository;
+import com.kmu.anki.backend.domain.card.decks.repository.DeckQueryRepository;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
+import com.kmu.anki.backend.domain.card.foreign.repository.ForeignCardRepository;
+import com.kmu.anki.backend.domain.card.korean.dto.KoreanCardWithForeignWord;
+import com.kmu.anki.backend.domain.card.korean.repository.KoreanCardRepository;
 import com.kmu.anki.backend.domain.card.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

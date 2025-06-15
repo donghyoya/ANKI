@@ -1,6 +1,6 @@
-package com.kmu.anki.backend.domain.card.repository.search;
+package com.kmu.anki.backend.domain.card.korean.repository;
 
-import com.kmu.anki.backend.domain.card.entity.KoreanCard;
+import com.kmu.anki.backend.domain.card.korean.entity.KoreanCard;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.search.engine.search.query.SearchResult;
@@ -11,8 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor

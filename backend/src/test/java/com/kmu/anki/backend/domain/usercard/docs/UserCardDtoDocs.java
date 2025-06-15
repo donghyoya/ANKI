@@ -1,13 +1,8 @@
 package com.kmu.anki.backend.domain.usercard.docs;
 
-import com.epages.restdocs.apispec.ConstrainedFields;
 import com.epages.restdocs.apispec.Schema;
-import com.kmu.anki.backend.domain.card.docs.CardDtoDocs;
 import com.kmu.anki.backend.domain.card.docs.KoreanCardDtoDocs;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardDto;
-import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.global.BaseDocs;
-import org.springframework.restdocs.constraints.ConstraintDescriptions;
 import org.springframework.restdocs.payload.FieldDescriptor;
 import org.springframework.restdocs.payload.JsonFieldType;
 

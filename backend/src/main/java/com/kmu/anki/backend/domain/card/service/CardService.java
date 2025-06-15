@@ -1,25 +1,19 @@
 package com.kmu.anki.backend.domain.card.service;
 
 import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
-import com.kmu.anki.backend.domain.card.dto.CardDto;
-import com.kmu.anki.backend.domain.card.entity.KoreanCard;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.repository.CardQueryRepository;
-import com.kmu.anki.backend.domain.card.repository.KoreanCardRepository;
+import com.kmu.anki.backend.domain.card.korean.repository.KoreanCardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
 public class CardService {
-    private final KoreanCardRepository koreanCardRepository;
     private final CardQueryRepository cardQueryRepository;
 
     /**
@@ -31,14 +25,4 @@ public class CardService {
     public CardDetailDto readCardDetail(Long cardId, LanguageCode code){
         return cardQueryRepository.findDetailById(cardId, code).orElseThrow();
     }
-
-    public Page<CardDetailDto> searchForeignCards(LanguageCode code, String queryText, int page, int pageSize){
-        return cardQueryRepository.searchForeignWord(code, queryText, PageRequest.of(page, pageSize));
-    }
-
-    public Page<CardDetailDto> searchKoreanCards(LanguageCode code, String queryText, int page, int pageSize){
-        return cardQueryRepository.searchKoreanWord(code, queryText, PageRequest.of(page, pageSize));
-    }
-
-
 }

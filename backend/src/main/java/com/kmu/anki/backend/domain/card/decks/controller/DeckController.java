@@ -1,21 +1,17 @@
-package com.kmu.anki.backend.domain.card.controller;
+package com.kmu.anki.backend.domain.card.decks.controller;
 
-import com.kmu.anki.backend.domain.auth.legacy.utils.PrincipalUtils;
-import com.kmu.anki.backend.domain.card.dto.CardDetailDto;
-import com.kmu.anki.backend.domain.card.dto.DeckDto;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardDto;
-import com.kmu.anki.backend.domain.card.dto.KoreanCardWithForeignWord;
+import com.kmu.anki.backend.domain.card.controller.option.QueryType;
+import com.kmu.anki.backend.domain.card.decks.dto.DeckDto;
+import com.kmu.anki.backend.domain.card.korean.dto.KoreanCardWithForeignWord;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.card.service.CardService;
-import com.kmu.anki.backend.domain.card.service.DeckService;
+import com.kmu.anki.backend.domain.card.decks.service.DeckService;
 import com.kmu.anki.backend.domain.user.dto.UserOptionDto;
 import com.kmu.anki.backend.domain.user.service.UserOptionService;
-import com.kmu.anki.backend.domain.user.utils.SessionUtils;
 import com.kmu.anki.backend.global.schema.BaseListReponse;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

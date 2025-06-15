@@ -4,7 +4,7 @@ import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.kmu.anki.backend.domain.PageParameters;
-import com.kmu.anki.backend.domain.card.controller.QueryType;
+import com.kmu.anki.backend.domain.card.controller.option.QueryType;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.study.history.dto.UserStudyHistoryDto;
@@ -12,7 +12,6 @@ import com.kmu.anki.backend.domain.study.history.service.UserStudyHistoryService
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.study.history.controller.docs.UserStudyHistoryDtoDocs;
 import com.kmu.anki.backend.global.AbstractControllerTest;
-import com.kmu.anki.backend.global.auth.WithMockCustomOAuth2;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

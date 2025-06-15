@@ -1,11 +1,8 @@
 package com.kmu.anki.backend.domain.study.history.dto;
 
-import com.kmu.anki.backend.domain.card.controller.QueryType;
+import com.kmu.anki.backend.domain.card.controller.option.QueryType;
 import com.kmu.anki.backend.domain.study.history.entity.UserStudyHistory;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

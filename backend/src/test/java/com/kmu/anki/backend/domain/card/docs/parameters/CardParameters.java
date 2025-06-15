@@ -1,6 +1,5 @@
 package com.kmu.anki.backend.domain.card.docs.parameters;
 
-import com.kmu.anki.backend.domain.card.controller.QueryType;
 import com.kmu.anki.backend.domain.card.controller.option.ForeignCardSearchOption;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import org.springframework.restdocs.request.ParameterDescriptor;

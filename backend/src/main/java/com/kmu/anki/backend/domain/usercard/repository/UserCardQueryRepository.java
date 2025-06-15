@@ -63,6 +63,7 @@ public class UserCardQueryRepository {
             CardTopicEnums topic,
             LocalDateTime now,
             StudyType studyType,
+            List<Long> ids,
             int limits
     ){
         List<Long> userCardIds;
@@ -72,7 +73,7 @@ public class UserCardQueryRepository {
                 .join(userCard.koreanCard, koreanCard)
                 .join(koreanCard.cardTopics, cardTopic)
                 .where(
-                        combineQuery(userId, difficulty, topic, now, studyType)
+                        combineQuery(userId, difficulty, topic, now, studyType, ids)
                 )
                 .orderBy(
                         userCard.statePriority.desc(),
@@ -81,47 +82,6 @@ public class UserCardQueryRepository {
                 .limit(limits)
                 .fetch();
         return userCardIds;
-    }
-
-    public Page<UserCardDto> findStudyCards(
-            Long userId,
-            LanguageCode code,
-            CardLevel difficulty,
-            CardTopicEnums topic,
-            LocalDateTime now,
-            StudyType studyType,
-            Pageable pageable
-    ){
-        List<UserCard> userCards = queryFactory
-                .select(userCard)
-                .from(userCard)
-                .join(userCard.koreanCard, koreanCard)
-                .join(koreanCard.cardTopics, cardTopic)
-                .where(
-                        combineQuery(userId, difficulty, topic, now, studyType)
-                )
-                .orderBy(
-                        userCard.statePriority.desc(),
-                        Expressions.numberTemplate(Double.class, "RANDOM()").asc()
-                )
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetch();
-        JPAQuery<UserCard> countq = queryFactory
-                .select(userCard)
-                .from(userCard)
-                .join(userCard.koreanCard, koreanCard)
-                .join(koreanCard.cardTopics, cardTopic)
-                .where(
-                        combineQuery(userId, difficulty, topic, now, studyType)
-                )
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-        ;
-        List<UserCardDto> ret = userCards.stream().map(UserCardDto::of).toList();
-        return PageableExecutionUtils.getPage(
-                ret, pageable, ()->  countq.fetch().size()
-        );
     }
 
     public Optional<CardStudyDto> findCardStudyDto(
@@ -154,12 +114,14 @@ public class UserCardQueryRepository {
     }
 
     /* 조건식 */
+
     private Predicate combineQuery(
             Long userId,
             CardLevel difficulty,
             CardTopicEnums topic,
             LocalDateTime now,
-            StudyType studyType
+            StudyType studyType,
+            List<Long> ids
     ){
         BooleanBuilder builder = new BooleanBuilder();
         builder
@@ -168,6 +130,7 @@ public class UserCardQueryRepository {
                 .and(topicEq(topic))
                 .and(dueBefore(now))
                 .and(studyTpye(studyType))
+                .and(userCardIdNotIn(ids))
         ;
         return builder;
     }
@@ -204,5 +167,9 @@ public class UserCardQueryRepository {
         return type == StudyType.study
                 ? userCard.state.eq(CardState.New).or(userCard.state.eq(CardState.Learning))
                 : userCard.state.eq(CardState.Review).or(userCard.state.eq(CardState.Relearning));
+    }
+
+    public BooleanExpression userCardIdNotIn(List<Long> userCardIds){
+        return userCardIds == null ? null : userCard.id.notIn(userCardIds);
     }
 }

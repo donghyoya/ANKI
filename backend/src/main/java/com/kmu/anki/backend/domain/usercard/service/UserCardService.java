@@ -61,8 +61,16 @@ public class UserCardService {
         List<Long> userCardIds = null;
         if(opt.isPresent()){
             userCardIds = opt.get().getUserCardIds();
+            // 캐싱 데이터의 개수 맞추는 로직
+            if(userCardIds.size() > words){
+                userCardIds = userCardIds.subList(0, words);
+            }else if(userCardIds.size() < words){
+                userCardIds.addAll(userCardQueryRepository.findStudyCardIds(userId, languageCode, null, cardTopicEnums, now, studyType, userCardIds, words-userCardIds.size()+1));
+                userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardTopicEnums, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
+            }
         }else {
-            userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, null, cardTopicEnums, now, studyType, words);
+            userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, null, cardTopicEnums, now, studyType, null, words);
+            userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardTopicEnums, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
         }
         return userCardQueryRepository.findStudyCardByIds(userCardIds);
     }
@@ -78,8 +86,15 @@ public class UserCardService {
         List<Long> userCardIds = null;
         if(opt.isPresent()){
             userCardIds = opt.get().getUserCardIds();
+            if(userCardIds.size() > words){
+                userCardIds = userCardIds.subList(0, words);
+            }else if(userCardIds.size() < words){
+                userCardIds.addAll(userCardQueryRepository.findStudyCardIds(userId, languageCode, cardLevel, null, now, studyType, userCardIds, words-userCardIds.size()+1));
+                userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardLevel, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
+            }
         }else {
-            userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, cardLevel, null, now, studyType, words);
+            userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, cardLevel, null, now, studyType, null, words);
+            userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardLevel, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
         }
         return userCardQueryRepository.findStudyCardByIds(userCardIds);
     }

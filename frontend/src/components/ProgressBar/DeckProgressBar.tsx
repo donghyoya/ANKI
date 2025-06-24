@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { Deck } from '@/types/schemes';
 import { LEARNING_PROGRESS_BAR_COLORS } from '@/constants/colors';
-import { Progress } from '@/types/Progress';
+import { ProgressBarSegment } from '@/types/ProgressBarSegment';
 import ProgressBar from './ProgressBar';
 
 interface DeckProgressBarProps {
@@ -24,7 +24,7 @@ const DeckProgressBar = ({
     console.log(deck);
   }, [deck]);
 
-  const progress: Progress[] = [
+  const progressBarSegments: ProgressBarSegment[] = [
     {
       value: maturityCounts,
       label: isExpanded ? maturityCounts : '',
@@ -47,7 +47,7 @@ const DeckProgressBar = ({
 
   return (
     <ProgressBar
-      progress={progress}
+      progressBarSegments={progressBarSegments}
       styles={stylesProp}
       className={className}
       height={isExpanded ? 12 : 6}

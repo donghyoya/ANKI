@@ -24,7 +24,7 @@ export default function LearningPage() {
 
   const [cardState, setCardState] = useState<LearningCardState>({
     isRevealed: false,
-    showDetail: true,
+    showDetail: false,
     showConjugation: false,
     showExample: false,
     isKoreanToForeign: true
@@ -35,9 +35,7 @@ export default function LearningPage() {
     cardWidth
   });
 
-  const { currentCardDetail, studyQueue, iPreview, repeat, isCompleted } = useStudyQueue(
-    category as Category
-  );
+  const { studyService, currentCardDetail, isLoading } = useStudyQueue(category as Category);
 
   const handleReveal = () => {
     setCardState((prev) => ({ ...prev, isRevealed: true }));
@@ -56,8 +54,12 @@ export default function LearningPage() {
   };
 
   const handleOnRepeat = (rating: Rating) => {
+    if (!studyService) {
+      throw new Error('Study service not found');
+    }
     setCardState((prev) => ({ ...prev, isRevealed: false }));
-    repeat(rating);
+    studyService.repeat(rating);
+    studyService.updateQueue(studyService.currentCard);
   };
 
   const toggleDetailedView = () => {
@@ -97,11 +99,19 @@ export default function LearningPage() {
     setCardWidth(document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0);
   }, []);
 
-  if (studyQueue === null || currentCardDetail === null) {
+  if (isLoading && !studyService) {
     return <div className={styles['page']}>Loading...</div>;
   }
 
-  if (isCompleted) {
+  if (!currentCardDetail) {
+    return <div className={styles['page']}>Card not found</div>;
+  }
+
+  if (!studyService?.queue) {
+    return <div className={styles['page']}>Study queue not found</div>;
+  }
+
+  if (studyService.isCompleted) {
     return <div className={styles['page']}>학습 끝</div>;
   }
 
@@ -109,7 +119,10 @@ export default function LearningPage() {
     <div className={styles['learning-container']}>
       <div className={styles['progress-container-wrapper']}>
         <div className={styles['progress-container']}>
-          <LearningProgressBar className={styles['progress-bar']} userCards={studyQueue} />
+          <LearningProgressBar
+            className={styles['progress-bar']}
+            studyCounts={studyService.studyCounts}
+          />
         </div>
       </div>
       <LearningCard
@@ -125,7 +138,7 @@ export default function LearningPage() {
         setContentHeight={setContentHeight}
       />
       <RatingButtonContainer
-        iPreview={iPreview}
+        iPreview={studyService.iPreview}
         isRevealed={cardState.isRevealed}
         onRepeat={handleOnRepeat}
       />

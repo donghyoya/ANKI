@@ -1,6 +1,8 @@
 import { UserCard } from '@/types/schemes';
 import { Card, fsrs, Grade, Rating, State } from 'ts-fsrs';
 
+import { postStudyInfo } from '@/api/study';
+
 const STATE_MAP = {
   [State.New]: 'New',
   [State.Review]: 'Review',
@@ -47,7 +49,7 @@ export class StudyService {
     const index = this._queue.findIndex((c) => c.userCardId === newCard.userCardId);
     if (index !== -1) {
       this._queue[index] = newCard;
-      this._queue.sort((a, b) => this.compareCards(a, b));
+      this._queue.sort(this.compareCards);
     }
 
     this.logQueue();
@@ -146,6 +148,9 @@ export class StudyService {
 
     const newCard = { ...this.currentCard, studyInfo: newStudyInfo };
     console.log('newCard', newCard.studyInfo.learningSteps);
+
+    const studyDTO = await postStudyInfo(newCard.userCardId, newCard.studyInfo);
+    console.log('studyDTO', studyDTO);
 
     this.updateQueue(newCard);
 

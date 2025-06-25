@@ -39,7 +39,7 @@ export class StudyService {
   }
 
   private set queue(newQueue: UserCard[]) {
-    this._queue = newQueue.sort(this.compareCards);
+    this._queue = newQueue.sort((a, b) => this.compareCards(a, b));
     this.logQueue();
   }
 
@@ -47,7 +47,7 @@ export class StudyService {
     const index = this._queue.findIndex((c) => c.userCardId === newCard.userCardId);
     if (index !== -1) {
       this._queue[index] = newCard;
-      this._queue.sort(this.compareCards);
+      this._queue.sort((a, b) => this.compareCards(a, b));
     }
 
     this.logQueue();
@@ -129,7 +129,7 @@ export class StudyService {
     return (a.studyInfo.lastRating ?? now).getTime() - (b.studyInfo.lastRating ?? now).getTime();
   }
 
-  public repeat(rating: Rating) {
+  public async repeat(rating: Rating) {
     // 새로운 카드 상태 계산
     const newIPreview = this.iPreview;
     const newRecordLogItem = newIPreview[rating as Grade];

@@ -2,15 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import useLearningCardLayout from '@/hooks/useLearningCardLayout';
-import { useParams } from 'next/navigation';
+import { redirect, useParams } from 'next/navigation';
 import { useStudyQueue } from '@/hooks/useStudyQueue';
 import { useTranslations } from 'next-intl';
 
 import LearningCard, { LearningCardState } from '@/components/LearningCard/LearningCard';
 import RatingButtonContainer from '@/components/RatingButton/RatingButtonContainer';
 import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
+import CustomDialog from '@/components/Dialogs/CustomDialog';
 
-import { Category } from '@/types/Category';
+import { Category, getCategoryType } from '@/types/Category';
 import { MenuItem } from '@/types/Menu';
 import { Rating } from 'ts-fsrs';
 
@@ -104,15 +105,11 @@ export default function LearningPage() {
   }
 
   if (!currentCardDetail) {
-    return <div className={styles['page']}>Card not found</div>;
+    return <div className={styles['page']}>CardDetail Loading...</div>;
   }
 
   if (!studyService?.queue) {
     return <div className={styles['page']}>Study queue not found</div>;
-  }
-
-  if (studyService.isCompleted) {
-    return <div className={styles['page']}>학습 끝</div>;
   }
 
   return (
@@ -142,6 +139,27 @@ export default function LearningPage() {
         isRevealed={cardState.isRevealed}
         onRepeat={handleOnRepeat}
       />
+      {studyService?.isCompleted && (
+        <CustomDialog
+          open={studyService.isCompleted}
+          headline="Daily goal completed!"
+          prompt={
+            <div>
+              Want to keep going?
+              <br />
+              Choose an option below:
+            </div>
+          }
+          firstButtonString="Learn More"
+          secondButtonString="Finish"
+          firstButtonOnclick={() => {
+            alert('Not implemented');
+          }}
+          secondButtonOnclick={() => {
+            redirect(`/${getCategoryType(category as Category)}`);
+          }}
+        />
+      )}
     </div>
   );
 }

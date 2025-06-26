@@ -12,6 +12,8 @@
   "showForeign": "Монгол хэлийг харуулах",
   "expandAll": "Бүгдийг өргөжүүлэх",
   "collapseAll": "Бүгдийг хаах",
+  "cancel": "Цуцлах",
+  "save": "Хадгалах",
 
   "menu": {
     "difficulty": "Хүндийн зэрэг",
@@ -97,6 +99,7 @@
     "newCount": "Өдөр бүр шинэ үгийн тоо",
     "account": "Бүртгэл",
     "signOut": "Гарах",
-    "deleteAccount": "Бүртгэл устгах"
+    "deleteAccount": "Бүртгэл устгах",
+    "ucfOffset": "Цагийн бүс"
   }
 }

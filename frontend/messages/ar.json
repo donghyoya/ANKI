@@ -12,6 +12,8 @@
   "showForeign": "إظهار العربية",
   "expandAll": "توسيع الكل",
   "collapseAll": "طي الكل",
+  "cancel": "إلغاء",
+  "save": "حفظ",
 
   "menu": {
     "difficulty": "الصعوبة",
@@ -97,6 +99,7 @@
     "newCount": "عدد الكلمات الجديدة يومياً",
     "account": "الحساب",
     "signOut": "تسجيل الخروج",
-    "deleteAccount": "حذف الحساب"
+    "deleteAccount": "حذف الحساب",
+    "ucfOffset": "المنطقة الزمنية"
   }
 }

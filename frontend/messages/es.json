@@ -12,6 +12,8 @@
   "showForeign": "Mostrar español",
   "expandAll": "Expandir todo",
   "collapseAll": "Colapsar todo",
+  "cancel": "Cancelar",
+  "save": "Guardar",
 
   "menu": {
     "difficulty": "Dificultad",
@@ -97,6 +99,7 @@
     "newCount": "Cantidad diaria de palabras nuevas",
     "account": "Cuenta",
     "signOut": "Cerrar sesión",
-    "deleteAccount": "Eliminar cuenta"
+    "deleteAccount": "Eliminar cuenta",
+    "ucfOffset": "Zona horaria"
   }
 }

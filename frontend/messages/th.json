@@ -12,6 +12,8 @@
   "showForeign": "แสดงภาษาไทย",
   "expandAll": "ขยายทั้งหมด",
   "collapseAll": "ยุบทั้งหมด",
+  "cancel": "ยกเลิก",
+  "save": "บันทึก",
 
   "menu": {
     "difficulty": "ความยาก",
@@ -97,6 +99,7 @@
     "newCount": "จำนวนคำใหม่ต่อวัน",
     "account": "บัญชี",
     "signOut": "ออกจากระบบ",
-    "deleteAccount": "ลบบัญชี"
+    "deleteAccount": "ลบบัญชี",
+    "ucfOffset": "เขตเวลา"
   }
 }

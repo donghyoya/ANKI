@@ -12,6 +12,8 @@
   "showForeign": "显示中文",
   "expandAll": "展开全部",
   "collapseAll": "收起全部",
+  "cancel": "取消",
+  "save": "保存",
 
   "menu": {
     "difficulty": "难度",
@@ -97,6 +99,7 @@
     "newCount": "每日新增单词数",
     "account": "账户",
     "signOut": "退出登录",
-    "deleteAccount": "删除账户"
+    "deleteAccount": "删除账户",
+    "ucfOffset": "时区"
   }
 }

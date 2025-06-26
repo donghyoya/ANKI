@@ -12,6 +12,8 @@
   "showForeign": "Tampilkan bahasa Indonesia",
   "expandAll": "Perluas semua",
   "collapseAll": "Tutup semua",
+  "cancel": "Batal",
+  "save": "Simpan",
 
   "menu": {
     "difficulty": "Kesulitan",
@@ -97,6 +99,7 @@
     "newCount": "Jumlah kata baru setiap hari",
     "account": "Akun",
     "signOut": "Keluar",
-    "deleteAccount": "Hapus akun"
+    "deleteAccount": "Hapus akun",
+    "ucfOffset": "Zona waktu"
   }
 }

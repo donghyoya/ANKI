@@ -1,18 +1,18 @@
 'use server';
 
 import { UserOption } from '@/types/schemes';
-import { requestApi } from './utils';
+import { ServerServiceFactory } from '@/services/ServerServiceFactory';
 
-const endpoint = process.env.NEXT_PUBLIC_SERVER;
+const httpClient = ServerServiceFactory.getHttpClient();
 
-export const getUserOption = async (token: string) => {
-  const url = `${endpoint}/user/option`;
-  const response = await requestApi<UserOption>({ url, token });
-  return response;
+export const getUserOption = async () => {
+  const url = '/user/option';
+  const response = await httpClient.get<UserOption>(url);
+  return response.data;
 };
 
-export const postUserOption = async (userOption: UserOption, token: string) => {
-  const url = `${endpoint}/user/option`;
-  const response = await requestApi<UserOption>({ url, token, method: 'POST', body: userOption });
-  return response;
+export const postUserOption = async (userOption: UserOption) => {
+  const url = '/user/option';
+  const response = await httpClient.post<UserOption>(url, userOption);
+  return response.data;
 };

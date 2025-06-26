@@ -1,9 +1,11 @@
+'use server';
+
 import { TokenDTO } from '@/types/schemes';
-import { ApiError } from './utils';
+import { ServerServiceFactory } from '@/services/ServerServiceFactory';
 
 const endpoint = process.env.NEXT_PUBLIC_SERVER;
 
-export const getToken = async (authenticationToken: string) => {
+export const refresh = async (authenticationToken: string): Promise<TokenDTO> => {
   try {
     const url = `${endpoint}/auth/token`;
     console.log('authenticationToken', authenticationToken);
@@ -19,10 +21,13 @@ export const getToken = async (authenticationToken: string) => {
     const data = await response.json();
 
     if (response.ok) {
+      const cookieService = ServerServiceFactory.getCookieService();
+      await cookieService.set('accessToken', data.accessToken);
+      await cookieService.set('refreshToken', data.refreshToken);
       return data as TokenDTO;
     }
 
-    throw new ApiError(response.status, '토큰 발급 실패', data);
+    throw new Error('토큰 발급 실패');
   } catch (error) {
     throw error;
   }

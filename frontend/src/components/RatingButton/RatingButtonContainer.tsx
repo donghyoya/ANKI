@@ -1,5 +1,6 @@
 import RatingButton from './RatingButton';
-import { Rating, IPreview, ReviewLog } from 'ts-fsrs';
+import { Rating } from 'ts-fsrs';
+import { IPreview, ReviewLog } from '@/types/fsrs';
 
 import styles from './RatingButtonContainer.module.scss';
 

@@ -1,16 +1,15 @@
-import { Card as FSRSCardSnakeCase, fsrs, generatorParameters } from 'ts-fsrs';
+import { Card, fsrs, generatorParameters } from 'ts-fsrs';
 import { StudyInfo } from '@/types/schemes';
-import { convertToCamelCaseDeep, convertToSnakeCase } from './converter';
+import { camelizeKeys, decamelizeKeys } from 'humps';
+import { IPreview } from '@/types/fsrs';
 
 export function createFSRS() {
   const f = fsrs(generatorParameters());
   return {
     ...f,
     repeat: (card: StudyInfo, now: Date) => {
-      const snakeCaseCard = convertToSnakeCase(card) as FSRSCardSnakeCase;
-      const iPreview = f.repeat(snakeCaseCard, now);
-      const convertedIPreview = convertToCamelCaseDeep(iPreview);
-      return convertedIPreview;
+      const snakeCaseCard = decamelizeKeys(card) as Card;
+      return camelizeKeys(f.repeat(snakeCaseCard, now)) as unknown as IPreview;
     }
   };
 }

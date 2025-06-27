@@ -1,7 +1,8 @@
 import { UserCard } from '@/types/schemes';
-import { Card, fsrs, Grade, Rating, State } from 'ts-fsrs';
+import { Grade, Rating, State } from 'ts-fsrs';
 
 import { postStudyInfo } from '@/api/study';
+import { createFSRS } from '@/utils/fsrs';
 
 const STATE_MAP = {
   [State.New]: 'New',
@@ -18,7 +19,7 @@ export interface StudyCounts {
 }
 
 export class StudyService {
-  private f = fsrs();
+  private f = createFSRS();
   private _queue: UserCard[] = [];
 
   constructor(initialQueue: UserCard[]) {
@@ -76,16 +77,7 @@ export class StudyService {
   }
 
   public get iPreview() {
-    const card = this.currentCard;
-    const studyInfo: Card = {
-      ...card.studyInfo,
-      elapsed_days: card.studyInfo.elapsedDays,
-      scheduled_days: card.studyInfo.scheduledDays,
-      learning_steps: card.studyInfo.learningSteps,
-      last_review: card.studyInfo.lastReview
-    };
-    const newIPreview = this.f.repeat(studyInfo, new Date());
-    return newIPreview;
+    return this.f.repeat(this.currentCard.studyInfo, new Date());
   }
 
   public get studyCounts() {
@@ -131,29 +123,19 @@ export class StudyService {
     return (a.studyInfo.lastRating ?? now).getTime() - (b.studyInfo.lastRating ?? now).getTime();
   }
 
-  public async repeat(rating: Rating) {
+  public repeat(rating: Rating) {
     // 새로운 카드 상태 계산
     const newIPreview = this.iPreview;
     const newRecordLogItem = newIPreview[rating as Grade];
-    const { elapsed_days, scheduled_days, learning_steps, last_review, ...rest } =
-      newRecordLogItem.card;
+
     const newStudyInfo = {
-      ...rest,
-      elapsedDays: elapsed_days,
-      scheduledDays: scheduled_days,
-      learningSteps: learning_steps,
-      lastReview: last_review,
+      ...newRecordLogItem.card,
       lastRating: new Date()
     };
 
     const newCard = { ...this.currentCard, studyInfo: newStudyInfo };
-    console.log('newCard', newCard.studyInfo.learningSteps);
-
-    const studyDTO = await postStudyInfo(newCard.userCardId, newCard.studyInfo);
-    console.log('studyDTO', studyDTO);
-
     this.updateQueue(newCard);
 
-    return newCard;
+    return postStudyInfo(newCard.userCardId, newCard.studyInfo);
   }
 }

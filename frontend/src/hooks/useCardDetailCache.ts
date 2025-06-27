@@ -6,15 +6,16 @@ import { useEffect } from 'react';
 // currentCardDetail 쿼리
 // prefetch 로직
 
+const CACHE_SIZE = 5;
+
 export const useCardDetailCache = (queue: readonly UserCard[]) => {
   const currentCard = queue[0];
 
   const { data: currentCardDetail, isPending: isCardDetailLoading } = useQuery({
     queryKey: ['cardDetail', currentCard?.koreanCard?.cardId],
     queryFn: () => {
-      if (!currentCard) {
-        return null;
-      }
+      if (!currentCard) return null;
+      console.log('fetching cardDetail', currentCard.koreanCard.koreanWord);
       return getKoreanCardDetail(currentCard!.koreanCard.cardId);
     },
     enabled: !!currentCard?.koreanCard?.cardId,
@@ -24,7 +25,7 @@ export const useCardDetailCache = (queue: readonly UserCard[]) => {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    queue.forEach((card) => {
+    queue.slice(0, CACHE_SIZE).forEach((card) => {
       queryClient.prefetchQuery({
         queryKey: ['cardDetail', card.koreanCard.cardId],
         queryFn: () => {

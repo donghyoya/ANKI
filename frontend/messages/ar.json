@@ -14,6 +14,9 @@
   "collapseAll": "طي الكل",
   "cancel": "إلغاء",
   "save": "حفظ",
+  "ok": "موافق",
+  "saved": "تم الحفظ.",
+  "failedToSave": "فشل في الحفظ.",
 
   "menu": {
     "difficulty": "الصعوبة",
@@ -100,6 +103,6 @@
     "account": "الحساب",
     "signOut": "تسجيل الخروج",
     "deleteAccount": "حذف الحساب",
-    "ucfOffset": "المنطقة الزمنية"
+    "utcOffset": "المنطقة الزمنية"
   }
 }

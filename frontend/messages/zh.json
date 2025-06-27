@@ -14,6 +14,9 @@
   "collapseAll": "收起全部",
   "cancel": "取消",
   "save": "保存",
+  "ok": "确定",
+  "saved": "已保存。",
+  "failedToSave": "保存失败。",
 
   "menu": {
     "difficulty": "难度",
@@ -100,6 +103,6 @@
     "account": "账户",
     "signOut": "退出登录",
     "deleteAccount": "删除账户",
-    "ucfOffset": "时区"
+    "utcOffset": "时区"
   }
 }

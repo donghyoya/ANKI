@@ -14,6 +14,9 @@
   "collapseAll": "Tutup semua",
   "cancel": "Batal",
   "save": "Simpan",
+  "ok": "Oke",
+  "saved": "Berhasil disimpan.",
+  "failedToSave": "Gagal menyimpan.",
 
   "menu": {
     "difficulty": "Kesulitan",
@@ -100,6 +103,6 @@
     "account": "Akun",
     "signOut": "Keluar",
     "deleteAccount": "Hapus akun",
-    "ucfOffset": "Zona waktu"
+    "utcOffset": "Zona waktu"
   }
 }

@@ -14,6 +14,9 @@
   "collapseAll": "ยุบทั้งหมด",
   "cancel": "ยกเลิก",
   "save": "บันทึก",
+  "ok": "ตกลง",
+  "saved": "บันทึกแล้ว",
+  "failedToSave": "ไม่สามารถบันทึกได้",
 
   "menu": {
     "difficulty": "ความยาก",
@@ -100,6 +103,6 @@
     "account": "บัญชี",
     "signOut": "ออกจากระบบ",
     "deleteAccount": "ลบบัญชี",
-    "ucfOffset": "เขตเวลา"
+    "utcOffset": "เขตเวลา"
   }
 }

@@ -14,7 +14,10 @@
   "collapseAll": "Colapsar todo",
   "cancel": "Cancelar",
   "save": "Guardar",
-
+  "ok": "Aceptar",
+  "saved": "Guardado.",
+  "failedToSave": "Error al guardar.",
+  
   "menu": {
     "difficulty": "Dificultad",
     "meaning": "Significado",
@@ -100,6 +103,6 @@
     "account": "Cuenta",
     "signOut": "Cerrar sesión",
     "deleteAccount": "Eliminar cuenta",
-    "ucfOffset": "Zona horaria"
+    "utcOffset": "Zona horaria"
   }
 }

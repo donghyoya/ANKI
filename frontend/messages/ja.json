@@ -14,6 +14,9 @@
   "collapseAll": "すべて折りたたむ",
   "cancel": "キャンセル",
   "save": "保存",
+  "ok": "確認",
+  "saved": "保存されました。",
+  "failedToSave": "保存に失敗しました。",
 
   "menu": {
     "difficulty": "難易度",
@@ -100,6 +103,6 @@
     "account": "アカウント",
     "signOut": "サインアウト",
     "deleteAccount": "アカウントを削除",
-    "ucfOffset": "タイムゾーン"
+    "utcOffset": "タイムゾーン"
   }
 }

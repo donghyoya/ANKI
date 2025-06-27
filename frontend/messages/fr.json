@@ -14,6 +14,9 @@
   "collapseAll": "Tout réduire",
   "cancel": "Annuler",
   "save": "Enregistrer",
+  "ok": "D'accord",
+  "saved": "Enregistré.",
+  "failedToSave": "Échec de l'enregistrement.",
 
   "menu": {
     "difficulty": "Difficulté",
@@ -100,6 +103,6 @@
     "account": "Compte",
     "signOut": "Se déconnecter",
     "deleteAccount": "Supprimer le compte",
-    "ucfOffset": "Fuseau horaire"
+    "utcOffset": "Fuseau horaire"
   }
 }

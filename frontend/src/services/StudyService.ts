@@ -30,8 +30,8 @@ export class StudyService {
   public logQueue() {
     this._queue.forEach((c) =>
       console.log(
-        `${new Date(c.studyInfo.due) < new Date() ? 'overdue\t' : 'not overdue\t'} ${c.koreanCard.koreanWord} ${STATE_MAP[c.studyInfo.state]}\t lastRating: ${
-          c.studyInfo.lastRating ? new Date(c.studyInfo.lastRating).toISOString() : 'null'
+        `${c.studyInfo.due < new Date() ? 'overdue\t' : 'not overdue\t'} ${c.koreanCard.koreanWord} ${STATE_MAP[c.studyInfo.state]}\t lastRating: ${
+          c.studyInfo.lastRating ?? 'null'
         }`
       )
     );
@@ -71,7 +71,7 @@ export class StudyService {
     return (
       this.hasCards &&
       this.queue.every(
-        (card) => card.studyInfo.state === State.Review && new Date(card.studyInfo.due) > new Date()
+        (card) => card.studyInfo.state === State.Review && card.studyInfo.due > new Date()
       )
     );
   }
@@ -83,13 +83,13 @@ export class StudyService {
   public get studyCounts() {
     const now = new Date();
     const reviewCounts = this.queue.filter(
-      (card) => card.studyInfo.state === State.Review && new Date(card.studyInfo.due) >= now
+      (card) => card.studyInfo.state === State.Review && card.studyInfo.due >= now
     ).length;
     const learningCounts = this.queue.filter(
       (card) => card.studyInfo.state === State.Learning || card.studyInfo.state === State.Relearning
     ).length;
     const overdueCounts = this.queue.filter(
-      (card) => card.studyInfo.state === State.Review && new Date(card.studyInfo.due) < now
+      (card) => card.studyInfo.state === State.Review && card.studyInfo.due < now
     ).length;
     const newCounts = this.queue.filter((card) => card.studyInfo.state === State.New).length;
 
@@ -110,8 +110,8 @@ export class StudyService {
   private compareCards(a: UserCard, b: UserCard) {
     // overDue 여부로 정렬
     const now = new Date();
-    const aIsOverdue = new Date(a.studyInfo.due) < now;
-    const bIsOverdue = new Date(b.studyInfo.due) < now;
+    const aIsOverdue = a.studyInfo.due < now;
+    const bIsOverdue = b.studyInfo.due < now;
     if (aIsOverdue !== bIsOverdue) return aIsOverdue ? -1 : 1;
 
     // state(New < Review < Learning = Relearning)로 정렬

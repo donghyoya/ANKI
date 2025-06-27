@@ -17,7 +17,7 @@ export function toUserCard(card: UserCardDTO): UserCard {
   const { due, stability, difficulty, scheduledDays, reps, lapses, state, lastReview } = studyInfo;
 
   const newStudyInfo = {
-    due,
+    due: new Date(due),
     stability,
     difficulty,
     elapsedDays: lastReview ? dateDiffInDays(new Date(lastReview), new Date()) : 0,
@@ -35,6 +35,7 @@ export function toUserCard(card: UserCardDTO): UserCard {
 export function toStudyInfo(studyInfo: StudyInfoDTO): StudyInfo {
   return {
     ...studyInfo,
+    due: new Date(studyInfo.due),
     state: STATE_MAP[studyInfo.state],
     learningSteps: 0,
     elapsedDays: studyInfo.lastReview

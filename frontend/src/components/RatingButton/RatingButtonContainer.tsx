@@ -24,7 +24,7 @@ const RatingButtons = ({ iPreview, isRevealed, onRepeat }: RatingButtonContainer
       {isRevealed &&
         logs.map((log, index) => {
           if (!log) return null;
-          const interval = new Date(log.due).getTime() - new Date().getTime();
+          const interval = log.due.getTime() - new Date().getTime();
           return (
             <RatingButton
               key={index}

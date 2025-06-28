@@ -36,7 +36,9 @@ export default function LearningPage() {
     cardWidth
   });
 
-  const { studyService, currentCardDetail, isLoading } = useStudyQueue(category as Category);
+  const { studyService, currentCardDetail, isLoading, repeat } = useStudyQueue(
+    category as Category
+  );
 
   const handleReveal = () => {
     setCardState((prev) => ({ ...prev, isRevealed: true }));
@@ -54,13 +56,13 @@ export default function LearningPage() {
     setCardState((prev) => ({ ...prev, showExample: !prev.showExample }));
   };
 
-  const handleOnRepeat = (rating: Rating) => {
-    if (!studyService) {
-      throw new Error('Study service not found');
+  const handleOnRepeat = async (rating: Rating) => {
+    try {
+      repeat(rating);
+      setCardState((prev) => ({ ...prev, isRevealed: false }));
+    } catch (error) {
+      alert(error);
     }
-    setCardState((prev) => ({ ...prev, isRevealed: false }));
-    studyService.repeat(rating);
-    studyService.updateQueue(studyService.currentCard);
   };
 
   const toggleDetailedView = () => {

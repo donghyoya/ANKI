@@ -1,8 +1,7 @@
+import { createFSRS } from '@/utils/fsrs';
+
 import { UserCard } from '@/types/schemes';
 import { Grade, Rating, State } from 'ts-fsrs';
-
-import { postStudyInfo } from '@/api/study';
-import { createFSRS } from '@/utils/fsrs';
 
 const STATE_MAP = {
   [State.New]: 'New',
@@ -21,14 +20,15 @@ export interface StudyCounts {
 export class StudyService {
   private f = createFSRS();
   private _queue: UserCard[] = [];
+  private backupQueue: UserCard[] = [];
 
   constructor(initialQueue: UserCard[]) {
-    console.log('initialQueue', initialQueue);
-    this.queue = initialQueue;
+    this.queue = initialQueue.sort((a, b) => this.compareCards(a, b));
+    console.log('initialQueue', this.queue);
   }
 
   public logQueue() {
-    this._queue.forEach((c) =>
+    this.queue.forEach((c) =>
       console.log(
         `${c.studyInfo.due < new Date() ? 'overdue\t' : 'not overdue\t'} ${c.koreanCard.koreanWord} ${STATE_MAP[c.studyInfo.state]}\t lastRating: ${
           c.studyInfo.lastRating ?? 'null'
@@ -42,22 +42,21 @@ export class StudyService {
   }
 
   private set queue(newQueue: UserCard[]) {
-    this._queue = newQueue.sort((a, b) => this.compareCards(a, b));
+    this._queue = newQueue;
     this.logQueue();
   }
 
   public updateQueue(newCard: UserCard): void {
-    const index = this._queue.findIndex((c) => c.userCardId === newCard.userCardId);
+    const index = this.queue.findIndex((c) => c.userCardId === newCard.userCardId);
     if (index !== -1) {
-      this._queue[index] = newCard;
-      this._queue.sort(this.compareCards);
+      const newQueue = [...this.queue];
+      newQueue[index] = newCard;
+      this.queue = newQueue.sort((a, b) => this.compareCards(a, b));
     }
-
-    this.logQueue();
   }
 
   public get hasCards() {
-    return this._queue.length > 0;
+    return this.queue.length > 0;
   }
 
   public get currentCard() {
@@ -124,6 +123,7 @@ export class StudyService {
   }
 
   public repeat(rating: Rating) {
+    this.backupQueue = [...this.queue];
     // 새로운 카드 상태 계산
     const newIPreview = this.iPreview;
     const newRecordLogItem = newIPreview[rating as Grade];
@@ -136,6 +136,14 @@ export class StudyService {
     const newCard = { ...this.currentCard, studyInfo: newStudyInfo };
     this.updateQueue(newCard);
 
-    return postStudyInfo(newCard.userCardId, newCard.studyInfo);
+    return newCard;
+  }
+
+  public revert() {
+    const beforeQueue = this.queue;
+    this.queue = [...this.backupQueue];
+    this.backupQueue = [];
+    const afterQueue = this.queue;
+    console.log('revert Reference changed:', beforeQueue !== afterQueue);
   }
 }

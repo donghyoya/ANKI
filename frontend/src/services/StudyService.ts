@@ -2,13 +2,7 @@ import { createFSRS } from '@/utils/fsrs';
 
 import { UserCard } from '@/types/schemes';
 import { Grade, Rating, State } from 'ts-fsrs';
-
-const STATE_MAP = {
-  [State.New]: 'New',
-  [State.Review]: 'Review',
-  [State.Learning]: 'Learning',
-  [State.Relearning]: 'Relearning'
-};
+import { STATE_MAP } from '@/constants/study';
 
 export interface StateCounts {
   reviewCounts: number;

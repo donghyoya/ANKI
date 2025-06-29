@@ -1,15 +1,9 @@
-import { dateDiffInDays, State } from 'ts-fsrs';
+import { dateDiffInDays } from 'ts-fsrs';
 
 import { KoreanCardDetail, StudyInfo, StudyInfoDTO, UserCard, UserCardDTO } from '@/types/schemes';
 import { DUMMY_KOR_CARD_DETAIL } from './dummyData';
 import { getCategoryType } from '@/types/Category';
-
-const STATE_MAP = {
-  New: State.New,
-  Learning: State.Learning,
-  Review: State.Review,
-  Relearning: State.Relearning
-} as const;
+import { STATE_MAP, STATE_MAP_REVERSE } from '@/constants/study';
 
 // 서버에서 받은 데이터를 클라이언트에서 사용할 수 있는 형식으로 변환
 export function toUserCard(card: UserCardDTO): UserCard {
@@ -25,7 +19,7 @@ export function toUserCard(card: UserCardDTO): UserCard {
     reps,
     lapses,
     learningSteps: 0,
-    state: STATE_MAP[state],
+    state: STATE_MAP_REVERSE[state],
     lastReview: lastReview ? new Date(lastReview) : undefined
   };
 
@@ -36,7 +30,7 @@ export function toStudyInfo(studyInfo: StudyInfoDTO): StudyInfo {
   return {
     ...studyInfo,
     due: new Date(studyInfo.due),
-    state: STATE_MAP[studyInfo.state],
+    state: STATE_MAP_REVERSE[studyInfo.state],
     learningSteps: 0,
     elapsedDays: studyInfo.lastReview
       ? dateDiffInDays(new Date(studyInfo.lastReview), new Date())
@@ -48,9 +42,7 @@ export function toStudyInfo(studyInfo: StudyInfoDTO): StudyInfo {
 export function toStudyInfoDTO(studyInfo: StudyInfo): StudyInfoDTO {
   return {
     ...studyInfo,
-    state: Object.keys(STATE_MAP).find(
-      (key) => STATE_MAP[key as keyof typeof STATE_MAP] === studyInfo.state
-    ) as keyof typeof STATE_MAP,
+    state: STATE_MAP[studyInfo.state],
     lastReview: studyInfo.lastReview ? studyInfo.lastReview.toISOString() : null
   };
 }

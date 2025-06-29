@@ -4,7 +4,7 @@ import styles from './LearningProgressBar.module.scss';
 
 import { ProgressBarSegment } from '@/types/ProgressBarSegment';
 import { LEARNING_PROGRESS_BAR_COLORS } from '@/constants/colors';
-import { StateCounts } from '@/services/StudyService';
+import { StateCounts } from '@/types/study';
 
 const LearningProgressBar = ({ StateCounts }: { StateCounts: StateCounts; className: string }) => {
   const progressBarSegments: ProgressBarSegment[] = [

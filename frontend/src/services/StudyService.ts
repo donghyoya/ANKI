@@ -3,13 +3,7 @@ import { createFSRS } from '@/utils/fsrs';
 import { UserCard } from '@/types/schemes';
 import { Grade, Rating, State } from 'ts-fsrs';
 import { STATE_MAP } from '@/constants/study';
-
-export interface StateCounts {
-  reviewCounts: number;
-  learningCounts: number;
-  overdueCounts: number;
-  newCounts: number;
-}
+import { StateCounts } from '@/types/study';
 
 export class StudyService {
   private f = createFSRS();

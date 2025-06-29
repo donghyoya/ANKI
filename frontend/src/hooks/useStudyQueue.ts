@@ -27,25 +27,31 @@ export const useStudyQueue = (category: Category) => {
     }
   });
 
-  const ensureStudyService = () => {
+  const withStudyService = <T>(
+    studyService: StudyService | undefined,
+    callback: (service: StudyService) => T
+  ): T => {
     if (!studyService) {
       throw new Error('Study service not found');
     }
+    return callback(studyService);
   };
 
   const repeatMutation = useMutation({
     mutationFn: async ({ rating }: { rating: Rating }) => {
-      ensureStudyService();
-      const newCard = studyService!.repeat(rating);
-      setQueue([...studyService!.queue]);
-      const response = await postStudyInfo(newCard.userCardId, newCard.studyInfo);
-      return response;
+      return withStudyService(studyService, (service) => {
+        const newCard = service.repeat(rating);
+        setQueue([...service.queue]);
+        const response = postStudyInfo(newCard.userCardId, newCard.studyInfo);
+        return response;
+      });
     },
     onError: (error) => {
-      ensureStudyService();
-      studyService!.revert();
-      setQueue([...studyService!.queue]);
-      setError(error);
+      withStudyService(studyService, (service) => {
+        service.revert();
+        setQueue([...service.queue]);
+        setError(error);
+      });
     }
   });
 

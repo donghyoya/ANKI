@@ -36,8 +36,17 @@ export default function LearningPage() {
     cardWidth
   });
 
-  const { queue, currentCardDetail, isLoading, repeat, StateCounts, iPreview, isCompleted } =
-    useStudyQueue(category as Category);
+  const {
+    queue,
+    currentCardDetail,
+    isLoading,
+    repeat,
+    StateCounts,
+    iPreview,
+    isCompleted,
+    error,
+    clearError
+  } = useStudyQueue(category as Category);
 
   const handleReveal = () => {
     setCardState((prev) => ({ ...prev, isRevealed: true }));
@@ -56,12 +65,8 @@ export default function LearningPage() {
   };
 
   const handleOnRepeat = async (rating: Rating) => {
-    try {
-      repeat(rating);
-      setCardState((prev) => ({ ...prev, isRevealed: false }));
-    } catch (error) {
-      alert(error);
-    }
+    repeat(rating);
+    setCardState((prev) => ({ ...prev, isRevealed: false }));
   };
 
   const toggleDetailedView = () => {
@@ -100,6 +105,13 @@ export default function LearningPage() {
   useEffect(() => {
     setCardWidth(document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0);
   }, []);
+
+  useEffect(() => {
+    if (error) {
+      alert(error.message);
+      clearError();
+    }
+  }, [error, clearError]);
 
   if (isLoading) {
     return <div className={styles['page']}>Loading...</div>;

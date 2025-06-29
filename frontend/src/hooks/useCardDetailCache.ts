@@ -11,12 +11,16 @@ const CACHE_SIZE = 5;
 export const useCardDetailCache = (queue: readonly UserCard[]) => {
   const currentCard = queue[0];
 
-  const { data: currentCardDetail, isPending: isCardDetailLoading } = useQuery({
+  const {
+    data: currentCardDetail,
+    isPending: isCardDetailLoading,
+    error: cardDetailError
+  } = useQuery({
     queryKey: ['cardDetail', currentCard?.koreanCard?.cardId],
-    queryFn: () => {
+    queryFn: async () => {
       if (!currentCard) return null;
       console.log('fetching cardDetail', currentCard.koreanCard.koreanWord);
-      return getKoreanCardDetail(currentCard!.koreanCard.cardId);
+      return await getKoreanCardDetail(currentCard!.koreanCard.cardId);
     },
     enabled: !!currentCard?.koreanCard?.cardId,
     staleTime: Infinity
@@ -25,17 +29,27 @@ export const useCardDetailCache = (queue: readonly UserCard[]) => {
   const queryClient = useQueryClient();
 
   useEffect(() => {
+    // 캐시 사이즈만큼 프리패치
     queue.slice(0, CACHE_SIZE).forEach((card) => {
       queryClient.prefetchQuery({
         queryKey: ['cardDetail', card.koreanCard.cardId],
         queryFn: () => {
           console.log('prefetching cardDetail', card.koreanCard.koreanWord);
-          return getKoreanCardDetail(card.koreanCard.cardId);
+          try {
+            return getKoreanCardDetail(card.koreanCard.cardId);
+          } catch (error) {
+            // 에러 발생시 쿼리 자신을 캐시에서 제거
+            // prefetch에서 발생한 에러이므로 에러를 throw하지 않음
+            console.error('Prefetch failed for card:', card.koreanCard.koreanWord, error);
+            queryClient.removeQueries({
+              queryKey: ['cardDetail', card.koreanCard.cardId]
+            });
+          }
         },
         staleTime: Infinity
       });
     });
   }, [queue, queryClient]);
 
-  return { currentCardDetail, isCardDetailLoading };
+  return { currentCardDetail, isCardDetailLoading, cardDetailError };
 };

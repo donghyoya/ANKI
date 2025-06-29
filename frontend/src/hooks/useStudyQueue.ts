@@ -4,21 +4,26 @@ import { getLearningCards, postStudyInfo } from '@/api/study';
 import { StudyService } from '@/services/StudyService';
 import { Rating } from 'ts-fsrs';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UserCard } from '@/types/schemes';
 
 export const useStudyQueue = (category: Category) => {
   const [queue, setQueue] = useState<UserCard[]>([]);
-  const { currentCardDetail, isCardDetailLoading } = useCardDetailCache(queue);
+  const [error, setError] = useState<Error | null>(null);
+  const { currentCardDetail, isCardDetailLoading, cardDetailError } = useCardDetailCache(queue);
 
   const { data: studyService } = useQuery({
     queryKey: ['studyService', category],
     queryFn: async () => {
-      const newCards = await getLearningCards('new', category);
-      const reviewCards = await getLearningCards('review', category);
-      const service = new StudyService([...newCards.content, ...reviewCards.content]);
-      setQueue([...service.queue]);
-      return service;
+      try {
+        const newCards = await getLearningCards('new', category);
+        const reviewCards = await getLearningCards('review', category);
+        const service = new StudyService([...newCards.content, ...reviewCards.content]);
+        setQueue([...service.queue]);
+        return service;
+      } catch (error) {
+        setError(error as Error);
+      }
     }
   });
 
@@ -36,15 +41,16 @@ export const useStudyQueue = (category: Category) => {
       const response = await postStudyInfo(newCard.userCardId, newCard.studyInfo);
       return response;
     },
-    onError: () => {
+    onError: (error) => {
       ensureStudyService();
       studyService!.revert();
       setQueue([...studyService!.queue]);
+      setError(error);
     }
   });
 
-  const repeat = (rating: Rating) => {
-    repeatMutation.mutate({ rating });
+  const repeat = async (rating: Rating) => {
+    await repeatMutation.mutateAsync({ rating });
   };
 
   const StateCounts = studyService?.StateCounts ?? {
@@ -57,6 +63,16 @@ export const useStudyQueue = (category: Category) => {
   const isCompleted = studyService?.isCompleted ?? false;
   const isLoading = !studyService || isCardDetailLoading;
 
+  useEffect(() => {
+    if (cardDetailError) {
+      setError(cardDetailError);
+    }
+  }, [cardDetailError]);
+
+  const clearError = () => {
+    setError(null);
+  };
+
   return {
     queue,
     iPreview,
@@ -64,6 +80,8 @@ export const useStudyQueue = (category: Category) => {
     isLoading,
     isCompleted,
     StateCounts,
-    repeat
+    repeat,
+    error,
+    clearError
   };
 };

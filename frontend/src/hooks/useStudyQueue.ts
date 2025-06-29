@@ -47,7 +47,7 @@ export const useStudyQueue = (category: Category) => {
     repeatMutation.mutate({ rating });
   };
 
-  const studyCounts = studyService?.studyCounts ?? {
+  const StateCounts = studyService?.StateCounts ?? {
     reviewCounts: 0,
     learningCounts: 0,
     overdueCounts: 0,
@@ -63,7 +63,7 @@ export const useStudyQueue = (category: Category) => {
     currentCardDetail,
     isLoading,
     isCompleted,
-    studyCounts,
+    StateCounts,
     repeat
   };
 };

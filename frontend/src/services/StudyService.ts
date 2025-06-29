@@ -10,7 +10,7 @@ const STATE_MAP = {
   [State.Relearning]: 'Relearning'
 };
 
-export interface StudyCounts {
+export interface StateCounts {
   reviewCounts: number;
   learningCounts: number;
   overdueCounts: number;
@@ -79,7 +79,7 @@ export class StudyService {
     return this.f.repeat(this.currentCard.studyInfo, new Date());
   }
 
-  public get studyCounts() {
+  public get StateCounts() {
     const now = new Date();
     const reviewCounts = this.queue.filter(
       (card) => card.studyInfo.state === State.Review && card.studyInfo.due >= now
@@ -97,7 +97,7 @@ export class StudyService {
       learningCounts,
       overdueCounts,
       newCounts
-    } as StudyCounts;
+    } as StateCounts;
   }
 
   private stateFilter(s: State) {

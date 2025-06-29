@@ -36,7 +36,7 @@ export default function LearningPage() {
     cardWidth
   });
 
-  const { queue, currentCardDetail, isLoading, repeat, studyCounts, iPreview, isCompleted } =
+  const { queue, currentCardDetail, isLoading, repeat, StateCounts, iPreview, isCompleted } =
     useStudyQueue(category as Category);
 
   const handleReveal = () => {
@@ -117,7 +117,7 @@ export default function LearningPage() {
     <div className={styles['learning-container']}>
       <div className={styles['progress-container-wrapper']}>
         <div className={styles['progress-container']}>
-          <LearningProgressBar className={styles['progress-bar']} studyCounts={studyCounts} />
+          <LearningProgressBar className={styles['progress-bar']} StateCounts={StateCounts} />
         </div>
       </div>
       <LearningCard

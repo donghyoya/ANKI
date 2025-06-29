@@ -1,50 +1,69 @@
 import { Category } from '@/types/Category';
 import { useCardDetailCache } from './useCardDetailCache';
 import { getLearningCards, postStudyInfo } from '@/api/study';
-import { useEffect, useState } from 'react';
 import { StudyService } from '@/services/StudyService';
 import { Rating } from 'ts-fsrs';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
+import { UserCard } from '@/types/schemes';
 
 export const useStudyQueue = (category: Category) => {
-  const [studyService, setStudyService] = useState<StudyService | null>(null);
-  const { currentCardDetail, isCardDetailLoading } = useCardDetailCache(studyService?.queue ?? []);
+  const [queue, setQueue] = useState<UserCard[]>([]);
+  const { currentCardDetail, isCardDetailLoading } = useCardDetailCache(queue);
 
-  const repeat = async (rating: Rating) => {
+  const { data: studyService } = useQuery({
+    queryKey: ['studyService', category],
+    queryFn: async () => {
+      const newCards = await getLearningCards('new', category);
+      const reviewCards = await getLearningCards('review', category);
+      const service = new StudyService([...newCards.content, ...reviewCards.content]);
+      setQueue([...service.queue]);
+      return service;
+    }
+  });
+
+  const ensureStudyService = () => {
     if (!studyService) {
       throw new Error('Study service not found');
     }
-
-    // 백업을 미리 만들고 시작
-    const backupQueue = [...studyService.queue];
-    const newCard = studyService.repeat(rating);
-
-    try {
-      const response = await postStudyInfo(newCard.userCardId, newCard.studyInfo);
-      return response;
-    } catch {
-      // 새로운 StudyService 인스턴스로 교체
-      const revertedService = new StudyService(backupQueue);
-      setStudyService(revertedService);
-      alert('repeat failed');
-    }
   };
 
-  useEffect(() => {
-    const initializeService = async () => {
-      const newCards = await getLearningCards('new', category);
-      const reviewCards = await getLearningCards('review', category);
-      setStudyService(new StudyService([...newCards.content, ...reviewCards.content]));
-    };
+  const repeatMutation = useMutation({
+    mutationFn: async ({ rating }: { rating: Rating }) => {
+      ensureStudyService();
+      const newCard = studyService!.repeat(rating);
+      setQueue([...studyService!.queue]);
+      const response = await postStudyInfo(newCard.userCardId, newCard.studyInfo);
+      return response;
+    },
+    onError: () => {
+      ensureStudyService();
+      studyService!.revert();
+      setQueue([...studyService!.queue]);
+    }
+  });
 
-    initializeService();
-  }, [category]);
+  const repeat = (rating: Rating) => {
+    repeatMutation.mutate({ rating });
+  };
 
+  const studyCounts = studyService?.studyCounts ?? {
+    reviewCounts: 0,
+    learningCounts: 0,
+    overdueCounts: 0,
+    newCounts: 0
+  };
+  const iPreview = studyService?.iPreview ?? null;
+  const isCompleted = studyService?.isCompleted ?? false;
   const isLoading = !studyService || isCardDetailLoading;
 
   return {
-    studyService,
+    queue,
+    iPreview,
     currentCardDetail,
     isLoading,
+    isCompleted,
+    studyCounts,
     repeat
   };
 };

@@ -140,10 +140,7 @@ export class StudyService {
   }
 
   public revert() {
-    const beforeQueue = this.queue;
-    this.queue = [...this.backupQueue];
+    this.queue = this.backupQueue;
     this.backupQueue = [];
-    const afterQueue = this.queue;
-    console.log('revert Reference changed:', beforeQueue !== afterQueue);
   }
 }

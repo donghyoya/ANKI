@@ -36,9 +36,8 @@ export default function LearningPage() {
     cardWidth
   });
 
-  const { studyService, currentCardDetail, isLoading, repeat } = useStudyQueue(
-    category as Category
-  );
+  const { queue, currentCardDetail, isLoading, repeat, studyCounts, iPreview, isCompleted } =
+    useStudyQueue(category as Category);
 
   const handleReveal = () => {
     setCardState((prev) => ({ ...prev, isRevealed: true }));
@@ -102,7 +101,7 @@ export default function LearningPage() {
     setCardWidth(document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0);
   }, []);
 
-  if (isLoading && !studyService) {
+  if (isLoading) {
     return <div className={styles['page']}>Loading...</div>;
   }
 
@@ -110,7 +109,7 @@ export default function LearningPage() {
     return <div className={styles['page']}>CardDetail Loading...</div>;
   }
 
-  if (!studyService?.queue) {
+  if (!queue) {
     return <div className={styles['page']}>Study queue not found</div>;
   }
 
@@ -118,10 +117,7 @@ export default function LearningPage() {
     <div className={styles['learning-container']}>
       <div className={styles['progress-container-wrapper']}>
         <div className={styles['progress-container']}>
-          <LearningProgressBar
-            className={styles['progress-bar']}
-            studyCounts={studyService.studyCounts}
-          />
+          <LearningProgressBar className={styles['progress-bar']} studyCounts={studyCounts} />
         </div>
       </div>
       <LearningCard
@@ -137,13 +133,13 @@ export default function LearningPage() {
         setContentHeight={setContentHeight}
       />
       <RatingButtonContainer
-        iPreview={studyService.iPreview}
+        iPreview={iPreview}
         isRevealed={cardState.isRevealed}
         onRepeat={handleOnRepeat}
       />
-      {studyService?.isCompleted && (
+      {isCompleted && (
         <CustomDialog
-          open={studyService.isCompleted}
+          open={isCompleted}
           headline="Daily goal completed!"
           prompt={
             <div>

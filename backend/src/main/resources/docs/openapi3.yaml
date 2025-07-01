@@ -26,8 +26,8 @@ paths:
                 $ref: "#/components/schemas/TokenProviderSchema"
               examples:
                 authentication-controller-test/get-auth-token:
-                  value: "{\"accessToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInJvbGUiOiJST0xFX1VTRVIiLCJzdWIiOiIxIiwiaWF0IjoxNzQ5OTc4NDE2LCJleHAiOjE3NTAwNjQ4MTZ9.CIgWi9ks7WTuhM_ggF7SLtezh5LXwwkFd5kl-2ykr9c\"\
-                    ,\"refreshToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInJvbGUiOiJST0xFX1JFRlJFU0giLCJzdWIiOiIxIiwiaWF0IjoxNzQ5OTc4NDE2LCJleHAiOjE3NTA1ODMyMTZ9.K-PED2zjX0Cl54M810hl7oRjePFSvdqe-tkFflgvIkw\"\
+                  value: "{\"accessToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwidXNlcklkIjoxLCJzdWIiOiIxIiwiaWF0IjoxNzUxMzcwMTEwLCJleHAiOjE3NTE0NTY1MTB9.eVmOuNntTXvLb7ekAkapn7LHYBb5tMuPmmELmSzXBLM\"\
+                    ,\"refreshToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9SRUZSRVNIIiwidXNlcklkIjoxLCJzdWIiOiIxIiwiaWF0IjoxNzUxMzcwMTEwLCJleHAiOjE3NTE5NzQ5MTB9.RkGvJg7En8VuqpSB14BK6Q2pCKFQn1DcklMXIf--ONY\"\
                     ,\"isSetup\":true}"
       security:
       - bearerAuthJWT: []
@@ -368,56 +368,56 @@ paths:
                   value: "{\"size\":4,\"content\":[{\"userCardId\":163,\"koreanCard\"\
                     :{\"cardId\":13,\"koreanWord\":\"표제어_13\",\"homographNumber\"\
                     :\"0\",\"level\":\"easy\",\"topics\":[\"LIVING\"]},\"studyInfo\"\
-                    :{\"due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    :{\"due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}},{\"userCardId\":166,\"koreanCard\":{\"\
                     cardId\":16,\"koreanWord\":\"표제어_15\",\"homographNumber\":\"2\"\
                     ,\"level\":\"easy\",\"topics\":[\"ECONOMY\"]},\"studyInfo\":{\"\
-                    due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}},{\"userCardId\":199,\"koreanCard\":{\"\
                     cardId\":49,\"koreanWord\":\"표제어_49\",\"homographNumber\":\"1\"\
                     ,\"level\":\"easy\",\"topics\":[\"CONCEPT\"]},\"studyInfo\":{\"\
-                    due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}},{\"userCardId\":200,\"koreanCard\":{\"\
                     cardId\":50,\"koreanWord\":\"표제어_49\",\"homographNumber\":\"2\"\
                     ,\"level\":\"easy\",\"topics\":[\"CONCEPT\"]},\"studyInfo\":{\"\
-                    due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}}]}"
                 user-card-controller-test/get-study-card/study-level-hard:
                   value: "{\"size\":5,\"content\":[{\"userCardId\":151,\"koreanCard\"\
                     :{\"cardId\":1,\"koreanWord\":\"표제어_1\",\"homographNumber\":\"\
                     1\",\"level\":\"hard\",\"topics\":[\"NATURE\"]},\"studyInfo\"\
-                    :{\"due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    :{\"due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}},{\"userCardId\":156,\"koreanCard\":{\"\
                     cardId\":6,\"koreanWord\":\"표제어_1\",\"homographNumber\":\"6\"\
                     ,\"level\":\"hard\",\"topics\":[\"ECONOMY\"]},\"studyInfo\":{\"\
-                    due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}},{\"userCardId\":173,\"koreanCard\":{\"\
                     cardId\":23,\"koreanWord\":\"표제어_22\",\"homographNumber\":\"2\"\
                     ,\"level\":\"hard\",\"topics\":[\"ECONOMY\"]},\"studyInfo\":{\"\
-                    due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}},{\"userCardId\":176,\"koreanCard\":{\"\
                     cardId\":26,\"koreanWord\":\"표제어_26\",\"homographNumber\":\"0\"\
                     ,\"level\":\"hard\",\"topics\":[\"CULTURE\"]},\"studyInfo\":{\"\
-                    due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}},{\"userCardId\":191,\"koreanCard\":{\"\
                     cardId\":41,\"koreanWord\":\"표제어_41\",\"homographNumber\":\"1\"\
                     ,\"level\":\"hard\",\"topics\":[\"LIVING\"]},\"studyInfo\":{\"\
-                    due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}}]}"
                 user-card-controller-test/get-study-card/study-level-normal:
                   value: "{\"size\":1,\"content\":[{\"userCardId\":153,\"koreanCard\"\
                     :{\"cardId\":3,\"koreanWord\":\"표제어_1\",\"homographNumber\":\"\
                     2\",\"level\":\"normal\",\"topics\":[\"WORK\"]},\"studyInfo\"\
-                    :{\"due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    :{\"due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}}]}"
                 user-card-controller-test/get-study-card/study-meaning-ACTION:
@@ -430,36 +430,36 @@ paths:
                   value: "{\"size\":2,\"content\":[{\"userCardId\":199,\"koreanCard\"\
                     :{\"cardId\":49,\"koreanWord\":\"표제어_49\",\"homographNumber\"\
                     :\"1\",\"level\":\"easy\",\"topics\":[\"CONCEPT\"]},\"studyInfo\"\
-                    :{\"due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    :{\"due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}},{\"userCardId\":200,\"koreanCard\":{\"\
                     cardId\":50,\"koreanWord\":\"표제어_49\",\"homographNumber\":\"2\"\
                     ,\"level\":\"easy\",\"topics\":[\"CONCEPT\"]},\"studyInfo\":{\"\
-                    due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}}]}"
                 user-card-controller-test/get-study-card/study-meaning-CULTURE:
                   value: "{\"size\":1,\"content\":[{\"userCardId\":176,\"koreanCard\"\
                     :{\"cardId\":26,\"koreanWord\":\"표제어_26\",\"homographNumber\"\
                     :\"0\",\"level\":\"hard\",\"topics\":[\"CULTURE\"]},\"studyInfo\"\
-                    :{\"due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    :{\"due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}}]}"
                 user-card-controller-test/get-study-card/study-meaning-ECONOMY:
                   value: "{\"size\":3,\"content\":[{\"userCardId\":156,\"koreanCard\"\
                     :{\"cardId\":6,\"koreanWord\":\"표제어_1\",\"homographNumber\":\"\
                     6\",\"level\":\"hard\",\"topics\":[\"ECONOMY\"]},\"studyInfo\"\
-                    :{\"due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    :{\"due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}},{\"userCardId\":166,\"koreanCard\":{\"\
                     cardId\":16,\"koreanWord\":\"표제어_15\",\"homographNumber\":\"2\"\
                     ,\"level\":\"easy\",\"topics\":[\"ECONOMY\"]},\"studyInfo\":{\"\
-                    due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}},{\"userCardId\":173,\"koreanCard\":{\"\
                     cardId\":23,\"koreanWord\":\"표제어_22\",\"homographNumber\":\"2\"\
                     ,\"level\":\"hard\",\"topics\":[\"ECONOMY\"]},\"studyInfo\":{\"\
-                    due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}}]}"
                 user-card-controller-test/get-study-card/study-meaning-FASHION_AND_APPEARANCE:
@@ -480,19 +480,19 @@ paths:
                   value: "{\"size\":2,\"content\":[{\"userCardId\":163,\"koreanCard\"\
                     :{\"cardId\":13,\"koreanWord\":\"표제어_13\",\"homographNumber\"\
                     :\"0\",\"level\":\"easy\",\"topics\":[\"LIVING\"]},\"studyInfo\"\
-                    :{\"due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    :{\"due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}},{\"userCardId\":191,\"koreanCard\":{\"\
                     cardId\":41,\"koreanWord\":\"표제어_41\",\"homographNumber\":\"1\"\
                     ,\"level\":\"hard\",\"topics\":[\"LIVING\"]},\"studyInfo\":{\"\
-                    due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}}]}"
                 user-card-controller-test/get-study-card/study-meaning-NATURE:
                   value: "{\"size\":1,\"content\":[{\"userCardId\":151,\"koreanCard\"\
                     :{\"cardId\":1,\"koreanWord\":\"표제어_1\",\"homographNumber\":\"\
                     1\",\"level\":\"hard\",\"topics\":[\"NATURE\"]},\"studyInfo\"\
-                    :{\"due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    :{\"due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}}]}"
                 user-card-controller-test/get-study-card/study-meaning-NEWS:
@@ -521,7 +521,7 @@ paths:
                   value: "{\"size\":1,\"content\":[{\"userCardId\":153,\"koreanCard\"\
                     :{\"cardId\":3,\"koreanWord\":\"표제어_1\",\"homographNumber\":\"\
                     2\",\"level\":\"normal\",\"topics\":[\"WORK\"]},\"studyInfo\"\
-                    :{\"due\":\"2025-06-15T18:06:54.755844\",\"lapses\":0,\"lastReview\"\
+                    :{\"due\":\"2025-07-01T20:41:47.425967\",\"lapses\":0,\"lastReview\"\
                     :null,\"reps\":0,\"scheduledDays\":0.0,\"stability\":0.0,\"difficulty\"\
                     :0.0,\"state\":\"New\"}}]}"
         "400":
@@ -709,7 +709,7 @@ paths:
                 $ref: "#/components/schemas/cardStudyInfo"
               examples:
                 user-card-controller-test/get-card-study-info:
-                  value: "{\"cardId\":13,\"userCardId\":163,\"nextStudyDate\":\"2025-06-15T18:06:54.755844\"\
+                  value: "{\"cardId\":13,\"userCardId\":163,\"nextStudyDate\":\"2025-07-01T20:41:47.425967\"\
                     ,\"lapses\":0,\"lastReview\":null,\"reps\":0,\"scheduledDays\"\
                     :0.0,\"stability\":0.0,\"state\":0}"
         "404":
@@ -743,12 +743,12 @@ paths:
               $ref: "#/components/schemas/studyCardForm"
             examples:
               user-card-controller-test/put-user-cards:
-                value: "{\"lapses\":5,\"difficulty\":1,\"reps\":72,\"due\":\"2025-06-15T18:06:56.3668435\"\
-                  ,\"scheduledDays\":0.9,\"lastReview\":\"2025-06-15T18:06:56.3668435\"\
+                value: "{\"lapses\":5,\"difficulty\":1,\"reps\":72,\"due\":\"2025-07-01T20:41:49.4705891\"\
+                  ,\"scheduledDays\":0.9,\"lastReview\":\"2025-07-01T20:41:49.4705891\"\
                   ,\"state\":3,\"stability\":1.3}"
               user-card-controller-test/put-user-cards404:
-                value: "{\"lapses\":5,\"difficulty\":1,\"reps\":72,\"due\":\"2025-06-15T18:06:56.4391279\"\
-                  ,\"scheduledDays\":0.9,\"lastReview\":\"2025-06-15T18:06:56.4391279\"\
+                value: "{\"lapses\":5,\"difficulty\":1,\"reps\":72,\"due\":\"2025-07-01T20:41:49.5711086\"\
+                  ,\"scheduledDays\":0.9,\"lastReview\":\"2025-07-01T20:41:49.5711086\"\
                   ,\"state\":3,\"stability\":1.3}"
       responses:
         "200":
@@ -759,8 +759,8 @@ paths:
                 $ref: "#/components/schemas/cardStudyInfo"
               examples:
                 user-card-controller-test/put-user-cards:
-                  value: "{\"cardId\":13,\"userCardId\":163,\"nextStudyDate\":\"2025-06-15T18:06:56.3668435\"\
-                    ,\"lapses\":5,\"lastReview\":\"2025-06-15T18:06:56.3668435\",\"\
+                  value: "{\"cardId\":13,\"userCardId\":163,\"nextStudyDate\":\"2025-07-01T20:41:49.4705891\"\
+                    ,\"lapses\":5,\"lastReview\":\"2025-07-01T20:41:49.4705891\",\"\
                     reps\":72,\"scheduledDays\":0.9,\"stability\":1.3,\"state\":4}"
         "404":
           description: "404"
@@ -1088,10 +1088,10 @@ paths:
                 user-study-history-controller-test/get-user-history:
                   value: "{\"page\":2,\"pageSize\":2,\"size\":3,\"content\":[{\"deckType\"\
                     :\"level\",\"deckName\":\"easy\",\"studyType\":\"study\",\"studyDate\"\
-                    :\"2025-06-15T18:06:54.2592948\"},{\"deckType\":\"level\",\"deckName\"\
-                    :\"easy\",\"studyType\":\"review\",\"studyDate\":\"2025-06-15T18:06:54.2592948\"\
+                    :\"2025-07-01T20:41:46.8863663\"},{\"deckType\":\"level\",\"deckName\"\
+                    :\"easy\",\"studyType\":\"review\",\"studyDate\":\"2025-07-01T20:41:46.8863663\"\
                     },{\"deckType\":\"meaning\",\"deckName\":\"FASHION_AND_APPEARANCE\"\
-                    ,\"studyType\":\"study\",\"studyDate\":\"2025-06-15T18:06:54.2592948\"\
+                    ,\"studyType\":\"study\",\"studyDate\":\"2025-07-01T20:41:46.8863663\"\
                     }]}"
       security:
       - bearerAuthJWT: []
@@ -1112,7 +1112,7 @@ paths:
               examples:
                 user-study-history-controller-test/get-latest-study:
                   value: "{\"deckType\":\"level\",\"deckName\":\"easy\",\"studyType\"\
-                    :\"study\",\"studyDate\":\"2025-06-15T18:06:54.2302948\"}"
+                    :\"study\",\"studyDate\":\"2025-07-01T20:41:46.8532236\"}"
       security:
       - bearerAuthJWT: []
   /get-test-token:
@@ -1131,9 +1131,9 @@ paths:
                 $ref: "#/components/schemas/AuthTestTokenSchema"
               examples:
                 authentication-test-controller-test/get-test-token:
-                  value: "{\"isSetup\":\"true\",\"accessToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInJvbGUiOiJST0xFX1VTRVIiLCJzdWIiOiIxIiwiaWF0IjoxNzQ5OTc4NDE2LCJleHAiOjE3NTAwNjQ4MTZ9.CIgWi9ks7WTuhM_ggF7SLtezh5LXwwkFd5kl-2ykr9c\"\
-                    ,\"refreshToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInJvbGUiOiJST0xFX1JFRlJFU0giLCJzdWIiOiIxIiwiaWF0IjoxNzQ5OTc4NDE2LCJleHAiOjE3NTA1ODMyMTZ9.K-PED2zjX0Cl54M810hl7oRjePFSvdqe-tkFflgvIkw\"\
-                    ,\"authenticationToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInJvbGUiOiJST0xFX0FVVEhFTlRJQ0FUSU9OIiwic3ViIjoiMSIsImlhdCI6MTc0OTk3ODQxNiwiZXhwIjoxNzQ5OTc5MDE2fQ.xJ3RZ2jq7l2RUzCbHCV7skevVuNWiPVz9hCv2m0HkB4\"\
+                  value: "{\"isSetup\":\"true\",\"authenticationToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BVVRIRU5USUNBVElPTiIsInVzZXJJZCI6MSwic3ViIjoiMSIsImlhdCI6MTc1MTM3MDExMCwiZXhwIjoxNzUxMzcwNzEwfQ.c94n8ZmixeD9QGcK2VHD-bhSwYABPMWfBEP7mz5RaRU\"\
+                    ,\"refreshToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9SRUZSRVNIIiwidXNlcklkIjoxLCJzdWIiOiIxIiwiaWF0IjoxNzUxMzcwMTEwLCJleHAiOjE3NTE5NzQ5MTB9.RkGvJg7En8VuqpSB14BK6Q2pCKFQn1DcklMXIf--ONY\"\
+                    ,\"accessToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwidXNlcklkIjoxLCJzdWIiOiIxIiwiaWF0IjoxNzUxMzcwMTEwLCJleHAiOjE3NTE0NTY1MTB9.eVmOuNntTXvLb7ekAkapn7LHYBb5tMuPmmELmSzXBLM\"\
                     }"
   /user/option:
     get:

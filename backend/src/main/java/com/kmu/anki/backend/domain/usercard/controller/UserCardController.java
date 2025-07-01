@@ -12,6 +12,7 @@ import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
+import com.kmu.anki.backend.global.config.converter.factory.StringToEnumConverterFactory;
 import com.kmu.anki.backend.global.schema.BaseListReponse;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,7 @@ public class UserCardController {
     private final UserCardService userCardService;
     private final UserStudyHistoryService userStudyHistoryService;
     private final UserOptionService userOptionService;
+    private final StringToEnumConverterFactory enumConverterFactory;
 
     @GetMapping("/{userCardId}/study")
     public CardStudyDto getCardsStudyInfo(
@@ -68,12 +70,12 @@ public class UserCardController {
         LanguageCode languageCode = userOptionDto.getLanguageCode();
         List<UserCardDto> cards;
         if(queryType == QueryType.meaning){
-            CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
+            CardTopicEnums cardTopicEnums = enumConverterFactory.convertTopic(query);
             cards = userCardService.readStudyUserCard(userId, languageCode, studyType,cardTopicEnums);
             // 최근 학습 덱을 보여주기 위해서
             userStudyHistoryService.createHistory(studyType, queryType, cardTopicEnums, userId);
         }else {
-            CardLevel cardLevel = CardLevel.valueOf(query);
+            CardLevel cardLevel = enumConverterFactory.convertLevel(query);
             cards = userCardService.readStudyUserCard(userId, languageCode, studyType, cardLevel);
             // 최근 학습 덱을 보여주기 위해서
             userStudyHistoryService.createHistory(studyType, queryType, cardLevel, userId);
@@ -93,11 +95,11 @@ public class UserCardController {
         UserOptionDto userOptionDto = userOptionService.readOption(userId);
         LanguageCode languageCode = userOptionDto.getLanguageCode();
         if(queryType == QueryType.meaning){
-            CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
+            CardTopicEnums cardTopicEnums = enumConverterFactory.convertTopic(query);
             userCardService.deleteCache(userId, languageCode, studyType,cardTopicEnums);
             // 최근 학습 덱을 보여주기 위해서
         }else {
-            CardLevel cardLevel = CardLevel.valueOf(query);
+            CardLevel cardLevel = enumConverterFactory.convertLevel(query);
             userCardService.deleteCache(userId, languageCode, studyType, cardLevel);
         }
         return Map.of("message", "cache-deleted");

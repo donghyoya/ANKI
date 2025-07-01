@@ -10,6 +10,7 @@ import com.kmu.anki.backend.domain.card.service.CardService;
 import com.kmu.anki.backend.domain.card.decks.service.DeckService;
 import com.kmu.anki.backend.domain.user.dto.UserOptionDto;
 import com.kmu.anki.backend.domain.user.service.UserOptionService;
+import com.kmu.anki.backend.global.config.converter.factory.StringToEnumConverterFactory;
 import com.kmu.anki.backend.global.schema.BaseListReponse;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ public class DeckController {
     private final CardService cardService;
     private final DeckService deckService;
     private final UserOptionService userOptionService;
+    private final StringToEnumConverterFactory enumConverterFactory;
 
     @GetMapping
     public BaseListReponse<DeckDto> getDecks(
@@ -62,10 +64,10 @@ public class DeckController {
         }
         Page<KoreanCardWithForeignWord> cards;
         if(queryType == QueryType.meaning){
-            CardTopicEnums cardTopicEnums = CardTopicEnums.valueOf(query);
+            CardTopicEnums cardTopicEnums = enumConverterFactory.convertTopic(query);
             cards = deckService.findDeckCards(code, cardTopicEnums, page-1, pageSize);
         }else {
-            CardLevel cardLevel = CardLevel.valueOf(query);
+            CardLevel cardLevel = enumConverterFactory.convertLevel(query);
             cards = deckService.findDeckCards(code, cardLevel, page-1, pageSize);
         }
         return BasePageResponse.of(cards);

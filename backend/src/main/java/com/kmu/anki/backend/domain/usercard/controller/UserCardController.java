@@ -69,7 +69,7 @@ public class UserCardController {
         UserOptionDto.validate(userOptionDto);
         LanguageCode languageCode = userOptionDto.getLanguageCode();
         List<UserCardDto> cards;
-        if(queryType == QueryType.meaning){
+        if(queryType == QueryType.TOPIC){
             CardTopicEnums cardTopicEnums = enumConverterFactory.convertTopic(query);
             cards = userCardService.readStudyUserCard(userId, languageCode, studyType,cardTopicEnums);
             // 최근 학습 덱을 보여주기 위해서
@@ -94,7 +94,7 @@ public class UserCardController {
         Long userId = Long.parseLong(authentication.getName());
         UserOptionDto userOptionDto = userOptionService.readOption(userId);
         LanguageCode languageCode = userOptionDto.getLanguageCode();
-        if(queryType == QueryType.meaning){
+        if(queryType == QueryType.TOPIC){
             CardTopicEnums cardTopicEnums = enumConverterFactory.convertTopic(query);
             userCardService.deleteCache(userId, languageCode, studyType,cardTopicEnums);
             // 최근 학습 덱을 보여주기 위해서

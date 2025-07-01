@@ -232,7 +232,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         mockMvc.perform(
                         get("/cards/study")
                                 .param("studyType", StudyType.study.toString())
-                                .param("queryType", QueryType.level.toString())
+                                .param("queryType", QueryType.LEVEL.toString())
                                 .param("query",CardLevel.easy.toString())
                                 .header("Authorization", "Bearer token")
                 ).andExpect(status().isUnauthorized())
@@ -296,7 +296,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         return Arrays.stream(StudyType.values())
                 .flatMap(studyType -> Arrays.stream(QueryType.values()).flatMap(
                         queryType -> {
-                            if(queryType == QueryType.level){
+                            if(queryType == QueryType.LEVEL){
                                 return Arrays.stream(CardLevel.values()).map(query->Arguments.of(studyType.toString(), queryType.toString(), query.toString()));
                             }else {
                                 return Arrays.stream(CardTopicEnums.values()).map(query->Arguments.of(studyType.toString(), queryType.toString(), query.toString()));
@@ -311,7 +311,7 @@ class UserCardControllerTest extends AbstractControllerTest {
         mockMvc.perform(
                         get("/cards/delete-cache")
                                 .param("studyType", StudyType.study.toString())
-                                .param("queryType", QueryType.level.toString())
+                                .param("queryType", QueryType.LEVEL.toString())
                                 .param("query",CardLevel.easy.toString())
                                 .header("Authorization", "Bearer " + token)
                 ).andExpect(status().isOk())

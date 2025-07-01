@@ -41,9 +41,9 @@ public class DeckController {
             userId = Long.parseLong(authentication.getName());
         }
         List<DeckDto> decks = new ArrayList<>();
-        if(queryType == QueryType.level){
+        if(queryType == QueryType.LEVEL){
             decks = deckService.readDeckByDifficulty(userId);
-        }else if(queryType == QueryType.meaning){
+        }else if(queryType == QueryType.TOPIC){
             decks = deckService.readDeckByMeaningGroup(userId);
         }
         return BaseListReponse.of(decks);
@@ -63,7 +63,7 @@ public class DeckController {
             code = userOptionDto.getLanguageCode();
         }
         Page<KoreanCardWithForeignWord> cards;
-        if(queryType == QueryType.meaning){
+        if(queryType == QueryType.TOPIC){
             CardTopicEnums cardTopicEnums = enumConverterFactory.convertTopic(query);
             cards = deckService.findDeckCards(code, cardTopicEnums, page-1, pageSize);
         }else {

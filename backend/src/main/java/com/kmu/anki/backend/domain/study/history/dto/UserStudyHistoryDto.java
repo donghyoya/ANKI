@@ -23,7 +23,7 @@ public class UserStudyHistoryDto {
     public static UserStudyHistoryDto of(UserStudyHistory userStudyHistory){
         QueryType queryType = userStudyHistory.getDeckType();
         String deckname = null;
-        if(queryType.equals(QueryType.level)){
+        if(queryType.equals(QueryType.LEVEL)){
             deckname = userStudyHistory.getCardLevel().name();
         }else {
             deckname = userStudyHistory.getCardTopic().name();

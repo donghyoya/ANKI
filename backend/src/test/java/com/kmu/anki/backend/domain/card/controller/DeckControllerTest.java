@@ -69,7 +69,7 @@ class DeckControllerTest extends AbstractControllerTest {
 
         mockMvc.perform(
                         get("/decks")
-                                .param("queryType", QueryType.level.name())
+                                .param("queryType", QueryType.LEVEL.name())
                 ).andExpect(status().isOk())
                 .andDo(
                         MockMvcRestDocumentationWrapper.document(
@@ -206,7 +206,7 @@ class DeckControllerTest extends AbstractControllerTest {
 
         mockMvc.perform(
                         get("/decks/cards")
-                                .param("queryType", QueryType.level.name())
+                                .param("queryType", QueryType.LEVEL.name())
                                 .param("query","easy")
                                 .param("code", LanguageCode.en.name())
                                 .param("page", "1")
@@ -240,7 +240,7 @@ class DeckControllerTest extends AbstractControllerTest {
     private static Stream<Arguments> getDecksCardParams(){
         return Arrays.stream(QueryType.values())
                 .flatMap(queryType -> {
-                            if(queryType == QueryType.level){
+                            if(queryType == QueryType.LEVEL){
                                 return Arrays.stream(CardLevel.values()).map(query->Arguments.of(queryType.toString(), query.toString()));
                             }else {
                                 return Arrays.stream(CardTopicEnums.values()).map(query->Arguments.of(queryType.toString(), query.toString()));

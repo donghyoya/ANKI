@@ -28,11 +28,10 @@ public class CaffeineUserCardCacheRepository implements UserCardCacheRepository 
                 .build();
     }
 
-    private String buildKey(Long userId, LanguageCode languageCode, StudyType studyType, Object deckName){
+    private String buildKey(Long userId, StudyType studyType, Object deckName){
         StringBuilder sb = new StringBuilder();
         sb.append("daily:")
                 .append(userId).append(":")
-                .append(languageCode).append(":")
                 .append(studyType).append(":")
                 .append(deckName.toString()).append(":")
         ;
@@ -40,33 +39,33 @@ public class CaffeineUserCardCacheRepository implements UserCardCacheRepository 
     }
 
     @Override
-    public Optional<UserCardCacheO> findDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums cardTopicEnums) {
-        return Optional.ofNullable(cache.getIfPresent(buildKey(userId, languageCode, studyType, cardTopicEnums)));
+    public Optional<UserCardCacheO> findDailyUserCard(Long userId, StudyType studyType, CardTopicEnums cardTopicEnums) {
+        return Optional.ofNullable(cache.getIfPresent(buildKey(userId, studyType, cardTopicEnums)));
     }
 
     @Override
-    public Optional<UserCardCacheO> findDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel) {
-        return Optional.ofNullable(cache.getIfPresent(buildKey(userId, languageCode, studyType, cardLevel)));
+    public Optional<UserCardCacheO> findDailyUserCard(Long userId, StudyType studyType, CardLevel cardLevel) {
+        return Optional.ofNullable(cache.getIfPresent(buildKey(userId, studyType, cardLevel)));
     }
 
     @Override
-    public void saveDailyUserCard(Long userId, LanguageCode languageCode, CardTopicEnums cardTopicEnums, StudyType studyType, UserCardCacheO cacheO) {
-        cache.put(buildKey(userId, languageCode, studyType, cardTopicEnums), cacheO);
+    public void saveDailyUserCard(Long userId, CardTopicEnums cardTopicEnums, StudyType studyType, UserCardCacheO cacheO) {
+        cache.put(buildKey(userId, studyType, cardTopicEnums), cacheO);
     }
 
     @Override
-    public void saveDailyUserCard(Long userId, LanguageCode languageCode, CardLevel cardLevel, StudyType studyType, UserCardCacheO cacheO) {
-        cache.put(buildKey(userId, languageCode, studyType,cardLevel), cacheO);
+    public void saveDailyUserCard(Long userId,  CardLevel cardLevel, StudyType studyType, UserCardCacheO cacheO) {
+        cache.put(buildKey(userId, studyType,cardLevel), cacheO);
     }
 
     @Override
-    public void deleteDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums cardTopicEnums) {
-        cache.invalidate(buildKey(userId,languageCode,studyType,cardTopicEnums));
+    public void deleteDailyUserCard(Long userId, StudyType studyType, CardTopicEnums cardTopicEnums) {
+        cache.invalidate(buildKey(userId,studyType,cardTopicEnums));
 
     }
 
     @Override
-    public void deleteDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel) {
-        cache.invalidate(buildKey(userId,languageCode,studyType,cardLevel));
+    public void deleteDailyUserCard(Long userId, StudyType studyType, CardLevel cardLevel) {
+        cache.invalidate(buildKey(userId,studyType,cardLevel));
     }
 }

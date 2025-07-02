@@ -25,7 +25,7 @@ public class CheckDailyCardService {
      * 오늘 학습이 끝났으면 true
      */
     public boolean checkLearingComplete(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel){
-        Optional<UserCardCacheO> opt = cardCacheRepository.findDailyUserCard(userId, languageCode, studyType, cardLevel);
+        Optional<UserCardCacheO> opt = cardCacheRepository.findDailyUserCard(userId, studyType, cardLevel);
         if(opt.isEmpty()){
             return false;
         }
@@ -34,7 +34,7 @@ public class CheckDailyCardService {
     }
 
     public boolean checkLearingComplete(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums topic){
-        Optional<UserCardCacheO> opt = cardCacheRepository.findDailyUserCard(userId, languageCode, studyType, topic);
+        Optional<UserCardCacheO> opt = cardCacheRepository.findDailyUserCard(userId, studyType, topic);
         if(opt.isEmpty()){
             return false;
         }
@@ -47,7 +47,7 @@ public class CheckDailyCardService {
      * 오늘 복습이 끝났으면 true
      */
     public boolean checkReviewComplete(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel){
-        Optional<UserCardCacheO> opt = cardCacheRepository.findDailyUserCard(userId, languageCode, studyType, cardLevel);
+        Optional<UserCardCacheO> opt = cardCacheRepository.findDailyUserCard(userId, studyType, cardLevel);
         if(opt.isEmpty()){
             return false;
         }
@@ -56,7 +56,7 @@ public class CheckDailyCardService {
     }
 
     public boolean checkReviewComplete(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums topic){
-        Optional<UserCardCacheO> opt = cardCacheRepository.findDailyUserCard(userId, languageCode, studyType, topic);
+        Optional<UserCardCacheO> opt = cardCacheRepository.findDailyUserCard(userId, studyType, topic);
         if(opt.isEmpty()){
             return false;
         }

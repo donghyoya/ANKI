@@ -57,7 +57,7 @@ public class UserCardService {
         // 오늘 공부할 단어 개수 꺼내기
         Integer words = studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords();
         // cache에서 꺼내기
-        Optional<UserCardCacheO> opt = userCardCacheRepository.findDailyUserCard(userId, languageCode, studyType, cardTopicEnums);
+        Optional<UserCardCacheO> opt = userCardCacheRepository.findDailyUserCard(userId, studyType, cardTopicEnums);
         List<Long> userCardIds = null;
         if(opt.isPresent()){
             userCardIds = opt.get().getUserCardIds();
@@ -66,11 +66,11 @@ public class UserCardService {
                 userCardIds = userCardIds.subList(0, words);
             }else if(userCardIds.size() < words){
                 userCardIds.addAll(userCardQueryRepository.findStudyCardIds(userId, languageCode, null, cardTopicEnums, now, studyType, userCardIds, words-userCardIds.size()+1));
-                userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardTopicEnums, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
+                userCardCacheRepository.saveDailyUserCard(userId, cardTopicEnums, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
             }
         }else {
             userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, null, cardTopicEnums, now, studyType, null, words);
-            userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardTopicEnums, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
+            userCardCacheRepository.saveDailyUserCard(userId, cardTopicEnums, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
         }
         return userCardQueryRepository.findStudyCardByIds(userCardIds);
     }
@@ -82,7 +82,7 @@ public class UserCardService {
         // 오늘 공부할 단어 목록
         Integer words = studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords();
         // cache에서 꺼내기
-        Optional<UserCardCacheO> opt = userCardCacheRepository.findDailyUserCard(userId, languageCode, studyType, cardLevel);
+        Optional<UserCardCacheO> opt = userCardCacheRepository.findDailyUserCard(userId, studyType, cardLevel);
         List<Long> userCardIds = null;
         if(opt.isPresent()){
             userCardIds = opt.get().getUserCardIds();
@@ -90,11 +90,11 @@ public class UserCardService {
                 userCardIds = userCardIds.subList(0, words);
             }else if(userCardIds.size() < words){
                 userCardIds.addAll(userCardQueryRepository.findStudyCardIds(userId, languageCode, cardLevel, null, now, studyType, userCardIds, words-userCardIds.size()+1));
-                userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardLevel, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
+                userCardCacheRepository.saveDailyUserCard(userId, cardLevel, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
             }
         }else {
             userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, cardLevel, null, now, studyType, null, words);
-            userCardCacheRepository.saveDailyUserCard(userId, languageCode, cardLevel, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
+            userCardCacheRepository.saveDailyUserCard(userId, cardLevel, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
         }
         return userCardQueryRepository.findStudyCardByIds(userCardIds);
     }
@@ -123,11 +123,11 @@ public class UserCardService {
     }
 
     /* DELETE */
-    public void deleteCache(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums cardTopicEnums) {
-        userCardCacheRepository.deleteDailyUserCard(userId, languageCode, studyType, cardTopicEnums);
+    public void deleteCache(Long userId, StudyType studyType, CardTopicEnums cardTopicEnums) {
+        userCardCacheRepository.deleteDailyUserCard(userId, studyType, cardTopicEnums);
     }
 
-    public void deleteCache(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel) {
-        userCardCacheRepository.deleteDailyUserCard(userId, languageCode, studyType, cardLevel);
+    public void deleteCache(Long userId, StudyType studyType, CardLevel cardLevel) {
+        userCardCacheRepository.deleteDailyUserCard(userId, studyType, cardLevel);
     }
 }

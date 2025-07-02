@@ -11,14 +11,15 @@ import org.springframework.data.domain.Page;
 import java.util.Optional;
 
 public interface UserCardCacheRepository {
-    Optional<UserCardCacheO> findDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums cardTopicEnums);
+    Optional<UserCardCacheO> findDailyUserCard(Long userId, StudyType studyType, CardTopicEnums cardTopicEnums);
 
-    Optional<UserCardCacheO> findDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel);
+    Optional<UserCardCacheO> findDailyUserCard(Long userId, StudyType studyType, CardLevel cardLevel);
 
-    void saveDailyUserCard(Long userId, LanguageCode languageCode, CardTopicEnums cardTopicEnums, StudyType studyType, UserCardCacheO cacheO);
-    void saveDailyUserCard(Long userId, LanguageCode languageCode, CardLevel cardLevel, StudyType studyType, UserCardCacheO cacheO);
+    void saveDailyUserCard(Long userId, CardTopicEnums cardTopicEnums, StudyType studyType, UserCardCacheO cacheO);
 
-    void deleteDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums cardTopicEnums);
+    void saveDailyUserCard(Long userId,  CardLevel cardLevel, StudyType studyType, UserCardCacheO cacheO);
 
-    void deleteDailyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel);
+    void deleteDailyUserCard(Long userId,  StudyType studyType, CardTopicEnums cardTopicEnums);
+
+    void deleteDailyUserCard(Long userId, StudyType studyType, CardLevel cardLevel);
 }

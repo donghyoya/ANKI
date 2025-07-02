@@ -93,14 +93,13 @@ public class UserCardController {
     ){
         Long userId = Long.parseLong(authentication.getName());
         UserOptionDto userOptionDto = userOptionService.readOption(userId);
-        LanguageCode languageCode = userOptionDto.getLanguageCode();
         if(queryType == QueryType.TOPIC){
             CardTopicEnums cardTopicEnums = enumConverterFactory.convertTopic(query);
-            userCardService.deleteCache(userId, languageCode, studyType,cardTopicEnums);
+            userCardService.deleteCache(userId, studyType,cardTopicEnums);
             // 최근 학습 덱을 보여주기 위해서
         }else {
             CardLevel cardLevel = enumConverterFactory.convertLevel(query);
-            userCardService.deleteCache(userId, languageCode, studyType, cardLevel);
+            userCardService.deleteCache(userId, studyType, cardLevel);
         }
         return Map.of("message", "cache-deleted");
     }

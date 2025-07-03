@@ -29,9 +29,6 @@ public class DeckDto {
      */
     private Integer maturityCounts;
 
-    private boolean isCompleteLearning;
-    private boolean isCompleteReview;
-
     public DeckDto(CardLevel level, Long cardCounts) {
         this.category = level.toString();
         this.cardCounts = cardCounts;

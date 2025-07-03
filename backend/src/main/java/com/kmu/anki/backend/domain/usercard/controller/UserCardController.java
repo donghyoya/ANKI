@@ -6,23 +6,30 @@ import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
 import com.kmu.anki.backend.domain.study.history.service.UserStudyHistoryService;
 import com.kmu.anki.backend.domain.user.dto.UserOptionDto;
+import com.kmu.anki.backend.domain.user.exception.UserOptionRequiredException;
 import com.kmu.anki.backend.domain.user.service.UserOptionService;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyCardForm;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
+import com.kmu.anki.backend.domain.usercard.exception.DailyStudyNotFinishedException;
 import com.kmu.anki.backend.domain.usercard.service.UserCardService;
 import com.kmu.anki.backend.global.config.converter.factory.StringToEnumConverterFactory;
+import com.kmu.anki.backend.global.controller.ExceptionResponse;
 import com.kmu.anki.backend.global.schema.BaseListReponse;
 import com.kmu.anki.backend.global.schema.BasePageResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/cards")
 @RestController
@@ -132,6 +139,10 @@ public class UserCardController {
         return Map.of("message", "cache-deleted");
     }
 
-
+    @ExceptionHandler(DailyStudyNotFinishedException.class)
+    public ResponseEntity<ExceptionResponse> handleDailyStudyNotFinishedException(DailyStudyNotFinishedException ex){
+        log.error("[400] DailyStudyNotFinishedException: {}", ex.getMessage(), ex);
+        return new ResponseEntity<>(ExceptionResponse.of(400, "DailyStudyNotFinished"), HttpStatus.BAD_REQUEST);
+    }
 
 }

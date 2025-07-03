@@ -84,6 +84,34 @@ public class UserCardController {
         return BaseListReponse.of(cards);
     }
 
+    @GetMapping("/study/continue")
+    public BaseListReponse<UserCardDto> getStudyCardsContinue(
+            @RequestParam("studyType") StudyType studyType,
+            @RequestParam("queryType") QueryType queryType,
+            @RequestParam("query") String query,
+            Authentication authentication
+    ){
+        Long userId = Long.parseLong(authentication.getName());
+        UserOptionDto userOptionDto = userOptionService.readOption(userId);
+        UserOptionDto.validate(userOptionDto);
+        LanguageCode languageCode = userOptionDto.getLanguageCode();
+        List<UserCardDto> cards;
+        if(queryType == QueryType.TOPIC){
+            CardTopicEnums cardTopicEnums = enumConverterFactory.convertTopic(query);
+            cards = userCardService.continueStudyUserCard(userId, languageCode, studyType,cardTopicEnums);
+            // 최근 학습 덱을 보여주기 위해서
+            userStudyHistoryService.createHistory(studyType, queryType, cardTopicEnums, userId);
+        }else {
+            CardLevel cardLevel = enumConverterFactory.convertLevel(query);
+            cards = userCardService.continueStudyUserCard(userId, languageCode, studyType, cardLevel);
+            // 최근 학습 덱을 보여주기 위해서
+            userStudyHistoryService.createHistory(studyType, queryType, cardLevel, userId);
+        }
+
+        return BaseListReponse.of(cards);
+    }
+
+
     @GetMapping("/delete-cache")
     public Map<String, String> deleteCache(
             @RequestParam("studyType") StudyType studyType,

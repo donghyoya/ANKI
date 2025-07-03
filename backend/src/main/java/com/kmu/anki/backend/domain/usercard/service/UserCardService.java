@@ -11,6 +11,7 @@ import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.dto.cache.UserCardCacheO;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
+import com.kmu.anki.backend.domain.usercard.exception.DailyStudyNotFinishedException;
 import com.kmu.anki.backend.domain.usercard.repository.UserCardQueryRepository;
 import com.kmu.anki.backend.domain.usercard.repository.UserCardRepository;
 import com.kmu.anki.backend.domain.usercard.repository.UserCardStudyRepository;
@@ -36,6 +37,7 @@ public class UserCardService {
     private final UserCardStudyRepository userCardStudyRepository;
     private final UserCardQueryRepository userCardQueryRepository;
     private final UserCardCacheRepository userCardCacheRepository;
+    private final CheckDailyCardService checkDailyCardService;
 
     /* CREATE */
 
@@ -99,6 +101,49 @@ public class UserCardService {
         return userCardQueryRepository.findStudyCardByIds(userCardIds);
     }
 
+    // 학습계속하기
+
+    public List<UserCardDto> continueStudyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums cardTopicEnums){
+        LocalDateTime now = LocalDateTime.now();
+        // 유저 정보를 꺼내라
+        User user = userRepository.findById(userId).orElseThrow();
+        // 오늘 공부 끝났는지 확인
+        boolean isComplete = checkDailyCardService.checkLearingComplete(userId, languageCode, StudyType.study, cardTopicEnums);
+        if(!isComplete){
+            throw new DailyStudyNotFinishedException();
+        }
+        // 오늘 공부했던 단어 삭제
+        this.deleteCache(userId, studyType, cardTopicEnums);
+
+        // 오늘 공부할 단어 개수 꺼내기
+        Integer words = studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords();
+
+        // 새로 공부할 단어 가져와서 캐시에 넣기
+        List<Long> userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, null, cardTopicEnums, now, studyType, null, words);
+        userCardCacheRepository.saveDailyUserCard(userId, cardTopicEnums, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
+        return userCardQueryRepository.findStudyCardByIds(userCardIds);
+    }
+
+    public List<UserCardDto> continueStudyUserCard(Long userId, LanguageCode languageCode, StudyType studyType, CardLevel cardLevel){
+        LocalDateTime now = LocalDateTime.now();
+        // 유저 정보를 꺼내라
+        User user = userRepository.findById(userId).orElseThrow();
+        // 오늘 공부 끝났는지 확인
+        boolean isComplete = checkDailyCardService.checkLearingComplete(userId, languageCode, StudyType.study, cardLevel);
+        if(!isComplete){
+            throw new DailyStudyNotFinishedException();
+        }
+        // 오늘 공부했던 단어 삭제
+        this.deleteCache(userId, studyType, cardLevel);
+
+        // 오늘 공부할 단어 개수 꺼내기
+        Integer words = studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords();
+
+        // 새로 공부할 단어 가져와서 캐시에 넣기
+        List<Long> userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, cardLevel, null, now, studyType, null, words);
+        userCardCacheRepository.saveDailyUserCard(userId, cardLevel, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
+        return userCardQueryRepository.findStudyCardByIds(userCardIds);
+    }
 
     public CardStudyDto readCardStudyInfo(Long userCardId){
         return userCardQueryRepository.findCardStudyDto(userCardId).orElseThrow();

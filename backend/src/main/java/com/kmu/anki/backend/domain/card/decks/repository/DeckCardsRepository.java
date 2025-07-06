@@ -49,7 +49,9 @@ public class DeckCardsRepository {
         List<KoreanCard> koreanCards = queryFactory.select(koreanCard)
                 .from(koreanCard)
                 .join(koreanCard.cardTopics, cardTopic).fetchJoin()
-                .where(koreanCard.id.in(koreanCardIds)).fetch();
+                .where(koreanCard.id.in(koreanCardIds))
+                .orderBy(koreanCard.koreanWord.asc())
+                .fetch();
         Map<Long, List<String>> foreignWords = foreignCardQueryRepository.findForeignWordsByKoreanCardAndLanguageCode(koreanCardIds, languageCode);
         return PageableExecutionUtils.getPage(
                 koreanCards.stream().map(card->KoreanCardWithForeignWord.of(card, foreignWords)).toList(),
@@ -67,7 +69,9 @@ public class DeckCardsRepository {
         List<KoreanCard> koreanCards = queryFactory.select(koreanCard)
                 .from(koreanCard)
                 .join(koreanCard.cardTopics, cardTopic).fetchJoin()
-                .where(koreanCard.id.in(koreanCardIds)).fetch();
+                .where(koreanCard.id.in(koreanCardIds))
+                .orderBy(koreanCard.koreanWord.asc())
+                .fetch();
         Map<Long, List<String>> foreignWords = foreignCardQueryRepository.findForeignWordsByKoreanCardAndLanguageCode(koreanCardIds, languageCode);
         return PageableExecutionUtils.getPage(
                 koreanCards.stream().map(card->KoreanCardWithForeignWord.of(card, foreignWords)).toList(),

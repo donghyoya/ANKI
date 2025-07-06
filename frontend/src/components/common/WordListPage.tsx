@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useWindowSize } from '@/hooks/useWindowSize';
@@ -17,10 +17,16 @@ import { camelize } from 'humps';
 
 export default function WordListPage({
   wordList,
-  category
+  category,
+  onLoadMore,
+  isLoading,
+  hasMore
 }: {
   wordList: KoreanCardWithForeignWords[];
   category: string;
+  onLoadMore: () => void;
+  isLoading: boolean;
+  hasMore: boolean;
 }) {
   const t = useTranslations();
   const router = useRouter();
@@ -64,6 +70,25 @@ export default function WordListPage({
     const menu = document.getElementById('word-list-more') as HTMLDialogElement;
     menu.open = !menu.open;
   };
+
+  const loadTriggerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log('load more');
+          onLoadMore();
+        }
+      });
+    });
+
+    if (loadTriggerRef.current) {
+      observer.observe(loadTriggerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [onLoadMore]);
 
   const MenuButton = () => {
     return (
@@ -109,7 +134,7 @@ export default function WordListPage({
             <MenuButton />
           </div>
         </div>
-        <div className={styles['list-container']}>
+        <div className={`${styles['list-container']} .word-list`}>
           {wordList.map((word, index) => (
             <WordListComponent
               key={index}
@@ -122,6 +147,12 @@ export default function WordListPage({
             />
           ))}
         </div>
+        {hasMore && (
+          <>
+            <div className={styles['load-trigger']} ref={loadTriggerRef} />
+            <div className={styles['load-more']}>{isLoading ? 'Loading...' : 'Load More'}</div>
+          </>
+        )}
       </div>
       {isCompact && (
         <div className={styles['button-container-compact']}>

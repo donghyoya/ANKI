@@ -144,6 +144,7 @@ export default function WordListPage({
               isExpanded={!isLarge && isExpanded}
               isHideKorean={isLarge && isHideKorean}
               isHideForeign={isLarge && isHideForeign}
+              cardId={word.cardId}
             />
           ))}
 

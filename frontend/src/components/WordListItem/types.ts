@@ -5,4 +5,5 @@ export interface WordListItemProps {
   isHideKorean?: boolean;
   isHideForeign?: boolean;
   homographNumber: number;
+  cardId: number;
 }

@@ -4,21 +4,28 @@ import React, { useEffect, useState } from 'react';
 import { WordListItemProps } from './types';
 import { OutlinedCard } from '../Card/Card';
 import styles from './WordListItemMobile.module.scss';
+import { useRouter } from 'next/navigation';
 
 const WordListItemMobile = ({
   KoreanWord,
   ForeignWord,
   isExpanded,
-  homographNumber
+  homographNumber,
+  cardId
 }: WordListItemProps) => {
   const [expanded, setExpanded] = useState(isExpanded || false);
+  const router = useRouter();
 
   useEffect(() => {
     if (isExpanded !== undefined) setExpanded(isExpanded);
   }, [isExpanded]);
 
   const handleClick = () => {
-    setExpanded((prev) => !prev);
+    if (expanded) {
+      router.push(`/card/${cardId}`);
+    } else {
+      setExpanded(true);
+    }
   };
 
   return (

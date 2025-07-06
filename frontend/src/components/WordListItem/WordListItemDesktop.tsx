@@ -8,17 +8,17 @@ import LearningCard, { LearningCardState } from '@/components/LearningCard/Learn
 import { MenuItem } from '@/types/Menu';
 import { DUMMY_KOR_CARD_DETAIL } from '@/utils/dummyData';
 
-import styles from './WordList.module.scss';
-import { WordListProps } from './types';
+import styles from './WordListItemDesktop.module.scss';
+import { WordListItemProps } from './types';
 
-const WordList = ({
+const WordListItemDesktop = ({
   KoreanWord,
   ForeignWord,
   isHideKorean,
   isHideForeign,
   homographNumber,
   isExpanded
-}: WordListProps) => {
+}: WordListItemProps) => {
   const [expanded, setExpanded] = useState(isExpanded || false);
   const [contentHeight, setContentHeight] = useState(0);
   const [cardState, setCardState] = useState<LearningCardState>({
@@ -83,4 +83,4 @@ const WordList = ({
   );
 };
 
-export default WordList;
+export default WordListItemDesktop;

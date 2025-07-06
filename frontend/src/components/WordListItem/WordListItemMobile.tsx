@@ -1,16 +1,16 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { WordListProps } from './types';
+import { WordListItemProps } from './types';
 import { OutlinedCard } from '../Card/Card';
-import styles from './WordListCompact.module.scss';
+import styles from './WordListItemMobile.module.scss';
 
-const WordListCompact = ({
+const WordListItemMobile = ({
   KoreanWord,
   ForeignWord,
   isExpanded,
   homographNumber
-}: WordListProps) => {
+}: WordListItemProps) => {
   const [expanded, setExpanded] = useState(isExpanded || false);
 
   useEffect(() => {
@@ -36,4 +36,4 @@ const WordListCompact = ({
   );
 };
 
-export default WordListCompact;
+export default WordListItemMobile;

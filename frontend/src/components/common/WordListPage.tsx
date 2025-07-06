@@ -8,8 +8,8 @@ import { useWindowSize } from '@/hooks/useWindowSize';
 import FilledButton from '@/components/material-components/FilledButton';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
 import { Menu, MenuItem } from '@/components/material-components/Menu';
-import WordList from '@/components/WordList/WordList';
-import WordListCompact from '@/components/WordList/WordListCompact';
+import WordListItemDesktop from '@/components/WordListItem/WordListItemDesktop';
+import WordListItemMobile from '@/components/WordListItem/WordListItemMobile';
 import { KoreanCardWithForeignWords } from '@/types/schemes';
 import styles from './WordListPage.module.scss';
 import { getCategoryType } from '@/types/Category';
@@ -39,7 +39,7 @@ export default function WordListPage({
   const isCompact = width < 600;
   const isLarge = width >= 1200;
 
-  const WordListComponent = !isLarge ? WordListCompact : WordList;
+  const WordListItem = !isLarge ? WordListItemMobile : WordListItemDesktop;
 
   const title =
     getCategoryType(category) === 'difficulty'
@@ -136,7 +136,7 @@ export default function WordListPage({
         </div>
         <div className={`${styles['list-container']} .word-list`}>
           {wordList.map((word, index) => (
-            <WordListComponent
+            <WordListItem
               key={index}
               KoreanWord={word.koreanWord}
               ForeignWord={word.foreignWords[0]}

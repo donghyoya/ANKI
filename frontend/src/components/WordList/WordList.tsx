@@ -16,9 +16,10 @@ const WordList = ({
   ForeignWord,
   isHideKorean,
   isHideForeign,
-  homographNumber
+  homographNumber,
+  isExpanded
 }: WordListProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(isExpanded || false);
   const [contentHeight, setContentHeight] = useState(0);
   const [cardState, setCardState] = useState<LearningCardState>({
     isRevealed: true,
@@ -28,7 +29,7 @@ const WordList = ({
   });
 
   const handleClick = () => {
-    setIsExpanded((prev) => !prev);
+    setExpanded((prev) => !prev);
   };
 
   const toggleConjugation = () => {
@@ -49,9 +50,13 @@ const WordList = ({
   );
 
   return (
-    <div>
-      {!isExpanded && (
-        <OutlinedCard className={styles.card} onClick={handleClick}>
+    <>
+      {!expanded && (
+        <OutlinedCard
+          className={styles.card}
+          onClick={handleClick}
+          style={{ minHeight: expanded ? '104px' : '56px' }}
+        >
           <div className={styles.content}>
             <h3 className={styles['korean-word']}>
               {isHideKorean ? '' : KoreanWord}
@@ -74,7 +79,7 @@ const WordList = ({
           setContentHeight={setContentHeight}
         />
       )}
-    </div>
+    </>
   );
 };
 

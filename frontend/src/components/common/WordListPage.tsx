@@ -146,13 +146,14 @@ export default function WordListPage({
               isHideForeign={isLarge && isHideForeign}
             />
           ))}
+
+          {/* {hasMore && (
+            <>
+              <div className={styles['load-trigger']} ref={loadTriggerRef} />
+              <div className={styles['load-more']}>{isLoading ? 'Loading...' : 'Load More'}</div>
+            </>
+          )} */}
         </div>
-        {hasMore && (
-          <>
-            <div className={styles['load-trigger']} ref={loadTriggerRef} />
-            <div className={styles['load-more']}>{isLoading ? 'Loading...' : 'Load More'}</div>
-          </>
-        )}
       </div>
       {isCompact && (
         <div className={styles['button-container-compact']}>

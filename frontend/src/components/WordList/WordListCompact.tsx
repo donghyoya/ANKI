@@ -24,7 +24,7 @@ const WordListCompact = ({
   return (
     <OutlinedCard
       className={styles.card}
-      style={{ height: expanded ? '104px' : '56px' }}
+      style={{ minHeight: expanded ? '104px' : '56px' }}
       onClick={handleClick}
     >
       <div className={styles['korean-word']}>

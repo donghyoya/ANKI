@@ -33,7 +33,8 @@ export default function SettingsPage() {
   const t = useTranslations();
 
   const { width } = useWindowSize();
-  const isCompact = width < 1200;
+  const isCompact = width < 600;
+  const isMobile = width < 1200;
 
   const { showBoundary } = useErrorBoundary();
   const { showSnackbar } = useSnackbar();
@@ -75,7 +76,7 @@ export default function SettingsPage() {
   // Change value functions
   const handleChangeLanguage = (newLocale: Locale) => {
     if (userOptions === null) return;
-      setUserOptions({ ...userOptions, languageCode: newLocale });
+    setUserOptions({ ...userOptions, languageCode: newLocale });
   };
 
   const handleChangeTheme = (newTheme: Theme) => {
@@ -159,92 +160,241 @@ export default function SettingsPage() {
   }, [userOptions]);
 
   const webView = (
-    <div className={styles.page}>
-      <div className={styles.contents}>
-        <div className={styles.header}>
-          <h1 className={styles.title}>{t('settings.settings')}</h1>
-          <FilledButton onClick={handleSave}>{t('save')}</FilledButton>
+    <>
+      {/* [System] */}
+      <div className={styles['group']}>
+        <h3 className={styles['group-title']}>{t('settings.system')}</h3>
+        {/* Language */}
+        <div className={styles['field-section']}>
+          <label className={styles.label}>{t('settings.language')}</label>
+          <OutlinedSelect value={languageCode}>
+            {LANGUAGE_OPTIONS.map((lang) => (
+              <SelectOption
+                key={lang.code}
+                value={lang.code}
+                onClick={() => handleChangeLanguage(lang.code as Locale)}
+              >
+                {lang.label}
+              </SelectOption>
+            ))}
+          </OutlinedSelect>
         </div>
-        {/* [System] */}
-        <div className={styles['group']}>
-          <h3 className={styles['group-title']}>{t('settings.system')}</h3>
+        {/* Theme */}
+        <div className={styles['field-section']}>
+          <label className={styles.label}>{t('settings.theme')}</label>
+          <OutlinedSelect value={theme}>
+            {THEME_OPTIONS.map((theme) => (
+              <SelectOption
+                key={theme.value}
+                value={theme.value}
+                onClick={() => handleChangeTheme(theme.value as Theme)}
+              >
+                {t(theme.messageKey)}
+              </SelectOption>
+            ))}
+          </OutlinedSelect>
+        </div>
+        {/* Time zone */}
+        <div className={classNames(styles['field-section'], styles['last-field-section'])}>
+          <label className={styles.label}>{t('settings.utcOffset')}</label>
+          <OutlinedSelect value={offsetCode?.toString()}>
+            {UTC_OFFSET_OPTIONS.map((offset) => (
+              <SelectOption
+                key={offset.code}
+                value={offset.code?.toString()}
+                onClick={() => handleChangeUtcOffset(offset.code)}
+              >
+                {offset.label}
+              </SelectOption>
+            ))}
+          </OutlinedSelect>
+        </div>
+      </div>
+      {/* [Learning] */}
+      <div className={styles['group']}>
+        <h3 className={styles['group-title']}>{t('settings.learning')}</h3>
+        {/* Daily review word count */}
+        <div className={styles['field-section']}>
+          <label className={styles.label}>{t('settings.reviewCount')}</label>
+          <OutlinedTextField
+            id="dailyReviewWords"
+            value={reviewCount}
+            onChange={(e) => {
+              reviewCount = (e.target as HTMLInputElement).value;
+              handleChangeReviewCount(Number(reviewCount));
+            }}
+          />
+        </div>
+        {/* Daily new word count */}
+        <div className={classNames(styles['field-section'], styles['last-field-section'])}>
+          <label className={styles.label}>{t('settings.newCount')}</label>
+          <OutlinedTextField
+            id="dailyStudyWords"
+            value={newCount}
+            onChange={(e) => {
+              newCount = (e.target as HTMLInputElement).value;
+              handleChangeNewCount(Number(newCount));
+            }}
+          />
+        </div>
+      </div>
+    </>
+  );
 
+  const mobileView = (
+    <>
+      {/* [System] */}
+      <div className={styles.group}>
+        <h3 className={styles['group-title']}>{t('settings.system')}</h3>
+        <List className={styles.list}>
           {/* Language */}
-          <div className={styles['field-section']}>
-            <label className={styles.label}>{t('settings.language')}</label>
-            <OutlinedSelect value={languageCode}>
+          <div style={{ position: 'relative' }}>
+            <ListItem type="button" id="language-anchor" onClick={handleLanguageMenuClick}>
+              <div slot="headline">{t('settings.language')}</div>
+              <div slot="supporting-text">{language}</div>
+              <Icon slot="end">arrow_drop_down</Icon>
+            </ListItem>
+            <Menu
+              id="language-menu"
+              anchor="language-anchor"
+              anchorCorner="end-end"
+              xOffset={-160}
+              className={styles['language-menu']}
+            >
               {LANGUAGE_OPTIONS.map((lang) => (
-                <SelectOption
+                <MenuItem
                   key={lang.code}
-                  value={lang.code}
-                  onClick={() => handleChangeLanguage(lang.code as Locale)}
+                  selected={lang.code === userOptions?.languageCode}
+                  onClick={() => {
+                    handleChangeLanguage(lang.code as Locale);
+                  }}
                 >
                   {lang.label}
-                </SelectOption>
+                </MenuItem>
               ))}
-            </OutlinedSelect>
+            </Menu>
           </div>
           {/* Theme */}
-          <div className={styles['field-section']}>
-            <label className={styles.label}>{t('settings.theme')}</label>
-            <OutlinedSelect value={theme}>
+          <div style={{ position: 'relative' }}>
+            <ListItem type="button" id="theme-anchor" onClick={handleThemeMenuClick}>
+              <div slot="headline">{t('settings.theme')}</div>
+              <div slot="supporting-text">{t(`settings.${theme}`)}</div>
+              <Icon slot="end">arrow_drop_down</Icon>
+            </ListItem>
+            <Menu
+              id="theme-menu"
+              anchor="theme-anchor"
+              anchorCorner="end-end"
+              xOffset={-201}
+              className={styles['theme-menu']}
+            >
               {THEME_OPTIONS.map((theme) => (
-                <SelectOption
-                  key={theme.value}
-                  value={theme.value}
-                  onClick={() => handleChangeTheme(theme.value as Theme)}
-                >
+                <MenuItem key={theme.value} onClick={() => handleChangeTheme(theme.value as Theme)}>
                   {t(theme.messageKey)}
-                </SelectOption>
+                </MenuItem>
               ))}
-            </OutlinedSelect>
+            </Menu>
           </div>
           {/* Time zone */}
-          <div className={classNames(styles['field-section'], styles['last-field-section'])}>
-            <label className={styles.label}>{t('settings.utcOffset')}</label>
-            <OutlinedSelect value={offsetCode?.toString()}>
+          <div style={{ position: 'relative' }}>
+            <ListItem type="button" id="utc-offset-anchor" onClick={handleUtcOffsetMenuClick}>
+              <div slot="headline">{t('settings.utcOffset')}</div>
+              <div slot="supporting-text">{utcOffset}</div>
+              <Icon slot="end">arrow_drop_down</Icon>
+            </ListItem>
+            <Menu
+              id="utc-offset-menu"
+              anchor="utc-offset-anchor"
+              anchorCorner="end-end"
+              xOffset={-113}
+              className={styles['time-zone-menu']}
+            >
               {UTC_OFFSET_OPTIONS.map((offset) => (
-                <SelectOption
+                <MenuItem
                   key={offset.code}
-                  value={offset.code?.toString()}
-                  onClick={() => handleChangeUtcOffset(offset.code)}
+                  selected={offset.code === userOptions?.utcOffset}
+                  onClick={() => {
+                    handleChangeUtcOffset(offset.code);
+                  }}
                 >
                   {offset.label}
-                </SelectOption>
+                </MenuItem>
               ))}
-            </OutlinedSelect>
+            </Menu>
           </div>
-        </div>
-        {/* [Learning] */}
-        <div className={styles['group']}>
-          <h3 className={styles['group-title']}>{t('settings.learning')}</h3>
+        </List>
+      </div>
+      {/* [Learning] */}
+      <div className={styles.group}>
+        <h3 className={styles['group-title']}>{t('settings.learning')}</h3>
+        <List className={styles.list}>
           {/* Daily review word count */}
-          <div className={styles['field-section']}>
-            <label className={styles.label}>{t('settings.reviewCount')}</label>
-            <OutlinedTextField
-              id="dailyReviewWords"
-              value={reviewCount}
-              onChange={(e) => {
-                reviewCount = (e.target as HTMLInputElement).value;
-                handleChangeReviewCount(Number(reviewCount));
-              }}
-            />
-          </div>
+          <ListItem type="button" onClick={() => handleReviewCountDialog(true)}>
+            <div slot="headline">{t('settings.reviewCount')}</div>
+            <div slot="trailing-supporting-text" className={styles['learning-count']}>
+              {reviewCount}
+            </div>
+          </ListItem>
+          <CustomDialog
+            open={isReviewCountDialogOpen}
+            headline={t('settings.reviewCount')}
+            prompt={
+              <OutlinedTextField
+                id="dailyReviewWords"
+                value={reviewCount}
+                onChange={(e) => (reviewCount = (e.target as HTMLInputElement).value)}
+              />
+            }
+            firstButtonString={t('cancel')}
+            secondButtonString={t('ok')}
+            firstButtonOnclick={() => handleReviewCountDialog(false)}
+            secondButtonOnclick={() => {
+              handleChangeReviewCount(Number(reviewCount));
+              handleReviewCountDialog(false);
+            }}
+          />
           {/* Daily new word count */}
-          <div className={classNames(styles['field-section'], styles['last-field-section'])}>
-            <label className={styles.label}>{t('settings.newCount')}</label>
-            <OutlinedTextField
-              id="dailyStudyWords"
-              value={newCount}
-              onChange={(e) => {
-                newCount = (e.target as HTMLInputElement).value;
-                handleChangeNewCount(Number(newCount));
-              }}
-            />
+          <ListItem type="button" onClick={() => handleNewCountDialog(true)}>
+            <div slot="headline">{t('settings.newCount')}</div>
+            <div slot="trailing-supporting-text" className={styles['learning-count']}>
+              {newCount}
+            </div>
+          </ListItem>
+          <CustomDialog
+            open={isNewCountDialogOpen}
+            headline={t('settings.newCount')}
+            prompt={
+              <OutlinedTextField
+                id="dailyStudyWords"
+                value={newCount}
+                onChange={(e) => (newCount = (e.target as HTMLInputElement).value)}
+              />
+            }
+            firstButtonString={t('cancel')}
+            secondButtonString={t('ok')}
+            firstButtonOnclick={() => handleNewCountDialog(false)}
+            secondButtonOnclick={() => {
+              handleChangeNewCount(Number(newCount));
+              handleNewCountDialog(false);
+            }}
+          />
+        </List>
+      </div>
+    </>
+  );
+
+  const pageView = (
+    <div className={styles.page}>
+      <div className={styles.contents}>
+        {!isCompact && (
+          <div className={styles.header}>
+            <h1 className={styles.title}>{t('settings.settings')}</h1>
+            <FilledButton onClick={handleSave}>{t('save')}</FilledButton>
           </div>
-        </div>
+        )}
+        {isMobile ? mobileView : webView}
         {/* [Account] */}
-        <div className={styles['group']}>
+        <div className={styles.group}>
           <h3 className={styles['group-title']}>{t('settings.account')}</h3>
           {/* Sign out */}
           <div className={styles['sign-out-button']}>
@@ -253,144 +403,16 @@ export default function SettingsPage() {
           {/* Delete account */}
           <TextButton>{t('settings.deleteAccount')}</TextButton>
         </div>
+        {isCompact && (
+          <div className={styles['button-container-compact']}>
+            <FilledButton className={styles['save-button-compact']} onClick={handleSave}>
+              {t('save')}
+            </FilledButton>
+          </div>
+        )}
       </div>
     </div>
   );
-
-  const mobileView = (
-    <div className={styles.page}>
-      <List className={styles.list}>
-        {/* Language */}
-        <div style={{ position: 'relative' }}>
-          <ListItem type="button" id="language-anchor" onClick={handleLanguageMenuClick}>
-            <div slot="headline">{t('settings.language')}</div>
-            <div slot="supporting-text">{language}</div>
-            <Icon slot="end">arrow_drop_down</Icon>
-          </ListItem>
-          <Menu id="language-menu" anchor="language-anchor" anchorCorner="end-end" xOffset={-160}>
-            {LANGUAGE_OPTIONS.map((lang) => (
-              <MenuItem
-                key={lang.code}
-                selected={lang.code === userOptions?.languageCode}
-                onClick={() => {
-                  handleChangeLanguage(lang.code as Locale);
-                }}
-              >
-                {lang.label}
-              </MenuItem>
-            ))}
-          </Menu>
-        </div>
-        {/* Theme */}
-        <div style={{ position: 'relative' }}>
-          <ListItem type="button" id="theme-anchor" onClick={handleThemeMenuClick}>
-            <div slot="headline">{t('settings.theme')}</div>
-            <div slot="supporting-text">{t(`settings.${theme}`)}</div>
-            <Icon slot="end">arrow_drop_down</Icon>
-          </ListItem>
-          <Menu
-            id="theme-menu"
-            anchor="theme-anchor"
-            anchorCorner="end-end"
-            xOffset={-200}
-            className={styles['theme-menu']}
-          >
-            {THEME_OPTIONS.map((theme) => (
-              <MenuItem
-                key={theme.value}
-                onClick={() => handleChangeTheme(theme.value as Theme)}
-              >
-                {t(theme.messageKey)}
-              </MenuItem>
-            ))}
-          </Menu>
-        </div>
-        {/* Time zone */}
-        <div style={{ position: 'relative' }}>
-          <ListItem type="button" id="utc-offset-anchor" onClick={handleUtcOffsetMenuClick}>
-            <div slot="headline">{t('settings.utcOffset')}</div>
-            <div slot="supporting-text">{utcOffset}</div>
-            <Icon slot="end">arrow_drop_down</Icon>
-          </ListItem>
-          <Menu
-            id="utc-offset-menu"
-            anchor="utc-offset-anchor"
-            anchorCorner="end-end"
-            xOffset={-160}
-          >
-            {UTC_OFFSET_OPTIONS.map((offset) => (
-              <MenuItem
-                key={offset.code}
-                selected={offset.code === userOptions?.utcOffset}
-                onClick={() => {
-                  handleChangeUtcOffset(offset.code);
-                }}
-              >
-                {offset.label}
-              </MenuItem>
-            ))}
-          </Menu>
-        </div>
-        {/* Daily review word count */}
-        <ListItem type="button" onClick={() => handleReviewCountDialog(true)}>
-          <div slot="headline">{t('settings.reviewCount')}</div>
-          <div slot="trailing-supporting-text">{reviewCount}</div>
-        </ListItem>
-        <CustomDialog
-          open={isReviewCountDialogOpen}
-          headline={t('settings.reviewCount')}
-          prompt={
-            <OutlinedTextField
-              id="dailyReviewWords"
-              value={reviewCount}
-              onChange={(e) => (reviewCount = (e.target as HTMLInputElement).value)}
-            />
-          }
-          firstButtonString={t('cancel')}
-          secondButtonString={t('ok')}
-          firstButtonOnclick={() => handleReviewCountDialog(false)}
-          secondButtonOnclick={() => {
-            handleChangeReviewCount(Number(reviewCount));
-            handleReviewCountDialog(false);
-          }}
-        />
-        {/* Daily new word count */}
-        <ListItem type="button" onClick={() => handleNewCountDialog(true)}>
-          <div slot="headline">{t('settings.newCount')}</div>
-          <div slot="trailing-supporting-text">{newCount}</div>
-        </ListItem>
-        <CustomDialog
-          open={isNewCountDialogOpen}
-          headline={t('settings.newCount')}
-          prompt={
-            <OutlinedTextField
-              id="dailyStudyWords"
-              value={newCount}
-              onChange={(e) => (newCount = (e.target as HTMLInputElement).value)}
-            />
-          }
-          firstButtonString={t('cancel')}
-          secondButtonString={t('ok')}
-          firstButtonOnclick={() => handleNewCountDialog(false)}
-          secondButtonOnclick={() => {
-            handleChangeNewCount(Number(newCount));
-            handleNewCountDialog(false);
-          }}
-        />
-        {/* Sign out */}
-        <ListItem type="button">{t('settings.signOut')}</ListItem>
-        {/* Delete account */}
-        <ListItem type="button">{t('settings.deleteAccount')}</ListItem>
-      </List>
-      <div className={styles['button-container-compact']}>
-        <FilledButton className={styles['save-button-compact']} onClick={handleSave}>
-          {t('save')}
-        </FilledButton>
-      </div>
-    </div>
-  );
-
-  const pageView = isCompact ? mobileView : webView;
 
   return pageView;
 }

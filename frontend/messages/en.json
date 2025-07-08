@@ -16,9 +16,11 @@
   "loginErrorContent": "There was a problem during login. Press OK to go to the login page.",
   "cancel": "Cancel",
   "save": "Save",
-  "ok": "Ok",
+  "ok": "OK",
   "saved": "Saved.",
   "failedToSave": "Failed to save.",
+  "cookies": "Cookies",
+  "cookieConsent": "We use cookies to keep you logged in.",
 
   "menu": {
     "difficulty": "Difficulty",

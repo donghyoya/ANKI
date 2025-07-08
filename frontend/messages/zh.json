@@ -19,6 +19,8 @@
   "ok": "确定",
   "saved": "已保存。",
   "failedToSave": "保存失败。",
+  "cookies": "Cookies",
+  "cookieConsent": "我们使用Cookie来使您保持登录状态。",
 
   "menu": {
     "difficulty": "难度",

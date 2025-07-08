@@ -19,6 +19,8 @@
   "ok": "確認",
   "saved": "保存されました。",
   "failedToSave": "保存に失敗しました。",
+  "cookies": "クッキー",
+  "cookieConsent": "ログイン状態を維持するためにクッキーを使用しています。",
 
   "menu": {
     "difficulty": "難易度",

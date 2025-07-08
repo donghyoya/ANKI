@@ -19,7 +19,9 @@
   "ok": "Aceptar",
   "saved": "Guardado.",
   "failedToSave": "Error al guardar.",
-  
+  "cookies": "Cookies",
+  "cookieConsent": "Usamos cookies para mantenerte conectado.",
+
   "menu": {
     "difficulty": "Dificultad",
     "meaning": "Significado",

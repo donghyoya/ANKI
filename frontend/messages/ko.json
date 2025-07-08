@@ -17,6 +17,8 @@
   "ok": "확인",
   "saved": "저장되었습니다.",
   "failedToSave": "저장에 실패했습니다.",
+  "cookies": "쿠키",
+  "cookieConsent": "로그인 상태를 유지하기 위해 쿠키를 사용합니다.",
 
   "menu": {
     "difficulty": "난이도",

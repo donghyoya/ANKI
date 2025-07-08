@@ -19,6 +19,8 @@
   "ok": "D'accord",
   "saved": "Enregistré.",
   "failedToSave": "Échec de l'enregistrement.",
+  "cookies": "Cookies",
+  "cookieConsent": "Nous utilisons des témoins pour vous maintenir connecté.",
 
   "menu": {
     "difficulty": "Difficulté",

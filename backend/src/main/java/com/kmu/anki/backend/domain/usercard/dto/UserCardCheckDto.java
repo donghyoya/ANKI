@@ -16,4 +16,8 @@ public class UserCardCheckDto {
         this.cardState = cardState;
         this.due = due;
     }
+
+    public boolean check(){
+        return cardState != CardState.New && cardState != CardState.Review;
+    }
 }

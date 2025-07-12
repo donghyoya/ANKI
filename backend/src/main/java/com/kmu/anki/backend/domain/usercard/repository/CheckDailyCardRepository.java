@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 오늘 학습을 수행했는지에 대한 UserCardRepository
@@ -109,7 +110,14 @@ public class CheckDailyCardRepository {
         List<UserCardCheckDto> userCardCheckDto = userCardQueryRepository.findUserCardCheckDto(set);
 
         // 4. 1에서 만든 Key를 가져와서 3에서 가져온 batch값을 매핑한다
+        Map<Long, UserCardCheckDto> idMap = userCardCheckDto.stream().collect(Collectors.toMap(UserCardCheckDto::getUserId, dto -> dto));
+
+
         // 5. 4에서 구성된 것을 바탕으로 Key값에 대한 2개의 boolean값을 설정한다.
+        for(DeckCheckDto value : map.values()){
+            value.check(idMap);
+        }
+
         return map;
     }
 }

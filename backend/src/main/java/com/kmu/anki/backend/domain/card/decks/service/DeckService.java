@@ -10,6 +10,7 @@ import com.kmu.anki.backend.domain.card.foreign.repository.ForeignCardRepository
 import com.kmu.anki.backend.domain.card.korean.dto.KoreanCardWithForeignWord;
 import com.kmu.anki.backend.domain.card.korean.repository.KoreanCardRepository;
 import com.kmu.anki.backend.domain.card.repository.*;
+import com.kmu.anki.backend.domain.usercard.repository.CheckDailyCardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

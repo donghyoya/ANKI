@@ -9,6 +9,7 @@ import com.kmu.anki.backend.domain.card.korean.entity.QKoreanCard;
 import com.kmu.anki.backend.domain.user.entity.CardState;
 import com.kmu.anki.backend.domain.usercard.controller.form.StudyType;
 import com.kmu.anki.backend.domain.usercard.dto.CardStudyDto;
+import com.kmu.anki.backend.domain.usercard.dto.UserCardCheckDto;
 import com.kmu.anki.backend.domain.usercard.dto.UserCardDto;
 import com.kmu.anki.backend.domain.usercard.entity.QUserCard;
 import com.kmu.anki.backend.domain.usercard.entity.UserCard;
@@ -30,6 +31,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @Transactional(readOnly = true)
@@ -110,6 +112,18 @@ public class UserCardQueryRepository {
                 )
                 .fetchOne();
         return Optional.ofNullable(cardStudyDto);
+    }
+
+    public List<UserCardCheckDto> findUserCardCheckDto(Set<Long> indexes){
+        return queryFactory.select(
+                Projections.constructor(
+                        UserCardCheckDto.class,
+                        userCard.id,
+                        userCard.state,
+                        userCard.due
+                )
+        ).from(userCard)
+        .where(userCard.id.in(indexes)).fetch();
     }
 
     /* 조건식 */

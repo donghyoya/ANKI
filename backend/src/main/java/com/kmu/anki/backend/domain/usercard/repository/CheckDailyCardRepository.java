@@ -106,6 +106,7 @@ public class CheckDailyCardRepository {
         }
 
         // 3. 2에서 만든 Set으로 batch 쿼리를 수행한다
+        List<UserCardCheckDto> userCardCheckDto = userCardQueryRepository.findUserCardCheckDto(set);
 
         // 4. 1에서 만든 Key를 가져와서 3에서 가져온 batch값을 매핑한다
         // 5. 4에서 구성된 것을 바탕으로 Key값에 대한 2개의 boolean값을 설정한다.

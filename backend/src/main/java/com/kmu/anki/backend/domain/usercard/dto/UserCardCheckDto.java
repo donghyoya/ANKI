@@ -10,4 +10,10 @@ public class UserCardCheckDto {
     private Long userId;
     private CardState cardState;
     private LocalDateTime due;
+
+    public UserCardCheckDto(Long userId, CardState cardState, LocalDateTime due) {
+        this.userId = userId;
+        this.cardState = cardState;
+        this.due = due;
+    }
 }

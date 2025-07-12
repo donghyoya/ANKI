@@ -57,7 +57,7 @@ public class CheckDailyCardRepository {
 
     /* 덱 관련 */
 
-    private Map<Object, DeckCheckDto> checkDeckCards(Long userId, QueryType queryType){
+    public Map<Object, DeckCheckDto> checkDeckCards(Long userId, QueryType queryType){
         // 1. Key별로 Map을 만든다. Key는 Level 또는 Topic으로 한다. 즉 Map의 Value값안에 Study 및 Review가 포함되어야한다
         // 2. 1을 만드는 동시에 Set도 만든다
         // 3. 2에서 만든 Set으로 batch 쿼리를 수행한다

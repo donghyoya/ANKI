@@ -2,6 +2,7 @@ package com.kmu.anki.backend.domain.card.decks.dto;
 
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
+import com.kmu.anki.backend.domain.usercard.dto.DeckCheckDto;
 import lombok.Getter;
 
 @Getter
@@ -28,6 +29,21 @@ public class DeckDto {
      * 사용자가 기억하고 있다고 추정되는 카드(State가 Review)의 수
      */
     private Integer maturityCounts;
+
+    private boolean isStudyComplete;
+    private boolean isReviewComplete;
+
+    /* 로직 */
+    public void check(DeckCheckDto deckCheckDto){
+        if(deckCheckDto != null){
+            isStudyComplete = deckCheckDto.isStudyComplete();
+            isReviewComplete = deckCheckDto.isReviewComplete();
+        }
+    }
+
+
+
+    /* 생성 */
 
     public DeckDto(CardLevel level, Long cardCounts) {
         this.category = level.toString();

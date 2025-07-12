@@ -33,7 +33,13 @@ public class DeckDtoDocs {
                         .description("최근에 입력한 Rating이 Again인 카드(State가 Learning 또는 Relearning)의 수"),
                 fieldWithPath(prefix+"maturityCounts")
                         .type(JsonFieldType.NUMBER).optional()
-                        .description("사용자가 기억하고 있다고 추정되는 카드(State가 Review)의 수")
+                        .description("사용자가 기억하고 있다고 추정되는 카드(State가 Review)의 수"),
+                fieldWithPath(prefix+"studyComplete")
+                        .type(JsonFieldType.BOOLEAN).optional()
+                        .description("오늘의 학습단어를 학습했는지"),
+                fieldWithPath(prefix+"reviewComplete")
+                        .type(JsonFieldType.BOOLEAN).optional()
+                        .description("오늘의 복습단어를 학습했는지")
         };
     }
 

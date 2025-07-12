@@ -2,6 +2,7 @@ package com.kmu.anki.backend.domain.usercard.repository.cache.impl;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import com.kmu.anki.backend.domain.card.controller.option.QueryType;
 import com.kmu.anki.backend.domain.card.enums.CardLevel;
 import com.kmu.anki.backend.domain.card.enums.CardTopicEnums;
 import com.kmu.anki.backend.domain.card.enums.LanguageCode;
@@ -14,6 +15,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 
 import javax.swing.text.html.Option;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 

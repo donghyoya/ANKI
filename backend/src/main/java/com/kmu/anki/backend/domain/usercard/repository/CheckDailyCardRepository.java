@@ -9,7 +9,8 @@ import com.kmu.anki.backend.domain.usercard.dto.UserCardCheckDto;
 import com.kmu.anki.backend.domain.usercard.dto.cache.UserCardCacheO;
 import com.kmu.anki.backend.domain.usercard.repository.cache.UserCardCacheRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,14 +24,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class CheckDailyCardRepository {
-    private final JdbcTemplate jdbcTemplate;
+    private final NamedParameterJdbcTemplate jdbcTemplate;
     private final UserCardCacheRepository userCardCacheRepository;
     private final UserCardQueryRepository userCardQueryRepository;
 
     private static String CHECK_LEARNING_QUERY = """
         SELECT count(user_card_id)
         FROM user_cards uc
-        WHERE uc.user_card_id in ?
+        WHERE uc.user_card_id in (:userCardIds)
             AND (
                 user_card_state != 'New' 
             );
@@ -39,19 +40,21 @@ public class CheckDailyCardRepository {
     private static String CHECK_REVIEW_QUERY = """
         SELECT count(user_card_id)
         FROM user_cards uc
-        WHERE uc.user_card_id in ?
+        WHERE uc.user_card_id in (:userCardIds)
             AND (
                 user_card_state != 'Review' 
             );
     """;
 
     public boolean checkLearning(List<Long> userCardIds){
-        Integer count = jdbcTemplate.queryForObject(CHECK_LEARNING_QUERY, Integer.class, userCardIds);
+        MapSqlParameterSource params = new MapSqlParameterSource("userCardIds", userCardIds);
+        Integer count = jdbcTemplate.queryForObject(CHECK_LEARNING_QUERY, params, Integer.class);
         return count>0;
     }
 
     public boolean checkReview(List<Long> userCardIds){
-        Integer count = jdbcTemplate.queryForObject(CHECK_REVIEW_QUERY, Integer.class, userCardIds);
+        MapSqlParameterSource params = new MapSqlParameterSource("userCardIds", userCardIds);
+        Integer count = jdbcTemplate.queryForObject(CHECK_REVIEW_QUERY, params, Integer.class);
         return count>0;
     }
 

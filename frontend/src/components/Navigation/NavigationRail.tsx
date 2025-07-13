@@ -2,30 +2,33 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import classnames from 'classnames';
 
 import styles from './NavigationRail.module.scss';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
 import { Ripple } from '@/components/material-components/Ripple';
-import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 
 const NavigationRail = ({
   destinations,
   isMenuEnabled,
   initialDestination,
-  toggleDrawer,
-  handleDestinationClick
+  toggleDrawer
 }: {
   destinations: { icon: string; label: string }[];
   isMenuEnabled: boolean;
   initialDestination: string;
   toggleDrawer: () => void;
-  handleDestinationClick?: (label: string) => void;
 }) => {
   const t = useTranslations();
   const router = useRouter();
 
   const [selectedDestination, setSelectedDestination] = useState<string | null>(initialDestination);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleDestinationClick = (destination: string) => {
+    setSelectedDestination(destination);
+  };
 
   const handleClick = (destination: string) => {
     setSelectedDestination(destination);
@@ -36,12 +39,16 @@ const NavigationRail = ({
     }
   };
 
+  const handleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <nav className={styles.container}>
+    <nav className={classnames(styles.container, isExpanded && styles.expanded)}>
       <div className={styles['header-container']}>
         {isMenuEnabled && (
-          <IconButton onClick={toggleDrawer}>
-            <Icon>menu</Icon>
+          <IconButton onClick={handleExpand}>
+            <Icon>{isExpanded ? 'menu_open' : 'menu'}</Icon>
           </IconButton>
         )}
       </div>
@@ -53,7 +60,7 @@ const NavigationRail = ({
             onClick={() => handleClick(destination.label)}
           >
             <button
-              className={classNames(styles['navigation-item-button'], {
+              className={classnames(styles['navigation-item-button'], {
                 [styles['selected']]: selectedDestination === destination.label
               })}
             >
@@ -61,9 +68,14 @@ const NavigationRail = ({
               <div className={styles['navigation-item-icon']}>
                 <Icon>{destination.icon}</Icon>
               </div>
+              {isExpanded && (
+                <span className={styles['navigation-item-label']}>
+                  {t(`menu.${destination.label}`)}
+                </span>
+              )}
             </button>
             <div
-              className={classNames(styles['navigation-item-label'], {
+              className={classnames(styles['navigation-item-label'], {
                 [styles['selected']]: selectedDestination === destination.label
               })}
             >

@@ -12,13 +12,11 @@ import { useRouter } from 'next/navigation';
 const NavigationRail = ({
   destinations,
   isMenuEnabled,
-  initialDestination,
-  toggleDrawer
+  initialDestination
 }: {
   destinations: { icon: string; label: string }[];
   isMenuEnabled: boolean;
   initialDestination: string;
-  toggleDrawer: () => void;
 }) => {
   const t = useTranslations();
   const router = useRouter();

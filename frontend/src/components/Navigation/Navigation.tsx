@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import NavigationRail from './NavigationRail';
-import NavigationDrawer from './NavigationDrawer';
 import TopAppBar from '@/components/Navigation/TopAppBar';
 import NavigationBar from './NavigationBar';
 import { Menu, MenuItem } from '@/components/material-components/Menu';
@@ -13,7 +12,6 @@ import styles from './Navigation.module.scss';
 const Navigation = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
   const pathname = usePathname();
   const router = useRouter();
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const isLoginPage = pathname?.includes('/login');
 
@@ -26,10 +24,6 @@ const Navigation = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
       ? { icon: 'account_circle', label: 'guest' }
       : { icon: 'settings', label: 'settings' }
   ];
-
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
 
   const handleMenuClick = () => {
     const menu = document.getElementById('menu') as HTMLDialogElement;
@@ -75,26 +69,7 @@ const Navigation = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
         />
       </div>
       <div className={styles['desktop-view']}>
-        {isDrawerOpen && (
-          <>
-            <div className={styles['navigation-scrim']} onClick={toggleDrawer} />
-            <NavigationDrawer
-              destinations={destinations}
-              initialDestination="Difficulty"
-              toggleDrawer={toggleDrawer}
-              handleDestinationClick={handleDestination}
-            />
-          </>
-        )}
-        {!isDrawerOpen && (
-          <NavigationRail
-            destinations={destinations}
-            isMenuEnabled
-            initialDestination="Difficulty"
-            toggleDrawer={toggleDrawer}
-            handleDestinationClick={handleDestination}
-          />
-        )}
+        <NavigationRail destinations={destinations} isMenuEnabled initialDestination="Difficulty" />
       </div>
     </>
   );

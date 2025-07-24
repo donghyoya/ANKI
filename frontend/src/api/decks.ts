@@ -10,12 +10,14 @@ const httpClient = ServerServiceFactory.getHttpClient();
 
 export const getDecks = async (queryType: 'difficulty' | 'meaning') => {
   const url = `/decks?queryType=${normalizeQuery(queryType)}`;
+  console.log('url', url);
   const response = await httpClient.get<Paginated<Deck>>(url);
   return response.data;
 };
 
 export const getCardsFromDeck = async (locale: Locale, query: Category) => {
-  const queryType = normalizeQuery(getCategoryType(query));
+  const queryType = getCategoryType(query);
+  if (!queryType) throw new Error('Invalid query type');
   const url = `/decks/cards?code=${locale}&queryType=${queryType}&query=${normalizeQuery(query)}`;
   const response = await httpClient.get<Paginated<KoreanCardWithForeignWords>>(url);
   return response.data;

@@ -2,20 +2,20 @@
 
 import { useEffect, useState } from 'react';
 import useLearningCardLayout from '@/hooks/useLearningCardLayout';
+import { redirect, useParams } from 'next/navigation';
+import { useStudyQueue } from '@/hooks/useStudyQueue';
+import { useTranslations } from 'next-intl';
 
 import LearningCard, { LearningCardState } from '@/components/LearningCard/LearningCard';
 import RatingButtonContainer from '@/components/RatingButton/RatingButtonContainer';
 import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
+import CustomDialog from '@/components/Dialogs/CustomDialog';
+
+import { Category, getCategoryType } from '@/types/Category';
+import { MenuItem } from '@/types/Menu';
+import { Rating } from 'ts-fsrs';
 
 import styles from './layout.module.scss';
-
-import { Category } from '@/types/Category';
-import { useParams } from 'next/navigation';
-import { useStudyQueue } from '@/hooks/useStudyQueue';
-import { Rating } from '@/types/IntervalPreview';
-
-import { MenuItem } from '@/types/Menu';
-import { useTranslations } from 'next-intl';
 
 export default function LearningPage() {
   const t = useTranslations();
@@ -25,7 +25,7 @@ export default function LearningPage() {
 
   const [cardState, setCardState] = useState<LearningCardState>({
     isRevealed: false,
-    showDetail: true,
+    showDetail: false,
     showConjugation: false,
     showExample: false,
     isKoreanToForeign: true
@@ -36,9 +36,17 @@ export default function LearningPage() {
     cardWidth
   });
 
-  const { currentCardDetail, studyQueue, intervalPreview, repeat, error } = useStudyQueue(
-    category as Category
-  );
+  const {
+    queue,
+    currentCardDetail,
+    isLoading,
+    repeat,
+    StateCounts,
+    iPreview,
+    isCompleted,
+    error,
+    clearError
+  } = useStudyQueue(category as Category);
 
   const handleReveal = () => {
     setCardState((prev) => ({ ...prev, isRevealed: true }));
@@ -56,9 +64,9 @@ export default function LearningPage() {
     setCardState((prev) => ({ ...prev, showExample: !prev.showExample }));
   };
 
-  const handleOnRepeat = (rating: Rating) => {
-    setCardState((prev) => ({ ...prev, isRevealed: false }));
+  const handleOnRepeat = async (rating: Rating) => {
     repeat(rating);
+    setCardState((prev) => ({ ...prev, isRevealed: false }));
   };
 
   const toggleDetailedView = () => {
@@ -95,34 +103,33 @@ export default function LearningPage() {
   ];
 
   useEffect(() => {
-    console.log('currentCardDetail', currentCardDetail);
-  }, [currentCardDetail]);
-
-  useEffect(() => {
     setCardWidth(document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0);
   }, []);
 
   useEffect(() => {
     if (error) {
-      console.error('error:', error);
+      alert(error.message);
+      clearError();
     }
-  }, [error]);
+  }, [error, clearError]);
 
-  if (error) throw error;
-
-  if (studyQueue === null) {
+  if (isLoading) {
     return <div className={styles['page']}>Loading...</div>;
   }
 
-  if (currentCardDetail === null) {
-    return <div className={styles['page']}>학습 끝</div>;
+  if (!currentCardDetail) {
+    return <div className={styles['page']}>CardDetail Loading...</div>;
+  }
+
+  if (!queue) {
+    return <div className={styles['page']}>Study queue not found</div>;
   }
 
   return (
     <div className={styles['learning-container']}>
       <div className={styles['progress-container-wrapper']}>
         <div className={styles['progress-container']}>
-          <LearningProgressBar className={styles['progress-bar']} userCards={studyQueue} />
+          <LearningProgressBar className={styles['progress-bar']} StateCounts={StateCounts} />
         </div>
       </div>
       <LearningCard
@@ -138,10 +145,31 @@ export default function LearningPage() {
         setContentHeight={setContentHeight}
       />
       <RatingButtonContainer
-        intervalPreview={intervalPreview}
+        iPreview={iPreview}
         isRevealed={cardState.isRevealed}
         onRepeat={handleOnRepeat}
       />
+      {isCompleted && (
+        <CustomDialog
+          open={isCompleted}
+          headline="Daily goal completed!"
+          prompt={
+            <div>
+              Want to keep going?
+              <br />
+              Choose an option below:
+            </div>
+          }
+          firstButtonString="Learn More"
+          secondButtonString="Finish"
+          firstButtonOnclick={() => {
+            alert('Not implemented');
+          }}
+          secondButtonOnclick={() => {
+            redirect(`/${getCategoryType(category as Category)}`);
+          }}
+        />
+      )}
     </div>
   );
 }

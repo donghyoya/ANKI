@@ -19,7 +19,7 @@ const RatingButton = ({ label, interval, isError = false, onClick }: RatingButto
       className={classNames(styles['rating-button'], { [styles['error']]: isError })}
       onClick={onClick}
     >
-      <span className={styles['rating-button-label']}>{t(`learning.${label}`)}</span>
+      <span className={styles['rating-button-label']}>{t(`learning.${label.toLowerCase()}`)}</span>
       <span className={styles['rating-button-interval']}>{formatDuration(interval, locale)}</span>
     </button>
   );

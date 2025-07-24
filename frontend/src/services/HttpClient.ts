@@ -52,5 +52,10 @@ export class HttpClient {
       (config) => interceptor.onRequest(config),
       (error) => interceptor.onError(error)
     );
+
+    this.axiosInstance.interceptors.response.use(
+      (response) => interceptor.onResponse(response),
+      (error) => interceptor.onError(error)
+    );
   }
 }

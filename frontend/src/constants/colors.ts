@@ -1,6 +1,7 @@
 export const LEARNING_PROGRESS_BAR_COLORS = {
-  matured: '#D0ECAF', // green
-  overdue: '#EDED80', // yellow
-  learning: '#FFB0B0', // red
-  new: '#D9D9D9' // gray
+  Review: '#B4EDC9', // mint
+  Overdue: '#D3E671', // green
+  New: '#F8ED8C', // yellow
+  Learning: '#FFB0B0', // red
+  Relearning: '#FFB0B0' // red
 };

@@ -3,11 +3,11 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import classnames from 'classnames';
+import { motion } from 'framer-motion';
 
 import styles from './NavigationRail.module.scss';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
-import { Ripple } from '@/components/material-components/Ripple';
-import { useRouter } from 'next/navigation';
+// import { Ripple } from '@/components/material-components/Ripple';
 
 const NavigationRail = ({
   destinations,
@@ -42,14 +42,22 @@ const NavigationRail = ({
   };
 
   return (
-    <nav className={classnames(styles.container, isExpanded && styles.expanded)}>
-      <div className={styles['header-container']}>
+    <motion.nav
+      className={classnames(styles.container, isExpanded && styles.expanded)}
+      initial={{ width: 80 }}
+      animate={{ width: isExpanded ? 250 : 80 }}
+    >
+      <motion.div
+        className={styles['header-container']}
+        initial={{ height: 64 }}
+        animate={{ height: isExpanded ? 52 : 64 }}
+      >
         {isMenuEnabled && (
           <IconButton onClick={handleExpand}>
             <Icon>{isExpanded ? 'menu_open' : 'menu'}</Icon>
           </IconButton>
         )}
-      </div>
+      </motion.div>
       <div className={styles['navigation-container']}>
         {destinations.map((destination) => (
           <div
@@ -57,32 +65,54 @@ const NavigationRail = ({
             className={styles['navigation-item-container']}
             onClick={() => handleClick(destination.label)}
           >
-            <button
-              className={classnames(styles['navigation-item-button'], {
-                [styles['selected']]: selectedDestination === destination.label
-              })}
-            >
-              <Ripple />
-              <div className={styles['navigation-item-icon']}>
+            <button className={styles['navigation-item-button']}>
+              <motion.div
+                className={styles['navigation-button-background-container']}
+                animate={{
+                  height: isExpanded ? '56px' : '32px'
+                }}
+              >
+                <motion.div
+                  className={styles['navigation-button-background']}
+                  initial={{ width: 0 }}
+                  animate={{
+                    width: selectedDestination === destination.label ? '100%' : 0
+                  }}
+                />
+              </motion.div>
+              <motion.div
+                className={styles['navigation-item-icon']}
+                animate={{
+                  fontVariationSettings:
+                    selectedDestination === destination.label ? "'FILL' 1" : "'FILL' 0",
+                  top: isExpanded ? 16 : 4
+                }}
+              >
                 <Icon>{destination.icon}</Icon>
-              </div>
+              </motion.div>
               {isExpanded && (
-                <span className={styles['navigation-item-label']}>
+                <motion.span
+                  className={styles['navigation-item-label']}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
                   {t(`menu.${destination.label}`)}
-                </span>
+                </motion.span>
               )}
             </button>
-            <div
-              className={classnames(styles['navigation-item-label'], {
-                [styles['selected']]: selectedDestination === destination.label
-              })}
-            >
-              <span>{t(`menu.${destination.label}`)}</span>
-            </div>
+            {!isExpanded && (
+              <motion.span
+                className={styles['navigation-item-label']}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                {t(`menu.${destination.label}`)}
+              </motion.span>
+            )}
           </div>
         ))}
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

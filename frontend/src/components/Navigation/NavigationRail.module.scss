@@ -1,24 +1,30 @@
 @use '@/styles/typography' as tp;
 
 .container {
+  box-sizing: border-box;
   display: flex;
   z-index: 1000;
   position: fixed;
+  top: 0;
+  left: 0;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   width: 80px;
   height: 100vh;
-  padding-top: 44px;
-  padding-bottom: 56px;
+  padding: 44px 12px 56px;
+
   gap: 40px;
   background-color: var(--md-sys-color-surface);
 
   .header-container {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0px 8px;
   }
 
   .navigation-container {
@@ -30,52 +36,70 @@
     gap: 12px;
 
     .navigation-item {
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       width: 100%;
       height: 56px;
 
-    .navigation-item-button {
-      display: flex;
-      position: relative;
-      align-items: center;
-      justify-content: center;
-
-      width: 56px;
-      height: 32px;
-      padding: 0;
-      border: none;
-      border-radius: 28px;
-      background-color: transparent;
-      color: var(--md-sys-color-on-surface-variant);
-
-      &.selected {
-        background-color: var(--md-sys-color-secondary-container);
-        color: var(--md-sys-color-on-secondary-container);
-        font-variation-settings: 'FILL' 1;
+      .navigation-button-background-container {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
       }
+
+      .navigation-button-background {
+        height: 100%;
+        border-radius: 28px;
+        background-color: var(--md-sys-color-primary-container);
+      }
+
+      .navigation-button-ripple {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .navigation-item-button {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        border: none;
+        border-radius: 28px;
+        background-color: transparent;
+        color: var(--md-sys-color-on-surface-variant);
 
         .navigation-item-icon {
           display: flex;
-          align-items: center;
-          justify-content: center;
+          z-index: 10000;
+          position: absolute;
+          top: 4px;
+          left: 16px;
         }
       }
 
-    .navigation-item-label {
-      height: 16px;
-      margin: 4px;
-      color: var(--md-sys-color-on-surface-variant);
-      @include tp.label-medium;
+      .navigation-item-label {
+        width: 56px;
+        text-align: center;
+        @include tp.label-medium;
+        z-index: 1000;
+        margin: 4px 0;
+        color: var(--md-sys-color-on-surface-variant);
+        font-weight: 600;
+        font-size: 12px;
+      }
 
       &.selected {
-        .navigation-item-button {
-          background-color: var(--md-sys-color-primary-container);
-          font-variation-settings: 'FILL' 1;
-        }
-
         .navigation-item-label {
           @include tp.label-medium-prominent;
           color: var(--md-sys-color-on-surface);
@@ -88,18 +112,8 @@
     box-sizing: border-box;
     align-items: flex-start;
     width: 250px;
-    padding: 32px 12px 56px;
-    gap: 16px;
-
-    .header-container {
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      width: 100%;
-      padding: 12px 8px;
-    }
+    padding: 44px 12px 56px;
+    // gap: 28px;
 
     .navigation-container {
       gap: 12px;
@@ -116,17 +130,16 @@
           width: 100%;
           height: 100%;
           padding: 16px;
-          gap: 8px;
         }
 
         .navigation-item-icon {
-          width: 24px;
-          height: 24px;
-          border-radius: 0;
+          top: 16px;
+          left: 16px;
         }
 
         .navigation-item-label {
           margin: 0;
+          padding-left: 32px;
           @include tp.label-large;
         }
 

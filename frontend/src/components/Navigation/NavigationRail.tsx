@@ -18,22 +18,12 @@ const NavigationRail = ({
   initialDestination: string;
 }) => {
   const t = useTranslations();
-  const router = useRouter();
 
   const [selectedDestination, setSelectedDestination] = useState<string | null>(initialDestination);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleDestinationClick = (destination: string) => {
     setSelectedDestination(destination);
-  };
-
-  const handleClick = (destination: string) => {
-    setSelectedDestination(destination);
-    if (handleDestinationClick) {
-      handleDestinationClick(destination);
-    } else {
-      router.push(`/${destination}`);
-    }
   };
 
   const handleExpand = () => {
@@ -65,8 +55,11 @@ const NavigationRail = ({
         {destinations.map((destination) => (
           <div
             key={destination.label}
-            className={styles['navigation-item-container']}
-            onClick={() => handleClick(destination.label)}
+            className={classnames(
+              styles['navigation-item'],
+              selectedDestination === destination.label && styles['selected']
+            )}
+            onClick={() => handleDestinationClick(destination.label)}
           >
             <button className={styles['navigation-item-button']}>
               <motion.div

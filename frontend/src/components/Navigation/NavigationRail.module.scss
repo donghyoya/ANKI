@@ -15,6 +15,7 @@
   padding: 44px 12px 56px;
 
   gap: 40px;
+  border-radius: 0 28px 28px 0;
   background-color: var(--md-sys-color-surface);
 
   .header-container {
@@ -151,4 +152,13 @@
       }
     }
   }
+}
+
+.scrim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
 }

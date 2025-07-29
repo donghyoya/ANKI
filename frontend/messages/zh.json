@@ -16,7 +16,8 @@
   "menu": {
     "difficulty": "难度",
     "meaning": "含义",
-    "settings": "设置"
+    "settings": "设置",
+    "guest": "访客"
   },
 
   "difficulty": {

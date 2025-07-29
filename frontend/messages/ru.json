@@ -16,7 +16,8 @@
   "menu": {
     "difficulty": "Сложность",
     "meaning": "Значение",
-    "settings": "Настройки"
+    "settings": "Настройки",
+    "guest": "Гость"
   },
 
   "difficulty": {

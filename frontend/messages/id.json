@@ -16,7 +16,8 @@
   "menu": {
     "difficulty": "Kesulitan",
     "meaning": "Arti",
-    "settings": "Pengaturan"
+    "settings": "Pengaturan",
+    "guest": "Tamu"
   },
 
   "difficulty": {

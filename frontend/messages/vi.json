@@ -16,7 +16,8 @@
   "menu": {
     "difficulty": "Độ khó",
     "meaning": "Ý nghĩa",
-    "settings": "Cài đặt"
+    "settings": "Cài đặt",
+    "guest": "Khách"
   },
 
   "difficulty": {

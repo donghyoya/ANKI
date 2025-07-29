@@ -16,7 +16,8 @@
   "menu": {
     "difficulty": "الصعوبة",
     "meaning": "المعنى",
-    "settings": "الإعدادات"
+    "settings": "الإعدادات",
+    "guest": "ضيف"
   },
 
   "difficulty": {

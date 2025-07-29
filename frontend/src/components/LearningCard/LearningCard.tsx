@@ -63,10 +63,6 @@ const LearningCard = ({
     setContentHeight(height);
   }, [cardState, setContentHeight]);
 
-  useEffect(() => {
-    console.log('inflection', card.meanings[0]);
-  }, [card]);
-
   return (
     <FilledCard
       className={classNames(styles['learning-card'], className)}

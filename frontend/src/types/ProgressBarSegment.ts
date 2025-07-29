@@ -1,4 +1,4 @@
-export interface Progress {
+export interface ProgressBarSegment {
   value: number;
   label: string | number;
   tooltip?: string;

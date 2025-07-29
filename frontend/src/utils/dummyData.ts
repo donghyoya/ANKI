@@ -1,7 +1,6 @@
 import { LEARNING_PROGRESS_BAR_COLORS } from '@/constants/colors';
-import { IntervalPreview } from '@/types/IntervalPreview';
 import { MenuItem } from '@/types/Menu';
-import { Progress } from '@/types/Progress';
+import { ProgressBarSegment } from '@/types/ProgressBarSegment';
 
 import {
   Card,
@@ -18,18 +17,11 @@ import {
 } from '@/types/schemes';
 import { State } from 'ts-fsrs';
 
-export const DUMMY_PROGRESS: Progress[] = [
-  { value: 10, label: '10', tooltip: 'Matured', color: LEARNING_PROGRESS_BAR_COLORS.matured },
-  { value: 20, label: '20', tooltip: 'Learning', color: LEARNING_PROGRESS_BAR_COLORS.learning },
-  { value: 30, label: '30', tooltip: 'New', color: LEARNING_PROGRESS_BAR_COLORS.new }
+export const DUMMY_PROGRESS: ProgressBarSegment[] = [
+  { value: 10, label: '10', tooltip: 'Matured', color: LEARNING_PROGRESS_BAR_COLORS.Review },
+  { value: 20, label: '20', tooltip: 'Learning', color: LEARNING_PROGRESS_BAR_COLORS.Learning },
+  { value: 30, label: '30', tooltip: 'New', color: LEARNING_PROGRESS_BAR_COLORS.New }
 ];
-
-export const DUMMY_RATING_PREVIEW: IntervalPreview = {
-  again: new Date(Date.now() + 1 * 60 * 1000),
-  hard: new Date(Date.now() + 10 * 60 * 1000),
-  good: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
-  easy: new Date(Date.now() + 1 * 30 * 24 * 60 * 60 * 1000)
-};
 
 export const DUMMY_MENU_ITEMS: MenuItem[] = [
   { label: '사과', onClick: () => {} },

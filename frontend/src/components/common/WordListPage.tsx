@@ -13,7 +13,7 @@ import WordListCompact from '@/components/WordList/WordListCompact';
 import { KoreanCardWithForeignWords } from '@/types/schemes';
 import styles from './WordListPage.module.scss';
 import { getCategoryType } from '@/types/Category';
-import { camelCase } from 'lodash';
+import { camelize } from 'humps';
 
 export default function WordListPage({
   wordList,
@@ -38,7 +38,7 @@ export default function WordListPage({
   const title =
     getCategoryType(category) === 'difficulty'
       ? `difficulty.${category}`
-      : `meaning.${camelCase(category)}`;
+      : `meaning.${camelize(category)}`;
 
   const onLearnClick = () => {
     router.push(`/learning/${category}`);

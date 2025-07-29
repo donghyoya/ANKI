@@ -48,6 +48,8 @@ export interface KoreanCardWithForeignWords extends KoreanCard {
 
 export type StudyInfo = {
   [K in keyof FSRSCard as SnakeToCamelCase<K>]: FSRSCard[K];
+} & {
+  lastRating?: Date;
 };
 
 export type StudyInfoDTO = Omit<

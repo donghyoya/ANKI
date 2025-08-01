@@ -10,6 +10,7 @@ import LearningCard, { LearningCardState } from '@/components/LearningCard/Learn
 import RatingButtonContainer from '@/components/RatingButton/RatingButtonContainer';
 import LearningProgressBar from '@/components/ProgressBar/LearningProgressBar';
 import CustomDialog from '@/components/Dialogs/CustomDialog';
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 
 import { Category, getCategoryType } from '@/types/Category';
 import { MenuItem } from '@/types/Menu';
@@ -114,7 +115,11 @@ export default function LearningPage() {
   }, [error, clearError]);
 
   if (isLoading) {
-    return <div className={styles['page']}>Loading...</div>;
+    return (
+      <div className={styles['page']}>
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   if (!currentCardDetail) {

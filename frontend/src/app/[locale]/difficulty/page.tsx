@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 import DeckListPage from '@/components/common/DeckListPage';
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 import { getDecks } from '@/api/decks';
 
 import { Deck } from '@/types/schemes';
@@ -22,7 +23,7 @@ export default function DifficultyPage() {
   }, []);
 
   if (!decks) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   return (

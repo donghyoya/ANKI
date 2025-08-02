@@ -5,6 +5,7 @@ import styles from './ProgressBar.module.scss';
 import { ProgressBarSegment } from '@/types/ProgressBarSegment';
 import { LEARNING_PROGRESS_BAR_COLORS } from '@/constants/colors';
 import classNames from 'classnames';
+import { motion } from 'motion/react';
 
 interface ProgressBarProps {
   progressBarSegments: ProgressBarSegment[];
@@ -39,7 +40,18 @@ const ProgressBar = ({
   }
 
   return (
-    <div className={classNames(styles['container'], className)} style={{ ...stylesProp, height }}>
+    <motion.div
+      className={classNames(styles['container'], className)}
+      style={{ ...stylesProp, height }}
+      animate={{
+        height: height
+      }}
+      transition={{
+        duration: 0.2,
+        ease: 'easeInOut'
+      }}
+      layout
+    >
       {[...progressBarSegments].reverse().map((bar, index) => {
         return (
           <div
@@ -60,7 +72,7 @@ const ProgressBar = ({
           </div>
         );
       })}
-    </div>
+    </motion.div>
   );
 };
 

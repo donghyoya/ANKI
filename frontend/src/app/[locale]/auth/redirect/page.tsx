@@ -1,9 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { redirect } from 'next/navigation';
 import { refresh } from '@/api/auth';
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
+import CustomDialog from '@/components/Dialogs/CustomDialog';
 
 export default function GoogleLoginRedirectPage() {
   // URL에서 임시 토큰 읽기
@@ -11,13 +14,16 @@ export default function GoogleLoginRedirectPage() {
   const searchParams = useSearchParams();
   const authenticationToken = searchParams?.get('token');
 
+  const t = useTranslations();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   // 토큰 저장 로직
   useEffect(() => {
+    if (!authenticationToken) {
+      setIsDialogOpen(true);
+      return;
+    }
     (async function () {
-      if (!authenticationToken) {
-        redirect('/login');
-      }
-
       const { isSetup } = await refresh(authenticationToken);
       if (isSetup) {
         redirect('/difficulty');
@@ -27,20 +33,24 @@ export default function GoogleLoginRedirectPage() {
     })();
   }, [authenticationToken, router]);
 
+  const handleDialog = () => {
+    setIsDialogOpen(false);
+    router.push('/login');
+  };
+
   return (
     <div>
       <div>
         {authenticationToken ? (
-          <>
-            <h1>로그인 성공</h1>
-            <p>Auth Token:</p>
-            <code>{authenticationToken}</code>
-          </>
+          <LoadingSpinner />
         ) : (
-          <>
-            <h1>토큰이 없습니다</h1>
-            <p>로그인 절차를 다시 시도해주세요.</p>
-          </>
+          <CustomDialog
+            open={isDialogOpen}
+            headline={t('loginError')}
+            prompt={t('loginErrorContent')}
+            firstButtonString="OK"
+            firstButtonOnclick={handleDialog}
+          />
         )}
       </div>
     </div>

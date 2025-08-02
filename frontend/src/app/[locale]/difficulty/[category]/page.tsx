@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 
 import { getCardsFromDeck } from '@/api/decks';
 import WordListPage from '@/components/common/WordListPage';
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 
 import { KoreanCardWithForeignWords, Paginated } from '@/types/schemes';
 import { Category } from '@/types/Category';
@@ -26,7 +27,7 @@ export default function DifficultyWordsPage() {
   }, [category, locale]);
 
   if (!userCards) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   return <WordListPage wordList={userCards.content} category={category as Category} />;

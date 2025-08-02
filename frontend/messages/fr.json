@@ -12,6 +12,8 @@
   "showForeign": "Afficher le français",
   "expandAll": "Tout développer",
   "collapseAll": "Tout réduire",
+  "loginError": "Erreur de connexion",
+  "loginErrorContent": "Un problème est survenu lors de la connexion. Appuyez sur OK pour accéder à la page de connexion.",
   "cancel": "Annuler",
   "save": "Enregistrer",
   "ok": "D'accord",

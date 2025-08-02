@@ -12,6 +12,8 @@
   "showForeign": "显示中文",
   "expandAll": "展开全部",
   "collapseAll": "收起全部",
+  "loginError": "登录错误",
+  "loginErrorContent": "登录时出现问题。点击“确定”进入登录页面。",
   "cancel": "取消",
   "save": "保存",
   "ok": "确定",

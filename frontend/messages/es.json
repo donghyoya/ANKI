@@ -12,6 +12,8 @@
   "showForeign": "Mostrar español",
   "expandAll": "Expandir todo",
   "collapseAll": "Colapsar todo",
+  "loginError": "Error de inicio de sesión",
+  "loginErrorContent": "Hubo un problema al iniciar sesión. Pulsa OK para ir a la página de inicio de sesión.",
   "cancel": "Cancelar",
   "save": "Guardar",
   "ok": "Aceptar",

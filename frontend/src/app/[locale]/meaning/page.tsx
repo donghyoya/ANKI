@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 
 import DeckListPage from '@/components/common/DeckListPage';
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 import { getDecks } from '@/api/decks';
 
 import { meaningInDisplayOrder } from '@/types/Category';
@@ -22,7 +23,7 @@ export default function MeaningsPage() {
   }, []);
 
   if (!decks) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
   return <DeckListPage decks={decks} categoryType="meaning" displayOrder={meaningInDisplayOrder} />;
 }

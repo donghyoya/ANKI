@@ -29,6 +29,7 @@
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
     "sass": "^1.83.4",
+    "spinners-react": "^1.0.11",
     "ts-fsrs": "^5.0.1"
   },
   "devDependencies": {

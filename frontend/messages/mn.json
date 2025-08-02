@@ -21,7 +21,8 @@
   "menu": {
     "difficulty": "Хүндийн зэрэг",
     "meaning": "Утга",
-    "settings": "Тохиргоо"
+    "settings": "Тохиргоо",
+    "guest": "Зочин"
   },
 
   "difficulty": {

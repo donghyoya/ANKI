@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import NavigationRail from './NavigationRail';
 import NavigationDrawer from './NavigationDrawer';
 import TopAppBar from '@/components/Navigation/TopAppBar';
@@ -10,8 +10,9 @@ import { Menu, MenuItem } from '@/components/material-components/Menu';
 import { IconButton, Icon } from '@/components/material-components/IconButton/IconButton';
 import styles from './Navigation.module.scss';
 
-const Navigation = () => {
+const Navigation = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
   const pathname = usePathname();
+  const router = useRouter();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const isLoginPage = pathname?.includes('/login');
@@ -21,7 +22,9 @@ const Navigation = () => {
   const destinations = [
     { icon: 'folder', label: 'difficulty' },
     { icon: 'folder', label: 'meaning' },
-    { icon: 'settings', label: 'settings' }
+    isLoggedIn === false
+      ? { icon: 'account_circle', label: 'guest' }
+      : { icon: 'settings', label: 'settings' }
   ];
 
   const toggleDrawer = () => {
@@ -31,6 +34,14 @@ const Navigation = () => {
   const handleMenuClick = () => {
     const menu = document.getElementById('menu') as HTMLDialogElement;
     menu.open = !menu.open;
+  };
+
+  const handleDestination = (label: string) => {
+    if (label === 'guest') {
+      router.push('/login');
+    } else {
+      router.push(`/${label}`);
+    }
   };
 
   const MenuButton = () => {
@@ -57,7 +68,11 @@ const Navigation = () => {
           rightIcon={<MenuButton />}
           onClickLeftIcon={() => {}}
         />
-        <NavigationBar destinations={destinations} initialDestination="Difficulty" />
+        <NavigationBar
+          destinations={destinations}
+          initialDestination="Difficulty"
+          handleDestinationClick={handleDestination}
+        />
       </div>
       <div className={styles['desktop-view']}>
         {isDrawerOpen && (
@@ -67,6 +82,7 @@ const Navigation = () => {
               destinations={destinations}
               initialDestination="Difficulty"
               toggleDrawer={toggleDrawer}
+              handleDestinationClick={handleDestination}
             />
           </>
         )}
@@ -76,6 +92,7 @@ const Navigation = () => {
             isMenuEnabled
             initialDestination="Difficulty"
             toggleDrawer={toggleDrawer}
+            handleDestinationClick={handleDestination}
           />
         )}
       </div>

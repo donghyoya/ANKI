@@ -12,6 +12,8 @@
   "showForeign": "Tampilkan bahasa Indonesia",
   "expandAll": "Perluas semua",
   "collapseAll": "Tutup semua",
+  "loginError": "Kesalahan Login",
+  "loginErrorContent": "Terjadi masalah saat login. Tekan OK untuk pergi ke halaman login.",
 
   "menu": {
     "difficulty": "Kesulitan",

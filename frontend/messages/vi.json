@@ -12,6 +12,8 @@
   "showForeign": "Hiển thị tiếng Việt",
   "expandAll": "Mở rộng tất cả",
   "collapseAll": "Thu gọn tất cả",
+  "loginError": "Lỗi đăng nhập",
+  "loginErrorContent": "Đã xảy ra sự cố khi đăng nhập. Nhấn OK để đến trang đăng nhập.",
 
   "menu": {
     "difficulty": "Độ khó",

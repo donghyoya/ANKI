@@ -12,6 +12,8 @@
   "showForeign": "Show English",
   "expandAll": "Expand all",
   "collapseAll": "Collapse all",
+  "loginError": "Login Error",
+  "loginErrorContent": "There was a problem during login. Press OK to go to the login page.",
 
   "menu": {
     "difficulty": "Difficulty",

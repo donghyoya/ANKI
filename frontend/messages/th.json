@@ -12,6 +12,8 @@
   "showForeign": "แสดงภาษาไทย",
   "expandAll": "ขยายทั้งหมด",
   "collapseAll": "ยุบทั้งหมด",
+  "loginError": "ข้อผิดพลาดในการเข้าสู่ระบบ",
+  "loginErrorContent": "เกิดปัญหาระหว่างเข้าสู่ระบบ กด OK เพื่อไปยังหน้าล็อกอิน",
 
   "menu": {
     "difficulty": "ความยาก",

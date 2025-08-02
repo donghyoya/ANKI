@@ -8,10 +8,12 @@
 
   @include bp.respond-to('compact') {
     grid-column: span 4;
+    padding-bottom: 39px;
   }
 
   @include bp.respond-to('medium') {
     grid-column: 2 / span 6;
+    padding-bottom: 0;
   }
 
   @include bp.respond-to('expanded') {
@@ -29,24 +31,56 @@
   .contents {
     width: 100%;
 
-    .title {
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include bp.respond-to('medium') {
+        margin: 40px 0 24px;
+      }
+
       @include bp.respond-to('large') {
-        @include tp.headline-medium;
+        margin: 32px 0 64px;
       }
 
       @include bp.respond-to('extra-large') {
-        @include tp.headline-large;
+        margin: 0 0 72px;
+      }
+
+      .title {
+        margin: 0;
+
+        @include bp.respond-to('medium') {
+          @include tp.title-large;
+        }
+
+        @include bp.respond-to('large') {
+          @include tp.headline-medium;
+        }
+
+        @include bp.respond-to('extra-large') {
+          @include tp.headline-large;
+        }
       }
     }
 
     .group {
-      margin-bottom: 64px;
+      @include bp.respond-to('compact') {
+        margin-bottom: 16px;
+      }
 
-      &:last-of-type {
-        margin-bottom: 0;
+      @include bp.respond-to('large') {
+        margin-bottom: 64px;
       }
 
       .group-title {
+        @include bp.respond-to('compact') {
+          @include tp.title-medium;
+          margin: 0 0 4px 0;
+          padding: 10px 8px;
+        }
+
         @include bp.respond-to('large') {
           @include tp.title-medium;
           margin: 0 0 24px 0;
@@ -64,6 +98,14 @@
         justify-content: space-between;
         padding: 0 12px 0 12px;
 
+        @include bp.respond-to('large') {
+          margin-bottom: 16px;
+        }
+
+        @include bp.respond-to('extra-large') {
+          margin-bottom: 20px;
+        }
+
         .label {
           margin: 0;
 
@@ -77,14 +119,8 @@
         }
       }
 
-      .first-field-section {
-        @include bp.respond-to('large') {
-          margin-bottom: 16px;
-        }
-
-        @include bp.respond-to('extra-large') {
-          margin-bottom: 20px;
-        }
+      .last-field-section {
+        margin-bottom: 0;
       }
 
       .sign-out-button {
@@ -95,15 +131,35 @@
 }
 
 .list {
-  width: 100%;
-
   .language-menu {
-    height: 400px;
+    height: 300px;
   }
 
   .theme-menu {
     min-width: 200px;
     max-width: 200px;
-    height: 300px;
+    height: 240px;
+  }
+
+  .time-zone-menu {
+    height: 240px;
+  }
+
+  .learning-count {
+    @include tp.body-medium;
+  }
+}
+
+.button-container-compact {
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+  width: 100%;
+  padding: 10px 16px;
+  background-color: var(--md-sys-color-surface-container);
+
+  .save-button-compact {
+    width: 100%;
   }
 }

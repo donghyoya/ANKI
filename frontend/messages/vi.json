@@ -14,11 +14,17 @@
   "collapseAll": "Thu gọn tất cả",
   "loginError": "Lỗi đăng nhập",
   "loginErrorContent": "Đã xảy ra sự cố khi đăng nhập. Nhấn OK để đến trang đăng nhập.",
+  "cancel": "Hủy",
+  "save": "Lưu",
+  "ok": "Đồng ý",
+  "saved": "Đã lưu.",
+  "failedToSave": "Lưu không thành công.",
 
   "menu": {
     "difficulty": "Độ khó",
     "meaning": "Ý nghĩa",
-    "settings": "Cài đặt"
+    "settings": "Cài đặt",
+    "guest": "Khách"
   },
 
   "difficulty": {
@@ -99,6 +105,7 @@
     "newCount": "Số từ mới hàng ngày",
     "account": "Tài khoản",
     "signOut": "Đăng xuất",
-    "deleteAccount": "Xóa tài khoản"
+    "deleteAccount": "Xóa tài khoản",
+    "utcOffset": "Múi giờ"
   }
 }

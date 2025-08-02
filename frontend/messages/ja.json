@@ -14,11 +14,17 @@
   "collapseAll": "すべて折りたたむ",
   "loginError": "ログインエラー",
   "loginErrorContent": "ログイン中に問題が発生しました。「OK」を押してログインページへ進んでください。",
+  "cancel": "キャンセル",
+  "save": "保存",
+  "ok": "確認",
+  "saved": "保存されました。",
+  "failedToSave": "保存に失敗しました。",
 
   "menu": {
     "difficulty": "難易度",
     "meaning": "意味",
-    "settings": "設定"
+    "settings": "設定",
+    "guest": "ゲスト"
   },
 
   "difficulty": {
@@ -99,6 +105,7 @@
     "newCount": "毎日の新しい単語数",
     "account": "アカウント",
     "signOut": "サインアウト",
-    "deleteAccount": "アカウントを削除"
+    "deleteAccount": "アカウントを削除",
+    "utcOffset": "タイムゾーン"
   }
 }

@@ -1,4 +1,4 @@
-import { createFSRS } from '@/utils/fsrs';
+import { createFSRS } from '@/utils/FSRS';
 
 import { UserCard } from '@/types/schemes';
 import { Grade, Rating, State } from 'ts-fsrs';

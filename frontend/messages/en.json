@@ -14,11 +14,17 @@
   "collapseAll": "Collapse all",
   "loginError": "Login Error",
   "loginErrorContent": "There was a problem during login. Press OK to go to the login page.",
+  "cancel": "Cancel",
+  "save": "Save",
+  "ok": "Ok",
+  "saved": "Saved.",
+  "failedToSave": "Failed to save.",
 
   "menu": {
     "difficulty": "Difficulty",
     "meaning": "Meaning",
-    "settings": "Settings"
+    "settings": "Settings",
+    "guest": "Guest"
   },
 
   "difficulty": {
@@ -99,6 +105,7 @@
     "newCount": "Daily new word count",
     "account": "Account",
     "signOut": "Sign out",
-    "deleteAccount": "Delete account"
+    "deleteAccount": "Delete account",
+    "utcOffset": "Time zone"
   }
 }

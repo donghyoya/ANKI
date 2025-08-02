@@ -13,21 +13,27 @@ const NavigationRail = ({
   destinations,
   isMenuEnabled,
   initialDestination,
-  toggleDrawer
+  toggleDrawer,
+  handleDestinationClick
 }: {
   destinations: { icon: string; label: string }[];
   isMenuEnabled: boolean;
   initialDestination: string;
   toggleDrawer: () => void;
+  handleDestinationClick?: (label: string) => void;
 }) => {
   const t = useTranslations();
   const router = useRouter();
 
   const [selectedDestination, setSelectedDestination] = useState<string | null>(initialDestination);
 
-  const handleDestinationClick = (destination: string) => {
+  const handleClick = (destination: string) => {
     setSelectedDestination(destination);
-    router.push(`/${destination}`);
+    if (handleDestinationClick) {
+      handleDestinationClick(destination);
+    } else {
+      router.push(`/${destination}`);
+    }
   };
 
   return (
@@ -44,7 +50,7 @@ const NavigationRail = ({
           <div
             key={destination.label}
             className={styles['navigation-item-container']}
-            onClick={() => handleDestinationClick(destination.label)}
+            onClick={() => handleClick(destination.label)}
           >
             <button
               className={classNames(styles['navigation-item-button'], {

@@ -45,7 +45,6 @@ export const LANGUAGE_OPTIONS = [
 ];
 
 export const UTC_OFFSET_OPTIONS = [
-  { code: null, label: 'null' },
   { code: 0, label: 'UTC+00:00' },
   { code: 1, label: 'UTC+01:00' },
   { code: 2, label: 'UTC+02:00' },

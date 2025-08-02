@@ -13,11 +13,13 @@ import classNames from 'classnames';
 const NavigationDrawer = ({
   destinations,
   initialDestination,
-  toggleDrawer
+  toggleDrawer,
+  handleDestinationClick
 }: {
   destinations: { icon: string; label: string }[];
   initialDestination: string;
   toggleDrawer: () => void;
+  handleDestinationClick?: (label: string) => void;
 }) => {
   const t = useTranslations();
 
@@ -26,7 +28,11 @@ const NavigationDrawer = ({
 
   const handleNavItemClick = (navItem: string) => {
     setSelectedDestination(navItem);
-    router.push(`/${navItem}`);
+    if (handleDestinationClick) {
+      handleDestinationClick(navItem);
+    } else {
+      router.push(`/${navItem}`);
+    }
   };
 
   return (

@@ -14,11 +14,17 @@
   "collapseAll": "Colapsar todo",
   "loginError": "Error de inicio de sesión",
   "loginErrorContent": "Hubo un problema al iniciar sesión. Pulsa OK para ir a la página de inicio de sesión.",
-
+  "cancel": "Cancelar",
+  "save": "Guardar",
+  "ok": "Aceptar",
+  "saved": "Guardado.",
+  "failedToSave": "Error al guardar.",
+  
   "menu": {
     "difficulty": "Dificultad",
     "meaning": "Significado",
-    "settings": "Configuración"
+    "settings": "Configuración",
+    "guest": "Invitado"
   },
 
   "difficulty": {
@@ -99,6 +105,7 @@
     "newCount": "Cantidad diaria de palabras nuevas",
     "account": "Cuenta",
     "signOut": "Cerrar sesión",
-    "deleteAccount": "Eliminar cuenta"
+    "deleteAccount": "Eliminar cuenta",
+    "utcOffset": "Zona horaria"
   }
 }

@@ -14,11 +14,17 @@
   "collapseAll": "Бүгдийг хаах",
   "loginError": "Нэвтрэхэд алдаа гарлаа",
   "loginErrorContent": "Нэвтрэх үед асуудал гарлаа. OK дарж нэвтрэх хуудсанд очно уу.",
+  "cancel": "Цуцлах",
+  "save": "Хадгалах",
+  "ok": "Зөв",
+  "saved": "Хадгалагдлаа.",
+  "failedToSave": "Хадгалах үед алдаа гарлаа.",
 
   "menu": {
     "difficulty": "Хүндийн зэрэг",
     "meaning": "Утга",
-    "settings": "Тохиргоо"
+    "settings": "Тохиргоо",
+    "guest": "Зочин"
   },
 
   "difficulty": {
@@ -99,6 +105,7 @@
     "newCount": "Өдөр бүр шинэ үгийн тоо",
     "account": "Бүртгэл",
     "signOut": "Гарах",
-    "deleteAccount": "Бүртгэл устгах"
+    "deleteAccount": "Бүртгэл устгах",
+    "utcOffset": "Цагийн бүс"
   }
 }

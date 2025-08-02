@@ -14,11 +14,17 @@
   "collapseAll": "ยุบทั้งหมด",
   "loginError": "ข้อผิดพลาดในการเข้าสู่ระบบ",
   "loginErrorContent": "เกิดปัญหาระหว่างเข้าสู่ระบบ กด OK เพื่อไปยังหน้าล็อกอิน",
+  "cancel": "ยกเลิก",
+  "save": "บันทึก",
+  "ok": "ตกลง",
+  "saved": "บันทึกแล้ว",
+  "failedToSave": "ไม่สามารถบันทึกได้",
 
   "menu": {
     "difficulty": "ความยาก",
     "meaning": "ความหมาย",
-    "settings": "การตั้งค่า"
+    "settings": "การตั้งค่า",
+    "guest": "แขก"
   },
 
   "difficulty": {
@@ -99,6 +105,7 @@
     "newCount": "จำนวนคำใหม่ต่อวัน",
     "account": "บัญชี",
     "signOut": "ออกจากระบบ",
-    "deleteAccount": "ลบบัญชี"
+    "deleteAccount": "ลบบัญชี",
+    "utcOffset": "เขตเวลา"
   }
 }

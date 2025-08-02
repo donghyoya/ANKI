@@ -14,11 +14,17 @@
   "collapseAll": "Tutup semua",
   "loginError": "Kesalahan Login",
   "loginErrorContent": "Terjadi masalah saat login. Tekan OK untuk pergi ke halaman login.",
+  "cancel": "Batal",
+  "save": "Simpan",
+  "ok": "Oke",
+  "saved": "Berhasil disimpan.",
+  "failedToSave": "Gagal menyimpan.",
 
   "menu": {
     "difficulty": "Kesulitan",
     "meaning": "Arti",
-    "settings": "Pengaturan"
+    "settings": "Pengaturan",
+    "guest": "Tamu"
   },
 
   "difficulty": {
@@ -99,6 +105,7 @@
     "newCount": "Jumlah kata baru setiap hari",
     "account": "Akun",
     "signOut": "Keluar",
-    "deleteAccount": "Hapus akun"
+    "deleteAccount": "Hapus akun",
+    "utcOffset": "Zona waktu"
   }
 }

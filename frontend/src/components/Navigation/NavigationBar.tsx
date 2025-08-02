@@ -10,19 +10,25 @@ import { useRouter } from 'next/navigation';
 
 const NavigationBar = ({
   destinations,
-  initialDestination
+  initialDestination,
+  handleDestinationClick
 }: {
   destinations: { icon: string; label: string }[];
   initialDestination: string;
+  handleDestinationClick?: (label: string) => void;
 }) => {
   const t = useTranslations();
   const router = useRouter();
 
   const [selectedDestination, setSelectedDestination] = useState<string>(initialDestination);
 
-  const handleDestinationClick = (destination: string) => {
+  const handleClick = (destination: string) => {
     setSelectedDestination(destination);
-    router.push(`/${destination}`);
+    if (handleDestinationClick) {
+      handleDestinationClick(destination);
+    } else {
+      router.push(`/${destination}`);
+    }
   };
 
   return (
@@ -33,7 +39,7 @@ const NavigationBar = ({
           <button
             key={destination.label}
             className={classNames(styles.destination, { [styles.selected]: isSelected })}
-            onClick={() => handleDestinationClick(destination.label)}
+            onClick={() => handleClick(destination.label)}
           >
             <div
               className={classNames(styles['icon-container'], { [styles.selected]: isSelected })}

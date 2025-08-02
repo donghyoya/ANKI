@@ -14,11 +14,17 @@
   "collapseAll": "Свернуть все",
   "loginError": "Ошибка входа",
   "loginErrorContent": "Произошла ошибка при входе. Нажмите OK, чтобы перейти на страницу входа.",
+  "cancel": "Отмена",
+  "save": "Сохранить",
+  "ok": "Ок",
+  "saved": "Сохранено.",
+  "failedToSave": "Не удалось сохранить.",
 
   "menu": {
     "difficulty": "Сложность",
     "meaning": "Значение",
-    "settings": "Настройки"
+    "settings": "Настройки",
+    "guest": "Гость"
   },
 
   "difficulty": {
@@ -99,6 +105,7 @@
     "newCount": "Количество новых слов в день",
     "account": "Аккаунт",
     "signOut": "Выйти",
-    "deleteAccount": "Удалить аккаунт"
+    "deleteAccount": "Удалить аккаунт",
+    "utcOffset": "Часовой пояс"
   }
 }

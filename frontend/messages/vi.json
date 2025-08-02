@@ -12,6 +12,11 @@
   "showForeign": "Hiển thị tiếng Việt",
   "expandAll": "Mở rộng tất cả",
   "collapseAll": "Thu gọn tất cả",
+  "cancel": "Hủy",
+  "save": "Lưu",
+  "ok": "Đồng ý",
+  "saved": "Đã lưu.",
+  "failedToSave": "Lưu không thành công.",
 
   "menu": {
     "difficulty": "Độ khó",
@@ -97,6 +102,7 @@
     "newCount": "Số từ mới hàng ngày",
     "account": "Tài khoản",
     "signOut": "Đăng xuất",
-    "deleteAccount": "Xóa tài khoản"
+    "deleteAccount": "Xóa tài khoản",
+    "utcOffset": "Múi giờ"
   }
 }

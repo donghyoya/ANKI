@@ -12,6 +12,11 @@
   "showForeign": "Afficher le français",
   "expandAll": "Tout développer",
   "collapseAll": "Tout réduire",
+  "cancel": "Annuler",
+  "save": "Enregistrer",
+  "ok": "D'accord",
+  "saved": "Enregistré.",
+  "failedToSave": "Échec de l'enregistrement.",
 
   "menu": {
     "difficulty": "Difficulté",
@@ -97,6 +102,7 @@
     "newCount": "Nombre de nouveaux mots quotidiens",
     "account": "Compte",
     "signOut": "Se déconnecter",
-    "deleteAccount": "Supprimer le compte"
+    "deleteAccount": "Supprimer le compte",
+    "utcOffset": "Fuseau horaire"
   }
 }

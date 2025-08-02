@@ -27,9 +27,11 @@ const CustomDialog = ({
     <Dialog open={open} onCancel={onCancel} noFocusTrap>
       <span slot="headline">
         <span>{headline}</span>
-        <IconButton value="cancel" aria-label="Cancel dialog" onClick={onCancel}>
-          <Icon>close</Icon>
-        </IconButton>
+        {onCancel && (
+          <IconButton value="cancel" aria-label="Cancel dialog" onClick={onCancel}>
+            <Icon>close</Icon>
+          </IconButton>
+        )}
       </span>
       <form id="form" slot="content" method="dialog">
         {prompt}

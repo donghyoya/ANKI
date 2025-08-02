@@ -5,6 +5,7 @@ import ErrorBoundaryWrapper from '@/providers/ErrorBoundaryWrapper';
 import { QueryProvider } from '@/providers/QueryProvider';
 
 import styles from './layout.module.scss';
+import { SnackbarProvider } from '@/components/Snackbar/SnackbarProvider';
 
 const NavigationLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -13,8 +14,10 @@ const NavigationLayout = ({ children }: { children: React.ReactNode }) => {
         <QueryProvider>
           <div className={styles['navigation-layout']}>
             <I18nProvider>
-              <Navigation />
-              {children}
+              <SnackbarProvider>
+                <Navigation />
+                {children}
+              </SnackbarProvider>
             </I18nProvider>
           </div>
         </QueryProvider>

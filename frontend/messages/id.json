@@ -12,6 +12,11 @@
   "showForeign": "Tampilkan bahasa Indonesia",
   "expandAll": "Perluas semua",
   "collapseAll": "Tutup semua",
+  "cancel": "Batal",
+  "save": "Simpan",
+  "ok": "Oke",
+  "saved": "Berhasil disimpan.",
+  "failedToSave": "Gagal menyimpan.",
 
   "menu": {
     "difficulty": "Kesulitan",
@@ -97,6 +102,7 @@
     "newCount": "Jumlah kata baru setiap hari",
     "account": "Akun",
     "signOut": "Keluar",
-    "deleteAccount": "Hapus akun"
+    "deleteAccount": "Hapus akun",
+    "utcOffset": "Zona waktu"
   }
 }

@@ -12,6 +12,11 @@
   "showForeign": "외국어 표시",
   "expandAll": "모두 펼치기",
   "collapseAll": "모두 접기",
+  "cancel": "취소",
+  "save": "저장",
+  "ok": "확인",
+  "saved": "저장되었습니다.",
+  "failedToSave": "저장에 실패했습니다.",
 
   "menu": {
     "difficulty": "난이도",
@@ -97,6 +102,7 @@
     "newCount": "일일 새로운 단어 수",
     "account": "계정",
     "signOut": "로그아웃",
-    "deleteAccount": "계정 삭제"
+    "deleteAccount": "계정 삭제",
+    "utcOffset": "시간대"
   }
 }

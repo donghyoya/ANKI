@@ -91,7 +91,7 @@ export interface UserStudyHistory {
 export type UserOption = {
   dailyReviewWords: number;
   dailyStudyWords: number;
-  utcOffset: number | null;
+  utcOffset: number;
   languageCode: Locale;
 };
 

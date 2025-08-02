@@ -15,5 +15,8 @@ export const FilledTextButton = createComponent({
 export const OutlinedTextField = createComponent({
     tagName: 'md-outlined-text-field',
     elementClass: MdOutlinedTextField,
-    react: React
+    react: React,
+    events: {
+        onChange: 'change'
+    }
 });

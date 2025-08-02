@@ -1,11 +1,14 @@
 import Navigation from '@/components/Navigation/Navigation';
+import { SnackbarProvider } from '@/components/Snackbar/SnackbarProvider';
+
 import I18nProvider from '@/providers/I18nProvider';
 import { StoreProvider } from '@/providers/StoreProvider';
 import ErrorBoundaryWrapper from '@/providers/ErrorBoundaryWrapper';
 
-import styles from './layout.module.scss';
 import { AuthService } from '@/services/AuthService';
 import { CookieService } from '@/services/CookieService';
+
+import styles from './layout.module.scss';
 
 const NavigationLayout = async ({ children }: { children: React.ReactNode }) => {
   const cookieService = new CookieService();
@@ -15,12 +18,16 @@ const NavigationLayout = async ({ children }: { children: React.ReactNode }) => 
   return (
     <ErrorBoundaryWrapper>
       <StoreProvider>
-        <div className={styles['navigation-layout']}>
-          <I18nProvider>
-            <Navigation isLoggedIn={isLoggedIn} />
-            {children}
-          </I18nProvider>
-        </div>
+        <QueryProvider>
+          <div className={styles['navigation-layout']}>
+            <I18nProvider>
+              <SnackbarProvider>
+                <Navigation isLoggedIn={isLoggedIn} />
+                {children}
+              </SnackbarProvider>
+            </I18nProvider>
+          </div>
+        </QueryProvider>
       </StoreProvider>
     </ErrorBoundaryWrapper>
   );

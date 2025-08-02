@@ -12,7 +12,12 @@
   "showForeign": "Mostrar español",
   "expandAll": "Expandir todo",
   "collapseAll": "Colapsar todo",
-
+  "cancel": "Cancelar",
+  "save": "Guardar",
+  "ok": "Aceptar",
+  "saved": "Guardado.",
+  "failedToSave": "Error al guardar.",
+  
   "menu": {
     "difficulty": "Dificultad",
     "meaning": "Significado",
@@ -98,6 +103,7 @@
     "newCount": "Cantidad diaria de palabras nuevas",
     "account": "Cuenta",
     "signOut": "Cerrar sesión",
-    "deleteAccount": "Eliminar cuenta"
+    "deleteAccount": "Eliminar cuenta",
+    "utcOffset": "Zona horaria"
   }
 }

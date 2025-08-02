@@ -12,6 +12,11 @@
   "showForeign": "Показать русский",
   "expandAll": "Развернуть все",
   "collapseAll": "Свернуть все",
+  "cancel": "Отмена",
+  "save": "Сохранить",
+  "ok": "Ок",
+  "saved": "Сохранено.",
+  "failedToSave": "Не удалось сохранить.",
 
   "menu": {
     "difficulty": "Сложность",
@@ -98,6 +103,7 @@
     "newCount": "Количество новых слов в день",
     "account": "Аккаунт",
     "signOut": "Выйти",
-    "deleteAccount": "Удалить аккаунт"
+    "deleteAccount": "Удалить аккаунт",
+    "utcOffset": "Часовой пояс"
   }
 }

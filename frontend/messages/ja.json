@@ -12,6 +12,11 @@
   "showForeign": "日本語を表示",
   "expandAll": "すべて展開",
   "collapseAll": "すべて折りたたむ",
+  "cancel": "キャンセル",
+  "save": "保存",
+  "ok": "確認",
+  "saved": "保存されました。",
+  "failedToSave": "保存に失敗しました。",
 
   "menu": {
     "difficulty": "難易度",
@@ -98,6 +103,7 @@
     "newCount": "毎日の新しい単語数",
     "account": "アカウント",
     "signOut": "サインアウト",
-    "deleteAccount": "アカウントを削除"
+    "deleteAccount": "アカウントを削除",
+    "utcOffset": "タイムゾーン"
   }
 }

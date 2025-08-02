@@ -12,6 +12,11 @@
   "showForeign": "Show English",
   "expandAll": "Expand all",
   "collapseAll": "Collapse all",
+  "cancel": "Cancel",
+  "save": "Save",
+  "ok": "Ok",
+  "saved": "Saved.",
+  "failedToSave": "Failed to save.",
 
   "menu": {
     "difficulty": "Difficulty",
@@ -98,6 +103,7 @@
     "newCount": "Daily new word count",
     "account": "Account",
     "signOut": "Sign out",
-    "deleteAccount": "Delete account"
+    "deleteAccount": "Delete account",
+    "utcOffset": "Time zone"
   }
 }

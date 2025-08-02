@@ -10,7 +10,7 @@
   max-width: 560px;
   min-height: 48px;
   max-height: 68px;
-  padding-left: 16px;
+  padding: 0 8px;
 
   transform: translateX(-50%);
   border-radius: 4px;
@@ -22,7 +22,7 @@
 
 .text {
   flex: 1;
-  margin-right: 8px;
+  margin: 0 8px;
   color: var(--md-sys-color-inverse-on-surface);
   font-weight: 500;
   font-size: 14px;
@@ -38,7 +38,7 @@
 }
 
 .close {
-  padding: 0 12px;
+  padding: 0 4px;
   border: none;
   background: none;
   color: var(--md-sys-color-inverse-on-surface);

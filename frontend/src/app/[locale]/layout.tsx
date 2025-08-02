@@ -3,6 +3,7 @@ import { SnackbarProvider } from '@/components/Snackbar/SnackbarProvider';
 
 import I18nProvider from '@/providers/I18nProvider';
 import { StoreProvider } from '@/providers/StoreProvider';
+import { QueryProvider } from '@/providers/QueryProvider';
 import ErrorBoundaryWrapper from '@/providers/ErrorBoundaryWrapper';
 
 import { AuthService } from '@/services/AuthService';

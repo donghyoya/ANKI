@@ -59,7 +59,9 @@ export function toKoreanCardDetail(card: UserCardDTO): KoreanCardDetail {
 export function normalizeQuery(query: string) {
   switch (query) {
     case 'difficulty':
-      return 'level';
+      return 'LEVEL';
+    case 'meaning':
+      return 'TOPIC';
     case 'new':
       return 'study';
     default:

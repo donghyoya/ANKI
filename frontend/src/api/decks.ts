@@ -2,23 +2,22 @@
 
 import { Locale } from '@/types/Locale';
 import { Paginated, UserStudyHistory, Deck, KoreanCardWithForeignWords } from '@/types/schemes';
-import { Category, getCategoryType } from '@/types/Category';
+import { Category, CategoryType, getCategoryType } from '@/types/Category';
 import { normalizeQuery } from '@/utils/converter';
 import { ServerServiceFactory } from '@/services/ServerServiceFactory';
 
 const httpClient = ServerServiceFactory.getHttpClient();
 
-export const getDecks = async (queryType: 'difficulty' | 'meaning') => {
-  const url = `/decks?queryType=${normalizeQuery(queryType)}`;
-  console.log('url', url);
+export const getDecks = async (categoryType: CategoryType) => {
+  const url = `/decks?queryType=${normalizeQuery(categoryType)}`;
   const response = await httpClient.get<Paginated<Deck>>(url);
   return response.data;
 };
 
-export const getCardsFromDeck = async (locale: Locale, query: Category) => {
-  const queryType = getCategoryType(query);
-  if (!queryType) throw new Error('Invalid query type');
-  const url = `/decks/cards?code=${locale}&queryType=${queryType}&query=${normalizeQuery(query)}`;
+export const getCardsFromDeck = async (locale: Locale, category: Category) => {
+  const categoryType = getCategoryType(category) ?? '';
+  if (!categoryType) throw new Error('Invalid category type');
+  const url = `/decks/cards?code=${locale}&queryType=${normalizeQuery(categoryType)}&query=${normalizeQuery(category)}`;
   const response = await httpClient.get<Paginated<KoreanCardWithForeignWords>>(url);
   return response.data;
 };

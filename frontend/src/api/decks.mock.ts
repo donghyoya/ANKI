@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { Locale } from '@/types/Locale';
-import { Category } from '@/types/Category';
+import { Category, CategoryType } from '@/types/Category';
 import { Paginated } from '@/types/schemes';
 import { Deck, KoreanCardWithForeignWords, UserStudyHistory } from '@/types/schemes';
 import {
@@ -11,7 +11,7 @@ import {
   DUMMY_USER_STUDY_HISTORY
 } from '@/utils/dummyData';
 
-export const getDecks = async (queryType: 'difficulty' | 'meaning') => {
+export const getDecks = async (categoryType: CategoryType) => {
   return new Promise<Paginated<Deck>>((resolve) => {
     setTimeout(() => {
       const data = DUMMY_DECKS;

@@ -1,3 +1,5 @@
+export type CategoryType = 'difficulty' | 'meaning';
+
 export type Difficulty = 'easy' | 'normal' | 'hard';
 
 export const difficultiesInDisplayOrder: Difficulty[] = ['easy', 'normal', 'hard'];
@@ -63,7 +65,7 @@ export const meaningInDisplayOrder: Meaning[] = [
   'ADMINISTRATION'
 ];
 
-export const getCategoryType = (query: Difficulty | Meaning | string) => {
+export const getCategoryType = (query: CategoryType | string): CategoryType | null => {
   if (difficultiesInDisplayOrder.includes(query as Difficulty)) return 'difficulty';
   if (meaningInDisplayOrder.includes(query.toUpperCase() as Meaning)) return 'meaning';
   return null;

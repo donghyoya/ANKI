@@ -11,7 +11,7 @@ import CustomDialog from '@/components/Dialogs/CustomDialog';
 
 import styles from './DeckListPage.module.scss';
 import { Deck } from '@/types/schemes';
-import { Category } from '@/types/Category';
+import { Category, CategoryType } from '@/types/Category';
 import { camelize } from 'humps';
 
 export default function DeckListPage({
@@ -20,7 +20,7 @@ export default function DeckListPage({
   displayOrder
 }: {
   decks: Deck[];
-  categoryType: 'difficulty' | 'meaning';
+  categoryType: CategoryType;
   displayOrder: Category[];
 }) {
   const t = useTranslations();

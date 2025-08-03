@@ -7,11 +7,11 @@ import { ServerServiceFactory } from '@/services/ServerServiceFactory';
 
 const httpClient = ServerServiceFactory.getHttpClient();
 
-export const getLearningCards = async (studyType: StudyType, query: Category) => {
-  const queryStudyType = normalizeQuery(studyType);
-  const queryType = getCategoryType(query);
-  if (!queryType) throw new Error('Invalid query type');
-  const url = `/cards/study?studyType=${queryStudyType}&queryType=${queryType}&query=${normalizeQuery(query)}`;
+export const getLearningCards = async (studyType: StudyType, category: Category) => {
+  const studyTypeQuery = normalizeQuery(studyType);
+  const categoryType = getCategoryType(category);
+  if (!categoryType) throw new Error('Invalid category type');
+  const url = `/cards/study?studyType=${studyTypeQuery}&queryType=${categoryType}&query=${normalizeQuery(category)}`;
 
   const response = await httpClient.get<Paginated<UserCardDTO>>(url);
   const convertedData = response.data.content.map((card) => toUserCard(card));

@@ -48,7 +48,7 @@ const ProgressBar = ({
       }}
       transition={{
         duration: 0.2,
-        ease: 'easeInOut'
+        ease: 'easeOut'
       }}
       layout
     >
@@ -62,6 +62,10 @@ const ProgressBar = ({
               width: percentages[index] + '%',
               paddingLeft: `${percentages[index + 1] ?? 0}%`,
               borderRadius: index === 0 ? '0' : `0 ${pxToRem(height / 2)} ${pxToRem(height / 2)} 0`
+            }}
+            transition={{
+              duration: 0.1,
+              ease: 'easeOut'
             }}
           >
             <div className={styles['label-container']}>

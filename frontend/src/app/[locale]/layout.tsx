@@ -8,7 +8,6 @@ import ErrorBoundaryWrapper from '@/providers/ErrorBoundaryWrapper';
 
 import { AuthService } from '@/services/AuthService';
 import { CookieService } from '@/services/CookieService';
-import { QueryProvider } from '@/providers/QueryProvider';
 
 import styles from './layout.module.scss';
 

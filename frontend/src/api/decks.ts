@@ -17,7 +17,7 @@ export const getDecks = async (categoryType: CategoryType) => {
 export const getCardsFromDeck = async (locale: Locale, category: Category, page: number) => {
   const categoryType = getCategoryType(category);
   if (!categoryType) throw new Error('Invalid category type');
-  const url = `/decks/cards?code=${locale}&queryType=${normalizeQuery(categoryType)}&query=${normalizeQuery(category)}&page=${page}&pageSize=1000`;
+  const url = `/decks/cards?code=${locale}&queryType=${normalizeQuery(categoryType)}&query=${normalizeQuery(category)}&page=${page}&pageSize=100`;
   const response = await httpClient.get<Paginated<KoreanCardWithForeignWords>>(url);
   return response.data;
 };

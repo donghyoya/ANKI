@@ -30,7 +30,7 @@ const LearningCardSlider = ({ direction, children, index }: LearningCardSliderPr
 
   return (
     <div className={styles.container}>
-      <AnimatePresence custom={direction}>
+      <AnimatePresence custom={direction} mode="sync">
         <motion.div
           key={index}
           variants={variants}
@@ -38,10 +38,7 @@ const LearningCardSlider = ({ direction, children, index }: LearningCardSliderPr
           initial="initial"
           animate="animate"
           exit="exit"
-          transition={{
-            duration: 0.5,
-            ease: 'easeInOut'
-          }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
           className={styles['card-container']}
         >
           {children}

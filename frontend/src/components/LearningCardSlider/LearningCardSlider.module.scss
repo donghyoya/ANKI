@@ -1,12 +1,8 @@
 .container {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  width: 100%;
+  display: grid;
 }
+
 .card-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  grid-area: 1 / 1;
   width: 100%;
 }

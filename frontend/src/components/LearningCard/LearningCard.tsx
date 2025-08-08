@@ -12,8 +12,8 @@ import { Menu, MenuItem } from '@/components/material-components/Menu';
 import { MdIconButton } from '@material/web/iconbutton/icon-button.js';
 
 import { MenuItem as MenuItemType } from '@/types/Menu';
-import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import { motion } from 'motion/react';
 
 export interface LearningCardState {
   isRevealed: boolean;
@@ -33,7 +33,6 @@ interface LearningCardProps {
   toggleConjugation: () => void;
   toggleExample: () => void;
   menuItems: MenuItemType[];
-  setContentHeight: (height: number) => void;
 }
 
 const LearningCard = ({
@@ -42,14 +41,13 @@ const LearningCard = ({
   style,
   cardState,
   handleReveal,
-  // handleShowDetail,
   toggleConjugation,
   toggleExample,
-  menuItems,
-  setContentHeight
+  menuItems
 }: LearningCardProps) => {
   const t = useTranslations();
   const { width } = useWindowSize();
+  const isCompact = width < 600;
 
   const handleMenuClick = (e: React.MouseEvent<MdIconButton>) => {
     e.stopPropagation();
@@ -57,88 +55,84 @@ const LearningCard = ({
     menu.open = !menu.open;
   };
 
-  useEffect(() => {
-    const contentElement = document.querySelector(`.${styles['content-container']}`);
-    const height = contentElement?.scrollHeight ?? 0;
-    setContentHeight(height);
-  }, [cardState, setContentHeight]);
-
   return (
-    <FilledCard
-      className={classNames(styles['learning-card'], className)}
-      ripple={false}
-      onClick={handleReveal}
-      style={style}
-    >
-      {!cardState.isRevealed && (
-        <div className={styles['content-container']}>
-          <span className={styles['korean-word']}>
-            {cardState.isKoreanToForeign ? card.koreanWord : card.meanings[0].foreignWord}
-          </span>
-          <span className={classNames(styles['foreign-word'], styles['revealed'])}>
-            {t('learning.checkAnswer')}
-          </span>
-        </div>
-      )}
-
-      {cardState.isRevealed && !cardState.showDetail && (
-        <div className={styles['content-container']}>
-          <span className={styles['korean-word']}>
-            {cardState.isKoreanToForeign ? card.koreanWord : card.meanings[0].foreignWord}
-          </span>
-          <span className={styles['foreign-word']}>
-            {cardState.isKoreanToForeign ? card.meanings[0].foreignWord : card.koreanWord}
-          </span>
-        </div>
-      )}
-
-      {cardState.isRevealed && cardState.showDetail && (
-        <div className={classNames(styles['content-container'], styles['detailed'])}>
-          <WordSection card={card} />
-          <div>
-            <ConjugationSection
-              conjugations={card.meanings[0]?.inflection?.split(', ') ?? []}
-              toggleExpanded={toggleConjugation}
-              isExpanded={cardState.showConjugation}
-            />
-            <ExampleSection
-              examples={card.meanings[0]?.exampleUsage?.trim().split('\n') ?? []}
-              toggleExpanded={toggleExample}
-              isExpanded={cardState.showExample}
-            />
+    <motion.div layout>
+      <FilledCard
+        className={classNames(styles['learning-card'], className)}
+        ripple={false}
+        onClick={handleReveal}
+        style={style}
+      >
+        {!cardState.isRevealed && (
+          <div className={styles['content-container']}>
+            <span className={styles['korean-word']}>
+              {cardState.isKoreanToForeign ? card.koreanWord : card.meanings[0].foreignWord}
+            </span>
+            <span className={classNames(styles['foreign-word'], styles['revealed'])}>
+              {t('learning.checkAnswer')}
+            </span>
           </div>
-        </div>
-      )}
-      {width > 600 && (
-        <div style={{ position: 'absolute', top: 24, right: 24, zIndex: 1000 }}>
-          <div style={{ position: 'relative', zIndex: 1000 }}>
-            <IconButton id="learning-card-menu-button" onClick={handleMenuClick}>
-              <Icon>more_vert</Icon>
-            </IconButton>
-            <Menu
-              id="learning-card-menu"
-              anchor="learning-card-menu-button"
-              anchorCorner="end-start"
-              xOffset={-160}
-              yOffset={4}
-              style={{ minWidth: '200px' }}
-            >
-              {menuItems.map((item) => (
-                <MenuItem
-                  key={item.label}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    item.onClick();
-                  }}
-                >
-                  {item.label}
-                </MenuItem>
-              ))}
-            </Menu>
+        )}
+
+        {cardState.isRevealed && !cardState.showDetail && (
+          <div className={styles['content-container']}>
+            <span className={styles['korean-word']}>
+              {cardState.isKoreanToForeign ? card.koreanWord : card.meanings[0].foreignWord}
+            </span>
+            <span className={styles['foreign-word']}>
+              {cardState.isKoreanToForeign ? card.meanings[0].foreignWord : card.koreanWord}
+            </span>
           </div>
-        </div>
-      )}
-    </FilledCard>
+        )}
+
+        {cardState.isRevealed && cardState.showDetail && (
+          <div className={classNames(styles['content-container'], styles['detailed'])}>
+            <WordSection card={card} />
+            <div>
+              <ConjugationSection
+                conjugations={card.meanings[0]?.inflection?.split(', ') ?? []}
+                toggleExpanded={toggleConjugation}
+                isExpanded={cardState.showConjugation}
+              />
+              <ExampleSection
+                examples={card.meanings[0]?.exampleUsage?.trim().split('\n') ?? []}
+                toggleExpanded={toggleExample}
+                isExpanded={cardState.showExample}
+              />
+            </div>
+          </div>
+        )}
+        {!isCompact && (
+          <div style={{ position: 'absolute', top: 24, right: 24, zIndex: 1000 }}>
+            <div style={{ position: 'relative', zIndex: 1000 }}>
+              <IconButton id="learning-card-menu-button" onClick={handleMenuClick}>
+                <Icon>more_vert</Icon>
+              </IconButton>
+              <Menu
+                id="learning-card-menu"
+                anchor="learning-card-menu-button"
+                anchorCorner="end-start"
+                xOffset={-160}
+                yOffset={4}
+                style={{ minWidth: '200px' }}
+              >
+                {menuItems.map((item) => (
+                  <MenuItem
+                    key={item.label}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      item.onClick();
+                    }}
+                  >
+                    {item.label}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </div>
+          </div>
+        )}
+      </FilledCard>
+    </motion.div>
   );
 };
 

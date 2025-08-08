@@ -17,6 +17,7 @@ import { MenuItem } from '@/types/Menu';
 import { Rating } from 'ts-fsrs';
 
 import styles from './layout.module.scss';
+import LearningCardSlider from '@/components/LearningCardSlider/LearningCardSlider';
 
 export default function LearningPage() {
   const t = useTranslations();
@@ -49,6 +50,15 @@ export default function LearningPage() {
     clearError
   } = useStudyQueue(category as Category);
 
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
+
+  // const handlePrev = () => {
+  //   if (index === 0) return;
+  //   setDirection(-1);
+  //   setIndex((prev) => prev - 1);
+  // };
+
   const handleReveal = () => {
     setCardState((prev) => ({ ...prev, isRevealed: true }));
   };
@@ -66,6 +76,10 @@ export default function LearningPage() {
   };
 
   const handleOnRepeat = async (rating: Rating) => {
+    if (index === queue.length - 1) return;
+    console.log('onRepeat');
+    setDirection(1);
+    setIndex((prev) => prev + 1);
     repeat(rating);
     setCardState((prev) => ({ ...prev, isRevealed: false }));
   };
@@ -137,18 +151,20 @@ export default function LearningPage() {
           <LearningProgressBar className={styles['progress-bar']} StateCounts={StateCounts} />
         </div>
       </div>
-      <LearningCard
-        card={currentCardDetail}
-        className={styles['learning-card']}
-        cardState={cardState}
-        handleReveal={handleReveal}
-        handleShowDetail={handleShowDetail}
-        toggleConjugation={toggleConjugation}
-        toggleExample={toggleExample}
-        style={cardStyle}
-        menuItems={menuItems}
-        setContentHeight={setContentHeight}
-      />
+      <LearningCardSlider direction={direction} index={index}>
+        <LearningCard
+          card={currentCardDetail}
+          className={styles['learning-card']}
+          cardState={cardState}
+          handleReveal={handleReveal}
+          handleShowDetail={handleShowDetail}
+          toggleConjugation={toggleConjugation}
+          toggleExample={toggleExample}
+          style={cardStyle}
+          menuItems={menuItems}
+          setContentHeight={setContentHeight}
+        />
+      </LearningCardSlider>
       <RatingButtonContainer
         iPreview={iPreview}
         isRevealed={cardState.isRevealed}

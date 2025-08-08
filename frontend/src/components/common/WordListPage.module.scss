@@ -204,3 +204,11 @@
   @include tp.title-small;
   color: var(--md-sys-color-on-surface-variant);
 }
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 24px 0;
+}

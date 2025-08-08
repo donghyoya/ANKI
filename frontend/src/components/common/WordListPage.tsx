@@ -14,6 +14,7 @@ import { KoreanCardWithForeignWords } from '@/types/schemes';
 import styles from './WordListPage.module.scss';
 import { getCategoryType } from '@/types/Category';
 import { camelize } from 'humps';
+import { SpinnerCircular } from 'spinners-react';
 
 export default function WordListPage({
   wordList,
@@ -150,7 +151,13 @@ export default function WordListPage({
 
           {hasMore && (
             <div className={styles['load-more']} ref={loadTriggerRef}>
-              {isLoading ? 'Loading...' : 'Load More'}
+              {isLoading ? (
+                <div className={styles['loading-spinner']}>
+                  <SpinnerCircular />
+                </div>
+              ) : (
+                'Load More'
+              )}
             </div>
           )}
         </div>

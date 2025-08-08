@@ -36,6 +36,7 @@
 
 .content {
   display: flex;
+  position: relative;
   flex-direction: column;
   width: 100%;
   height: 100%;
@@ -102,6 +103,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
+    padding: 15px 0;
     overflow-y: auto;
     gap: 16px;
 
@@ -111,6 +113,70 @@
 
     @include bp.respond-to('medium') {
       gap: 12px;
+    }
+
+    &::before {
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: linear-gradient(to bottom, var(--md-sys-color-surface), transparent);
+      content: '';
+      pointer-events: none;
+
+      @include bp.respond-to('compact') {
+        top: 0;
+      }
+
+      @include bp.respond-to('medium') {
+        top: 64px;
+      }
+
+      @include bp.respond-to('expanded') {
+        top: 64px;
+      }
+
+      @include bp.respond-to('large') {
+        top: 96px;
+      }
+
+      @include bp.respond-to('extra-large') {
+        top: 110px;
+      }
+    }
+
+    &::after {
+      z-index: 1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: linear-gradient(to top, var(--md-sys-color-surface), transparent);
+      content: '';
+      pointer-events: none;
+
+      @include bp.respond-to('compact') {
+        bottom: 44px;
+      }
+
+      @include bp.respond-to('medium') {
+        bottom: 0;
+      }
+
+      @include bp.respond-to('expanded') {
+        bottom: 0;
+      }
+
+      @include bp.respond-to('large') {
+        bottom: 0;
+      }
+
+      @include bp.respond-to('extra-large') {
+        bottom: 0;
+      }
     }
   }
 }

@@ -148,12 +148,11 @@ export default function WordListPage({
             />
           ))}
 
-          {/* {hasMore && (
-            <>
-              <div className={styles['load-trigger']} ref={loadTriggerRef} />
-              <div className={styles['load-more']}>{isLoading ? 'Loading...' : 'Load More'}</div>
-            </>
-          )} */}
+          {hasMore && (
+            <div className={styles['load-more']} ref={loadTriggerRef}>
+              {isLoading ? 'Loading...' : 'Load More'}
+            </div>
+          )}
         </div>
       </div>
       {isCompact && (

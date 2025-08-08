@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import NavigationRail from './NavigationRail';
 import TopAppBar from '@/components/Navigation/TopAppBar';

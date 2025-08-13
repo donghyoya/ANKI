@@ -1,30 +1,37 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { WordListProps } from './types';
+import { WordListItemProps } from './types';
 import { OutlinedCard } from '../Card/Card';
-import styles from './WordListCompact.module.scss';
+import styles from './WordListItemMobile.module.scss';
+import { useRouter } from 'next/navigation';
 
-const WordListCompact = ({
+const WordListItemMobile = ({
   KoreanWord,
   ForeignWord,
   isExpanded,
-  homographNumber
-}: WordListProps) => {
+  homographNumber,
+  cardId
+}: WordListItemProps) => {
   const [expanded, setExpanded] = useState(isExpanded || false);
+  const router = useRouter();
 
   useEffect(() => {
     if (isExpanded !== undefined) setExpanded(isExpanded);
   }, [isExpanded]);
 
   const handleClick = () => {
-    setExpanded((prev) => !prev);
+    if (expanded) {
+      router.push(`/card/${cardId}`);
+    } else {
+      setExpanded(true);
+    }
   };
 
   return (
     <OutlinedCard
       className={styles.card}
-      style={{ height: expanded ? '104px' : '56px' }}
+      style={{ minHeight: expanded ? '104px' : '56px' }}
       onClick={handleClick}
     >
       <div className={styles['korean-word']}>
@@ -36,4 +43,4 @@ const WordListCompact = ({
   );
 };
 
-export default WordListCompact;
+export default WordListItemMobile;

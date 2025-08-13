@@ -1,0 +1,79 @@
+@use '@/styles/grid-system' as gs;
+@use '@/styles/typography' as tp;
+@use '@/styles/breakpoints' as bp;
+
+.card-container {
+  box-sizing: border-box;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
+  @include bp.respond-to('compact') {
+    grid-column: span 4;
+    gap: 16px;
+  }
+
+  @include bp.respond-to('medium') {
+    grid-column: 2 / span 6;
+    gap: 16px;
+  }
+
+  @include bp.respond-to('expanded') {
+    grid-column: 3 / span 8;
+    gap: 24px;
+  }
+
+  @include bp.respond-to('large') {
+    grid-column: 3 / span 8;
+    gap: 24px;
+  }
+
+  @include bp.respond-to('extra-large') {
+    grid-column: 3 / span 8;
+    gap: 24px;
+  }
+}
+
+.progress-container-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.progress-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.progress-label-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.progress-label {
+  width: 60px;
+  color: var(--md-sys-color-on-surface-variant);
+  @include tp.label-large;
+
+  @include bp.respond-to('large') {
+    @include tp.body-medium;
+  }
+
+  @include bp.respond-to('extra-large') {
+    @include tp.body-large;
+  }
+
+  &.active {
+    color: var(--md-sys-color-on-surface);
+    font-weight: 700;
+  }
+}

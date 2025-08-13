@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useWindowSize } from '@/hooks/useWindowSize';
@@ -8,19 +8,26 @@ import { useWindowSize } from '@/hooks/useWindowSize';
 import FilledButton from '@/components/material-components/FilledButton';
 import { Icon, IconButton } from '@/components/material-components/IconButton/IconButton';
 import { Menu, MenuItem } from '@/components/material-components/Menu';
-import WordList from '@/components/WordList/WordList';
-import WordListCompact from '@/components/WordList/WordListCompact';
+import WordListItemDesktop from '@/components/WordListItem/WordListItemDesktop';
+import WordListItemMobile from '@/components/WordListItem/WordListItemMobile';
 import { KoreanCardWithForeignWords } from '@/types/schemes';
 import styles from './WordListPage.module.scss';
 import { getCategoryType } from '@/types/Category';
 import { camelize } from 'humps';
+import { SpinnerCircular } from 'spinners-react';
 
 export default function WordListPage({
   wordList,
-  category
+  category,
+  onLoadMore,
+  isLoading,
+  hasMore
 }: {
   wordList: KoreanCardWithForeignWords[];
   category: string;
+  onLoadMore: () => void;
+  isLoading: boolean;
+  hasMore: boolean;
 }) {
   const t = useTranslations();
   const router = useRouter();
@@ -33,7 +40,7 @@ export default function WordListPage({
   const isCompact = width < 600;
   const isLarge = width >= 1200;
 
-  const WordListComponent = !isLarge ? WordListCompact : WordList;
+  const WordListItem = !isLarge ? WordListItemMobile : WordListItemDesktop;
 
   const title =
     getCategoryType(category) === 'difficulty'
@@ -64,6 +71,25 @@ export default function WordListPage({
     const menu = document.getElementById('word-list-more') as HTMLDialogElement;
     menu.open = !menu.open;
   };
+
+  const loadTriggerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log('load more');
+          onLoadMore();
+        }
+      });
+    });
+
+    if (loadTriggerRef.current) {
+      observer.observe(loadTriggerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [onLoadMore]);
 
   const MenuButton = () => {
     return (
@@ -109,9 +135,9 @@ export default function WordListPage({
             <MenuButton />
           </div>
         </div>
-        <div className={styles['list-container']}>
+        <div className={`${styles['list-container']} .word-list`}>
           {wordList.map((word, index) => (
-            <WordListComponent
+            <WordListItem
               key={index}
               KoreanWord={word.koreanWord}
               ForeignWord={word.foreignWords[0]}
@@ -119,8 +145,21 @@ export default function WordListPage({
               isExpanded={!isLarge && isExpanded}
               isHideKorean={isLarge && isHideKorean}
               isHideForeign={isLarge && isHideForeign}
+              cardId={word.cardId}
             />
           ))}
+
+          {hasMore && (
+            <div className={styles['load-more']} ref={loadTriggerRef}>
+              {isLoading ? (
+                <div className={styles['loading-spinner']}>
+                  <SpinnerCircular />
+                </div>
+              ) : (
+                'Load More'
+              )}
+            </div>
+          )}
         </div>
       </div>
       {isCompact && (

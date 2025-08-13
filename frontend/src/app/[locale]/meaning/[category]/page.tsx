@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 
 import { getCardsFromDeck } from '@/api/decks';
@@ -8,27 +7,43 @@ import WordListPage from '@/components/common/WordListPage';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 
 import { Category } from '@/types/Category';
-import { KoreanCardWithForeignWords, Paginated } from '@/types/schemes';
 import { Locale } from '@/types/Locale';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 export default function MeaningWordsPage() {
   const { category, locale } = useParams() ?? {};
 
-  const [userCards, setUserCards] = useState<Paginated<KoreanCardWithForeignWords>>();
+  const {
+    data: cards,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage
+  } = useInfiniteQuery({
+    queryKey: ['cards', category, locale],
+    queryFn: async ({ pageParam = 1 }) => {
+      const cards = await getCardsFromDeck(locale as Locale, category as Category, pageParam);
+      console.log(cards.content.map((c) => c.koreanWord));
+      return cards;
+    },
+    getNextPageParam: (lastPage) => {
+      return lastPage.content.length > 0 ? lastPage.page + 1 : undefined;
+    },
+    initialPageParam: 1
+  });
 
-  useEffect(() => {
-    const fetchUserCards = async () => {
-      const cards = await getCardsFromDeck(locale as Locale, category as Category);
-      if (cards) {
-        setUserCards(cards);
-      }
-    };
-    fetchUserCards();
-  }, [category, locale]);
+  const content = cards?.pages.map((page) => page.content).flat();
 
-  if (!userCards) {
+  if (!content) {
     return <LoadingSpinner />;
   }
 
-  return <WordListPage wordList={userCards.content} category={category as Category} />;
+  return (
+    <WordListPage
+      wordList={content}
+      category={category as Category}
+      onLoadMore={fetchNextPage}
+      isLoading={isFetchingNextPage}
+      hasMore={hasNextPage}
+    />
+  );
 }

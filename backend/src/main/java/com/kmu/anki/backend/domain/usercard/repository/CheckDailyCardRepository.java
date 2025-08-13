@@ -47,12 +47,18 @@ public class CheckDailyCardRepository {
     """;
 
     public boolean checkLearning(List<Long> userCardIds){
+        if(userCardIds == null || userCardIds.isEmpty()){
+            return true;
+        }
         MapSqlParameterSource params = new MapSqlParameterSource("userCardIds", userCardIds);
         Integer count = jdbcTemplate.queryForObject(CHECK_LEARNING_QUERY, params, Integer.class);
         return count>0;
     }
 
     public boolean checkReview(List<Long> userCardIds){
+        if(userCardIds == null || userCardIds.isEmpty()){
+            return true;
+        }
         MapSqlParameterSource params = new MapSqlParameterSource("userCardIds", userCardIds);
         Integer count = jdbcTemplate.queryForObject(CHECK_REVIEW_QUERY, params, Integer.class);
         return count>0;

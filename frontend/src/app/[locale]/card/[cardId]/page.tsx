@@ -1,8 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import useLearningCardLayout from '@/hooks/useLearningCardLayout';
-
 import LearningCard from '@/components/LearningCard/LearningCard';
 
 import styles from './layout.module.scss';
@@ -14,8 +11,6 @@ import { getKoreanCardDetail } from '@/api/cards';
 
 export default function LearningPage() {
   const { cardId } = useParams() ?? {};
-  const [contentHeight, setContentHeight] = useState(0);
-  const [cardWidth, setCardWidth] = useState(0);
 
   const cardState = {
     isRevealed: true,
@@ -25,19 +20,10 @@ export default function LearningPage() {
     isKoreanToForeign: true
   };
 
-  const cardStyle = useLearningCardLayout({
-    contentHeight,
-    cardWidth
-  });
-
   const { data: cardDetail, isLoading } = useQuery({
     queryKey: ['card', cardId],
     queryFn: () => getKoreanCardDetail(+cardId)
   });
-
-  useEffect(() => {
-    setCardWidth(document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0);
-  }, []);
 
   if (isLoading || !cardDetail) return <div>Loading...</div>;
 
@@ -51,9 +37,7 @@ export default function LearningPage() {
         handleShowDetail={() => {}}
         toggleConjugation={() => {}}
         toggleExample={() => {}}
-        style={cardStyle}
         menuItems={[]}
-        setContentHeight={setContentHeight}
       />
     </div>
   );

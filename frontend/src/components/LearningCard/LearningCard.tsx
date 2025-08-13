@@ -26,7 +26,6 @@ export interface LearningCardState {
 interface LearningCardProps {
   card: KoreanCardDetail;
   className?: string;
-  style?: React.CSSProperties;
   cardState: LearningCardState;
   handleReveal?: () => void;
   handleShowDetail?: () => void;
@@ -38,7 +37,6 @@ interface LearningCardProps {
 const LearningCard = ({
   card,
   className,
-  style,
   cardState,
   handleReveal,
   toggleConjugation,
@@ -61,7 +59,6 @@ const LearningCard = ({
         className={classNames(styles['learning-card'], className)}
         ripple={false}
         onClick={handleReveal}
-        style={style}
       >
         {!cardState.isRevealed && (
           <div className={styles['content-container']}>

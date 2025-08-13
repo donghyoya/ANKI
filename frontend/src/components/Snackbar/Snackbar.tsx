@@ -2,6 +2,7 @@
 
 import styles from './Snackbar.module.scss';
 import { Icon } from '../material-components/IconButton/IconButton';
+import { motion } from 'motion/react';
 
 interface SnackbarProps {
   text: string;
@@ -19,7 +20,13 @@ const Snackbar = ({
   onRequestClose
 }: SnackbarProps) => {
   return (
-    <div className={styles.snackbar}>
+    <motion.div
+      className={styles.snackbar}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
+      transition={{ duration: 0.2, ease: 'easeInOut' }}
+    >
       <span className={styles.text}>{text}</span>
       {actionLabel && (
         <button className={styles.action} onClick={onAction}>
@@ -31,7 +38,7 @@ const Snackbar = ({
           <Icon>close</Icon>
         </button>
       )}
-    </div>
+    </motion.div>
   );
 };
 

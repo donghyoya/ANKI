@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import Snackbar from './Snackbar';
 import { createPortal } from 'react-dom';
+import { AnimatePresence } from 'motion/react';
 
 interface SnackbarContextType {
   showSnackbar: (
@@ -60,20 +61,24 @@ export const SnackbarProvider = ({ children }: { children: React.ReactNode }) =>
   return (
     <SnackbarContext.Provider value={{ showSnackbar }}>
       {children}
-      {visible &&
-        createPortal(
-          <Snackbar
-            text={text}
-            actionLabel={actionLabel}
-            onAction={() => {
-              onAction?.();
-              setVisible(false);
-            }}
-            closable={closable}
-            onRequestClose={handleClose}
-          />,
-          document.body
-        )}
+      {createPortal(
+        <AnimatePresence>
+          {visible && (
+            <Snackbar
+              key="snackbar"
+              text={text}
+              actionLabel={actionLabel}
+              onAction={() => {
+                onAction?.();
+                setVisible(false);
+              }}
+              closable={closable}
+              onRequestClose={handleClose}
+            />
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </SnackbarContext.Provider>
   );
 };

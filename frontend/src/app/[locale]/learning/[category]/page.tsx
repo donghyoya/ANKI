@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import useLearningCardLayout from '@/hooks/useLearningCardLayout';
 import { redirect, useParams } from 'next/navigation';
 import { useStudyQueue } from '@/hooks/useStudyQueue';
 import { useTranslations } from 'next-intl';
@@ -17,12 +16,12 @@ import { MenuItem } from '@/types/Menu';
 import { Rating } from 'ts-fsrs';
 
 import styles from './layout.module.scss';
+import LearningCardSlider from '@/components/LearningCardSlider/LearningCardSlider';
+import { motion } from 'motion/react';
 
 export default function LearningPage() {
   const t = useTranslations();
   const { category } = useParams() ?? {};
-  const [contentHeight, setContentHeight] = useState(0);
-  const [cardWidth, setCardWidth] = useState(0);
 
   const [cardState, setCardState] = useState<LearningCardState>({
     isRevealed: false,
@@ -30,11 +29,6 @@ export default function LearningPage() {
     showConjugation: false,
     showExample: false,
     isKoreanToForeign: true
-  });
-
-  const cardStyle = useLearningCardLayout({
-    contentHeight,
-    cardWidth
   });
 
   const {
@@ -48,6 +42,15 @@ export default function LearningPage() {
     error,
     clearError
   } = useStudyQueue(category as Category);
+
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
+
+  // const handlePrev = () => {
+  //   if (index === 0) return;
+  //   setDirection(-1);
+  //   setIndex((prev) => prev - 1);
+  // };
 
   const handleReveal = () => {
     setCardState((prev) => ({ ...prev, isRevealed: true }));
@@ -66,6 +69,10 @@ export default function LearningPage() {
   };
 
   const handleOnRepeat = async (rating: Rating) => {
+    if (index === queue.length - 1) return;
+    console.log('onRepeat');
+    setDirection(1);
+    setIndex((prev) => prev + 1);
     repeat(rating);
     setCardState((prev) => ({ ...prev, isRevealed: false }));
   };
@@ -104,10 +111,6 @@ export default function LearningPage() {
   ];
 
   useEffect(() => {
-    setCardWidth(document.querySelector(`.${styles['learning-card']}`)?.scrollWidth ?? 0);
-  }, []);
-
-  useEffect(() => {
     if (error) {
       alert(error.message);
       clearError();
@@ -131,24 +134,24 @@ export default function LearningPage() {
   }
 
   return (
-    <div className={styles['learning-container']}>
+    <motion.div className={styles['learning-container']} layout>
       <div className={styles['progress-container-wrapper']}>
         <div className={styles['progress-container']}>
           <LearningProgressBar className={styles['progress-bar']} StateCounts={StateCounts} />
         </div>
       </div>
-      <LearningCard
-        card={currentCardDetail}
-        className={styles['learning-card']}
-        cardState={cardState}
-        handleReveal={handleReveal}
-        handleShowDetail={handleShowDetail}
-        toggleConjugation={toggleConjugation}
-        toggleExample={toggleExample}
-        style={cardStyle}
-        menuItems={menuItems}
-        setContentHeight={setContentHeight}
-      />
+      <LearningCardSlider direction={direction} index={index}>
+        <LearningCard
+          card={currentCardDetail}
+          className={styles['learning-card']}
+          cardState={cardState}
+          handleReveal={handleReveal}
+          handleShowDetail={handleShowDetail}
+          toggleConjugation={toggleConjugation}
+          toggleExample={toggleExample}
+          menuItems={menuItems}
+        />
+      </LearningCardSlider>
       <RatingButtonContainer
         iPreview={iPreview}
         isRevealed={cardState.isRevealed}
@@ -175,6 +178,6 @@ export default function LearningPage() {
           }}
         />
       )}
-    </div>
+    </motion.div>
   );
 }

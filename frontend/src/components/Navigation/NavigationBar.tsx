@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 
-import { Ripple } from '@/components/material-components/Ripple';
 import { Icon } from '@/components/material-components/IconButton/IconButton';
 
 import styles from './NavigationBar.module.scss';
@@ -41,13 +41,31 @@ const NavigationBar = ({
             className={classNames(styles.destination, { [styles.selected]: isSelected })}
             onClick={() => handleClick(destination.label)}
           >
-            <div
-              className={classNames(styles['icon-container'], { [styles.selected]: isSelected })}
+            <motion.div
+              className={styles['icon-container']}
+              animate={{
+                fontVariationSettings:
+                  selectedDestination === destination.label ? "'FILL' 1" : "'FILL' 0",
+                transition: {
+                  duration: 0.2,
+                  ease: 'easeInOut'
+                }
+              }}
             >
-              <Ripple />
-              <Icon>{destination.icon}</Icon>
-            </div>
-            <span className={classNames(styles['label'], { [styles.selected]: isSelected })}>
+              <motion.div
+                className={styles['navigation-button-background']}
+                initial={{ width: 0 }}
+                animate={{
+                  width: selectedDestination === destination.label ? '100%' : 0,
+                  transition: {
+                    duration: 0.2,
+                    ease: 'easeInOut'
+                  }
+                }}
+              />
+              <Icon className={styles['icon']}>{destination.icon}</Icon>
+            </motion.div>
+            <span className={`${styles['label']} ${isSelected ? styles.selected : ''}`}>
               {t(`menu.${destination.label}`)}
             </span>
           </button>

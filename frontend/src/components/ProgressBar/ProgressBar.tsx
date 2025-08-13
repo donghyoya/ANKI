@@ -5,6 +5,7 @@ import styles from './ProgressBar.module.scss';
 import { ProgressBarSegment } from '@/types/ProgressBarSegment';
 import { LEARNING_PROGRESS_BAR_COLORS } from '@/constants/colors';
 import classNames from 'classnames';
+import { motion } from 'motion/react';
 
 interface ProgressBarProps {
   progressBarSegments: ProgressBarSegment[];
@@ -39,17 +40,34 @@ const ProgressBar = ({
   }
 
   return (
-    <div className={classNames(styles['container'], className)} style={{ ...stylesProp, height }}>
+    <motion.div
+      className={classNames(styles['container'], className)}
+      style={{ ...stylesProp, height }}
+      animate={{
+        height: height
+      }}
+      transition={{
+        duration: 0.2,
+        ease: 'easeOut'
+      }}
+      layout
+    >
       {[...progressBarSegments].reverse().map((bar, index) => {
         return (
-          <div
+          <motion.div
+          <motion.div
             key={index}
             className={styles['bar']}
-            style={{
+            animate={{
+            animate={{
               backgroundColor: bar.color,
               width: percentages[index] + '%',
               paddingLeft: `${percentages[index + 1] ?? 0}%`,
               borderRadius: index === 0 ? '0' : `0 ${pxToRem(height / 2)} ${pxToRem(height / 2)} 0`
+            }}
+            transition={{
+              duration: 0.1,
+              ease: 'easeOut'
             }}
           >
             <div className={styles['label-container']}>
@@ -57,10 +75,12 @@ const ProgressBar = ({
                 <span className={styles['label']}>{bar.label ? bar.label : ''}</span>
               </TooltipProvider>
             </div>
-          </div>
+          </motion.div>
+          </motion.div>
         );
       })}
-    </div>
+    </motion.div>
+    </motion.div>
   );
 };
 

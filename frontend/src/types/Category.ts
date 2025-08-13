@@ -65,8 +65,8 @@ export const meaningInDisplayOrder: Meaning[] = [
   'ADMINISTRATION'
 ];
 
-export const getCategoryType = (query: CategoryType | string): CategoryType | null => {
-  if (difficultiesInDisplayOrder.includes(query as Difficulty)) return 'difficulty';
-  if (meaningInDisplayOrder.includes(query.toUpperCase() as Meaning)) return 'meaning';
+export const getCategoryType = (query: CategoryType | string): string | null => {
+  if (difficultiesInDisplayOrder.includes(query as Difficulty)) return 'LEVEL';
+  if (meaningInDisplayOrder.includes(query.toUpperCase() as Meaning)) return 'TOPIC';
   return null;
 };

@@ -25,7 +25,7 @@ export class AuthInterceptor {
   async onError(error: AxiosError): Promise<AxiosError> {
     // 에러 처리 및 토큰 갱신
     if (error.response?.status === 401) {
-      await this.authService.refreshToken();
+      await this.authService.refresh();
     }
     return error;
   }

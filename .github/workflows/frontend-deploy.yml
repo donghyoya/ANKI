@@ -3,7 +3,7 @@ name: Frontend Deployment
 on:
   push:
     branches:
-      - frontend-main  # main 브랜치에 푸시될 때 실행
+      - frontend-main # main 브랜치에 푸시될 때 실행
 
 jobs:
   deploy-frontend:
@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'  # 사용하고자 하는 Node.js 버전
+          node-version: "22" # 사용하고자 하는 Node.js 버전
 
       # Step 3: 프로젝트 의존성 설치 및 빌드
       - name: Install dependencies and build
@@ -26,6 +26,11 @@ jobs:
           cd frontend/
           npm ci
           npm run build  # React 앱을 빌드 (build 폴더 생성)
+        env:
+          NEXT_PUBLIC_REDIRECT_URI: auth/redirect
+          NEXT_PUBLIC_MY_HOST: http://hada.zapto.org
+          NEXT_PUBLIC_SERVER: http://hada.zapto.org:7070
+          NEXT_PUBLIC_AUTH_ENDPOINT: auth2/authorization/google
 
       # Step 4: 빌드된 폴더 압축
       - name: Zip build folder
@@ -56,4 +61,3 @@ jobs:
             ./stop.sh
             ./start.sh
           EOF
-

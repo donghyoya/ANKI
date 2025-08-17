@@ -43,7 +43,7 @@ export default function WordListPage({
   const WordListItem = !isLarge ? WordListItemMobile : WordListItemDesktop;
 
   const title =
-    getCategoryType(category) === 'difficulty'
+    getCategoryType(category) === 'LEVEL'
       ? `difficulty.${category}`
       : `meaning.${camelize(category)}`;
 

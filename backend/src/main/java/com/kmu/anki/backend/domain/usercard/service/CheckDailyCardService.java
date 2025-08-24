@@ -30,7 +30,7 @@ public class CheckDailyCardService {
             return false;
         }
         List<Long> userCardIds = opt.get().getUserCardIds();
-        return checkDailyCardRepository.checkLearning(userCardIds);
+        return checkDailyCardRepository.checkLearning(userId, userCardIds);
     }
 
     public boolean checkLearingComplete(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums topic){
@@ -39,7 +39,7 @@ public class CheckDailyCardService {
             return false;
         }
         List<Long> userCardIds = opt.get().getUserCardIds();
-        return checkDailyCardRepository.checkLearning(userCardIds);
+        return checkDailyCardRepository.checkLearning(userId, userCardIds);
     }
 
 
@@ -52,7 +52,7 @@ public class CheckDailyCardService {
             return false;
         }
         List<Long> userCardIds = opt.get().getUserCardIds();
-        return checkDailyCardRepository.checkReview(userCardIds);
+        return checkDailyCardRepository.checkReview(userId, userCardIds);
     }
 
     public boolean checkReviewComplete(Long userId, LanguageCode languageCode, StudyType studyType, CardTopicEnums topic){
@@ -61,6 +61,6 @@ public class CheckDailyCardService {
             return false;
         }
         List<Long> userCardIds = opt.get().getUserCardIds();
-        return checkDailyCardRepository.checkReview(userCardIds);
+        return checkDailyCardRepository.checkReview(userId, userCardIds);
     }
 }

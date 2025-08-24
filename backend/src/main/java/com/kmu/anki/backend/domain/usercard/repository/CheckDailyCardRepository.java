@@ -29,39 +29,47 @@ public class CheckDailyCardRepository {
     private final UserCardQueryRepository userCardQueryRepository;
 
     private static String CHECK_LEARNING_QUERY = """
-        SELECT count(user_card_id)
-        FROM user_cards uc
-        WHERE uc.user_card_id in (:userCardIds)
-            AND (
-                user_card_state != 'New' 
-            );
+        WITH TODAY_CARD_COUNTS AS (
+                SELECT count(user_card_id) as today_card_counts
+                FROM user_cards uc
+                WHERE uc.user_card_id in (:userCardIds)
+                    AND (
+                        user_card_state != 'New'
+            )
+        )
+        SELECT tcc.today_card_counts >= u.daily_study_words as is_complete
+        FROM users u, TODAY_CARD_COUNTS tcc
+        where u.user_id = :userId;
     """;
 
     private static String CHECK_REVIEW_QUERY = """
-        SELECT count(user_card_id)
-        FROM user_cards uc
-        WHERE uc.user_card_id in (:userCardIds)
-            AND (
-                user_card_state != 'Review' 
-            );
+        WITH TODAY_CARD_COUNTS AS (
+                SELECT count(user_card_id) as today_card_counts
+                FROM user_cards uc
+                WHERE uc.user_card_id in (:userCardIds)
+                    AND (
+                        user_card_state != 'REVIEW'
+            )
+        )
+        SELECT tcc.today_card_counts >= u.daily_review_words as is_complete
+        FROM users u, TODAY_CARD_COUNTS tcc
+        where u.user_id = :userId;
     """;
 
-    public boolean checkLearning(List<Long> userCardIds){
+    public boolean checkLearning(Long userId, List<Long> userCardIds){
         if(userCardIds == null || userCardIds.isEmpty()){
             return true;
         }
-        MapSqlParameterSource params = new MapSqlParameterSource("userCardIds", userCardIds);
-        Integer count = jdbcTemplate.queryForObject(CHECK_LEARNING_QUERY, params, Integer.class);
-        return count>0;
+        MapSqlParameterSource params = new MapSqlParameterSource(Map.of("userCardIds", userCardIds, "userId", userId));
+        return jdbcTemplate.queryForObject(CHECK_LEARNING_QUERY, params, Boolean.class);
     }
 
-    public boolean checkReview(List<Long> userCardIds){
+    public boolean checkReview(Long userId, List<Long> userCardIds){
         if(userCardIds == null || userCardIds.isEmpty()){
             return true;
         }
-        MapSqlParameterSource params = new MapSqlParameterSource("userCardIds", userCardIds);
-        Integer count = jdbcTemplate.queryForObject(CHECK_REVIEW_QUERY, params, Integer.class);
-        return count>0;
+        MapSqlParameterSource params = new MapSqlParameterSource(Map.of("userCardIds", userCardIds, "userId", userId));
+        return jdbcTemplate.queryForObject(CHECK_REVIEW_QUERY, params, Boolean.class);
     }
 
     /* 덱 관련 */

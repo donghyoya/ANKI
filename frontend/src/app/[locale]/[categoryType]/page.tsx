@@ -1,11 +1,11 @@
 import React from 'react';
 import { AuthService } from '@/services/AuthService';
 import { CookieService } from '@/services/CookieService';
-import DifficultyClientPage from './clientPage';
+import CategoryTypeClientPage from './clientPage';
 
-export default async function DifficultyPage() {
+export default async function CategoryTypePage() {
   const authService = new AuthService(new CookieService());
   const isLoggedIn = await authService.isLoggedIn();
 
-  return <DifficultyClientPage isLoggedIn={isLoggedIn} />;
+  return <CategoryTypeClientPage isLoggedIn={isLoggedIn} />;
 }

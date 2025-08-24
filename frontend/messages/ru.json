@@ -86,6 +86,9 @@
     "connective": "Связка",
     "seqConnect": "Последовательная связка",
     "formalPresent": "Формальный вежливый настоящее время",
+    "subjectMarker": "Маркер подлежащего",
+    "alsoTooParticle": "Частица также",
+    "onlyJustParticle": "Частица только/лишь",
     "phrase": "Фраза",
     "sentence": "Предложение",
     "conversation": "Разговор"

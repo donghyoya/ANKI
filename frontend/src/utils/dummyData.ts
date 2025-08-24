@@ -36,7 +36,6 @@ export const LANGUAGE_OPTIONS = [
   { code: 'fr', label: 'Français' }, // 프랑스어
   { code: 'id', label: 'Bahasa Indonesia' }, // 인도네시아어
   { code: 'ja', label: '日本語' }, // 일본어
-  { code: 'ko', label: '한국어' }, // 한국어
   { code: 'mn', label: 'Монгол' }, // 몽골어
   { code: 'ru', label: 'Русский' }, // 러시아어
   { code: 'th', label: 'ไทย' }, // 태국어

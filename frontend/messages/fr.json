@@ -86,6 +86,9 @@
     "connective": "Connecteur",
     "seqConnect": "Connecteur séquentiel",
     "formalPresent": "Présent formel",
+    "subjectMarker": "Marqueur de sujet",
+    "alsoTooParticle": "Particule aussi",
+    "onlyJustParticle": "Particule seulement/juste",
     "phrase": "Phrase",
     "sentence": "Phrase complète",
     "conversation": "Conversation"

@@ -86,6 +86,9 @@
     "connective": "Холбох үг",
     "seqConnect": "Дараалсан холбогч",
     "formalPresent": "Албан ёсны одоо цаг",
+    "subjectMarker": "Өгүүлэгдэхүүний тэмдэг",
+    "alsoTooParticle": "Мөн / бас хэсэг",
+    "onlyJustParticle": "Зөвхөн / гагцхүү хэсэг",
     "phrase": "Хэлц үг",
     "sentence": "Өгүүлбэр",
     "conversation": "Яриа"

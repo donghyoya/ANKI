@@ -86,6 +86,9 @@
     "connective": "连接词",
     "seqConnect": "顺序连接词",
     "formalPresent": "正式礼貌现在时",
+    "subjectMarker": "主语标记",
+    "alsoTooParticle": "也/亦 助词",
+    "onlyJustParticle": "仅/只是 助词",
     "phrase": "短语",
     "sentence": "句子",
     "conversation": "对话"

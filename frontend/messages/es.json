@@ -86,6 +86,9 @@
     "connective": "Conectivo",
     "seqConnect": "Conectivo secuencial",
     "formalPresent": "Presente formal",
+    "subjectMarker": "Marcador de sujeto",
+    "alsoTooParticle": "Partícula también",
+    "onlyJustParticle": "Partícula solo/justo",
     "phrase": "Frase",
     "sentence": "Oración",
     "conversation": "Conversación"

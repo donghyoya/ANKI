@@ -86,6 +86,9 @@
     "connective": "Konektor",
     "seqConnect": "Konektor sekuensial",
     "formalPresent": "Presentasi formal",
+    "subjectMarker": "Penanda subjek",
+    "alsoTooParticle": "Partikel juga",
+    "onlyJustParticle": "Partikel hanya/saja",
     "phrase": "Frasa",
     "sentence": "Kalimat",
     "conversation": "Percakapan"

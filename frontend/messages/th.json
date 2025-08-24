@@ -86,6 +86,9 @@
     "connective": "คำเชื่อม",
     "seqConnect": "คำเชื่อมลำดับ",
     "formalPresent": "ทางการสุภาพปัจจุบัน",
+    "subjectMarker": "เครื่องหมายประธาน",
+    "alsoTooParticle": "คำแสดงความหมายว่า 'ก็'",
+    "onlyJustParticle": "คำแสดงความหมายว่า 'เท่านั้น/แค่'",
     "phrase": "วลี",
     "sentence": "ประโยค",
     "conversation": "การสนทนา"

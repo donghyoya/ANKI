@@ -86,6 +86,9 @@
     "connective": "Connective",
     "seqConnect": "Sequential connective",
     "formalPresent": "Formal polite present",
+    "subjectMarker": "Subject marker",
+    "alsoTooParticle": "Also/too particle",
+    "onlyJustParticle": "Only/just particle",
     "phrase": "Phrase",
     "sentence": "Sentence",
     "conversation": "Conversation"

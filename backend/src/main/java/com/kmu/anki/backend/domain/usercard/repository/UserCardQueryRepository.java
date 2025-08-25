@@ -29,9 +29,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 
 @Transactional(readOnly = true)
@@ -46,7 +44,7 @@ public class UserCardQueryRepository {
     private final QCardTopic cardTopic = QCardTopic.cardTopic;
 
     public List<UserCardDto> findStudyCardByIds(List<Long> userCardIds){
-        return queryFactory
+        List<UserCardDto> cards = queryFactory
                 .select(userCard)
                 .from(userCard)
                 .join(userCard.koreanCard, koreanCard)
@@ -55,6 +53,14 @@ public class UserCardQueryRepository {
                         userCard.id.in(userCardIds)
                 )
                 .fetch().stream().map(UserCardDto::of).toList();
+        Map<Long, Integer> orders = new HashMap<>();
+        for(int i=0;i<userCardIds.size();i++){
+            orders.put(userCardIds.get(i), i);
+        }
+        cards = new ArrayList<>(cards);
+        cards.sort(Comparator.comparingInt(o->orders.get(o.getUserCardId())));
+        return cards;
+
     }
 
     public List<Long> findStudyCardIds(

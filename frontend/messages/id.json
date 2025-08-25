@@ -16,9 +16,11 @@
   "loginErrorContent": "Terjadi masalah saat login. Tekan OK untuk pergi ke halaman login.",
   "cancel": "Batal",
   "save": "Simpan",
-  "ok": "Oke",
+  "ok": "OKE",
   "saved": "Berhasil disimpan.",
   "failedToSave": "Gagal menyimpan.",
+  "cookies": "Cookie",
+  "cookieConsent": "Kami menggunakan cookie agar Anda tetap login.",
 
   "menu": {
     "difficulty": "Kesulitan",
@@ -84,6 +86,9 @@
     "connective": "Konektor",
     "seqConnect": "Konektor sekuensial",
     "formalPresent": "Presentasi formal",
+    "subjectMarker": "Penanda subjek",
+    "alsoTooParticle": "Partikel juga",
+    "onlyJustParticle": "Partikel hanya/saja",
     "phrase": "Frasa",
     "sentence": "Kalimat",
     "conversation": "Percakapan"

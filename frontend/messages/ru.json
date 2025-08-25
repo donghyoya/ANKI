@@ -16,9 +16,11 @@
   "loginErrorContent": "Произошла ошибка при входе. Нажмите OK, чтобы перейти на страницу входа.",
   "cancel": "Отмена",
   "save": "Сохранить",
-  "ok": "Ок",
+  "ok": "ОК",
   "saved": "Сохранено.",
   "failedToSave": "Не удалось сохранить.",
+  "cookies": "куки",
+  "cookieConsent": "Мы используем файлы cookie, чтобы вы оставались в системе.",
 
   "menu": {
     "difficulty": "Сложность",
@@ -84,6 +86,9 @@
     "connective": "Связка",
     "seqConnect": "Последовательная связка",
     "formalPresent": "Формальный вежливый настоящее время",
+    "subjectMarker": "Маркер подлежащего",
+    "alsoTooParticle": "Частица также",
+    "onlyJustParticle": "Частица только/лишь",
     "phrase": "Фраза",
     "sentence": "Предложение",
     "conversation": "Разговор"

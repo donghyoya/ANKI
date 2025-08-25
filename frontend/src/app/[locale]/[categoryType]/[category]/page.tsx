@@ -10,7 +10,7 @@ import { Category } from '@/types/Category';
 import { Locale } from '@/types/Locale';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
-export default function MeaningWordsPage() {
+export default function CategoryPage() {
   const { category, locale } = useParams() ?? {};
 
   const {

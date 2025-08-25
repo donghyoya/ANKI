@@ -19,6 +19,8 @@
   "ok": "موافق",
   "saved": "تم الحفظ.",
   "failedToSave": "فشل في الحفظ.",
+  "cookies": "ملفات تعريف الارتباط",
+  "cookieConsent": "نحن نستخدم ملفات تعريف الارتباط لتبقى مسجلاً للدخول.",
 
   "menu": {
     "difficulty": "الصعوبة",
@@ -84,6 +86,9 @@
     "connective": "أداة ربط",
     "seqConnect": "أداة ربط تسلسلية",
     "formalPresent": "زمن الحاضر الرسمي المهذب",
+    "subjectMarker": "أداة تحديد الفاعل",
+    "alsoTooParticle": "أداة أيضًا / كذلك",
+    "onlyJustParticle": "أداة فقط / مجرد",
     "phrase": "عبارة",
     "sentence": "جملة",
     "conversation": "محادثة"

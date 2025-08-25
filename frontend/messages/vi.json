@@ -19,6 +19,8 @@
   "ok": "Đồng ý",
   "saved": "Đã lưu.",
   "failedToSave": "Lưu không thành công.",
+  "cookies": "Cookie",
+  "cookieConsent": "Chúng tôi sử dụng cookie để giữ cho bạn đăng nhập.",
 
   "menu": {
     "difficulty": "Độ khó",
@@ -84,6 +86,9 @@
     "connective": "Từ nối",
     "seqConnect": "Từ nối theo trình tự",
     "formalPresent": "Thì hiện tại lịch sự",
+    "subjectMarker": "Từ đánh dấu chủ ngữ",
+    "alsoTooParticle": "Tiểu từ cũng",
+    "onlyJustParticle": "Tiểu từ chỉ",
     "phrase": "Cụm từ",
     "sentence": "Câu",
     "conversation": "Hội thoại"

@@ -57,7 +57,7 @@ export default function DeckListPage({
   const getTitle =
     categoryType === 'difficulty'
       ? (category: string) => `difficulty.${category}`
-      : (category: string) => `meaning.${camelize(category)}`;
+      : (category: string) => `meaning.${camelize(category.toLowerCase())}`;
 
   return (
     <>

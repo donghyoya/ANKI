@@ -13,6 +13,7 @@ import com.kmu.anki.backend.domain.usercard.docs.parameters.UserCardParameters;
 import com.kmu.anki.backend.domain.usercard.service.CheckDailyCardService;
 import com.kmu.anki.backend.global.AbstractControllerTest;
 import com.kmu.anki.backend.global.ExceptionResponseDocs;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
@@ -63,6 +64,7 @@ class ContinueDaliyCardController extends AbstractControllerTest {
                 );;
     }
 
+    @Disabled
     @Test
     void getStudyCardsContinueWithException() throws Exception {
         String studyType = StudyType.study.toString();

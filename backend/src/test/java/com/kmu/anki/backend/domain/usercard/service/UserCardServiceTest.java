@@ -45,6 +45,7 @@ class UserCardServiceTest extends AbstractIntegrationTest {
         }
     }
 
+    @Disabled
     @Test
     @DisplayName("오늘 학습할 단어 개수를 줄이고도 제대로 작동하는지 검사")
     void readStudyUserCardDecreaseDailyCardsTest(){
@@ -65,6 +66,7 @@ class UserCardServiceTest extends AbstractIntegrationTest {
         assertEquals(1, after.size());
     }
 
+    @Disabled
     @Test
     @DisplayName("오늘 학습할 단어 개수를 늘리고도 제대로 작동하는지 검사")
     void readStudyUserCardIncreaseDailyCardsTest(){

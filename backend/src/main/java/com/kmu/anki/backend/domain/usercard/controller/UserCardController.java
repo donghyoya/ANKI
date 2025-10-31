@@ -105,12 +105,12 @@ public class UserCardController {
         List<UserCardDto> cards;
         if(queryType == QueryType.TOPIC){
             CardTopicEnums cardTopicEnums = enumConverterFactory.convertTopic(query);
-            cards = userCardService.continueStudyUserCard(userId, languageCode, studyType,cardTopicEnums);
+            cards = userCardService.readStudyUserCard(userId, languageCode, studyType == StudyType.study ? StudyType.study_continue : StudyType.review_continue,cardTopicEnums);
             // 최근 학습 덱을 보여주기 위해서
             userStudyHistoryService.createHistory(studyType, queryType, cardTopicEnums, userId);
         }else {
             CardLevel cardLevel = enumConverterFactory.convertLevel(query);
-            cards = userCardService.continueStudyUserCard(userId, languageCode, studyType, cardLevel);
+            cards = userCardService.readStudyUserCard(userId, languageCode, studyType == StudyType.study ? StudyType.study_continue : StudyType.review_continue, cardLevel);
             // 최근 학습 덱을 보여주기 위해서
             userStudyHistoryService.createHistory(studyType, queryType, cardLevel, userId);
         }

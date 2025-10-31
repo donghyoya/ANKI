@@ -63,13 +63,6 @@ public class UserCardService {
         List<Long> userCardIds = null;
         if(opt.isPresent()){
             userCardIds = opt.get().getUserCardIds();
-            // 캐싱 데이터의 개수 맞추는 로직
-            if(userCardIds.size() > words){
-                userCardIds = userCardIds.subList(0, words);
-            }else if(userCardIds.size() < words){
-                userCardIds.addAll(userCardQueryRepository.findStudyCardIds(userId, languageCode, null, cardTopicEnums, now, studyType, userCardIds, words-userCardIds.size()+1));
-                userCardCacheRepository.saveDailyUserCard(userId, cardTopicEnums, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
-            }
         }else {
             userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, null, cardTopicEnums, now, studyType, null, words);
             userCardCacheRepository.saveDailyUserCard(userId, cardTopicEnums, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
@@ -88,12 +81,6 @@ public class UserCardService {
         List<Long> userCardIds = null;
         if(opt.isPresent()){
             userCardIds = opt.get().getUserCardIds();
-            if(userCardIds.size() > words){
-                userCardIds = userCardIds.subList(0, words);
-            }else if(userCardIds.size() < words){
-                userCardIds.addAll(userCardQueryRepository.findStudyCardIds(userId, languageCode, cardLevel, null, now, studyType, userCardIds, words-userCardIds.size()+1));
-                userCardCacheRepository.saveDailyUserCard(userId, cardLevel, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
-            }
         }else {
             userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, cardLevel, null, now, studyType, null, words);
             userCardCacheRepository.saveDailyUserCard(userId, cardLevel, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
@@ -107,20 +94,17 @@ public class UserCardService {
         LocalDateTime now = LocalDateTime.now();
         // 유저 정보를 꺼내라
         User user = userRepository.findById(userId).orElseThrow();
-        // 오늘 공부 끝났는지 확인
-        boolean isComplete = checkDailyCardService.checkLearingComplete(userId, languageCode, StudyType.study, cardTopicEnums);
-        if(!isComplete){
-            throw new DailyStudyNotFinishedException();
-        }
-        // 오늘 공부했던 단어 삭제
-        this.deleteCache(userId, studyType, cardTopicEnums);
-
         // 오늘 공부할 단어 개수 꺼내기
         Integer words = studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords();
-
-        // 새로 공부할 단어 가져와서 캐시에 넣기
-        List<Long> userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, null, cardTopicEnums, now, studyType, null, words);
-        userCardCacheRepository.saveDailyUserCard(userId, cardTopicEnums, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
+        // cache에서 꺼내기
+        Optional<UserCardCacheO> opt = userCardCacheRepository.findDailyUserCard(userId, studyType, cardTopicEnums);
+        List<Long> userCardIds = null;
+        if(opt.isPresent()){
+            userCardIds = opt.get().getUserCardIds();
+        }else {
+            userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, null, cardTopicEnums, now, studyType, null, words);
+            userCardCacheRepository.saveDailyUserCard(userId, cardTopicEnums, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
+        }
         return userCardQueryRepository.findStudyCardByIds(userCardIds);
     }
 
@@ -128,20 +112,19 @@ public class UserCardService {
         LocalDateTime now = LocalDateTime.now();
         // 유저 정보를 꺼내라
         User user = userRepository.findById(userId).orElseThrow();
-        // 오늘 공부 끝났는지 확인
-        boolean isComplete = checkDailyCardService.checkLearingComplete(userId, languageCode, StudyType.study, cardLevel);
-        if(!isComplete){
-            throw new DailyStudyNotFinishedException();
-        }
-        // 오늘 공부했던 단어 삭제
-        this.deleteCache(userId, studyType, cardLevel);
-
         // 오늘 공부할 단어 개수 꺼내기
         Integer words = studyType == StudyType.study ? user.getDailyStudyWords() : user.getDailyReviewWords();
 
         // 새로 공부할 단어 가져와서 캐시에 넣기
-        List<Long> userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, cardLevel, null, now, studyType, null, words);
-        userCardCacheRepository.saveDailyUserCard(userId, cardLevel, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
+        // cache에서 꺼내기
+        Optional<UserCardCacheO> opt = userCardCacheRepository.findDailyUserCard(userId, studyType, cardLevel);
+        List<Long> userCardIds = null;
+        if(opt.isPresent()){
+            userCardIds = opt.get().getUserCardIds();
+        }else {
+            userCardIds = userCardQueryRepository.findStudyCardIds(userId, languageCode, cardLevel, null, now, studyType, null, words);
+            userCardCacheRepository.saveDailyUserCard(userId, cardLevel, studyType, new UserCardCacheO(userCardIds, user.getUtcOffset()));
+        }
         return userCardQueryRepository.findStudyCardByIds(userCardIds);
     }
 

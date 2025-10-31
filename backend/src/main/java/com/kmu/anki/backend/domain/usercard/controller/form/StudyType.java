@@ -5,5 +5,7 @@ package com.kmu.anki.backend.domain.usercard.controller.form;
  */
 public enum StudyType {
     study,
-    review
+    review,
+    study_continue,
+    review_continue
 }
